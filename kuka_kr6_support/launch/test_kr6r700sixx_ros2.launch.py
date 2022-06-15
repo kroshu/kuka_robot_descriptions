@@ -17,7 +17,8 @@ def generate_launch_description():
     executable='robot_state_publisher',
     parameters=[{'robot_description': ParameterValue(
             Command(['xacro ', str(robot_description_path)]), value_type=str
-        )}]
+        )}],
+    remappings=[("joint_states", "rsi_joint_state")]
     )
 
     joint_state_publisher_node = Node(
@@ -36,17 +37,6 @@ def generate_launch_description():
 
     return LaunchDescription([
         robot_state_publisher_node,
-        joint_state_publisher_node,
+        # joint_state_publisher_node,
         rviz_node
     ])
-
-
-# <?xml version="1.0"?>
-# <launch>
-#   <param name="robot_description" command="$(find xacro)/xacro '$(find kuka_kr6_support)/urdf/kr6r700sixx.xacro'"/>
-#   <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
-#     <param name="use_gui" value="true" />
-#   </node>
-#   <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
-#   <node name="rviz" pkg="rviz" type="rviz" args="-d $(find industrial_robot_client)/config/robot_state_visualize.rviz" required="true" />
-# </launch>

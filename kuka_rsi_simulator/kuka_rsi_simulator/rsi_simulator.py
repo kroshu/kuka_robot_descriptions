@@ -39,7 +39,7 @@ def parse_rsi_xml_sen(data):
 class RSISimulator(Node):
     cycle_time = 0.004
     act_joint_pos = np.array([0, -90, 90, 0, 90, 0]).astype(np.float64)
-    cmd_joint_pos = act_joint_pos.copy()
+    initial_joint_pos = act_joint_pos.copy()
     des_joint_correction_absolute = np.zeros(6)
     timeout_count = 0
     ipoc = 0
@@ -81,13 +81,13 @@ class RSISimulator(Node):
 
     def timer_callback(self):
         try:
-            msg = create_rsi_xml_rob(self.act_joint_pos, self.cmd_joint_pos, self.timeout_count, self.ipoc)
+            msg = create_rsi_xml_rob(self.act_joint_pos, self.initial_joint_pos, self.timeout_count, self.ipoc)
             self.rsi_act_pub_.publish(msg)
             self.socket_.sendto(msg, (self.rsi_ip_address_, self.rsi_port_address_))
             recv_msg, addr = self.socket_.recvfrom(1024)
             self.rsi_cmd_pub_.publish(recv_msg)
             des_joint_correction_absolute, ipoc_recv = parse_rsi_xml_sen(recv_msg)
-            act_joint_pos = cmd_joint_pos + des_joint_correction_absolute
+            self.act_joint_pos = self.initial_joint_pos + des_joint_correction_absolute
             self.ipoc += 1
             time.sleep(self.cycle_time / 2)
         except OSError as msg:
