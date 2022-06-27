@@ -1,0 +1,36 @@
+<launch>
+  <!-- Launch file for urdflbriiwa7 to use with ROS control -->
+  <arg name="model" default="$(find urdflbriiwa7)/urdf/urdflbriiwa7.urdf"/>
+  <arg name="gui" default="true" />
+  <arg name="rvizconfig" default="$(find urdflbriiwa7)/rviz/urdf.rviz" />
+  <arg name="use_sim_time" default="true"/>
+  <arg name="position" default="false"/>
+  <arg name="torque" default="false"/>
+
+  <param name="use_gui" value="$(arg gui)"/>
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="gui" value="$(arg gui)" />
+    <arg name="use_sim_time" value="$(arg use_sim_time)"/>
+  </include>
+  <param name="robot_description" command="$(find xacro)/xacro $(arg model)" />
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+    <param name="use_gui" value="false"/>
+    <param name="rate" value="1"/>
+  </node>
+  
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher">
+      <param name="publish_frequency" type="double" value="30.0" />
+      <remap from="/joint_states" to="/urdflbriiwa7/joint_states" />
+    </node> 
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rvizconfig)" required="true" />
+  <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model"
+    args="-z 0.0 -urdf -model urdflbriiwa7 -param robot_description" respawn="false" output="screen" />
+
+  <!-- Load joint controller configurations from YAML file to parameter server -->
+  <rosparam file="$(find urdflbriiwa7)/config/urdflbriiwa7_control.yaml" command="load"/>
+
+   <!-- load the controllers -->
+   <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+    output="screen" ns="/urdflbriiwa7" args=" URDFLBRiiwa7Joint1_torque_controller  URDFLBRiiwa7Joint2_torque_controller  URDFLBRiiwaJoint3_torque_controller  URDFLBRiiwaJoint4_torque_controller  URDFLBRiiwaJoint5_torque_controller  URDFLBRiiwaJoint6_torque_controller  URDFLBRiiwaJoint7_torque_controller  joint_state_controller"/>
+
+</launch>

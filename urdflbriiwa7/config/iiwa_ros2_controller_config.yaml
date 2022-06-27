@@ -1,0 +1,21 @@
+controller_manager:
+  ros__parameters:
+    update_rate: 2  # Hz
+
+    forward_command_controller_position:
+      type: forward_command_controller/ForwardCommandController
+
+    joint_state_broadcaster:
+      type: joint_state_broadcaster/JointStateBroadcaster
+
+forward_command_controller_position:
+  ros__parameters:
+    joints:
+      - URDFLBRiiwa7Joint1
+      - URDFLBRiiwa7Joint2
+      - URDFLBRiiwa7Joint3
+      - URDFLBRiiwa7Joint4
+      - URDFLBRiiwa7Joint5
+      - URDFLBRiiwa7Joint6
+      - URDFLBRiiwa7Joint7
+    interface_name: position

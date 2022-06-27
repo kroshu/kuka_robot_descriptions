@@ -1,0 +1,14 @@
+<launch>
+
+<arg name="position" default="false"/>
+<arg name="torque" default="false"/>
+
+ <!-- Load joint controller configurations from YAML file to parameter server -->
+ <rosparam file="$(find urdflbriiwa7)/config/urdflbriiwa7_control.yaml" command="load"/>
+
+ <!-- load the controllers -->
+<node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+    output="screen" ns="/urdflbriiwa7" args=" URDFLBRiiwa7Joint1_torque_controller  URDFLBRiiwa7Joint2_torque_controller  URDFLBRiiwaJoint3_torque_controller  URDFLBRiiwaJoint4_torque_controller  URDFLBRiiwaJoint5_torque_controller  URDFLBRiiwaJoint6_torque_controller  URDFLBRiiwaJoint7_torque_controller  joint_state_controller"/>
+
+</launch>
+

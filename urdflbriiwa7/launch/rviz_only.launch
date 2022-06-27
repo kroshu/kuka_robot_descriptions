@@ -1,0 +1,6 @@
+<launch>
+  <!-- Launch file for urdflbriiwa7 to use with ROS control -->
+  <arg name="rvizconfig" default="$(find urdflbriiwa7)/rviz/urdf.rviz" />
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rvizconfig)" required="true" />
+
+</launch>
