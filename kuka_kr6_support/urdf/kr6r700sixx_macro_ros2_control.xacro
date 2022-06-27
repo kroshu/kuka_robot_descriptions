@@ -179,9 +179,7 @@
 
     <ros2_control name="KukaRSIHardwareInterface" type="system">
       <hardware>
-        <plugin>kuka_rsi_hw_interface/KukaRSIHardwareInterface</plugin>
-        <param name="example_param_hw_start_duration_sec">2.0</param>
-        <param name="example_param_hw_stop_duration_sec">3.0</param>
+        <plugin>kuka_rsi_hw_interface::KukaRSIHardwareInterface</plugin>
       </hardware>
       <joint name="${prefix}joint_a1">
         <command_interface name="position">
