@@ -133,14 +133,14 @@
     <link name="URDFLBRiiwa7RobotBase">
         <visual>
             <geometry>
-                <mesh filename="file:///home/rosdeveloper/ros2_ws/src/urdflbriiwa7/meshes/visual/iiwa_r820_link_0_hull_v0.1_iiwa_r820_link_0_hull.stl"/>
+                <mesh filename="package://urdflbriiwa7/meshes/visual/iiwa_r820_link_0_hull_v0.1_iiwa_r820_link_0_hull.stl"/>
             </geometry>
             <origin rpy="-0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
         </visual>
         <collision>
             <origin rpy="-0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
             <geometry>
-                <mesh filename="file:///home/rosdeveloper/ros2_ws/src/urdflbriiwa7/meshes/collision/iiwa_r820_link_0_collision_v0.1_iiwa_r820_link_0_collision.stl"/>
+                <mesh filename="package://urdflbriiwa7/meshes/collision/iiwa_r820_link_0_collision_v0.1_iiwa_r820_link_0_collision.stl"/>
             </geometry>
         </collision>
         <inertial>
@@ -152,14 +152,14 @@
     <link name="URDFLBRiiwa7Axis1">
         <visual>
             <geometry>
-                <mesh filename="file:///home/rosdeveloper/ros2_ws/src/urdflbriiwa7/meshes/visual/iiwa_r820_link_1_hull_v0.1_iiwa_r820_link_1_hull.stl"/>
+                <mesh filename="package://urdflbriiwa7/meshes/visual/iiwa_r820_link_1_hull_v0.1_iiwa_r820_link_1_hull.stl"/>
             </geometry>
             <origin rpy="-0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
         </visual>
         <collision>
             <origin rpy="-0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
             <geometry>
-            	<mesh filename="file:///home/rosdeveloper/ros2_ws/src/urdflbriiwa7/meshes/collision/iiwa_r820_link_1_collision_v0.1_iiwa_r820_link_1_collision.stl"/>
+            	<mesh filename="package://urdflbriiwa7/meshes/collision/iiwa_r820_link_1_collision_v0.1_iiwa_r820_link_1_collision.stl"/>
             </geometry>
         </collision>
         <inertial>
@@ -171,14 +171,14 @@
     <link name="URDFLBRiiwa7Axis2">
         <visual>
             <geometry>
-                <mesh filename="file:///home/rosdeveloper/ros2_ws/src/urdflbriiwa7/meshes/visual/iiwa_r820_link_2_hull_v0.1_iiwa_r820_link_2_hull.stl"/>
+                <mesh filename="package://urdflbriiwa7/meshes/visual/iiwa_r820_link_2_hull_v0.1_iiwa_r820_link_2_hull.stl"/>
             </geometry>
             <origin rpy="-0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
         </visual>
         <collision>
             <origin rpy="-0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
             <geometry>
-            	<mesh filename="file:///home/rosdeveloper/ros2_ws/src/urdflbriiwa7/meshes/collision/iiwa_r820_link_2_collision_v0.1_iiwa_r820_link_2_collision.stl"/>
+            	<mesh filename="package://urdflbriiwa7/meshes/collision/iiwa_r820_link_2_collision_v0.1_iiwa_r820_link_2_collision.stl"/>
             </geometry>
         </collision>
         <inertial>
@@ -190,14 +190,14 @@
     <link name="URDFLBRiiwaAxis3">
         <visual>
             <geometry>
-                <mesh filename="file:///home/rosdeveloper/ros2_ws/src/urdflbriiwa7/meshes/visual/iiwa_r820_link_3_hull_v0.1_iiwa_r820_link_3_hull.stl"/>
+                <mesh filename="package://urdflbriiwa7/meshes/visual/iiwa_r820_link_3_hull_v0.1_iiwa_r820_link_3_hull.stl"/>
             </geometry>
             <origin rpy="-0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
         </visual>
         <collision>
             <origin rpy="-0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
             <geometry>
-                <mesh filename="file:///home/rosdeveloper/ros2_ws/src/urdflbriiwa7/meshes/collision/iiwa_r820_link_3_collision_v0.1_iiwa_r820_link_3_collision.stl"/>
+                <mesh filename="package://urdflbriiwa7/meshes/collision/iiwa_r820_link_3_collision_v0.1_iiwa_r820_link_3_collision.stl"/>
             </geometry>
         </collision>
         <inertial>
@@ -209,14 +209,14 @@
     <link name="URDFLBRiiwaAxis4">
         <visual>
             <geometry>
-                <mesh filename="file:///home/rosdeveloper/ros2_ws/src/urdflbriiwa7/meshes/visual/iiwa_r820_link_4_hull_v0.1_iiwa_r820_link_4_hull.stl"/>
+                <mesh filename="package://urdflbriiwa7/meshes/visual/iiwa_r820_link_4_hull_v0.1_iiwa_r820_link_4_hull.stl"/>
             </geometry>
             <origin rpy="-0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
         </visual>
         <collision>
             <origin rpy="-0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
             <geometry>
-            	<mesh filename="file:///home/rosdeveloper/ros2_ws/src/urdflbriiwa7/meshes/collision/iiwa_r820_link_4_collision_v0.1_iiwa_r820_link_4_collision.stl"/>
+            	<mesh filename="package://urdflbriiwa7/meshes/collision/iiwa_r820_link_4_collision_v0.1_iiwa_r820_link_4_collision.stl"/>
             </geometry>
         </collision>
         <inertial>
@@ -228,14 +228,14 @@
     <link name="URDFLBRiiwaAxis5">
         <visual>
             <geometry>
-                <mesh filename="file:///home/rosdeveloper/ros2_ws/src/urdflbriiwa7/meshes/visual/iiwa_r820_link_5_hull_v0.1_iiwa_r820_link_5_hull.stl"/>
+                <mesh filename="package://urdflbriiwa7/meshes/visual/iiwa_r820_link_5_hull_v0.1_iiwa_r820_link_5_hull.stl"/>
             </geometry>
             <origin rpy="-0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
         </visual>
         <collision>
             <origin rpy="-0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
             <geometry>
-            	<mesh filename="file:///home/rosdeveloper/ros2_ws/src/urdflbriiwa7/meshes/collision/iiwa_r820_link_5_collision_v0.1_iiwa_r820_link_5_collision.stl"/>
+            	<mesh filename="package://urdflbriiwa7/meshes/collision/iiwa_r820_link_5_collision_v0.1_iiwa_r820_link_5_collision.stl"/>
             </geometry>
         </collision>
         <inertial>
@@ -247,14 +247,14 @@
     <link name="URDFLBRiiwaAxis6">
         <visual>
             <geometry>
-                <mesh filename="file:///home/rosdeveloper/ros2_ws/src/urdflbriiwa7/meshes/visual/iiwa_r820_link_6_hull_v0.1_iiwa_r820_link_6_hull.stl"/>
+                <mesh filename="package://urdflbriiwa7/meshes/visual/iiwa_r820_link_6_hull_v0.1_iiwa_r820_link_6_hull.stl"/>
             </geometry>
             <origin rpy="-0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
         </visual>
         <collision>
             <origin rpy="-0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
             <geometry>
-            	<mesh filename="file:///home/rosdeveloper/ros2_ws/src/urdflbriiwa7/meshes/collision/iiwa_r820_link_6_collision_v0.1_iiwa_r820_link_6_collision.stl"/>
+            	<mesh filename="package://urdflbriiwa7/meshes/collision/iiwa_r820_link_6_collision_v0.1_iiwa_r820_link_6_collision.stl"/>
             </geometry>
         </collision>
         <inertial>
@@ -266,14 +266,14 @@
     <link name="URDFLBRiiwaAxis7">
         <visual>
             <geometry>
-                <mesh filename="file:///home/rosdeveloper/ros2_ws/src/urdflbriiwa7/meshes/visual/iiwa_r820_link_7_hull_v0.1_iiwa_r820_link_7_hull.stl"/>
+                <mesh filename="package://urdflbriiwa7/meshes/visual/iiwa_r820_link_7_hull_v0.1_iiwa_r820_link_7_hull.stl"/>
             </geometry>
             <origin rpy="-0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
         </visual>
         <collision>
             <origin rpy="-0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
             <geometry>
-            	<mesh filename="file:///home/rosdeveloper/ros2_ws/src/urdflbriiwa7/meshes/collision/iiwa_r820_link_7_collision_v0.1_iiwa_r820_link_7_collision.stl"/>
+            	<mesh filename="package://urdflbriiwa7/meshes/collision/iiwa_r820_link_7_collision_v0.1_iiwa_r820_link_7_collision.stl"/>
             </geometry>
         </collision>
         <inertial>

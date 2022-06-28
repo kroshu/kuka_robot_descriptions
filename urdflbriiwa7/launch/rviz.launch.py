@@ -28,10 +28,10 @@ def load_yaml(package_name, file_path):
 def generate_launch_description():
     yaml_file_name = get_package_share_directory('urdflbriiwa7') + "/config/urdflbriiwa7_control.yaml"
 
-    robot_description_config = load_file("/home/rosdeveloper/ros2_ws/src/urdflbriiwa7/urdf/urdflbriiwa7.urdf")
+    robot_description_config = load_file(get_package_share_directory('urdflbriiwa7') + "urdf/urdflbriiwa7.urdf")
     robot_description = {'robot_description' : robot_description_config}
 
-    robot_description_semantic_config = load_file('/home/rosdeveloper/ros2_ws/src/urdflbriiwa7/urdf/urdflbriiwa7.srdf')
+    robot_description_semantic_config = load_file(get_package_share_directory('urdflbriiwa7') + '/urdf/urdflbriiwa7.srdf')
     robot_description_semantic = {'robot_description_semantic': robot_description_semantic_config}
 
 
