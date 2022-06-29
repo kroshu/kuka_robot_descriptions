@@ -1,416 +1,415 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <robot name="urdflbriiwa7">
-	<ros2_control name="iiwa_hardware" type="system">
-	 <hardware>
-	   <plugin>kuka_sunrise::RobotControlClient</plugin>
-	 </hardware>
-	  <!-- define joints and command/state interfaces for each joint -->
-            <joint name="URDFLBRiiwa7Joint1">
-                <command_interface name="position">
-                    <param name="min">-1</param>
-                    <param name="max"> 1</param>
-                </command_interface>
-                <command_interface name="effort">
-                    <param name="min">-1</param>
-                    <param name="max"> 1</param>
-                </command_interface>
-                <state_interface name="position"/>
-                <state_interface name="effort"/>
-            </joint>
-            <joint name="URDFLBRiiwa7Joint2">
-                <command_interface name="position">
-                    <param name="min">-1</param>
-                    <param name="max"> 1</param>
-                </command_interface>
-                <command_interface name="effort">
-                    <param name="min">-1</param>
-                    <param name="max"> 1</param>
-                </command_interface>
-                <state_interface name="position"/>
-                <state_interface name="effort"/>
-            </joint>
-            <joint name="URDFLBRiiwa7Joint3">
-                <command_interface name="position">
-                    <param name="min">-1</param>
-                    <param name="max"> 1</param>
-                </command_interface>
-                <command_interface name="effort">
-                    <param name="min">-1</param>
-                    <param name="max"> 1</param>
-                </command_interface>
-                <state_interface name="position"/>
-                <state_interface name="effort"/>
-            </joint>
-            <joint name="URDFLBRiiwa7Joint4">
-                <command_interface name="position">
-                    <param name="min">-1</param>
-                    <param name="max"> 1</param>
-                </command_interface>
-                <command_interface name="effort">
-                    <param name="min">-1</param>
-                    <param name="max"> 1</param>
-                </command_interface>
-                <state_interface name="position"/>
-                <state_interface name="effort"/>
-            </joint>
-            <joint name="URDFLBRiiwa7Joint5">
-                <command_interface name="position">
-                    <param name="min">-1</param>
-                    <param name="max"> 1</param>
-                </command_interface>
-                <command_interface name="effort">
-                    <param name="min">-1</param>
-                    <param name="max"> 1</param>
-                </command_interface>
-                <state_interface name="position"/>
-                <state_interface name="effort"/>
-            </joint>
-            <joint name="URDFLBRiiwa7Joint6">
-                <command_interface name="position">
-                    <param name="min">-1</param>
-                    <param name="max"> 1</param>
-                </command_interface>
-                <command_interface name="effort">
-                    <param name="min">-1</param>
-                    <param name="max"> 1</param>
-                </command_interface>
-                <state_interface name="position"/>
-                <state_interface name="effort"/>
-            </joint>
-            <joint name="URDFLBRiiwa7Joint7">
-                <command_interface name="position">
-                    <param name="min">-1</param>
-                    <param name="max"> 1</param>
-                </command_interface>
-                <command_interface name="effort">
-                    <param name="min">-1</param>
-                    <param name="max"> 1</param>
-                </command_interface>
-                <state_interface name="position"/>
-                <state_interface name="effort"/>
-            </joint>
-	 </ros2_control>
-    <gazebo>
-        <plugin name="gazebo_ros2_control" filename="libgazebo_ros2_control.so">
-            <robotNamespace>/urdflbriiwa7</robotNamespace>
-            <robotSimType>gazebo_ros2_control/DefaultRobotHWSim</robotSimType>
-            <parameters>$(find urdflbriiwa7)/config/urdflbriiwa7_control.yaml</parameters>
-        </plugin>
-    </gazebo>
-    <gazebo reference="URDFLBRiiwa7RobotBase">
-        <selfCollide>true</selfCollide>
-        <material>Gazebo/Orange</material>
-    </gazebo>
-    <gazebo reference="URDFLBRiiwa7Axis1">
-        <selfCollide>true</selfCollide>
-        <material>Gazebo/Orange</material>
-    </gazebo>
-    <gazebo reference="URDFLBRiiwa7Axis2">
-        <selfCollide>true</selfCollide>
-        <material>Gazebo/Orange</material>
-    </gazebo>
-    <gazebo reference="URDFLBRiiwaAxis3">
-        <selfCollide>true</selfCollide>
-        <material>Gazebo/Orange</material>
-    </gazebo>
-    <gazebo reference="URDFLBRiiwaAxis4">
-        <selfCollide>true</selfCollide>
-        <material>Gazebo/Orange</material>
-    </gazebo>
-    <gazebo reference="URDFLBRiiwaAxis5">
-        <selfCollide>true</selfCollide>
-        <material>Gazebo/Orange</material>
-    </gazebo>
-    <gazebo reference="URDFLBRiiwaAxis6">
-        <selfCollide>true</selfCollide>
-        <material>Gazebo/Orange</material>
-    </gazebo>
-    <gazebo reference="URDFLBRiiwaAxis7">
-        <selfCollide>true</selfCollide>
-        <material>Gazebo/Orange</material>
-    </gazebo>
-    <link name="world"/>
-    <link name="URDFLBRiiwa7RobotBase">
-        <visual>
-            <geometry>
-                <mesh filename="package://urdflbriiwa7/meshes/visual/iiwa_r820_link_0_hull_v0.1_iiwa_r820_link_0_hull.stl"/>
-            </geometry>
-            <origin rpy="-0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
-        </visual>
-        <collision>
-            <origin rpy="-0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
-            <geometry>
-                <mesh filename="package://urdflbriiwa7/meshes/collision/iiwa_r820_link_0_collision_v0.1_iiwa_r820_link_0_collision.stl"/>
-            </geometry>
-        </collision>
-        <inertial>
-            <mass value="3.2832"/>
-            <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
-            <inertia ixx="5.0E-4" ixy="0.0" ixz="0.0" iyy="5.0E-4" iyz="0.0" izz="5.0E-4"/>
-        </inertial>
-    </link>
-    <link name="URDFLBRiiwa7Axis1">
-        <visual>
-            <geometry>
-                <mesh filename="package://urdflbriiwa7/meshes/visual/iiwa_r820_link_1_hull_v0.1_iiwa_r820_link_1_hull.stl"/>
-            </geometry>
-            <origin rpy="-0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
-        </visual>
-        <collision>
-            <origin rpy="-0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
-            <geometry>
-            	<mesh filename="package://urdflbriiwa7/meshes/collision/iiwa_r820_link_1_collision_v0.1_iiwa_r820_link_1_collision.stl"/>
-            </geometry>
-        </collision>
-        <inertial>
-            <mass value="6.495"/>
-            <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
-            <inertia ixx="0.06907" ixy="0.0" ixz="0.0" iyy="0.0711" iyz="0.0" izz="0.02"/>
-        </inertial>
-    </link>
-    <link name="URDFLBRiiwa7Axis2">
-        <visual>
-            <geometry>
-                <mesh filename="package://urdflbriiwa7/meshes/visual/iiwa_r820_link_2_hull_v0.1_iiwa_r820_link_2_hull.stl"/>
-            </geometry>
-            <origin rpy="-0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
-        </visual>
-        <collision>
-            <origin rpy="-0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
-            <geometry>
-            	<mesh filename="package://urdflbriiwa7/meshes/collision/iiwa_r820_link_2_collision_v0.1_iiwa_r820_link_2_collision.stl"/>
-            </geometry>
-        </collision>
-        <inertial>
-            <mass value="8.365"/>
-            <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
-            <inertia ixx="0.08" ixy="0.0" ixz="0.0" iyy="0.08" iyz="0.0" izz="0.01"/>
-        </inertial>
-    </link>
-    <link name="URDFLBRiiwaAxis3">
-        <visual>
-            <geometry>
-                <mesh filename="package://urdflbriiwa7/meshes/visual/iiwa_r820_link_3_hull_v0.1_iiwa_r820_link_3_hull.stl"/>
-            </geometry>
-            <origin rpy="-0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
-        </visual>
-        <collision>
-            <origin rpy="-0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
-            <geometry>
-                <mesh filename="package://urdflbriiwa7/meshes/collision/iiwa_r820_link_3_collision_v0.1_iiwa_r820_link_3_collision.stl"/>
-            </geometry>
-        </collision>
-        <inertial>
-            <mass value="2.5697"/>
-            <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
-            <inertia ixx="0.02" ixy="0.0" ixz="0.0" iyy="0.02" iyz="0.0" izz="0.06"/>
-        </inertial>
-    </link>
-    <link name="URDFLBRiiwaAxis4">
-        <visual>
-            <geometry>
-                <mesh filename="package://urdflbriiwa7/meshes/visual/iiwa_r820_link_4_hull_v0.1_iiwa_r820_link_4_hull.stl"/>
-            </geometry>
-            <origin rpy="-0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
-        </visual>
-        <collision>
-            <origin rpy="-0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
-            <geometry>
-            	<mesh filename="package://urdflbriiwa7/meshes/collision/iiwa_r820_link_4_collision_v0.1_iiwa_r820_link_4_collision.stl"/>
-            </geometry>
-        </collision>
-        <inertial>
-            <mass value="5.41"/>
-            <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
-            <inertia ixx="0.04" ixy="0.0" ixz="0.0" iyy="0.03" iyz="0.0" izz="0.01"/>
-        </inertial>
-    </link>
-    <link name="URDFLBRiiwaAxis5">
-        <visual>
-            <geometry>
-                <mesh filename="package://urdflbriiwa7/meshes/visual/iiwa_r820_link_5_hull_v0.1_iiwa_r820_link_5_hull.stl"/>
-            </geometry>
-            <origin rpy="-0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
-        </visual>
-        <collision>
-            <origin rpy="-0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
-            <geometry>
-            	<mesh filename="package://urdflbriiwa7/meshes/collision/iiwa_r820_link_5_collision_v0.1_iiwa_r820_link_5_collision.stl"/>
-            </geometry>
-        </collision>
-        <inertial>
-            <mass value="1.867"/>
-            <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
-            <inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.01" iyz="0.0" izz="0.01"/>
-        </inertial>
-    </link>
-    <link name="URDFLBRiiwaAxis6">
-        <visual>
-            <geometry>
-                <mesh filename="package://urdflbriiwa7/meshes/visual/iiwa_r820_link_6_hull_v0.1_iiwa_r820_link_6_hull.stl"/>
-            </geometry>
-            <origin rpy="-0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
-        </visual>
-        <collision>
-            <origin rpy="-0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
-            <geometry>
-            	<mesh filename="package://urdflbriiwa7/meshes/collision/iiwa_r820_link_6_collision_v0.1_iiwa_r820_link_6_collision.stl"/>
-            </geometry>
-        </collision>
-        <inertial>
-            <mass value="2.458"/>
-            <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
-            <inertia ixx="0.007" ixy="0.0" ixz="0.0" iyy="0.006" iyz="0.0" izz="0.005"/>
-        </inertial>
-    </link>
-    <link name="URDFLBRiiwaAxis7">
-        <visual>
-            <geometry>
-                <mesh filename="package://urdflbriiwa7/meshes/visual/iiwa_r820_link_7_hull_v0.1_iiwa_r820_link_7_hull.stl"/>
-            </geometry>
-            <origin rpy="-0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
-        </visual>
-        <collision>
-            <origin rpy="-0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
-            <geometry>
-            	<mesh filename="package://urdflbriiwa7/meshes/collision/iiwa_r820_link_7_collision_v0.1_iiwa_r820_link_7_collision.stl"/>
-            </geometry>
-        </collision>
-        <inertial>
-            <mass value="0.627"/>
-            <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
-            <inertia ixx="3.0E-4" ixy="0.0" ixz="0.0" iyy="3.0E-4" iyz="0.0" izz="5.0E-4"/>
-        </inertial>
-    </link>
-    <link name="URDFLBRiiwaFlange"></link>
-
-    <joint name="URDFLBRiiwa7RobotBaseJoint" type="fixed">
-        <parent link="world"/>
-        <child link="URDFLBRiiwa7RobotBase"/>
+  <ros2_control name="iiwa_hardware" type="system">
+    <hardware>
+      <plugin>kuka_sunrise::RobotControlClient</plugin>
+    </hardware>
+    <!-- define joints and command/state interfaces for each joint -->
+    <joint name="URDFLBRiiwa7Joint1">
+      <command_interface name="position">
+        <param name="min">-1</param>
+        <param name="max"> 1</param>
+      </command_interface>
+      <command_interface name="effort">
+        <param name="min">-1</param>
+        <param name="max"> 1</param>
+      </command_interface>
+      <state_interface name="position"/>
+      <state_interface name="effort"/>
     </joint>
-    <joint name="URDFLBRiiwa7Joint1" type="revolute">
-        <parent link="URDFLBRiiwa7RobotBase"/>
-        <child link="URDFLBRiiwa7Axis1"/>
-        <origin rpy="-0.0 0.0 0.0" xyz="0.0 0.0 0.1375"/>
-        <axis xyz="0.0 0.0 1.0"/>
-        <limit effort="158.4" lower="-2.67035" upper="2.67035" velocity="6.283"/>
+    <joint name="URDFLBRiiwa7Joint2">
+      <command_interface name="position">
+        <param name="min">-1</param>
+        <param name="max"> 1</param>
+      </command_interface>
+      <command_interface name="effort">
+        <param name="min">-1</param>
+        <param name="max"> 1</param>
+      </command_interface>
+      <state_interface name="position"/>
+      <state_interface name="effort"/>
     </joint>
-    <joint name="URDFLBRiiwa7Joint2" type="revolute">
-        <parent link="URDFLBRiiwa7Axis1"/>
-        <child link="URDFLBRiiwa7Axis2"/>
-        <origin rpy="-0.0 0.0 0.0" xyz="0.0 0.0 0.2025"/>
-        <axis xyz="0.0 1.0 0.0"/>
-        <limit effort="158.4" lower="-1.8849" upper="1.8849" velocity="6.283"/>
+    <joint name="URDFLBRiiwa7Joint3">
+      <command_interface name="position">
+        <param name="min">-1</param>
+        <param name="max"> 1</param>
+      </command_interface>
+      <command_interface name="effort">
+        <param name="min">-1</param>
+        <param name="max"> 1</param>
+      </command_interface>
+      <state_interface name="position"/>
+      <state_interface name="effort"/>
     </joint>
-    <joint name="URDFLBRiiwaJoint3" type="revolute">
-        <parent link="URDFLBRiiwa7Axis2"/>
-        <child link="URDFLBRiiwaAxis3"/>
-        <origin rpy="-0.0 0.0 0.0" xyz="0.0 0.0 0.1845"/>
-        <axis xyz="0.0 0.0 1.0"/>
-        <limit effort="99" lower="-2.67035" upper="2.67035" velocity="6.283"/>
+    <joint name="URDFLBRiiwa7Joint4">
+      <command_interface name="position">
+        <param name="min">-1</param>
+        <param name="max"> 1</param>
+      </command_interface>
+      <command_interface name="effort">
+        <param name="min">-1</param>
+        <param name="max"> 1</param>
+      </command_interface>
+      <state_interface name="position"/>
+      <state_interface name="effort"/>
     </joint>
-    <joint name="URDFLBRiiwaJoint4" type="revolute">
-        <parent link="URDFLBRiiwaAxis3"/>
-        <child link="URDFLBRiiwaAxis4"/>
-        <origin rpy="-0.0 0.0 0.0" xyz="0.0 0.0 0.2155"/>
-        <axis xyz="0.0 -1.0 0.0"/>
-        <limit effort="99" lower="-1.8849" upper="1.8849" velocity="6.283"/>
+    <joint name="URDFLBRiiwa7Joint5">
+      <command_interface name="position">
+        <param name="min">-1</param>
+        <param name="max"> 1</param>
+      </command_interface>
+      <command_interface name="effort">
+        <param name="min">-1</param>
+        <param name="max"> 1</param>
+      </command_interface>
+      <state_interface name="position"/>
+      <state_interface name="effort"/>
     </joint>
-    <joint name="URDFLBRiiwaJoint5" type="revolute">
-        <parent link="URDFLBRiiwaAxis4"/>
-        <child link="URDFLBRiiwaAxis5"/>
-        <origin rpy="-0.0 0.0 0.0" xyz="0.0 0.0 0.1845"/>
-        <axis xyz="0.0 0.0 1.0"/>
-        <limit effort="99" lower="-2.67035" upper="2.67035" velocity="6.283"/>
+    <joint name="URDFLBRiiwa7Joint6">
+      <command_interface name="position">
+        <param name="min">-1</param>
+        <param name="max"> 1</param>
+      </command_interface>
+      <command_interface name="effort">
+        <param name="min">-1</param>
+        <param name="max"> 1</param>
+      </command_interface>
+      <state_interface name="position"/>
+      <state_interface name="effort"/>
     </joint>
-    <joint name="URDFLBRiiwaJoint6" type="revolute">
-        <parent link="URDFLBRiiwaAxis5"/>
-        <child link="URDFLBRiiwaAxis6"/>
-        <origin rpy="-0.0 0.0 0.0" xyz="0.0 0.0 0.2155"/>
-        <axis xyz="0.0 1.0 0.0"/>
-        <limit effort="36" lower="-1.8849" upper="1.8849" velocity="6.283"/>
+    <joint name="URDFLBRiiwa7Joint7">
+      <command_interface name="position">
+        <param name="min">-1</param>
+        <param name="max"> 1</param>
+      </command_interface>
+      <command_interface name="effort">
+        <param name="min">-1</param>
+        <param name="max"> 1</param>
+      </command_interface>
+      <state_interface name="position"/>
+      <state_interface name="effort"/>
     </joint>
-    <joint name="URDFLBRiiwaJoint7" type="revolute">
-        <parent link="URDFLBRiiwaAxis6"/>
-        <child link="URDFLBRiiwaAxis7"/>
-        <origin rpy="-0.0 0.0 0.0" xyz="0.0 0.0 0.081"/>
-        <axis xyz="0.0 0.0 1.0"/>
-        <limit effort="36" lower="-2.74889" upper="2.74889" velocity="6.283"/>
+  </ros2_control>
+  <gazebo>
+    <plugin name="gazebo_ros2_control" filename="libgazebo_ros2_control.so">
+      <robotNamespace>/urdflbriiwa7</robotNamespace>
+      <robotSimType>gazebo_ros2_control/DefaultRobotHWSim</robotSimType>
+      <parameters>$(find urdflbriiwa7)/config/urdflbriiwa7_control.yaml</parameters>
+    </plugin>
+  </gazebo>
+  <gazebo reference="URDFLBRiiwa7RobotBase">
+    <selfCollide>true</selfCollide>
+    <material>Gazebo/Orange</material>
+  </gazebo>
+  <gazebo reference="URDFLBRiiwa7Axis1">
+    <selfCollide>true</selfCollide>
+    <material>Gazebo/Orange</material>
+  </gazebo>
+  <gazebo reference="URDFLBRiiwa7Axis2">
+    <selfCollide>true</selfCollide>
+    <material>Gazebo/Orange</material>
+  </gazebo>
+  <gazebo reference="URDFLBRiiwaAxis3">
+    <selfCollide>true</selfCollide>
+    <material>Gazebo/Orange</material>
+  </gazebo>
+  <gazebo reference="URDFLBRiiwaAxis4">
+    <selfCollide>true</selfCollide>
+    <material>Gazebo/Orange</material>
+  </gazebo>
+  <gazebo reference="URDFLBRiiwaAxis5">
+    <selfCollide>true</selfCollide>
+    <material>Gazebo/Orange</material>
+  </gazebo>
+  <gazebo reference="URDFLBRiiwaAxis6">
+    <selfCollide>true</selfCollide>
+    <material>Gazebo/Orange</material>
+  </gazebo>
+  <gazebo reference="URDFLBRiiwaAxis7">
+    <selfCollide>true</selfCollide>
+    <material>Gazebo/Orange</material>
+  </gazebo>
+  <link name="world"/>
+  <link name="URDFLBRiiwa7RobotBase">
+    <visual>
+      <geometry>
+        <mesh filename="package://urdflbriiwa7/meshes/visual/iiwa_r820_link_0_hull_v0.1_iiwa_r820_link_0_hull.stl"/>
+      </geometry>
+      <origin rpy="-0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+    </visual>
+    <collision>
+      <origin rpy="-0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+      <geometry>
+        <mesh filename="package://urdflbriiwa7/meshes/collision/iiwa_r820_link_0_collision_v0.1_iiwa_r820_link_0_collision.stl"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="3.2832"/>
+      <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
+      <inertia ixx="5.0E-4" ixy="0.0" ixz="0.0" iyy="5.0E-4" iyz="0.0" izz="5.0E-4"/>
+    </inertial>
+  </link>
+  <link name="URDFLBRiiwa7Axis1">
+    <visual>
+      <geometry>
+        <mesh filename="package://urdflbriiwa7/meshes/visual/iiwa_r820_link_1_hull_v0.1_iiwa_r820_link_1_hull.stl"/>
+      </geometry>
+      <origin rpy="-0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+    </visual>
+    <collision>
+      <origin rpy="-0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+      <geometry>
+        <mesh filename="package://urdflbriiwa7/meshes/collision/iiwa_r820_link_1_collision_v0.1_iiwa_r820_link_1_collision.stl"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="6.495"/>
+      <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
+      <inertia ixx="0.06907" ixy="0.0" ixz="0.0" iyy="0.0711" iyz="0.0" izz="0.02"/>
+    </inertial>
+  </link>
+  <link name="URDFLBRiiwa7Axis2">
+    <visual>
+      <geometry>
+        <mesh filename="package://urdflbriiwa7/meshes/visual/iiwa_r820_link_2_hull_v0.1_iiwa_r820_link_2_hull.stl"/>
+      </geometry>
+      <origin rpy="-0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+    </visual>
+    <collision>
+      <origin rpy="-0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+      <geometry>
+        <mesh filename="package://urdflbriiwa7/meshes/collision/iiwa_r820_link_2_collision_v0.1_iiwa_r820_link_2_collision.stl"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="8.365"/>
+      <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
+      <inertia ixx="0.08" ixy="0.0" ixz="0.0" iyy="0.08" iyz="0.0" izz="0.01"/>
+    </inertial>
+  </link>
+  <link name="URDFLBRiiwaAxis3">
+    <visual>
+      <geometry>
+        <mesh filename="package://urdflbriiwa7/meshes/visual/iiwa_r820_link_3_hull_v0.1_iiwa_r820_link_3_hull.stl"/>
+      </geometry>
+      <origin rpy="-0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+    </visual>
+    <collision>
+      <origin rpy="-0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+      <geometry>
+        <mesh filename="package://urdflbriiwa7/meshes/collision/iiwa_r820_link_3_collision_v0.1_iiwa_r820_link_3_collision.stl"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="2.5697"/>
+      <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
+      <inertia ixx="0.02" ixy="0.0" ixz="0.0" iyy="0.02" iyz="0.0" izz="0.06"/>
+    </inertial>
+  </link>
+  <link name="URDFLBRiiwaAxis4">
+    <visual>
+      <geometry>
+        <mesh filename="package://urdflbriiwa7/meshes/visual/iiwa_r820_link_4_hull_v0.1_iiwa_r820_link_4_hull.stl"/>
+      </geometry>
+      <origin rpy="-0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+    </visual>
+    <collision>
+      <origin rpy="-0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+      <geometry>
+        <mesh filename="package://urdflbriiwa7/meshes/collision/iiwa_r820_link_4_collision_v0.1_iiwa_r820_link_4_collision.stl"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="5.41"/>
+      <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
+      <inertia ixx="0.04" ixy="0.0" ixz="0.0" iyy="0.03" iyz="0.0" izz="0.01"/>
+    </inertial>
+  </link>
+  <link name="URDFLBRiiwaAxis5">
+    <visual>
+      <geometry>
+        <mesh filename="package://urdflbriiwa7/meshes/visual/iiwa_r820_link_5_hull_v0.1_iiwa_r820_link_5_hull.stl"/>
+      </geometry>
+      <origin rpy="-0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+    </visual>
+    <collision>
+      <origin rpy="-0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+      <geometry>
+        <mesh filename="package://urdflbriiwa7/meshes/collision/iiwa_r820_link_5_collision_v0.1_iiwa_r820_link_5_collision.stl"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="1.867"/>
+      <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
+      <inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.01" iyz="0.0" izz="0.01"/>
+    </inertial>
+  </link>
+  <link name="URDFLBRiiwaAxis6">
+    <visual>
+      <geometry>
+        <mesh filename="package://urdflbriiwa7/meshes/visual/iiwa_r820_link_6_hull_v0.1_iiwa_r820_link_6_hull.stl"/>
+      </geometry>
+      <origin rpy="-0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+    </visual>
+    <collision>
+      <origin rpy="-0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+      <geometry>
+        <mesh filename="package://urdflbriiwa7/meshes/collision/iiwa_r820_link_6_collision_v0.1_iiwa_r820_link_6_collision.stl"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="2.458"/>
+      <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
+      <inertia ixx="0.007" ixy="0.0" ixz="0.0" iyy="0.006" iyz="0.0" izz="0.005"/>
+    </inertial>
+  </link>
+  <link name="URDFLBRiiwaAxis7">
+    <visual>
+      <geometry>
+        <mesh filename="package://urdflbriiwa7/meshes/visual/iiwa_r820_link_7_hull_v0.1_iiwa_r820_link_7_hull.stl"/>
+      </geometry>
+      <origin rpy="-0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+    </visual>
+    <collision>
+      <origin rpy="-0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+      <geometry>
+        <mesh filename="package://urdflbriiwa7/meshes/collision/iiwa_r820_link_7_collision_v0.1_iiwa_r820_link_7_collision.stl"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.627"/>
+      <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
+      <inertia ixx="3.0E-4" ixy="0.0" ixz="0.0" iyy="3.0E-4" iyz="0.0" izz="5.0E-4"/>
+    </inertial>
+  </link>
+  <link name="URDFLBRiiwaFlange"></link>
+  <joint name="URDFLBRiiwa7RobotBaseJoint" type="fixed">
+    <parent link="world"/>
+    <child link="URDFLBRiiwa7RobotBase"/>
+  </joint>
+  <joint name="URDFLBRiiwa7Joint1" type="revolute">
+    <parent link="URDFLBRiiwa7RobotBase"/>
+    <child link="URDFLBRiiwa7Axis1"/>
+    <origin rpy="-0.0 0.0 0.0" xyz="0.0 0.0 0.1375"/>
+    <axis xyz="0.0 0.0 1.0"/>
+    <limit effort="158.4" lower="-2.67035" upper="2.67035" velocity="6.283"/>
+  </joint>
+  <joint name="URDFLBRiiwa7Joint2" type="revolute">
+    <parent link="URDFLBRiiwa7Axis1"/>
+    <child link="URDFLBRiiwa7Axis2"/>
+    <origin rpy="-0.0 0.0 0.0" xyz="0.0 0.0 0.2025"/>
+    <axis xyz="0.0 1.0 0.0"/>
+    <limit effort="158.4" lower="-1.8849" upper="1.8849" velocity="6.283"/>
+  </joint>
+  <joint name="URDFLBRiiwaJoint3" type="revolute">
+    <parent link="URDFLBRiiwa7Axis2"/>
+    <child link="URDFLBRiiwaAxis3"/>
+    <origin rpy="-0.0 0.0 0.0" xyz="0.0 0.0 0.1845"/>
+    <axis xyz="0.0 0.0 1.0"/>
+    <limit effort="99" lower="-2.67035" upper="2.67035" velocity="6.283"/>
+  </joint>
+  <joint name="URDFLBRiiwaJoint4" type="revolute">
+    <parent link="URDFLBRiiwaAxis3"/>
+    <child link="URDFLBRiiwaAxis4"/>
+    <origin rpy="-0.0 0.0 0.0" xyz="0.0 0.0 0.2155"/>
+    <axis xyz="0.0 -1.0 0.0"/>
+    <limit effort="99" lower="-1.8849" upper="1.8849" velocity="6.283"/>
+  </joint>
+  <joint name="URDFLBRiiwaJoint5" type="revolute">
+    <parent link="URDFLBRiiwaAxis4"/>
+    <child link="URDFLBRiiwaAxis5"/>
+    <origin rpy="-0.0 0.0 0.0" xyz="0.0 0.0 0.1845"/>
+    <axis xyz="0.0 0.0 1.0"/>
+    <limit effort="99" lower="-2.67035" upper="2.67035" velocity="6.283"/>
+  </joint>
+  <joint name="URDFLBRiiwaJoint6" type="revolute">
+    <parent link="URDFLBRiiwaAxis5"/>
+    <child link="URDFLBRiiwaAxis6"/>
+    <origin rpy="-0.0 0.0 0.0" xyz="0.0 0.0 0.2155"/>
+    <axis xyz="0.0 1.0 0.0"/>
+    <limit effort="36" lower="-1.8849" upper="1.8849" velocity="6.283"/>
+  </joint>
+  <joint name="URDFLBRiiwaJoint7" type="revolute">
+    <parent link="URDFLBRiiwaAxis6"/>
+    <child link="URDFLBRiiwaAxis7"/>
+    <origin rpy="-0.0 0.0 0.0" xyz="0.0 0.0 0.081"/>
+    <axis xyz="0.0 0.0 1.0"/>
+    <limit effort="36" lower="-2.74889" upper="2.74889" velocity="6.283"/>
+  </joint>
+  <joint name="URDFLBRiiwaTCP" type="fixed">
+    <parent link="URDFLBRiiwaAxis7"/>
+    <child link="URDFLBRiiwaFlange"/>
+    <origin rpy="-0.0 0.0 0.0" xyz="0.0 0.0 0.071"/>
+    <axis xyz="0.0 0.0 1.0"/>
+  </joint>
+  <transmission name="Transmission_URDFLBRiiwa7Joint1">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="URDFLBRiiwa7Joint1">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     </joint>
-    <joint name="URDFLBRiiwaTCP" type="fixed">
-      <parent link="URDFLBRiiwaAxis7"/>
-      <child link="URDFLBRiiwaFlange"/>
-      <origin rpy="-0.0 0.0 0.0" xyz="0.0 0.0 0.071"/>
-      <axis xyz="0.0 0.0 1.0"/>
+    <actuator name="motor_URDFLBRiiwa7Joint1">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1.0</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <transmission name="Transmission_URDFLBRiiwa7Joint2">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="URDFLBRiiwa7Joint2">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     </joint>
-    <transmission name="Transmission_URDFLBRiiwa7Joint1">
-        <type>transmission_interface/SimpleTransmission</type>
-        <joint name="URDFLBRiiwa7Joint1">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-        </joint>
-        <actuator name="motor_URDFLBRiiwa7Joint1">
-            <hardwareInterface>EffortJointInterface</hardwareInterface>
-            <mechanicalReduction>1.0</mechanicalReduction>
-        </actuator>
-    </transmission>
-    <transmission name="Transmission_URDFLBRiiwa7Joint2">
-        <type>transmission_interface/SimpleTransmission</type>
-        <joint name="URDFLBRiiwa7Joint2">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-        </joint>
-        <actuator name="motor_URDFLBRiiwa7Joint2">
-            <hardwareInterface>EffortJointInterface</hardwareInterface>
-            <mechanicalReduction>1.0</mechanicalReduction>
-        </actuator>
-    </transmission>
-    <transmission name="Transmission_URDFLBRiiwaJoint3">
-        <type>transmission_interface/SimpleTransmission</type>
-        <joint name="URDFLBRiiwaJoint3">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-        </joint>
-        <actuator name="motor_URDFLBRiiwaJoint3">
-            <hardwareInterface>EffortJointInterface</hardwareInterface>
-            <mechanicalReduction>1.0</mechanicalReduction>
-        </actuator>
-    </transmission>
-    <transmission name="Transmission_URDFLBRiiwaJoint4">
-        <type>transmission_interface/SimpleTransmission</type>
-        <joint name="URDFLBRiiwaJoint4">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-        </joint>
-        <actuator name="motor_URDFLBRiiwaJoint4">
-            <hardwareInterface>EffortJointInterface</hardwareInterface>
-            <mechanicalReduction>1.0</mechanicalReduction>
-        </actuator>
-    </transmission>
-    <transmission name="Transmission_URDFLBRiiwaJoint5">
-        <type>transmission_interface/SimpleTransmission</type>
-        <joint name="URDFLBRiiwaJoint5">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-        </joint>
-        <actuator name="motor_URDFLBRiiwaJoint5">
-            <hardwareInterface>EffortJointInterface</hardwareInterface>
-            <mechanicalReduction>1.0</mechanicalReduction>
-        </actuator>
-    </transmission>
-    <transmission name="Transmission_URDFLBRiiwaJoint6">
-        <type>transmission_interface/SimpleTransmission</type>
-        <joint name="URDFLBRiiwaJoint6">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-        </joint>
-        <actuator name="motor_URDFLBRiiwaJoint6">
-            <hardwareInterface>EffortJointInterface</hardwareInterface>
-            <mechanicalReduction>1.0</mechanicalReduction>
-        </actuator>
-    </transmission>
-    <transmission name="Transmission_URDFLBRiiwaJoint7">
-        <type>transmission_interface/SimpleTransmission</type>
-        <joint name="URDFLBRiiwaJoint7">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-        </joint>
-        <actuator name="motor_URDFLBRiiwaJoint7">
-            <hardwareInterface>EffortJointInterface</hardwareInterface>
-            <mechanicalReduction>1.0</mechanicalReduction>
-        </actuator>
-    </transmission>
+    <actuator name="motor_URDFLBRiiwa7Joint2">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1.0</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <transmission name="Transmission_URDFLBRiiwaJoint3">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="URDFLBRiiwaJoint3">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor_URDFLBRiiwaJoint3">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1.0</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <transmission name="Transmission_URDFLBRiiwaJoint4">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="URDFLBRiiwaJoint4">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor_URDFLBRiiwaJoint4">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1.0</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <transmission name="Transmission_URDFLBRiiwaJoint5">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="URDFLBRiiwaJoint5">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor_URDFLBRiiwaJoint5">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1.0</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <transmission name="Transmission_URDFLBRiiwaJoint6">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="URDFLBRiiwaJoint6">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor_URDFLBRiiwaJoint6">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1.0</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <transmission name="Transmission_URDFLBRiiwaJoint7">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="URDFLBRiiwaJoint7">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor_URDFLBRiiwaJoint7">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1.0</mechanicalReduction>
+    </actuator>
+  </transmission>
 </robot>
