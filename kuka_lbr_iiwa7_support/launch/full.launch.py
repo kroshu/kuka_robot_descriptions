@@ -21,17 +21,17 @@ def load_file(absolute_file_path):
 def generate_launch_description():
     gui = LaunchConfiguration('gui', default='True')
 
-    robot_description_config = load_file(get_package_share_directory('urdflbriiwa7') + "/urdf/urdflbriiwa7.urdf")
+    robot_description_config = load_file(get_package_share_directory('kuka_lbr_iiwa7_support') + "/urdf/urdflbriiwa7.urdf")
     robot_description = {'robot_description' : robot_description_config}
 
     # RViz
-    rviz_config_file = get_package_share_directory('urdflbriiwa7') + "/launch/urdf.rviz"
-    """rviz_node = Node(package='rviz2',
+    rviz_config_file = get_package_share_directory('kuka_lbr_iiwa7_support') + "/launch/urdf.rviz"
+    rviz_node = Node(package='rviz2',
                      executable='rviz2',
                      name='rviz2',
                      output='log',
                      arguments=['-d', rviz_config_file],
-                     parameters=[robot_description])"""
+                     parameters=[robot_description])
 
     # Static TF
     static_tf = Node(package='tf2_ros',
@@ -69,7 +69,7 @@ def generate_launch_description():
         )
 
     spawn_entity = Node(package='gazebo_ros', executable='spawn_entity.py',
-                        arguments=['-entity', 'lbriiwa14', '-topic', '/robot_description'],
+                        arguments=['-entity', 'lbriiwa7', '-topic', '/robot_description'],
                         output='screen')
 
-    return LaunchDescription([ gazebo_launch, static_tf, robot_state_publisher, joint_state_publisher_gui, spawn_entity,])
+    return LaunchDescription([rviz_node, gazebo_launch, static_tf, robot_state_publisher, joint_state_publisher_gui, spawn_entity,])
