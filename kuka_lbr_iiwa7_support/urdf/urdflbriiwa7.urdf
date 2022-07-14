@@ -2,7 +2,7 @@
 <robot name="lbriiwa7">
   <ros2_control name="iiwa_hardware" type="system">
     <hardware>
-      <plugin>kuka_sunrise::RobotControlClient</plugin>
+      <plugin>kuka_sunrise::KUKAFRIHardwareInterface</plugin>
     </hardware>
     <!-- define joints and command/state interfaces for each joint -->
     <joint name="URDFLBRiiwa7Joint1">
@@ -16,6 +16,7 @@
       </command_interface>
       <state_interface name="position"/>
       <state_interface name="effort"/>
+      <state_interface name="external_torque"/>
     </joint>
     <joint name="URDFLBRiiwa7Joint2">
       <command_interface name="position">
@@ -28,6 +29,7 @@
       </command_interface>
       <state_interface name="position"/>
       <state_interface name="effort"/>
+      <state_interface name="external_torque"/>
     </joint>
     <joint name="URDFLBRiiwa7Joint3">
       <command_interface name="position">
@@ -40,6 +42,7 @@
       </command_interface>
       <state_interface name="position"/>
       <state_interface name="effort"/>
+      <state_interface name="external_torque"/>
     </joint>
     <joint name="URDFLBRiiwa7Joint4">
       <command_interface name="position">
@@ -52,6 +55,7 @@
       </command_interface>
       <state_interface name="position"/>
       <state_interface name="effort"/>
+      <state_interface name="external_torque"/>
     </joint>
     <joint name="URDFLBRiiwa7Joint5">
       <command_interface name="position">
@@ -64,6 +68,7 @@
       </command_interface>
       <state_interface name="position"/>
       <state_interface name="effort"/>
+      <state_interface name="external_torque"/>
     </joint>
     <joint name="URDFLBRiiwa7Joint6">
       <command_interface name="position">
@@ -76,6 +81,7 @@
       </command_interface>
       <state_interface name="position"/>
       <state_interface name="effort"/>
+      <state_interface name="external_torque"/>
     </joint>
     <joint name="URDFLBRiiwa7Joint7">
       <command_interface name="position">
@@ -88,6 +94,7 @@
       </command_interface>
       <state_interface name="position"/>
       <state_interface name="effort"/>
+      <state_interface name="external_torque"/>
     </joint>
   </ros2_control>
   <gazebo>
