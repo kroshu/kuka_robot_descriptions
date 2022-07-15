@@ -1,9 +1,9 @@
 import os
-import yaml
 from launch import LaunchDescription
 from launch_ros.actions import Node
 from ament_index_python.packages import get_package_share_directory
-from launch.actions import ExecuteProcess
+from launch_ros.descriptions import ParameterValue
+from launch.substitutions import Command
 from launch.actions import IncludeLaunchDescription
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch.substitutions import LaunchConfiguration
@@ -21,8 +21,11 @@ def load_file(absolute_file_path):
 def generate_launch_description():
     gui = LaunchConfiguration('gui', default='True')
 
-    robot_description_config = load_file(get_package_share_directory('kuka_lbr_iiwa7_support') + "/urdf/lbriiwa7.urdf")
-    robot_description = {'robot_description' : robot_description_config}
+    robot_description_path = (get_package_share_directory('kuka_lbr_iiwa7_support') +
+                              "/urdf/lbriiwa7.xacro")
+    robot_description = {'robot_description': ParameterValue(
+            Command(['xacro ', str(robot_description_path)]), value_type=str
+        )}
 
     # RViz
     rviz_config_file = get_package_share_directory('kuka_lbr_iiwa7_support') + "/launch/urdf.rviz"
@@ -72,4 +75,5 @@ def generate_launch_description():
                         arguments=['-entity', 'lbriiwa7', '-topic', '/robot_description'],
                         output='screen')
 
-    return LaunchDescription([rviz_node, gazebo_launch, static_tf, robot_state_publisher, joint_state_publisher_gui, spawn_entity,])
+    return LaunchDescription([static_tf, robot_state_publisher, joint_state_publisher_gui, gazebo_launch, spawn_entity, rviz_node])
+   
