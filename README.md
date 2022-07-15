@@ -2,6 +2,10 @@
 
 This package contains resources that helps offline experiment of KUKA robots.
 
+Github CI 
+------------
+[![Build Status](https://github.com/kroshu/ros2_kuka_sunrise/workflows/CI/badge.svg?branch=master)](https://github.com/kroshu/kuka_simulators/actions)
+
 ## What is included?
 
 - **kuka_resources** contains general, common files. It is copied from [kuka_experimental](https://github.com/ros-industrial/kuka_experimental) and is ported from ROS to ROS2. 
