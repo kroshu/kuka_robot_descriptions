@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
-<robot name="lbriiwa7">
+<robot xmlns:xacro="http://wiki.ros.org/xacro">
+  <xacro:macro name="kuka_lbr_iiwa7" params="io_access">
   <ros2_control name="iiwa_hardware" type="system">
     <hardware>
       <plugin>kuka_sunrise::KUKAFRIHardwareInterface</plugin>
@@ -97,55 +98,19 @@
       <state_interface name="external_torque"/>
     </joint>
     <!-- TODO(Svastits): update GPIO list from config file-->
-    <gpio name="gpio">
-      <command_interface name="Input1" data_type="boolean">
-         <param name="initial_value">0</param>
-      </command_interface>
-      <command_interface name="Input2" data_type="boolean">
-         <param name="initial_value">0</param>
-      </command_interface>
-      <command_interface name="Input3" data_type="boolean">
-         <param name="initial_value">0</param>
-      </command_interface>
-      <command_interface name="Input4" data_type="boolean">
-         <param name="initial_value">0</param>
-      </command_interface>
-      <command_interface name="Input5" data_type="boolean">
-         <param name="initial_value">0</param>
-      </command_interface>
-      <command_interface name="Input6" data_type="boolean">
-         <param name="initial_value">0</param>
-      </command_interface>
-      <command_interface name="Input7" data_type="boolean">
-         <param name="initial_value">0</param>
-      </command_interface>
-      <command_interface name="Input8" data_type="boolean">
-         <param name="initial_value">0</param>
-      </command_interface>
-      <command_interface name="Input9" data_type="boolean">
-         <param name="initial_value">0</param>
-      </command_interface>
-      <command_interface name="Input10" data_type="boolean">
-         <param name="initial_value">0</param>
-      </command_interface>
-
-      <state_interface name="Output1" data_type="boolean"/>
-      <state_interface name="Output2" data_type="boolean"/>
-      <state_interface name="Output3" data_type="boolean"/>
-      <state_interface name="Output4" data_type="boolean"/>  
-      <state_interface name="Output5" data_type="boolean"/>
-      <state_interface name="Output6" data_type="boolean"/>
-      <state_interface name="Output7" data_type="boolean"/>  
-      <state_interface name="Output8" data_type="boolean"/>
-      <state_interface name="Output9" data_type="boolean"/>
-      <state_interface name="Output10" data_type="boolean"/>          
-    </gpio>
+    <xacro:if value="${io_access}">
+      <xacro:include filename="$(find kuka_sunrise)/config/gpio_config.xacro" />
+      <xacro:fri_gpio_config/>
+    </xacro:if>
+    <xacro:unless value="${io_access}">
+      <gpio name="gpio"/>
+    </xacro:unless>
   </ros2_control>
   <gazebo>
     <plugin name="gazebo_ros2_control" filename="libgazebo_ros2_control.so">
       <robotNamespace>/lbriiwa7</robotNamespace>
       <robotSimType>gazebo_ros2_control/DefaultRobotHWSim</robotSimType>
-      <parameters>$(find lbriiwa7)/config/lbriiwa7_control.yaml</parameters>
+      <parameters>$(find kuka_lbr_iiwa7_support)/config/lbriiwa7_control.yaml</parameters>
     </plugin>
   </gazebo>
   <gazebo reference="LBRiiwa7RobotBase">
@@ -463,4 +428,5 @@
       <mechanicalReduction>1.0</mechanicalReduction>
     </actuator>
   </transmission>
+  </xacro:macro>
 </robot>
