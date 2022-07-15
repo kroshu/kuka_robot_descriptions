@@ -70,9 +70,9 @@ class RSISimulator(Node):
         super().__init__(node_name)
         self.node_name_ = node_name
         self.timer = self.create_timer(self.cycle_time, self.timer_callback)
-        self.declare_parameter('rsi_ip_address_', '127.0.0.1')
-        self.declare_parameter('rsi_port_', 59152)
-        self.declare_parameter('rsi_send_name_', "IamFree")
+        self.declare_parameter('rsi_ip_address', '127.0.0.1')
+        self.declare_parameter('rsi_port', 59152)
+        self.declare_parameter('rsi_send_name', "IamFree")
         self.rsi_ip_address_ = (self.get_parameter('rsi_ip_address').get_parameter_value()
                                 .string_value)
         self.rsi_port_address_ = self.get_parameter('rsi_port').get_parameter_value().integer_value
@@ -80,8 +80,8 @@ class RSISimulator(Node):
                                .string_value)
         self.rsi_act_pub_ = self.create_publisher(String, self.node_name_ + '/rsi/state', 1)
         self.rsi_cmd_pub_ = self.create_publisher(String, self.node_name_ + '/rsi/command', 1)
-        self.get_logger().info('rsi_ip_address_: {}'.format(self.rsi_ip_address_))
-        self.get_logger().info('rsi_port_: {}'.format(self.rsi_port_address_))
+        self.get_logger().info('rsi_ip_address: {}'.format(self.rsi_ip_address_))
+        self.get_logger().info('rsi_port: {}'.format(self.rsi_port_address_))
 
         try:
             self.socket_ = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
