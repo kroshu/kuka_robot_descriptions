@@ -62,47 +62,47 @@ Visualization Manager:
         Expand Link Details: false
         Expand Tree: false
         Link Tree Style: Links in Alphabetic Order
-        URDFLBRiiwa7Axis1:
+        LBRiiwa7Axis1:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        URDFLBRiiwa7Axis2:
+        LBRiiwa7Axis2:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        URDFLBRiiwa7RobotBase:
+        LBRiiwa7RobotBase:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        URDFLBRiiwaAxis3:
+        LBRiiwaAxis3:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        URDFLBRiiwaAxis4:
+        LBRiiwaAxis4:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        URDFLBRiiwaAxis5:
+        LBRiiwaAxis5:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        URDFLBRiiwaAxis6:
+        LBRiiwaAxis6:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        URDFLBRiiwaAxis7:
+        LBRiiwaAxis7:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        URDFLBRiiwaFlange:
+        LBRiiwaFlange:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -121,23 +121,23 @@ Visualization Manager:
       Frame Timeout: 15
       Frames:
         All Enabled: true
-        URDFLBRiiwa7Axis1:
+        LBRiiwa7Axis1:
           Value: true
-        URDFLBRiiwa7Axis2:
+        LBRiiwa7Axis2:
           Value: true
-        URDFLBRiiwa7RobotBase:
+        LBRiiwa7RobotBase:
           Value: true
-        URDFLBRiiwaAxis3:
+        LBRiiwaAxis3:
           Value: true
-        URDFLBRiiwaAxis4:
+        LBRiiwaAxis4:
           Value: true
-        URDFLBRiiwaAxis5:
+        LBRiiwaAxis5:
           Value: true
-        URDFLBRiiwaAxis6:
+        LBRiiwaAxis6:
           Value: true
-        URDFLBRiiwaAxis7:
+        LBRiiwaAxis7:
           Value: true
-        URDFLBRiiwaFlange:
+        LBRiiwaFlange:
           Value: true
         world:
           Value: true
@@ -148,15 +148,15 @@ Visualization Manager:
       Show Names: true
       Tree:
         world:
-          URDFLBRiiwa7RobotBase:
-            URDFLBRiiwa7Axis1:
-              URDFLBRiiwa7Axis2:
-                URDFLBRiiwaAxis3:
-                  URDFLBRiiwaAxis4:
-                    URDFLBRiiwaAxis5:
-                      URDFLBRiiwaAxis6:
-                        URDFLBRiiwaAxis7:
-                          URDFLBRiiwaFlange:
+          LBRiiwa7RobotBase:
+            LBRiiwa7Axis1:
+              LBRiiwa7Axis2:
+                LBRiiwaAxis3:
+                  LBRiiwaAxis4:
+                    LBRiiwaAxis5:
+                      LBRiiwaAxis6:
+                        LBRiiwaAxis7:
+                          LBRiiwaFlange:
                           {}
       Update Interval: 0
       Value: true

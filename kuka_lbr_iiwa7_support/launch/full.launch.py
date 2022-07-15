@@ -38,7 +38,7 @@ def generate_launch_description():
                      executable='static_transform_publisher',
                      name='static_transform_publisher',
                      output='log',
-                     arguments=['0.0', '0.0', '0.0', '0.0', '0.0', '0.0', 'world', 'URDFLBRiiwa7RobotBase'])
+                     arguments=['0.0', '0.0', '0.0', '0.0', '0.0', '0.0', 'world', 'LBRiiwa7RobotBase'])
 
     # Publish TF
     robot_state_publisher = Node(package='robot_state_publisher',

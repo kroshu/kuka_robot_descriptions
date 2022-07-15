@@ -5,62 +5,62 @@ urdflbriiwa7:
     publish_rate: 50 
 
   # Position Controllers --------------------------------------- 
-  URDFLBRiiwa7Joint1_position_controller: 
+  LBRiiwa7Joint1_position_controller: 
     type: effort_controllers/JointPositionController 
-    joint: URDFLBRiiwa7Joint1 
+    joint: LBRiiwa7Joint1 
     pid: {p: 100, i: 0.01, d: 10} 
-  URDFLBRiiwa7Joint2_position_controller: 
+  LBRiiwa7Joint2_position_controller: 
     type: effort_controllers/JointPositionController 
-    joint: URDFLBRiiwa7Joint2 
+    joint: LBRiiwa7Joint2 
     pid: {p: 100, i: 0.01, d: 10} 
-  URDFLBRiiwaJoint3_position_controller: 
+  LBRiiwaJoint3_position_controller: 
     type: effort_controllers/JointPositionController 
-    joint: URDFLBRiiwaJoint3 
+    joint: LBRiiwaJoint3 
     pid: {p: 100, i: 0.01, d: 10} 
-  URDFLBRiiwaJoint4_position_controller: 
+  LBRiiwaJoint4_position_controller: 
     type: effort_controllers/JointPositionController 
-    joint: URDFLBRiiwaJoint4 
+    joint: LBRiiwaJoint4 
     pid: {p: 100, i: 0.01, d: 10} 
-  URDFLBRiiwaJoint5_position_controller: 
+  LBRiiwaJoint5_position_controller: 
     type: effort_controllers/JointPositionController 
-    joint: URDFLBRiiwaJoint5 
+    joint: LBRiiwaJoint5 
     pid: {p: 100, i: 0.01, d: 10} 
-  URDFLBRiiwaJoint6_position_controller: 
+  LBRiiwaJoint6_position_controller: 
     type: effort_controllers/JointPositionController 
-    joint: URDFLBRiiwaJoint6 
+    joint: LBRiiwaJoint6 
     pid: {p: 100, i: 0.01, d: 10} 
-  URDFLBRiiwaJoint7_position_controller: 
+  LBRiiwaJoint7_position_controller: 
     type: effort_controllers/JointPositionController 
-    joint: URDFLBRiiwaJoint7 
+    joint: LBRiiwaJoint7 
     pid: {p: 100, i: 0.01, d: 10} 
 
   # Effort Controllers --------------------------------------- 
-  URDFLBRiiwa7Joint1_torque_controller: 
+  LBRiiwa7Joint1_torque_controller: 
     type: effort_controllers/JointEffortController 
-    joint: URDFLBRiiwa7Joint1 
+    joint: LBRiiwa7Joint1 
     pid: {p: 100, i: 0.01, d: 10} 
-  URDFLBRiiwa7Joint2_torque_controller: 
+  LBRiiwa7Joint2_torque_controller: 
     type: effort_controllers/JointEffortController 
-    joint: URDFLBRiiwa7Joint2 
+    joint: LBRiiwa7Joint2 
     pid: {p: 100, i: 0.01, d: 10} 
-  URDFLBRiiwaJoint3_torque_controller: 
+  LBRiiwaJoint3_torque_controller: 
     type: effort_controllers/JointEffortController 
-    joint: URDFLBRiiwaJoint3 
+    joint: LBRiiwaJoint3 
     pid: {p: 100, i: 0.01, d: 10} 
-  URDFLBRiiwaJoint4_torque_controller: 
+  LBRiiwaJoint4_torque_controller: 
     type: effort_controllers/JointEffortController 
-    joint: URDFLBRiiwaJoint4 
+    joint: LBRiiwaJoint4 
     pid: {p: 100, i: 0.01, d: 10} 
-  URDFLBRiiwaJoint5_torque_controller: 
+  LBRiiwaJoint5_torque_controller: 
     type: effort_controllers/JointEffortController 
-    joint: URDFLBRiiwaJoint5 
+    joint: LBRiiwaJoint5 
     pid: {p: 100, i: 0.01, d: 10} 
-  URDFLBRiiwaJoint6_torque_controller: 
+  LBRiiwaJoint6_torque_controller: 
     type: effort_controllers/JointEffortController 
-    joint: URDFLBRiiwaJoint6 
+    joint: LBRiiwaJoint6 
     pid: {p: 100, i: 0.01, d: 10} 
-  URDFLBRiiwaJoint7_torque_controller: 
+  LBRiiwaJoint7_torque_controller: 
     type: effort_controllers/JointEffortController 
-    joint: URDFLBRiiwaJoint7 
+    joint: LBRiiwaJoint7 
     pid: {p: 100, i: 0.01, d: 10} 
 
