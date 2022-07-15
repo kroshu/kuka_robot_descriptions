@@ -6,5 +6,5 @@ find_package(urdf REQUIRED)
 
 install(DIRECTORY urdf
   DESTINATION share/${PROJECT_NAME})
-  
+
 ament_package()
