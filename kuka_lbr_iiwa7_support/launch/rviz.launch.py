@@ -26,12 +26,12 @@ def load_yaml(package_name, file_path):
 
 
 def generate_launch_description():
-    yaml_file_name = get_package_share_directory('kuka_lbr_iiwa7_support') + "/config/urdflbriiwa7_control.yaml"
+    yaml_file_name = get_package_share_directory('kuka_lbr_iiwa7_support') + "/config/lbriiwa7_control.yaml"
 
-    robot_description_config = load_file(get_package_share_directory('kuka_lbr_iiwa7_support') + "/urdf/urdflbriiwa7.urdf")
+    robot_description_config = load_file(get_package_share_directory('kuka_lbr_iiwa7_support') + "/urdf/lbriiwa7.urdf")
     robot_description = {'robot_description' : robot_description_config}
 
-    robot_description_semantic_config = load_file(get_package_share_directory('kuka_lbr_iiwa7_support') + '/urdf/urdflbriiwa7.srdf')
+    robot_description_semantic_config = load_file(get_package_share_directory('kuka_lbr_iiwa7_support') + '/urdf/lbriiwa7.srdf')
     robot_description_semantic = {'robot_description_semantic': robot_description_semantic_config}
 
 
@@ -64,7 +64,7 @@ def generate_launch_description():
                                  executable='joint_state_publisher',
                                  name='joint_state_publisher',
                                  arguments=[get_package_share_directory(
-                                     'kuka_lbr_iiwa7_support') + '/urdf/urdflbriiwa7.urdf'],
+                                     'kuka_lbr_iiwa7_support') + '/urdf/lbriiwa7.urdf'],
                                  output='log',
                                  parameters=[{'source_list': ['/reference_joint_state']}])
                                  

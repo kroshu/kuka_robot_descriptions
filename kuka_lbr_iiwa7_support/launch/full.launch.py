@@ -21,7 +21,7 @@ def load_file(absolute_file_path):
 def generate_launch_description():
     gui = LaunchConfiguration('gui', default='True')
 
-    robot_description_config = load_file(get_package_share_directory('kuka_lbr_iiwa7_support') + "/urdf/urdflbriiwa7.urdf")
+    robot_description_config = load_file(get_package_share_directory('kuka_lbr_iiwa7_support') + "/urdf/lbriiwa7.urdf")
     robot_description = {'robot_description' : robot_description_config}
 
     # RViz
@@ -46,7 +46,7 @@ def generate_launch_description():
                                  name='robot_state_publisher',
                                  output='both',
                                  remappings=[
-                                     ("joint_states", "urdflbriiwa7/joint_states")
+                                     ("joint_states", "lbriiwa7/joint_states")
                                  ],
                                  parameters=[robot_description])
                                  
@@ -55,7 +55,7 @@ def generate_launch_description():
                                  name='joint_state_publisher_gui',
                                  output='both',
                                  remappings=[
-                                     ("joint_states", "urdflbriiwa7/joint_states")
+                                     ("joint_states", "lbriiwa7/joint_states")
                                  ],
                                  parameters=[robot_description])
 

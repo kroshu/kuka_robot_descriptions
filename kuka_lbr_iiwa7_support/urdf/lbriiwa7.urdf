@@ -143,9 +143,9 @@
   </ros2_control>
   <gazebo>
     <plugin name="gazebo_ros2_control" filename="libgazebo_ros2_control.so">
-      <robotNamespace>/urdflbriiwa7</robotNamespace>
+      <robotNamespace>/lbriiwa7</robotNamespace>
       <robotSimType>gazebo_ros2_control/DefaultRobotHWSim</robotSimType>
-      <parameters>$(find urdflbriiwa7)/config/urdflbriiwa7_control.yaml</parameters>
+      <parameters>$(find lbriiwa7)/config/lbriiwa7_control.yaml</parameters>
     </plugin>
   </gazebo>
   <gazebo reference="LBRiiwa7RobotBase">
