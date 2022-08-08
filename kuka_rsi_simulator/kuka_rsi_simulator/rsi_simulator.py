@@ -86,7 +86,7 @@ class RSISimulator(Node):
         try:
             self.socket_ = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
             self.get_logger().info('{}, Successfully created socket'.format(self.node_name_))
-            self.socket_.settimeout(0.004)
+            self.socket_.settimeout(self.cycle_time)
         except self.socket_.error:
             self.get_logger().fatal('{} Could not create socket'.format(self.node_name_))
             sys.exit()
