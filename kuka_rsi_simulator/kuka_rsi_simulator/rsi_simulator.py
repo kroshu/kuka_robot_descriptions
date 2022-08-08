@@ -86,7 +86,7 @@ class RSISimulator(Node):
         try:
             self.socket_ = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
             self.get_logger().info('{}, Successfully created socket'.format(self.node_name_))
-            self.socket_.settimeout(1)
+            self.socket_.settimeout(0.004)
         except self.socket_.error:
             self.get_logger().fatal('{} Could not create socket'.format(self.node_name_))
             sys.exit()
@@ -102,10 +102,12 @@ class RSISimulator(Node):
             des_joint_correction_absolute, ipoc_recv = parse_rsi_xml_sen(recv_msg)
             self.act_joint_pos = self.initial_joint_pos + des_joint_correction_absolute
             self.ipoc += 1
-            time.sleep(self.cycle_time / 2)
         except OSError:
             self.get_logger().warn('{}: Socket timed out'.format(self.node_name_))
             self.timeout_count += 1
+            if self.timeout_count == 100:
+                self.get_logger().fatal('{} Timeout count of 100 exceeded'.format(self.node_name_))
+                sys.exit()
         except self.socket_.error as e:
             if e.errno != errno.EINTR:
                 raise
