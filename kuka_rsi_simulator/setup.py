@@ -25,7 +25,6 @@ setup(
     maintainer_email='antal.marci@gmail.com',
     description='Simple package for simulating the KUKA RSI interface.',
     license='BSD',
-    tests_require=['pytest'],
     entry_points={
         'console_scripts': [
             'rsi_simulator = kuka_rsi_simulator.rsi_simulator:main'
