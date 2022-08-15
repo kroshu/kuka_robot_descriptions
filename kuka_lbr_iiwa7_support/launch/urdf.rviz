@@ -77,27 +77,27 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
-        LBRiiwaAxis3:
+        LBRiiwa7Axis3:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        LBRiiwaAxis4:
+        LBRiiwa7Axis4:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        LBRiiwaAxis5:
+        LBRiiwa7Axis5:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        LBRiiwaAxis6:
+        LBRiiwa7Axis6:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        LBRiiwaAxis7:
+        LBRiiwa7Axis7:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -127,15 +127,15 @@ Visualization Manager:
           Value: true
         LBRiiwa7RobotBase:
           Value: true
-        LBRiiwaAxis3:
+        LBRiiwa7Axis3:
           Value: true
-        LBRiiwaAxis4:
+        LBRiiwa7Axis4:
           Value: true
-        LBRiiwaAxis5:
+        LBRiiwa7Axis5:
           Value: true
-        LBRiiwaAxis6:
+        LBRiiwa7Axis6:
           Value: true
-        LBRiiwaAxis7:
+        LBRiiwa7Axis7:
           Value: true
         LBRiiwaFlange:
           Value: true
@@ -151,11 +151,11 @@ Visualization Manager:
           LBRiiwa7RobotBase:
             LBRiiwa7Axis1:
               LBRiiwa7Axis2:
-                LBRiiwaAxis3:
-                  LBRiiwaAxis4:
-                    LBRiiwaAxis5:
-                      LBRiiwaAxis6:
-                        LBRiiwaAxis7:
+                LBRiiwa7Axis3:
+                  LBRiiwa7Axis4:
+                    LBRiiwa7Axis5:
+                      LBRiiwa7Axis6:
+                        LBRiiwa7Axis7:
                           LBRiiwaFlange:
                           {}
       Update Interval: 0

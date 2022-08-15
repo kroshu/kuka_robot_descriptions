@@ -125,23 +125,23 @@
     <selfCollide>true</selfCollide>
     <material>Gazebo/Orange</material>
   </gazebo>
-  <gazebo reference="LBRiiwaAxis3">
+  <gazebo reference="LBRiiwa7Axis3">
     <selfCollide>true</selfCollide>
     <material>Gazebo/Orange</material>
   </gazebo>
-  <gazebo reference="LBRiiwaAxis4">
+  <gazebo reference="LBRiiwa7Axis4">
     <selfCollide>true</selfCollide>
     <material>Gazebo/Orange</material>
   </gazebo>
-  <gazebo reference="LBRiiwaAxis5">
+  <gazebo reference="LBRiiwa7Axis5">
     <selfCollide>true</selfCollide>
     <material>Gazebo/Orange</material>
   </gazebo>
-  <gazebo reference="LBRiiwaAxis6">
+  <gazebo reference="LBRiiwa7Axis6">
     <selfCollide>true</selfCollide>
     <material>Gazebo/Orange</material>
   </gazebo>
-  <gazebo reference="LBRiiwaAxis7">
+  <gazebo reference="LBRiiwa7Axis7">
     <selfCollide>true</selfCollide>
     <material>Gazebo/Orange</material>
   </gazebo>
@@ -203,7 +203,7 @@
       <inertia ixx="0.08" ixy="0.0" ixz="0.0" iyy="0.08" iyz="0.0" izz="0.01"/>
     </inertial>
   </link>
-  <link name="LBRiiwaAxis3">
+  <link name="LBRiiwa7Axis3">
     <visual>
       <geometry>
         <mesh filename="package://kuka_lbr_iiwa7_support/meshes/visual/iiwa_r820_link_3_hull_v0.1_iiwa_r820_link_3_hull.stl"/>
@@ -222,7 +222,7 @@
       <inertia ixx="0.02" ixy="0.0" ixz="0.0" iyy="0.02" iyz="0.0" izz="0.06"/>
     </inertial>
   </link>
-  <link name="LBRiiwaAxis4">
+  <link name="LBRiiwa7Axis4">
     <visual>
       <geometry>
         <mesh filename="package://kuka_lbr_iiwa7_support/meshes/visual/iiwa_r820_link_4_hull_v0.1_iiwa_r820_link_4_hull.stl"/>
@@ -241,7 +241,7 @@
       <inertia ixx="0.04" ixy="0.0" ixz="0.0" iyy="0.03" iyz="0.0" izz="0.01"/>
     </inertial>
   </link>
-  <link name="LBRiiwaAxis5">
+  <link name="LBRiiwa7Axis5">
     <visual>
       <geometry>
         <mesh filename="package://kuka_lbr_iiwa7_support/meshes/visual/iiwa_r820_link_5_hull_v0.1_iiwa_r820_link_5_hull.stl"/>
@@ -260,7 +260,7 @@
       <inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.01" iyz="0.0" izz="0.01"/>
     </inertial>
   </link>
-  <link name="LBRiiwaAxis6">
+  <link name="LBRiiwa7Axis6">
     <visual>
       <geometry>
         <mesh filename="package://kuka_lbr_iiwa7_support/meshes/visual/iiwa_r820_link_6_hull_v0.1_iiwa_r820_link_6_hull.stl"/>
@@ -279,7 +279,7 @@
       <inertia ixx="0.007" ixy="0.0" ixz="0.0" iyy="0.006" iyz="0.0" izz="0.005"/>
     </inertial>
   </link>
-  <link name="LBRiiwaAxis7">
+  <link name="LBRiiwa7Axis7">
     <visual>
       <geometry>
         <mesh filename="package://kuka_lbr_iiwa7_support/meshes/visual/iiwa_r820_link_7_hull_v0.1_iiwa_r820_link_7_hull.stl"/>
@@ -317,43 +317,43 @@
     <axis xyz="0.0 1.0 0.0"/>
     <limit effort="158.4" lower="-1.8849" upper="1.8849" velocity="6.283"/>
   </joint>
-  <joint name="LBRiiwaJoint3" type="revolute">
+  <joint name="LBRiiwa7Joint3" type="revolute">
     <parent link="LBRiiwa7Axis2"/>
-    <child link="LBRiiwaAxis3"/>
+    <child link="LBRiiwa7Axis3"/>
     <origin rpy="-0.0 0.0 0.0" xyz="0.0 0.0 0.1845"/>
     <axis xyz="0.0 0.0 1.0"/>
     <limit effort="99" lower="-2.67035" upper="2.67035" velocity="6.283"/>
   </joint>
-  <joint name="LBRiiwaJoint4" type="revolute">
-    <parent link="LBRiiwaAxis3"/>
-    <child link="LBRiiwaAxis4"/>
+  <joint name="LBRiiwa7Joint4" type="revolute">
+    <parent link="LBRiiwa7Axis3"/>
+    <child link="LBRiiwa7Axis4"/>
     <origin rpy="-0.0 0.0 0.0" xyz="0.0 0.0 0.2155"/>
     <axis xyz="0.0 -1.0 0.0"/>
     <limit effort="99" lower="-1.8849" upper="1.8849" velocity="6.283"/>
   </joint>
-  <joint name="LBRiiwaJoint5" type="revolute">
-    <parent link="LBRiiwaAxis4"/>
-    <child link="LBRiiwaAxis5"/>
+  <joint name="LBRiiwa7Joint5" type="revolute">
+    <parent link="LBRiiwa7Axis4"/>
+    <child link="LBRiiwa7Axis5"/>
     <origin rpy="-0.0 0.0 0.0" xyz="0.0 0.0 0.1845"/>
     <axis xyz="0.0 0.0 1.0"/>
     <limit effort="99" lower="-2.67035" upper="2.67035" velocity="6.283"/>
   </joint>
-  <joint name="LBRiiwaJoint6" type="revolute">
-    <parent link="LBRiiwaAxis5"/>
-    <child link="LBRiiwaAxis6"/>
+  <joint name="LBRiiwa7Joint6" type="revolute">
+    <parent link="LBRiiwa7Axis5"/>
+    <child link="LBRiiwa7Axis6"/>
     <origin rpy="-0.0 0.0 0.0" xyz="0.0 0.0 0.2155"/>
     <axis xyz="0.0 1.0 0.0"/>
     <limit effort="36" lower="-1.8849" upper="1.8849" velocity="6.283"/>
   </joint>
-  <joint name="LBRiiwaJoint7" type="revolute">
-    <parent link="LBRiiwaAxis6"/>
-    <child link="LBRiiwaAxis7"/>
+  <joint name="LBRiiwa7Joint7" type="revolute">
+    <parent link="LBRiiwa7Axis6"/>
+    <child link="LBRiiwa7Axis7"/>
     <origin rpy="-0.0 0.0 0.0" xyz="0.0 0.0 0.081"/>
     <axis xyz="0.0 0.0 1.0"/>
     <limit effort="36" lower="-2.74889" upper="2.74889" velocity="6.283"/>
   </joint>
   <joint name="LBRiiwaTCP" type="fixed">
-    <parent link="LBRiiwaAxis7"/>
+    <parent link="LBRiiwa7Axis7"/>
     <child link="LBRiiwaFlange"/>
     <origin rpy="-0.0 0.0 0.0" xyz="0.0 0.0 0.071"/>
     <axis xyz="0.0 0.0 1.0"/>
@@ -378,52 +378,52 @@
       <mechanicalReduction>1.0</mechanicalReduction>
     </actuator>
   </transmission>
-  <transmission name="Transmission_LBRiiwaJoint3">
+  <transmission name="Transmission_LBRiiwa7Joint3">
     <type>transmission_interface/SimpleTransmission</type>
-    <joint name="LBRiiwaJoint3">
+    <joint name="LBRiiwa7Joint3">
       <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     </joint>
-    <actuator name="motor_LBRiiwaJoint3">
+    <actuator name="motor_LBRiiwa7Joint3">
       <hardwareInterface>EffortJointInterface</hardwareInterface>
       <mechanicalReduction>1.0</mechanicalReduction>
     </actuator>
   </transmission>
-  <transmission name="Transmission_LBRiiwaJoint4">
+  <transmission name="Transmission_LBRiiwa7Joint4">
     <type>transmission_interface/SimpleTransmission</type>
-    <joint name="LBRiiwaJoint4">
+    <joint name="LBRiiwa7Joint4">
       <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     </joint>
-    <actuator name="motor_LBRiiwaJoint4">
+    <actuator name="motor_LBRiiwa7Joint4">
       <hardwareInterface>EffortJointInterface</hardwareInterface>
       <mechanicalReduction>1.0</mechanicalReduction>
     </actuator>
   </transmission>
-  <transmission name="Transmission_LBRiiwaJoint5">
+  <transmission name="Transmission_LBRiiwa7Joint5">
     <type>transmission_interface/SimpleTransmission</type>
-    <joint name="LBRiiwaJoint5">
+    <joint name="LBRiiwa7Joint5">
       <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     </joint>
-    <actuator name="motor_LBRiiwaJoint5">
+    <actuator name="motor_LBRiiwa7Joint5">
       <hardwareInterface>EffortJointInterface</hardwareInterface>
       <mechanicalReduction>1.0</mechanicalReduction>
     </actuator>
   </transmission>
-  <transmission name="Transmission_LBRiiwaJoint6">
+  <transmission name="Transmission_LBRiiwa7Joint6">
     <type>transmission_interface/SimpleTransmission</type>
-    <joint name="LBRiiwaJoint6">
+    <joint name="LBRiiwa7Joint6">
       <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     </joint>
-    <actuator name="motor_LBRiiwaJoint6">
+    <actuator name="motor_LBRiiwa7Joint6">
       <hardwareInterface>EffortJointInterface</hardwareInterface>
       <mechanicalReduction>1.0</mechanicalReduction>
     </actuator>
   </transmission>
-  <transmission name="Transmission_LBRiiwaJoint7">
+  <transmission name="Transmission_LBRiiwa7Joint7">
     <type>transmission_interface/SimpleTransmission</type>
-    <joint name="LBRiiwaJoint7">
+    <joint name="LBRiiwa7Joint7">
       <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     </joint>
-    <actuator name="motor_LBRiiwaJoint7">
+    <actuator name="motor_LBRiiwa7Joint7">
       <hardwareInterface>EffortJointInterface</hardwareInterface>
       <mechanicalReduction>1.0</mechanicalReduction>
     </actuator>

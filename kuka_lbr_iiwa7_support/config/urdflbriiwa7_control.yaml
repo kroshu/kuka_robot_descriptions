@@ -13,25 +13,25 @@ lbriiwa7:
     type: effort_controllers/JointPositionController 
     joint: LBRiiwa7Joint2 
     pid: {p: 100, i: 0.01, d: 10} 
-  LBRiiwaJoint3_position_controller: 
+  LBRiiwa7Joint3_position_controller: 
     type: effort_controllers/JointPositionController 
-    joint: LBRiiwaJoint3 
+    joint: LBRiiwa7Joint3 
     pid: {p: 100, i: 0.01, d: 10} 
-  LBRiiwaJoint4_position_controller: 
+  LBRiiwa7Joint4_position_controller: 
     type: effort_controllers/JointPositionController 
-    joint: LBRiiwaJoint4 
+    joint: LBRiiwa7Joint4 
     pid: {p: 100, i: 0.01, d: 10} 
-  LBRiiwaJoint5_position_controller: 
+  LBRiiwa7Joint5_position_controller: 
     type: effort_controllers/JointPositionController 
-    joint: LBRiiwaJoint5 
+    joint: LBRiiwa7Joint5 
     pid: {p: 100, i: 0.01, d: 10} 
-  LBRiiwaJoint6_position_controller: 
+  LBRiiwa7Joint6_position_controller: 
     type: effort_controllers/JointPositionController 
-    joint: LBRiiwaJoint6 
+    joint: LBRiiwa7Joint6 
     pid: {p: 100, i: 0.01, d: 10} 
-  LBRiiwaJoint7_position_controller: 
+  LBRiiwa7Joint7_position_controller: 
     type: effort_controllers/JointPositionController 
-    joint: LBRiiwaJoint7 
+    joint: LBRiiwa7Joint7 
     pid: {p: 100, i: 0.01, d: 10} 
 
   # Effort Controllers --------------------------------------- 
@@ -43,24 +43,24 @@ lbriiwa7:
     type: effort_controllers/JointEffortController 
     joint: LBRiiwa7Joint2 
     pid: {p: 100, i: 0.01, d: 10} 
-  LBRiiwaJoint3_torque_controller: 
+  LBRiiwa7Joint3_torque_controller: 
     type: effort_controllers/JointEffortController 
-    joint: LBRiiwaJoint3 
+    joint: LBRiiwa7Joint3 
     pid: {p: 100, i: 0.01, d: 10} 
-  LBRiiwaJoint4_torque_controller: 
+  LBRiiwa7Joint4_torque_controller: 
     type: effort_controllers/JointEffortController 
-    joint: LBRiiwaJoint4 
+    joint: LBRiiwa7Joint4 
     pid: {p: 100, i: 0.01, d: 10} 
-  LBRiiwaJoint5_torque_controller: 
+  LBRiiwa7Joint5_torque_controller: 
     type: effort_controllers/JointEffortController 
-    joint: LBRiiwaJoint5 
+    joint: LBRiiwa7Joint5 
     pid: {p: 100, i: 0.01, d: 10} 
-  LBRiiwaJoint6_torque_controller: 
+  LBRiiwa7Joint6_torque_controller: 
     type: effort_controllers/JointEffortController 
-    joint: LBRiiwaJoint6 
+    joint: LBRiiwa7Joint6 
     pid: {p: 100, i: 0.01, d: 10} 
-  LBRiiwaJoint7_torque_controller: 
+  LBRiiwa7Joint7_torque_controller: 
     type: effort_controllers/JointEffortController 
-    joint: LBRiiwaJoint7 
+    joint: LBRiiwa7Joint7 
     pid: {p: 100, i: 0.01, d: 10} 
 
