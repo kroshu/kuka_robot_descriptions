@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot name="LBR3R760iisy">
+  <ros2_control name="iisy_hardware" type="system">
+    <hardware>
+      <plugin>kuka_rox::KukaRoXHardwareInterface</plugin>
+    </hardware>
+    <!-- define joints and command/state interfaces for each joint -->
+    <joint name="joint_a1">
+      <command_interface name="position">
+        <param name="min">-1</param>
+        <param name="max"> 1</param>
+      </command_interface>
+      <state_interface name="position"/>
+    </joint>
+    <joint name="joint_a2">
+      <command_interface name="position">
+        <param name="min">-1</param>
+        <param name="max"> 1</param>
+      </command_interface>
+      <state_interface name="position"/>
+    </joint>
+    <joint name="joint_a3">
+      <command_interface name="position">
+        <param name="min">-1</param>
+        <param name="max"> 1</param>
+      </command_interface>
+      <state_interface name="position"/>
+    </joint>
+    <joint name="joint_a4">
+      <command_interface name="position">
+        <param name="min">-1</param>
+        <param name="max"> 1</param>
+      </command_interface>
+      <state_interface name="position"/>
+    </joint>
+    <joint name="joint_a5">
+      <command_interface name="position">
+        <param name="min">-1</param>
+        <param name="max"> 1</param>
+      </command_interface>
+      <state_interface name="position"/>
+    </joint>
+    <joint name="joint_a6">
+      <command_interface name="position">
+        <param name="min">-1</param>
+        <param name="max"> 1</param>
+      </command_interface>
+      <state_interface name="position"/>
+    </joint>
+  </ros2_control>
+  <link name="base_link"/>
+  <link name="LBR3R760_iisy_axis6">
+    <collision>
+      <geometry>
+        <mesh filename="package://kuka_iisy_support/meshes/link6.stl"/>
+      </geometry>
+      <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
+    </collision>
+    <inertial>
+      <inertia ixx="0.0014673917002994" ixy="0.0" ixz="0.0" iyy="0.00112131520678352" iyz="0.0" izz="0.00158160486913488"/>
+      <mass value="8.43E-1"/>
+      <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
+    </inertial>
+    <visual>
+      <geometry>
+        <mesh filename="package://kuka_iisy_support/meshes/link6.stl"/>
+      </geometry>
+      <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
+    </visual>
+  </link>
+  <link name="LBR3R760_iisy_axis4">
+    <collision>
+      <geometry>
+        <mesh filename="package://kuka_iisy_support/meshes/link4.stl"/>
+      </geometry>
+      <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
+    </collision>
+    <inertial>
+      <inertia ixx="0.00244684891934666" ixy="0.0" ixz="0.0" iyy="0.00929300990970133" iyz="0.0" izz="0.00957902612033654"/>
+      <mass value="2.0138E0"/>
+      <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
+    </inertial>
+    <visual>
+      <geometry>
+        <mesh filename="package://kuka_iisy_support/meshes/link4.stl"/>
+      </geometry>
+      <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
+    </visual>
+  </link>
+  <link name="LBR3R760_iisy_axis2">
+    <collision>
+      <geometry>
+        <mesh filename="package://kuka_iisy_support/meshes/link2.stl"/>
+      </geometry>
+      <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
+    </collision>
+    <inertial>
+      <inertia ixx="0.0521692170047944" ixy="0.0" ixz="0.0" iyy="0.0042331111850977" iyz="0.0" izz="0.0534425693052013"/>
+      <mass value="3.212E0"/>
+      <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
+    </inertial>
+    <visual>
+      <geometry>
+        <mesh filename="package://kuka_iisy_support/meshes/link2.stl"/>
+      </geometry>
+      <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
+    </visual>
+  </link>
+  <link name="LBR3R760_iisy_fixedbase">
+    <collision>
+      <geometry>
+        <mesh filename="package://kuka_iisy_support/meshes/robotbase.stl"/>
+      </geometry>
+      <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
+    </collision>
+    <inertial>
+      <inertia ixx="5.0E-4" ixy="0.0" ixz="0.0" iyy="5.0E-4" iyz="0.0" izz="5.0E-4"/>
+      <mass value="3.6832E0"/>
+      <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
+    </inertial>
+    <visual>
+      <geometry>
+        <mesh filename="package://kuka_iisy_support/meshes/robotbase.stl"/>
+      </geometry>
+      <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
+    </visual>
+  </link>
+  <link name="LBR3R760_iisy_axis5">
+    <collision>
+      <geometry>
+        <mesh filename="package://kuka_iisy_support/meshes/link5.stl"/>
+      </geometry>
+      <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
+    </collision>
+    <inertial>
+      <inertia ixx="0.00236252846105637" ixy="0.0" ixz="0.0" iyy="0.00141854396142661" iyz="0.0" izz="0.0025813096143987"/>
+      <mass value="1.4418E0"/>
+      <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
+    </inertial>
+    <visual>
+      <geometry>
+        <mesh filename="package://kuka_iisy_support/meshes/link5.stl"/>
+      </geometry>
+      <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
+    </visual>
+  </link>
+  <link name="LBR3R760_iisy_axis3">
+    <collision>
+      <geometry>
+        <mesh filename="package://kuka_iisy_support/meshes/link3.stl"/>
+      </geometry>
+      <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
+    </collision>
+    <inertial>
+      <inertia ixx="0.0113804888378926" ixy="0.0" ixz="0.0" iyy="0.00566536942404497" iyz="0.0" izz="0.0133950588482047"/>
+      <mass value="3.471E0"/>
+      <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
+    </inertial>
+    <visual>
+      <geometry>
+        <mesh filename="package://kuka_iisy_support/meshes/link3.stl"/>
+      </geometry>
+      <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
+    </visual>
+  </link>
+  <link name="LBR3R760_iisy_axis1">
+    <collision>
+      <geometry>
+        <mesh filename="package://kuka_iisy_support/meshes/link1.stl"/>
+      </geometry>
+      <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
+    </collision>
+    <inertial>
+      <inertia ixx="0.0113804888378926" ixy="0.0" ixz="0.0" iyy="0.00566536942404497" iyz="0.0" izz="0.0133950588482047"/>
+      <mass value="3.471E0"/>
+      <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
+    </inertial>
+    <visual>
+      <geometry>
+        <mesh filename="package://kuka_iisy_support/meshes/link1.stl"/>
+      </geometry>
+      <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
+    </visual>
+  </link>
+  <joint name="base_joint" type="fixed">
+    <parent link="base_link" />
+    <child link="LBR3R760_iisy_fixedbase" />
+  </joint>
+  <joint name="joint_a5" type="revolute">
+    <axis xyz="0.0 1.0 0.0"/>
+    <child link="LBR3R760_iisy_axis5"/>
+    <limit effort="5.0E0" lower="-1.919862177E0" upper="1.919862177E0" velocity="2.0E0"/>
+    <origin rpy="-0.0 0.0 -0.0" xyz="0.1708 0.0382 0.0"/>
+    <parent link="LBR3R760_iisy_axis4"/>
+  </joint>
+  <joint name="joint_a2" type="revolute">
+    <axis xyz="0.0 1.0 0.0"/>
+    <child link="LBR3R760_iisy_axis2"/>
+    <limit effort="5.0E0" lower="-4.0142572796E0" upper="8.726646E-1" velocity="2.0E0"/>
+    <origin rpy="-0.0 1.570796 -0.0" xyz="0.0 -0.0829 0.0886"/>
+    <parent link="LBR3R760_iisy_axis1"/>
+  </joint>
+  <joint name="joint_a3" type="revolute">
+    <axis xyz="0.0 1.0 0.0"/>
+    <child link="LBR3R760_iisy_axis3"/>
+    <limit effort="5.0E0" lower="-2.61799387799E0" upper="2.61799387799E0" velocity="2.0E0"/>
+    <origin rpy="-0.0 -1.570796 -0.0" xyz="0.0 0.0 0.3"/>
+    <parent link="LBR3R760_iisy_axis2"/>
+  </joint>
+  <joint name="joint_a6" type="revolute">
+    <axis xyz="1.0 0.0 0.0"/>
+    <child link="LBR3R760_iisy_axis6"/>
+    <limit effort="5.0E0" lower="-3.839724354E0" upper="3.839724354E0" velocity="2.0E0"/>
+    <origin rpy="-0.0 0.0 -0.0" xyz="0.0682 -0.0382 0.0"/>
+    <parent link="LBR3R760_iisy_axis5"/>
+  </joint>
+  <joint name="joint_a4" type="revolute">
+    <axis xyz="1.0 0.0 0.0"/>
+    <child link="LBR3R760_iisy_axis4"/>
+    <limit effort="5.0E0" lower="-3.05432619E0" upper="3.05432619E0" velocity="2.0E0"/>
+    <origin rpy="-0.0 0.0 -0.0" xyz="0.1292 0.0829 0.0"/>
+    <parent link="LBR3R760_iisy_axis3"/>
+  </joint>
+  <joint name="joint_a1" type="revolute">
+    <axis xyz="0.0 0.0 1.0"/>
+    <child link="LBR3R760_iisy_axis1"/>
+    <limit effort="5.0E0" lower="-3.05432619E0" upper="3.05432619E0" velocity="2.0E0"/>
+    <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.1264"/>
+    <parent link="LBR3R760_iisy_fixedbase"/>
+  </joint>
+</robot>
