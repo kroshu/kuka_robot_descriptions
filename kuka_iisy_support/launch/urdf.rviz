@@ -22,27 +22,7 @@ Panels:
     Expanded:
       - /Current View1
     Name: Views
-    Splitter Ratio: 0.5
-  - Class: graph_rviz_plugin/LinePanel
-    Name: LinePanel
-    export_directory: ""
-    legend_enable: true
-    refresh_freq: 40
-    w_time: 5
-    window_time_enable: true
-    y_max: 10
-    y_min: 0
-    yaxis_rescale_auto: true
-  - Class: graph_rviz_plugin/LinePanel
-    Name: SecondaryPanel
-    export_directory: ""
-    legend_enable: true
-    refresh_freq: 40
-    w_time: 5
-    window_time_enable: true
-    y_max: 10
-    y_min: 0
-    yaxis_rescale_auto: true
+    Splitter Ratio: 0.5 
 Visualization Manager:
   Class: ""
   Displays:
