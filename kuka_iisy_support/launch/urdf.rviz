@@ -67,32 +67,37 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
-        link_1:
+        LBR3R760_iisy_fixedbase:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        link_2:
+        LBR3R760_iisy_axis1:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        link_3:
+        LBR3R760_iisy_axis2:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        link_4:
+        LBR3R760_iisy_axis3:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        link_5:
+        LBR3R760_iisy_axis4:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        link_6:
+        LBR3R760_iisy_axis5:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        LBR3R760_iisy_axis6:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -109,17 +114,19 @@ Visualization Manager:
         All Enabled: true
         base_link:
           Value: true
-        link_1:
+        LBR3R760_iisy_fixedbase:
           Value: true
-        link_2:
+        LBR3R760_iisy_axis1:
           Value: true
-        link_3:
+        LBR3R760_iisy_axis2:
           Value: true
-        link_4:
+        LBR3R760_iisy_axis3:
           Value: true
-        link_5:
+        LBR3R760_iisy_axis4:
           Value: true
-        link_6:
+        LBR3R760_iisy_axis5:
+          Value: true
+        LBR3R760_iisy_axis6:
           Value: true
       Marker Scale: 0.5
       Name: TF
@@ -128,13 +135,14 @@ Visualization Manager:
       Show Names: true
       Tree:
         base_link:
-          link_1:
-            link_2:
-              link_3:
-                link_4:
-                  link_5:
-                    link_6:
-                      {}
+          LBR3R760_iisy_fixedbase:
+            LBR3R760_iisy_axis1:
+              LBR3R760_iisy_axis2:
+                LBR3R760_iisy_axis3:
+                  LBR3R760_iisy_axis4:
+                    LBR3R760_iisy_axis5:
+                      LBR3R760_iisy_axis6:
+                        {}
       Update Interval: 0
       Value: true
   Enabled: true
