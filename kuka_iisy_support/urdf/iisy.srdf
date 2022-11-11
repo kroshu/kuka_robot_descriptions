@@ -26,7 +26,7 @@
     <joint name="joint_a6" value="0"/>
   </group_state>
   <!--VIRTUAL JOINT: Purpose: this element defines a virtual joint between a robot link and an external frame of reference (considered fixed with respect to the robot)-->
-  <virtual_joint child_link="LBR3R760_iisy_fixedbase" name="virtual_joint" parent_frame="base_link" type="floating"/>
+  <virtual_joint child_link="base_link" name="virtual_joint" parent_frame="LBR3R760_iisy_fixedbase" type="floating"/>
   <!--DISABLE COLLISIONS: By default it is assumed that any link of the robot could potentially come into collision with any other link in the robot. This tag disables collision checking between a specified pair of links. -->
   <disable_collisions link1="LBR3R760_iisy_fixedbase" link2="LBR3R760_iisy_axis1" reason="Adjacent"/>
   <disable_collisions link1="LBR3R760_iisy_axis1" link2="LBR3R760_iisy_axis2" reason="Adjacent"/>
