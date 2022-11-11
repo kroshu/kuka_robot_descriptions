@@ -109,6 +109,78 @@ Visualization Manager:
       Update Interval: 0
       Value: true
       Visual Enabled: true
+    - Class: moveit_rviz_plugin/PlanningScene
+      Enabled: true
+      Move Group Namespace: ""
+      Name: PlanningScene
+      Planning Scene Topic: /monitored_planning_scene
+      Robot Description: robot_description
+      Scene Geometry:
+        Scene Alpha: 0.8999999761581421
+        Scene Color: 50; 230; 50
+        Scene Display Time: 0.20000000298023224
+        Show Scene Geometry: true
+        Voxel Coloring: Z-Axis
+        Voxel Rendering: Occupied Voxels
+      Scene Robot:
+        Attached Body Color: 150; 50; 150
+        Links:
+          All Links Enabled: true
+          Expand Joint Details: false
+          Expand Link Details: false
+          Expand Tree: false
+          Link Tree Style: Links in Alphabetic Order
+        LBR3R760_iisy_axis1:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        LBR3R760_iisy_axis2:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        LBR3R760_iisy_axis3:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        LBR3R760_iisy_axis4:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        LBR3R760_iisy_axis5:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        LBR3R760_iisy_axis6:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        LBR3R760_iisy_fixedbase:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        Robot Alpha: 1
+        Show Robot Collision: false
+        Show Robot Visual: true
+      Value: true
+    - Class: rviz_default_plugins/MarkerArray
+      Enabled: true
+      Name: MarkerArray
+      Namespaces:
+        {}
+      Topic:
+        Depth: 5
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: /marker_array
+      Value: true
     - Class: rviz_default_plugins/TF
       Enabled: true
       Frame Timeout: 15
