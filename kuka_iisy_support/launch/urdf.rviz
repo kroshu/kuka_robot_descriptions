@@ -7,6 +7,8 @@ Panels:
         - /Global Options1
         - /Status1
         - /RobotModel1
+        - /PlanningScene1
+        - /PlanningScene1/Scene Robot1
         - /TF1
       Splitter Ratio: 0.5
     Tree Height: 814
@@ -171,7 +173,7 @@ Visualization Manager:
             Show Trail: false
         Robot Alpha: 1
         Show Robot Collision: false
-        Show Robot Visual: true
+        Show Robot Visual: false
       Value: true
     - Class: rviz_default_plugins/TF
       Enabled: true
