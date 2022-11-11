@@ -129,57 +129,49 @@ Visualization Manager:
           Expand Joint Details: false
           Expand Link Details: false
           Expand Tree: false
+          LBR3R760_iisy_axis1:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          LBR3R760_iisy_axis2:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          LBR3R760_iisy_axis3:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          LBR3R760_iisy_axis4:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          LBR3R760_iisy_axis5:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          LBR3R760_iisy_axis6:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          LBR3R760_iisy_fixedbase:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
           Link Tree Style: Links in Alphabetic Order
-        LBR3R760_iisy_axis1:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        LBR3R760_iisy_axis2:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        LBR3R760_iisy_axis3:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        LBR3R760_iisy_axis4:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        LBR3R760_iisy_axis5:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        LBR3R760_iisy_axis6:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        LBR3R760_iisy_fixedbase:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
+          base_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
         Robot Alpha: 1
         Show Robot Collision: false
         Show Robot Visual: true
-      Value: true
-    - Class: rviz_default_plugins/MarkerArray
-      Enabled: true
-      Name: MarkerArray
-      Namespaces:
-        {}
-      Topic:
-        Depth: 5
-        Durability Policy: Volatile
-        History Policy: Keep Last
-        Reliability Policy: Reliable
-        Value: /marker_array
       Value: true
     - Class: rviz_default_plugins/TF
       Enabled: true
@@ -280,10 +272,10 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: -0.08960334956645966
+      Pitch: -0.04960332438349724
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 6.236770153045654
+      Yaw: 6.111769676208496
     Saved: ~
 Window Geometry:
   Displays:
