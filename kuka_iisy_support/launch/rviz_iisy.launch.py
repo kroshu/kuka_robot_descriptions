@@ -71,4 +71,10 @@ def generate_launch_description():
                                  output='both',
                                  parameters=[robot_description])
 
-    return LaunchDescription([robot_state_publisher, rviz_node])
+    # Joint state publisher
+    joint_state_publisher = Node(package='joint_state_publisher',
+                                 executable='joint_state_publisher',
+                                 name='joint_state_publisher',
+                                 output='log')
+
+    return LaunchDescription([robot_state_publisher, rviz_node, joint_state_publisher])
