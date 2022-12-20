@@ -86,12 +86,15 @@ class RSISimulator(Node):
         try:
             self.socket_ = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
             self.get_logger().info('{}, Successfully created socket'.format(self.node_name_))
-            self.socket_.settimeout(1)
+            self.socket_.settimeout(self.cycle_time)
         except self.socket_.error:
             self.get_logger().fatal('{} Could not create socket'.format(self.node_name_))
             sys.exit()
 
     def timer_callback(self):
+        if self.timeout_count == 100:
+            self.get_logger().fatal('{} Timeout count of 100 exceeded'.format(self.node_name_))
+            sys.exit()
         try:
             msg = create_rsi_xml_rob(self.act_joint_pos, self.initial_joint_pos,
                                      self.timeout_count, self.ipoc)
@@ -100,9 +103,13 @@ class RSISimulator(Node):
             recv_msg, addr = self.socket_.recvfrom(1024)
             self.rsi_cmd_pub_.publish(recv_msg)
             des_joint_correction_absolute, ipoc_recv = parse_rsi_xml_sen(recv_msg)
-            self.act_joint_pos = self.initial_joint_pos + des_joint_correction_absolute
+            if ipoc_recv == self.ipoc:
+                self.act_joint_pos = self.initial_joint_pos + des_joint_correction_absolute
+            else:
+                self.get_logger().warn('{}: Packet is late'.format(self.node_name_))
+                self.get_logger().warn('{}: sent ipoc: {}, received: {}'.format(self.node_name_, self.ipoc, ipoc_recv))
+                self.timeout_count += 1
             self.ipoc += 1
-            time.sleep(self.cycle_time / 2)
         except OSError:
             self.get_logger().warn('{}: Socket timed out'.format(self.node_name_))
             self.timeout_count += 1
