@@ -180,7 +180,7 @@
     <ros2_control name="KukaRSIHardwareInterface" type="system">
       <hardware>
         <plugin>kuka_rsi_hw_interface::KukaRSIHardwareInterface</plugin>
-        <param name="rsi_ip_address">"insert_ip_here"</param>
+        <param name="rsi_ip_address">insert_ip_here_without_quotes</param>
         <param name="rsi_port">59152</param>
       </hardware>
       <joint name="${prefix}joint_a1">
