@@ -44,7 +44,7 @@ def load_yaml(package_name, file_path):
 def generate_launch_description():
 
     robot_description_config = load_file(
-        'kuka_iisy_support', 'urdf/iisy.urdf')
+        'kuka_iisy_support', 'urdf/iisy.urdf.xacro')
     robot_description = {'robot_description': robot_description_config}
 
     # RViz
