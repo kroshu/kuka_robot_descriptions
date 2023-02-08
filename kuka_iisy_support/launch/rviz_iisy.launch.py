@@ -44,12 +44,12 @@ def load_yaml(package_name, file_path):
 def generate_launch_description():
 
     robot_description_config = load_file(
-        'kuka_iisy_support', 'urdf/iisy.urdf')
+        'kuka_rox_hw_interface', 'config/iisy.urdf.xacro')
     robot_description = {'robot_description': robot_description_config}
 
     # RViz
     rviz_config_file = get_package_share_directory(
-        'kuka_iisy_support') + "/launch/urdf.rviz"
+        'kuka_rox_hw_interface') + "/launch/urdf.rviz"
     rviz_node = Node(package='rviz2',
                      executable='rviz2',
                      name='rviz2_launch',

@@ -40,7 +40,7 @@ def load_yaml(package_name, file_path):
 
 
 def generate_launch_description():
-    robot_description_config = load_file('iisy_support', 'urdf/iisy.urdf')
+    robot_description_config = load_file('iisy_support', 'urdf/iisy.urdf.xacro')
     robot_description = {'robot_description' : robot_description_config}
     sim_time_true = {'use_sim_time' : True}
 

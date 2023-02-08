@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot name="LBR3R760iisy">
+<robot name="LBR3R760iisy" xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <xacro:macro name="eci_config" params="client_ip controller_ip control_mode">
   <ros2_control name="iisy_hardware" type="system">
     <hardware>
       <plugin>kuka_rox::KukaRoXHardwareInterface</plugin>
+      <param name="client_ip">${client_ip}</param>
+      <param name="controller_ip">${controller_ip}</param>
+      <param name="control_mode">${control_mode}</param>
     </hardware>
     <!-- define joints and command/state interfaces for each joint -->
     <joint name="joint_a1">
@@ -300,4 +304,5 @@
     </joint>
     <type>transmission_interface/SimpleTransmission</type>
   </transmission>
+  </xacro:macro>
 </robot>
