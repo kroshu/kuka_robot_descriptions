@@ -15,6 +15,8 @@
 import os
 import yaml
 from launch import LaunchDescription
+from launch.substitutions import Command, FindExecutable, PathJoinSubstitution
+from launch_ros.substitutions import FindPackageShare
 from launch_ros.actions import Node
 from ament_index_python.packages import get_package_share_directory
 
@@ -43,13 +45,22 @@ def load_yaml(package_name, file_path):
 
 def generate_launch_description():
 
-    robot_description_config = load_file(
-        'kuka_rox_hw_interface', 'config/iisy.urdf.xacro')
-    robot_description = {'robot_description': robot_description_config}
+    robot_description_content = Command(
+        [
+            PathJoinSubstitution([FindExecutable(name="xacro")]),
+            " ",
+            PathJoinSubstitution(
+                [FindPackageShare("kuka_iisy_support"),
+                 "urdf", "iisy.urdf.xacro"]
+            ),
+            " ",
+        ]
+    )
+    robot_description = {'robot_description': robot_description_content}
 
     # RViz
     rviz_config_file = get_package_share_directory(
-        'kuka_rox_hw_interface') + "/launch/urdf.rviz"
+        'kuka_iisy_support') + "/config/simple_urdf.rviz"
     rviz_node = Node(package='rviz2',
                      executable='rviz2',
                      name='rviz2_launch',

@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="LBR3R760iisy">
+<!-- Import iisy urdf file  -->
+<xacro:include filename="$(find kuka_iisy_support)/urdf/iisy.ros2_control.urdf.xacro"/>
+
+<xacro:property name="eci_config" value="$(find kuka_rox_hw_interface)/config/eci_config.yaml" />
+<xacro:property name="config_dict" value="${xacro.load_yaml(eci_config)}"/>
+<xacro:property name="control_mode" value="${config_dict['robot_manager']['ros__parameters']['control_mode']}" />
+<xacro:property name="client_ip" value="${config_dict['robot_manager']['ros__parameters']['client_ip']}" />
+<xacro:property name="controller_ip" value="${config_dict['robot_manager']['ros__parameters']['controller_ip']}" />
+
+
+<xacro:eci_config client_ip="${client_ip}" 
+                  controller_ip="${controller_ip}" 
+                  control_mode="${control_mode}"/>
+</robot>
