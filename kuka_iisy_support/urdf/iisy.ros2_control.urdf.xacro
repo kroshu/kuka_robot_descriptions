@@ -12,56 +12,68 @@
     <joint name="joint_a1">
       <command_interface name="stiffness"/>
       <command_interface name="damping"/>
+      <command_interface name="effort"/>
       <command_interface name="position">
         <param name="min">-1</param>
         <param name="max"> 1</param>
       </command_interface>
       <state_interface name="position"/>
+      <state_interface name="effort"/>
     </joint>
     <joint name="joint_a2">
       <command_interface name="stiffness"/>
       <command_interface name="damping"/>
+      <command_interface name="effort"/>
       <command_interface name="position">
         <param name="min">-1</param>
         <param name="max"> 1</param>
       </command_interface>
       <state_interface name="position"/>
+      <state_interface name="effort"/>
     </joint>
     <joint name="joint_a3">
       <command_interface name="stiffness"/>
       <command_interface name="damping"/>
+      <command_interface name="effort"/>
       <command_interface name="position">
         <param name="min">-1</param>
         <param name="max"> 1</param>
       </command_interface>
       <state_interface name="position"/>
+      <state_interface name="effort"/>
     </joint>
     <joint name="joint_a4">
       <command_interface name="stiffness"/>
       <command_interface name="damping"/>
+      <command_interface name="effort"/>
       <command_interface name="position">
         <param name="min">-1</param>
         <param name="max"> 1</param>
       </command_interface>
       <state_interface name="position"/>
+      <state_interface name="effort"/>
     </joint>
     <joint name="joint_a5">
       <command_interface name="stiffness"/>
       <command_interface name="damping"/>
+      <command_interface name="effort"/>
       <command_interface name="position">
         <param name="min">-1</param>
         <param name="max"> 1</param>
       </command_interface>
       <state_interface name="position"/>
+      <state_interface name="effort"/>
     </joint>
     <joint name="joint_a6">
       <command_interface name="stiffness"/>
       <command_interface name="damping"/>
+      <command_interface name="effort"/>
       <command_interface name="position">
         <param name="min">-1</param>
         <param name="max"> 1</param>
       </command_interface>
       <state_interface name="position"/>
+      <state_interface name="effort"/>
     </joint>
   </ros2_control>
   <link name="base_link"/>
