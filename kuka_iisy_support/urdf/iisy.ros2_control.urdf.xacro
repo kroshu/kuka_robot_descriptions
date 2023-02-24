@@ -194,7 +194,8 @@
       </geometry>
       <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
     </visual>
-  </link>  
+  </link> 
+  <link name="LBR3R760_iisy_flange" /> 
   <joint name="base_joint" type="fixed">
     <parent link="base_link" />
     <child link="LBR3R760_iisy_fixedbase" />
@@ -240,6 +241,11 @@
     <limit effort="5.0E0" lower="-3.839724354E0" upper="3.839724354E0" velocity="2.0E0"/>
     <origin rpy="1.5707963267948963 0.0 -0.0" xyz="0.0 0.0 0.0"/>
     <parent link="LBR3R760_iisy_axis5"/>
+  </joint>
+  <joint name="link6-flange" type="fixed">
+    <child link="LBR3R760_iisy_flange"/>
+    <origin rpy="0 1.5707963267948963 -0.0" xyz="0.0 0.0 -0.1605"/>
+    <parent link="LBR3R760_iisy_axis6"/>
   </joint>
   <transmission name="trans_LBR3R760iisy_Urdf_Joint1_name">
     <actuator name="LBR3R760iisy_Urdf_Joint1_name_motor">
