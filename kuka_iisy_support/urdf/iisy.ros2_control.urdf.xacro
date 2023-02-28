@@ -244,7 +244,7 @@
   </joint>
   <joint name="link6-flange" type="fixed">
     <child link="LBR3R760_iisy_flange"/>
-    <origin rpy="0 1.5707963267948963 -0.0" xyz="0.0 0.0 -0.1605"/>
+    <origin rpy="0 3.14159265359  -0.0" xyz="0.0 0.0 -0.1605"/>
     <parent link="LBR3R760_iisy_axis6"/>
   </joint>
   <transmission name="trans_LBR3R760iisy_Urdf_Joint1_name">
