@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="LBR3R760iisy">
 <!-- Import iisy urdf file  -->
-<xacro:include filename="$(find kuka_iisy_support)/urdf/iisy.ros2_control.urdf.xacro"/>
+<xacro:include filename="$(find kuka_iisy_support)/urdf/iisy_macro.xacro"/>
 
 <!-- Read parameters from eci_config  -->
 <xacro:property name="eci_config" value="$(find kuka_rox_hw_interface)/config/eci_config.yaml" />
@@ -18,7 +18,8 @@
 <xacro:property name="timeframe_ms" value="${qos_config_dict['rt_packet_loss_profile']['timeframe_ms']}" />
 
 
-<xacro:eci_config client_ip="${client_ip}" 
+<xacro:iisy_robot prefix=""
+                  client_ip="${client_ip}" 
                   controller_ip="${controller_ip}" 
                   control_mode="${control_mode}"
                   consequent_lost_packets="${consequent_lost_packets}" 
