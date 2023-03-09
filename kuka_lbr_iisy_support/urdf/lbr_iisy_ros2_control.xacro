@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot name="LBR3R760iisy" xmlns:xacro="http://www.ros.org/wiki/xacro">
-  <xacro:macro name="kuka_lbr_iisy_ros2_control" params="prefix client_ip controller_ip control_mode consequent_lost_packets lost_packets_in_timeframe timeframe_ms">
-    <ros2_control name="iisy_hardware" type="system">
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <xacro:macro name="kuka_lbr_iisy_ros2_control" params="name prefix client_ip controller_ip control_mode consequent_lost_packets lost_packets_in_timeframe timeframe_ms">
+    <ros2_control name=${name} type="system">
       <hardware>
         <plugin>kuka_rox::KukaRoXHardwareInterface</plugin>
         <param name="client_ip">${client_ip}</param>

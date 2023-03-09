@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="LBR3R760iisy">
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="LBRiisy3R760">
   <xacro:macro name="kuka_lbr3_r760_robot" params="prefix client_ip controller_ip control_mode consequent_lost_packets lost_packets_in_timeframe timeframe_ms">
     <xacro:include filename="$(find kuka_lbr_iisy_support)/urdf/lbr_iisy_ros2_control.xacro" />
 
     <!-- ros2 control instance -->
-    <xacro:kuka_lbr_iisy_ros2_control 
+    <xacro:kuka_lbr_iisy_ros2_control
+    name="LBRiisy3R760" 
     prefix="${prefix}"
     client_ip="${client_ip}"
     controller_ip="${controller_ip}"
@@ -18,7 +19,7 @@
     <link name="${prefix}LBR3R760_iisy_fixedbase">
       <collision>
         <geometry>
-          <mesh filename="package://kuka_lbr_iisy_support/meshes/LBR3R760/collision/base_link.stl" />
+          <mesh filename="package://kuka_lbr_iisy_support/meshes/LBRiisy3R760/collision/base_link.stl" />
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0" />
       </collision>
@@ -29,7 +30,7 @@
       </inertial>
       <visual>
         <geometry>
-          <mesh filename="package://kuka_lbr_iisy_support/meshes/LBR3R760/visual/base_link.stl" />
+          <mesh filename="package://kuka_lbr_iisy_support/meshes/LBRiisy3R760/visual/base_link.stl" />
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0" />
       </visual>
@@ -37,7 +38,7 @@
     <link name="${prefix}LBR3R760_iisy_axis1">
       <collision>
         <geometry>
-          <mesh filename="package://kuka_lbr_iisy_support/meshes/LBR3R760/collision/link_1.stl" />
+          <mesh filename="package://kuka_lbr_iisy_support/meshes/LBRiisy3R760/collision/link_1.stl" />
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0" />
       </collision>
@@ -48,7 +49,7 @@
       </inertial>
       <visual>
         <geometry>
-          <mesh filename="package://kuka_lbr_iisy_support/meshes/LBR3R760/visual/link_1.stl" />
+          <mesh filename="package://kuka_lbr_iisy_support/meshes/LBRiisy3R760/visual/link_1.stl" />
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0" />
       </visual>
@@ -56,7 +57,7 @@
     <link name="${prefix}LBR3R760_iisy_axis2">
       <collision>
         <geometry>
-          <mesh filename="package://kuka_lbr_iisy_support/meshes/LBR3R760/collision/link_2.stl" />
+          <mesh filename="package://kuka_lbr_iisy_support/meshes/LBRiisy3R760/collision/link_2.stl" />
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0" />
       </collision>
@@ -67,7 +68,7 @@
       </inertial>
       <visual>
         <geometry>
-          <mesh filename="package://kuka_lbr_iisy_support/meshes/LBR3R760/visual/link_2.stl" />
+          <mesh filename="package://kuka_lbr_iisy_support/meshes/LBRiisy3R760/visual/link_2.stl" />
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0" />
       </visual>
@@ -75,7 +76,7 @@
     <link name="${prefix}LBR3R760_iisy_axis3">
       <collision>
         <geometry>
-          <mesh filename="package://kuka_lbr_iisy_support/meshes/LBR3R760/collision/link_3.stl" />
+          <mesh filename="package://kuka_lbr_iisy_support/meshes/LBRiisy3R760/collision/link_3.stl" />
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0" />
       </collision>
@@ -86,7 +87,7 @@
       </inertial>
       <visual>
         <geometry>
-          <mesh filename="package://kuka_lbr_iisy_support/meshes/LBR3R760/visual/link_3.stl" />
+          <mesh filename="package://kuka_lbr_iisy_support/meshes/LBRiisy3R760/visual/link_3.stl" />
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0" />
       </visual>
@@ -94,7 +95,7 @@
     <link name="${prefix}LBR3R760_iisy_axis4">
       <collision>
         <geometry>
-          <mesh filename="package://kuka_lbr_iisy_support/meshes/LBR3R760/collision/link_4.stl" />
+          <mesh filename="package://kuka_lbr_iisy_support/meshes/LBRiisy3R760/collision/link_4.stl" />
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0" />
       </collision>
@@ -105,7 +106,7 @@
       </inertial>
       <visual>
         <geometry>
-          <mesh filename="package://kuka_lbr_iisy_support/meshes/LBR3R760/visual/link_4.stl" />
+          <mesh filename="package://kuka_lbr_iisy_support/meshes/LBRiisy3R760/visual/link_4.stl" />
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0" />
       </visual>
@@ -113,7 +114,7 @@
     <link name="${prefix}LBR3R760_iisy_axis5">
       <collision>
         <geometry>
-          <mesh filename="package://kuka_lbr_iisy_support/meshes/LBR3R760/collision/link_5.stl" />
+          <mesh filename="package://kuka_lbr_iisy_support/meshes/LBRiisy3R760/collision/link_5.stl" />
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0" />
       </collision>
@@ -124,7 +125,7 @@
       </inertial>
       <visual>
         <geometry>
-          <mesh filename="package://kuka_lbr_iisy_support/meshes/LBR3R760/visual/link_5.stl" />
+          <mesh filename="package://kuka_lbr_iisy_support/meshes/LBRiisy3R760/visual/link_5.stl" />
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0" />
       </visual>
@@ -132,7 +133,7 @@
     <link name="${prefix}LBR3R760_iisy_axis6">
       <collision>
         <geometry>
-          <mesh filename="package://kuka_lbr_iisy_support/meshes/LBR3R760/collision/link_6.stl" />
+          <mesh filename="package://kuka_lbr_iisy_support/meshes/LBRiisy3R760/collision/link_6.stl" />
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0" />
       </collision>
@@ -143,7 +144,7 @@
       </inertial>
       <visual>
         <geometry>
-          <mesh filename="package://kuka_lbr_iisy_support/meshes/LBR3R760/visual/link_6.stl" />
+          <mesh filename="package://kuka_lbr_iisy_support/meshes/LBRiisy3R760/visual/link_6.stl" />
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0" />
       </visual>
