@@ -5,5 +5,5 @@
 -->
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="LBRiisy3R760">
   <xacro:include filename="lbr_iisy_arm.macro.xacro" />
-  <xacro:kuka_lbr_iisy_arm />
+  <xacro:kuka_lbr_iisy_arm prefix=""/>
 </robot>
