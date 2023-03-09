@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.5)
 
-project(kuka_iisy_moveit_config)
+project(kuka_lbr_iisy_moveit_config)
 
 find_package(ament_cmake REQUIRED)
 find_package(urdf REQUIRED)
