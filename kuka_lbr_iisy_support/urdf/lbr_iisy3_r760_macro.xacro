@@ -15,8 +15,7 @@
     timeframe_ms="${timeframe_ms}" />
 
     <!-- links - main serial chain -->
-    <link name="${prefix}base_link" />
-    <link name="${prefix}LBR3R760_iisy_fixedbase">
+    <link name="${prefix}base_link">
       <collision>
         <geometry>
           <mesh filename="package://kuka_lbr_iisy_support/meshes/LBRiisy3R760/collision/base_link.stl" />
@@ -35,7 +34,7 @@
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0" />
       </visual>
     </link>
-    <link name="${prefix}LBR3R760_iisy_axis1">
+    <link name="${prefix}link_1">
       <collision>
         <geometry>
           <mesh filename="package://kuka_lbr_iisy_support/meshes/LBRiisy3R760/collision/link_1.stl" />
@@ -54,7 +53,7 @@
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0" />
       </visual>
     </link>
-    <link name="${prefix}LBR3R760_iisy_axis2">
+    <link name="${prefix}link_2">
       <collision>
         <geometry>
           <mesh filename="package://kuka_lbr_iisy_support/meshes/LBRiisy3R760/collision/link_2.stl" />
@@ -73,7 +72,7 @@
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0" />
       </visual>
     </link>
-    <link name="${prefix}LBR3R760_iisy_axis3">
+    <link name="${prefix}link_3">
       <collision>
         <geometry>
           <mesh filename="package://kuka_lbr_iisy_support/meshes/LBRiisy3R760/collision/link_3.stl" />
@@ -92,7 +91,7 @@
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0" />
       </visual>
     </link>
-    <link name="${prefix}LBR3R760_iisy_axis4">
+    <link name="${prefix}link_4">
       <collision>
         <geometry>
           <mesh filename="package://kuka_lbr_iisy_support/meshes/LBRiisy3R760/collision/link_4.stl" />
@@ -111,7 +110,7 @@
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0" />
       </visual>
     </link>
-    <link name="${prefix}LBR3R760_iisy_axis5">
+    <link name="${prefix}link_5">
       <collision>
         <geometry>
           <mesh filename="package://kuka_lbr_iisy_support/meshes/LBRiisy3R760/collision/link_5.stl" />
@@ -130,7 +129,7 @@
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0" />
       </visual>
     </link>
-    <link name="${prefix}LBR3R760_iisy_axis6">
+    <link name="${prefix}link_6">
       <collision>
         <geometry>
           <mesh filename="package://kuka_lbr_iisy_support/meshes/LBRiisy3R760/collision/link_6.stl" />
@@ -150,70 +149,72 @@
       </visual>
     </link>
 
-    <!-- fix base to environment -->
-    <joint name="${prefix}base_joint" type="fixed">
-      <parent link="${prefix}base_link" />
-      <child link="${prefix}LBR3R760_iisy_fixedbase" />
-    </joint>
-
     <!-- joints - main serial chain -->
     <joint name="${prefix}joint_a1" type="revolute">
       <axis xyz="0.0 0.0 -1.0" />
-      <child link="${prefix}LBR3R760_iisy_axis1" />
+      <child link="${prefix}link_1" />
       <limit effort="5.0E0" lower="-3.2288591E0" upper="3.2288591E0" velocity="2.0E0" />
       <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.1264" />
-      <parent link="${prefix}LBR3R760_iisy_fixedbase" />
+      <parent link="${prefix}base_link" />
     </joint>
     <joint name="${prefix}joint_a2" type="revolute">
       <axis xyz="0.0 0.0 1.0" />
-      <child link="${prefix}LBR3R760_iisy_axis2" />
+      <child link="${prefix}link_2" />
       <limit effort="5.0E0" lower="-4.0142572796E0" upper="8.726646E-1" velocity="2.0E0" />
       <origin rpy="-1.5707963267948963 0.0 -0.0" xyz="0.0 0.0 0.0886" />
-      <parent link="${prefix}LBR3R760_iisy_axis1" />
+      <parent link="${prefix}link_1" />
     </joint>
     <joint name="${prefix}joint_a3" type="revolute">
       <axis xyz="0.0 0.0 1.0" />
-      <child link="${prefix}LBR3R760_iisy_axis3" />
+      <child link="${prefix}link_3" />
       <limit effort="5.0E0" lower="-2.61799387799E0" upper="2.61799387799E0" velocity="2.0E0" />
       <origin rpy="0.0 0.0 -1.5707963267948963" xyz="0.3 0.0 0.0" />
-      <parent link="${prefix}LBR3R760_iisy_axis2" />
+      <parent link="${prefix}link_2" />
     </joint>
     <joint name="${prefix}joint_a4" type="revolute">
       <axis xyz="0.0 0.0 1.0" />
-      <child link="${prefix}LBR3R760_iisy_axis4" />
+      <child link="${prefix}link_4" />
       <limit effort="5.0E0" lower="-3.05432619E0" upper="3.05432619E0" velocity="2.0E0" />
       <origin rpy="1.5707963267948963 0.0 -0.0" xyz="0.0 0.0 0.0" />
-      <parent link="${prefix}LBR3R760_iisy_axis3" />
+      <parent link="${prefix}link_3" />
     </joint>
     <joint name="${prefix}joint_a5" type="revolute">
       <axis xyz="0.0 0.0 1.0" />
-      <child link="${prefix}LBR3R760_iisy_axis5" />
+      <child link="${prefix}link_5" />
       <limit effort="5.0E0" lower="-1.919862177E0" upper="1.919862177E0" velocity="2.0E0" />
       <origin rpy="-1.5707963267948963 0.0 -0.0" xyz="0.0 0.0 -0.3" />
-      <parent link="${prefix}LBR3R760_iisy_axis4" />
+      <parent link="${prefix}link_4" />
     </joint>
     <joint name="${prefix}joint_a6" type="revolute">
       <axis xyz="0.0 0.0 1.0" />
-      <child link="${prefix}LBR3R760_iisy_axis6" />
+      <child link="${prefix}link_6" />
       <limit effort="5.0E0" lower="-3.839724354E0" upper="3.839724354E0" velocity="2.0E0" />
       <origin rpy="1.5707963267948963 0.0 -0.0" xyz="0.0 0.0 0.0" />
-      <parent link="${prefix}LBR3R760_iisy_axis5" />
+      <parent link="${prefix}link_5" />
+    </joint>
+
+    <!-- ROS-Industrial 'base' frame - equivalent of 'KUKA ROBROOT'-->
+    <link name="${prefix}base" />
+    <joint name="${prefix}base_link-base" type="fixed">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <parent link="${prefix}base_link"/>
+      <child link="${prefix}base"/>
     </joint>
 
     <!-- ROS-Industrial 'flange' frame - attachment point for EEF models -->
-    <link name="${prefix}LBR3R760_iisy_flange" />
+    <link name="${prefix}flange" />
     <joint name="${prefix}link6-flange" type="fixed">
-      <child link="${prefix}LBR3R760_iisy_flange" />
+      <child link="${prefix}flange" />
       <origin rpy="0 3.14159265359  -0.0" xyz="0.0 0.0 -0.1605" />
-      <parent link="${prefix}LBR3R760_iisy_axis6" />
+      <parent link="${prefix}link_6" />
     </joint>
 
     <!-- ROS-Industrial 'tool0' frame - all-zeros tool frame -->
-    <link name="${prefix}LBR3R760_iisy_tool0" />
+    <link name="${prefix}tool0" />
     <joint name="${prefix}flange-tool0" type="fixed">
-      <child link="${prefix}LBR3R760_iisy_tool0" />
+      <child link="${prefix}tool0" />
       <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0" />
-      <parent link="${prefix}LBR3R760_iisy_flange" />
+      <parent link="${prefix}flange" />
     </joint>
     <xacro:include filename="$(find kuka_lbr_iisy_support)/urdf/lbr_iisy_transmission.xacro" />
   </xacro:macro>
