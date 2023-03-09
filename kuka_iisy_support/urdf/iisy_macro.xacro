@@ -18,7 +18,7 @@
     <link name="${prefix}LBR3R760_iisy_fixedbase">
       <collision>
         <geometry>
-          <mesh filename="package://kuka_iisy_support/meshes/robotbase.stl" />
+          <mesh filename="package://kuka_iisy_support/meshes/LBR3R760/collision/base_link.stl" />
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0" />
       </collision>
@@ -29,7 +29,7 @@
       </inertial>
       <visual>
         <geometry>
-          <mesh filename="package://kuka_iisy_support/meshes/robotbase.stl" />
+          <mesh filename="package://kuka_iisy_support/meshes/LBR3R760/visual/base_link.stl" />
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0" />
       </visual>
@@ -37,7 +37,7 @@
     <link name="${prefix}LBR3R760_iisy_axis1">
       <collision>
         <geometry>
-          <mesh filename="package://kuka_iisy_support/meshes/link1.stl" />
+          <mesh filename="package://kuka_iisy_support/meshes/LBR3R760/collision/link_1.stl" />
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0" />
       </collision>
@@ -48,7 +48,7 @@
       </inertial>
       <visual>
         <geometry>
-          <mesh filename="package://kuka_iisy_support/meshes/link1.stl" />
+          <mesh filename="package://kuka_iisy_support/meshes/LBR3R760/visual/link_1.stl" />
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0" />
       </visual>
@@ -56,7 +56,7 @@
     <link name="${prefix}LBR3R760_iisy_axis2">
       <collision>
         <geometry>
-          <mesh filename="package://kuka_iisy_support/meshes/link2.stl" />
+          <mesh filename="package://kuka_iisy_support/meshes/LBR3R760/collision/link_2.stl" />
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0" />
       </collision>
@@ -67,7 +67,7 @@
       </inertial>
       <visual>
         <geometry>
-          <mesh filename="package://kuka_iisy_support/meshes/link2.stl" />
+          <mesh filename="package://kuka_iisy_support/meshes/LBR3R760/visual/link_2.stl" />
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0" />
       </visual>
@@ -75,7 +75,7 @@
     <link name="${prefix}LBR3R760_iisy_axis3">
       <collision>
         <geometry>
-          <mesh filename="package://kuka_iisy_support/meshes/link3.stl" />
+          <mesh filename="package://kuka_iisy_support/meshes/LBR3R760/collision/link_3.stl" />
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0" />
       </collision>
@@ -86,7 +86,7 @@
       </inertial>
       <visual>
         <geometry>
-          <mesh filename="package://kuka_iisy_support/meshes/link3.stl" />
+          <mesh filename="package://kuka_iisy_support/meshes/LBR3R760/visual/link_3.stl" />
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0" />
       </visual>
@@ -94,7 +94,7 @@
     <link name="${prefix}LBR3R760_iisy_axis4">
       <collision>
         <geometry>
-          <mesh filename="package://kuka_iisy_support/meshes/link4.stl" />
+          <mesh filename="package://kuka_iisy_support/meshes/LBR3R760/collision/link_4.stl" />
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0" />
       </collision>
@@ -105,7 +105,7 @@
       </inertial>
       <visual>
         <geometry>
-          <mesh filename="package://kuka_iisy_support/meshes/link4.stl" />
+          <mesh filename="package://kuka_iisy_support/meshes/LBR3R760/visual/link_4.stl" />
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0" />
       </visual>
@@ -113,7 +113,7 @@
     <link name="${prefix}LBR3R760_iisy_axis5">
       <collision>
         <geometry>
-          <mesh filename="package://kuka_iisy_support/meshes/link5.stl" />
+          <mesh filename="package://kuka_iisy_support/meshes/LBR3R760/collision/link_5.stl" />
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0" />
       </collision>
@@ -124,7 +124,7 @@
       </inertial>
       <visual>
         <geometry>
-          <mesh filename="package://kuka_iisy_support/meshes/link5.stl" />
+          <mesh filename="package://kuka_iisy_support/meshes/LBR3R760/visual/link_5.stl" />
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0" />
       </visual>
@@ -132,7 +132,7 @@
     <link name="${prefix}LBR3R760_iisy_axis6">
       <collision>
         <geometry>
-          <mesh filename="package://kuka_iisy_support/meshes/link6.stl" />
+          <mesh filename="package://kuka_iisy_support/meshes/LBR3R760/collision/link_6.stl" />
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0" />
       </collision>
@@ -143,7 +143,7 @@
       </inertial>
       <visual>
         <geometry>
-          <mesh filename="package://kuka_iisy_support/meshes/link6.stl" />
+          <mesh filename="package://kuka_iisy_support/meshes/LBR3R760/visual/link_6.stl" />
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0" />
       </visual>
