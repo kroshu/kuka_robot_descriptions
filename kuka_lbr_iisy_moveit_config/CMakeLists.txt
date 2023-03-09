@@ -6,7 +6,7 @@ find_package(ament_cmake REQUIRED)
 find_package(urdf REQUIRED)
 find_package(xacro REQUIRED)
 
-xacro_add_files(TARGET xacro srdf/iisy_arm.srdf.xacro OUTPUT iisy.srdf INSTALL DESTINATION config)
+xacro_add_files(TARGET xacro srdf/lbr_iisy_arm.srdf.xacro OUTPUT lbr_iisy.srdf INSTALL DESTINATION config)
 
 install(DIRECTORY config
   DESTINATION share/${PROJECT_NAME})
