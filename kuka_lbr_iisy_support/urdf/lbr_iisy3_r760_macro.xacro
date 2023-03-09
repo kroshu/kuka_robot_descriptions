@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="LBRiisy3R760">
+  <!-- include helper xacros -->
+  <xacro:include filename="$(find kuka_lbr_iisy_support)/urdf/lbr_iisy_ros2_control.xacro" />
+  <xacro:include filename="$(find kuka_resources)/urdf/common_materials.xacro"/>
+  <xacro:include filename="$(find kuka_lbr_iisy_support)/urdf/lbr_iisy_transmission.xacro" />
+  
   <xacro:macro name="kuka_lbr3_r760_robot" params="prefix client_ip controller_ip control_mode consequent_lost_packets lost_packets_in_timeframe timeframe_ms">
-    <xacro:include filename="$(find kuka_lbr_iisy_support)/urdf/lbr_iisy_ros2_control.xacro" />
-
     <!-- ros2 control instance -->
     <xacro:kuka_lbr_iisy_ros2_control
     name="LBRiisy3R760" 
@@ -32,6 +35,7 @@
           <mesh filename="package://kuka_lbr_iisy_support/meshes/LBRiisy3R760/visual/base_link.stl" />
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0" />
+        <xacro:material_kuka_ral_pure_white />
       </visual>
     </link>
     <link name="${prefix}link_1">
@@ -51,6 +55,7 @@
           <mesh filename="package://kuka_lbr_iisy_support/meshes/LBRiisy3R760/visual/link_1.stl" />
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0" />
+        <xacro:material_kuka_ral_pure_white />
       </visual>
     </link>
     <link name="${prefix}link_2">
@@ -70,6 +75,7 @@
           <mesh filename="package://kuka_lbr_iisy_support/meshes/LBRiisy3R760/visual/link_2.stl" />
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0" />
+        <xacro:material_kuka_ral_pure_white />
       </visual>
     </link>
     <link name="${prefix}link_3">
@@ -89,6 +95,7 @@
           <mesh filename="package://kuka_lbr_iisy_support/meshes/LBRiisy3R760/visual/link_3.stl" />
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0" />
+        <xacro:material_kuka_ral_pure_white />
       </visual>
     </link>
     <link name="${prefix}link_4">
@@ -108,6 +115,7 @@
           <mesh filename="package://kuka_lbr_iisy_support/meshes/LBRiisy3R760/visual/link_4.stl" />
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0" />
+        <xacro:material_kuka_ral_pure_white />
       </visual>
     </link>
     <link name="${prefix}link_5">
@@ -127,6 +135,7 @@
           <mesh filename="package://kuka_lbr_iisy_support/meshes/LBRiisy3R760/visual/link_5.stl" />
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0" />
+        <xacro:material_kuka_ral_pure_white />
       </visual>
     </link>
     <link name="${prefix}link_6">
@@ -146,6 +155,7 @@
           <mesh filename="package://kuka_lbr_iisy_support/meshes/LBRiisy3R760/visual/link_6.stl" />
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0" />
+        <xacro:material_kuka_ral_pure_white />
       </visual>
     </link>
 
@@ -161,35 +171,35 @@
       <axis xyz="0.0 0.0 1.0" />
       <child link="${prefix}link_2" />
       <limit effort="5.0E0" lower="-4.0142572796E0" upper="8.726646E-1" velocity="2.0E0" />
-      <origin rpy="-1.5707963267948963 0.0 -0.0" xyz="0.0 0.0 0.0886" />
+      <origin rpy="${-pi/2.0} 0.0 -0.0" xyz="0.0 0.0 0.0886" />
       <parent link="${prefix}link_1" />
     </joint>
     <joint name="${prefix}joint_a3" type="revolute">
       <axis xyz="0.0 0.0 1.0" />
       <child link="${prefix}link_3" />
       <limit effort="5.0E0" lower="-2.61799387799E0" upper="2.61799387799E0" velocity="2.0E0" />
-      <origin rpy="0.0 0.0 -1.5707963267948963" xyz="0.3 0.0 0.0" />
+      <origin rpy="0.0 0.0 ${-pi/2.0}" xyz="0.3 0.0 0.0" />
       <parent link="${prefix}link_2" />
     </joint>
     <joint name="${prefix}joint_a4" type="revolute">
       <axis xyz="0.0 0.0 1.0" />
       <child link="${prefix}link_4" />
       <limit effort="5.0E0" lower="-3.05432619E0" upper="3.05432619E0" velocity="2.0E0" />
-      <origin rpy="1.5707963267948963 0.0 -0.0" xyz="0.0 0.0 0.0" />
+      <origin rpy="${pi/2.0} 0.0 -0.0" xyz="0.0 0.0 0.0" />
       <parent link="${prefix}link_3" />
     </joint>
     <joint name="${prefix}joint_a5" type="revolute">
       <axis xyz="0.0 0.0 1.0" />
       <child link="${prefix}link_5" />
       <limit effort="5.0E0" lower="-1.919862177E0" upper="1.919862177E0" velocity="2.0E0" />
-      <origin rpy="-1.5707963267948963 0.0 -0.0" xyz="0.0 0.0 -0.3" />
+      <origin rpy="${-pi/2.0} 0.0 -0.0" xyz="0.0 0.0 -0.3" />
       <parent link="${prefix}link_4" />
     </joint>
     <joint name="${prefix}joint_a6" type="revolute">
       <axis xyz="0.0 0.0 1.0" />
       <child link="${prefix}link_6" />
       <limit effort="5.0E0" lower="-3.839724354E0" upper="3.839724354E0" velocity="2.0E0" />
-      <origin rpy="1.5707963267948963 0.0 -0.0" xyz="0.0 0.0 0.0" />
+      <origin rpy="${pi/2.0} 0.0 -0.0" xyz="0.0 0.0 0.0" />
       <parent link="${prefix}link_5" />
     </joint>
 
@@ -205,7 +215,7 @@
     <link name="${prefix}flange" />
     <joint name="${prefix}link6-flange" type="fixed">
       <child link="${prefix}flange" />
-      <origin rpy="0 3.14159265359  -0.0" xyz="0.0 0.0 -0.1605" />
+      <origin rpy="0 ${pi} -0.0" xyz="0.0 0.0 -0.1605" />
       <parent link="${prefix}link_6" />
     </joint>
 
@@ -216,6 +226,5 @@
       <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0" />
       <parent link="${prefix}flange" />
     </joint>
-    <xacro:include filename="$(find kuka_lbr_iisy_support)/urdf/lbr_iisy_transmission.xacro" />
   </xacro:macro>
 </robot>
