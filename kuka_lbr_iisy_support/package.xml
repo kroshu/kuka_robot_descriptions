@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <package format="3">
-  <name>kuka_iisy_support</name>
+  <name>kuka_lbr_iisy_support</name>
   <version>0.1.0</version>
   <description>Package containing model of KUKA iisy</description>
   <author>Aron Svastits</author>

@@ -26,8 +26,8 @@ def generate_launch_description():
             PathJoinSubstitution([FindExecutable(name="xacro")]),
             " ",
             PathJoinSubstitution(
-                [FindPackageShare("kuka_iisy_support"),
-                 "urdf", "iisy.urdf.xacro"]
+                [FindPackageShare("kuka_lbr_iisy_support"),
+                 "urdf", "lbr_iisy3_r760.urdf.xacro"]
             ),
             " ",
         ]
@@ -36,7 +36,7 @@ def generate_launch_description():
 
     # RViz
     rviz_config_file = PathJoinSubstitution([FindPackageShare(
-        'kuka_iisy_support'), "config", "simple_urdf.rviz"])
+        'kuka_lbr_iisy_support'), "config", "simple_urdf.rviz"])
     rviz_node = Node(package='rviz2',
                      executable='rviz2',
                      name='rviz2_launch',
