@@ -18,7 +18,9 @@
     timeframe_ms="${timeframe_ms}" />
 
     <!-- links - main serial chain -->
-    <link name="${prefix}base_link">
+    <!-- links - root element cannot have inertia, therefore a dummy base_link is needed -->
+    <link name="${prefix}base_link"/>
+    <link name="${prefix}base_link_inertia">
       <collision>
         <geometry>
           <mesh filename="package://kuka_lbr_iisy_support/meshes/LBRiisy3R760/collision/base_link.stl" />
@@ -160,12 +162,17 @@
     </link>
 
     <!-- joints - main serial chain -->
+    <joint name="${prefix}base_link-base_link_inertia" type="fixed">
+      <parent link="${prefix}base_link" />
+      <child link="${prefix}base_link_inertia" />
+      <origin xyz="0 0 0" rpy="0 0 0" />
+    </joint>
     <joint name="${prefix}joint_a1" type="revolute">
       <axis xyz="0.0 0.0 -1.0" />
       <child link="${prefix}link_1" />
       <limit effort="5.0E0" lower="-3.2288591E0" upper="3.2288591E0" velocity="2.0E0" />
       <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.1264" />
-      <parent link="${prefix}base_link" />
+      <parent link="${prefix}base_link_inertia" />
     </joint>
     <joint name="${prefix}joint_a2" type="revolute">
       <axis xyz="0.0 0.0 1.0" />
