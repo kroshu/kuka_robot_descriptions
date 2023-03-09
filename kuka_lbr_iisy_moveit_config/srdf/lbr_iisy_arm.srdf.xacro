@@ -4,6 +4,6 @@
     A URDF file must exist for this robot as well, where the joints and the links that are referenced are defined
 -->
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="LBRiisy3R760">
-  <xacro:include filename="lbr_iisy_arm.xacro" />
+  <xacro:include filename="lbr_iisy_arm.macro.xacro" />
   <xacro:kuka_lbr_iisy_arm />
 </robot>
