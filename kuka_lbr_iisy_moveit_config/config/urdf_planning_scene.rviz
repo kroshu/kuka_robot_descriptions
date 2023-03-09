@@ -243,8 +243,9 @@ Visualization Manager:
                     link_5:
                       link_6:
                         flange:
-                          tool0:
-                            {}
+                          {}
+                        tool0:
+                          {}
       Update Interval: 0
       Value: true
   Enabled: true
