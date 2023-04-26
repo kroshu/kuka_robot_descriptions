@@ -1,5 +1,5 @@
 <?xml version="1.0" ?>
-<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="LBRiisy3R760">
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
   <xacro:macro name="kuka_lbr_iisy_arm" params="prefix">
     <!--GROUPS: Representation of a set of joints and links. This can be useful for specifying DOF to plan for, defining arms, end effectors, etc-->
     <!--LINKS: When a link is specified, the parent joint of that link (if it exists) is automatically included-->
