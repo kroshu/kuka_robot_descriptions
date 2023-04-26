@@ -2,7 +2,7 @@
 <package format="3">
   <name>kuka_lbr_iisy_support</name>
   <version>0.1.0</version>
-  <description>Package containing model of KUKA iisy</description>
+  <description>Package containing models of KUKA LBR iisy family</description>
   <author>Aron Svastits</author>
   <maintainer email="svastits1@gmail.com"></maintainer>
   <license>BSD</license>
