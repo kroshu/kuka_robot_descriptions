@@ -4,7 +4,7 @@ This package contains resources that helps offline experiment of KUKA robots.
 
 Github CI 
 ------------
-[![Build Status](https://github.com/kroshu/ros2_kuka_sunrise/workflows/CI/badge.svg?branch=master)](https://github.com/kroshu/kuka_simulators/actions)
+[![Build Status](https://github.com/kroshu/kuka_simulators/workflows/CI/badge.svg?branch=main)](https://github.com/kroshu/kuka_simulators/actions)
 
 ## What is included?
 
