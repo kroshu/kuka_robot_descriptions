@@ -8,6 +8,7 @@ find_package(xacro REQUIRED)
 
 xacro_add_files(TARGET iisy3 srdf/lbr_iisy3_r760_arm.srdf.xacro OUTPUT lbr_iisy3_r760.srdf INSTALL DESTINATION urdf)
 xacro_add_files(TARGET iisy11 srdf/lbr_iisy11_r1300_arm.srdf.xacro OUTPUT lbr_iisy11_r1300.srdf INSTALL DESTINATION urdf)
+xacro_add_files(TARGET iisy15 srdf/lbr_iisy15_r930_arm.srdf.xacro OUTPUT lbr_iisy15_r930.srdf INSTALL DESTINATION urdf)
 
 install(DIRECTORY config
   DESTINATION share/${PROJECT_NAME})
