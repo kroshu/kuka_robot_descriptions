@@ -68,8 +68,8 @@
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0" />
       </collision>
       <inertial>
-        <inertia ixx="0.0181557" ixy="0.0" ixz="0.0" iyy="0.03469164" iyz="0.0" izz="0.03777695"/>
-        <mass value="8.079E0"/>
+      <inertia ixx="0.0181557" ixy="0.0" ixz="0.0" iyy="0.03469164" iyz="0.0" izz="0.03777695"/>
+      <mass value="8.079E0"/>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0" />
       </inertial>
       <visual>
@@ -222,7 +222,7 @@
     <link name="${prefix}flange" />
     <joint name="${prefix}link6-flange" type="fixed">
       <child link="${prefix}flange" />
-      <origin rpy="0 ${pi} -0.0" xyz="0.0 0.0 -0.18" /> <!--TODO-->
+      <origin rpy="0 ${pi} -0.0" xyz="0.0 0.0 -0.178" />
       <parent link="${prefix}link_6" />
     </joint>
 
@@ -230,7 +230,7 @@
     <link name="${prefix}tool0" />
     <joint name="${prefix}link6-tool0" type="fixed">
       <child link="${prefix}tool0" />
-      <origin rpy="0 ${pi} -0.0" xyz="0.0 0.0 -0.18" /> <!--TODO-->
+      <origin rpy="0 ${pi} -0.0" xyz="0.0 0.0 -0.178" />
       <parent link="${prefix}link_6" />
     </joint>
   </xacro:macro>
