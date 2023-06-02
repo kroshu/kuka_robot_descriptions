@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <xacro:macro name="diffbot_ros2_control" params="name prefix client_ip controller_ip control_mode consequent_lost_packets lost_packets_in_timeframe timeframe_ms">
+
+    <ros2_control name="${name}" type="system">
+      <hardware>
+        <plugin>kuka_rox::KukaRoXHardwareInterface</plugin>
+        <param name="client_ip">${client_ip}</param>
+        <param name="controller_ip">${controller_ip}</param>
+        <param name="control_mode">${control_mode}</param>
+        <param name="consequent_lost_packets">${consequent_lost_packets}</param>
+        <param name="lost_packets_in_timeframe">${lost_packets_in_timeframe}</param>
+        <param name="timeframe_ms">${timeframe_ms}</param>
+
+        <param name="example_param_hw_start_duration_sec">0</param>
+        <param name="example_param_hw_stop_duration_sec">3.0</param>
+      </hardware>
+      <joint name="${prefix}left_wheel_motor">
+        <command_interface name="velocity"/>
+        <state_interface name="position"/>
+        <state_interface name="velocity"/>
+      </joint>
+      <joint name="${prefix}right_wheel_motor">
+        <command_interface name="velocity"/>
+        <state_interface name="position"/>
+        <state_interface name="velocity"/>
+      </joint>
+    </ros2_control>
+
+  </xacro:macro>
+
+</robot>

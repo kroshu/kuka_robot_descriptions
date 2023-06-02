@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="LBRiisy15R930">
+  <!-- include helper xacros -->
+  <xacro:include filename="$(find kuka_mobile_robot_support)/ros2_control/diffbot.ros2_control.xacro" />
+  <xacro:include filename="$(find kuka_resources)/urdf/common_materials.xacro"/>
+  
+  <xacro:macro name="diffbot_kuka_robot" params="prefix client_ip controller_ip control_mode consequent_lost_packets lost_packets_in_timeframe timeframe_ms">
+    <!-- ros2 control instance -->
+    <xacro:diffbot_ros2_control
+      name="KUKA_MR" 
+      prefix="${prefix}"
+      client_ip="${client_ip}"
+      controller_ip="${controller_ip}"
+      control_mode="${control_mode}"
+      consequent_lost_packets="${consequent_lost_packets}"
+      lost_packets_in_timeframe="${lost_packets_in_timeframe}"
+      timeframe_ms="${timeframe_ms}" />
+    <!-- Include and instatiate diffbot description urdf file-->
+    <xacro:include filename="$(find kuka_mobile_robot_support)/urdf/diffbot_description.urdf.xacro" />
+    
+    <xacro:diffbot prefix="${prefix}" />
+
+   
+    
+  </xacro:macro>
+</robot>
