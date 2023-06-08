@@ -40,7 +40,7 @@ def generate_launch_description():
     declared_arguments.append(
         DeclareLaunchArgument(
             "description_package",
-            default_value="generic_differential_mr_description",
+            default_value="kuka_mobile_robot_support",
             description="Description package with robot URDF/xacro files. Usually the argument \
         is not set, it enables use of a custom description.",
         )
@@ -78,17 +78,17 @@ def generate_launch_description():
     #)
     
     robot_description_config = load_file(
-        'generic_differential_mr_description', 'urdf/DifferentialMR.urdf')
+        'kuka_mobile_robot_support', 'urdf/DifferentialMR.urdf')
     robot_description = {'robot_description': robot_description_config}
     print(robot_description_config)
     rviz_config_file = PathJoinSubstitution(
-        [FindPackageShare(description_package), "config", "differentialMR_view.rviz"]
+        [FindPackageShare(description_package), "config", "differentialMR.rviz"]
     )
 
-    #oint_state_publisher_node = Node(
-    #    package="joint_state_publisher_gui",
-    #    executable="joint_state_publisher_gui",
-    #)
+    joint_state_publisher_node = Node(
+        package="joint_state_publisher_gui",
+        executable="joint_state_publisher_gui",
+    )
     robot_state_publisher_node = Node(
         package="robot_state_publisher",
         executable="robot_state_publisher",
@@ -104,7 +104,7 @@ def generate_launch_description():
     )
 
     nodes = [
-        #joint_state_publisher_node,
+        joint_state_publisher_node,
         robot_state_publisher_node,
         rviz_node,
     ]

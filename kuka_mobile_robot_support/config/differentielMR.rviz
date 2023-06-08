@@ -66,6 +66,11 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
+        generic_mr_body_dummy:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
         caster_base_fl_link:
           Alpha: 1
           Show Axes: false
@@ -124,7 +129,7 @@ Visualization Manager:
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
-    Fixed Frame: odom
+    Fixed Frame: generic_mr_body_dummy
     Frame Rate: 30
   Name: root
   Tools:
