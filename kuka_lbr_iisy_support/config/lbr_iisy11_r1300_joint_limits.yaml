@@ -13,41 +13,41 @@ joint_limits:
     has_velocity_limits: true
     max_velocity: 3.490656
     has_acceleration_limits: true
-    max_acceleration: 17.929068
+    max_acceleration: 11.089258
     has_jerk: true
-    max_jerk: 3685.289606
+    max_jerk: 3757.777778
   joint_a2:
     has_velocity_limits: true
     max_velocity: 3.490656
     has_acceleration_limits: true
-    max_acceleration: 1.324527
+    max_acceleration: 1.105824
     has_jerk: true
-    max_jerk: 2653.054380
+    max_jerk: 3391.182265
   joint_a3:
     has_velocity_limits: true
     max_velocity: 3.490656
     has_acceleration_limits: true
-    max_acceleration: 1.931703
+    max_acceleration: 1.836823
     has_jerk: true
-    max_jerk: 1274.691677
+    max_jerk: 1362.865183
   joint_a4:
     has_velocity_limits: true
     max_velocity: 4.014255
     has_acceleration_limits: true
-    max_acceleration: 20.760275
+    max_acceleration: 40.248068
     has_jerk: true
-    max_jerk: 588.650348
+    max_jerk: 606.319878
   joint_a5:
     has_velocity_limits: true
     max_velocity: 4.537856
     has_acceleration_limits: true
-    max_acceleration: 17.729259
+    max_acceleration: 43.739157
     has_jerk: true
-    max_jerk: 542.410163
+    max_jerk: 598.681915
   joint_a6:
     has_velocity_limits: true
     max_velocity: 7.504909
     has_acceleration_limits: true
-    max_acceleration: 98.845225
+    max_acceleration: 134.647432
     has_jerk: true
-    max_jerk: 147.477480
+    max_jerk: 145.557710
