@@ -14,7 +14,6 @@
 
 import sys
 import socket
-import time
 import xml.etree.ElementTree as ET
 import numpy as np
 
@@ -48,7 +47,9 @@ def parse_rsi_xml_sen(data):
     desired_joint_correction = np.array([AK['A1'], AK['A2'], AK['A3'],
                                         AK['A4'], AK['A5'], AK['A6']]).astype(np.float64)
     IPOC = root.find('IPOC').text
-    return desired_joint_correction, int(IPOC)
+    stop_flag = root.find('Stop').text
+
+    return desired_joint_correction, int(IPOC), bool(int(stop_flag))
 
 
 class RSISimulator(Node):
@@ -83,13 +84,9 @@ class RSISimulator(Node):
         self.get_logger().info('rsi_ip_address: {}'.format(self.rsi_ip_address_))
         self.get_logger().info('rsi_port: {}'.format(self.rsi_port_address_))
 
-        try:
-            self.socket_ = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-            self.get_logger().info('{}, Successfully created socket'.format(self.node_name_))
-            self.socket_.settimeout(self.cycle_time)
-        except self.socket_.error:
-            self.get_logger().fatal('{} Could not create socket'.format(self.node_name_))
-            sys.exit()
+        self.socket_ = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        self.get_logger().info('{}, Successfully created socket'.format(self.node_name_))
+        self.socket_.settimeout(self.cycle_time)
 
     def timer_callback(self):
         if self.timeout_count == 100:
@@ -102,25 +99,28 @@ class RSISimulator(Node):
             self.socket_.sendto(msg, (self.rsi_ip_address_, self.rsi_port_address_))
             recv_msg, addr = self.socket_.recvfrom(1024)
             self.rsi_cmd_pub_.publish(recv_msg)
-            des_joint_correction_absolute, ipoc_recv = parse_rsi_xml_sen(recv_msg)
+            self.get_logger().warn('msg: {}'.format(recv_msg))
+            des_joint_correction_absolute, ipoc_recv, stop_flag = parse_rsi_xml_sen(recv_msg)
             if ipoc_recv == self.ipoc:
                 self.act_joint_pos = self.initial_joint_pos + des_joint_correction_absolute
             else:
                 self.get_logger().warn('{}: Packet is late'.format(self.node_name_))
-                self.get_logger().warn('{}: sent ipoc: {}, received: {}'.format(self.node_name_, self.ipoc, ipoc_recv))
-                if ipoc != 0:
+                self.get_logger().warn('{}: sent ipoc: {}, received: {}'.
+                                       format(self.node_name_, self.ipoc, ipoc_recv))
+                if self.ipoc != 0:
                     self.timeout_count += 1
             self.ipoc += 1
+            if stop_flag:
+                self.on_shutdown()
+                sys.exit()
         except OSError:
-            self.get_logger().warn('{}: Socket timed out'.format(self.node_name_))
-            self.timeout_count += 1
-        except self.socket_.error as e:
-            if e.errno != errno.EINTR:
-                raise
+            if self.ipoc != 0:
+                self.timeout_count += 1
+                self.get_logger().warn('{}: Socket timed out'.format(self.node_name_))
 
     def on_shutdown(self):
         self.socket_.close()
-        self.node.get_logger().info('Socket closed.')
+        self.get_logger().info('Socket closed.')
 
 
 def main():
