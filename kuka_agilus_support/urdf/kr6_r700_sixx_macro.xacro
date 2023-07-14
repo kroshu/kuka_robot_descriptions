@@ -2,8 +2,18 @@
 <robot xmlns:xacro="http://wiki.ros.org/xacro">
   <xacro:include filename="$(find kuka_resources)/urdf/common_constants.xacro"/>
   <xacro:include filename="$(find kuka_resources)/urdf/common_materials.xacro"/>
+  <xacro:include filename="$(find kuka_agilus_support)/urdf/kr_agilus_ros2_control.xacro" />
+  <xacro:include filename="$(find kuka_agilus_support)/urdf/kr_agilus_transmission.xacro" />
 
   <xacro:macro name="kuka_kr6_r700_sixx_robot" params="prefix client_ip client_port use_fake_hardware">
+    <!-- ros2 control instance -->
+    <xacro:kuka_agilus_ros2_control
+    name="KR6R700sixx" 
+    prefix="${prefix}"
+    client_ip="${client_ip}"
+    client_port="${client_port}"
+    use_fake_hardware="${use_fake_hardware}" />
+
     <link name="${prefix}base_link">
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
