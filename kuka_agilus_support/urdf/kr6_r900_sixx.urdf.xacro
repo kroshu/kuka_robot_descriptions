@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="KR6R900sixx">
+<!-- Import urdf file  -->
+<xacro:include filename="$(find kuka_agilus_support)/urdf/kr6_r900_sixx_macro.xacro"/>
+
+<!-- Read parameters from rsi_config  -->
+<xacro:property name="rsi_config" value="$(find kuka_rsi_hw_interface)/config/rsi_config.yaml" />
+<xacro:property name="rsi_config_dict" value="${xacro.load_yaml(rsi_config)}"/>
+<xacro:property name="client_ip" value="${rsi_config_dict['client_ip']}" />
+<xacro:property name="client_port" value="${rsi_config_dict['client_port']}" />
+
+<!-- Read additional arguments  -->
+<xacro:arg name="use_fake_hardware" default="false" />
+
+<xacro:kuka_kr6_r900_sixx_robot prefix=""
+                  client_ip="${client_ip}" 
+                  client_port="${client_port}" 
+                  use_fake_hardware="$(arg use_fake_hardware)"/>
+</robot>
