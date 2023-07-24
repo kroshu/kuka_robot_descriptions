@@ -12,7 +12,8 @@
     client_port="${client_port}"
     use_fake_hardware="${use_fake_hardware}" />
 
-    <link name="${prefix}base_link">
+    <link name="${prefix}base_link"/>
+    <link name="${prefix}base_link_inertia">
       <collision>
         <geometry>
           <mesh filename="package://kuka_cybertech_support/meshes/kr16_r2010-2/collision/base_link.stl"/>
@@ -146,12 +147,17 @@
       </visual>
     </link>
 
+    <joint name="${prefix}base_link-base_link_inertia" type="fixed">
+      <parent link="${prefix}base_link" />
+      <child link="${prefix}base_link_inertia" />
+      <origin xyz="0 0 0" rpy="0 0 0" />
+    </joint>
     <joint name="${prefix}joint_a1" type="revolute">
       <axis xyz="0.0 0.0 1.0"/>
       <child link="${prefix}link_1"/>
       <limit effort="0.0E0" lower="-3.2288591162E0" upper="3.2288591161895095E0" velocity="4.801E3"/>
       <origin rpy="-3.141592653589793 0.0 -0.0" xyz="0.0 0.0 0.0"/>
-      <parent link="${prefix}base_link"/>
+      <parent link="${prefix}base_link_inertia"/>
     </joint>
     <joint name="${prefix}joint_a2" type="revolute">
       <axis xyz="0.0 0.0 1.0"/>
