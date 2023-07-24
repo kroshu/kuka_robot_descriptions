@@ -8,7 +8,7 @@
   <xacro:macro name="kuka_kr6_r700_sixx_robot" params="prefix client_ip client_port use_fake_hardware">
     <!-- ros2 control instance -->
     <xacro:kuka_agilus_ros2_control
-    name="KR6R700sixx" 
+    name="kr6_r700_sixx" 
     prefix="${prefix}"
     client_ip="${client_ip}"
     client_port="${client_port}"
@@ -18,14 +18,14 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://kuka_agilus_support/meshes/KR6R700sixx/visual/base_link.dae" />
+          <mesh filename="package://kuka_agilus_support/meshes/kr6_r700_sixx/visual/base_link.dae" />
         </geometry>
         <xacro:material_kuka_pedestal />
       </visual>
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://kuka_agilus_support/meshes/KR6R700sixx/collision/base_link.stl" />
+          <mesh filename="package://kuka_agilus_support/meshes/kr6_r700_sixx/collision/base_link.stl" />
         </geometry>
       </collision>
     </link>
@@ -33,14 +33,14 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://kuka_agilus_support/meshes/KR6R700sixx/visual/link_1.dae" />
+          <mesh filename="package://kuka_agilus_support/meshes/kr6_r700_sixx/visual/link_1.dae" />
         </geometry>
         <xacro:material_kuka_orange />
       </visual>
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://kuka_agilus_support/meshes/KR6R700sixx/collision/link_1.stl" />
+          <mesh filename="package://kuka_agilus_support/meshes/kr6_r700_sixx/collision/link_1.stl" />
         </geometry>
       </collision>
     </link>
@@ -48,14 +48,14 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://kuka_agilus_support/meshes/KR6R700sixx/visual/link_2.dae" />
+          <mesh filename="package://kuka_agilus_support/meshes/kr6_r700_sixx/visual/link_2.dae" />
         </geometry>
         <xacro:material_kuka_orange />
       </visual>
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://kuka_agilus_support/meshes/KR6R700sixx/collision/link_2.stl" />
+          <mesh filename="package://kuka_agilus_support/meshes/kr6_r700_sixx/collision/link_2.stl" />
         </geometry>
       </collision>
     </link>
@@ -63,14 +63,14 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://kuka_agilus_support/meshes/KR6R700sixx/visual/link_3.dae" />
+          <mesh filename="package://kuka_agilus_support/meshes/kr6_r700_sixx/visual/link_3.dae" />
         </geometry>
         <xacro:material_kuka_orange />
       </visual>
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://kuka_agilus_support/meshes/KR6R700sixx/collision/link_3.stl" />
+          <mesh filename="package://kuka_agilus_support/meshes/kr6_r700_sixx/collision/link_3.stl" />
         </geometry>
       </collision>
     </link>
@@ -78,14 +78,14 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://kuka_agilus_support/meshes/KR6R700sixx/visual/link_4.dae" />
+          <mesh filename="package://kuka_agilus_support/meshes/kr6_r700_sixx/visual/link_4.dae" />
         </geometry>
         <xacro:material_kuka_orange />
       </visual>
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://kuka_agilus_support/meshes/KR6R700sixx/collision/link_4.stl" />
+          <mesh filename="package://kuka_agilus_support/meshes/kr6_r700_sixx/collision/link_4.stl" />
         </geometry>
       </collision>
     </link>
@@ -93,14 +93,14 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://kuka_agilus_support/meshes/KR6R700sixx/visual/link_5.dae" />
+          <mesh filename="package://kuka_agilus_support/meshes/kr6_r700_sixx/visual/link_5.dae" />
         </geometry>
         <xacro:material_kuka_orange />
       </visual>
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://kuka_agilus_support/meshes/KR6R700sixx/collision/link_5.stl" />
+          <mesh filename="package://kuka_agilus_support/meshes/kr6_r700_sixx/collision/link_5.stl" />
         </geometry>
       </collision>
     </link>
@@ -108,14 +108,14 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://kuka_agilus_support/meshes/KR6R700sixx/visual/link_6.dae" />
+          <mesh filename="package://kuka_agilus_support/meshes/kr6_r700_sixx/visual/link_6.dae" />
         </geometry>
         <xacro:material_kuka_pedestal />
       </visual>
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://kuka_agilus_support/meshes/KR6R700sixx/collision/link_6.stl" />
+          <mesh filename="package://kuka_agilus_support/meshes/kr6_r700_sixx/collision/link_6.stl" />
         </geometry>
       </collision>
     </link>
