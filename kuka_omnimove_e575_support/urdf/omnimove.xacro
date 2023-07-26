@@ -18,4 +18,17 @@
         </collision>
       </link>
   </xacro:macro>
+  <xacro:macro name="omnimove_ros2_control" params="name">
+      <ros2_control name="omnimove" type="system">
+            <hardware>
+                <plugin>omnimove::OmnimoveExternalControl</plugin>
+            </hardware>
+            <joint name="move">
+                <command_interface name="velocity">
+                </command_interface>
+                <state_interface name="position"/>
+                <state_interface name="velocity"/>
+            </joint>
+      </ros2_control>
+  </xacro:macro>
 </robot>

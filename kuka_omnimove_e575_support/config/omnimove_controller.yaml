@@ -5,6 +5,8 @@ controller_manager:
       type: joint_trajectory_controller/JointTrajectoryController
     joint_state_broadcaster:
       type: joint_state_broadcaster/JointStateBroadcaster
+    forward_command_controller:
+      type: forward_command_controller/ForwardCommandController
 joint_trajectory_controller:
   ros__parameters:
     joints:
@@ -22,4 +24,13 @@ joint_trajectory_controller:
     state_publish_rate: 250.0
     action_monitor_rate: 20.0
 
+forward_command_controller:
+  ros_parameters:
+    joints:
+    - move
+    - bla
 
+    command_interfaces:
+    - velocity
+    state_interface:
+    - velocity
