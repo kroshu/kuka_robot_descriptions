@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://wiki.ros.org/xacro" name="omnimove">
+  <xacro:macro name="omnimove" params="prefix">
+    prefix="${prefix}"
+      <link name="${prefix}base">
+        <visual>
+          <origin xyz="0 0 0" rpy="0 0 0" />
+          <geometry>
+            <mesh filename="package://kuka_omnimove_e575_support/meshes/omnimove_simplified.dae" />
+          </geometry>
+          <xacro:material_kuka_pedestal />
+        </visual>
+        <collision>
+          <origin xyz="0 0 0" rpy="0 0 0" />
+          <geometry>
+            <mesh filename="package://kuka_omnimove_e575_support/meshes/omnimove_simplified.stl" />
+          </geometry>
+        </collision>
+      </link>
+  </xacro:macro>
+</robot>
