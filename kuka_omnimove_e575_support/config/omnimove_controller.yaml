@@ -25,11 +25,12 @@ joint_trajectory_controller:
     action_monitor_rate: 20.0
 
 forward_command_controller:
-  ros_parameters:
+  ros__parameters:
     joints:
-    - move
-    - bla
-
+    - move_x
+    - move_y
+    - move_theta
+    interface_name: velocity
     command_interfaces:
     - velocity
     state_interface:
