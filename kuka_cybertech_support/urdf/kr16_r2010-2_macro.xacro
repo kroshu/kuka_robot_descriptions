@@ -207,7 +207,7 @@
     <link name="${prefix}flange" />
     <joint name="${prefix}link6-flange" type="fixed">
       <child link="${prefix}flange" />
-      <origin rpy="0 ${pi} -0.0" xyz="0.0 0.0 -0.153" /> <!-- TODO -->
+      <origin rpy="0 ${pi} -0.0" xyz="0.0 0.0 -0.153" /> 
       <parent link="${prefix}link_6" />
     </joint>
 
@@ -215,7 +215,7 @@
     <link name="${prefix}tool0" />
     <joint name="${prefix}link6-tool0" type="fixed">
       <child link="${prefix}tool0" />
-      <origin rpy="0 ${pi} -0.0" xyz="0.0 0.0 -0.153" /> <!-- TODO -->
+      <origin rpy="0 ${pi} -0.0" xyz="0.0 0.0 -0.153" /> 
       <parent link="${prefix}link_6" />
     </joint>
   </xacro:macro>
