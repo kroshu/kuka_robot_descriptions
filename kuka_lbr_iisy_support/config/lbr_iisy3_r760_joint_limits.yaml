@@ -3,7 +3,7 @@
 # Joint limits can be turned off with [has_velocity_limits, has_acceleration_limits]
 
 # The default config of moveit does not take into account the jerk limits, the RuckigTrajectorySmoothing adapter must be
-# added to the planning pipeline to support jerk limits
+# added to the planning pipeline to support jerk limits # TODO: check if jerk dimensions are ok!!
 
 # Easiest way to slow down the robot is to decrease the velocity and acceleration scaling factors
 default_velocity_scaling_factor: 1.0
