@@ -17,8 +17,18 @@ Github CI
 - **kuka_lbr_iiwa7_support** contains urdf, config and mesh files for KUKA LBR iiwa 7 robots
 - **kuka_rsi_simulator** implements a basic RSI simulator. It is also copied from [kuka_experimental](https://github.com/ros-industrial/kuka_experimental) and is ported to ROS2. It implements a UDP socket, and recieves the commands from an RSI interface and sends back the actual position of the robot (as it is a simulation, it is a simple closed loop, it sends what it recieved).
 
-## Running the simulator
+## Running the RSI simulator
 
 ```
 ros2 launch kuka_rsi_simulator kuka_rsi_simulator_launch.py
 ```
+
+## Starting the move group server for KR robots
+
+The following launch file will start the driver with fake hardware, matching robot_model and robot_family arguments can be added to the command e.g. (robot_model:=kr16_r2010-2 robot_family:=cybertech):
+
+```
+ros2 launch kuka_kr_moveit_config moveit_planning_fake_hardware.launch.py 
+```
+
+The robot_manager lifecycle node must be configured and activated to be able to see the robot in rviz, afterwards the server will be able to accept planning requests. (An example how to create such a request can be found in the (ros2_kuka_drivers/kuka_driver_examples)/eci_demo package.)
