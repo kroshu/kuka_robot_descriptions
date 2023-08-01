@@ -4,8 +4,8 @@
     A URDF file must exist for this robot as well, where the joints and the links that are referenced are defined
 -->
 
-<!--TODO(Svastits): add an argument for the robot name instead of kr, as srdf model parsers logs an error now-->
-<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="kr">
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="$(arg robot_name)">
+  <xacro:arg name="prefix" default=""/>
   <xacro:include filename="kr_arm_macro.xacro" />
-  <xacro:kuka_kr_arm prefix=""/>
+  <xacro:kuka_kr_arm prefix="$(arg prefix)"/>
 </robot>
