@@ -32,5 +32,11 @@
     <disable_collisions link1="${prefix}link_3" link2="${prefix}link_4" reason="Adjacent"/>
     <disable_collisions link1="${prefix}link_4" link2="${prefix}link_5" reason="Adjacent"/>
     <disable_collisions link1="${prefix}link_5" link2="${prefix}link_6" reason="Adjacent"/>
+    <disable_collisions link1="${prefix}link_1" link2="${prefix}link_3" reason="Never"/>
+    <disable_collisions link1="${prefix}link_2" link2="${prefix}link_5" reason="Never"/>
+    <disable_collisions link1="${prefix}link_2" link2="${prefix}link_6" reason="Never"/>
+    <disable_collisions link1="${prefix}link_3" link2="${prefix}link_5" reason="Never"/>
+    <disable_collisions link1="${prefix}link_3" link2="${prefix}link_6" reason="Never"/>
+    <disable_collisions link1="${prefix}link_4" link2="${prefix}link_6" reason="Never"/>
   </xacro:macro>
 </robot>
