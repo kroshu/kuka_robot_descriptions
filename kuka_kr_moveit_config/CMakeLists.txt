@@ -6,7 +6,16 @@ find_package(ament_cmake REQUIRED)
 find_package(urdf REQUIRED)
 find_package(xacro REQUIRED)
 
-xacro_add_files(TARGET kr_arm srdf/kr_arm.srdf.xacro OUTPUT kr_arm.srdf INSTALL DESTINATION urdf)
+# TODO: add more robots to this list
+set(supported_robots
+  kr6_r700_sixx
+  kr6_r900_sixx
+  kr16_r2010-2
+  )
+
+foreach(model IN LISTS supported_robots)
+  xacro_add_files(TARGET ${model} srdf/kr_arm.srdf.xacro REMAP robot_name:=${model} OUTPUT ${model}_arm.srdf INSTALL DESTINATION urdf)
+endforeach()
 
 install(DIRECTORY config
   DESTINATION share/${PROJECT_NAME})
