@@ -17,7 +17,7 @@ foreach(model IN LISTS supported_robots)
   xacro_add_files(TARGET ${model} srdf/kr_arm.srdf.xacro REMAP robot_name:=${model} OUTPUT ${model}_arm.srdf INSTALL DESTINATION urdf)
 endforeach()
 
-install(DIRECTORY config
+install(DIRECTORY config srdf launch
   DESTINATION share/${PROJECT_NAME})
 
 ament_package()
