@@ -3,7 +3,9 @@
     This is a format for representing semantic information about the robot structure.
     A URDF file must exist for this robot as well, where the joints and the links that are referenced are defined
 -->
-<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="kuka_kr16_r2010-2">
-  <xacro:include filename="cybertech_arm.macro.xacro" />
-  <xacro:kuka_cybertech_arm prefix=""/>
+
+<!--TODO(Svastits): add an argument for the robot name instead of kr, as srdf model parsers logs an error now-->
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="kr">
+  <xacro:include filename="kr_arm_macro.xacro" />
+  <xacro:kuka_kr_arm prefix=""/>
 </robot>
