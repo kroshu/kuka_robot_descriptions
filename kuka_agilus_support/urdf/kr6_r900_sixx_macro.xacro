@@ -14,7 +14,8 @@
     client_port="${client_port}"
     use_fake_hardware="${use_fake_hardware}" />
 
-    <link name="${prefix}base_link">
+    <link name="${prefix}base_link"/>
+    <link name="${prefix}base_link_inertia">
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0"/>
         <geometry>
@@ -122,9 +123,14 @@
     <!-- Following REP199, this frame shall be use to attach EEF or other equipment -->
     <link name="${prefix}flange" />
 
+    <joint name="${prefix}base_link-base_link_inertia" type="fixed">
+      <parent link="${prefix}base_link" />
+      <child link="${prefix}base_link_inertia" />
+      <origin xyz="0 0 0" rpy="0 0 0" />
+    </joint>
     <joint name="${prefix}joint_a1" type="revolute">
       <origin xyz="0 0 0.400" rpy="0 0 0"/>
-      <parent link="${prefix}base_link"/>
+      <parent link="${prefix}base_link_inertia"/>
       <child link="${prefix}link_1"/>
       <axis xyz="0 0 -1"/>
       <limit effort="0" lower="${-radians(170)}" upper="${radians(170)}" velocity="${radians(360)}"/>
