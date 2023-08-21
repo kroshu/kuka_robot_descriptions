@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
-  <xacro:macro name="kuka_lbr_iisy_ros2_control" params="name prefix client_ip controller_ip control_mode consequent_lost_packets lost_packets_in_timeframe timeframe_ms use_fake_hardware:=false">
+  <xacro:macro name="kuka_lbr_iisy_ros2_control" params="name prefix client_ip controller_ip control_mode consequent_lost_packets lost_packets_in_timeframe timeframe_ms use_fake_hardware:=false gazebo_sim:=false">
     <ros2_control name="${name}" type="system">
       <hardware>
         <xacro:if value="${use_fake_hardware}">
@@ -9,14 +9,20 @@
           <param name="state_following_offset">0.0</param>
         </xacro:if>
         <xacro:unless value="${use_fake_hardware}">
-          <plugin>kuka_rox::KukaRoXHardwareInterface</plugin>
-          <param name="client_ip">${client_ip}</param>
-          <param name="controller_ip">${controller_ip}</param>
-          <param name="control_mode">${control_mode}</param>
-          <param name="consequent_lost_packets">${consequent_lost_packets}</param>
-          <param name="lost_packets_in_timeframe">${lost_packets_in_timeframe}</param>
-          <param name="timeframe_ms">${timeframe_ms}</param>
+          <xacro:if value="${gazebo_sim}">
+            <plugin>gazebo_ros2_control/GazeboSystem</plugin>
+          </xacro:if>
+          <xacro:unless value="${gazebo_sim}">
+            <plugin>kuka_rox::KukaRoXHardwareInterface</plugin>
+            <param name="client_ip">${client_ip}</param>
+            <param name="controller_ip">${controller_ip}</param>
+            <param name="control_mode">${control_mode}</param>
+            <param name="consequent_lost_packets">${consequent_lost_packets}</param>
+            <param name="lost_packets_in_timeframe">${lost_packets_in_timeframe}</param>
+            <param name="timeframe_ms">${timeframe_ms}</param>
+          </xacro:unless>
         </xacro:unless>
+        <plugin>gazebo_ros2_control/GazeboSystem</plugin>
       </hardware>
       <!-- define joints and command/state interfaces for each joint -->
       <joint name="${prefix}joint_a1">
@@ -68,5 +74,13 @@
         <state_interface name="effort"/>
       </joint>
     </ros2_control>
+    <gazebo>
+      <plugin filename="libgazebo_ros2_control.so" name="gazebo_ros2_control">
+        <robot_param>robot_description</robot_param>
+        <robot_param_node>robot_state_publisher</robot_param_node>
+        <parameters>$(find kuka_rox_hw_interface)/config/ros2_controller_config.yaml</parameters> 
+        <parameters>$(find kuka_rox_hw_interface)/config/joint_trajectory_controller_config.yaml</parameters> 
+      </plugin>
+    </gazebo>
   </xacro:macro>
 </robot>

@@ -19,6 +19,7 @@
 
 <!-- Read additional arguments  -->
 <xacro:arg name="use_fake_hardware" default="false" />
+<xacro:arg name="gazebo_sim" default="false" />
 
 <xacro:kuka_lbr3_r760_robot prefix=""
                   client_ip="${client_ip}" 
@@ -27,5 +28,6 @@
                   consequent_lost_packets="${consequent_lost_packets}" 
                   lost_packets_in_timeframe="${lost_packets_in_timeframe}" 
                   timeframe_ms="${timeframe_ms}" 
-                  use_fake_hardware="$(arg use_fake_hardware)"/>
+                  use_fake_hardware="$(arg use_fake_hardware)"
+                  gazebo_sim="$(arg gazebo_sim)"/>
 </robot>
