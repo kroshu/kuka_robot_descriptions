@@ -16,150 +16,13 @@
     <link name="${prefix}base_link_inertia">
       <collision>
         <geometry>
-          <mesh filename="package://kr210_r2700-2/meshes/collision/base_link.stl"/>
+          <mesh filename="package://kuka_quantec_support/meshes/kr210_r2700-2/collision/base_link.stl"/>
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
       </collision>
       <inertial>
         <inertia ixx="13.2088588" ixy="0.0" ixz="0.0" iyy="31.49498532" iyz="0.0" izz="33.88389082"/>
         <mass value="2.2596E2"/>
-        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
-      </inertial>
-      <visual>
-        <geometry>
-          <mesh filename="package://kr210_r2700-2/meshes/visual/base_link.stl"/>
-        </geometry>
-        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
-      </visual>
-    </link>
-    <link name="${prefix}link_1">
-      <collision>
-        <geometry>
-          <mesh filename="package://kr210_r2700-2/meshes/collision/link_1.stl"/>
-        </geometry>
-        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
-      </collision>
-      <inertial>
-        <inertia ixx="57.79570981" ixy="0.0" ixz="0.0" iyy="5.63272996" iyz="0.0" izz="58.55984559"/>
-        <mass value="3.6307E2"/>
-        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
-      </inertial>
-      <visual>
-        <geometry>
-          <mesh filename="package://kr210_r2700-2/meshes/visual/link_1.stl"/>
-        </geometry>
-        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
-      </visual>
-    </link>
-    <link name="${prefix}link_2">
-      <collision>
-        <geometry>
-          <mesh filename="package://kr210_r2700-2/meshes/collision/link_2.stl"/>
-        </geometry>
-        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
-      </collision>
-      <inertial>
-        <inertia ixx="3.46995403" ixy="0.0" ixz="0.0" iyy="21.17130073" iyz="0.0" izz="22.20677491"/>
-        <mass value="2.3206E2"/>
-        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
-      </inertial>
-      <visual>
-        <geometry>
-          <mesh filename="package://kr210_r2700-2/meshes/visual/link_2.stl"/>
-        </geometry>
-        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
-      </visual>
-    </link>
-    <link name="${prefix}link_3">
-      <collision>
-        <geometry>
-          <mesh filename="package://kr210_r2700-2/meshes/collision/link_3.stl"/>
-        </geometry>
-        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
-      </collision>
-      <inertial>
-        <inertia ixx="0.16132437" ixy="0.0" ixz="0.0" iyy="1.36451395" iyz="0.0" izz="1.39158128"/>
-        <mass value="1.9033E2"/>
-        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
-      </inertial>
-      <visual>
-        <geometry>
-          <mesh filename="package://kr210_r2700-2/meshes/visual/link_3.stl"/>
-        </geometry>
-        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
-      </visual>
-    </link>
-    <link name="${prefix}link_4">
-      <collision>
-        <geometry>
-          <mesh filename="package://kr210_r2700-2/meshes/collision/link_4.stl"/>
-        </geometry>
-        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
-      </collision>
-      <inertial>
-        <inertia ixx="0.20011191" ixy="0.0" ixz="0.0" iyy="0.12055363" iyz="0.0" izz="0.22095649"/>
-        <mass value="4.2411794929E1"/>
-        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
-      </inertial>
-      <visual>
-        <geometry>
-          <mesh filename="package://kr210_r2700-2/meshes/visual/link_4.stl"/>
-        </geometry>
-        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
-      </visual>
-    </link>
-    <link name="${prefix}link_5">
-      <collision>
-        <geometry>
-          <mesh filename="package://kr210_r2700-2/meshes/collision/link_5.stl"/>
-        </geometry>
-        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
-      </collision>
-      <inertial>
-        <inertia ixx="0.0114565" ixy="0.0" ixz="0.0" iyy="0.0114565" iyz="0.0" izz="0.014535"/>
-        <mass value="1.6991732133E1"/>
-        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
-      </inertial>
-      <visual>
-        <geometry>
-          <mesh filename="package://kr210_r2700-2/meshes/visual/link_5.stl"/>
-        </geometry>
-        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
-      </visual>
-    </link>
-    <link name="${prefix}link_6">
-      <collision>
-        <geometry>
-          <mesh filename="package://kr210_r2700-2/meshes/collision/link_6.stl"/>
-        </geometry>
-        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
-      </collision>
-      <inertial>
-        <inertia ixx="0.03694113" ixy="0.0" ixz="0.0" iyy="0.03695315" iyz="0.0" izz="0.048251"/>
-        <mass value="6.6E0"/>
-        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
-      </inertial>
-      <visual>
-        <geometry>
-          <mesh filename="package://kr210_r2700-2/meshes/visual/link_6.stl"/>
-        </geometry>
-        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
-      </visual>
-    </link>
-
-
-
-
-    <link name="${prefix}base_link_inertia">
-      <collision>
-        <geometry>
-          <mesh filename="package://kuka_quantec_support/meshes/kr210_r2700-2/collision/base_link.stl"/>
-        </geometry>
-        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
-      </collision>
-      <inertial>
-        <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0"/>
-        <mass value="6.5212E1"/>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
       </inertial>
       <visual>
@@ -177,8 +40,8 @@
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
       </collision>
       <inertial>
-        <inertia ixx="9.85967888" ixy="0.0" ixz="0.0" iyy="0.91499458" iyz="0.0" izz="10.23026596"/>
-        <mass value="8.4207E1"/>
+        <inertia ixx="57.79570981" ixy="0.0" ixz="0.0" iyy="5.63272996" iyz="0.0" izz="58.55984559"/>
+        <mass value="3.6307E2"/>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
       </inertial>
       <visual>
@@ -196,8 +59,8 @@
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
       </collision>
       <inertial>
-        <inertia ixx="0.34836069" ixy="0.0" ixz="0.0" iyy="1.0268737" iyz="0.0" izz="1.13887402"/>
-        <mass value="6.1775E1"/>
+        <inertia ixx="3.46995403" ixy="0.0" ixz="0.0" iyy="21.17130073" iyz="0.0" izz="22.20677491"/>
+        <mass value="2.3206E2"/>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
       </inertial>
       <visual>
@@ -215,8 +78,8 @@
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
       </collision>
       <inertial>
-        <inertia ixx="0.64549911" ixy="0.0" ixz="0.0" iyy="0.04236472" iyz="0.0" izz="0.6665241"/>
-        <mass value="3.5648E1"/>
+        <inertia ixx="0.16132437" ixy="0.0" ixz="0.0" iyy="1.36451395" iyz="0.0" izz="1.39158128"/>
+        <mass value="1.9033E2"/>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
       </inertial>
       <visual>
@@ -234,8 +97,8 @@
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
       </collision>
       <inertial>
-        <inertia ixx="0.64549911" ixy="0.0" ixz="0.0" iyy="0.04236472" iyz="0.0" izz="0.6665241"/>
-        <mass value="1.6428E1"/>
+        <inertia ixx="0.20011191" ixy="0.0" ixz="0.0" iyy="0.12055363" iyz="0.0" izz="0.22095649"/>
+        <mass value="4.2411794929E1"/>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
       </inertial>
       <visual>
@@ -253,8 +116,8 @@
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
       </collision>
       <inertial>
-        <inertia ixx="1.0E-8" ixy="0.0" ixz="0.0" iyy="1.0E-8" iyz="0.0" izz="1.0E-8"/>
-        <mass value="1.0E-6"/>
+        <inertia ixx="0.0114565" ixy="0.0" ixz="0.0" iyy="0.0114565" iyz="0.0" izz="0.014535"/>
+        <mass value="1.6991732133E1"/>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
       </inertial>
       <visual>
@@ -272,8 +135,8 @@
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
       </collision>
       <inertial>
-        <inertia ixx="1.0E-8" ixy="0.0" ixz="0.0" iyy="1.0E-8" iyz="0.0" izz="1.0E-8"/>
-        <mass value="1.0E-6"/>
+        <inertia ixx="0.03694113" ixy="0.0" ixz="0.0" iyy="0.03695315" iyz="0.0" izz="0.048251"/>
+        <mass value="6.6E0"/>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
       </inertial>
       <visual>
@@ -283,7 +146,6 @@
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
       </visual>
     </link>
-
     <joint name="${prefix}base_link-base_link_inertia" type="fixed">
       <parent link="${prefix}base_link" />
       <child link="${prefix}base_link_inertia" />

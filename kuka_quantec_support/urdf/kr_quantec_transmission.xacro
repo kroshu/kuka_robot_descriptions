@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <robot xmlns:xacro="http://wiki.ros.org/xacro">
-  <xacro:macro name="kuka_cybertech_transmission" params="prefix">
+  <xacro:macro name="kuka_quantec_transmission" params="prefix">
     <transmission name="${prefix}joint_a1_trans">
       <actuator name="${prefix}joint_a1_motor">
         <hardwareInterface>EffortJointInterface</hardwareInterface>
