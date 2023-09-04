@@ -23,13 +23,13 @@
       <joint name="${prefix}joint_a2">
         <command_interface name="position"/>
       <state_interface name="position"> 
-        <param name="initial_value">0.0</param> 
+        <param name="initial_value">-1.570796</param> 
       </state_interface>
       </joint>
       <joint name="${prefix}joint_a3">
         <command_interface name="position"/>
       <state_interface name="position"> 
-        <param name="initial_value">0.0</param> 
+        <param name="initial_value">1.570796</param> 
       </state_interface>
       </joint>
       <joint name="${prefix}joint_a4">
