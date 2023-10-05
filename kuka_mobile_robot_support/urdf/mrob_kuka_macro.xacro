@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="LBRiisy15R930">
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="">
   <!-- include helper xacros -->
   <xacro:include filename="$(find kuka_mobile_robot_support)/ros2_control/mrob_kuka.ros2_control.xacro" />
   <xacro:include filename="$(find kuka_resources)/urdf/common_materials.xacro"/>
   
-  <xacro:macro name="mrob_kuka" params="prefix client_ip controller_ip control_mode consequent_lost_packets lost_packets_in_timeframe timeframe_ms">
+  <xacro:macro name="mrob_kuka" params="prefix client_ip controller_ip control_mode consequent_lost_packets lost_packets_in_timeframe timeframe_ms use_fake_hardware:=false gazebo_sim:=false">
     <!-- ros2 control instance -->
     <xacro:mrob_kuka_ros2_control
       name="KUKA_MR" 
@@ -14,7 +14,9 @@
       control_mode="${control_mode}"
       consequent_lost_packets="${consequent_lost_packets}"
       lost_packets_in_timeframe="${lost_packets_in_timeframe}"
-      timeframe_ms="${timeframe_ms}" />
+      timeframe_ms="${timeframe_ms}" 
+      use_fake_hardware="${use_fake_hardware}"
+      gazebo_sim="${gazebo_sim}"/>
     <!-- Include and instatiate diffbot description urdf file-->
     <xacro:include filename="$(find kuka_mobile_robot_support)/urdf/diffbot_description.urdf.xacro" />
     <!--xacro:genericMR_37146123288 prefix="${prefix}" /-->
@@ -34,14 +36,14 @@
           <axis xyz="0.0 1.0 0.0"/>
           <child link="left_wheel"/>
           <limit effort="5.0E2" velocity="1.0E2"/>
-          <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.325 0.06"/>
+          <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.325 0.028"/>  <!-- 0.06 -->
           <parent link="generic_mr_body"/>
         </joint>
         <joint name="right_wheel_motor" type="continuous">
           <axis xyz="0.0 1.0 0.0"/>
           <child link="right_wheel"/>
           <limit effort="5.0E2" velocity="1.0E1"/>
-          <origin rpy="-0.0 0.0 -0.0" xyz="0.0 -0.325 0.0"/>
+          <origin rpy="-0.0 0.0 -0.0" xyz="0.0 -0.325 0.028"/>  <!-- 0.06 -->
           <parent link="generic_mr_body"/>
         </joint>
         <joint name="caster_base_fl_joint" type="fixed">
@@ -96,7 +98,7 @@
           </collision>
           <inertial>
             <inertia ixx="5.0" ixy="0.0" ixz="0.0" iyy="10.0" iyz="0.0" izz="10.0"/>
-            <mass value="1.0E1"/>
+            <mass value="1.0E2"/>
             <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.325"/>
           </inertial>
           <visual>
@@ -130,7 +132,7 @@
             <geometry>
               <mesh filename="package://kuka_mobile_robot_support/meshes/37153975930.stl"/>
             </geometry>
-            <origin rpy="1.5707963267948963 0.0 -0.0" xyz="0.0 0.0 0.0"/>
+            <origin rpy="0.0 0.0 -1.5707963267948963" xyz="0.0 -0.02 0.0"/>
           </collision>
           <inertial>
             <inertia ixx="5.0E-4" ixy="0.0" ixz="0.0" iyy="5.0E-4" iyz="0.0" izz="5.0E-4"/>
@@ -206,7 +208,7 @@
             <geometry>
               <mesh filename="package://kuka_mobile_robot_support/meshes/37154306984.stl"/>
             </geometry>
-            <origin rpy="1.5707963267948963 0.0 -0.0" xyz="0.0 0.0 0.0"/>
+            <origin rpy="-0.0 0.0 1.5707963267948963" xyz="0.0 0.02 0.0"/>
           </collision>
           <inertial>
             <inertia ixx="5.0E-4" ixy="0.0" ixz="0.0" iyy="5.0E-4" iyz="0.0" izz="5.0E-4"/>

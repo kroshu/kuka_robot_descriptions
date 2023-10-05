@@ -3,7 +3,7 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="diffdrive_robot">
   <xacro:arg name="prefix" default="" />
 <!-- Import diffbot urdf file  -->
-  <xacro:include filename="$(find kuka_mobile_robot_support)/urdf/diffbot_kuka_macro.xacro" />
+  <!-- <xacro:include filename="$(find kuka_mobile_robot_support)/urdf/diffbot_kuka_macro.xacro" /> -->
   <xacro:include filename="$(find kuka_mobile_robot_support)/urdf/mrob_kuka_macro.xacro" />
 
 
@@ -29,13 +29,19 @@
                   lost_packets_in_timeframe="${lost_packets_in_timeframe}" 
                   timeframe_ms="${timeframe_ms}"/>  -->
   
+  <!-- Read additional arguments  -->
+  <xacro:arg name="use_fake_hardware" default="false" />
+  <xacro:arg name="gazebo_sim" default="false" />
+
   <xacro:mrob_kuka prefix=""
                   client_ip="${client_ip}" 
                   controller_ip="${controller_ip}" 
                   control_mode="${control_mode}"
                   consequent_lost_packets="${consequent_lost_packets}" 
                   lost_packets_in_timeframe="${lost_packets_in_timeframe}" 
-                  timeframe_ms="${timeframe_ms}"/>
-
+                  timeframe_ms="${timeframe_ms}"
+                  use_fake_hardware="$(arg use_fake_hardware)"
+                  gazebo_sim="$(arg gazebo_sim)" />
+  
 
 </robot>
