@@ -142,6 +142,7 @@ planner_configs:
     type: geometric::TrajOpt
 
 lbr_iisy_arm:
+  enforce_constrained_state_space: true
   planner_configs:
     - APSConfigDefault
     - SBLkConfigDefault
