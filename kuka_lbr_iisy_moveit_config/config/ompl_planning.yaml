@@ -143,6 +143,7 @@ planner_configs:
 
 lbr_iisy_arm:
   enforce_constrained_state_space: true
+  projection_evaluator: joints(joint_a1,joint_a2)
   planner_configs:
     - APSConfigDefault
     - SBLkConfigDefault
