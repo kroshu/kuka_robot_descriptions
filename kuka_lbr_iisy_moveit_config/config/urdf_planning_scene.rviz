@@ -324,7 +324,7 @@ Visualization Manager:
       Robot Color: 150; 50; 150
       Robot Description: robot_description
       Show Robot Collision: false
-      Show Robot Visual: false
+      Show Robot Visual: true
       Show Trail: false
       State Display Time: 3x
       Trail Step Size: 1
