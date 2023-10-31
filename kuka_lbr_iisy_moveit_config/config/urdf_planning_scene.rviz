@@ -45,7 +45,7 @@ Visualization Manager:
       Value: true
     - Alpha: 0.5
       Class: rviz_default_plugins/RobotModel
-      Collision Enabled: true
+      Collision Enabled: false
       Description File: ""
       Description Source: Topic
       Description Topic:
@@ -119,7 +119,7 @@ Visualization Manager:
       TF Prefix: ""
       Update Interval: 0
       Value: true
-      Visual Enabled: true
+      Visual Enabled: false
     - Class: moveit_rviz_plugin/PlanningScene
       Enabled: true
       Move Group Namespace: ""
@@ -194,7 +194,7 @@ Visualization Manager:
             Show Trail: false
         Robot Alpha: 1
         Show Robot Collision: false
-        Show Robot Visual: false
+        Show Robot Visual: true
       Value: true
     - Class: rviz_default_plugins/TF
       Enabled: true
