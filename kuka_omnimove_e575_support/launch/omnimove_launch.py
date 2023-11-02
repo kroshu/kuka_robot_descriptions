@@ -11,18 +11,6 @@ from ament_index_python.packages import get_package_share_path
 
 
 def generate_launch_description():
-    # Declare arguments
-    declared_arguments = []
-    declared_arguments.append(
-        DeclareLaunchArgument(
-            "gui",
-            default_value="true",
-            description="Start RViz2 automatically with this launch file.",
-        )
-    )
-
-    # Initialize Arguments
-    gui = LaunchConfiguration("gui")
 
     # Get URDF via xacro
     robot_description_content = Command(
@@ -48,9 +36,6 @@ def generate_launch_description():
         ]
     )
 
-    rviz_config_file = PathJoinSubstitution(
-        [FindPackageShare("kuka_omnimove_e575_support"), "rviz", "rviz.rviz"]
-    )
 
     control_node = Node(
         package="controller_manager",
@@ -65,14 +50,6 @@ def generate_launch_description():
         executable='robot_state_publisher',
         parameters=[robot_description],
         #remappings=[("joint_states", "rsi_joint_state")]
-    )
-
-    rviz_node = Node(
-        package='rviz2',
-        executable='rviz2',
-        name='rviz2',
-        output='screen',
-        arguments=['-d', str(rviz_config_file)],
     )
 
     joint_trajectory_spawner = Node(
@@ -93,13 +70,6 @@ def generate_launch_description():
         arguments=["forward_command_controller", "--controller-manager", "/controller_manager"],
     )
 
-    # Delay rviz start after `joint_state_broadcaster`
-    delay_rviz_after_joint_trajectory_spawner = RegisterEventHandler(
-        event_handler=OnProcessExit(
-            target_action=joint_trajectory_spawner,
-            on_exit=[rviz_node],
-        )
-    )
 
     # Delay start of robot_controller after `joint_state_broadcaster`
     delay_robot_controller_spawner_after_joint_trajectory_spawner = RegisterEventHandler(
@@ -113,9 +83,8 @@ def generate_launch_description():
         control_node,
         robot_state_pub_node,
         joint_trajectory_spawner,
-        delay_rviz_after_joint_trajectory_spawner,
         joint_broadcaster_spawner,
         delay_robot_controller_spawner_after_joint_trajectory_spawner,
     ]
 
-    return LaunchDescription(declared_arguments + nodes)
+    return LaunchDescription(nodes)

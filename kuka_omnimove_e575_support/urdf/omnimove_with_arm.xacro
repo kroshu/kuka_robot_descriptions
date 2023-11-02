@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 
 <robot name="kuka_kr6r700sixx" xmlns:xacro="http://wiki.ros.org/xacro">
-  <xacro:include filename="$(find kuka_quantec_support)/urdf/kr210_r2700-2_sixx.urdf.xacro"/>
+  <xacro:include filename="$(find kuka_quantec_support)/urdf/kr210_r2700-2.urdf.xacro"/>
   <xacro:include filename="$(find kuka_omnimove_e575_support)/urdf/omnimove.xacro"/>
   <xacro:omnimove prefix="omnimove_"/>
   <xacro:omnimove_ros2_control name="omnimove"/>

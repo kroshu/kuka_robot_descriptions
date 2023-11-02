@@ -8,7 +8,7 @@
           <geometry>
             <mesh filename="package://kuka_omnimove_e575_support/meshes/omnimove_simplified.dae" />
           </geometry>
-          <xacro:material_kuka_pedestal />
+          <!--<xacro:material_kuka_pedestal /> -->
         </visual>
         <collision>
           <origin xyz="0 0 0" rpy="0 0 0" />
