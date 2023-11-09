@@ -18,7 +18,7 @@
 <xacro:property name="timeframe_ms" value="${qos_config_dict['rt_packet_loss_profile']['timeframe_ms']}" />
 
 
-<xacro:kuka_lbr11_r1300_robot prefix=""
+<xacro:kuka_lbr_iisy11_r1300_robot prefix=""
                   client_ip="${client_ip}" 
                   controller_ip="${controller_ip}" 
                   control_mode="${control_mode}"

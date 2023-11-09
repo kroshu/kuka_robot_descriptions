@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="lbr_iiwa14_r820">
+<!-- Import iiwa urdf file  -->
+<xacro:include filename="$(find kuka_lbr_iiwa_support)/urdf/lbr_iiwa14_r820_macro.xacro"/>
+
+<xacro:kuka_lbr_iiwa14_r820_robot prefix="" io_access="false"/>
+</robot>

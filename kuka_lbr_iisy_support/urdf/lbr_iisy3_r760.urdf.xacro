@@ -20,7 +20,7 @@
 <!-- Read additional arguments  -->
 <xacro:arg name="use_fake_hardware" default="false" />
 
-<xacro:kuka_lbr3_r760_robot prefix=""
+<xacro:kuka_lbr_iisy3_r760_robot prefix=""
                   client_ip="${client_ip}" 
                   controller_ip="${controller_ip}" 
                   control_mode="${control_mode}"

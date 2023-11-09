@@ -5,7 +5,7 @@
   <xacro:include filename="$(find kuka_resources)/urdf/common_materials.xacro"/>
   <xacro:include filename="$(find kuka_lbr_iisy_support)/urdf/lbr_iisy_transmission.xacro" />
   
-  <xacro:macro name="kuka_lbr15_r930_robot" params="prefix client_ip controller_ip control_mode consequent_lost_packets lost_packets_in_timeframe timeframe_ms">
+  <xacro:macro name="kuka_lbr_iisy15_r930_robot" params="prefix client_ip controller_ip control_mode consequent_lost_packets lost_packets_in_timeframe timeframe_ms">
     <!-- ros2 control instance -->
     <xacro:kuka_lbr_iisy_ros2_control
     name="lbr_iisy15_r930" 

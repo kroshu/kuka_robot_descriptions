@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.5)
-project(kuka_lbr_iiwa7_support)
+project(kuka_lbr_iiwa_support)
 
 # Default to C99
 if(NOT CMAKE_C_STANDARD)
