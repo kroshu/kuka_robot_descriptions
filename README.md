@@ -1,6 +1,6 @@
-# kuka_simulators
+# kuka_robot_descriptions
 
-This package contains resources that helps offline experiment of KUKA robots.
+This package contains resources that can be used with real KUKA robots as well as with simulations.
 
 Github CI 
 ------------
