@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://wiki.ros.org/xacro">
-  <xacro:macro name="kuka_lbr_iiwa14_r820_robot" params="io_access">
+  <xacro:macro name="kuka_lbr_iiwa14_r820_robot" params="io_access prefix">
   <ros2_control name="iiwa_hardware" type="system">
     <hardware>
       <plugin>kuka_sunrise::KUKAFRIHardwareInterface</plugin>
