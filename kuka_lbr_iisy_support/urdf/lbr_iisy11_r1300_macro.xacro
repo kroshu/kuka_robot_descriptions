@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="LBRiisy11R1300">
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="lbr_iisy11_r1300">
   <!-- include helper xacros -->
   <xacro:include filename="$(find kuka_lbr_iisy_support)/urdf/lbr_iisy_ros2_control.xacro" />
   <xacro:include filename="$(find kuka_resources)/urdf/common_materials.xacro"/>
@@ -8,7 +8,7 @@
   <xacro:macro name="kuka_lbr11_r1300_robot" params="prefix client_ip controller_ip control_mode consequent_lost_packets lost_packets_in_timeframe timeframe_ms">
     <!-- ros2 control instance -->
     <xacro:kuka_lbr_iisy_ros2_control
-    name="LBRiisy11R1300" 
+    name="lbr_iisy11_r1300" 
     prefix="${prefix}"
     client_ip="${client_ip}"
     controller_ip="${controller_ip}"
@@ -23,7 +23,7 @@
     <link name="${prefix}base_link_inertia">
       <collision>
         <geometry>
-          <mesh filename="package://kuka_lbr_iisy_support/meshes/LBRiisy11R1300/collision/base_link.stl" />
+          <mesh filename="package://kuka_lbr_iisy_support/meshes/lbr_iisy11_r1300/collision/base_link.stl" />
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0" />
       </collision>
@@ -34,7 +34,7 @@
       </inertial>
       <visual>
         <geometry>
-          <mesh filename="package://kuka_lbr_iisy_support/meshes/LBRiisy11R1300/visual/base_link.stl" />
+          <mesh filename="package://kuka_lbr_iisy_support/meshes/lbr_iisy11_r1300/visual/base_link.stl" />
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0" />
         <xacro:material_kuka_ral_pure_white />
@@ -43,7 +43,7 @@
     <link name="${prefix}link_1">
       <collision>
         <geometry>
-          <mesh filename="package://kuka_lbr_iisy_support/meshes/LBRiisy11R1300/collision/link_1.stl" />
+          <mesh filename="package://kuka_lbr_iisy_support/meshes/lbr_iisy11_r1300/collision/link_1.stl" />
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0" />
       </collision>
@@ -54,7 +54,7 @@
       </inertial>
       <visual>
         <geometry>
-          <mesh filename="package://kuka_lbr_iisy_support/meshes/LBRiisy11R1300/visual/link_1.stl" />
+          <mesh filename="package://kuka_lbr_iisy_support/meshes/lbr_iisy11_r1300/visual/link_1.stl" />
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0" />
         <xacro:material_kuka_ral_pure_white />
@@ -63,7 +63,7 @@
     <link name="${prefix}link_2">
       <collision>
         <geometry>
-          <mesh filename="package://kuka_lbr_iisy_support/meshes/LBRiisy11R1300/collision/link_2.stl" />
+          <mesh filename="package://kuka_lbr_iisy_support/meshes/lbr_iisy11_r1300/collision/link_2.stl" />
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0" />
       </collision>
@@ -74,7 +74,7 @@
       </inertial>
       <visual>
         <geometry>
-          <mesh filename="package://kuka_lbr_iisy_support/meshes/LBRiisy11R1300/visual/link_2.stl" />
+          <mesh filename="package://kuka_lbr_iisy_support/meshes/lbr_iisy11_r1300/visual/link_2.stl" />
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0" />
         <xacro:material_kuka_ral_pure_white />
@@ -83,7 +83,7 @@
     <link name="${prefix}link_3">
       <collision>
         <geometry>
-          <mesh filename="package://kuka_lbr_iisy_support/meshes/LBRiisy11R1300/collision/link_3.stl" />
+          <mesh filename="package://kuka_lbr_iisy_support/meshes/lbr_iisy11_r1300/collision/link_3.stl" />
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0" />
       </collision>
@@ -94,7 +94,7 @@
       </inertial>
       <visual>
         <geometry>
-          <mesh filename="package://kuka_lbr_iisy_support/meshes/LBRiisy11R1300/visual/link_3.stl" />
+          <mesh filename="package://kuka_lbr_iisy_support/meshes/lbr_iisy11_r1300/visual/link_3.stl" />
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0" />
         <xacro:material_kuka_ral_pure_white />
@@ -103,7 +103,7 @@
     <link name="${prefix}link_4">
       <collision>
         <geometry>
-          <mesh filename="package://kuka_lbr_iisy_support/meshes/LBRiisy11R1300/collision/link_4.stl" />
+          <mesh filename="package://kuka_lbr_iisy_support/meshes/lbr_iisy11_r1300/collision/link_4.stl" />
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0" />
       </collision>
@@ -114,7 +114,7 @@
       </inertial>
       <visual>
         <geometry>
-          <mesh filename="package://kuka_lbr_iisy_support/meshes/LBRiisy11R1300/visual/link_4.stl" />
+          <mesh filename="package://kuka_lbr_iisy_support/meshes/lbr_iisy11_r1300/visual/link_4.stl" />
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0" />
         <xacro:material_kuka_ral_pure_white />
@@ -123,7 +123,7 @@
     <link name="${prefix}link_5">
       <collision>
         <geometry>
-          <mesh filename="package://kuka_lbr_iisy_support/meshes/LBRiisy11R1300/collision/link_5.stl" />
+          <mesh filename="package://kuka_lbr_iisy_support/meshes/lbr_iisy11_r1300/collision/link_5.stl" />
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0" />
       </collision>
@@ -134,7 +134,7 @@
       </inertial>
       <visual>
         <geometry>
-          <mesh filename="package://kuka_lbr_iisy_support/meshes/LBRiisy11R1300/visual/link_5.stl" />
+          <mesh filename="package://kuka_lbr_iisy_support/meshes/lbr_iisy11_r1300/visual/link_5.stl" />
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0" />
         <xacro:material_kuka_ral_pure_white />
@@ -143,7 +143,7 @@
     <link name="${prefix}link_6">
       <collision>
         <geometry>
-          <mesh filename="package://kuka_lbr_iisy_support/meshes/LBRiisy11R1300/collision/link_6.stl" />
+          <mesh filename="package://kuka_lbr_iisy_support/meshes/lbr_iisy11_r1300/collision/link_6.stl" />
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0" />
       </collision>
@@ -154,7 +154,7 @@
       </inertial>
       <visual>
         <geometry>
-          <mesh filename="package://kuka_lbr_iisy_support/meshes/LBRiisy11R1300/visual/link_6.stl" />
+          <mesh filename="package://kuka_lbr_iisy_support/meshes/lbr_iisy11_r1300/visual/link_6.stl" />
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0" />
         <xacro:material_kuka_ral_pure_white />

@@ -1,10 +1,10 @@
 # kuka_robot_descriptions
 
-This package contains resources that can be used with real KUKA robots as well as with simulations.
+This package contains support packages that can be used with real KUKA robots as well as with simulations.
 
 Github CI 
 ------------
-[![Build Status](https://github.com/kroshu/kuka_simulators/workflows/CI/badge.svg?branch=main)](https://github.com/kroshu/kuka_simulators/actions)
+[![Build Status](https://github.com/kroshu/kuka_robot_descriptions/workflows/CI/badge.svg?branch=main)](https://github.com/kroshu/kuka_robot_descriptions/actions)
 
 ## What is included?
 
