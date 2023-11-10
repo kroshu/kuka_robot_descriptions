@@ -6,7 +6,6 @@
 
 <!-- Read additional arguments  -->
 <xacro:arg name="use_fake_hardware" default="false" />
-<xacro:arg name="gazebo_sim" default="false" />
 
-<xacro:kuka_lbr_iiwa14_r820_robot prefix="" io_access="false" use_fake_hardware="$(arg use_fake_hardware)" gazebo_sim="$(arg gazebo_sim)"/>
+<xacro:kuka_lbr_iiwa14_r820_robot prefix="" io_access="false" use_fake_hardware="$(arg use_fake_hardware)"/>
 </robot>

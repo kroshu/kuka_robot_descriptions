@@ -28,6 +28,7 @@ def generate_launch_description():
                  "urdf", "kr210_r2700-2.urdf.xacro"]
             ),
             " ",
+            "use_fake_hardware:=true",
         ]
     )
     robot_description = {'robot_description': robot_description_content}

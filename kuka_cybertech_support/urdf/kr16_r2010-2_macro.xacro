@@ -3,13 +3,11 @@
   <xacro:include filename="$(find kuka_cybertech_support)/urdf/kr_cybertech_ros2_control.xacro" />
   <xacro:include filename="$(find kuka_cybertech_support)/urdf/kr_cybertech_transmission.xacro" />
 
-  <xacro:macro name="kuka_kr16_r2010-2_robot" params="prefix client_ip client_port use_fake_hardware">
+  <xacro:macro name="kuka_kr16_r2010-2_robot" params="prefix use_fake_hardware">
     <!-- ros2 control instance -->
     <xacro:kuka_cybertech_ros2_control
     name="kr16_r2010-2" 
     prefix="${prefix}"
-    client_ip="${client_ip}"
-    client_port="${client_port}"
     use_fake_hardware="${use_fake_hardware}" />
 
     <link name="${prefix}base_link"/>

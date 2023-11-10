@@ -30,6 +30,7 @@ def generate_launch_description():
                  "urdf", "lbr_iiwa14_r820.urdf.xacro"]
             ),
             " ",
+            "use_fake_hardware:=true",
         ]
     )
     robot_description = {'robot_description': robot_description_content}
