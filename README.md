@@ -25,7 +25,7 @@ ros2 launch kuka_rsi_simulator kuka_rsi_simulator_launch.py
 
 ## Starting the move group server for KR robots
 
-The following launch file will start the driver with fake hardware, matching robot_model and robot_family arguments can be added to the command e.g. (robot_model:=kr16_r2010-2 robot_family:=cybertech):
+The following launch file will start the driver with fake hardware, matching robot_model and robot_family arguments can be added to the command e.g. (robot_model:=kr16_r2010_2 robot_family:=cybertech):
 
 ```
 ros2 launch kuka_kr_moveit_config moveit_planning_fake_hardware.launch.py 
