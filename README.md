@@ -2,20 +2,20 @@
 
 This repository contains support packages that can be used with real KUKA robots as well as with simulations.
 
-Github CI 
+Github CI
 ------------
 [![Build Status](https://github.com/kroshu/kuka_robot_descriptions/workflows/CI/badge.svg?branch=main)](https://github.com/kroshu/kuka_robot_descriptions/actions)
 
 ## What is included?
 
-- **kuka_resources** contains general, common files. It is copied from [kuka_experimental](https://github.com/ros-industrial/kuka_experimental) and is ported from ROS to ROS2. 
+- **kuka_resources** contains general, common files. It is copied from [kuka_experimental](https://github.com/ros-industrial/kuka_experimental) and is ported from ROS to ROS2.
 - **kuka_cybertech_support** contains urdf, config and mesh files for KUKA cybertech robots.
 - **kuka_kr_moveit_config** contains configuration files for KUKA KR robots necessary for planning with moveit.
 - **kuka_lbr_iisy_support** contains urdf, config and mesh files for KUKA iisy robots.
 - **kuka_lbr_iisy_moveit_config** contains configuration files for KUKA iisy robots necessary for planning with moveit.
 - **kuka_agilus_support** contains urdf, config and mesh files for KUKA Agilus robots, it is copied from [kuka_experimental](https://github.com/ros-industrial/kuka_experimental) and ported to ROS2.
 - **kuka_lbr_iiwa_support** contains urdf, config and mesh files for KUKA LBR iiwa 7 robots
-- **kuka_rsi_simulator** implements a basic RSI simulator. It is also copied from [kuka_experimental](https://github.com/ros-industrial/kuka_experimental) and is ported to ROS2. It implements a UDP socket, and recieves the commands from an RSI interface and sends back the actual position of the robot (as it is a simulation, it is a simple closed loop, it sends what it recieved).
+- **kuka_rsi_simulator** implements a basic RSI simulator. It is also copied from [kuka_experimental](https://github.com/ros-industrial/kuka_experimental) and is ported to ROS2. It implements a UDP socket, and receives the commands from an RSI interface and sends back the actual position of the robot (as it is a simulation, it is a simple closed loop, it sends what it received).
 
 ## Running the RSI simulator
 
@@ -28,7 +28,7 @@ ros2 launch kuka_rsi_simulator kuka_rsi_simulator_launch.py
 The following launch file will start the driver with fake hardware, matching robot_model and robot_family arguments can be added to the command e.g. (robot_model:=kr16_r2010_2 robot_family:=cybertech):
 
 ```
-ros2 launch kuka_kr_moveit_config moveit_planning_fake_hardware.launch.py 
+ros2 launch kuka_kr_moveit_config moveit_planning_fake_hardware.launch.py
 ```
 
 The robot_manager lifecycle node must be configured and activated to be able to see the robot in rviz, afterwards the server will be able to accept planning requests. (An example how to create such a request can be found in the (kuka_drivers/examples)/iiqka_moveit_example package.)

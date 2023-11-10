@@ -2,7 +2,7 @@
 <package format="2">
   <name>kuka_robot_descriptions</name>
   <version>0.0.1</version>
-  <description>Robot desciptions for KUKA robots</description>
+  <description>Robot descriptions for KUKA robots</description>
   <author>Áron Svastits</author>
   <maintainer email="svastits1@gmail.com">Áron Svastits</maintainer>
   <license>BSD</license>

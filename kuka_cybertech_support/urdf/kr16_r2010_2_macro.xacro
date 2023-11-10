@@ -6,7 +6,7 @@
   <xacro:macro name="kuka_kr16_r2010_2_robot" params="prefix use_fake_hardware">
     <!-- ros2 control instance -->
     <xacro:kuka_cybertech_ros2_control
-    name="kr16_r2010_2" 
+    name="kr16_r2010_2"
     prefix="${prefix}"
     use_fake_hardware="${use_fake_hardware}" />
 
@@ -205,7 +205,7 @@
     <link name="${prefix}flange" />
     <joint name="${prefix}link6-flange" type="fixed">
       <child link="${prefix}flange" />
-      <origin rpy="0 ${pi} -0.0" xyz="0.0 0.0 -0.153" /> 
+      <origin rpy="0 ${pi} -0.0" xyz="0.0 0.0 -0.153" />
       <parent link="${prefix}link_6" />
     </joint>
 
@@ -213,7 +213,7 @@
     <link name="${prefix}tool0" />
     <joint name="${prefix}link6-tool0" type="fixed">
       <child link="${prefix}tool0" />
-      <origin rpy="0 ${pi} -0.0" xyz="0.0 0.0 -0.153" /> 
+      <origin rpy="0 ${pi} -0.0" xyz="0.0 0.0 -0.153" />
       <parent link="${prefix}link_6" />
     </joint>
   </xacro:macro>

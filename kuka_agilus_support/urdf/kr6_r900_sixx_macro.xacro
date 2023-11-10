@@ -8,7 +8,7 @@
   <xacro:macro name="kuka_kr6_r900_sixx_robot" params="prefix use_fake_hardware">
     <!-- ros2 control instance -->
     <xacro:kuka_agilus_ros2_control
-    name="kr6_r900_sixx" 
+    name="kr6_r900_sixx"
     prefix="${prefix}"
     use_fake_hardware="${use_fake_hardware}" />
 
