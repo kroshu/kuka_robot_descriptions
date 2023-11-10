@@ -8,7 +8,7 @@
   <xacro:macro name="kuka_lbr_iiwa14_r820_robot" params="io_access prefix use_fake_hardware:=false">
     <!-- ros2 control instance -->
     <xacro:kuka_lbr_iiwa_ros2_control
-    name="lbr_iiwa14_r820" 
+    name="lbr_iiwa14_r820"
     prefix="${prefix}"
     io_access = "${io_access}"
     use_fake_hardware="${use_fake_hardware}" />

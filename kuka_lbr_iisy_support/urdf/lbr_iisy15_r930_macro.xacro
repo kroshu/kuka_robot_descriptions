@@ -4,11 +4,11 @@
   <xacro:include filename="$(find kuka_lbr_iisy_support)/urdf/lbr_iisy_ros2_control.xacro" />
   <xacro:include filename="$(find kuka_resources)/urdf/common_materials.xacro"/>
   <xacro:include filename="$(find kuka_lbr_iisy_support)/urdf/lbr_iisy_transmission.xacro" />
-  
+
   <xacro:macro name="kuka_lbr_iisy15_r930_robot" params="prefix use_fake_hardware:=false">
     <!-- ros2 control instance -->
     <xacro:kuka_lbr_iisy_ros2_control
-    name="lbr_iisy15_r930" 
+    name="lbr_iisy15_r930"
     prefix="${prefix}"
     use_fake_hardware="${use_fake_hardware}" />
 

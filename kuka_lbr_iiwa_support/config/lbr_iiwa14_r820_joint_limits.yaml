@@ -30,4 +30,3 @@ joint_limits:
   joint_a7:
     has_velocity_limits: true
     max_velocity: 6.283
-
