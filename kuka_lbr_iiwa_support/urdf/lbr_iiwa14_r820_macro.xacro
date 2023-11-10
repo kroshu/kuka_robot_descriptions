@@ -170,6 +170,11 @@
     </link>
 
     <!-- joints - main serial chain -->
+    <joint name="${prefix}base_link-base_link_inertia" type="fixed">
+      <parent link="${prefix}base_link" />
+      <child link="${prefix}base_link_inertia" />
+      <origin xyz="0 0 0" rpy="0 0 0" />
+    </joint>
     <joint name="${prefix}joint_a1" type="revolute">
       <parent link="${prefix}base_link_inertia"/>
       <child link="${prefix}link_1"/>
@@ -240,7 +245,7 @@
     <link name="${prefix}tool0" />
     <joint name="${prefix}link7-tool0" type="fixed">
       <parent link="${prefix}link_7"/>
-      <child link="${prefix}flange"/>
+      <child link="${prefix}tool0"/>
       <origin rpy="-0.0 0.0 0.0" xyz="0.0 0.0 0.071"/>
     </joint>
   </xacro:macro>
