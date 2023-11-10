@@ -24,8 +24,8 @@ def generate_launch_description():
             PathJoinSubstitution([FindExecutable(name="xacro")]),
             " ",
             PathJoinSubstitution(
-                [FindPackageShare("kuka_quantec_support"),
-                 "urdf", "kr210_r2700-2.urdf.xacro"]
+                [FindPackageShare("kuka_agilus_support"),
+                 "urdf", "kr6_r700-sixx.urdf.xacro"]
             ),
             " ",
         ]
@@ -34,7 +34,7 @@ def generate_launch_description():
 
     # RViz
     rviz_config_file = PathJoinSubstitution([FindPackageShare(
-        'kuka_quantec_support'), "config", "quantec_urdf.rviz"])
+        'kuka_resources'), "config", "view_6_axis_urdf.rviz"])
     rviz_node = Node(package='rviz2',
                      executable='rviz2',
                      name='rviz2_launch',

@@ -81,7 +81,7 @@ def generate_launch_description():
     launch_arguments = []
     launch_arguments.append(DeclareLaunchArgument(
         'robot_model',
-        default_value='kr6_r700_sixx'
+        default_value='kr6_r700-sixx'
     ))
     launch_arguments.append(DeclareLaunchArgument(
         'robot_family',
