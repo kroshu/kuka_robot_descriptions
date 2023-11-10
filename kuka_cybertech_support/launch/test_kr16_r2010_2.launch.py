@@ -25,7 +25,7 @@ def generate_launch_description():
             " ",
             PathJoinSubstitution(
                 [FindPackageShare("kuka_cybertech_support"),
-                 "urdf", "_sixxkr16_r2010_2.urdf.xacro"]
+                 "urdf", "kr16_r2010_2.urdf.xacro"]
             ),
             " ",
             "use_fake_hardware:=true",
