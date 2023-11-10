@@ -148,14 +148,14 @@
   <link name="${prefix}base_link">
     <visual>
       <geometry>
-        <mesh filename="package://kuka_lbr_iiwa_support/meshes/visual/iiwa_r820_link_0_hull_v0.1_iiwa_r820_link_0_hull.stl"/>
+        <mesh filename="package://kuka_lbr_iiwa_support/lbr_iiwa14_r820/meshes/visual/base_link.stl"/>
       </geometry>
       <origin rpy="-0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
     </visual>
     <collision>
       <origin rpy="-0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
       <geometry>
-        <mesh filename="package://kuka_lbr_iiwa_support/meshes/collision/iiwa_r820_link_0_collision_v0.1_iiwa_r820_link_0_collision.stl"/>
+        <mesh filename="package://kuka_lbr_iiwa_support/lbr_iiwa14_r820/meshes/collision/base_link.stl"/>
       </geometry>
     </collision>
     <inertial>
@@ -167,14 +167,14 @@
   <link name="${prefix}link_1">
     <visual>
       <geometry>
-        <mesh filename="package://kuka_lbr_iiwa_support/meshes/visual/iiwa_r820_link_1_hull_v0.1_iiwa_r820_link_1_hull.stl"/>
+        <mesh filename="package://kuka_lbr_iiwa_support/lbr_iiwa14_r820/meshes/visual/link_1.stl"/>
       </geometry>
       <origin rpy="-0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
     </visual>
     <collision>
       <origin rpy="-0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
       <geometry>
-        <mesh filename="package://kuka_lbr_iiwa_support/meshes/collision/iiwa_r820_link_1_collision_v0.1_iiwa_r820_link_1_collision.stl"/>
+        <mesh filename="package://kuka_lbr_iiwa_support/lbr_iiwa14_r820/meshes/collision/link_1.stl"/>
       </geometry>
     </collision>
     <inertial>
@@ -186,14 +186,14 @@
   <link name="${prefix}link_2">
     <visual>
       <geometry>
-        <mesh filename="package://kuka_lbr_iiwa_support/meshes/visual/iiwa_r820_link_2_hull_v0.1_iiwa_r820_link_2_hull.stl"/>
+        <mesh filename="package://kuka_lbr_iiwa_support/lbr_iiwa14_r820/meshes/visual/link_2.stl"/>
       </geometry>
       <origin rpy="-0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
     </visual>
     <collision>
       <origin rpy="-0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
       <geometry>
-        <mesh filename="package://kuka_lbr_iiwa_support/meshes/collision/iiwa_r820_link_2_collision_v0.1_iiwa_r820_link_2_collision.stl"/>
+        <mesh filename="package://kuka_lbr_iiwa_support/lbr_iiwa14_r820/meshes/collision/link_2.stl"/>
       </geometry>
     </collision>
     <inertial>
@@ -205,14 +205,14 @@
   <link name="${prefix}link_3">
     <visual>
       <geometry>
-        <mesh filename="package://kuka_lbr_iiwa_support/meshes/visual/iiwa_r820_link_3_hull_v0.1_iiwa_r820_link_3_hull.stl"/>
+        <mesh filename="package://kuka_lbr_iiwa_support/lbr_iiwa14_r820/meshes/visual/link_3.stl"/>
       </geometry>
       <origin rpy="-0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
     </visual>
     <collision>
       <origin rpy="-0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
       <geometry>
-        <mesh filename="package://kuka_lbr_iiwa_support/meshes/collision/iiwa_r820_link_3_collision_v0.1_iiwa_r820_link_3_collision.stl"/>
+        <mesh filename="package://kuka_lbr_iiwa_support/lbr_iiwa14_r820/meshes/collision/link_3.stl"/>
       </geometry>
     </collision>
     <inertial>
@@ -224,14 +224,14 @@
   <link name="${prefix}link_4">
     <visual>
       <geometry>
-        <mesh filename="package://kuka_lbr_iiwa_support/meshes/visual/iiwa_r820_link_4_hull_v0.1_iiwa_r820_link_4_hull.stl"/>
+        <mesh filename="package://kuka_lbr_iiwa_support/lbr_iiwa14_r820/meshes/visual/link_4.stl"/>
       </geometry>
       <origin rpy="-0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
     </visual>
     <collision>
       <origin rpy="-0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
       <geometry>
-        <mesh filename="package://kuka_lbr_iiwa_support/meshes/collision/iiwa_r820_link_4_collision_v0.1_iiwa_r820_link_4_collision.stl"/>
+        <mesh filename="package://kuka_lbr_iiwa_support/lbr_iiwa14_r820/meshes/collision/link_4.stl"/>
       </geometry>
     </collision>
     <inertial>
@@ -243,14 +243,14 @@
   <link name="${prefix}link_5">
     <visual>
       <geometry>
-        <mesh filename="package://kuka_lbr_iiwa_support/meshes/visual/iiwa_r820_link_5_hull_v0.1_iiwa_r820_link_5_hull.stl"/>
+        <mesh filename="package://kuka_lbr_iiwa_support/lbr_iiwa14_r820/meshes/visual/link_5.stl"/>
       </geometry>
       <origin rpy="-0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
     </visual>
     <collision>
       <origin rpy="-0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
       <geometry>
-        <mesh filename="package://kuka_lbr_iiwa_support/meshes/collision/iiwa_r820_link_5_collision_v0.1_iiwa_r820_link_5_collision.stl"/>
+        <mesh filename="package://kuka_lbr_iiwa_support/lbr_iiwa14_r820/meshes/collision/link_5.stl"/>
       </geometry>
     </collision>
     <inertial>
@@ -262,14 +262,14 @@
   <link name="${prefix}link_6">
     <visual>
       <geometry>
-        <mesh filename="package://kuka_lbr_iiwa_support/meshes/visual/iiwa_r820_link_6_hull_v0.1_iiwa_r820_link_6_hull.stl"/>
+        <mesh filename="package://kuka_lbr_iiwa_support/lbr_iiwa14_r820/meshes/visual/link_6.stl"/>
       </geometry>
       <origin rpy="-0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
     </visual>
     <collision>
       <origin rpy="-0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
       <geometry>
-        <mesh filename="package://kuka_lbr_iiwa_support/meshes/collision/iiwa_r820_link_6_collision_v0.1_iiwa_r820_link_6_collision.stl"/>
+        <mesh filename="package://kuka_lbr_iiwa_support/lbr_iiwa14_r820/meshes/collision/link_6.stl"/>
       </geometry>
     </collision>
     <inertial>
@@ -281,14 +281,14 @@
   <link name="${prefix}link_7">
     <visual>
       <geometry>
-        <mesh filename="package://kuka_lbr_iiwa_support/meshes/visual/iiwa_r820_link_7_hull_v0.1_iiwa_r820_link_7_hull.stl"/>
+        <mesh filename="package://kuka_lbr_iiwa_support/lbr_iiwa14_r820/meshes/visual/link_7.stl"/>
       </geometry>
       <origin rpy="-0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
     </visual>
     <collision>
       <origin rpy="-0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
       <geometry>
-        <mesh filename="package://kuka_lbr_iiwa_support/meshes/collision/iiwa_r820_link_7_collision_v0.1_iiwa_r820_link_7_collision.stl"/>
+        <mesh filename="package://kuka_lbr_iiwa_support/lbr_iiwa14_r820/meshes/collision/link_7.stl"/>
       </geometry>
     </collision>
     <inertial>

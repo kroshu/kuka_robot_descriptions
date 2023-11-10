@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <package format="3">
-  <name>kuka_lbr_iisy_moveit_config</name>
+  <name>kuka_lbr_iiwa_moveit_config</name>
   <version>0.1.0</version>
-  <description>Package containing moveit configurations for KUKA LBR iisy family</description>
+  <description>Package containing moveit configurations for KUKA LBR iiwa family</description>
   <author>Aron Svastits</author>
   <maintainer email="svastits1@gmail.com"></maintainer>
   <license>BSD</license>
