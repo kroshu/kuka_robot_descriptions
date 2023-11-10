@@ -9,7 +9,7 @@
           <param name="state_following_offset">0.0</param>
         </xacro:if>
         <xacro:unless value="${use_fake_hardware}">
-          <plugin>kuka_sunrise::KUKAFRIHardwareInterface</plugin>
+          <plugin>kuka_sunrise_fri_driver::KUKAFRIHardwareInterface</plugin>
         </xacro:unless>
       </hardware>
       <!-- define joints and command/state interfaces for each joint -->
@@ -65,7 +65,7 @@
       <!-- TODO(Svastits): update GPIO list from config file-->
       <xacro:unless value="${use_fake_hardware}">
         <xacro:if value="${io_access}">
-          <xacro:include filename="$(find kuka_sunrise)/config/gpio_config.xacro" />
+          <xacro:include filename="$(find kuka_sunrise_fri_driver)/config/gpio_config.xacro" />
           <xacro:fri_gpio_config/>
         </xacro:if>
         <xacro:unless value="${io_access}">

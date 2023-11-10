@@ -10,12 +10,12 @@
         </xacro:if>
         <xacro:unless value="${use_fake_hardware}">
           <!-- Read parameters from rsi_config  -->
-          <xacro:property name="rsi_config" value="$(find kuka_rsi_hw_interface)/config/rsi_config.yaml" />
+          <xacro:property name="rsi_config" value="$(find kuka_kss_rsi_driver)/config/rsi_config.yaml" />
           <xacro:property name="rsi_config_dict" value="${xacro.load_yaml(rsi_config)}"/>
           <xacro:property name="client_ip" value="${rsi_config_dict['client_ip']}" />
           <xacro:property name="client_port" value="${rsi_config_dict['client_port']}" />
 
-          <plugin>kuka_rsi_hw_interface::KukaRSIHardwareInterface</plugin>
+          <plugin>kuka_kss_rsi_driver::KukaRSIHardwareInterface</plugin>
           <param name="client_ip">${client_ip}</param>
           <param name="client_port">${client_port}</param>
         </xacro:unless>
