@@ -31,4 +31,4 @@ The following launch file will start the driver with fake hardware, matching rob
 ros2 launch kuka_kr_moveit_config moveit_planning_fake_hardware.launch.py 
 ```
 
-The robot_manager lifecycle node must be configured and activated to be able to see the robot in rviz, afterwards the server will be able to accept planning requests. (An example how to create such a request can be found in the (kuka_drivers/kuka_driver_examples)/eci_demo package.)
+The robot_manager lifecycle node must be configured and activated to be able to see the robot in rviz, afterwards the server will be able to accept planning requests. (An example how to create such a request can be found in the (kuka_drivers/examples)/iiqka_moveit_example package.)

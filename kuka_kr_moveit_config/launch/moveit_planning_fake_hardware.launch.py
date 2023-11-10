@@ -48,7 +48,7 @@ def launch_setup(context, *args, **kwargs):
         'kuka_kr_moveit_config') + "/config/urdf_planning_scene.rviz"
 
     startup_launch = IncludeLaunchDescription(PythonLaunchDescriptionSource(
-        [get_package_share_directory('kuka_rsi_hw_interface'), '/launch/startup.launch.py']),
+        [get_package_share_directory('kuka_kss_rsi_driver'), '/launch/startup.launch.py']),
         launch_arguments={'robot_model': "{}".format(robot_model.perform(context)),
                           'use_fake_hardware': "true"}.items())
 
