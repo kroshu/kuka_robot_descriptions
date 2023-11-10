@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <xacro:macro name="kuka_lbr_iisy_ros2_control" params="name prefix use_fake_hardware:=false gazebo_sim:=false">
+    <ros2_control name="${name}" type="system">
+      <hardware>
+        <xacro:if value="${use_fake_hardware}">
+          <xacro:if value="${gazebo_sim}">
+            <plugin>gazebo_ros2_control/GazeboSystem</plugin>
+          </xacro:if>
+          <xacro:unless value="${gazebo_sim}">
+            <plugin>mock_components/GenericSystem</plugin>
+            <param name="fake_sensor_commands">false</param>
+            <param name="state_following_offset">0.0</param>
+          </xacro:unless>
+        </xacro:if>
+        <xacro:unless value="${use_fake_hardware}">
+          <plugin>kuka_sunrise::KUKAFRIHardwareInterface</plugin>
+        </xacro:unless>
+      </hardware>
+      <!-- define joints and command/state interfaces for each joint -->
+      <joint name="${prefix}joint_a1">
+        <command_interface name="position"/>
+        <command_interface name="effort"/>
+        <state_interface name="position"/>
+        <state_interface name="effort"/>
+        <state_interface name="external_torque"/>
+      </joint>
+      <joint name="${prefix}joint_a2">
+        <command_interface name="position"/>
+        <command_interface name="effort"/>
+        <state_interface name="position"/>
+        <state_interface name="effort"/>
+        <state_interface name="external_torque"/>
+      </joint>
+      <joint name="${prefix}joint_a3">
+        <command_interface name="position"/>
+        <command_interface name="effort"/>
+        <state_interface name="position"/>
+        <state_interface name="effort"/>
+        <state_interface name="external_torque"/>
+      </joint>
+      <joint name="${prefix}joint_a4">
+        <command_interface name="position"/>
+        <command_interface name="effort"/>
+        <state_interface name="position"/>
+        <state_interface name="effort"/>
+        <state_interface name="external_torque"/>
+      </joint>
+      <joint name="${prefix}joint_a5">
+        <command_interface name="position"/>
+        <command_interface name="effort"/>
+        <state_interface name="position"/>
+        <state_interface name="effort"/>
+        <state_interface name="external_torque"/>
+      </joint>
+      <joint name="${prefix}joint_a6">
+        <command_interface name="position"/>
+        <command_interface name="effort"/>
+        <state_interface name="position"/>
+        <state_interface name="effort"/>
+        <state_interface name="external_torque"/>
+      </joint>
+      <joint name="${prefix}joint_a7">
+        <command_interface name="position"/>
+        <command_interface name="effort"/>
+        <state_interface name="position"/>
+        <state_interface name="effort"/>
+        <state_interface name="external_torque"/>
+      </joint>
+      <!-- TODO(Svastits): update GPIO list from config file-->
+      <xacro:if value="${io_access}">
+        <xacro:include filename="$(find kuka_sunrise)/config/gpio_config.xacro" />
+        <xacro:fri_gpio_config/>
+      </xacro:if>
+      <xacro:unless value="${io_access}">
+        <gpio name="gpio"/>
+      </xacro:unless>
+    </ros2_control>
+    <gazebo>
+      <plugin filename="libgazebo_ros2_control.so" name="gazebo_ros2_control">
+        <robot_param>robot_description</robot_param>
+        <robot_param_node>robot_state_publisher</robot_param_node>
+        <parameters>$(find kuka_sunrise)/config/ros2_controller_config.yaml</parameters> 
+        <parameters>$(find kuka_sunrise)/config/joint_trajectory_controller_config.yaml</parameters> 
+      </plugin>
+    </gazebo>
+  </xacro:macro>
+</robot>
