@@ -17,6 +17,10 @@ from launch import LaunchDescription
 from launch.substitutions import Command, FindExecutable, PathJoinSubstitution
 from launch_ros.substitutions import FindPackageShare
 from launch_ros.actions import Node
+import xacro
+import os
+from ament_index_python.packages import get_package_share_directory
+
 
 
 def generate_launch_description():
@@ -30,8 +34,11 @@ def generate_launch_description():
                  "urdf", "lbr_iisy3_r760.urdf.xacro"]
             ),
             " ",
+            "use_fake_hardware:=true",
         ]
     )
+    # robot_description_content = xacro.process_file(os.path.join(get_package_share_directory('kuka_lbr_iisy_support'), 'urdf', 'lbr_iisy3_r760.urdf.xacro'))
+
     robot_description = {'robot_description': robot_description_content}
 
     # RViz
