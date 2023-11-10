@@ -4,7 +4,7 @@
   <name>kuka_lbr_iiwa_support</name>
   <version>0.0.0</version>
   <description>ROS2 support package for the KUKA LBR iiwa</description>
-  <maintainer email="svastits.aron@gmail.com">Áron Svastits</maintainer>
+  <maintainer email="svastits1@gmail.com">Áron Svastits</maintainer>
   <license>Apache 2.0</license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
