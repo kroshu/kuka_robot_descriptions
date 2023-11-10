@@ -24,8 +24,8 @@ def generate_launch_description():
             PathJoinSubstitution([FindExecutable(name="xacro")]),
             " ",
             PathJoinSubstitution(
-                [FindPackageShare("kuka_cybertech_support"),
-                 "urdf", "kr16_r2010-2.urdf.xacro"]
+                [FindPackageShare("kuka_quantec_support"),
+                 "urdf", "kr210_r3100_2.urdf.xacro"]
             ),
             " ",
             "use_fake_hardware:=true",

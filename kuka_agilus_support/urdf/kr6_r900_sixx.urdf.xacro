@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="kr6_r900_sixx">
+  <!-- Import urdf file  -->
+  <xacro:include filename="$(find kuka_agilus_support)/urdf/kr6_r900_sixx_macro.xacro"/>
+
+  <!-- Read additional arguments  -->
+  <xacro:arg name="use_fake_hardware" default="false" />
+
+  <xacro:kuka_kr6_r900_sixx_robot prefix="" use_fake_hardware="$(arg use_fake_hardware)"/>
+</robot>

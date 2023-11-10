@@ -25,7 +25,7 @@ def generate_launch_description():
             " ",
             PathJoinSubstitution(
                 [FindPackageShare("kuka_quantec_support"),
-                 "urdf", "kr210_r3100-2.urdf.xacro"]
+                 "urdf", "kr210_r2700_2.urdf.xacro"]
             ),
             " ",
             "use_fake_hardware:=true",

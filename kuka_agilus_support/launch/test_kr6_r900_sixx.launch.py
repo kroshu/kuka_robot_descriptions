@@ -25,7 +25,7 @@ def generate_launch_description():
             " ",
             PathJoinSubstitution(
                 [FindPackageShare("kuka_agilus_support"),
-                 "urdf", "kr6_r700-sixx.urdf.xacro"]
+                 "urdf", "kr6_r700_sixx.urdf.xacro"]
             ),
             " ",
             "use_fake_hardware:=true",
