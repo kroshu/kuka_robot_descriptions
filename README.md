@@ -1,6 +1,6 @@
 # kuka_robot_descriptions
 
-This package contains support packages that can be used with real KUKA robots as well as with simulations.
+This repository contains support packages that can be used with real KUKA robots as well as with simulations.
 
 Github CI 
 ------------
