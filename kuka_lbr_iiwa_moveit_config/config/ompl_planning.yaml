@@ -141,7 +141,7 @@ planner_configs:
   TrajOptDefault:
     type: geometric::TrajOpt
 
-lbr_iisy_arm:
+manipulator:
   enforce_constrained_state_space: true
   projection_evaluator: joints(joint_a1,joint_a2)
   planner_configs:
