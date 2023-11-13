@@ -24,22 +24,20 @@ from launch.substitutions import LaunchConfiguration
 
 def launch_setup(context, *args, **kwargs):
     robot_model = LaunchConfiguration('robot_model')
-    robot_family = LaunchConfiguration('robot_family')
 
     moveit_config = (
-        MoveItConfigsBuilder("kuka_kr")
+        MoveItConfigsBuilder("kuka_lbr_iisy")
         .robot_description(file_path=get_package_share_directory(
-            'kuka_{}_support'.format(robot_family.perform(context)))
-            + "/urdf/{}.urdf.xacro".format(robot_model.perform(context)))
-        .robot_description_semantic(get_package_share_directory('kuka_kr_moveit_config')
-                                    + "/urdf/{}_arm.srdf".format(robot_model.perform(context)))
+            'kuka_lbr_iisy_support') + "/urdf/{}.urdf.xacro".format(robot_model.perform(context)))
+        .robot_description_semantic(get_package_share_directory('kuka_lbr_iisy_moveit_config')
+                                    + "/urdf/{}.srdf".format(robot_model.perform(context)))
         .robot_description_kinematics(file_path="config/kinematics.yaml")
         .trajectory_execution(file_path="config/moveit_controllers.yaml")
         .planning_scene_monitor(
             publish_robot_description=True, publish_robot_description_semantic=True
         )
         .joint_limits(file_path=get_package_share_directory(
-            'kuka_{}_support'.format(robot_family.perform(context)))
+            'kuka_lbr_iisy_support')
             + "/config/{}_joint_limits.yaml".format(robot_model.perform(context)))
         .to_moveit_configs()
     )
@@ -48,7 +46,7 @@ def launch_setup(context, *args, **kwargs):
         'kuka_resources') + "/config/planning_6_axis.rviz"
 
     startup_launch = IncludeLaunchDescription(PythonLaunchDescriptionSource(
-        [get_package_share_directory('kuka_kss_rsi_driver'), '/launch/startup.launch.py']),
+        [get_package_share_directory('kuka_iiqka_eac_driver'), '/launch/startup.launch.py']),
         launch_arguments={'robot_model': "{}".format(robot_model.perform(context)),
                           'use_fake_hardware': "true"}.items())
 
@@ -81,10 +79,6 @@ def generate_launch_description():
     launch_arguments = []
     launch_arguments.append(DeclareLaunchArgument(
         'robot_model',
-        default_value='kr6_r700_sixx'
-    ))
-    launch_arguments.append(DeclareLaunchArgument(
-        'robot_family',
-        default_value='agilus'
+        default_value='lbr_iisy3_r760'
     ))
     return LaunchDescription(launch_arguments + [OpaqueFunction(function=launch_setup)])

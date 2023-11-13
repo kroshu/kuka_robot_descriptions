@@ -23,7 +23,7 @@
           <xacro:property name="lost_packets_in_timeframe" value="${qos_config_dict['rt_packet_loss_profile']['lost_packets_in_timeframe']}" />
           <xacro:property name="timeframe_ms" value="${qos_config_dict['rt_packet_loss_profile']['timeframe_ms']}" />
 
-          <plugin>kuka_rox::KukaRoXHardwareInterface</plugin>
+          <plugin>kuka_eac::KukaEACHardwareInterface</plugin>
           <param name="client_ip">${client_ip}</param>
           <param name="controller_ip">${controller_ip}</param>
           <param name="control_mode">${control_mode}</param>

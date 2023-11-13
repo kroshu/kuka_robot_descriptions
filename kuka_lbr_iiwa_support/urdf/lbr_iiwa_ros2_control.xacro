@@ -9,7 +9,7 @@
           <param name="state_following_offset">0.0</param>
         </xacro:if>
         <xacro:unless value="${use_fake_hardware}">
-          <plugin>kuka_sunrise_fri_driver::KUKAFRIHardwareInterface</plugin>
+          <plugin>kuka_sunrise_fri_driver::KukaFRIHardwareInterface</plugin>
         </xacro:unless>
       </hardware>
       <!-- define joints and command/state interfaces for each joint -->
