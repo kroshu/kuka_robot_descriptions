@@ -12,10 +12,22 @@ Github CI
 - **kuka_cybertech_support** contains urdf, config and mesh files for KUKA cybertech robots.
 - **kuka_kr_moveit_config** contains configuration files for KUKA KR robots necessary for planning with moveit.
 - **kuka_lbr_iisy_support** contains urdf, config and mesh files for KUKA iisy robots.
-- **kuka_lbr_iisy_moveit_config** contains configuration files for KUKA iisy robots necessary for planning with moveit.
+- **kuka_lbr_iisy_moveit_config** contains configuration files for KUKA LBR iisy robots necessary for planning with moveit.
 - **kuka_agilus_support** contains urdf, config and mesh files for KUKA Agilus robots, it is copied from [kuka_experimental](https://github.com/ros-industrial/kuka_experimental) and ported to ROS2.
-- **kuka_lbr_iiwa_support** contains urdf, config and mesh files for KUKA LBR iiwa 7 robots
+- **kuka_lbr_iiwa_support** contains urdf, config and mesh files for KUKA LBR iiwa robots
+- **kuka_lbr_iiwa_moveit_config** contains configuration files for KUKA LBR iiwa robots necessary for planning with moveit.
 - **kuka_rsi_simulator** implements a basic RSI simulator. It is also copied from [kuka_experimental](https://github.com/ros-industrial/kuka_experimental) and is ported to ROS2. It implements a UDP socket, and receives the commands from an RSI interface and sends back the actual position of the robot (as it is a simulation, it is a simple closed loop, it sends what it received).
+
+## Structure of the support packages
+
+ - xacro structure
+ - joint limits files
+ - conventions
+ - how to extend
+
+
+## What data is verifyed?
+
 
 ## Running the RSI simulator
 
