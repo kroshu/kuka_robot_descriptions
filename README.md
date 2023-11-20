@@ -26,8 +26,9 @@ Github CI
 
 ### Joint limit configurations
 
- - joint limits files
+ The support packages contain a joint limits file for every supported robot model, necessary time parametrization of moveit-planned paths. They contain the velocity limits also available in the URDF model and additional acceleration limits. Acceleration limits can never be global, these values are calculated from the worst-case ramp-up time to reach maximum velocity. The easiest way to modify the allowed velocities and accelerations is to change the velocity and acceleration scaling factors also available in the same configuration files. (The scaling factor can never be smaller than 1.)
 
+ 
 ### Extending the models
 
  In real applications, it's likely that your description will be more complex, involving multiple objects next to the robot. It is recommended to create a dedicated ROS2 package specifically for managing this extended description.
