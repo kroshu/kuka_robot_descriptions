@@ -8,26 +8,26 @@ Github CI
 
 ## What is included?
 
-- **kuka_resources** contains general, common files. It is copied from [kuka_experimental](https://github.com/ros-industrial/kuka_experimental) and is ported from ROS to ROS2.
-- **kuka_cybertech_support** contains urdf, config and mesh files for KUKA cybertech robots.
-- **kuka_kr_moveit_config** contains configuration files for KUKA KR robots necessary for planning with MoveIt.
-- **kuka_lbr_iisy_support** contains urdf, config and mesh files for KUKA iisy robots.
-- **kuka_lbr_iisy_moveit_config** contains configuration files for KUKA LBR iisy robots necessary for planning with MoveIt.
-- **kuka_agilus_support** contains urdf, config and mesh files for KUKA Agilus robots, it is copied from [kuka_experimental](https://github.com/ros-industrial/kuka_experimental) and ported to ROS2.
-- **kuka_lbr_iiwa_support** contains urdf, config and mesh files for KUKA LBR iiwa robots
-- **kuka_lbr_iiwa_moveit_config** contains configuration files for KUKA LBR iiwa robots necessary for planning with MoveIt.
+- `kuka_resources` contains general, common files. It is copied from [kuka_experimental](https://github.com/ros-industrial/kuka_experimental) and is ported from ROS to ROS2.
+- `kuka_cybertech_support` contains urdf, config and mesh files for KUKA cybertech robots.
+- `kuka_kr_moveit_config` contains configuration files for KUKA KR robots necessary for planning with MoveIt.
+- `kuka_lbr_iisy_support` contains urdf, config and mesh files for KUKA iisy robots.
+- `kuka_lbr_iisy_moveit_config` contains configuration files for KUKA LBR iisy robots necessary for planning with MoveIt.
+- `kuka_agilus_support` contains urdf, config and mesh files for KUKA Agilus robots, it is copied from [kuka_experimental](https://github.com/ros-industrial/kuka_experimental) and ported to ROS2.
+- `kuka_lbr_iiwa_support` contains urdf, config and mesh files for KUKA LBR iiwa robots
+- `kuka_lbr_iiwa_moveit_config` contains configuration files for KUKA LBR iiwa robots necessary for planning with MoveIt.
 
 ## Structure of the support packages
 
 All support packages consist of 4 folders:
-- config: contains joint limits, necessary for time parametrization of trajectories
-- launch: contains launch files to be able to visualize the robot models
-- meshes: contains collision and visual meshes for the robots
-- urdf: contains the xacro files describing the robots, including ros2_control integration (with fake hardware argument)
+- `config`: contains joint limits, necessary for time parametrization of trajectories
+- `launch`: contains launch files to be able to visualize the robot models
+- `meshes`: contains collision and visual meshes for the robots
+- `urdf`: contains the xacro files describing the robots, including `ros2_control` integration (with fake hardware argument)
 
 ### Xacro files
- Each robot has two specific xacro files: a macro ({*robot_name*}_macro.xacro) and another file instantiating this macro ({*robot_name*}.urdf.xacro). Additionally there is a xacro providing ros2_control integration, including the name and type of the hardware interface, hardware parameters and the supported state and command interfaces.
- Additionally a transmission xacro is provided for gazebo support, but the mechanicalReduction parameters contained within are not valid, only placeholders.
+ Each robot has two specific xacro files: a macro (`{*robot_name*}_macro.xacro`) and another file instantiating this macro (`{*robot_name*}.urdf.xacro`). Additionally there is a xacro providing `ros2_control` integration, including the name and type of the hardware interface, hardware parameters and the supported state and command interfaces.
+ Additionally a transmission xacro is provided for gazebo support, but the `mechanicalReduction` parameters contained within are not valid, only placeholders.
 
  The macro files contain the links and joints of the main serial chain, including transformations, rotation axes, inertial properties, joint position, velocity and effort limits and the location of the mesh files.
 
@@ -41,7 +41,7 @@ All support packages consist of 4 folders:
 
  The frames in the xacros follow the Denavit–Hartenberg conventions of Khalil-Dombre.
  All robots in the xacros are named according to the following pattern: {kr/lbr_iisy/lbr_iiwa}{*payload*}\_r{*reach*}\_{*version*}.
- where version is optional and comes from the official product name. (e.g. KR 120 R3100-2 is named kr120_r3100_2)
+ where `version` is optional and comes from the official product name. (e.g. KR 120 R3100-2 is named `kr120_r3100_2`)
 
  The MoveIt configuration packages also contain xacros, that describe the semantic information of the robots: planning groups, default states and link-pairs, for which collision checking should not be done. The default planning group (from base_link to tool0) is named "manipulator" for all robot arm. An end effector, named "end_effector" is also defined for all robots, which enables visualising end effector paths in rviz.
 
