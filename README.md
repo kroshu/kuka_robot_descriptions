@@ -45,7 +45,7 @@ All support packages consist of 4 folders:
 
  The MoveIt configuration packages also contain xacros, that describe the semantic information of the robots: planning groups, default states and link-pairs, for which collision checking should not be done. The default planning group (from base_link to tool0) is named "manipulator" for all robot arm. An end effector, named "end_effector" is also defined for all robots, which enables visualising end effector paths in rviz.
 
- To visualise the robot models, the launch files in the launch directory of the support packages can be used. These also start a joint state publisher with default values for all joints, therefore it is not possible to move the robot, only to visualise the frames and joints of the model in default position.
+ To visualise the robot models, the launch files in the `launch` directory of the support packages can be used. These also start a `joint_state_publisher_gui` to enable visualisation of the robot meshes and frames with different joint configurations. However they have only visualisation purposes and cannot connect to real or fake hardware.
 
 ### Joint limit configurations
 
