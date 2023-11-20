@@ -33,7 +33,7 @@
         </xacro:unless>
       </hardware>
       <!-- define joints and command/state interfaces for each joint -->
-      <joint name="${prefix}joint_a1">
+      <joint name="${prefix}joint_1">
         <command_interface name="position"/>
         <command_interface name="stiffness"/>
         <command_interface name="damping"/>
@@ -41,7 +41,7 @@
         <state_interface name="position"/>
         <state_interface name="effort"/>
       </joint>
-      <joint name="${prefix}joint_a2">
+      <joint name="${prefix}joint_2">
         <command_interface name="position"/>
         <command_interface name="stiffness"/>
         <command_interface name="damping"/>
@@ -49,7 +49,7 @@
         <state_interface name="position"/>
         <state_interface name="effort"/>
       </joint>
-      <joint name="${prefix}joint_a3">
+      <joint name="${prefix}joint_3">
         <command_interface name="position"/>
         <command_interface name="stiffness"/>
         <command_interface name="damping"/>
@@ -57,7 +57,7 @@
         <state_interface name="position"/>
         <state_interface name="effort"/>
       </joint>
-      <joint name="${prefix}joint_a4">
+      <joint name="${prefix}joint_4">
         <command_interface name="position"/>
         <command_interface name="stiffness"/>
         <command_interface name="damping"/>
@@ -65,7 +65,7 @@
         <state_interface name="position"/>
         <state_interface name="effort"/>
       </joint>
-      <joint name="${prefix}joint_a5">
+      <joint name="${prefix}joint_5">
         <command_interface name="position"/>
         <command_interface name="stiffness"/>
         <command_interface name="damping"/>
@@ -73,7 +73,7 @@
         <state_interface name="position"/>
         <state_interface name="effort"/>
       </joint>
-      <joint name="${prefix}joint_a6">
+      <joint name="${prefix}joint_6">
         <command_interface name="position"/>
         <command_interface name="stiffness"/>
         <command_interface name="damping"/>

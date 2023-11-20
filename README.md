@@ -33,7 +33,7 @@ All support packages consist of 4 folders:
 
  The macro file follows the ROS-Industrial conventions:
  - link names are "link_{*i*}"
- - joint names are "joint_a{*i*}"
+ - joint names are "joint_{*i*}"
  - all link and joint names have a {prefix} argument
  - base frame: equivalent to the base frame defined by the industrial controller ($ROBROOT)
  - flange frame: attachment point for EEF models
