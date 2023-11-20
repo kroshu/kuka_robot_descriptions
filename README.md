@@ -37,15 +37,20 @@ The macro file follows the ROS-Industrial conventions:
  - all link and joint names have a `prefix` argument
  - `base` frame: equivalent to the base frame defined by the industrial controller ($ROBROOT)
  - `flange` frame: attachment point for EEF models
- - `tool0` frame: all-zeros tool frame
+ - `tool0` frame: all-zeros tool frame, identical to the tool frame defined by the industrial controller ($TOOL)
 
-The frames in the xacros follow the Denavit–Hartenberg conventions of Khalil-Dombre.
 All robots in the xacros are named according to the following pattern: `{kr/lbr_iisy/lbr_iiwa}{_payload_}_r{reach}_{version}`.
 where `version` is omitted, if the official product name does not contain it. (e.g. KR 120 R3100-2 is named `kr120_r3100_2` and LBR iisy 3 R760 is `lbr_iisy3_r760`)
 
 The MoveIt configuration packages also contain xacros, that describe the semantic information of the robots: planning groups, default states and link-pairs, for which collision checking should not be done. The default planning group (from `base_link` to `tool0`) is named `manipulator` for all robot arms. An end effector, named `end_effector` is also defined for all robots, which enables visualising end effector paths in rviz.
 
 To visualise the robot models, the launch files in the `launch` directory of the support packages can be used. These also start a `joint_state_publisher_gui` to enable visualisation of the robot meshes and frames with different joint configurations. However they have only visualisation purposes and cannot connect to real or fake hardware.
+
+### Frame conventions
+
+The frames of the main serial chain in the xacros (`base_link` to `link_6` or `link_7`) follow the Denavit–Hartenberg conventions of Khalil-Dombre.
+The other frames, which are added to conform to ROS-Industrial follow the conventions defined there: `base` and `tool0` are defined to be identical to the frames on the controller, while `flange` follows [REP-103](https://www.ros.org/reps/rep-0103.html#coordinate-frame-conventions), meaning that in default position x+ points forwards and z+ upwards.
+
 
 ### Joint limit configurations
 
