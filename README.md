@@ -41,7 +41,7 @@ All support packages consist of 4 folders:
 
  The frames in the xacros follow the Denavit–Hartenberg conventions of Khalil-Dombre.
  All robots in the xacros are named according to the following pattern: {kr/lbr_iisy/lbr_iiwa}{*payload*}\_r{*reach*}\_{*version*}.
- where `version` is optional and comes from the official product name. (e.g. KR 120 R3100-2 is named `kr120_r3100_2`)
+ where `version` is omitted, if the official product name does not contain it. (e.g. KR 120 R3100-2 is named `kr120_r3100_2` and LBR iisy 3 R760 is `lbr_iisy3_r760`)
 
  The MoveIt configuration packages also contain xacros, that describe the semantic information of the robots: planning groups, default states and link-pairs, for which collision checking should not be done. The default planning group (from base_link to tool0) is named "manipulator" for all robot arm. An end effector, named "end_effector" is also defined for all robots, which enables visualising end effector paths in rviz.
 
