@@ -57,7 +57,7 @@ All support packages consist of 4 folders:
  In real applications, it's likely that your description will be more complex, involving multiple objects next to the robot and optionally end effectors. It is recommended to create a new, dedicated ROS2 package specifically for managing this extended description by copying and extending the base robot model.
 
  Example of attaching an end effector (with link name "eef_base_link") to the flange frame, which could be defined in a different xacro file:
-```
+```xml
 <joint name="${prefix}flange-${prefix}eef" type="fixed">
  <origin xyz="0 0 0" rpy="0 0 0" />
  <parent link="${prefix}flange" />
