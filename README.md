@@ -35,12 +35,24 @@ Github CI
 ros2 launch kuka_rsi_simulator kuka_rsi_simulator_launch.py
 ```
 
-## Starting the move group server for KR robots
+## Starting the move group server with fake hardware
 
-The following launch file will start the driver with fake hardware, matching robot_model and robot_family arguments can be added to the command e.g. (robot_model:=kr16_r2010_2 robot_family:=cybertech):
+To start the driver with fake hardware and the motion planning rviz plugin, the following launch files can be used:
 
+For KR robots (KSS):
 ```
 ros2 launch kuka_kr_moveit_config moveit_planning_fake_hardware.launch.py
 ```
+Matching robot_model and robot_family arguments can be added to the command e.g. (robot_model:=kr16_r2010_2 robot_family:=cybertech).
 
-The robot_manager lifecycle node must be configured and activated to be able to see the robot in rviz, afterwards the server will be able to accept planning requests. (An example how to create such a request can be found in the (kuka_drivers/examples)/iiqka_moveit_example package.)
+For LBR iiwa robots (Sunrise):
+```
+ros2 launch kuka_lbr_iisy_moveit_config moveit_planning_fake_hardware.launch.py
+```
+
+For LBR iisy robots (iiQkA):
+```
+ros2 launch kuka_lbr_iiwa_moveit_config moveit_planning_fake_hardware.launch.py 
+```
+
+This will launch exactly the same nodes, as the driver launch file, but with fake hardware. Therefore the robot_manager lifecycle node must be configured and activated to be able to see the robot in rviz. After activation the server will be able to accept planning requests, from the plugin or from code. (An example how to create such a request from C++ code can be found in the (kuka_drivers/examples)/iiqka_moveit_example package.)
