@@ -10,12 +10,12 @@ Github CI
 
 - **kuka_resources** contains general, common files. It is copied from [kuka_experimental](https://github.com/ros-industrial/kuka_experimental) and is ported from ROS to ROS2.
 - **kuka_cybertech_support** contains urdf, config and mesh files for KUKA cybertech robots.
-- **kuka_kr_moveit_config** contains configuration files for KUKA KR robots necessary for planning with moveit.
+- **kuka_kr_moveit_config** contains configuration files for KUKA KR robots necessary for planning with MoveIt.
 - **kuka_lbr_iisy_support** contains urdf, config and mesh files for KUKA iisy robots.
-- **kuka_lbr_iisy_moveit_config** contains configuration files for KUKA LBR iisy robots necessary for planning with moveit.
+- **kuka_lbr_iisy_moveit_config** contains configuration files for KUKA LBR iisy robots necessary for planning with MoveIt.
 - **kuka_agilus_support** contains urdf, config and mesh files for KUKA Agilus robots, it is copied from [kuka_experimental](https://github.com/ros-industrial/kuka_experimental) and ported to ROS2.
 - **kuka_lbr_iiwa_support** contains urdf, config and mesh files for KUKA LBR iiwa robots
-- **kuka_lbr_iiwa_moveit_config** contains configuration files for KUKA LBR iiwa robots necessary for planning with moveit.
+- **kuka_lbr_iiwa_moveit_config** contains configuration files for KUKA LBR iiwa robots necessary for planning with MoveIt.
 
 ## Structure of the support packages
 
@@ -43,13 +43,13 @@ All support packages consist of 4 folders:
  All robots in the xacros are named according to the following pattern: {kr/lbr_iisy/lbr_iiwa}{*payload*}\_r{*reach*}\_{*version*}.
  where version is optional and comes from the official product name. (e.g. KR 120 R3100-2 is named kr120_r3100_2)
 
- The moveit configuration packages also contain xacros, that describe the semantic information of the robots: planning groups, default states and link-pairs, for which collision checking should not be done. The default planning group (from base_link to tool0) is named "manipulator" for all supported robots. An end effector, named "end_effector" is also defined for all robots, which enables visualising end effector paths in rviz.
+ The MoveIt configuration packages also contain xacros, that describe the semantic information of the robots: planning groups, default states and link-pairs, for which collision checking should not be done. The default planning group (from base_link to tool0) is named "manipulator" for all robot arm. An end effector, named "end_effector" is also defined for all robots, which enables visualising end effector paths in rviz.
 
  To visualise the robot models, the launch files in the launch directory of the support packages can be used. These also start a joint state publisher with default values for all joints, therefore it is not possible to move the robot, only to visualise the frames and joints of the model in default position.
 
 ### Joint limit configurations
 
- The support packages contain a joint limits file for every supported robot model, necessary time parametrization of moveit-planned paths. They contain the velocity limits also available in the URDF model and additional acceleration limits. Acceleration limits can never be global, these values are calculated from the worst-case ramp-up time to reach maximum velocity. The easiest way to modify the allowed velocities and accelerations is to change the velocity and acceleration scaling factors also available in the same configuration files. (The scaling factor can never be smaller than 1.)
+ The support packages contain a joint limits file for every supported robot model, necessary time parametrization of MoveIt-planned paths. They contain the velocity limits also available in the URDF model and additional acceleration limits. Acceleration limits can never be global, these values are calculated from the worst-case ramp-up time to reach maximum velocity. The easiest way to modify the allowed velocities and accelerations is to change the velocity and acceleration scaling factors also available in the same configuration files. (The scaling factor can never be smaller than 1.)
 
  
 ### Extending the models
@@ -57,7 +57,7 @@ All support packages consist of 4 folders:
  In real applications, it's likely that your description will be more complex, involving multiple objects next to the robot and optionally end effectors. It is recommended to create a new, dedicated ROS2 package specifically for managing this extended description by copying and extending the base robot model.
 
  Example of attaching an end effector (with link name "eef_base_link") to the flange frame, which could be defined in a different xacro file:
-```xml
+```
 <joint name="${prefix}flange-${prefix}eef" type="fixed">
  <origin xyz="0 0 0" rpy="0 0 0" />
  <parent link="${prefix}flange" />
@@ -71,15 +71,15 @@ Some of the data in the xacros might not be valid or missing, the following tabl
 
 |Robot name | Transformations | Joint position limits | Joint velocity limits | Joint effort limits | Inertial values | Simplified collision meshes|
 |---|:---:|:---:|:---:|:---:|:---:|:---:|
-|lbr_iisy3_r760 | <img src="doc/resources/verified.png" alt="Verified" width="25"/> | <img src="doc/resources/verified.png" alt="Verified" width="25"/> | <img src="doc/resources/verified.png" alt="Verified" width="25"/> | <img src="doc/resources/verified.png" alt="Verified" width="25"/> | | <img src="doc/resources/verified.png" alt="Verified" width="25"/> |
-|lbr_iisy11_r1300 | <img src="doc/resources/verified.png" alt="Verified" width="25"/> | <img src="doc/resources/verified.png" alt="Verified" width="25"/> | <img src="doc/resources/verified.png" alt="Verified" width="25"/> | <img src="doc/resources/verified.png" alt="Verified" width="25"/> | | |
-|lbr_iisy15_r930 | <img src="doc/resources/verified.png" alt="Verified" width="25"/> | <img src="doc/resources/verified.png" alt="Verified" width="25"/> | <img src="doc/resources/verified.png" alt="Verified" width="25"/> | <img src="doc/resources/verified.png" alt="Verified" width="25"/> | | |
-|lbr_iiwa14_r820 | <img src="doc/resources/verified.png" alt="Verified" width="25"/> | <img src="doc/resources/verified.png" alt="Verified" width="25"/> | <img src="doc/resources/verified.png" alt="Verified" width="25"/> | | | |
-|kr6_r700_sixx | <img src="doc/resources/verified.png" alt="Verified" width="25"/> | <img src="doc/resources/verified.png" alt="Verified" width="25"/> | <img src="doc/resources/verified.png" alt="Verified" width="25"/> | | | <img src="doc/resources/verified.png" alt="Verified" width="25"/> |
-|kr6_r900_sixx | <img src="doc/resources/verified.png" alt="Verified" width="25"/> | <img src="doc/resources/verified.png" alt="Verified" width="25"/> | <img src="doc/resources/verified.png" alt="Verified" width="25"/> | | | <img src="doc/resources/verified.png" alt="Verified" width="25"/> |
-|kr16_r2010_2 | <img src="doc/resources/verified.png" alt="Verified" width="25"/> | <img src="doc/resources/verified.png" alt="Verified" width="25"/> | <img src="doc/resources/verified.png" alt="Verified" width="25"/> | <img src="doc/resources/verified.png" alt="Verified" width="25"/> | | |
-|kr210_r2700_2 | <img src="doc/resources/verified.png" alt="Verified" width="25"/> | <img src="doc/resources/verified.png" alt="Verified" width="25"/> | <img src="doc/resources/verified.png" alt="Verified" width="25"/> | <img src="doc/resources/verified.png" alt="Verified" width="25"/> | | |
-|kr210_r3100_2 | <img src="doc/resources/verified.png" alt="Verified" width="25"/> | <img src="doc/resources/verified.png" alt="Verified" width="25"/> | <img src="doc/resources/verified.png" alt="Verified" width="25"/> | <img src="doc/resources/verified.png" alt="Verified" width="25"/> | | |
+|lbr_iisy3_r760 | ✓ | ✓ | ✓ | ✓ | | ✓ |
+|lbr_iisy11_r1300 | ✓ | ✓ | ✓ | ✓ | | |
+|lbr_iisy15_r930 | ✓ | ✓ | ✓ | ✓ | | |
+|lbr_iiwa14_r820 | ✓ | ✓ | ✓ | | | |
+|kr6_r700_sixx | ✓ | ✓ | ✓ | | | ✓ |
+|kr6_r900_sixx | ✓ | ✓ | ✓ | | | ✓ |
+|kr16_r2010_2 | ✓ | ✓ | ✓ | ✓ | | |
+|kr210_r2700_2 | ✓ | ✓ | ✓ | ✓ | | |
+|kr210_r3100_2 | ✓ | ✓ | ✓ | ✓ | | |
 
 ## Starting the move group server with fake hardware
 
