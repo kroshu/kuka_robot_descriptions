@@ -29,12 +29,6 @@ Github CI
 ## What data is verifyed?
 
 
-## Running the RSI simulator
-
-```
-ros2 launch kuka_rsi_simulator kuka_rsi_simulator_launch.py
-```
-
 ## Starting the move group server with fake hardware
 
 To start the driver with fake hardware and the motion planning rviz plugin, the following launch files can be used:
