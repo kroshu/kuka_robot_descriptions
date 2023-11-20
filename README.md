@@ -20,9 +20,34 @@ Github CI
 
 ## Structure of the support packages
 
+All support packages consist of 4 folders:
+- config: contains joint limits, necessary for time parametrization of trajectories
+- launch: contains launch files to be able to visualize the robot models
+- meshes: contains collision and visual meshes for the robots
+- urdf: contains the xacro files describing the robots, including ros2_control integration (with fake hardware argument)
+
 ### Xacro files
+ Each robot has two specific xacro files: a macro (<robot_name>_macro.xacro) and another file instantiating this macro (<robot_name>.urdf.xacro). Additionally there is a xacro providing ros2_control integration, including the name and type of the hardware interface, hardware parameters and the supported state and command interfaces.
+
+ The macro file follows the ROS-Industrial conventions:
+ - link names are "link_{i}"
+ - joint names are "joint_a{i}"
+ - all link and joint names have a {prefix} argument
+ - base frame: equivalent to the base frame defined by the industrial controller ($ROBROOT)
+ - flange frame: attachment point for EEF models
+ - tool0 frame: all-zeros tool frame
+
+
+
  - xacro structure
  - conventions (naming, frame)
+
+
+ ros-in frames
+ srdf: arm is called manipulator
+
+
+ To visualise the robot models, the launch files in the launch directory of the support packages can be used. These also start a joint state publisher with default values for all joints, therefore it is not possible to move the robot, only to visualise the frames and joints of the model in default position.
 
 ### Joint limit configurations
 
@@ -31,8 +56,16 @@ Github CI
  
 ### Extending the models
 
- In real applications, it's likely that your description will be more complex, involving multiple objects next to the robot. It is recommended to create a dedicated ROS2 package specifically for managing this extended description.
+ In real applications, it's likely that your description will be more complex, involving multiple objects next to the robot and optionally end effectors. It is recommended to create a new, dedicated ROS2 package specifically for managing this extended description by copying and extending the base robot model.
 
+ Example of attaching an end effector (with link name "eef_base_link") to the flange frame, which could be defined in a different xacro file:
+```
+<joint name="${prefix}flange-${prefix}eef" type="fixed">
+  <origin xyz="0 0 0" rpy="0 0 0" />
+  <parent link="${prefix}flange" />
+  <child link="${prefix}eef_base_link" />
+</joint>
+```
 
 ## What data is verifyed?
 
