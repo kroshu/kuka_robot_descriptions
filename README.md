@@ -40,10 +40,11 @@ All support packages consist of 4 folders:
  - flange frame: attachment point for EEF models
  - tool0 frame: all-zeros tool frame
 
-TODO
- - conventions (naming, frame)
- - srdf: arm is called manipulator
+ The frames in the xacros follow the Denavit–Hartenberg conventions of Khalil-Dombre.
+ All robots in the xacros are named according to the following pattern: <kr/lbr_iisy/lbr_iiwa>_<payload>_r<reach>_<version>.
+ where version is optional and comes from the official product name. (e.g. KR 120 R3100-2 is named kr120_r3100_2)
 
+ The moveit configuration packages also contain xacros, that describe the semantic information of the robots: planning groups, default states and link-pairs, for which collision checking should not be done. The default planning group (from base_link to tool0) is named "manipulator" for all robot arm. An end effector, named "end_effector" is also defined for all robots, which enables visualising end effector paths in rviz.
 
  To visualise the robot models, the launch files in the launch directory of the support packages can be used. These also start a joint state publisher with default values for all joints, therefore it is not possible to move the robot, only to visualise the frames and joints of the model in default position.
 
@@ -59,14 +60,27 @@ TODO
  Example of attaching an end effector (with link name "eef_base_link") to the flange frame, which could be defined in a different xacro file:
 ```
 <joint name="${prefix}flange-${prefix}eef" type="fixed">
-  <origin xyz="0 0 0" rpy="0 0 0" />
-  <parent link="${prefix}flange" />
-  <child link="${prefix}eef_base_link" />
+ <origin xyz="0 0 0" rpy="0 0 0" />
+ <parent link="${prefix}flange" />
+ <child link="${prefix}eef_base_link" />
 </joint>
 ```
 
 ## What data is verifyed?
 
+Some of the data in the xacros might not be valid or missing, the following table shows what can be considered valid.
+
+|Robot name | Transformations | Joint position limits | Joint velocity limits | Joint effort limits | Inertial values | Simplified collision meshes|
+|---|---|---|---|---|---|---|
+|lbr_iisy3_r760 | <img src="doc/resources/verified.png" alt="Verified" width="25"/> | <img src="doc/resources/verified.png" alt="Verified" width="25"/> | <img src="doc/resources/verified.png" alt="Verified" width="25"/> | <img src="doc/resources/verified.png" alt="Verified" width="25"/> | | <img src="doc/resources/verified.png" alt="Verified" width="25"/> |
+|lbr_iisy11_r1300 | <img src="doc/resources/verified.png" alt="Verified" width="25"/> | <img src="doc/resources/verified.png" alt="Verified" width="25"/> | <img src="doc/resources/verified.png" alt="Verified" width="25"/> | <img src="doc/resources/verified.png" alt="Verified" width="25"/> | | |
+|lbr_iisy15_r930 | <img src="doc/resources/verified.png" alt="Verified" width="25"/> | <img src="doc/resources/verified.png" alt="Verified" width="25"/> | <img src="doc/resources/verified.png" alt="Verified" width="25"/> | <img src="doc/resources/verified.png" alt="Verified" width="25"/> | | |
+|lbr_iiwa14_r820 | <img src="doc/resources/verified.png" alt="Verified" width="25"/> | <img src="doc/resources/verified.png" alt="Verified" width="25"/> | <img src="doc/resources/verified.png" alt="Verified" width="25"/> | | | |
+|kr6_r700_sixx | <img src="doc/resources/verified.png" alt="Verified" width="25"/> | <img src="doc/resources/verified.png" alt="Verified" width="25"/> | <img src="doc/resources/verified.png" alt="Verified" width="25"/> | | | <img src="doc/resources/verified.png" alt="Verified" width="25"/> |
+|kr6_r900_sixx | <img src="doc/resources/verified.png" alt="Verified" width="25"/> | <img src="doc/resources/verified.png" alt="Verified" width="25"/> | <img src="doc/resources/verified.png" alt="Verified" width="25"/> | | | <img src="doc/resources/verified.png" alt="Verified" width="25"/> |
+|kr16_r2010_2 | <img src="doc/resources/verified.png" alt="Verified" width="25"/> | <img src="doc/resources/verified.png" alt="Verified" width="25"/> | <img src="doc/resources/verified.png" alt="Verified" width="25"/> | <img src="doc/resources/verified.png" alt="Verified" width="25"/> | | |
+|kr210_r2700_2 | <img src="doc/resources/verified.png" alt="Verified" width="25"/> | <img src="doc/resources/verified.png" alt="Verified" width="25"/> | <img src="doc/resources/verified.png" alt="Verified" width="25"/> | <img src="doc/resources/verified.png" alt="Verified" width="25"/> | | |
+|kr210_r3100_2 | <img src="doc/resources/verified.png" alt="Verified" width="25"/> | <img src="doc/resources/verified.png" alt="Verified" width="25"/> | <img src="doc/resources/verified.png" alt="Verified" width="25"/> | <img src="doc/resources/verified.png" alt="Verified" width="25"/> | | |
 
 ## Starting the move group server with fake hardware
 
@@ -83,7 +97,7 @@ For LBR iiwa robots (Sunrise):
 ros2 launch kuka_lbr_iisy_moveit_config moveit_planning_fake_hardware.launch.py
 ```
 
-For LBR iisy robots (iiQkA):
+For LBR iisy robots (iiQKA):
 ```
 ros2 launch kuka_lbr_iiwa_moveit_config moveit_planning_fake_hardware.launch.py 
 ```
