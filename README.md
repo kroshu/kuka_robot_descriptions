@@ -71,7 +71,7 @@ All support packages consist of 4 folders:
 Some of the data in the xacros might not be valid or missing, the following table shows what can be considered valid.
 
 |Robot name | Transformations | Joint position limits | Joint velocity limits | Joint effort limits | Inertial values | Simplified collision meshes|
-|---|---|---|---|---|---|---|
+|---|:---:|:---:|:---:|:---:|:---:|:---:|
 |lbr_iisy3_r760 | <img src="doc/resources/verified.png" alt="Verified" width="25"/> | <img src="doc/resources/verified.png" alt="Verified" width="25"/> | <img src="doc/resources/verified.png" alt="Verified" width="25"/> | <img src="doc/resources/verified.png" alt="Verified" width="25"/> | | <img src="doc/resources/verified.png" alt="Verified" width="25"/> |
 |lbr_iisy11_r1300 | <img src="doc/resources/verified.png" alt="Verified" width="25"/> | <img src="doc/resources/verified.png" alt="Verified" width="25"/> | <img src="doc/resources/verified.png" alt="Verified" width="25"/> | <img src="doc/resources/verified.png" alt="Verified" width="25"/> | | |
 |lbr_iisy15_r930 | <img src="doc/resources/verified.png" alt="Verified" width="25"/> | <img src="doc/resources/verified.png" alt="Verified" width="25"/> | <img src="doc/resources/verified.png" alt="Verified" width="25"/> | <img src="doc/resources/verified.png" alt="Verified" width="25"/> | | |
