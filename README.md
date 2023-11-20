@@ -28,6 +28,9 @@ All support packages consist of 4 folders:
 
 ### Xacro files
  Each robot has two specific xacro files: a macro (<robot_name>_macro.xacro) and another file instantiating this macro (<robot_name>.urdf.xacro). Additionally there is a xacro providing ros2_control integration, including the name and type of the hardware interface, hardware parameters and the supported state and command interfaces.
+ Additionally a transmission xacro is provided for gazebo support, but the mechanicalReduction parameters contained within are not valid, only placeholders.
+
+ The macro files contain the links and joints of the main serial chain, including transformations, rotation axes, inertial properties, joint position, velocity and effort limits and the location of the mesh files.
 
  The macro file follows the ROS-Industrial conventions:
  - link names are "link_{i}"
@@ -37,14 +40,9 @@ All support packages consist of 4 folders:
  - flange frame: attachment point for EEF models
  - tool0 frame: all-zeros tool frame
 
-
-
- - xacro structure
+TODO
  - conventions (naming, frame)
-
-
- ros-in frames
- srdf: arm is called manipulator
+ - srdf: arm is called manipulator
 
 
  To visualise the robot models, the launch files in the launch directory of the support packages can be used. These also start a joint state publisher with default values for all joints, therefore it is not possible to move the robot, only to visualise the frames and joints of the model in default position.
