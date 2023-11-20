@@ -20,10 +20,17 @@ Github CI
 
 ## Structure of the support packages
 
+### Xacro files
  - xacro structure
+ - conventions (naming, frame)
+
+### Joint limit configurations
+
  - joint limits files
- - conventions
- - how to extend
+
+### Extending the models
+
+ In real applications, it's likely that your description will be more complex, involving multiple objects next to the robot. It is recommended to create a dedicated ROS2 package specifically for managing this extended description.
 
 
 ## What data is verifyed?
