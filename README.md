@@ -43,7 +43,7 @@ All support packages consist of 4 folders:
  All robots in the xacros are named according to the following pattern: {kr/lbr_iisy/lbr_iiwa}{*payload*}\_r{*reach*}\_{*version*}.
  where version is optional and comes from the official product name. (e.g. KR 120 R3100-2 is named kr120_r3100_2)
 
- The moveit configuration packages also contain xacros, that describe the semantic information of the robots: planning groups, default states and link-pairs, for which collision checking should not be done. The default planning group (from base_link to tool0) is named "manipulator" for all robot arm. An end effector, named "end_effector" is also defined for all robots, which enables visualising end effector paths in rviz.
+ The moveit configuration packages also contain xacros, that describe the semantic information of the robots: planning groups, default states and link-pairs, for which collision checking should not be done. The default planning group (from base_link to tool0) is named "manipulator" for all supported robots. An end effector, named "end_effector" is also defined for all robots, which enables visualising end effector paths in rviz.
 
  To visualise the robot models, the launch files in the launch directory of the support packages can be used. These also start a joint state publisher with default values for all joints, therefore it is not possible to move the robot, only to visualise the frames and joints of the model in default position.
 
