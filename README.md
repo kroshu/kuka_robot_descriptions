@@ -26,12 +26,12 @@ All support packages consist of 4 folders:
 - `urdf`: contains the xacro files describing the robots, including `ros2_control` integration (with fake hardware argument)
 
 ### Xacro files
- Each robot has two specific xacro files: a macro (`{*robot_name*}_macro.xacro`) and another file instantiating this macro (`{*robot_name*}.urdf.xacro`). Additionally there is a xacro providing `ros2_control` integration, including the name and type of the hardware interface, hardware parameters and the supported state and command interfaces.
- Additionally a transmission xacro is provided for gazebo support, but the `mechanicalReduction` parameters contained within are not valid, only placeholders.
+Each robot has two specific xacro files: a macro (`{*robot_name*}_macro.xacro`) and another file instantiating this macro (`{*robot_name*}.urdf.xacro`). Additionally there is a xacro providing `ros2_control` integration, including the name and type of the hardware interface, hardware parameters and the supported state and command interfaces.
+Additionally a transmission xacro is provided for gazebo support, but the `mechanicalReduction` parameters contained within are not valid, only placeholders.
 
- The macro files contain the links and joints of the main serial chain, including transformations, rotation axes, inertial properties, joint position, velocity and effort limits and the location of the mesh files.
+The macro files contain the links and joints of the main serial chain, including transformations, rotation axes, inertial properties, joint position, velocity and effort limits and the location of the mesh files.
 
- The macro file follows the ROS-Industrial conventions:
+The macro file follows the ROS-Industrial conventions:
  - link names are "link_{*i*}"
  - joint names are "joint_{*i*}"
  - all link and joint names have a {prefix} argument
@@ -39,25 +39,25 @@ All support packages consist of 4 folders:
  - flange frame: attachment point for EEF models
  - tool0 frame: all-zeros tool frame
 
- The frames in the xacros follow the Denavit–Hartenberg conventions of Khalil-Dombre.
- All robots in the xacros are named according to the following pattern: {kr/lbr_iisy/lbr_iiwa}{*payload*}\_r{*reach*}\_{*version*}.
- where `version` is omitted, if the official product name does not contain it. (e.g. KR 120 R3100-2 is named `kr120_r3100_2` and LBR iisy 3 R760 is `lbr_iisy3_r760`)
+The frames in the xacros follow the Denavit–Hartenberg conventions of Khalil-Dombre.
+All robots in the xacros are named according to the following pattern: {kr/lbr_iisy/lbr_iiwa}{*payload*}\_r{*reach*}\_{*version*}.
+where `version` is omitted, if the official product name does not contain it. (e.g. KR 120 R3100-2 is named `kr120_r3100_2` and LBR iisy 3 R760 is `lbr_iisy3_r760`)
 
- The MoveIt configuration packages also contain xacros, that describe the semantic information of the robots: planning groups, default states and link-pairs, for which collision checking should not be done. The default planning group (from base_link to tool0) is named "manipulator" for all robot arm. An end effector, named "end_effector" is also defined for all robots, which enables visualising end effector paths in rviz.
+The MoveIt configuration packages also contain xacros, that describe the semantic information of the robots: planning groups, default states and link-pairs, for which collision checking should not be done. The default planning group (from base_link to tool0) is named "manipulator" for all robot arm. An end effector, named "end_effector" is also defined for all robots, which enables visualising end effector paths in rviz.
 
- To visualise the robot models, the launch files in the `launch` directory of the support packages can be used. These also start a `joint_state_publisher_gui` to enable visualisation of the robot meshes and frames with different joint configurations. However they have only visualisation purposes and cannot connect to real or fake hardware.
+To visualise the robot models, the launch files in the `launch` directory of the support packages can be used. These also start a `joint_state_publisher_gui` to enable visualisation of the robot meshes and frames with different joint configurations. However they have only visualisation purposes and cannot connect to real or fake hardware.
 
 ### Joint limit configurations
 
- The support packages contain a joint limits file for every supported robot model, necessary time parametrization of MoveIt-planned paths. They contain the velocity limits also available in the URDF model and additional acceleration limits. Acceleration limits can never be global, these values are calculated from the worst-case ramp-up time to reach maximum velocity. The easiest way to modify the allowed velocities and accelerations is to change the velocity and acceleration scaling factors also available in the same configuration files. (The scaling factor can never be smaller than 1.)
+The support packages contain a joint limits file for every supported robot model, necessary time parametrization of MoveIt-planned paths. They contain the velocity limits also available in the URDF model and additional acceleration limits. Acceleration limits can never be global, these values are calculated from the worst-case ramp-up time to reach maximum velocity. The easiest way to modify the allowed velocities and accelerations is to change the velocity and acceleration scaling factors also available in the same configuration files. (The scaling factor can never be smaller than 1.)
 
  
 ### Extending the models
 
- In real applications, it's likely that your description will be more complex, involving multiple objects next to the robot and optionally end effectors. It is recommended to create a new, dedicated ROS2 package specifically for managing this extended description by copying and extending the base robot model.
+In real applications, it's likely that your description will be more complex, involving multiple objects next to the robot and optionally end effectors. It is recommended to create a new, dedicated ROS2 package specifically for managing this extended description by copying and extending the base robot model.
 
- Example of attaching an end effector (with link name "eef_base_link") to the flange frame, which could be defined in a different xacro file:
-```
+Example of attaching an end effector (with link name "eef_base_link") to the flange frame, which could be defined in a different xacro file:
+```xml
 <joint name="${prefix}flange-${prefix}eef" type="fixed">
  <origin xyz="0 0 0" rpy="0 0 0" />
  <parent link="${prefix}flange" />
