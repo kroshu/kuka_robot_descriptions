@@ -39,7 +39,7 @@ The macro file follows the ROS-Industrial conventions:
  - `flange` frame: attachment point for EEF models
  - `tool0` frame: all-zeros tool frame, identical to the tool frame defined by the industrial controller ($TOOL)
 
-All robots in the xacros are named according to the following pattern: `{kr/lbr_iisy/lbr_iiwa}{_payload_}_r{reach}_{version}`.
+All robots in the xacros are named according to the following pattern: `{kr/lbr_iisy/lbr_iiwa}{payload}_r{reach}_{version}`.
 where `version` is omitted, if the official product name does not contain it. (e.g. KR 120 R3100-2 is named `kr120_r3100_2` and LBR iisy 3 R760 is `lbr_iisy3_r760`)
 
 The MoveIt configuration packages also contain xacros, that describe the semantic information of the robots: planning groups, default states and link-pairs, for which collision checking should not be done. The default planning group (from `base_link` to `tool0`) is named `manipulator` for all robot arms. An end effector, named `end_effector` is also defined for all robots, which enables visualising end effector paths in rviz.
