@@ -35,9 +35,9 @@ The macro file follows the ROS-Industrial conventions:
  - link names are `link_{i}`
  - joint names are `joint_{i}`
  - all link and joint names have a `prefix` argument
- - `base` frame: equivalent to the base frame defined by the industrial controller ($ROBROOT)
- - `flange` frame: attachment point for EEF models
- - `tool0` frame: all-zeros tool frame, identical to the tool frame defined by the industrial controller ($TOOL)
+ - includes `base` frame: equivalent to the base frame defined by the industrial controller ($ROBROOT)
+ - includes `flange` frame: attachment point for EEF models
+ - includes `tool0` frame: all-zeros tool frame, identical to the tool frame defined by the industrial controller ($TOOL)
 
 All robots in the xacros are named according to the following pattern: 
 
