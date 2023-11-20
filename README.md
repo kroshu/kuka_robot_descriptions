@@ -34,7 +34,7 @@ The macro files contain the links and joints of the main serial chain, including
 The macro file follows the ROS-Industrial conventions:
  - link names are "link_{*i*}"
  - joint names are "joint_{*i*}"
- - all link and joint names have a {prefix} argument
+ - all link and joint names have a `prefix` argument
  - base frame: equivalent to the base frame defined by the industrial controller ($ROBROOT)
  - flange frame: attachment point for EEF models
  - tool0 frame: all-zeros tool frame
