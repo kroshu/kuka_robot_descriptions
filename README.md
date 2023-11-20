@@ -27,21 +27,21 @@ All support packages consist of 4 folders:
 - urdf: contains the xacro files describing the robots, including ros2_control integration (with fake hardware argument)
 
 ### Xacro files
- Each robot has two specific xacro files: a macro (<robot_name>_macro.xacro) and another file instantiating this macro (<robot_name>.urdf.xacro). Additionally there is a xacro providing ros2_control integration, including the name and type of the hardware interface, hardware parameters and the supported state and command interfaces.
+ Each robot has two specific xacro files: a macro ({*robot_name*}_macro.xacro) and another file instantiating this macro ({*robot_name*}.urdf.xacro). Additionally there is a xacro providing ros2_control integration, including the name and type of the hardware interface, hardware parameters and the supported state and command interfaces.
  Additionally a transmission xacro is provided for gazebo support, but the mechanicalReduction parameters contained within are not valid, only placeholders.
 
  The macro files contain the links and joints of the main serial chain, including transformations, rotation axes, inertial properties, joint position, velocity and effort limits and the location of the mesh files.
 
  The macro file follows the ROS-Industrial conventions:
- - link names are "link_{i}"
- - joint names are "joint_a{i}"
+ - link names are "link_{*i*}"
+ - joint names are "joint_a{*i*}"
  - all link and joint names have a {prefix} argument
  - base frame: equivalent to the base frame defined by the industrial controller ($ROBROOT)
  - flange frame: attachment point for EEF models
  - tool0 frame: all-zeros tool frame
 
  The frames in the xacros follow the Denavit–Hartenberg conventions of Khalil-Dombre.
- All robots in the xacros are named according to the following pattern: <kr/lbr_iisy/lbr_iiwa>_<payload>_r<reach>_<version>.
+ All robots in the xacros are named according to the following pattern: {kr/lbr_iisy/lbr_iiwa}{*payload*}\_r{*reach*}\_{*version*}.
  where version is optional and comes from the official product name. (e.g. KR 120 R3100-2 is named kr120_r3100_2)
 
  The moveit configuration packages also contain xacros, that describe the semantic information of the robots: planning groups, default states and link-pairs, for which collision checking should not be done. The default planning group (from base_link to tool0) is named "manipulator" for all robot arm. An end effector, named "end_effector" is also defined for all robots, which enables visualising end effector paths in rviz.
