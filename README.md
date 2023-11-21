@@ -73,7 +73,7 @@ Example of attaching an end effector (with link name `eef_base_link`) to the `fl
 </joint>
 ```
 
-## What data is verifyed?
+## What data is verified?
 
 Some of the data in the xacros might not be valid or missing, the following table shows what can be considered valid.
 
