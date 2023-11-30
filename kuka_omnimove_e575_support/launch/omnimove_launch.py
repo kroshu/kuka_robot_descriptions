@@ -21,7 +21,7 @@ def generate_launch_description():
                 [
                     FindPackageShare("kuka_omnimove_e575_support"),
                     "urdf",
-                    "omnimove_with_arm.xacro",
+                    "omnimove_urdf.xacro",
                 ]
             ),
         ]
@@ -42,49 +42,40 @@ def generate_launch_description():
         executable="ros2_control_node",
         parameters=[robot_description, robot_controllers],
         output="both",
+        namespace="platform",
+        #remappings=[('controller_manager','platform/control_manager')]
+
     )
 
 
     robot_state_pub_node = Node(
         package='robot_state_publisher',
         executable='robot_state_publisher',
+        namespace='platform',
         parameters=[robot_description],
         #remappings=[("joint_states", "rsi_joint_state")]
-    )
-
-    joint_trajectory_spawner = Node(
-        package="controller_manager",
-        executable="spawner",
-        arguments=["joint_trajectory_controller", "--controller-manager", "/controller_manager"],
     )
 
     joint_broadcaster_spawner = Node(
         package="controller_manager",
         executable="spawner",
-        arguments=["joint_state_broadcaster", "--controller-manager", "/controller_manager"],
+        namespace="platform",
+        arguments=["joint_state_broadcaster", "--controller-manager", "/platform/controller_manager"],
     )
 
     robot_controller_spawner = Node(
         package="controller_manager",
         executable="spawner",
-        arguments=["forward_command_controller", "--controller-manager", "/controller_manager"],
+        namespace="platform",
+        arguments=["forward_command_controller", "--controller-manager", "/platform/controller_manager"],
     )
 
-
-    # Delay start of robot_controller after `joint_state_broadcaster`
-    delay_robot_controller_spawner_after_joint_trajectory_spawner = RegisterEventHandler(
-        event_handler=OnProcessExit(
-            target_action=joint_trajectory_spawner,
-            on_exit=[robot_controller_spawner],
-        )
-    )
 
     nodes = [
         control_node,
         robot_state_pub_node,
-        joint_trajectory_spawner,
         joint_broadcaster_spawner,
-        delay_robot_controller_spawner_after_joint_trajectory_spawner,
+        robot_controller_spawner,
     ]
 
     return LaunchDescription(nodes)

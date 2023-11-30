@@ -1,30 +1,11 @@
-controller_manager:
+/platform/controller_manager:
   ros__parameters:
     update_rate: 100  # Hz
-    joint_trajectory_controller:
-      type: joint_trajectory_controller/JointTrajectoryController
     joint_state_broadcaster:
       type: joint_state_broadcaster/JointStateBroadcaster
     forward_command_controller:
       type: forward_command_controller/ForwardCommandController
-joint_trajectory_controller:
-  ros__parameters:
-    joints:
-    - joint_a1
-    - joint_a2
-    - joint_a3
-    - joint_a4
-    - joint_a5
-    - joint_a6
-
-    command_interfaces:
-      - position
-    state_interfaces:
-      - position
-    state_publish_rate: 250.0
-    action_monitor_rate: 20.0
-
-forward_command_controller:
+/platform/forward_command_controller:
   ros__parameters:
     joints:
     - move_x

@@ -4,7 +4,7 @@
         <xacro:include filename="$(find kuka_quantec_support)/urdf/kr210_r2700-2.urdf.xacro"/>
   <xacro:include filename="$(find kuka_omnimove_e575_support)/urdf/omnimove.xacro"/>
   <xacro:omnimove prefix="omnimove_"/>
-       <!--  <xacro:omnimove_ros2_control name="omnimove"/> -->
+  <xacro:omnimove_ros2_control name="omnimove"/>
   <joint name="omnibase" type="fixed">
     <parent link="omnimove_base"/>
     <child link="base_link"/>
