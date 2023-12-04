@@ -1,0 +1,17 @@
+/platform/controller_manager:
+  ros__parameters:
+    update_rate: 100  # Hz
+    joint_state_broadcaster:
+      type: joint_state_broadcaster/JointStateBroadcaster
+    forward_command_controller:
+      type: forward_command_controller/ForwardCommandController
+/platform/forward_command_controller:
+  ros__parameters:
+    joints:
+    - move_x
+    - move_theta
+    interface_name: velocity
+    command_interfaces:
+    - velocity
+    state_interface:
+    - velocity
