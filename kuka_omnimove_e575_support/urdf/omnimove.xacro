@@ -23,19 +23,8 @@
                 <plugin>omnimove::OmnimoveExternalControl</plugin>
                 <param name ="host">127.0.0.1</param>
                 <param name="port">24000</param>
+                <param name="agv_type">omnimove</param>
             </hardware>
-            <joint name="move_x">
-                <command_interface name="velocity"/>
-                <state_interface name="velocity"/>
-            </joint>
-            <joint name="move_y">
-                <command_interface name="velocity"/>
-                <state_interface name="velocity"/>
-            </joint>
-            <joint name="move_theta">
-                <command_interface name="velocity"/>
-                <state_interface name="velocity"/>
-            </joint>
 	   </ros2_control> 
   </xacro:macro> 
 </robot>
