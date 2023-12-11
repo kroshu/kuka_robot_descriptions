@@ -10,9 +10,9 @@ find_package(xacro REQUIRED)
 set(supported_robots
   kr6_r700_sixx
   kr6_r900_sixx
-  kr16_r2010-2
-  kr210-r2700-2
-  kr210-r3100-2
+  kr16_r2010_2
+  kr210-r2700_2
+  kr210-r3100_2
   )
 
 foreach(model IN LISTS supported_robots)
