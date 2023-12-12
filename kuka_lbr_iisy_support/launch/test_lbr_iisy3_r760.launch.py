@@ -22,7 +22,6 @@ import os
 from ament_index_python.packages import get_package_share_directory
 
 
-
 def generate_launch_description():
 
     robot_description_content = Command(
@@ -59,9 +58,9 @@ def generate_launch_description():
                                  parameters=[robot_description])
 
     # Joint state publisher
-    joint_state_publisher = Node(package='joint_state_publisher',
-                                 executable='joint_state_publisher',
-                                 name='joint_state_publisher',
-                                 output='log')
+    joint_state_publisher_gui = Node(package='joint_state_publisher_gui',
+                                     executable='joint_state_publisher_gui',
+                                     name='joint_state_publisher_gui',
+                                     output='log')
 
-    return LaunchDescription([robot_state_publisher, rviz_node, joint_state_publisher])
+    return LaunchDescription([robot_state_publisher, rviz_node, joint_state_publisher_gui])

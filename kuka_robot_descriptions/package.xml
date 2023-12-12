@@ -20,7 +20,6 @@
   <exec_depend>kuka_lbr_iiwa_support</exec_depend>
   <exec_depend>kuka_quantec_support</exec_depend>
   <exec_depend>kuka_resources</exec_depend>
-  <exec_depend>kuka_rsi_simulator</exec_depend>
 
   <export>
     <build_type>ament_cmake</build_type>
