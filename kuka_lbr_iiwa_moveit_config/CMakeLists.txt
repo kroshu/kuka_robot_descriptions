@@ -8,7 +8,7 @@ find_package(xacro REQUIRED)
 
 xacro_add_files(TARGET iiwa14 srdf/lbr_iiwa14_r820_arm.srdf.xacro OUTPUT lbr_iiwa14_r820.srdf INSTALL DESTINATION urdf)
 
-install(DIRECTORY config
+install(DIRECTORY config launch
   DESTINATION share/${PROJECT_NAME})
 
 ament_package()

@@ -2,52 +2,43 @@
 # Specific joint properties can be changed with the keys [max_position, min_position, max_velocity, max_acceleration, max_jerk]
 # Joint limits can be turned off with [has_velocity_limits, has_acceleration_limits]
 
-# The default config of moveit does not take into account the jerk limits, the RuckigTrajectorySmoothing adapter must be
-# added to the planning pipeline to support jerk limits
-
 # Easiest way to slow down the robot is to decrease the velocity and acceleration scaling factors
 default_velocity_scaling_factor: 1.0
 default_acceleration_scaling_factor: 1.0
 joint_limits:
-  joint_a1:
+  joint_1:
     has_velocity_limits: true
     max_velocity: 3.490656
     has_acceleration_limits: true
     max_acceleration: 17.929068
-    has_jerk: true
-    max_jerk: 3685.289606
-  joint_a2:
+    has_jerk: false
+  joint_2:
     has_velocity_limits: true
     max_velocity: 3.490656
     has_acceleration_limits: true
     max_acceleration: 1.324527
-    has_jerk: true
-    max_jerk: 2653.054380
-  joint_a3:
+    has_jerk: false
+  joint_3:
     has_velocity_limits: true
     max_velocity: 3.490656
     has_acceleration_limits: true
     max_acceleration: 1.931703
-    has_jerk: true
-    max_jerk: 1274.691677
-  joint_a4:
+    has_jerk: false
+  joint_4:
     has_velocity_limits: true
     max_velocity: 4.014255
     has_acceleration_limits: true
     max_acceleration: 20.760275
-    has_jerk: true
-    max_jerk: 588.650348
-  joint_a5:
+    has_jerk: false
+  joint_5:
     has_velocity_limits: true
     max_velocity: 4.537856
     has_acceleration_limits: true
     max_acceleration: 17.729259
-    has_jerk: true
-    max_jerk: 542.410163
-  joint_a6:
+    has_jerk: false
+  joint_6:
     has_velocity_limits: true
     max_velocity: 7.504909
     has_acceleration_limits: true
     max_acceleration: 98.845225
-    has_jerk: true
-    max_jerk: 147.477480
+    has_jerk: false

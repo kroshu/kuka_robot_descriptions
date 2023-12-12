@@ -9,53 +9,53 @@
           <param name="state_following_offset">0.0</param>
         </xacro:if>
         <xacro:unless value="${use_fake_hardware}">
-          <plugin>kuka_sunrise_fri_driver::KUKAFRIHardwareInterface</plugin>
+          <plugin>kuka_sunrise_fri_driver::KukaFRIHardwareInterface</plugin>
         </xacro:unless>
       </hardware>
       <!-- define joints and command/state interfaces for each joint -->
-      <joint name="${prefix}joint_a1">
+      <joint name="${prefix}joint_1">
         <command_interface name="position"/>
         <command_interface name="effort"/>
         <state_interface name="position"/>
         <state_interface name="effort"/>
         <state_interface name="external_torque"/>
       </joint>
-      <joint name="${prefix}joint_a2">
+      <joint name="${prefix}joint_2">
         <command_interface name="position"/>
         <command_interface name="effort"/>
         <state_interface name="position"/>
         <state_interface name="effort"/>
         <state_interface name="external_torque"/>
       </joint>
-      <joint name="${prefix}joint_a3">
+      <joint name="${prefix}joint_3">
         <command_interface name="position"/>
         <command_interface name="effort"/>
         <state_interface name="position"/>
         <state_interface name="effort"/>
         <state_interface name="external_torque"/>
       </joint>
-      <joint name="${prefix}joint_a4">
+      <joint name="${prefix}joint_4">
         <command_interface name="position"/>
         <command_interface name="effort"/>
         <state_interface name="position"/>
         <state_interface name="effort"/>
         <state_interface name="external_torque"/>
       </joint>
-      <joint name="${prefix}joint_a5">
+      <joint name="${prefix}joint_5">
         <command_interface name="position"/>
         <command_interface name="effort"/>
         <state_interface name="position"/>
         <state_interface name="effort"/>
         <state_interface name="external_torque"/>
       </joint>
-      <joint name="${prefix}joint_a6">
+      <joint name="${prefix}joint_6">
         <command_interface name="position"/>
         <command_interface name="effort"/>
         <state_interface name="position"/>
         <state_interface name="effort"/>
         <state_interface name="external_torque"/>
       </joint>
-      <joint name="${prefix}joint_a7">
+      <joint name="${prefix}joint_7">
         <command_interface name="position"/>
         <command_interface name="effort"/>
         <state_interface name="position"/>
