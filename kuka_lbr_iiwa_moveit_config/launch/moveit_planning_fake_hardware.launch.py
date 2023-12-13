@@ -42,14 +42,6 @@ def launch_setup(context, *args, **kwargs):
         .to_moveit_configs()
     )
 
-    rviz_config_file = get_package_share_directory(
-        'kuka_resources') + "/config/planning_7_axis.rviz"
-
-    startup_launch = IncludeLaunchDescription(PythonLaunchDescriptionSource(
-        [get_package_share_directory('kuka_sunrise_fri_driver'), '/launch/startup.launch.py']),
-        launch_arguments={'robot_model': "{}".format(robot_model.perform(context)),
-                          'use_fake_hardware': "true"}.items())
-
     move_group_server = Node(
         package="moveit_ros_move_group",
         executable="move_group",
@@ -57,19 +49,16 @@ def launch_setup(context, *args, **kwargs):
         parameters=[moveit_config.to_dict()],
     )
 
-    rviz = Node(
-        package="rviz2",
-        executable="rviz2",
-        name="rviz2",
-        output="log",
-        arguments=["-d", rviz_config_file,
-                   "--ros-args", "--log-level", "error"],
-    )
+    fake_hardware_launch = IncludeLaunchDescription(PythonLaunchDescriptionSource(
+        [get_package_share_directory('kuka_resources'),
+         '/launch/fake_hardware_planning_template.launch.py']),
+        launch_arguments={'robot_model': "{}".format(robot_model.perform(context)),
+                          'robot_family': "{}".format("lbr_iiwa"),
+                          'dof': "{}".format(7)}.items())
 
     to_start = [
-        startup_launch,
-        move_group_server,
-        rviz
+        fake_hardware_launch,
+        move_group_server
     ]
 
     return to_start
