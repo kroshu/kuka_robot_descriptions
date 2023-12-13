@@ -85,7 +85,7 @@ Some of the data in the xacros might not be valid or missing, the following tabl
 |lbr_iiwa14_r820| - | ✓ | ✓ | ✓ | | | |
 |kr6_r700_sixx| agilus | ✓ | ✓ | ✓ | | | ✓ |
 |kr6_r900_sixx| agilus | ✓ | ✓ | ✓ | | | ✓ |
-|kr10_r1100_2| agilus | ✓ | ✓ | ✓ | | | |
+|kr10_r1100_2| agilus | ✓ | ✓ | ✓ | ✓ | | |
 |kr16_r2010_2| cybertech | ✓ | ✓ | ✓ | ✓ | | |
 |kr210_r2700_2| quantec | ✓ | ✓ | ✓ | ✓ | | |
 |kr210_r3100_2| quantec | ✓ | ✓ | ✓ | ✓ | | |
