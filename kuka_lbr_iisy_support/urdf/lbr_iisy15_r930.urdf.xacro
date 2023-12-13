@@ -1,28 +1,10 @@
 <?xml version="1.0"?>
-<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="LBRiisy15R930">
-<!-- Import iisy urdf file  -->
-<xacro:include filename="$(find kuka_lbr_iisy_support)/urdf/lbr_iisy15_r930_macro.xacro"/>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="lbr_iisy15_r930">
+    <!-- Import iisy urdf file  -->
+    <xacro:include filename="$(find kuka_lbr_iisy_support)/urdf/lbr_iisy15_r930_macro.xacro"/>
 
-<!-- Read parameters from eci_config  -->
-<xacro:property name="eci_config" value="$(find kuka_rox_hw_interface)/config/eci_config.yaml" />
-<xacro:property name="eci_config_dict" value="${xacro.load_yaml(eci_config)}"/>
-<xacro:property name="control_mode" value="${eci_config_dict['robot_manager']['ros__parameters']['control_mode']}" />
-<xacro:property name="client_ip" value="${eci_config_dict['robot_manager']['ros__parameters']['client_ip']}" />
-<xacro:property name="controller_ip" value="${eci_config_dict['robot_manager']['ros__parameters']['controller_ip']}" />
+    <!-- Read additional arguments  -->
+    <xacro:arg name="use_fake_hardware" default="false" />
 
-<!-- Read QoS profile parameters  -->
-<xacro:property name="qos_config" value="$(find kuka_rox_hw_interface)/config/qos_profiles.yaml" />
-<xacro:property name="qos_config_dict" value="${xacro.load_yaml(qos_config)}"/>
-<xacro:property name="consequent_lost_packets" value="${qos_config_dict['rt_packet_loss_profile']['consequent_lost_packets']}" />
-<xacro:property name="lost_packets_in_timeframe" value="${qos_config_dict['rt_packet_loss_profile']['lost_packets_in_timeframe']}" />
-<xacro:property name="timeframe_ms" value="${qos_config_dict['rt_packet_loss_profile']['timeframe_ms']}" />
-
-
-<xacro:kuka_lbr15_r930_robot prefix=""
-                  client_ip="${client_ip}" 
-                  controller_ip="${controller_ip}" 
-                  control_mode="${control_mode}"
-                  consequent_lost_packets="${consequent_lost_packets}" 
-                  lost_packets_in_timeframe="${lost_packets_in_timeframe}" 
-                  timeframe_ms="${timeframe_ms}"/>
+    <xacro:kuka_lbr_iisy15_r930_robot prefix="" use_fake_hardware="$(arg use_fake_hardware)"/>
 </robot>

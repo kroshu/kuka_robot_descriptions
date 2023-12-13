@@ -8,7 +8,7 @@ on:
   # When master or melodic-devel branch is pushed to
   push:
     branches:
-      - main
+      - master
       - feature/**
       - fix/**
     paths-ignore:

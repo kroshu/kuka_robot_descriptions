@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>kuka_lbr_iiwa_moveit_config</name>
+  <version>0.1.0</version>
+  <description>Package containing moveit configurations for KUKA LBR iiwa family</description>
+  <author>Aron Svastits</author>
+  <maintainer email="svastits1@gmail.com"></maintainer>
+  <license>BSD</license>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+  <test_depend>ament_copyright</test_depend>
+  <test_depend>ament_flake8</test_depend>
+  <test_depend>ament_pep257</test_depend>
+
+  <depend>xacro</depend>
+
+  <exec_depend>joint_state_publisher_gui</exec_depend>
+  <exec_depend>robot_state_publisher</exec_depend>
+  <exec_depend>rviz2</exec_depend>
+
+  <export>
+    <architecture_independent/>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>

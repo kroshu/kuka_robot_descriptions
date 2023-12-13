@@ -25,7 +25,7 @@ def generate_launch_description():
             " ",
             PathJoinSubstitution(
                 [FindPackageShare("kuka_agilus_support"),
-                 "urdf", "kr10_r1100-2.urdf.xacro"]
+                 "urdf", "kr10_r1100_2.urdf.xacro"]
             ),
             " ",
         ]
