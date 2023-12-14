@@ -98,7 +98,7 @@ To start rviz with the motion planning plugin using fake hardware, the following
 ```
 ros2 launch kuka_kr_moveit_config moveit_planning_fake_hardware.launch.py
 ```
-Matching ```robot_model``` and ```robot_family``` arguments can be added after the command (e.g. ```robot_model:=kr16_r2010_2 robot_family:=cybertech```). The default robot model is ```kr6_r700_sixx```.
+Matching `robot_model` and `robot_family` arguments can be added after the command (e.g. `robot_model:=kr16_r2010_2 robot_family:=cybertech`). The default robot model is `kr6_r700_sixx`
 
 #### LBR iiwa robots (Sunrise):
 ```
@@ -109,6 +109,6 @@ ros2 launch kuka_lbr_iisy_moveit_config moveit_planning_fake_hardware.launch.py
 ```
 ros2 launch kuka_lbr_iiwa_moveit_config moveit_planning_fake_hardware.launch.py 
 ```
-A ```robot_model``` argument can be added after the command (e.g. `robot_model:=lbr_iisy11_r1300`). The default robot model is ```lbr_iisy3_r760```.
+A `robot_model` argument can be added after the command (e.g. `robot_model:=lbr_iisy11_r1300`). The default robot model is `lbr_iisy3_r760`
 
-These launch files are not using the actual driver implementation, they only start ```rviz```, the ```move_group``` server and a ```ros2_control_node``` with fake hardware and two controllers (```joint_state_broadcaster``` and ```joint_trajectory_controller```). The server will be able to accept planning requests from the plugin or from code. (An example how to create such a request from C++ code can be found in the ```iiqka_moveit_example``` package in the ```kuka_drivers``` repository.) To support hardwares with less performance, the update rate of the control node was reduced to 50 Hz for all robots.
+These launch files are not using the actual driver implementation, they only start `rviz` the `move_group` server and a `ros2_control_node` with fake hardware and two controllers `joint_state_broadcaster` and `joint_trajectory_controller` The server will be able to accept planning requests from the plugin or from code. (An example how to create such a request from C++ code can be found in the `iiqka_moveit_example` package in the `kuka_drivers` repository.) To support hardwares with less performance, the update rate of the control node was reduced to 50 Hz for all robots.
