@@ -44,8 +44,6 @@ def generate_launch_description():
         output="both",
         namespace="platform",
         respawn=True,
-        #remappings=[('controller_manager','platform/control_manager')]
-
     )
 
 
