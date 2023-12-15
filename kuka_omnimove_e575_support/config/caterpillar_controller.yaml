@@ -3,15 +3,27 @@
     update_rate: 100  # Hz
     joint_state_broadcaster:
       type: joint_state_broadcaster/JointStateBroadcaster
-    forward_command_controller:
+    velocity_command_controller:
       type: forward_command_controller/ForwardCommandController
-/platform/forward_command_controller:
+    position_command_controller:
+        type: forward_command_controller/ForwardCommandController
+/platform/velocity_command_controller:
   ros__parameters:
     joints:
     - move_x
     - move_theta
+    - pillar1
+    - pillar2
+    - pillar3
+    - pillar4
+    - shield
     interface_name: velocity
-    command_interfaces:
-    - velocity
-    state_interface:
-    - velocity
+/platform/position_command_controller:
+  ros__parameters:
+    joints:
+    - pillar1
+    - pillar2
+    - pillar3
+    - pillar4
+    - shield
+    interface_name: position

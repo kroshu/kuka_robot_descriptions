@@ -3,9 +3,9 @@
     update_rate: 100  # Hz
     joint_state_broadcaster:
       type: joint_state_broadcaster/JointStateBroadcaster
-    forward_command_controller:
+    velocity_command_controller:
       type: forward_command_controller/ForwardCommandController
-/platform/forward_command_controller:
+/platform/velocity_command_controller:
   ros__parameters:
     joints:
     - move_x

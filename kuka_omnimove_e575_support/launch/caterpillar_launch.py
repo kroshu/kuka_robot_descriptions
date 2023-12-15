@@ -67,7 +67,7 @@ def generate_launch_description():
         package="controller_manager",
         executable="spawner",
         namespace="platform",
-        arguments=["forward_command_controller", "--controller-manager", "/platform/controller_manager"],
+        arguments=["velocity_command_controller","position_command_controller", "--controller-manager", "/platform/controller_manager"],
     )
 
 

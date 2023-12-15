@@ -8,5 +8,5 @@ from launch_ros.substitutions import FindPackageShare
 
 def generate_launch_description():
   omnimove_launch = IncludeLaunchDescription(PythonLaunchDescriptionSource([FindPackageShare("kuka_omnimove_e575_support"), "/launch", "/caterpillar_launch.py"]))
-  iontec_launch = IncludeLaunchDescription(PythonLaunchDescriptionSource([FindPackageShare("kuka_rsi_hw_interface"), "/launch", "/startup.launch.py"]))
+  iontec_launch = IncludeLaunchDescription(PythonLaunchDescriptionSource([FindPackageShare("kuka_kss_rsi_driver"), "/launch", "/startup.launch.py"]))
   return LaunchDescription([omnimove_launch, iontec_launch])
