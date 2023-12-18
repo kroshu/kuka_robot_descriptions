@@ -4,7 +4,7 @@ project(kuka_resources)
 find_package(ament_cmake REQUIRED)
 find_package(urdf REQUIRED)
 
-install(DIRECTORY urdf config
+install(DIRECTORY urdf config launch
   DESTINATION share/${PROJECT_NAME})
 
 ament_package()

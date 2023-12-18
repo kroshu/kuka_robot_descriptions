@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="kr10_r1100_2">
+  <!-- include helper xacros -->
+  <xacro:include filename="$(find kuka_agilus_support)/urdf/kr_agilus_ros2_control.xacro" />
+  <xacro:include filename="$(find kuka_agilus_support)/urdf/kr_agilus_transmission.xacro" />
+  <xacro:include filename="$(find kuka_resources)/urdf/common_materials.xacro"/>
+  
+  <xacro:macro name="kuka_kr10_r1100_2_robot" params="prefix use_fake_hardware">
+    <!-- ros2 control instance -->
+    <xacro:kuka_agilus_ros2_control
+    name="kr10_r1100_2" 
+    prefix="${prefix}"
+    use_fake_hardware="${use_fake_hardware}" />
+
+    <!-- links - main serial chain -->
+    <!-- links - root element cannot have inertia, therefore a dummy base_link is needed -->
+    <link name="${prefix}base_link"/>
+    <link name="${prefix}base_link_inertia">
+      <collision>
+        <geometry>
+          <mesh filename="package://kuka_agilus_support/meshes/kr10_r1100_2/collision/base_link.stl" />
+        </geometry>
+        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0" />
+      </collision>
+      <inertial>
+        <inertia ixx="0.08498822" ixy="0.0" ixz="0.0" iyy="0.09924171" iyz="0.0" izz="0.12962827"/>
+        <mass value="1.6257E1"/>
+        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
+      </inertial>
+      <visual>
+        <geometry>
+          <mesh filename="package://kuka_agilus_support/meshes/kr10_r1100_2/visual/base_link.stl" />
+        </geometry>
+        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0" />
+        <xacro:material_kuka_ral_pure_white />
+      </visual>
+    </link>
+    <link name="${prefix}link_1">
+      <collision>
+        <geometry>
+          <mesh filename="package://kuka_agilus_support/meshes/kr10_r1100_2/collision/link_1.stl" />
+        </geometry>
+        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0" />
+      </collision>
+      <inertial>
+        <inertia ixx="0.90636233" ixy="0.0" ixz="0.0" iyy="0.09221003" iyz="0.0" izz="0.94693048"/>
+        <mass value="1.0044E1"/>
+        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
+      </inertial>
+      <visual>
+        <geometry>
+          <mesh filename="package://kuka_agilus_support/meshes/kr10_r1100_2/visual/link_1.stl" />
+        </geometry>
+        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0" />
+        <xacro:material_kuka_ral_pure_white />
+      </visual>
+    </link>
+    <link name="${prefix}link_2">
+      <collision>
+        <geometry>
+          <mesh filename="package://kuka_agilus_support/meshes/kr10_r1100_2/collision/link_2.stl" />
+        </geometry>
+        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0" />
+      </collision>
+      <inertial>
+        <inertia ixx="0.01725999" ixy="0.0" ixz="0.0" iyy="0.0413898" iyz="0.0" izz="0.04495653"/>
+        <mass value="1.74049E1"/>
+        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
+      </inertial>
+      <visual>
+        <geometry>
+          <mesh filename="package://kuka_agilus_support/meshes/kr10_r1100_2/visual/link_2.stl" />
+        </geometry>
+        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0" />
+        <xacro:material_kuka_ral_pure_white />
+      </visual>
+    </link>
+    <link name="${prefix}link_3">
+      <collision>
+        <geometry>
+          <mesh filename="package://kuka_agilus_support/meshes/kr10_r1100_2/collision/link_3.stl" />
+        </geometry>
+        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0" />
+      </collision>
+      <inertial>
+        <inertia ixx="0.01273476" ixy="0.0" ixz="0.0" iyy="0.09381377" iyz="0.0" izz="0.09692989"/>
+        <mass value="5.439E0"/>
+        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
+      </inertial>
+      <visual>
+        <geometry>
+          <mesh filename="package://kuka_agilus_support/meshes/kr10_r1100_2/visual/link_3.stl" />
+        </geometry>
+        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0" />
+        <xacro:material_kuka_ral_pure_white />
+      </visual>
+    </link>
+    <link name="${prefix}link_4">
+      <collision>
+        <geometry>
+          <mesh filename="package://kuka_agilus_support/meshes/kr10_r1100_2/collision/link_4.stl" />
+        </geometry>
+        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0" />
+      </collision>
+      <inertial>
+        <inertia ixx="0.00277153" ixy="0.0" ixz="0.0" iyy="0.00176394" iyz="0.0" izz="0.00304985"/>
+        <mass value="5.497380706E0"/>
+        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
+      </inertial>
+      <visual>
+        <geometry>
+          <mesh filename="package://kuka_agilus_support/meshes/kr10_r1100_2/visual/link_4.stl" />
+        </geometry>
+        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0" />
+        <xacro:material_kuka_ral_pure_white />
+      </visual>
+    </link>
+    <link name="${prefix}link_5">
+      <collision>
+        <geometry>
+          <mesh filename="package://kuka_agilus_support/meshes/kr10_r1100_2/collision/link_5.stl" />
+        </geometry>
+        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0" />
+      </collision>
+      <inertial>
+        <inertia ixx="1.7799E-4" ixy="0.0" ixz="0.0" iyy="1.7643E-4" iyz="0.0" izz="2.9589E-4"/>
+        <mass value="1.6438E0"/>
+        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
+      </inertial>
+      <visual>
+        <geometry>
+          <mesh filename="package://kuka_agilus_support/meshes/kr10_r1100_2/visual/link_5.stl" />
+        </geometry>
+        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0" />
+        <xacro:material_kuka_ral_pure_white />
+      </visual>
+    </link>
+    <link name="${prefix}link_6">
+      <collision>
+        <geometry>
+          <mesh filename="package://kuka_agilus_support/meshes/kr10_r1100_2/collision/link_6.stl" />
+        </geometry>
+        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0" />
+      </collision>
+      <inertial>
+        <inertia ixx="1.7799E-4" ixy="0.0" ixz="0.0" iyy="1.7643E-4" iyz="0.0" izz="2.9589E-4"/>
+        <mass value="4.64E-1"/>
+        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
+      </inertial>
+      <visual>
+        <geometry>
+          <mesh filename="package://kuka_agilus_support/meshes/kr10_r1100_2/visual/link_6.stl" />
+        </geometry>
+        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0" />
+        <xacro:material_kuka_ral_pure_white />
+      </visual>
+    </link>
+
+    <!-- joints - main serial chain -->
+    <joint name="${prefix}base_link-base_link_inertia" type="fixed">
+      <parent link="${prefix}base_link" />
+      <child link="${prefix}base_link_inertia" />
+      <origin xyz="0 0 0" rpy="0 0 0" />
+    </joint>
+    <joint name="${prefix}joint_1" type="revolute">
+      <axis xyz="0.0 0.0 1.0" />
+      <child link="${prefix}link_1" />
+      <limit effort="288.36" lower="-2.9670597283903604E0" upper="2.9670597283903604E0" velocity="${radians(300)}"/>
+      <origin rpy="-3.141592653589793 0.0 -0.0" xyz="0.0 0.0 0.0"/>
+      <parent link="${prefix}base_link_inertia" />
+    </joint>
+    <joint name="${prefix}joint_2" type="revolute">
+      <axis xyz="0.0 0.0 1.0" />
+      <child link="${prefix}link_2" />
+      <limit effort="311.954897896674" lower="-3.3161255787892263E0" upper="7.853981633974483E-1" velocity="${radians(225)}"/>
+      <origin rpy="1.5707963267948963 0.0 -0.0" xyz="0.025 0.0 -0.4"/>
+      <parent link="${prefix}link_1" />
+    </joint>
+    <joint name="${prefix}joint_3" type="revolute">
+      <axis xyz="0.0 0.0 1.0" />
+      <child link="${prefix}link_3" />
+      <limit effort="119.76245366275" lower="-2.0943951023931953E0" upper="2.722713633111154E0" velocity="${radians(330)}"/>
+      <origin rpy="0.0 0.0 -1.5707963267948963" xyz="0.56 0.0 0.0"/>
+      <parent link="${prefix}link_2" />
+    </joint>
+    <joint name="${prefix}joint_4" type="revolute">
+      <axis xyz="0.0 0.0 1.0" />
+      <child link="${prefix}link_4" />
+      <limit effort="46.081304845791" lower="-3.2288591161895095E0" upper="3.2288591161895095E0" velocity="${radians(360)}"/>
+      <origin rpy="1.5707963267948963 0.0 -0.0" xyz="0.025 0.0 0.0"/>
+      <parent link="${prefix}link_3" />
+    </joint>
+    <joint name="${prefix}joint_5" type="revolute">
+      <axis xyz="0.0 0.0 1.0" />
+      <child link="${prefix}link_5" />
+      <limit effort="41.6154671315968" lower="-2.0943951023931953E0" upper="2.0943951023931953E0" velocity="${radians(360)}"/>
+      <origin rpy="-1.5707963267948963 0.0 -0.0" xyz="0.0 0.0 -0.515"/>
+      <parent link="${prefix}link_4" />
+    </joint>
+    <joint name="${prefix}joint_6" type="revolute">
+      <axis xyz="0.0 0.0 1.0" />
+      <child link="${prefix}link_6" />
+      <limit effort="28.03794" lower="-6.1086523819801535E0" upper="6.1086523819801535E0" velocity="${radians(433)}"/>
+      <origin rpy="1.5707963267948963 0.0 -0.0" xyz="0.0 0.0 0.0"/>
+      <parent link="${prefix}link_5" />
+    </joint>
+
+    <!-- ROS-Industrial 'base' frame - equivalent of 'KUKA ROBROOT'-->
+    <link name="${prefix}base" />
+    <joint name="${prefix}base_link-base" type="fixed">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <parent link="${prefix}base_link"/>
+      <child link="${prefix}base"/>
+    </joint>
+
+    <!-- ROS-Industrial 'flange' frame - attachment point for EEF models -->
+    <link name="${prefix}flange" />
+    <joint name="${prefix}link6-flange" type="fixed">
+      <child link="${prefix}flange" />
+      <origin rpy="0 ${pi/2} -0.0" xyz="0.0 0.0 -0.09" />
+      <parent link="${prefix}link_6" />
+    </joint>
+
+    <!-- ROS-Industrial 'tool0' frame - all-zeros tool frame -->
+    <link name="${prefix}tool0" />
+    <joint name="${prefix}link6-tool0" type="fixed">
+      <child link="${prefix}tool0" />
+      <origin rpy="0 ${pi} -0.0" xyz="0.0 0.0 -0.09" />
+      <parent link="${prefix}link_6" />
+    </joint>
+  </xacro:macro>
+</robot>

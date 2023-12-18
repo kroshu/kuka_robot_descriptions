@@ -201,7 +201,7 @@
       <child link="${prefix}base"/>
     </joint>
 
-        <!-- ROS-Industrial 'flange' frame - attachment point for EEF models -->
+    <!-- ROS-Industrial 'flange' frame - attachment point for EEF models -->
     <link name="${prefix}flange" />
     <joint name="${prefix}link6-flange" type="fixed">
       <child link="${prefix}flange" />
