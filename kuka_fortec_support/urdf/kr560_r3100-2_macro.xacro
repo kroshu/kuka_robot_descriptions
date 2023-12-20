@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <robot xmlns:xacro="http://wiki.ros.org/xacro">
+    <xacro:include filename="$(find kuka_resources)/urdf/common_constants.xacro"/>
+    <xacro:include filename="$(find kuka_resources)/urdf/common_materials.xacro"/>
     <!-- <xacro:include filename="$(find kuka_fortec_support)/urdf/kr_fortec_ros2_control.xacro" />
   <xacro:include filename="$(find kuka_fortec_support)/urdf/kr_fortec_transmission.xacro" /> -->
 
     <xacro:macro name="kuka_kr560_r3100_2_robot" params="prefix use_fake_hardware">
-        <!-- ros2 control instance
-        <xacro:kuka_fortec_ros2_control name="kr560_r3100_2" prefix="${prefix}" use_fake_hardware="${use_fake_hardware}" /> -->
+        <!-- ros2 control instance -->
+        <xacro:kuka_fortec_ros2_control name="kr560_r3100_2" prefix="${prefix}" use_fake_hardware="${use_fake_hardware}" />
 
         <link name="${prefix}base_link" />
         <link name="${prefix}base_link_inertia">
@@ -150,42 +152,42 @@
         <joint name="${prefix}joint_1" type="revolute">
             <axis xyz="0.0 0.0 1.0" />
             <child link="${prefix}link_1" />
-            <limit effort="15000.0E0" lower="-3.2288591161895095E0" upper="3.2288591161895095E0" velocity="${pi/2.0}" />
+            <limit effort="15000.0E0" lower="-3.2288591161895095E0" upper="3.2288591161895095E0" velocity="${radians(90)}" />
             <origin rpy="-3.141592653589793 0.0 -0.0" xyz="0.0 0.0 0.0" />
             <parent link="${prefix}base_link_inertia" />
         </joint>
         <joint name="${prefix}joint_2" type="revolute">
             <axis xyz="0.0 0.0 1.0" />
             <child link="${prefix}link_2" />
-            <limit effort="17880.0E0" lower="-2.2689280275926285E0" upper="3.490658503988659E-1" velocity="1.39626340159546E0" />
+            <limit effort="17880.0E0" lower="-2.2689280275926285E0" upper="3.490658503988659E-1" velocity="${radians(80)}" />
             <origin rpy="${pi/2.0} 0.0 -0.0" xyz="0.5 0.0 -0.86" />
             <parent link="${prefix}link_1" />
         </joint>
         <joint name="${prefix}joint_3" type="revolute">
             <axis xyz="0.0 0.0 1.0" />
             <child link="${prefix}link_3" />
-            <limit effort="15315.272850848E0" lower="-1.7453292519943295E0" upper="2.8797932657906435E0" velocity="1.30899693899575E0" />
+            <limit effort="15315.272850848E0" lower="-1.7453292519943295E0" upper="2.8797932657906435E0" velocity="${radians(75)}" />
             <origin rpy="0.0 0.0 -${pi/2.0}" xyz="1.55 0.0 0.0" />
             <parent link="${prefix}link_2" />
         </joint>
         <joint name="${prefix}joint_4" type="revolute">
             <axis xyz="0.0 0.0 1.0" />
             <child link="${prefix}link_4" />
-            <limit effort="4847.11596436905E0" lower="-6.1086523819801535E0" upper="6.1086523819801535E0" velocity="${pi/2.0}" />
+            <limit effort="4847.11596436905E0" lower="-6.1086523819801535E0" upper="6.1086523819801535E0" velocity="${radians(90)}" />
             <origin rpy="${pi/2.0} 0.0 -0.0" xyz="0.18 0.0 0.0" />
             <parent link="${prefix}link_3" />
         </joint>
         <joint name="${prefix}joint_5" type="revolute">
             <axis xyz="0.0 0.0 1.0" />
             <child link="${prefix}link_5" />
-            <limit effort="4852.96953685247E0" lower="-2.0943951023931953E0" upper="2.0943951023931953E0" velocity="${pi/2.0}" />
+            <limit effort="4852.96953685247E0" lower="-2.0943951023931953E0" upper="2.0943951023931953E0" velocity="${radians(90)}" />
             <origin rpy="-${pi/2.0} 0.0 -0.0" xyz="0.0 0.0 -1.0345" />
             <parent link="${prefix}link_4" />
         </joint>
         <joint name="${prefix}joint_6" type="revolute">
             <axis xyz="0.0 0.0 1.0" />
             <child link="${prefix}link_6" />
-            <limit effort="2675.4449432041E0" lower="-6.1086523819801535E0" upper="6.1086523819801535E0" velocity="2.26892802759263E0" />
+            <limit effort="2675.4449432041E0" lower="-6.1086523819801535E0" upper="6.1086523819801535E0" velocity="${radians(130)}" />
             <origin rpy="${pi/2.0} 0.0 -0.0" xyz="0.0 0.0 0.0" />
             <parent link="${prefix}link_5" />
         </joint>
