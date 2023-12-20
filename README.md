@@ -89,6 +89,7 @@ Some of the data in the xacros might not be valid or missing, the following tabl
 |kr16_r2010_2| cybertech | ✓ | ✓ | ✓ | ✓ | | |
 |kr210_r2700_2| quantec | ✓ | ✓ | ✓ | ✓ | | |
 |kr210_r3100_2| quantec | ✓ | ✓ | ✓ | ✓ | | |
+|kr560_r3100_2| fortec | ✓ | ✓ | ✓ | ✓ | | ✓|
 
 ## Starting the move group server with fake hardware
 
