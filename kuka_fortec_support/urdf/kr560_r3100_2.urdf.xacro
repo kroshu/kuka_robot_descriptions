@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="kr560_r3100_2">
     <!-- Import urdf file  -->
-    <xacro:include filename="$(find kuka_fortec_support)/urdf/kr560_r3100-2_macro.xacro" />
+    <xacro:include filename="$(find kuka_fortec_support)/urdf/kr560_r3100_2_macro.xacro" />
 
     <!-- Read additional arguments  -->
     <xacro:arg name="use_fake_hardware" default="false" />
