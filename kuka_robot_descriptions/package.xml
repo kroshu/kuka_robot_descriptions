@@ -14,6 +14,7 @@
 
   <exec_depend>kuka_agilus_support</exec_depend>
   <exec_depend>kuka_cybertech_support</exec_depend>
+  <exec_depend>kuka_fortec_support</exec_depend>
   <exec_depend>kuka_kr_moveit_config</exec_depend>
   <exec_depend>kuka_lbr_iisy_moveit_config</exec_depend>
   <exec_depend>kuka_lbr_iisy_support</exec_depend>
