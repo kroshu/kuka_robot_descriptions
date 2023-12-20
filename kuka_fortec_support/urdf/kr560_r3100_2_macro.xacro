@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <robot xmlns:xacro="http://wiki.ros.org/xacro">
-    <xacro:include filename="$(find kuka_resources)/urdf/common_constants.xacro"/>
-    <xacro:include filename="$(find kuka_resources)/urdf/common_materials.xacro"/>
-    <!-- <xacro:include filename="$(find kuka_fortec_support)/urdf/kr_fortec_ros2_control.xacro" />
-  <xacro:include filename="$(find kuka_fortec_support)/urdf/kr_fortec_transmission.xacro" /> -->
+    <xacro:include filename="$(find kuka_fortec_support)/urdf/kr_fortec_ros2_control.xacro"/>
+    <xacro:include filename="$(find kuka_fortec_support)/urdf/kr_fortec_transmission.xacro" />
 
     <xacro:macro name="kuka_kr560_r3100_2_robot" params="prefix use_fake_hardware">
         <!-- ros2 control instance -->
