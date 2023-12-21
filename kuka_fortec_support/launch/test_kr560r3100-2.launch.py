@@ -15,7 +15,7 @@ def generate_launch_description():
                 [
                     FindPackageShare("kuka_fortec_support"),
                     "urdf",
-                    "kr560_r3100-2.urdf.xacro",
+                    "kr560_r3100_2.urdf.xacro",
                 ]
             ),
             " ",
