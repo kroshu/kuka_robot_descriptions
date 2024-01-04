@@ -40,6 +40,7 @@
   <buildtool_depend>ament_cmake</buildtool_depend>
 
   <depend>xacro</depend>
+  <depend>launch_ros</depend>
 
   <exec_depend>joint_state_publisher_gui</exec_depend>
   <exec_depend>kuka_resources</exec_depend>
