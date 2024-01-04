@@ -9,10 +9,18 @@
 
   <buildtool_depend>ament_cmake</buildtool_depend>
 
-  <test_depend>ament_lint_auto</test_depend>
-  <test_depend>ament_lint_common</test_depend>
+  <depend>xacro</depend>
+  <depend>launch_ros</depend>
+
+  <exec_depend>joint_state_publisher_gui</exec_depend>
+  <exec_depend>kuka_resources</exec_depend>
+  <exec_depend>robot_state_publisher</exec_depend>
+  <exec_depend>rviz2</exec_depend>
+
+  <test_depend>launch_testing_ament_cmake</test_depend>
 
   <export>
+    <architecture_independent/>
     <build_type>ament_cmake</build_type>
   </export>
 </package>
