@@ -9,4 +9,9 @@ find_package(xacro REQUIRED)
 install(DIRECTORY config launch meshes urdf
   DESTINATION share/${PROJECT_NAME})
 
+if(BUILD_TESTING)
+  find_package(launch_testing_ament_cmake)
+  add_launch_test(test/test_kr_cybertech.py)
+endif()
+
 ament_package()

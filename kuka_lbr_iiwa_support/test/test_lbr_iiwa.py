@@ -28,7 +28,7 @@ from ament_index_python.packages import get_package_share_directory
 
 def list_test_launch_files():
     files = [f for f in os.listdir(get_package_share_directory(
-        'kuka_lbr_iisy_support')+'/launch/') if f.endswith('.py')]
+        'kuka_lbr_iiwa_support')+'/launch/') if f.endswith('.py')]
     return files
 
 
@@ -40,7 +40,7 @@ def generate_test_description(test_file):
     list_test_launch_files()
     return launch.LaunchDescription([
         IncludeLaunchDescription(PythonLaunchDescriptionSource(
-            [get_package_share_directory('kuka_lbr_iisy_support'),
+            [get_package_share_directory('kuka_lbr_iiwa_support'),
              '/launch/', test_file])),
         launch_testing.actions.ReadyToTest()
     ])
