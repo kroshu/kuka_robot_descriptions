@@ -26,7 +26,7 @@ def generate_launch_description():
 
     # RViz
     rviz_config_file = PathJoinSubstitution(
-        [FindPackageShare("kuka_fortec_support"), "config", "fortec_urdf.rviz"]
+        [FindPackageShare("kuka_resources"), "config", "view_6_axis_urdf.rviz"]
     )
     rviz_node = Node(
         package="rviz2",
