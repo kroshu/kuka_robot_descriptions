@@ -37,7 +37,6 @@ def list_test_launch_files():
 @launch_testing.markers.keep_alive
 @launch_testing.parametrize('test_file', list_test_launch_files())
 def generate_test_description(test_file):
-    list_test_launch_files()
     return launch.LaunchDescription([
         IncludeLaunchDescription(PythonLaunchDescriptionSource(
             [get_package_share_directory('kuka_agilus_support'),
