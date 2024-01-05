@@ -202,7 +202,7 @@
         <link name="${prefix}flange" />
         <joint name="${prefix}link6-flange" type="fixed">
             <child link="${prefix}flange" />
-            <origin rpy="${pi/2} 0.0 -0.0" xyz="0.0 0.0 -0.0899" />
+            <origin rpy="0 ${pi/2} -0.0" xyz="0.0 0.0 -0.305" />
             <parent link="${prefix}link_6" />
         </joint>
 
