@@ -210,7 +210,7 @@
         <link name="${prefix}tool0" />
         <joint name="${prefix}link6-tool0" type="fixed">
             <child link="${prefix}tool0" />
-            <origin rpy="${pi/2} 0.0 -0.0" xyz="0.0 0.0 -0.0899" />
+            <origin rpy="0 ${pi} -0.0" xyz="0.0 0.0 -0.305" />
             <parent link="${prefix}link_6" />
         </joint>
     </xacro:macro>
