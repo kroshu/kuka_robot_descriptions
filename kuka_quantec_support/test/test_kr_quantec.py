@@ -21,34 +21,42 @@ import launch_testing.markers
 import pytest
 import os
 
-from launch.launch_description_sources.python_launch_description_source import PythonLaunchDescriptionSource  # noqa: E501
+from launch.launch_description_sources.python_launch_description_source import (
+    PythonLaunchDescriptionSource,
+)  # noqa: E501
 from launch.actions.include_launch_description import IncludeLaunchDescription
 from ament_index_python.packages import get_package_share_directory
 
 
 def list_test_launch_files():
-    files = [f for f in os.listdir(get_package_share_directory(
-        'kuka_quantec_support')+'/launch/') if f.endswith('.py')]
+    files = [
+        f
+        for f in os.listdir(get_package_share_directory("kuka_quantec_support") + "/launch/")
+        if f.endswith(".py")
+    ]
     return files
 
 
 # Launch all of the robot visualisation launch files one by one
 @pytest.mark.launch_test
 @launch_testing.markers.keep_alive
-@launch_testing.parametrize('test_file', list_test_launch_files())
+@launch_testing.parametrize("test_file", list_test_launch_files())
 def generate_test_description(test_file):
-    return launch.LaunchDescription([
-        IncludeLaunchDescription(PythonLaunchDescriptionSource(
-            [get_package_share_directory('kuka_quantec_support'),
-             '/launch/', test_file])),
-        launch_testing.actions.ReadyToTest()
-    ])
+    return launch.LaunchDescription(
+        [
+            IncludeLaunchDescription(
+                PythonLaunchDescriptionSource(
+                    [get_package_share_directory("kuka_quantec_support"), "/launch/", test_file]
+                )
+            ),
+            launch_testing.actions.ReadyToTest(),
+        ]
+    )
 
 
 class TestModels(unittest.TestCase):
-
     def test_read_stdout(self, proc_output):
         # Check for frames defined by ROS-Industrial
-        proc_output.assertWaitFor('got segment base', timeout=5)
-        proc_output.assertWaitFor('got segment flange', timeout=5)
-        proc_output.assertWaitFor('got segment tool0', timeout=5)
+        proc_output.assertWaitFor("got segment base", timeout=5)
+        proc_output.assertWaitFor("got segment flange", timeout=5)
+        proc_output.assertWaitFor("got segment tool0", timeout=5)

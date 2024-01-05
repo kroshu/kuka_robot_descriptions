@@ -14,7 +14,7 @@ set(supported_robots
   kr16_r2010_2
   kr210-r2700_2
   kr210-r3100_2
-  )
+)
 
 foreach(model IN LISTS supported_robots)
   xacro_add_files(TARGET ${model} srdf/kr_arm.srdf.xacro REMAP robot_name:=${model} OUTPUT ${model}_arm.srdf INSTALL DESTINATION urdf)
