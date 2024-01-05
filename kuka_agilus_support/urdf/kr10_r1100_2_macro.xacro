@@ -4,11 +4,11 @@
   <xacro:include filename="$(find kuka_agilus_support)/urdf/kr_agilus_ros2_control.xacro" />
   <xacro:include filename="$(find kuka_agilus_support)/urdf/kr_agilus_transmission.xacro" />
   <xacro:include filename="$(find kuka_resources)/urdf/common_materials.xacro"/>
-  
+
   <xacro:macro name="kuka_kr10_r1100_2_robot" params="prefix use_fake_hardware">
     <!-- ros2 control instance -->
     <xacro:kuka_agilus_ros2_control
-    name="kr10_r1100_2" 
+    name="kr10_r1100_2"
     prefix="${prefix}"
     use_fake_hardware="${use_fake_hardware}" />
 

@@ -39,7 +39,7 @@ The macro file follows the ROS-Industrial conventions:
  - includes `flange` frame: attachment point for EEF models
  - includes `tool0` frame: all-zeros tool frame, identical to the tool frame defined by the industrial controller ($TOOL)
 
-All robots in the xacros are named according to the following pattern: 
+All robots in the xacros are named according to the following pattern:
 
 `{kr/lbr_iisy/lbr_iiwa}{payload}_r{reach}_{version}`,
 
@@ -59,7 +59,7 @@ The other frames, which are added to conform to ROS-Industrial follow the conven
 
 The support packages contain a joint limits file for every supported robot model, necessary time parametrization of MoveIt-planned paths. They contain the velocity limits also available in the URDF model and additional acceleration limits. Acceleration limits can never be global, these values are calculated from the worst-case ramp-up time to reach maximum velocity. The easiest way to modify the allowed velocities and accelerations is to change the velocity and acceleration scaling factors also available in the same configuration files. (The scaling factor can never be smaller than 1.)
 
- 
+
 ### Extending the models
 
 In real applications, it's likely that the description will be more complex, involving multiple objects next to the robot and optionally end effectors. It is recommended to create a new, dedicated ROS2 package specifically for managing this extended description by copying and extending the base robot model.
@@ -107,7 +107,7 @@ ros2 launch kuka_lbr_iisy_moveit_config moveit_planning_fake_hardware.launch.py
 
 #### LBR iisy robots (iiQKA):
 ```
-ros2 launch kuka_lbr_iiwa_moveit_config moveit_planning_fake_hardware.launch.py 
+ros2 launch kuka_lbr_iiwa_moveit_config moveit_planning_fake_hardware.launch.py
 ```
 A `robot_model` argument can be added after the command (e.g. `robot_model:=lbr_iisy11_r1300`). The default robot model is `lbr_iisy3_r760`
 

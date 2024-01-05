@@ -24,36 +24,42 @@ def generate_launch_description():
             PathJoinSubstitution([FindExecutable(name="xacro")]),
             " ",
             PathJoinSubstitution(
-                [FindPackageShare("kuka_agilus_support"),
-                 "urdf", "kr10_r1100_2.urdf.xacro"]
+                [FindPackageShare("kuka_agilus_support"), "urdf", "kr10_r1100_2.urdf.xacro"]
             ),
             " ",
             "use_fake_hardware:=true",
         ]
     )
-    robot_description = {'robot_description': robot_description_content}
+    robot_description = {"robot_description": robot_description_content}
 
     # RViz
-    rviz_config_file = PathJoinSubstitution([FindPackageShare(
-        'kuka_resources'), "config", "view_6_axis_urdf.rviz"])
-    rviz_node = Node(package='rviz2',
-                     executable='rviz2',
-                     name='rviz2_launch',
-                     output='log',
-                     arguments=['-d', rviz_config_file],
-                     parameters=[robot_description])
+    rviz_config_file = PathJoinSubstitution(
+        [FindPackageShare("kuka_resources"), "config", "view_6_axis_urdf.rviz"]
+    )
+    rviz_node = Node(
+        package="rviz2",
+        executable="rviz2",
+        name="rviz2_launch",
+        output="log",
+        arguments=["-d", rviz_config_file],
+        parameters=[robot_description],
+    )
 
     # Publish TF
-    robot_state_publisher = Node(package='robot_state_publisher',
-                                 executable='robot_state_publisher',
-                                 name='robot_state_publisher',
-                                 output='both',
-                                 parameters=[robot_description])
+    robot_state_publisher = Node(
+        package="robot_state_publisher",
+        executable="robot_state_publisher",
+        name="robot_state_publisher",
+        output="both",
+        parameters=[robot_description],
+    )
 
     # Joint state publisher
-    joint_state_publisher_gui = Node(package='joint_state_publisher_gui',
-                                     executable='joint_state_publisher_gui',
-                                     name='joint_state_publisher_gui',
-                                     output='log')
+    joint_state_publisher_gui = Node(
+        package="joint_state_publisher_gui",
+        executable="joint_state_publisher_gui",
+        name="joint_state_publisher_gui",
+        output="log",
+    )
 
     return LaunchDescription([robot_state_publisher, rviz_node, joint_state_publisher_gui])
