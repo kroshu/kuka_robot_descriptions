@@ -11,7 +11,7 @@
         <link name="${prefix}base_link_inertia">
             <collision>
                 <geometry>
-                    <mesh filename="package://kuka_fortec_support/meshes/kr560_r3100-2/collision/base_link.stl"/>
+                    <mesh filename="package://kuka_fortec_support/meshes/kr560_r3100_2/collision/base_link.stl"/>
                 </geometry>
                 <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
             </collision>
@@ -22,7 +22,7 @@
             </inertial>
             <visual>
                 <geometry>
-                    <mesh filename="package://kuka_fortec_support/meshes/kr560_r3100-2/visual/base_link.dae" />
+                    <mesh filename="package://kuka_fortec_support/meshes/kr560_r3100_2/visual/base_link.dae" />
                 </geometry>
                 <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0" />
             </visual>
@@ -30,7 +30,7 @@
         <link name="${prefix}link_1">
             <collision>
                 <geometry>
-                    <mesh filename="package://kuka_fortec_support/meshes/kr560_r3100-2/collision/link_1.stl"/>
+                    <mesh filename="package://kuka_fortec_support/meshes/kr560_r3100_2/collision/link_1.stl"/>
                 </geometry>
                 <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
             </collision>
@@ -41,7 +41,7 @@
             </inertial>
             <visual>
                 <geometry>
-                    <mesh filename="package://kuka_fortec_support/meshes/kr560_r3100-2/visual/link_1.dae" />
+                    <mesh filename="package://kuka_fortec_support/meshes/kr560_r3100_2/visual/link_1.dae" />
                 </geometry>
                 <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0" />
             </visual>
@@ -49,7 +49,7 @@
         <link name="${prefix}link_2">
             <collision>
                 <geometry>
-                    <mesh filename="package://kuka_fortec_support/meshes/kr560_r3100-2/collision/link_2.stl"/>
+                    <mesh filename="package://kuka_fortec_support/meshes/kr560_r3100_2/collision/link_2.stl"/>
                 </geometry>
                 <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
             </collision>
@@ -60,7 +60,7 @@
             </inertial>
             <visual>
                 <geometry>
-                    <mesh filename="package://kuka_fortec_support/meshes/kr560_r3100-2/visual/link_2.dae" />
+                    <mesh filename="package://kuka_fortec_support/meshes/kr560_r3100_2/visual/link_2.dae" />
                 </geometry>
                 <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0" />
             </visual>
@@ -68,7 +68,7 @@
         <link name="${prefix}link_3">
             <collision>
                 <geometry>
-                    <mesh filename="package://kuka_fortec_support/meshes/kr560_r3100-2/collision/link_3.stl"/>
+                    <mesh filename="package://kuka_fortec_support/meshes/kr560_r3100_2/collision/link_3.stl"/>
                 </geometry>
                 <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
             </collision>
@@ -79,7 +79,7 @@
             </inertial>
             <visual>
                 <geometry>
-                    <mesh filename="package://kuka_fortec_support/meshes/kr560_r3100-2/visual/link_3.dae" />
+                    <mesh filename="package://kuka_fortec_support/meshes/kr560_r3100_2/visual/link_3.dae" />
                 </geometry>
                 <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0" />
             </visual>
@@ -87,7 +87,7 @@
         <link name="${prefix}link_4">
             <collision>
                 <geometry>
-                    <mesh filename="package://kuka_fortec_support/meshes/kr560_r3100-2/collision/link_4.stl"/>
+                    <mesh filename="package://kuka_fortec_support/meshes/kr560_r3100_2/collision/link_4.stl"/>
                 </geometry>
                 <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
             </collision>
@@ -98,7 +98,7 @@
             </inertial>
             <visual>
                 <geometry>
-                    <mesh filename="package://kuka_fortec_support/meshes/kr560_r3100-2/visual/link_4.dae" />
+                    <mesh filename="package://kuka_fortec_support/meshes/kr560_r3100_2/visual/link_4.dae" />
                 </geometry>
                 <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0" />
             </visual>
@@ -106,7 +106,7 @@
         <link name="${prefix}link_5">
             <collision>
                 <geometry>
-                    <mesh filename="package://kuka_fortec_support/meshes/kr560_r3100-2/collision/link_5.stl"/>
+                    <mesh filename="package://kuka_fortec_support/meshes/kr560_r3100_2/collision/link_5.stl"/>
                 </geometry>
                 <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
             </collision>
@@ -117,7 +117,7 @@
             </inertial>
             <visual>
                 <geometry>
-                    <mesh filename="package://kuka_fortec_support/meshes/kr560_r3100-2/visual/link_5.dae" />
+                    <mesh filename="package://kuka_fortec_support/meshes/kr560_r3100_2/visual/link_5.dae" />
                 </geometry>
                 <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0" />
             </visual>
@@ -125,7 +125,7 @@
         <link name="${prefix}link_6">
             <collision>
                 <geometry>
-                    <mesh filename="package://kuka_fortec_support/meshes/kr560_r3100-2/collision/link_6.stl"/>
+                    <mesh filename="package://kuka_fortec_support/meshes/kr560_r3100_2/collision/link_6.stl"/>
                 </geometry>
                 <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
             </collision>
@@ -136,7 +136,7 @@
             </inertial>
             <visual>
                 <geometry>
-                    <mesh filename="package://kuka_fortec_support/meshes/kr560_r3100-2/visual/link_6.dae" />
+                    <mesh filename="package://kuka_fortec_support/meshes/kr560_r3100_2/visual/link_6.dae" />
                 </geometry>
                 <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0" />
             </visual>
