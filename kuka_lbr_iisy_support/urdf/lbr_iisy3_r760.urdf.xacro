@@ -14,6 +14,6 @@
         controller_ip="$(arg controller_ip)"
         client_ip="$(arg client_ip)"
         use_fake_hardware="$(arg use_fake_hardware)">
-        <origin xyz="10 0 0" rpy="0 0 0" />
+        <origin xyz="0 0 0" rpy="0 0 0" />
     </xacro:kuka_lbr_iisy3_r760_robot>
 </robot>
