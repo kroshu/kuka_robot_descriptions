@@ -5,11 +5,13 @@
   <xacro:include filename="$(find kuka_resources)/urdf/common_materials.xacro"/>
   <xacro:include filename="$(find kuka_lbr_iisy_support)/urdf/lbr_iisy_transmission.xacro" />
 
-  <xacro:macro name="kuka_lbr_iisy15_r930_robot" params="prefix use_fake_hardware:=false">
+  <xacro:macro name="kuka_lbr_iisy15_r930_robot" params="prefix controller_ip client_ip use_fake_hardware">
     <!-- ros2 control instance -->
     <xacro:kuka_lbr_iisy_ros2_control
     name="lbr_iisy15_r930"
     prefix="${prefix}"
+    client_ip="${client_ip}"
+    controller_ip="${controller_ip}"
     use_fake_hardware="${use_fake_hardware}" />
 
     <!-- links - main serial chain -->
