@@ -3,8 +3,8 @@
   <name>kuka_cybertech_support</name>
   <version>0.0.1</version>
   <description>Robot models for the KUKA cybertech family.</description>
-  <author>Áron Svastits</author>
-  <maintainer email="svastits1@gmail.com">Áron Svastits</maintainer>
+  <author>Aron Svastits</author>
+  <maintainer email="svastits1@gmail.com">Aron Svastits</maintainer>
   <license>BSD</license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>

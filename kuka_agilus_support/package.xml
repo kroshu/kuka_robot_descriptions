@@ -34,7 +34,7 @@
   <author>G.A. vd. Hoorn (TU Delft Robotics Institute)</author>
   <author>Brett Hemes (3M)</author>
   <maintainer email="g.a.vanderhoorn@tudelft.nl">G.A. vd. Hoorn (TU Delft Robotics Institute)</maintainer>
-  <maintainer email="svastits1@gmail.com">Áron Svastits</maintainer>
+  <maintainer email="svastits1@gmail.com">Aron Svastits</maintainer>
   <license>BSD</license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>

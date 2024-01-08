@@ -4,7 +4,7 @@
   <version>0.1.0</version>
   <description>Package containing models of KUKA LBR iisy family</description>
   <author>Aron Svastits</author>
-  <maintainer email="svastits1@gmail.com">Áron Svastits</maintainer>
+  <maintainer email="svastits1@gmail.com">Aron Svastits</maintainer>
   <license>BSD</license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
