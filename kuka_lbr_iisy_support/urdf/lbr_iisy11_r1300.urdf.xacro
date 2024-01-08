@@ -8,6 +8,10 @@
     <xacro:arg name="controller_ip" default="0.0.0.0" />
     <xacro:arg name="client_ip" default="0.0.0.0" />
     <xacro:arg name="use_fake_hardware" default="false" />
+
+    <xacro:arg name="x" default="0" />
+    <xacro:arg name="y" default="0" />
+    <xacro:arg name="z" default="0" />
     <xacro:arg name="roll" default="0" />
     <xacro:arg name="pitch" default="0" />
     <xacro:arg name="yaw" default="0" />
