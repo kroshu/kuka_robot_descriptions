@@ -5,16 +5,16 @@
   <xacro:include filename="$(find kuka_resources)/urdf/common_materials.xacro"/>
   <xacro:include filename="$(find kuka_lbr_iiwa_support)/urdf/lbr_iiwa_transmission.xacro" />
 
-  <xacro:macro name="kuka_lbr_iiwa14_r820_robot" params="io_access prefix use_fake_hardware:=false">
+  <xacro:macro name="kuka_lbr_iiwa14_r820_robot" params="io_access prefix use_fake_hardware *origin">
     <!-- ros2 control instance -->
     <xacro:kuka_lbr_iiwa_ros2_control
-    name="lbr_iiwa14_r820"
+    name="${prefix}lbr_iiwa14_r820"
     prefix="${prefix}"
     io_access = "${io_access}"
     use_fake_hardware="${use_fake_hardware}" />
     <!-- links - main serial chain -->
     <!-- links - root element cannot have inertia, therefore a dummy base_link is needed -->
-    <link name="${prefix}base_link"/>
+    <link name="base_link"/>
     <link name="${prefix}base_link_inertia">
       <visual>
         <geometry>
@@ -170,9 +170,9 @@
 
     <!-- joints - main serial chain -->
     <joint name="${prefix}base_link-base_link_inertia" type="fixed">
-      <parent link="${prefix}base_link" />
+      <parent link="base_link" />
       <child link="${prefix}base_link_inertia" />
-      <origin xyz="0 0 0" rpy="0 0 0" />
+      <xacro:insert_block name="origin" />
     </joint>
     <joint name="${prefix}joint_1" type="revolute">
       <parent link="${prefix}base_link_inertia"/>
@@ -228,7 +228,7 @@
     <link name="${prefix}base" />
     <joint name="${prefix}base_link-base" type="fixed">
       <origin xyz="0 0 0" rpy="0 0 0"/>
-      <parent link="${prefix}base_link"/>
+      <parent link="${prefix}base_link_inertia"/>
       <child link="${prefix}base"/>
     </joint>
 
