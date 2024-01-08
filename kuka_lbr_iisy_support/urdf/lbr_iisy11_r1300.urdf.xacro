@@ -9,5 +9,11 @@
     <xacro:arg name="client_ip" default="0.0.0.0" />
     <xacro:arg name="use_fake_hardware" default="false" />
 
-    <xacro:kuka_lbr_iisy11_r1300_robot prefix="$(arg prefix)" controller_ip="$(arg controller_ip)" client_ip="$(arg client_ip)" use_fake_hardware="$(arg use_fake_hardware)"/>
+    <xacro:kuka_lbr_iisy11_r1300_robot
+        prefix="$(arg prefix)"
+        controller_ip="$(arg controller_ip)"
+        client_ip="$(arg client_ip)"
+        use_fake_hardware="$(arg use_fake_hardware)">
+        <origin xyz="0 0 0" rpy="0 0 0" />
+    </xacro:kuka_lbr_iisy11_r1300_robot>
 </robot>
