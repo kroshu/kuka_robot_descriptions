@@ -5,14 +5,15 @@
   <xacro:include filename="$(find kuka_resources)/urdf/common_materials.xacro"/>
   <xacro:include filename="$(find kuka_lbr_iisy_support)/urdf/lbr_iisy_transmission.xacro" />
 
-  <xacro:macro name="kuka_lbr_iisy3_r760_robot" params="prefix controller_ip client_ip use_fake_hardware *origin">
+  <xacro:macro name="kuka_lbr_iisy3_r760_robot" params="prefix controller_ip client_ip use_fake_hardware qos_config_file *origin">
     <!-- ros2 control instance -->
     <xacro:kuka_lbr_iisy_ros2_control
     name="${prefix}lbr_iisy3_r760"
     prefix="${prefix}"
     client_ip="${client_ip}"
     controller_ip="${controller_ip}"
-    use_fake_hardware="${use_fake_hardware}" />
+    use_fake_hardware="${use_fake_hardware}"
+    qos_config_file="${qos_config_file}" />
 
     <!-- links - main serial chain -->
     <!-- links - root element cannot have inertia, therefore a dummy base_link is needed -->
