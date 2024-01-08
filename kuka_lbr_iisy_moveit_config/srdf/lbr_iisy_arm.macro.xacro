@@ -7,7 +7,7 @@
     <!--CHAINS: When a chain is specified, all the links along the chain (including endpoints) are included in the group. Additionally, all the joints that are parents to included links are also included. This means that joints along the chain and the parent joint of the base link are included in the group-->
     <!--SUBGROUPS: Groups can also be formed by referencing to already defined group names-->
     <group name="${prefix}manipulator">
-      <chain base_link="${prefix}base_link" tip_link="${prefix}tool0" />
+      <chain base_link="${prefix}base_link_inertia" tip_link="${prefix}tool0" />
     </group>
     <!--Add tool0 as end effector to be able to use moveit_visual_tools for visualising end effector path-->
     <group name="${prefix}end_effector">
