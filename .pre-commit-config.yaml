@@ -134,9 +134,3 @@ repos:
       - id: codespell
         args: ['--write-changes', '-L', 'linz']
         exclude: CHANGELOG\.rst|\.(svg|pyc)$
-
-  # xml linter
-  - repo: https://github.com/lsst-ts/pre-commit-xmllint
-    rev: v1.0.0
-    hooks:
-      - id: format-xmllint
