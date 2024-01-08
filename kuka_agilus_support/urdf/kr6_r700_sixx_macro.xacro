@@ -5,14 +5,16 @@
   <xacro:include filename="$(find kuka_agilus_support)/urdf/kr_agilus_ros2_control.xacro" />
   <xacro:include filename="$(find kuka_agilus_support)/urdf/kr_agilus_transmission.xacro" />
 
-  <xacro:macro name="kuka_kr6_r700_sixx_robot" params="prefix use_fake_hardware">
+  <xacro:macro name="kuka_kr6_r700_sixx_robot" params="client_ip client_port prefix use_fake_hardware *origin">
     <!-- ros2 control instance -->
     <xacro:kuka_agilus_ros2_control
-    name="kr6_r700_sixx"
+    name="${prefix}kr6_r700_sixx"
+    client_ip="${client_ip}"
+    client_port="${client_port}"
     prefix="${prefix}"
     use_fake_hardware="${use_fake_hardware}" />
 
-    <link name="${prefix}base_link"/>
+    <link name="base_link"/>
     <link name="${prefix}base_link_inertia">
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
@@ -122,9 +124,9 @@
     <link name="${prefix}flange" />
 
     <joint name="${prefix}base_link-base_link_inertia" type="fixed">
-      <parent link="${prefix}base_link" />
+      <parent link="base_link" />
       <child link="${prefix}base_link_inertia" />
-      <origin xyz="0 0 0" rpy="0 0 0" />
+      <xacro:insert_block name="origin" />
     </joint>
     <joint name="${prefix}joint_1" type="revolute">
       <origin xyz="0 0 0.4" rpy="0 0 0"/>
@@ -178,7 +180,7 @@
     <link name="${prefix}base" />
     <joint name="${prefix}base_link-base" type="fixed">
       <origin xyz="0 0 0" rpy="0 0 0"/>
-      <parent link="${prefix}base_link"/>
+      <parent link="${prefix}base_link_inertia"/>
       <child link="${prefix}base"/>
     </joint>
 
