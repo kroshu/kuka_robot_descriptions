@@ -10,7 +10,12 @@
         </xacro:if>
         <xacro:unless value="${use_fake_hardware}">
           <!-- Read QoS profile parameters  -->
-          <xacro:property name="qos_config" value="${qos_config_file}" />
+          <xacro:if value="${qos_config_file == ''}">
+            <xacro:property name="qos_config" value="$(find kuka_iiqka_eac_driver)/config/qos_config.yaml"/>
+          </xacro:if>
+          <xacro:unless value="${qos_config_file == ''}">
+            <xacro:property name="qos_config" value="${qos_config_file}"/>
+          </xacro:unless>
           <xacro:property name="qos_config_dict" value="${xacro.load_yaml(qos_config)}"/>
           <xacro:property name="consequent_lost_packets" value="${qos_config_dict['rt_packet_loss_profile']['consequent_lost_packets']}" />
           <xacro:property name="lost_packets_in_timeframe" value="${qos_config_dict['rt_packet_loss_profile']['lost_packets_in_timeframe']}" />
