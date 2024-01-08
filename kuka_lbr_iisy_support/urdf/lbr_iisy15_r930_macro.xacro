@@ -12,7 +12,7 @@
     prefix="${prefix}"
     client_ip="${client_ip}"
     controller_ip="${controller_ip}"
-    use_fake_hardware="${use_fake_hardware}" 
+    use_fake_hardware="${use_fake_hardware}"
     qos_config_file="${qos_config_file}" />
 
     <!-- links - main serial chain -->
