@@ -38,7 +38,7 @@ The macro file follows the ROS-Industrial conventions:
  - includes `base` frame: equivalent to the base frame defined by the industrial controller ($ROBROOT)
  - includes `flange` frame: attachment point for EEF models
  - includes `tool0` frame: all-zeros tool frame, identical to the tool frame defined by the industrial controller ($TOOL)
- 
+
  All macros additionally contain a `world` fixed frame (without `prefix`). The transform from `world` to `base_link` can be given with the block parameter `*origin`.
 
 All robots in the xacros are named according to the following pattern:
