@@ -14,7 +14,7 @@
     use_fake_hardware="${use_fake_hardware}" />
     <!-- links - main serial chain -->
     <!-- links - root element cannot have inertia, therefore a dummy base_link is needed -->
-    <link name="base_link"/>
+    <link name="world"/>
     <link name="${prefix}base_link_inertia">
       <visual>
         <geometry>
@@ -170,7 +170,7 @@
 
     <!-- joints - main serial chain -->
     <joint name="${prefix}base_link-base_link_inertia" type="fixed">
-      <parent link="base_link" />
+      <parent link="world" />
       <child link="${prefix}base_link_inertia" />
       <xacro:insert_block name="origin" />
     </joint>

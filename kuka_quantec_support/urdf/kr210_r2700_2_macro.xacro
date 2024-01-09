@@ -12,7 +12,7 @@
     prefix="${prefix}"
     use_fake_hardware="${use_fake_hardware}" />
 
-    <link name="base_link"/>
+    <link name="world"/>
     <link name="${prefix}base_link_inertia">
       <collision>
         <geometry>
@@ -147,7 +147,7 @@
       </visual>
     </link>
     <joint name="${prefix}base_link-base_link_inertia" type="fixed">
-      <parent link="base_link" />
+      <parent link="world" />
       <child link="${prefix}base_link_inertia" />
       <xacro:insert_block name="origin" />
     </joint>

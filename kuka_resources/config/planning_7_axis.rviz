@@ -65,7 +65,7 @@ Visualization Manager:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-        base_link:
+        world:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -150,7 +150,7 @@ Visualization Manager:
             Alpha: 1
             Show Axes: false
             Show Trail: false
-          base_link:
+          world:
             Alpha: 1
             Show Axes: false
             Show Trail: false
@@ -213,7 +213,7 @@ Visualization Manager:
         All Enabled: true
         base:
           Value: true
-        base_link:
+        world:
           Value: true
         base_link_inertia:
           Value: true
@@ -229,7 +229,7 @@ Visualization Manager:
       Show Axes: true
       Show Names: true
       Tree:
-        base_link:
+        world:
           base:
             {}
           base_link_inertia:
@@ -262,7 +262,7 @@ Visualization Manager:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-        base_link:
+        world:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -362,7 +362,7 @@ Visualization Manager:
             Alpha: 1
             Show Axes: false
             Show Trail: false
-          base_link:
+          world:
             Alpha: 1
             Show Axes: false
             Show Trail: false
@@ -464,7 +464,7 @@ Visualization Manager:
             Alpha: 1
             Show Axes: false
             Show Trail: false
-          base_link:
+          world:
             Alpha: 1
             Show Axes: false
             Show Trail: false
