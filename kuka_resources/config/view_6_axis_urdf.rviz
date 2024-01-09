@@ -66,7 +66,7 @@ Visualization Manager:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-        base_link_inertia:
+        base_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -126,7 +126,7 @@ Visualization Manager:
           Value: true
         world:
           Value: true
-        base_link_inertia:
+        base_link:
           Value: true
         flange:
           Value: true
@@ -153,7 +153,7 @@ Visualization Manager:
         world:
           base:
             {}
-          base_link_inertia:
+          base_link:
             link_1:
               link_2:
                 link_3:
@@ -169,7 +169,7 @@ Visualization Manager:
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
-    Fixed Frame: base_link
+    Fixed Frame: world
     Frame Rate: 30
   Name: root
   Tools:
