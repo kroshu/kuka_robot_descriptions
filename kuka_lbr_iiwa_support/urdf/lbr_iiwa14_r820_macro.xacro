@@ -13,9 +13,8 @@
     io_access = "${io_access}"
     use_fake_hardware="${use_fake_hardware}" />
     <!-- links - main serial chain -->
-    <!-- links - root element cannot have inertia, therefore a dummy base_link is needed -->
     <link name="world"/>
-    <link name="${prefix}base_link_inertia">
+    <link name="${prefix}base_link">
       <visual>
         <geometry>
           <mesh filename="package://kuka_lbr_iiwa_support/meshes/lbr_iiwa14_r820/visual/base_link.stl"/>
@@ -169,13 +168,13 @@
     </link>
 
     <!-- joints - main serial chain -->
-    <joint name="${prefix}base_link-base_link_inertia" type="fixed">
+    <joint name="${prefix}world-base_link" type="fixed">
       <parent link="world" />
-      <child link="${prefix}base_link_inertia" />
+      <child link="${prefix}base_link" />
       <xacro:insert_block name="origin" />
     </joint>
     <joint name="${prefix}joint_1" type="revolute">
-      <parent link="${prefix}base_link_inertia"/>
+      <parent link="${prefix}base_link"/>
       <child link="${prefix}link_1"/>
       <origin rpy="-0.0 0.0 0.0" xyz="0.0 0.0 0.1375"/>
       <axis xyz="0.0 0.0 1.0"/>
@@ -228,7 +227,7 @@
     <link name="${prefix}base" />
     <joint name="${prefix}base_link-base" type="fixed">
       <origin xyz="0 0 0" rpy="0 0 0"/>
-      <parent link="${prefix}base_link_inertia"/>
+      <parent link="${prefix}base_link"/>
       <child link="${prefix}base"/>
     </joint>
 

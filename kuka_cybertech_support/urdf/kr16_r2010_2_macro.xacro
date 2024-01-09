@@ -13,7 +13,7 @@
     use_fake_hardware="${use_fake_hardware}" />
 
     <link name="world"/>
-    <link name="${prefix}base_link_inertia">
+    <link name="${prefix}base_link">
       <collision>
         <geometry>
           <mesh filename="package://kuka_cybertech_support/meshes/kr16_r2010_2/collision/base_link.stl"/>
@@ -147,9 +147,9 @@
       </visual>
     </link>
 
-    <joint name="${prefix}base_link-base_link_inertia" type="fixed">
+    <joint name="${prefix}world-base_link" type="fixed">
       <parent link="world" />
-      <child link="${prefix}base_link_inertia" />
+      <child link="${prefix}base_link" />
       <xacro:insert_block name="origin" />
     </joint>
     <joint name="${prefix}joint_1" type="revolute">
@@ -157,7 +157,7 @@
       <child link="${prefix}link_1"/>
       <limit effort="1905.3" lower="-3.2288591162E0" upper="3.2288591161895095E0" velocity="${radians(200)}"/>
       <origin rpy="${-pi} 0.0 -0.0" xyz="0.0 0.0 0.0"/>
-      <parent link="${prefix}base_link_inertia"/>
+      <parent link="${prefix}base_link"/>
     </joint>
     <joint name="${prefix}joint_2" type="revolute">
       <axis xyz="0.0 0.0 1.0"/>
@@ -199,7 +199,7 @@
     <link name="${prefix}base" />
     <joint name="${prefix}base_link-base" type="fixed">
       <origin xyz="0 0 0" rpy="0 0 0"/>
-      <parent link="${prefix}base_link_inertia"/>
+      <parent link="${prefix}base_link"/>
       <child link="${prefix}base"/>
     </joint>
 

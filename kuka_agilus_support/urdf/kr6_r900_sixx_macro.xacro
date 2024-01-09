@@ -15,7 +15,7 @@
     use_fake_hardware="${use_fake_hardware}" />
 
     <link name="world"/>
-    <link name="${prefix}base_link_inertia">
+    <link name="${prefix}base_link">
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0"/>
         <geometry>
@@ -123,14 +123,14 @@
     <!-- Following REP199, this frame shall be use to attach EEF or other equipment -->
     <link name="${prefix}flange" />
 
-    <joint name="${prefix}base_link-base_link_inertia" type="fixed">
+    <joint name="${prefix}world-base_link" type="fixed">
       <parent link="world" />
-      <child link="${prefix}base_link_inertia" />
+      <child link="${prefix}base_link" />
       <xacro:insert_block name="origin" />
     </joint>
     <joint name="${prefix}joint_1" type="revolute">
       <origin xyz="0 0 0.400" rpy="0 0 0"/>
-      <parent link="${prefix}base_link_inertia"/>
+      <parent link="${prefix}base_link"/>
       <child link="${prefix}link_1"/>
       <axis xyz="0 0 -1"/>
       <limit effort="0" lower="${-radians(170)}" upper="${radians(170)}" velocity="${radians(360)}"/>
@@ -180,7 +180,7 @@
     <link name="${prefix}base" />
     <joint name="${prefix}base_link-base" type="fixed">
       <origin xyz="0 0 0" rpy="0 0 0"/>
-      <parent link="${prefix}base_link_inertia"/>
+      <parent link="${prefix}base_link"/>
       <child link="${prefix}base"/>
     </joint>
 
