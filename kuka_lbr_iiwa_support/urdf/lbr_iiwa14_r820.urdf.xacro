@@ -13,9 +13,10 @@
 <xacro:arg name="roll" default="0" />
 <xacro:arg name="pitch" default="0" />
 <xacro:arg name="yaw" default="0" />
+<xacro:arg name="prefix" default="" />
 
 <xacro:kuka_lbr_iiwa14_r820_robot
-  prefix=""
+  prefix="$(arg prefix)"
   io_access="false"
   use_fake_hardware="$(arg use_fake_hardware)">
   <origin xyz="$(arg x) $(arg y) $(arg z)" rpy="$(arg roll) $(arg pitch) $(arg yaw)" />
