@@ -26,7 +26,7 @@
     <!--END EFFECTOR: Purpose: Represent information about an end effector.-->
     <end_effector name="${prefix}eef" parent_link="${prefix}tool0" group="${prefix}end_effector" parent_group="${prefix}manipulator"/>
     <!--DISABLE COLLISIONS: By default it is assumed that any link of the robot could potentially come into collision with any other link in the robot. This tag disables collision checking between a specified pair of links. -->
-    <disable_collisions link1="${prefix}base_link_inertia" link2="${prefix}link_1" reason="Adjacent"/>
+    <disable_collisions link1="${prefix}base_link" link2="${prefix}link_1" reason="Adjacent"/>
     <disable_collisions link1="${prefix}link_1" link2="${prefix}link_2" reason="Adjacent"/>
     <disable_collisions link1="${prefix}link_2" link2="${prefix}link_3" reason="Adjacent"/>
     <disable_collisions link1="${prefix}link_3" link2="${prefix}link_4" reason="Adjacent"/>

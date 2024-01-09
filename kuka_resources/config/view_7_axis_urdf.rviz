@@ -3,11 +3,7 @@ Panels:
     Help Height: 78
     Name: Displays
     Property Tree Widget:
-      Expanded:
-        - /Global Options1
-        - /Status1
-        - /RobotModel1
-        - /TF1
+      Expanded: ~
       Splitter Ratio: 0.5
     Tree Height: 661
   - Class: rviz_common/Selection
@@ -44,9 +40,9 @@ Visualization Manager:
       Plane Cell Count: 10
       Reference Frame: <Fixed Frame>
       Value: true
-    - Alpha: 0.5
+    - Alpha: 1
       Class: rviz_default_plugins/RobotModel
-      Collision Enabled: true
+      Collision Enabled: false
       Description File: ""
       Description Source: Topic
       Description Topic:
@@ -70,10 +66,6 @@ Visualization Manager:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-        base_link_inertia:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
           Value: true
         flange:
           Alpha: 1
@@ -115,6 +107,10 @@ Visualization Manager:
           Show Trail: false
           Value: true
         tool0:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        world:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -135,8 +131,6 @@ Visualization Manager:
           Value: true
         base_link:
           Value: true
-        base_link_inertia:
-          Value: true
         flange:
           Value: true
         link_1:
@@ -155,16 +149,18 @@ Visualization Manager:
           Value: true
         tool0:
           Value: true
+        world:
+          Value: true
       Marker Scale: 0.5
       Name: TF
       Show Arrows: true
       Show Axes: true
       Show Names: true
       Tree:
-        base_link:
-          base:
-            {}
-          base_link_inertia:
+        world:
+          base_link:
+            base:
+              {}
             link_1:
               link_2:
                 link_3:
@@ -181,7 +177,7 @@ Visualization Manager:
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
-    Fixed Frame: base_link
+    Fixed Frame: world
     Frame Rate: 30
   Name: root
   Tools:
@@ -239,10 +235,10 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: -0.04960332438349724
+      Pitch: 0
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 6.111769676208496
+      Yaw: 1.5700000524520874
     Saved: ~
 Window Geometry:
   Displays:

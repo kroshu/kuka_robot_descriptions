@@ -6,9 +6,13 @@ find_package(ament_cmake REQUIRED)
 find_package(urdf REQUIRED)
 find_package(xacro REQUIRED)
 
-#xacro_add_files(TARGET xacro urdf/lbr_iisy3_r760.urdf.xacro OUTPUT lbr_iisy3_r760.urdf INSTALL DESTINATION urdf)
-
 install(DIRECTORY launch meshes urdf config
   DESTINATION share/${PROJECT_NAME})
+
+
+if(BUILD_TESTING)
+  find_package(launch_testing_ament_cmake)
+  add_launch_test(test/test_lbr_iisy.py)
+endif()
 
 ament_package()

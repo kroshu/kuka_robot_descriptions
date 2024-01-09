@@ -39,13 +39,15 @@ The macro file follows the ROS-Industrial conventions:
  - includes `flange` frame: attachment point for EEF models
  - includes `tool0` frame: all-zeros tool frame, identical to the tool frame defined by the industrial controller ($TOOL)
 
-All robots in the xacros are named according to the following pattern: 
+ All macros additionally contain a `world` fixed frame (without `prefix`). The transform from `world` to `base_link` can be given with the block parameter `*origin`.
+
+All robots in the xacros are named according to the following pattern:
 
 `{kr/lbr_iisy/lbr_iiwa}{payload}_r{reach}_{version}`,
 
 where `version` is omitted, if the official product name does not contain it. (e.g. KR 120 R3100-2 is named `kr120_r3100_2` and LBR iisy 3 R760 is `lbr_iisy3_r760`)
 
-The MoveIt configuration packages also contain xacros, that describe the semantic information of the robots: planning groups, default states and link-pairs, for which collision checking should not be done. The default planning group (from `base_link` to `tool0`) is named `manipulator` for all robot arms. An end effector, named `end_effector` is also defined for all robots, which enables visualising end effector paths in rviz.
+The MoveIt configuration packages also contain xacros, that describe the semantic information of the robots: planning groups, default states and link-pairs, for which collision checking should not be done. The default planning group (from `base_link` to `tool0`) is named `manipulator` for all robot arms. An end effector, named `end_effector` is also defined for all robots, which enables visualising end effector paths in `rviz`.
 
 To visualise the robot models, the launch files in the `launch` directory of the support packages can be used. These also start a `joint_state_publisher_gui` to enable visualisation of the robot meshes and frames with different joint configurations. However they have only visualisation purposes and cannot connect to real or fake hardware.
 
@@ -59,7 +61,7 @@ The other frames, which are added to conform to ROS-Industrial follow the conven
 
 The support packages contain a joint limits file for every supported robot model, necessary time parametrization of MoveIt-planned paths. They contain the velocity limits also available in the URDF model and additional acceleration limits. Acceleration limits can never be global, these values are calculated from the worst-case ramp-up time to reach maximum velocity. The easiest way to modify the allowed velocities and accelerations is to change the velocity and acceleration scaling factors also available in the same configuration files. (The scaling factor can never be smaller than 1.)
 
- 
+
 ### Extending the models
 
 In real applications, it's likely that the description will be more complex, involving multiple objects next to the robot and optionally end effectors. It is recommended to create a new, dedicated ROS2 package specifically for managing this extended description by copying and extending the base robot model.
@@ -93,7 +95,7 @@ Some of the data in the xacros might not be valid or missing, the following tabl
 
 ## Starting the move group server with fake hardware
 
-To start rviz with the motion planning plugin using fake hardware, the following launch files can be used:
+To start `rviz` with the motion planning plugin using fake hardware, the following launch files can be used:
 
 #### KR robots (KSS):
 ```
@@ -108,7 +110,7 @@ ros2 launch kuka_lbr_iisy_moveit_config moveit_planning_fake_hardware.launch.py
 
 #### LBR iisy robots (iiQKA):
 ```
-ros2 launch kuka_lbr_iiwa_moveit_config moveit_planning_fake_hardware.launch.py 
+ros2 launch kuka_lbr_iiwa_moveit_config moveit_planning_fake_hardware.launch.py
 ```
 A `robot_model` argument can be added after the command (e.g. `robot_model:=lbr_iisy11_r1300`). The default robot model is `lbr_iisy3_r760`
 
