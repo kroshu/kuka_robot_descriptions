@@ -39,13 +39,15 @@ The macro file follows the ROS-Industrial conventions:
  - includes `flange` frame: attachment point for EEF models
  - includes `tool0` frame: all-zeros tool frame, identical to the tool frame defined by the industrial controller ($TOOL)
 
+ All macros additionally contain a `world` fixed frame (without `prefix`). The transform from `world` to `base_link` can be given with the block parameter `*origin`.
+
 All robots in the xacros are named according to the following pattern:
 
 `{kr/lbr_iisy/lbr_iiwa}{payload}_r{reach}_{version}`,
 
 where `version` is omitted, if the official product name does not contain it. (e.g. KR 120 R3100-2 is named `kr120_r3100_2` and LBR iisy 3 R760 is `lbr_iisy3_r760`)
 
-The MoveIt configuration packages also contain xacros, that describe the semantic information of the robots: planning groups, default states and link-pairs, for which collision checking should not be done. The default planning group (from `base_link` to `tool0`) is named `manipulator` for all robot arms. An end effector, named `end_effector` is also defined for all robots, which enables visualising end effector paths in rviz.
+The MoveIt configuration packages also contain xacros, that describe the semantic information of the robots: planning groups, default states and link-pairs, for which collision checking should not be done. The default planning group (from `base_link` to `tool0`) is named `manipulator` for all robot arms. An end effector, named `end_effector` is also defined for all robots, which enables visualising end effector paths in `rviz`.
 
 To visualise the robot models, the launch files in the `launch` directory of the support packages can be used. These also start a `joint_state_publisher_gui` to enable visualisation of the robot meshes and frames with different joint configurations. However they have only visualisation purposes and cannot connect to real or fake hardware.
 
@@ -89,10 +91,11 @@ Some of the data in the xacros might not be valid or missing, the following tabl
 |kr16_r2010_2| cybertech | ✓ | ✓ | ✓ | ✓ | | |
 |kr210_r2700_2| quantec | ✓ | ✓ | ✓ | ✓ | | |
 |kr210_r3100_2| quantec | ✓ | ✓ | ✓ | ✓ | | |
+|kr560_r3100_2| fortec | ✓ | ✓ | ✓ | ✓ | | ✓|
 
 ## Starting the move group server with fake hardware
 
-To start rviz with the motion planning plugin using fake hardware, the following launch files can be used:
+To start `rviz` with the motion planning plugin using fake hardware, the following launch files can be used:
 
 #### KR robots (KSS):
 ```

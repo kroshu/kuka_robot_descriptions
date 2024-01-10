@@ -14,6 +14,7 @@ set(supported_robots
   kr16_r2010_2
   kr210-r2700_2
   kr210-r3100_2
+  kr560_r3100_2
 )
 
 foreach(model IN LISTS supported_robots)
