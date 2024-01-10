@@ -1,24 +1,17 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="lbr_iiwa14_r820">
-
-<!-- Import iiwa urdf file  -->
-<xacro:include filename="$(find kuka_lbr_iiwa_support)/urdf/lbr_iiwa14_r820_macro.xacro"/>
-
-<!-- Read additional arguments  -->
-<xacro:arg name="use_fake_hardware" default="false" />
-
-<xacro:arg name="x" default="0" />
-<xacro:arg name="y" default="0" />
-<xacro:arg name="z" default="0" />
-<xacro:arg name="roll" default="0" />
-<xacro:arg name="pitch" default="0" />
-<xacro:arg name="yaw" default="0" />
-<xacro:arg name="prefix" default="" />
-
-<xacro:kuka_lbr_iiwa14_r820_robot
-  prefix="$(arg prefix)"
-  io_access="false"
-  use_fake_hardware="$(arg use_fake_hardware)">
-  <origin xyz="$(arg x) $(arg y) $(arg z)" rpy="$(arg roll) $(arg pitch) $(arg yaw)" />
-</xacro:kuka_lbr_iiwa14_r820_robot>
+  <!-- Import iiwa urdf file  -->
+  <xacro:include filename="$(find kuka_lbr_iiwa_support)/urdf/lbr_iiwa14_r820_macro.xacro"/>
+  <!-- Read additional arguments  -->
+  <xacro:arg name="use_fake_hardware" default="false"/>
+  <xacro:arg name="x" default="0"/>
+  <xacro:arg name="y" default="0"/>
+  <xacro:arg name="z" default="0"/>
+  <xacro:arg name="roll" default="0"/>
+  <xacro:arg name="pitch" default="0"/>
+  <xacro:arg name="yaw" default="0"/>
+  <xacro:arg name="prefix" default=""/>
+  <xacro:kuka_lbr_iiwa14_r820_robot prefix="$(arg prefix)" io_access="false" use_fake_hardware="$(arg use_fake_hardware)">
+    <origin xyz="$(arg x) $(arg y) $(arg z)" rpy="$(arg roll) $(arg pitch) $(arg yaw)"/>
+  </xacro:kuka_lbr_iiwa14_r820_robot>
 </robot>
