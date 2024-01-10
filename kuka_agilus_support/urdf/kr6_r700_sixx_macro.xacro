@@ -2,131 +2,123 @@
 <robot xmlns:xacro="http://wiki.ros.org/xacro">
   <xacro:include filename="$(find kuka_resources)/urdf/common_constants.xacro"/>
   <xacro:include filename="$(find kuka_resources)/urdf/common_materials.xacro"/>
-  <xacro:include filename="$(find kuka_agilus_support)/urdf/kr_agilus_ros2_control.xacro" />
-  <xacro:include filename="$(find kuka_agilus_support)/urdf/kr_agilus_transmission.xacro" />
-
+  <xacro:include filename="$(find kuka_agilus_support)/urdf/kr_agilus_ros2_control.xacro"/>
+  <xacro:include filename="$(find kuka_agilus_support)/urdf/kr_agilus_transmission.xacro"/>
   <xacro:macro name="kuka_kr6_r700_sixx_robot" params="client_ip client_port prefix use_fake_hardware *origin">
     <!-- ros2 control instance -->
-    <xacro:kuka_agilus_ros2_control
-    name="${prefix}kr6_r700_sixx"
-    client_ip="${client_ip}"
-    client_port="${client_port}"
-    prefix="${prefix}"
-    use_fake_hardware="${use_fake_hardware}" />
-
+    <xacro:kuka_agilus_ros2_control name="${prefix}kr6_r700_sixx" client_ip="${client_ip}" client_port="${client_port}" prefix="${prefix}" use_fake_hardware="${use_fake_hardware}"/>
     <link name="world"/>
     <link name="${prefix}base_link">
       <visual>
-        <origin xyz="0 0 0" rpy="0 0 0" />
+        <origin xyz="0 0 0" rpy="0 0 0"/>
         <geometry>
-          <mesh filename="package://kuka_agilus_support/meshes/kr6_r700_sixx/visual/base_link.dae" />
+          <mesh filename="package://kuka_agilus_support/meshes/kr6_r700_sixx/visual/base_link.dae"/>
         </geometry>
-        <xacro:material_kuka_pedestal />
+        <xacro:material_kuka_pedestal/>
       </visual>
       <collision>
-        <origin xyz="0 0 0" rpy="0 0 0" />
+        <origin xyz="0 0 0" rpy="0 0 0"/>
         <geometry>
-          <mesh filename="package://kuka_agilus_support/meshes/kr6_r700_sixx/collision/base_link.stl" />
+          <mesh filename="package://kuka_agilus_support/meshes/kr6_r700_sixx/collision/base_link.stl"/>
         </geometry>
       </collision>
     </link>
     <link name="${prefix}link_1">
       <visual>
-        <origin xyz="0 0 0" rpy="0 0 0" />
+        <origin xyz="0 0 0" rpy="0 0 0"/>
         <geometry>
-          <mesh filename="package://kuka_agilus_support/meshes/kr6_r700_sixx/visual/link_1.dae" />
+          <mesh filename="package://kuka_agilus_support/meshes/kr6_r700_sixx/visual/link_1.dae"/>
         </geometry>
-        <xacro:material_kuka_orange />
+        <xacro:material_kuka_orange/>
       </visual>
       <collision>
-        <origin xyz="0 0 0" rpy="0 0 0" />
+        <origin xyz="0 0 0" rpy="0 0 0"/>
         <geometry>
-          <mesh filename="package://kuka_agilus_support/meshes/kr6_r700_sixx/collision/link_1.stl" />
+          <mesh filename="package://kuka_agilus_support/meshes/kr6_r700_sixx/collision/link_1.stl"/>
         </geometry>
       </collision>
     </link>
     <link name="${prefix}link_2">
       <visual>
-        <origin xyz="0 0 0" rpy="0 0 0" />
+        <origin xyz="0 0 0" rpy="0 0 0"/>
         <geometry>
-          <mesh filename="package://kuka_agilus_support/meshes/kr6_r700_sixx/visual/link_2.dae" />
+          <mesh filename="package://kuka_agilus_support/meshes/kr6_r700_sixx/visual/link_2.dae"/>
         </geometry>
-        <xacro:material_kuka_orange />
+        <xacro:material_kuka_orange/>
       </visual>
       <collision>
-        <origin xyz="0 0 0" rpy="0 0 0" />
+        <origin xyz="0 0 0" rpy="0 0 0"/>
         <geometry>
-          <mesh filename="package://kuka_agilus_support/meshes/kr6_r700_sixx/collision/link_2.stl" />
+          <mesh filename="package://kuka_agilus_support/meshes/kr6_r700_sixx/collision/link_2.stl"/>
         </geometry>
       </collision>
     </link>
     <link name="${prefix}link_3">
       <visual>
-        <origin xyz="0 0 0" rpy="0 0 0" />
+        <origin xyz="0 0 0" rpy="0 0 0"/>
         <geometry>
-          <mesh filename="package://kuka_agilus_support/meshes/kr6_r700_sixx/visual/link_3.dae" />
+          <mesh filename="package://kuka_agilus_support/meshes/kr6_r700_sixx/visual/link_3.dae"/>
         </geometry>
-        <xacro:material_kuka_orange />
+        <xacro:material_kuka_orange/>
       </visual>
       <collision>
-        <origin xyz="0 0 0" rpy="0 0 0" />
+        <origin xyz="0 0 0" rpy="0 0 0"/>
         <geometry>
-          <mesh filename="package://kuka_agilus_support/meshes/kr6_r700_sixx/collision/link_3.stl" />
+          <mesh filename="package://kuka_agilus_support/meshes/kr6_r700_sixx/collision/link_3.stl"/>
         </geometry>
       </collision>
     </link>
     <link name="${prefix}link_4">
       <visual>
-        <origin xyz="0 0 0" rpy="0 0 0" />
+        <origin xyz="0 0 0" rpy="0 0 0"/>
         <geometry>
-          <mesh filename="package://kuka_agilus_support/meshes/kr6_r700_sixx/visual/link_4.dae" />
+          <mesh filename="package://kuka_agilus_support/meshes/kr6_r700_sixx/visual/link_4.dae"/>
         </geometry>
-        <xacro:material_kuka_orange />
+        <xacro:material_kuka_orange/>
       </visual>
       <collision>
-        <origin xyz="0 0 0" rpy="0 0 0" />
+        <origin xyz="0 0 0" rpy="0 0 0"/>
         <geometry>
-          <mesh filename="package://kuka_agilus_support/meshes/kr6_r700_sixx/collision/link_4.stl" />
+          <mesh filename="package://kuka_agilus_support/meshes/kr6_r700_sixx/collision/link_4.stl"/>
         </geometry>
       </collision>
     </link>
     <link name="${prefix}link_5">
       <visual>
-        <origin xyz="0 0 0" rpy="0 0 0" />
+        <origin xyz="0 0 0" rpy="0 0 0"/>
         <geometry>
-          <mesh filename="package://kuka_agilus_support/meshes/kr6_r700_sixx/visual/link_5.dae" />
+          <mesh filename="package://kuka_agilus_support/meshes/kr6_r700_sixx/visual/link_5.dae"/>
         </geometry>
-        <xacro:material_kuka_orange />
+        <xacro:material_kuka_orange/>
       </visual>
       <collision>
-        <origin xyz="0 0 0" rpy="0 0 0" />
+        <origin xyz="0 0 0" rpy="0 0 0"/>
         <geometry>
-          <mesh filename="package://kuka_agilus_support/meshes/kr6_r700_sixx/collision/link_5.stl" />
+          <mesh filename="package://kuka_agilus_support/meshes/kr6_r700_sixx/collision/link_5.stl"/>
         </geometry>
       </collision>
     </link>
     <link name="${prefix}link_6">
       <visual>
-        <origin xyz="0 0 0" rpy="0 0 0" />
+        <origin xyz="0 0 0" rpy="0 0 0"/>
         <geometry>
-          <mesh filename="package://kuka_agilus_support/meshes/kr6_r700_sixx/visual/link_6.dae" />
+          <mesh filename="package://kuka_agilus_support/meshes/kr6_r700_sixx/visual/link_6.dae"/>
         </geometry>
-        <xacro:material_kuka_pedestal />
+        <xacro:material_kuka_pedestal/>
       </visual>
       <collision>
-        <origin xyz="0 0 0" rpy="0 0 0" />
+        <origin xyz="0 0 0" rpy="0 0 0"/>
         <geometry>
-          <mesh filename="package://kuka_agilus_support/meshes/kr6_r700_sixx/collision/link_6.stl" />
+          <mesh filename="package://kuka_agilus_support/meshes/kr6_r700_sixx/collision/link_6.stl"/>
         </geometry>
       </collision>
     </link>
     <!-- Following REP199, this frame shall be use to attach EEF or other equipment -->
-    <link name="${prefix}flange" />
-
+    <link name="${prefix}flange"/>
     <joint name="${prefix}world-base_link" type="fixed">
-      <parent link="world" />
-      <child link="${prefix}base_link" />
-      <xacro:insert_block name="origin" />
+      <parent link="world"/>
+      <child link="${prefix}base_link"/>
+      <xacro:insert_block name="origin"/>
     </joint>
     <joint name="${prefix}joint_1" type="revolute">
       <origin xyz="0 0 0.4" rpy="0 0 0"/>
@@ -175,17 +167,15 @@
       <child link="${prefix}flange"/>
       <origin xyz="0 0 0" rpy="0 0 0"/>
     </joint>
-
     <!-- ROS base_link to KUKA $ROBROOT coordinate system transform -->
-    <link name="${prefix}base" />
+    <link name="${prefix}base"/>
     <joint name="${prefix}base_link-base" type="fixed">
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <parent link="${prefix}base_link"/>
       <child link="${prefix}base"/>
     </joint>
-
     <!-- This frame corresponds to the $TOOL coordinate system in KUKA KRC controllers -->
-    <link name="${prefix}tool0" />
+    <link name="${prefix}tool0"/>
     <joint name="${prefix}flange-tool0" type="fixed">
       <parent link="${prefix}flange"/>
       <child link="${prefix}tool0"/>

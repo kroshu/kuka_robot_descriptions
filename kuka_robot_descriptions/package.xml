@@ -6,12 +6,9 @@
   <author>Aron Svastits</author>
   <maintainer email="svastits1@gmail.com">Aron Svastits</maintainer>
   <license>BSD</license>
-
   <url type="bugtracker">https://github.com/kroshu/kuka_robot_descriptions/issues</url>
   <url type="repository">https://github.com/kroshu/kuka_robot_descriptions</url>
-
   <buildtool_depend>ament_cmake</buildtool_depend>
-
   <exec_depend>kuka_agilus_support</exec_depend>
   <exec_depend>kuka_cybertech_support</exec_depend>
   <exec_depend>kuka_fortec_support</exec_depend>
@@ -21,7 +18,6 @@
   <exec_depend>kuka_lbr_iiwa_support</exec_depend>
   <exec_depend>kuka_quantec_support</exec_depend>
   <exec_depend>kuka_resources</exec_depend>
-
   <export>
     <build_type>ament_cmake</build_type>
   </export>

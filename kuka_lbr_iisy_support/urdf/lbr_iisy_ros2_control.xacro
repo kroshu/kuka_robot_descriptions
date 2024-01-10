@@ -17,10 +17,9 @@
             <xacro:property name="qos_config" value="${qos_config_file}"/>
           </xacro:unless>
           <xacro:property name="qos_config_dict" value="${xacro.load_yaml(qos_config)}"/>
-          <xacro:property name="consequent_lost_packets" value="${qos_config_dict['rt_packet_loss_profile']['consequent_lost_packets']}" />
-          <xacro:property name="lost_packets_in_timeframe" value="${qos_config_dict['rt_packet_loss_profile']['lost_packets_in_timeframe']}" />
-          <xacro:property name="timeframe_ms" value="${qos_config_dict['rt_packet_loss_profile']['timeframe_ms']}" />
-
+          <xacro:property name="consequent_lost_packets" value="${qos_config_dict['rt_packet_loss_profile']['consequent_lost_packets']}"/>
+          <xacro:property name="lost_packets_in_timeframe" value="${qos_config_dict['rt_packet_loss_profile']['lost_packets_in_timeframe']}"/>
+          <xacro:property name="timeframe_ms" value="${qos_config_dict['rt_packet_loss_profile']['timeframe_ms']}"/>
           <plugin>kuka_eac::KukaEACHardwareInterface</plugin>
           <param name="client_ip">${client_ip}</param>
           <param name="controller_ip">${controller_ip}</param>
