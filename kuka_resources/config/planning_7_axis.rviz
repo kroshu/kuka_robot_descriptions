@@ -69,10 +69,6 @@ Visualization Manager:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-        base_link_inertia:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
           Value: true
         flange:
           Alpha: 1
@@ -117,6 +113,10 @@ Visualization Manager:
           Alpha: 1
           Show Axes: false
           Show Trail: false
+        world:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
       Mass Properties:
         Inertia: false
         Mass: false
@@ -151,10 +151,6 @@ Visualization Manager:
             Show Axes: false
             Show Trail: false
           base_link:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-          base_link_inertia:
             Alpha: 1
             Show Axes: false
             Show Trail: false
@@ -202,6 +198,10 @@ Visualization Manager:
             Alpha: 1
             Show Axes: false
             Show Trail: false
+          world:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
         Robot Alpha: 1
         Show Robot Collision: false
         Show Robot Visual: false
@@ -215,13 +215,25 @@ Visualization Manager:
           Value: true
         base_link:
           Value: true
-        base_link_inertia:
-          Value: true
         flange:
+          Value: true
+        link_1:
+          Value: true
+        link_2:
+          Value: true
+        link_3:
+          Value: true
+        link_4:
+          Value: true
+        link_5:
+          Value: true
+        link_6:
           Value: true
         link_7:
           Value: true
         tool0:
+          Value: true
+        world:
           Value: true
       Marker Scale: 0.5
       Name: TF
@@ -229,11 +241,21 @@ Visualization Manager:
       Show Axes: true
       Show Names: true
       Tree:
-        base_link:
-          base:
-            {}
-          base_link_inertia:
-            {}
+        world:
+          base_link:
+            base:
+              {}
+            link_1:
+              link_2:
+                link_3:
+                  link_4:
+                    link_5:
+                      link_6:
+                        link_7:
+                          flange:
+                            {}
+                          tool0:
+                            {}
       Update Interval: 0
       Value: true
     - Class: rviz_default_plugins/MarkerArray
@@ -263,10 +285,6 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
         base_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        base_link_inertia:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -311,6 +329,10 @@ Visualization Manager:
           Show Trail: false
           Value: true
         tool0:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        world:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -366,10 +388,6 @@ Visualization Manager:
             Alpha: 1
             Show Axes: false
             Show Trail: false
-          base_link_inertia:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
             Value: true
           flange:
             Alpha: 1
@@ -411,6 +429,10 @@ Visualization Manager:
             Show Trail: false
             Value: true
           tool0:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          world:
             Alpha: 1
             Show Axes: false
             Show Trail: false
@@ -468,10 +490,6 @@ Visualization Manager:
             Alpha: 1
             Show Axes: false
             Show Trail: false
-          base_link_inertia:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
             Value: true
           flange:
             Alpha: 1
@@ -516,6 +534,10 @@ Visualization Manager:
             Alpha: 1
             Show Axes: false
             Show Trail: false
+          world:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
         Robot Alpha: 1
         Show Robot Collision: false
         Show Robot Visual: true
@@ -524,7 +546,7 @@ Visualization Manager:
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
-    Fixed Frame: base_link
+    Fixed Frame: world
     Frame Rate: 30
   Name: root
   Tools:
@@ -582,10 +604,10 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: -0.04960332438349724
+      Pitch: 0.0
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 6.111769676208496
+      Yaw: 1.57
     Saved: ~
 Window Geometry:
   Displays:

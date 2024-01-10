@@ -5,17 +5,18 @@
   <xacro:include filename="$(find kuka_agilus_support)/urdf/kr_agilus_transmission.xacro" />
   <xacro:include filename="$(find kuka_resources)/urdf/common_materials.xacro"/>
 
-  <xacro:macro name="kuka_kr10_r1100_2_robot" params="prefix use_fake_hardware">
+  <xacro:macro name="kuka_kr10_r1100_2_robot" params="client_ip client_port prefix use_fake_hardware *origin">
     <!-- ros2 control instance -->
     <xacro:kuka_agilus_ros2_control
-    name="kr10_r1100_2"
+    name="${prefix}kr10_r1100_2"
+    client_ip="${client_ip}"
+    client_port="${client_port}"
     prefix="${prefix}"
     use_fake_hardware="${use_fake_hardware}" />
 
     <!-- links - main serial chain -->
-    <!-- links - root element cannot have inertia, therefore a dummy base_link is needed -->
-    <link name="${prefix}base_link"/>
-    <link name="${prefix}base_link_inertia">
+    <link name="world"/>
+    <link name="${prefix}base_link">
       <collision>
         <geometry>
           <mesh filename="package://kuka_agilus_support/meshes/kr10_r1100_2/collision/base_link.stl" />
@@ -157,17 +158,17 @@
     </link>
 
     <!-- joints - main serial chain -->
-    <joint name="${prefix}base_link-base_link_inertia" type="fixed">
-      <parent link="${prefix}base_link" />
-      <child link="${prefix}base_link_inertia" />
-      <origin xyz="0 0 0" rpy="0 0 0" />
+    <joint name="${prefix}world-base_link" type="fixed">
+      <parent link="world" />
+      <child link="${prefix}base_link" />
+      <xacro:insert_block name="origin" />
     </joint>
     <joint name="${prefix}joint_1" type="revolute">
       <axis xyz="0.0 0.0 1.0" />
       <child link="${prefix}link_1" />
       <limit effort="288.36" lower="-2.9670597283903604E0" upper="2.9670597283903604E0" velocity="${radians(300)}"/>
       <origin rpy="-3.141592653589793 0.0 -0.0" xyz="0.0 0.0 0.0"/>
-      <parent link="${prefix}base_link_inertia" />
+      <parent link="${prefix}base_link" />
     </joint>
     <joint name="${prefix}joint_2" type="revolute">
       <axis xyz="0.0 0.0 1.0" />

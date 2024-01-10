@@ -7,5 +7,17 @@
 <!-- Read additional arguments  -->
 <xacro:arg name="use_fake_hardware" default="false" />
 
-<xacro:kuka_lbr_iiwa14_r820_robot prefix="" io_access="false" use_fake_hardware="$(arg use_fake_hardware)"/>
+<xacro:arg name="x" default="0" />
+<xacro:arg name="y" default="0" />
+<xacro:arg name="z" default="0" />
+<xacro:arg name="roll" default="0" />
+<xacro:arg name="pitch" default="0" />
+<xacro:arg name="yaw" default="0" />
+
+<xacro:kuka_lbr_iiwa14_r820_robot
+  prefix=""
+  io_access="false"
+  use_fake_hardware="$(arg use_fake_hardware)">
+  <origin xyz="$(arg x) $(arg y) $(arg z)" rpy="$(arg roll) $(arg pitch) $(arg yaw)" />
+</xacro:kuka_lbr_iiwa14_r820_robot>
 </robot>
