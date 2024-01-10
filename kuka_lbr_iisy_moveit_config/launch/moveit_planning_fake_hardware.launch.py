@@ -20,7 +20,7 @@ from launch.actions.include_launch_description import IncludeLaunchDescription
 from launch.actions import DeclareLaunchArgument, OpaqueFunction
 from launch.launch_description_sources.python_launch_description_source import (
     PythonLaunchDescriptionSource,
-)  # noqa: E501
+)
 from launch.substitutions import LaunchConfiguration
 
 

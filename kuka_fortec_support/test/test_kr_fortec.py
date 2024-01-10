@@ -31,9 +31,7 @@ from ament_index_python.packages import get_package_share_directory
 def list_test_launch_files():
     files = [
         f
-        for f in os.listdir(
-            get_package_share_directory("kuka_fortec_support") + "/launch/"
-        )
+        for f in os.listdir(get_package_share_directory("kuka_fortec_support") + "/launch/")
         if f.endswith(".py")
     ]
     return files
