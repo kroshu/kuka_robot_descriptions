@@ -4,7 +4,7 @@
   <xacro:include filename="$(find kuka_agilus_support)/urdf/kr6_r900_sixx_macro.xacro"/>
   <!-- Read additional arguments  -->
   <xacro:arg name="use_fake_hardware" default="false"/>
-  <xacro:arg name="fake_hardware_type" default="false"/>
+  <xacro:arg name="fake_hardware_type" default="mock"/>
   <xacro:arg name="client_ip" default="0.0.0.0"/>
   <xacro:arg name="client_port" default="59152"/>
   <xacro:arg name="prefix" default=""/>
