@@ -6,7 +6,7 @@
   <xacro:include filename="$(find kuka_agilus_support)/urdf/kr_agilus_transmission.xacro"/>
   <xacro:macro name="kuka_kr6_r900_sixx_robot" params="client_ip client_port prefix use_fake_hardware *origin">
     <!-- ros2 control instance -->
-    <xacro:kuka_agilus_ros2_control name="${prefix}kr6_r900_sixx" client_ip="${client_ip}" client_port="${client_port}" prefix="${prefix}" use_fake_hardware="${use_fake_hardware}"/>
+    <xacro:kuka_agilus_ros2_control name="${prefix}kr6_r900_sixx" client_ip="${client_ip}" client_port="${client_port}" prefix="${prefix}" use_fake_hardware="${use_fake_hardware}" enable_isaac_sim="${enable_isaac_sim}"/>
     <link name="world"/>
     <link name="${prefix}base_link">
       <visual>
