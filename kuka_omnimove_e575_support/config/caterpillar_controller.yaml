@@ -12,11 +12,6 @@
     joints:
     - move_x
     - move_theta
-    - pillar1
-    - pillar2
-    - pillar3
-    - pillar4
-    - shield
     interface_name: velocity
 /platform/position_command_controller:
   ros__parameters:

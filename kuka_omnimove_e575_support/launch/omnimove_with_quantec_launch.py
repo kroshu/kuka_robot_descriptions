@@ -8,5 +8,5 @@ from launch_ros.substitutions import FindPackageShare
 
 def generate_launch_description():
   omnimove_launch = IncludeLaunchDescription(PythonLaunchDescriptionSource([FindPackageShare("kuka_omnimove_e575_support"), "/launch", "/omnimove_launch.py"]))
-  quantec_launch = IncludeLaunchDescription(PythonLaunchDescriptionSource([FindPackageShare("kuka_kss_rsi_driver"), "/launch", "/startup.launch.py"]), launch_arguments={'robot_model': 'kr210_r2700_2'}.items())
+  quantec_launch = IncludeLaunchDescription(PythonLaunchDescriptionSource([FindPackageShare("kuka_kss_rsi_driver"), "/launch", "/startup.launch.py"]), launch_arguments={'robot_model': 'kr210_r2700_2', 'robot_family' : 'quantec'}.items())
   return LaunchDescription([omnimove_launch, quantec_launch])
