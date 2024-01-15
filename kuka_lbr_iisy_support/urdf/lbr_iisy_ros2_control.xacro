@@ -1,32 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
-  <xacro:macro name="kuka_lbr_iisy_ros2_control" params="name prefix use_fake_hardware:=false">
+  <xacro:macro name="kuka_lbr_iisy_ros2_control" params="name prefix client_ip controller_ip use_fake_hardware qos_config_file">
     <ros2_control name="${name}" type="system">
       <hardware>
         <xacro:if value="${use_fake_hardware}">
           <plugin>mock_components/GenericSystem</plugin>
-          <param name="fake_sensor_commands">false</param>
+          <param name="mock_sensor_commands">false</param>
           <param name="state_following_offset">0.0</param>
         </xacro:if>
         <xacro:unless value="${use_fake_hardware}">
-          <!-- Read parameters from driver_config  -->
-          <xacro:property name="driver_config" value="$(find kuka_iiqka_eac_driver)/config/driver_config.yaml" />
-          <xacro:property name="driver_config_dict" value="${xacro.load_yaml(driver_config)}"/>
-          <xacro:property name="control_mode" value="${driver_config_dict['robot_manager']['ros__parameters']['control_mode']}" />
-          <xacro:property name="client_ip" value="${driver_config_dict['robot_manager']['ros__parameters']['client_ip']}" />
-          <xacro:property name="controller_ip" value="${driver_config_dict['robot_manager']['ros__parameters']['controller_ip']}" />
-
           <!-- Read QoS profile parameters  -->
-          <xacro:property name="qos_config" value="$(find kuka_iiqka_eac_driver)/config/qos_profiles.yaml" />
+          <xacro:if value="${qos_config_file == ''}">
+            <xacro:property name="qos_config" value="$(find kuka_iiqka_eac_driver)/config/qos_config.yaml"/>
+          </xacro:if>
+          <xacro:unless value="${qos_config_file == ''}">
+            <xacro:property name="qos_config" value="${qos_config_file}"/>
+          </xacro:unless>
           <xacro:property name="qos_config_dict" value="${xacro.load_yaml(qos_config)}"/>
-          <xacro:property name="consequent_lost_packets" value="${qos_config_dict['rt_packet_loss_profile']['consequent_lost_packets']}" />
-          <xacro:property name="lost_packets_in_timeframe" value="${qos_config_dict['rt_packet_loss_profile']['lost_packets_in_timeframe']}" />
-          <xacro:property name="timeframe_ms" value="${qos_config_dict['rt_packet_loss_profile']['timeframe_ms']}" />
-
+          <xacro:property name="consequent_lost_packets" value="${qos_config_dict['rt_packet_loss_profile']['consequent_lost_packets']}"/>
+          <xacro:property name="lost_packets_in_timeframe" value="${qos_config_dict['rt_packet_loss_profile']['lost_packets_in_timeframe']}"/>
+          <xacro:property name="timeframe_ms" value="${qos_config_dict['rt_packet_loss_profile']['timeframe_ms']}"/>
           <plugin>kuka_eac::KukaEACHardwareInterface</plugin>
           <param name="client_ip">${client_ip}</param>
           <param name="controller_ip">${controller_ip}</param>
-          <param name="control_mode">${control_mode}</param>
           <param name="consequent_lost_packets">${consequent_lost_packets}</param>
           <param name="lost_packets_in_timeframe">${lost_packets_in_timeframe}</param>
           <param name="timeframe_ms">${timeframe_ms}</param>
@@ -38,48 +34,72 @@
         <command_interface name="stiffness"/>
         <command_interface name="damping"/>
         <command_interface name="effort"/>
-        <state_interface name="position"/>
-        <state_interface name="effort"/>
+        <state_interface name="position">
+          <param name="initial_value">0.0</param>
+        </state_interface>
+        <state_interface name="effort">
+          <param name="initial_value">0.0</param>
+        </state_interface>
       </joint>
       <joint name="${prefix}joint_2">
         <command_interface name="position"/>
         <command_interface name="stiffness"/>
         <command_interface name="damping"/>
         <command_interface name="effort"/>
-        <state_interface name="position"/>
-        <state_interface name="effort"/>
+        <state_interface name="position">
+          <param name="initial_value">0.0</param>
+        </state_interface>
+        <state_interface name="effort">
+          <param name="initial_value">0.0</param>
+        </state_interface>
       </joint>
       <joint name="${prefix}joint_3">
         <command_interface name="position"/>
         <command_interface name="stiffness"/>
         <command_interface name="damping"/>
         <command_interface name="effort"/>
-        <state_interface name="position"/>
-        <state_interface name="effort"/>
+        <state_interface name="position">
+          <param name="initial_value">0.0</param>
+        </state_interface>
+        <state_interface name="effort">
+          <param name="initial_value">0.0</param>
+        </state_interface>
       </joint>
       <joint name="${prefix}joint_4">
         <command_interface name="position"/>
         <command_interface name="stiffness"/>
         <command_interface name="damping"/>
         <command_interface name="effort"/>
-        <state_interface name="position"/>
-        <state_interface name="effort"/>
+        <state_interface name="position">
+          <param name="initial_value">0.0</param>
+        </state_interface>
+        <state_interface name="effort">
+          <param name="initial_value">0.0</param>
+        </state_interface>
       </joint>
       <joint name="${prefix}joint_5">
         <command_interface name="position"/>
         <command_interface name="stiffness"/>
         <command_interface name="damping"/>
         <command_interface name="effort"/>
-        <state_interface name="position"/>
-        <state_interface name="effort"/>
+        <state_interface name="position">
+          <param name="initial_value">0.0</param>
+        </state_interface>
+        <state_interface name="effort">
+          <param name="initial_value">0.0</param>
+        </state_interface>
       </joint>
       <joint name="${prefix}joint_6">
         <command_interface name="position"/>
         <command_interface name="stiffness"/>
         <command_interface name="damping"/>
         <command_interface name="effort"/>
-        <state_interface name="position"/>
-        <state_interface name="effort"/>
+        <state_interface name="position">
+          <param name="initial_value">0.0</param>
+        </state_interface>
+        <state_interface name="effort">
+          <param name="initial_value">0.0</param>
+        </state_interface>
       </joint>
     </ros2_control>
   </xacro:macro>

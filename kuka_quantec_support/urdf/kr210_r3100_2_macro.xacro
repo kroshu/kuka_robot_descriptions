@@ -1,17 +1,12 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://wiki.ros.org/xacro">
-  <xacro:include filename="$(find kuka_quantec_support)/urdf/kr_quantec_ros2_control.xacro" />
-  <xacro:include filename="$(find kuka_quantec_support)/urdf/kr_quantec_transmission.xacro" />
-
-  <xacro:macro name="kuka_kr210_r3100_2_robot" params="prefix use_fake_hardware">
+  <xacro:include filename="$(find kuka_quantec_support)/urdf/kr_quantec_ros2_control.xacro"/>
+  <xacro:include filename="$(find kuka_quantec_support)/urdf/kr_quantec_transmission.xacro"/>
+  <xacro:macro name="kuka_kr210_r3100_2_robot" params="client_ip client_port prefix use_fake_hardware *origin">
     <!-- ros2 control instance -->
-    <xacro:kuka_quantec_ros2_control
-    name="kr210_r3100_2"
-    prefix="${prefix}"
-    use_fake_hardware="${use_fake_hardware}" />
-
-    <link name="${prefix}base_link"/>
-    <link name="${prefix}base_link_inertia">
+    <xacro:kuka_quantec_ros2_control name="${prefix}kr210_r3100_2" client_ip="${client_ip}" client_port="${client_port}" prefix="${prefix}" use_fake_hardware="${use_fake_hardware}"/>
+    <link name="world"/>
+    <link name="${prefix}base_link">
       <collision>
         <geometry>
           <mesh filename="package://kuka_quantec_support/meshes/kr210_r3100_2/collision/base_link.stl"/>
@@ -144,18 +139,17 @@
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
       </visual>
     </link>
-
-    <joint name="${prefix}base_link-base_link_inertia" type="fixed">
-      <parent link="${prefix}base_link" />
-      <child link="${prefix}base_link_inertia" />
-      <origin xyz="0 0 0" rpy="0 0 0" />
+    <joint name="${prefix}world-base_link" type="fixed">
+      <parent link="world"/>
+      <child link="${prefix}base_link"/>
+      <xacro:insert_block name="origin"/>
     </joint>
     <joint name="${prefix}joint_1" type="revolute">
       <axis xyz="0.0 0.0 1.0"/>
       <child link="${prefix}link_1"/>
       <limit effort="7290" lower="-3.2288591161895095E0" upper="3.2288591161895095E0" velocity="${radians(105)}"/>
       <origin rpy="-3.141592653589793 0.0 -0.0" xyz="0.0 0.0 0.0"/>
-      <parent link="${prefix}base_link_inertia"/>
+      <parent link="${prefix}base_link"/>
     </joint>
     <joint name="${prefix}joint_2" type="revolute">
       <axis xyz="0.0 0.0 1.0"/>
@@ -192,29 +186,26 @@
       <origin rpy="1.5707963267948963 0.0 -0.0" xyz="0.0 0.0 0.0"/>
       <parent link="${prefix}link_5"/>
     </joint>
-
     <!-- ROS-Industrial 'base' frame - equivalent of 'KUKA ROBROOT'-->
-    <link name="${prefix}base" />
+    <link name="${prefix}base"/>
     <joint name="${prefix}base_link-base" type="fixed">
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <parent link="${prefix}base_link"/>
       <child link="${prefix}base"/>
     </joint>
-
     <!-- ROS-Industrial 'flange' frame - attachment point for EEF models -->
-    <link name="${prefix}flange" />
+    <link name="${prefix}flange"/>
     <joint name="${prefix}link6-flange" type="fixed">
-      <child link="${prefix}flange" />
-      <origin rpy="0 ${pi/2} -0.0" xyz="0.0 0.0 -0.240" />
-      <parent link="${prefix}link_6" />
+      <child link="${prefix}flange"/>
+      <origin rpy="0 ${pi/2} -0.0" xyz="0.0 0.0 -0.240"/>
+      <parent link="${prefix}link_6"/>
     </joint>
-
     <!-- ROS-Industrial 'tool0' frame - all-zeros tool frame -->
-    <link name="${prefix}tool0" />
+    <link name="${prefix}tool0"/>
     <joint name="${prefix}link6-tool0" type="fixed">
-      <child link="${prefix}tool0" />
-      <origin rpy="0 ${pi} -0.0" xyz="0.0 0.0 -0.240" />
-      <parent link="${prefix}link_6" />
+      <child link="${prefix}tool0"/>
+      <origin rpy="0 ${pi} -0.0" xyz="0.0 0.0 -0.240"/>
+      <parent link="${prefix}link_6"/>
     </joint>
   </xacro:macro>
 </robot>

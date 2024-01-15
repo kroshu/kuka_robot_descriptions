@@ -3,8 +3,7 @@ Panels:
     Help Height: 78
     Name: Displays
     Property Tree Widget:
-      Expanded:
-        - /TF1
+      Expanded: ~
       Splitter Ratio: 0.5
     Tree Height: 661
   - Class: rviz_common/Selection
@@ -41,9 +40,9 @@ Visualization Manager:
       Plane Cell Count: 10
       Reference Frame: <Fixed Frame>
       Value: true
-    - Alpha: 0.5
+    - Alpha: 1
       Class: rviz_default_plugins/RobotModel
-      Collision Enabled: true
+      Collision Enabled: false
       Description File: ""
       Description Source: Topic
       Description Topic:
@@ -67,10 +66,6 @@ Visualization Manager:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-        base_link_inertia:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
           Value: true
         flange:
           Alpha: 1
@@ -107,6 +102,10 @@ Visualization Manager:
           Show Trail: false
           Value: true
         tool0:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        world:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -127,8 +126,6 @@ Visualization Manager:
           Value: true
         base_link:
           Value: true
-        base_link_inertia:
-          Value: true
         flange:
           Value: true
         link_1:
@@ -145,16 +142,18 @@ Visualization Manager:
           Value: true
         tool0:
           Value: true
+        world:
+          Value: true
       Marker Scale: 0.5
       Name: TF
       Show Arrows: true
       Show Axes: true
       Show Names: true
       Tree:
-        base_link:
-          base:
-            {}
-          base_link_inertia:
+        world:
+          base_link:
+            base:
+              {}
             link_1:
               link_2:
                 link_3:
@@ -170,7 +169,7 @@ Visualization Manager:
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
-    Fixed Frame: base_link
+    Fixed Frame: world
     Frame Rate: 30
   Name: root
   Tools:
@@ -213,25 +212,25 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz_default_plugins/Orbit
-      Distance: 3.3499999046325684
+      Distance: 3.2826578617095947
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: -0.0336405485868454
-        Y: 0.08381497114896774
-        Z: 0.5878596901893616
+        X: 0.4990459680557251
+        Y: -0.22452667355537415
+        Z: 0.46444159746170044
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: -0.04960332438349724
+      Pitch: 0
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 6.111769676208496
+      Yaw: 1.5700000524520874
     Saved: ~
 Window Geometry:
   Displays:

@@ -4,16 +4,13 @@
   <version>0.1.0</version>
   <description>Package containing moveit configuration for KUKA KR robots</description>
   <author>Aron Svastits</author>
-  <maintainer email="svastits1@gmail.com"></maintainer>
+  <maintainer email="svastits1@gmail.com"/>
   <license>BSD</license>
-
   <buildtool_depend>ament_cmake</buildtool_depend>
   <test_depend>ament_copyright</test_depend>
   <test_depend>ament_flake8</test_depend>
   <test_depend>ament_pep257</test_depend>
-
   <depend>xacro</depend>
-
   <export>
     <architecture_independent/>
     <build_type>ament_cmake</build_type>

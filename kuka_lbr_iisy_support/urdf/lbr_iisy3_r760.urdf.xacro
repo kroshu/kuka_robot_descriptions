@@ -1,10 +1,20 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="lbr_iisy3_r760">
-    <!-- Import iisy urdf file  -->
-    <xacro:include filename="$(find kuka_lbr_iisy_support)/urdf/lbr_iisy3_r760_macro.xacro"/>
-
-    <!-- Read additional arguments  -->
-    <xacro:arg name="use_fake_hardware" default="false" />
-
-    <xacro:kuka_lbr_iisy3_r760_robot prefix="" use_fake_hardware="$(arg use_fake_hardware)"/>
+  <!-- Import iisy urdf file  -->
+  <xacro:include filename="$(find kuka_lbr_iisy_support)/urdf/lbr_iisy3_r760_macro.xacro"/>
+  <!-- Read additional arguments  -->
+  <xacro:arg name="prefix" default=""/>
+  <xacro:arg name="controller_ip" default="0.0.0.0"/>
+  <xacro:arg name="client_ip" default="0.0.0.0"/>
+  <xacro:arg name="use_fake_hardware" default="false"/>
+  <xacro:arg name="qos_config_file" default=""/>
+  <xacro:arg name="x" default="0"/>
+  <xacro:arg name="y" default="0"/>
+  <xacro:arg name="z" default="0"/>
+  <xacro:arg name="roll" default="0"/>
+  <xacro:arg name="pitch" default="0"/>
+  <xacro:arg name="yaw" default="0"/>
+  <xacro:kuka_lbr_iisy3_r760_robot prefix="$(arg prefix)" controller_ip="$(arg controller_ip)" client_ip="$(arg client_ip)" use_fake_hardware="$(arg use_fake_hardware)" qos_config_file="$(arg qos_config_file)">
+    <origin xyz="$(arg x) $(arg y) $(arg z)" rpy="$(arg roll) $(arg pitch) $(arg yaw)"/>
+  </xacro:kuka_lbr_iisy3_r760_robot>
 </robot>
