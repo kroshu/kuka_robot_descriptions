@@ -64,7 +64,6 @@ def launch_setup(context, *args, **kwargs):
             ]
         ),
         launch_arguments={
-            "robot_model": f"{robot_model.perform(context)}",
             "robot_family": "{}".format("lbr_iiwa"),
             "dof": f"{7}",
         }.items(),
