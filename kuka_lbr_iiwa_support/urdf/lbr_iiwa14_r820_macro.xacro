@@ -4,9 +4,9 @@
   <xacro:include filename="$(find kuka_lbr_iiwa_support)/urdf/lbr_iiwa_ros2_control.xacro"/>
   <xacro:include filename="$(find kuka_resources)/urdf/common_materials.xacro"/>
   <xacro:include filename="$(find kuka_lbr_iiwa_support)/urdf/lbr_iiwa_transmission.xacro"/>
-  <xacro:macro name="kuka_lbr_iiwa14_r820_robot" params="io_access prefix use_fake_hardware *origin">
+  <xacro:macro name="kuka_lbr_iiwa14_r820_robot" params="io_access prefix use_fake_hardware controller_ip *origin">
     <!-- ros2 control instance -->
-    <xacro:kuka_lbr_iiwa_ros2_control name="${prefix}lbr_iiwa14_r820" prefix="${prefix}" io_access="${io_access}" use_fake_hardware="${use_fake_hardware}"/>
+    <xacro:kuka_lbr_iiwa_ros2_control name="${prefix}lbr_iiwa14_r820" prefix="${prefix}" io_access="${io_access}" use_fake_hardware="${use_fake_hardware}" controller_ip="${controller_ip}"/>
     <!-- links - main serial chain -->
     <link name="world"/>
     <link name="${prefix}base_link">
