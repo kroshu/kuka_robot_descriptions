@@ -4,7 +4,7 @@
     <ros2_control name="${name}" type="system">
       <hardware>
         <xacro:if value="${use_fake_hardware}">
-          <plugin>mock_components/GenericSystem</plugin>
+          <plugin>kuka_mock_hardware_interface::KukaMockHardwareInterface</plugin>
           <param name="mock_sensor_commands">false</param>
           <param name="state_following_offset">0.0</param>
         </xacro:if>
