@@ -17,6 +17,7 @@
 
 
 #include "kuka_mock_hardware_inteface/hardware_interface.hpp"
+#include "kuka_mock_hardware_inteface/hardware_interface_types.hpp"
 
 #include <algorithm>
 #include <cmath>
@@ -304,6 +305,34 @@ std::vector<hardware_interface::StateInterface> KukaMockHardwareInterface::expor
     throw std::runtime_error("Interface is not found in the gpio list. This should never happen!");
   }
 
+  state_interfaces.emplace_back(
+    hardware_interface::FRI_STATE_PREFIX, hardware_interface::SESSION_STATE,
+    &robot_state_.session_state_);
+  state_interfaces.emplace_back(
+    hardware_interface::FRI_STATE_PREFIX, hardware_interface::CONNECTION_QUALITY,
+    &robot_state_.connection_quality_);
+  state_interfaces.emplace_back(
+    hardware_interface::FRI_STATE_PREFIX, hardware_interface::SAFETY_STATE,
+    &robot_state_.safety_state_);
+  state_interfaces.emplace_back(
+    hardware_interface::FRI_STATE_PREFIX, hardware_interface::COMMAND_MODE,
+    &robot_state_.command_mode_);
+  state_interfaces.emplace_back(
+    hardware_interface::FRI_STATE_PREFIX, hardware_interface::CONTROL_MODE,
+    &robot_state_.control_mode_);
+  state_interfaces.emplace_back(
+    hardware_interface::FRI_STATE_PREFIX, hardware_interface::OPERATION_MODE,
+    &robot_state_.operation_mode_);
+  state_interfaces.emplace_back(
+    hardware_interface::FRI_STATE_PREFIX, hardware_interface::DRIVE_STATE,
+    &robot_state_.drive_state_);
+  state_interfaces.emplace_back(
+    hardware_interface::FRI_STATE_PREFIX, hardware_interface::OVERLAY_TYPE,
+    &robot_state_.overlay_type_);
+  state_interfaces.emplace_back(
+    hardware_interface::FRI_STATE_PREFIX, hardware_interface::TRACKING_PERFORMANCE,
+    &robot_state_.tracking_performance_);
+
   return state_interfaces;
 }
 
@@ -367,6 +396,14 @@ std::vector<hardware_interface::CommandInterface> KukaMockHardwareInterface::exp
         "Interface is not found in the gpio list. This should never happen!");
     }
   }
+
+  command_interfaces.emplace_back(
+    hardware_interface::CONFIG_PREFIX, hardware_interface::CONTROL_MODE, &control_mode_);
+  command_interfaces.emplace_back(
+    hardware_interface::CONFIG_PREFIX, hardware_interface::RECEIVE_MULTIPLIER,
+    &receive_multiplier_);
+  command_interfaces.emplace_back(
+    hardware_interface::CONFIG_PREFIX, hardware_interface::SEND_PERIOD, &send_period_ms_);
 
   return command_interfaces;
 }
