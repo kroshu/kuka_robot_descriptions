@@ -6,13 +6,13 @@
         <visual>
           <origin xyz="0 0 0" rpy="0 0 0" />
           <geometry>
-            <mesh filename="package://kuka_omnimove_e575_support/meshes/omnimove_simplified.dae" />
+            <mesh filename="package://kuka_omnimove_e575_support/meshes/omnimove_simplified_2.dae" />
           </geometry>
         </visual>
         <collision>
           <origin xyz="0 0 0" rpy="0 0 0" />
           <geometry>
-            <mesh filename="package://kuka_omnimove_e575_support/meshes/omnimove_simplified.stl" />
+            <mesh filename="package://kuka_omnimove_e575_support/meshes/omnimove_simplified_2.stl" />
           </geometry>
         </collision>
       </link>
