@@ -82,7 +82,7 @@ Some of the data in the xacros might not be valid or missing, the following tabl
 |Robot name | Robot family | Transformations | Joint position limits | Joint velocity limits | Joint effort limits | Inertial values | Simplified collision meshes|
 |---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 |lbr_iisy3_r760| - | ✓ | ✓ | ✓ | ✓ | | ✓ |
-|lbr_iisy11_r1300| - | ✓ | ✓ | ✓ | ✓ | | |
+|lbr_iisy11_r1300| - | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
 |lbr_iisy15_r930| - | ✓ | ✓ | ✓ | ✓ | | |
 |lbr_iiwa14_r820| - | ✓ | ✓ | ✓ | | | |
 |kr6_r700_sixx| agilus | ✓ | ✓ | ✓ | | | ✓ |
