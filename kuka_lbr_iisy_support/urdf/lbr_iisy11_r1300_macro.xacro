@@ -208,14 +208,14 @@
     <link name="${prefix}flange"/>
     <joint name="${prefix}link6-flange" type="fixed">
       <child link="${prefix}flange"/>
-      <origin rpy="${pi} 0.0 ${pi}" xyz="0.0 0.0 -0.0943"/>
+      <origin rpy="0.0 ${pi/2} 0.0" xyz="0.0 0.0 -0.0943"/>
       <parent link="${prefix}link_6"/>
     </joint>
     <!-- ROS-Industrial 'tool0' frame - all-zeros tool frame -->
     <link name="${prefix}tool0"/>
     <joint name="${prefix}link6-tool0" type="fixed">
       <child link="${prefix}tool0"/>
-      <origin rpy="${pi} 0.0 ${pi}" xyz="0.0 0.0 -0.0943"/>
+      <origin rpy="0.0 ${pi} 0.0" xyz="0.0 0.0 -0.0943"/>
       <parent link="${prefix}link_6"/>
     </joint>
   </xacro:macro>
