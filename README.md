@@ -14,7 +14,7 @@ Github CI
 - `kuka_lbr_iisy_support` contains urdf, config and mesh files for KUKA iisy robots.
 - `kuka_lbr_iisy_moveit_config` contains configuration files for KUKA LBR iisy robots necessary for planning with MoveIt.
 - `kuka_agilus_support` contains urdf, config and mesh files for KUKA Agilus robots, it is copied from [kuka_experimental](https://github.com/ros-industrial/kuka_experimental) and ported to ROS2.
-- `kuka_lbr_iiwa_support` contains urdf, config and mesh files for KUKA LBR iiwa robots
+- `kuka_lbr_iiwa_support` contains urdf, config and mesh files for KUKA LBR iiwa robots.
 - `kuka_lbr_iiwa_moveit_config` contains configuration files for KUKA LBR iiwa robots necessary for planning with MoveIt.
 
 ## Structure of the support packages
