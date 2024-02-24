@@ -3,8 +3,8 @@
 # Joint limits can be turned off with [has_velocity_limits, has_acceleration_limits]
 
 # Easiest way to slow down the robot is to decrease the velocity and acceleration scaling factors
-default_velocity_scaling_factor: 1.0
-default_acceleration_scaling_factor: 1.0
+default_velocity_scaling_factor: 3.0
+default_acceleration_scaling_factor: 3.0
 joint_limits:
   joint_1:
     has_velocity_limits: true
