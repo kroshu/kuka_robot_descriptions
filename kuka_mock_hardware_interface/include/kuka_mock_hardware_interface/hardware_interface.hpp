@@ -58,10 +58,7 @@ public:
 
   return_type read(const rclcpp::Time & time, const rclcpp::Duration & period) override;
 
-  return_type write(const rclcpp::Time & /*time*/, const rclcpp::Duration & /*period*/) override
-  {
-    return return_type::OK;
-  }
+  return_type write(const rclcpp::Time & time, const rclcpp::Duration & period) override;
 
 protected:
   /// Use standard interfaces for joints because they are relevant for dynamic behavior
@@ -126,7 +123,7 @@ protected:
 
   // KUKA-specific parameters
   std::chrono::nanoseconds cycle_time_nano_;
-  double recv_timeout_ms_;
+  int roundtrip_time_micro_;
   bool init_clock_ = true;
   std::chrono::time_point<std::chrono::system_clock, std::chrono::nanoseconds> next_iteration_time_;
 

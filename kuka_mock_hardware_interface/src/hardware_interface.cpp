@@ -159,14 +159,14 @@ CallbackReturn KukaMockHardwareInterface::on_init(const hardware_interface::Hard
     cycle_time_nano_ = std::chrono::nanoseconds(4'000'000);  // Default to 4 ms
   }
 
-  it = info_.hardware_parameters.find("recv_timeout_ms");
+  it = info_.hardware_parameters.find("roundtrip_time_micro");
   if (it != info.hardware_parameters.end())
   {
-    recv_timeout_ms_ = std::stod(it->second);
+    roundtrip_time_micro_ = std::stod(it->second);
   }
   else
   {
-    recv_timeout_ms_ = 0;  // Default to no timeout checking
+    roundtrip_time_micro_ = 0;  // Default to no timeout checking
   }
 
   // its extremlly improbably that std::distance results int this value - therefore default
@@ -742,6 +742,21 @@ return_type KukaMockHardwareInterface::read(
   next_iteration_time_ += std::chrono::nanoseconds(cycle_time_nano_);
   std::this_thread::sleep_until(next_iteration_time_);
 
+  return return_type::OK;
+}
+
+return_type KukaMockHardwareInterface::write(
+  const rclcpp::Time & time, const rclcpp::Duration &)
+{
+  if (roundtrip_time_micro_ != 0)
+  {
+    if (
+      time.nanoseconds() >
+      next_iteration_time_.time_since_epoch().count() + roundtrip_time_micro_ * 1000)
+    {
+      RCUTILS_LOG_WARN_NAMED("mock_generic_system", "Cycle exceeded allowed round-trip time");
+    }
+  }
   return return_type::OK;
 }
 
