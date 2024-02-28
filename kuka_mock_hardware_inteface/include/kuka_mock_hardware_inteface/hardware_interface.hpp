@@ -120,6 +120,7 @@ protected:
   double control_mode_ = 0;  // default to undefined
   double receive_multiplier_ = 1;
   double send_period_ms_ = 10;
+  double server_state_;
 
 private:
   template <typename HandleType>
