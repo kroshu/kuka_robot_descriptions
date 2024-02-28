@@ -12,7 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// This is a duplicate of the interface types in kuka_drivers_core to avoid depending on the drivers repo
+// This is a duplicate of the interface types in kuka_drivers_core to avoid depending on the drivers
+// repo
 
 #ifndef KUKA_MOCK_HARDWARE_INTERFACE__HARDWARE_INTERFACE_TYPES_HPP_
 #define KUKA_MOCK_HARDWARE_INTERFACE__HARDWARE_INTERFACE_TYPES_HPP_

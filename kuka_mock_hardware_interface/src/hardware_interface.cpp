@@ -15,7 +15,6 @@
 // Author: Jafar Abdi, Denis Stogl
 // Maintainer: Aron Svastits
 
-
 #include "kuka_mock_hardware_interface/hardware_interface.hpp"
 #include "kuka_mock_hardware_interface/hardware_interface_types.hpp"
 
@@ -153,11 +152,11 @@ CallbackReturn KukaMockHardwareInterface::on_init(const hardware_interface::Hard
   it = info_.hardware_parameters.find("cycle_time_ms");
   if (it != info.hardware_parameters.end())
   {
-    cycle_time_nano_ = std::chrono::nanoseconds(std::stoi(it->second)*1'000'000);
+    cycle_time_nano_ = std::chrono::nanoseconds(std::stoi(it->second) * 1'000'000);
   }
   else
   {
-    cycle_time_nano_ =  std::chrono::nanoseconds(4'000'000);  // Default to 4 ms
+    cycle_time_nano_ = std::chrono::nanoseconds(4'000'000);  // Default to 4 ms
   }
 
   it = info_.hardware_parameters.find("recv_timeout_ms");
@@ -170,7 +169,7 @@ CallbackReturn KukaMockHardwareInterface::on_init(const hardware_interface::Hard
     recv_timeout_ms_ = 0;  // Default to no timeout checking
   }
 
-  // its extremlly unprobably that std::distance results int this value - therefore default
+  // its extremlly improbably that std::distance results int this value - therefore default
   index_custom_interface_with_following_offset_ = std::numeric_limits<size_t>::max();
 
   // Initialize storage for standard interfaces
@@ -290,12 +289,11 @@ CallbackReturn KukaMockHardwareInterface::on_init(const hardware_interface::Hard
   return CallbackReturn::SUCCESS;
 }
 
-CallbackReturn KukaMockHardwareInterface::on_configure(const rclcpp_lifecycle::State &) 
+CallbackReturn KukaMockHardwareInterface::on_configure(const rclcpp_lifecycle::State &)
 {
   init_clock_ = true;
   return CallbackReturn::SUCCESS;
 }
-
 
 std::vector<hardware_interface::StateInterface> KukaMockHardwareInterface::export_state_interfaces()
 {
@@ -369,7 +367,8 @@ std::vector<hardware_interface::StateInterface> KukaMockHardwareInterface::expor
   return state_interfaces;
 }
 
-std::vector<hardware_interface::CommandInterface> KukaMockHardwareInterface::export_command_interfaces()
+std::vector<hardware_interface::CommandInterface>
+KukaMockHardwareInterface::export_command_interfaces()
 {
   std::vector<hardware_interface::CommandInterface> command_interfaces;
 
@@ -574,7 +573,8 @@ return_type KukaMockHardwareInterface::perform_command_mode_switch(
   return hardware_interface::return_type::OK;
 }
 
-return_type KukaMockHardwareInterface::read(const rclcpp::Time & time, const rclcpp::Duration & period)
+return_type KukaMockHardwareInterface::read(
+  const rclcpp::Time & time, const rclcpp::Duration & period)
 {
   if (command_propagation_disabled_)
   {
@@ -733,7 +733,9 @@ return_type KukaMockHardwareInterface::read(const rclcpp::Time & time, const rcl
 
   if (init_clock_)
   {
-    next_iteration_time_ = std::chrono::time_point<std::chrono::system_clock, std::chrono::nanoseconds>(std::chrono::nanoseconds(time.nanoseconds()));
+    next_iteration_time_ =
+      std::chrono::time_point<std::chrono::system_clock, std::chrono::nanoseconds>(
+        std::chrono::nanoseconds(time.nanoseconds()));
     init_clock_ = false;
   }
 
@@ -848,4 +850,5 @@ bool KukaMockHardwareInterface::populate_interfaces(
 }  // namespace kuka_mock_hardware_interface
 
 #include "pluginlib/class_list_macros.hpp"
-PLUGINLIB_EXPORT_CLASS(kuka_mock_hardware_interface::KukaMockHardwareInterface, hardware_interface::SystemInterface)
+PLUGINLIB_EXPORT_CLASS(
+  kuka_mock_hardware_interface::KukaMockHardwareInterface, hardware_interface::SystemInterface)
