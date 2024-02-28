@@ -9,13 +9,16 @@ Github CI
 ## What is included?
 
 - `kuka_resources` contains general, common files. It is copied from [kuka_experimental](https://github.com/ros-industrial/kuka_experimental) and is ported from ROS to ROS2.
+- `kuka_agilus_support` contains urdf, config and mesh files for KUKA Agilus robots, it is copied from [kuka_experimental](https://github.com/ros-industrial/kuka_experimental) and ported to ROS2.
 - `kuka_cybertech_support` contains urdf, config and mesh files for KUKA cybertech robots.
+- `kuka_quantec_support` contains urdf, config and mesh files for KUKA quantec robots.
+- `kuka_fortec_support` contains urdf, config and mesh files for KUKA fortec robots.
 - `kuka_kr_moveit_config` contains configuration files for KUKA KR robots necessary for planning with MoveIt.
 - `kuka_lbr_iisy_support` contains urdf, config and mesh files for KUKA iisy robots.
 - `kuka_lbr_iisy_moveit_config` contains configuration files for KUKA LBR iisy robots necessary for planning with MoveIt.
-- `kuka_agilus_support` contains urdf, config and mesh files for KUKA Agilus robots, it is copied from [kuka_experimental](https://github.com/ros-industrial/kuka_experimental) and ported to ROS2.
 - `kuka_lbr_iiwa_support` contains urdf, config and mesh files for KUKA LBR iiwa robots
 - `kuka_lbr_iiwa_moveit_config` contains configuration files for KUKA LBR iiwa robots necessary for planning with MoveIt.
+- `kuka_mock_hardware_interface` contains a custom mock hardware interface for KUKA robots
 
 ## Structure of the support packages
 
@@ -93,7 +96,17 @@ Some of the data in the xacros might not be valid or missing, the following tabl
 |kr210_r3100_2| quantec | ✓ | ✓ | ✓ | ✓ | | |
 |kr560_r3100_2| fortec | ✓ | ✓ | ✓ | ✓ | | ✓|
 
-## Starting the move group server with fake hardware
+## Custom mock hardware 
+
+The repository also contains a mock hardware interface implementation, that extends the `mock_components::GenericSystem` defined in the `hardware_interface` package.
+This is necessary, as the driver workflow also activates controllers, which is possible only if all of the interfaces claimed by the controller is provided by the hardware interface. This would not be the case for the default `GenericSystem`, therefore all of the custom state and command interfaces used by the drivers are exported by the `KukaMockHardwareInterface`.
+Additionally two hardware parameters are added:
+- To support similiar timing behaviour as the actual robots, the mock hardware was extended with a blocking wait, so that the read function does not return immediately, but cyclically. The frequency of the loops is defined by the `cycle_time_ms` parameter. Default value is 4  [ms].
+- To be able to test whether a specific setup would fit into the roundtrip time enforced by a real robot, the `roundtrip_time_micro` parameter can be used. If the `write()` method is not called before the given timeout is exceeded (starting from the previous `read()` function), a warning message is logged (but the return value of the `write()` will be still SUCCESS). Default value is 0 [us], which means, that the roundrip time should not be monitored.
+
+The mock hardware was implemented in this repository to allow testing moveit without having to build the driver code.
+
+## Starting the move group server with mock hardware
 
 To start `rviz` with the motion planning plugin using fake hardware, the following launch files can be used:
 
