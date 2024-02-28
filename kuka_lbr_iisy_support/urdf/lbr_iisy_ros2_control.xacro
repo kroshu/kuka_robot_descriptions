@@ -5,6 +5,8 @@
       <hardware>
         <xacro:if value="${use_fake_hardware}">
           <plugin>kuka_mock_hardware_interface::KukaMockHardwareInterface</plugin>
+          <param name="cycle_time_ms">4</param>
+          <param name="roundtrip_time_micro">2500</param>
           <param name="mock_sensor_commands">false</param>
           <param name="state_following_offset">0.0</param>
         </xacro:if>
