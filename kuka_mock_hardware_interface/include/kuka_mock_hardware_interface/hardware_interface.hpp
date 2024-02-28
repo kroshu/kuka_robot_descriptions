@@ -41,6 +41,7 @@ class HARDWARE_INTERFACE_PUBLIC KukaMockHardwareInterface : public hardware_inte
 {
 public:
   CallbackReturn on_init(const hardware_interface::HardwareInfo & info) override;
+  CallbackReturn on_configure(const rclcpp_lifecycle::State & previous_state) override;
 
   std::vector<hardware_interface::StateInterface> export_state_interfaces() override;
 
@@ -121,6 +122,13 @@ protected:
   double receive_multiplier_ = 1;
   double send_period_ms_ = 10;
   double server_state_;
+
+  // KUKA-specific parameters
+  std::chrono::nanoseconds cycle_time_nano_;
+  double recv_timeout_ms_;
+  bool init_clock_ = true;
+  std::chrono::time_point<std::chrono::system_clock, std::chrono::nanoseconds> next_iteration_time_;
+
 
 private:
   template <typename HandleType>

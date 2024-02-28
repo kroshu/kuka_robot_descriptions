@@ -16,8 +16,8 @@
 // Maintainer: Aron Svastits
 
 
-#include "kuka_mock_hardware_inteface/hardware_interface.hpp"
-#include "kuka_mock_hardware_inteface/hardware_interface_types.hpp"
+#include "kuka_mock_hardware_interface/hardware_interface.hpp"
+#include "kuka_mock_hardware_interface/hardware_interface_types.hpp"
 
 #include <algorithm>
 #include <cmath>
@@ -25,9 +25,11 @@
 #include <limits>
 #include <set>
 #include <string>
+#include <thread>
 #include <vector>
 
 #include "hardware_interface/component_parser.hpp"
+#include "hardware_interface/lexical_casts.hpp"
 #include "hardware_interface/types/hardware_interface_type_values.hpp"
 #include "rcutils/logging_macros.h"
 
@@ -146,6 +148,28 @@ CallbackReturn KukaMockHardwareInterface::on_init(const hardware_interface::Hard
       custom_interface_with_following_offset_ = it->second;
     }
   }
+
+  // Parse KUKA-specific parameters
+  it = info_.hardware_parameters.find("cycle_time_ms");
+  if (it != info.hardware_parameters.end())
+  {
+    cycle_time_nano_ = std::chrono::nanoseconds(std::stoi(it->second)*1'000'000);
+  }
+  else
+  {
+    cycle_time_nano_ =  std::chrono::nanoseconds(4'000'000);  // Default to 4 ms
+  }
+
+  it = info_.hardware_parameters.find("recv_timeout_ms");
+  if (it != info.hardware_parameters.end())
+  {
+    recv_timeout_ms_ = std::stod(it->second);
+  }
+  else
+  {
+    recv_timeout_ms_ = 0;  // Default to no timeout checking
+  }
+
   // its extremlly unprobably that std::distance results int this value - therefore default
   index_custom_interface_with_following_offset_ = std::numeric_limits<size_t>::max();
 
@@ -265,6 +289,13 @@ CallbackReturn KukaMockHardwareInterface::on_init(const hardware_interface::Hard
 
   return CallbackReturn::SUCCESS;
 }
+
+CallbackReturn KukaMockHardwareInterface::on_configure(const rclcpp_lifecycle::State &) 
+{
+  init_clock_ = true;
+  return CallbackReturn::SUCCESS;
+}
+
 
 std::vector<hardware_interface::StateInterface> KukaMockHardwareInterface::export_state_interfaces()
 {
@@ -543,7 +574,7 @@ return_type KukaMockHardwareInterface::perform_command_mode_switch(
   return hardware_interface::return_type::OK;
 }
 
-return_type KukaMockHardwareInterface::read(const rclcpp::Time & /*time*/, const rclcpp::Duration & period)
+return_type KukaMockHardwareInterface::read(const rclcpp::Time & time, const rclcpp::Duration & period)
 {
   if (command_propagation_disabled_)
   {
@@ -699,6 +730,15 @@ return_type KukaMockHardwareInterface::read(const rclcpp::Time & /*time*/, const
   {
     mirror_command_to_state(gpio_states_, gpio_commands_);
   }
+
+  if (init_clock_)
+  {
+    next_iteration_time_ = std::chrono::time_point<std::chrono::system_clock, std::chrono::nanoseconds>(std::chrono::nanoseconds(time.nanoseconds()));
+    init_clock_ = false;
+  }
+
+  next_iteration_time_ += std::chrono::nanoseconds(cycle_time_nano_);
+  std::this_thread::sleep_until(next_iteration_time_);
 
   return return_type::OK;
 }
