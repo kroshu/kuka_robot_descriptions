@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<library path="kuka_mock_hardware_interface">
+  <class type="kuka_mock_hardware_interface::KukaMockHardwareInterface" base_class_type="hardware_interface::SystemInterface"/>
+  <description>
+        ROS2 control mock hardware interface for KUKA robots.
+    </description>
+</library>
