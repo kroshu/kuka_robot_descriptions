@@ -96,12 +96,12 @@ Some of the data in the xacros might not be valid or missing, the following tabl
 |kr210_r3100_2| quantec | ✓ | ✓ | ✓ | ✓ | | |
 |kr560_r3100_2| fortec | ✓ | ✓ | ✓ | ✓ | | ✓|
 
-## Custom mock hardware 
+## Custom mock hardware
 
 The repository also contains a mock hardware interface implementation, that extends the `mock_components::GenericSystem` defined in the `hardware_interface` package.
 This is necessary, as the driver workflow also activates controllers, which is possible only if all of the interfaces claimed by the controller is provided by the hardware interface. This would not be the case for the default `GenericSystem`, therefore all of the custom state and command interfaces used by the drivers are exported by the `KukaMockHardwareInterface`.
 Additionally two hardware parameters are added:
-- To support similiar timing behaviour as the actual robots, the mock hardware was extended with a blocking wait, so that the read function does not return immediately, but cyclically. The frequency of the loops is defined by the `cycle_time_ms` parameter. Default value is 4  [ms].
+- To support similar timing behaviour as the actual robots, the mock hardware was extended with a blocking wait, so that the read function does not return immediately, but cyclically. The frequency of the loops is defined by the `cycle_time_ms` parameter. Default value is 4  [ms].
 - To be able to test whether a specific setup would fit into the roundtrip time enforced by a real robot, the `roundtrip_time_micro` parameter can be used. If the `write()` method is not called before the given timeout is exceeded (starting from the previous `read()` function), a warning message is logged (but the return value of the `write()` will be still SUCCESS). Default value is 0 [us], which means, that the roundrip time should not be monitored.
 
 The mock hardware was implemented in this repository to allow testing moveit without having to build the driver code.
