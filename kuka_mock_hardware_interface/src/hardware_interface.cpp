@@ -745,8 +745,7 @@ return_type KukaMockHardwareInterface::read(
   return return_type::OK;
 }
 
-return_type KukaMockHardwareInterface::write(
-  const rclcpp::Time & time, const rclcpp::Duration &)
+return_type KukaMockHardwareInterface::write(const rclcpp::Time & time, const rclcpp::Duration &)
 {
   if (roundtrip_time_micro_ != 0)
   {
