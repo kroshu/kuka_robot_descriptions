@@ -17,10 +17,13 @@
       timeframe_ms="${timeframe_ms}" 
       use_fake_hardware="${use_fake_hardware}"
       gazebo_sim="${gazebo_sim}"/>
-    <!-- Include and instatiate diffbot description urdf file-->
-    <xacro:include filename="$(find kuka_mobile_robot_support)/urdf/diffbot_description.urdf.xacro" />
-    <!--xacro:genericMR_37146123288 prefix="${prefix}" /-->
 
+     <joint name="odom_joint" type="planar">
+            <axis xyz="0.0 1.0 0.0"/>
+            <parent link="odom" />
+            <child link="generic_mr_body_dummy" />
+            <origin xyz="0 0 0" rpy="0 0 0" />
+          </joint>
       <joint name="generic_mr_body_dummy" type="fixed">
             <parent link="generic_mr_body_dummy" />
             <child link="generic_mr_body" />
@@ -32,14 +35,14 @@
           <origin rpy="-0.0 0.0 -0.0" xyz="-0.015 0.0 -0.026"/>
           <parent link="caster_base_br_link"/>
         </joint>
-        <joint name="left_wheel_motor" type="continuous">
+        <joint name="left_wheel_motor" type="fixed">
           <axis xyz="0.0 1.0 0.0"/>
           <child link="left_wheel"/>
           <limit effort="5.0E2" velocity="1.0E2"/>
           <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.325 0.028"/>  <!-- 0.06 -->
           <parent link="generic_mr_body"/>
         </joint>
-        <joint name="right_wheel_motor" type="continuous">
+        <joint name="right_wheel_motor" type="fixed">
           <axis xyz="0.0 1.0 0.0"/>
           <child link="right_wheel"/>
           <limit effort="5.0E2" velocity="1.0E1"/>
@@ -89,6 +92,7 @@
           <parent link="caster_base_bl_link"/>
         </joint>
         <link name="generic_mr_body_dummy"/>
+        <link name="odom"/>
         <link name="generic_mr_body">
           <collision>
             <geometry>
