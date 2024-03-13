@@ -30,7 +30,7 @@
         <geometry>
           <mesh filename="package://kuka_iontec_support/meshes/kr70_r2100/collision/link_1.stl"/>
         </geometry>
-        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
+        <origin rpy="3.1415927 0.0 0.0" xyz="0.0 0.0 0.236000"/>
       </collision>
       <inertial>
         <inertia ixx="5.40709339054184" ixy="0.0" ixz="0.0" iyy="7.71982652844139" iyz="0.0" izz="9.08867781161129"/>
@@ -41,7 +41,7 @@
         <geometry>
           <mesh filename="package://kuka_iontec_support/meshes/kr70_r2100/visual/link_1.dae"/>
         </geometry>
-        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
+        <origin rpy="3.1415927 0.0 0.0" xyz="0.0 0.0 0.236000"/>
       </visual>
     </link>
     <link name="${prefix}link_2">
@@ -49,7 +49,7 @@
         <geometry>
           <mesh filename="package://kuka_iontec_support/meshes/kr70_r2100/collision/link_2.stl"/>
         </geometry>
-        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
+        <origin rpy="1.5707963 0.0 1.5707963" xyz="-0.575000 -0.175000 0.054000 "/>
       </collision>
       <inertial>
         <inertia ixx="15.3115976467419" ixy="0.0" ixz="0.0" iyy="1.25648697469284" iyz="0.0" izz="15.5308363638855"/>
@@ -60,7 +60,7 @@
         <geometry>
           <mesh filename="package://kuka_iontec_support/meshes/kr70_r2100/visual/link_2.dae"/>
         </geometry>
-        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
+        <origin rpy="1.5707963 0.0 1.5707963" xyz="-0.575000 -0.175000 0.054000 "/>
       </visual>
     </link>
     <link name="${prefix}link_3">
@@ -68,7 +68,7 @@
         <geometry>
           <mesh filename="package://kuka_iontec_support/meshes/kr70_r2100/collision/link_3.stl"/>
         </geometry>
-        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
+        <origin rpy="1.5707963 0.0 -0.0" xyz="-0.175000 1.465000 0.151500"/>
       </collision>
       <inertial>
         <inertia ixx="1.92337293034476" ixy="0.0" ixz="0.0" iyy="1.27849052849714" iyz="0.0" izz="2.39171458731211"/>
@@ -79,7 +79,7 @@
         <geometry>
           <mesh filename="package://kuka_iontec_support/meshes/kr70_r2100/visual/link_3.dae"/>
         </geometry>
-        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
+        <origin rpy="1.5707963 0.0 -0.0" xyz="-0.175000 1.465000 0.151500"/>
       </visual>
     </link>
     <link name="${prefix}link_4">
@@ -87,7 +87,7 @@
         <geometry>
           <mesh filename="package://kuka_iontec_support/meshes/kr70_r2100/collision/link_4.stl"/>
         </geometry>
-        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
+        <origin rpy="0.0 1.5707963 0" xyz="-1.515000 0 0.483050"/>
       </collision>
       <inertial>
         <inertia ixx="0.155169399999395" ixy="0.0" ixz="0.0" iyy="2.40535850557874" iyz="0.0" izz="2.40600523859326"/>
@@ -98,7 +98,7 @@
         <geometry>
           <mesh filename="package://kuka_iontec_support/meshes/kr70_r2100/visual/link_4.dae"/>
         </geometry>
-        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
+        <origin rpy="0.0 1.5707963 0" xyz="-1.515000 0 0.483050"/>
       </visual>
     </link>
     <link name="${prefix}link_5">
@@ -106,7 +106,7 @@
         <geometry>
           <mesh filename="package://kuka_iontec_support/meshes/kr70_r2100/collision/link_5.stl"/>
         </geometry>
-        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
+        <origin rpy="1.5707963 0.0 -0.0" xyz="-1.210000 1.515000 -0.047950"/>
       </collision>
       <inertial>
         <inertia ixx="0.104253153076611" ixy="0.0" ixz="0.0" iyy="0.080454547765652" iyz="0.0" izz="0.129775394933814"/>
@@ -117,7 +117,7 @@
         <geometry>
           <mesh filename="package://kuka_iontec_support/meshes/kr70_r2100/visual/link_5.dae"/>
         </geometry>
-        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
+        <origin rpy="1.5707963 0.0 -0.0" xyz="-1.210000 1.515000 -0.047950"/>
       </visual>
     </link>
     <link name="${prefix}link_6">
@@ -125,7 +125,7 @@
         <geometry>
           <mesh filename="package://kuka_iontec_support/meshes/kr70_r2100/collision/link_6.stl"/>
         </geometry>
-        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
+        <origin rpy="-0.0 1.5707963 -0.0" xyz="-1.515000 0.0 1.359000"/>
       </collision>
       <inertial>
         <inertia ixx="0.00543884122921238" ixy="0.0" ixz="0.0" iyy="0.00497050004638771" iyz="0.0" izz="0.00667989273554355"/>
@@ -136,7 +136,7 @@
         <geometry>
           <mesh filename="package://kuka_iontec_support/meshes/kr70_r2100/visual/link_6.dae"/>
         </geometry>
-        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
+        <origin rpy="-0.0 1.5707963 -0.0" xyz="-1.515000 0.0 1.359000"/>
       </visual>
     </link>
     <joint name="${prefix}world-base_link" type="fixed">
