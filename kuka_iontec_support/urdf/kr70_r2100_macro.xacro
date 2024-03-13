@@ -149,7 +149,7 @@
       <child link="${prefix}link_1"/>
       <limit effort="5.528892E3" lower="-3.2288591125E0" upper="3.2288591125E0" velocity="3.14159265358979E0"/>
       <origin rpy="3.141592653589793 -0.0 0.0" xyz="0.0 0.0 0.23600000000000002"/>
-      <parent link="KR70R2100_FixedBase"/>
+      <parent link="${prefix}base_link"/>
     </joint>
     <joint name="${prefix}joint_2" type="revolute">
       <axis xyz="0.0 0.0 1.0"/>
