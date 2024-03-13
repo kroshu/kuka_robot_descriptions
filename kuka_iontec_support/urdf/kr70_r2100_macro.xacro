@@ -14,9 +14,9 @@
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
       </collision>
       <inertial>
-        <inertia ixx="68.88717275" ixy="0.0" ixz="0.0" iyy="31.94793234" iyz="0.0" izz="84.55633739"/>
-        <mass value="4.3839E2"/>
-        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
+        <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0"/>
+        <mass value="1.1102E2"/>
+        <origin rpy="0.0 -0.0 0.0" xyz="0.0 0.0 0.0"/>
       </inertial>
       <visual>
         <geometry>
@@ -33,9 +33,9 @@
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
       </collision>
       <inertial>
-        <inertia ixx="344.90558565" ixy="0.0" ixz="0.0" iyy="45.43063965" iyz="0.0" izz="376.57742569"/>
-        <mass value="5.5748E2"/>
-        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
+        <inertia ixx="5.40709339054184" ixy="0.0" ixz="0.0" iyy="7.71982652844139" iyz="0.0" izz="9.08867781161129"/>
+        <mass value="1.75205E2"/>
+        <origin rpy="-0.7923258603339018 -0.8943966305036485 2.6984590381230245" xyz="0.0386086184755001 -0.0346095020119289 -0.237989526554607"/>
       </inertial>
       <visual>
         <geometry>
@@ -52,9 +52,9 @@
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
       </collision>
       <inertial>
-        <inertia ixx="6.30840213" ixy="0.0" ixz="0.0" iyy="26.6876282" iyz="0.0" izz="29.5636589"/>
-        <mass value="7.4023E2"/>
-        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
+        <inertia ixx="15.3115976467419" ixy="0.0" ixz="0.0" iyy="1.25648697469284" iyz="0.0" izz="15.5308363638855"/>
+        <mass value="1.0886E2"/>
+        <origin rpy="2.0043980356557825 -1.4175712597169723 -0.4411071139781909" xyz="0.322390685283851 0.0011177475656806899 -0.0921965092779717"/>
       </inertial>
       <visual>
         <geometry>
@@ -71,9 +71,9 @@
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
       </collision>
       <inertial>
-        <inertia ixx="0.69367801" ixy="0.0" ixz="0.0" iyy="2.78506558" iyz="0.0" izz="2.86251005"/>
-        <mass value="2.41307E2"/>
-        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
+        <inertia ixx="1.92337293034476" ixy="0.0" ixz="0.0" iyy="1.27849052849714" iyz="0.0" izz="2.39171458731211"/>
+        <mass value="7.6987E1"/>
+        <origin rpy="-1.4493563584878768 -1.5363130245492544 2.877566531592554" xyz="0.0313301089794381 -0.020586332757478502 0.14882084299946702"/>
       </inertial>
       <visual>
         <geometry>
@@ -90,9 +90,9 @@
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
       </collision>
       <inertial>
-        <inertia ixx="1.10203833" ixy="0.0" ixz="0.0" iyy="0.78393869" iyz="0.0" izz="1.20828475"/>
-        <mass value="9.7442E1"/>
-        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
+        <inertia ixx="0.155169399999395" ixy="0.0" ixz="0.0" iyy="2.40535850557874" iyz="0.0" izz="2.40600523859326"/>
+        <mass value="3.6937064569E1"/>
+        <origin rpy="0.828589798090399 -1.4728909399076815 -1.576276607483943" xyz="1.89432198144002E-4 0.024470785786346698 -0.41246255028967"/>
       </inertial>
       <visual>
         <geometry>
@@ -109,9 +109,9 @@
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
       </collision>
       <inertial>
-        <inertia ixx="0.15462725" ixy="0.0" ixz="0.0" iyy="0.15475987" iyz="0.0" izz="0.18961138"/>
-        <mass value="5.36088E1"/>
-        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
+        <inertia ixx="0.104253153076611" ixy="0.0" ixz="0.0" iyy="0.080454547765652" iyz="0.0" izz="0.129775394933814"/>
+        <mass value="1.6209E1"/>
+        <origin rpy="-1.5546090234283156 -1.0268303292864105 -0.0223629762980488" xyz="0.0338747121969276 4.7815719661916203E-4 -0.0563914652353631"/>
       </inertial>
       <visual>
         <geometry>
@@ -128,9 +128,9 @@
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
       </collision>
       <inertial>
-        <inertia ixx="0.15462725" ixy="0.0" ixz="0.0" iyy="0.15475987" iyz="0.0" izz="0.18961138"/>
-        <mass value="3.202E1"/>
-        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
+        <inertia ixx="0.00543884122921238" ixy="0.0" ixz="0.0" iyy="0.00497050004638771" iyz="0.0" izz="0.00667989273554355"/>
+        <mass value="3.62E0"/>
+        <origin rpy="-0.2657207469665607 5.14585534055515E-4 1.571146297496868" xyz="-0.00392541436464088 5.41436464088398E-6 -0.00152140883977901"/>
       </inertial>
       <visual>
         <geometry>
@@ -147,43 +147,43 @@
     <joint name="${prefix}joint_1" type="revolute">
       <axis xyz="0.0 0.0 1.0"/>
       <child link="${prefix}link_1"/>
-      <limit effort="15000.0E0" lower="-3.2288591161895095E0" upper="3.2288591161895095E0" velocity="${radians(90)}"/>
-      <origin rpy="-3.141592653589793 0.0 -0.0" xyz="0.0 0.0 0.0"/>
-      <parent link="${prefix}base_link"/>
+      <limit effort="5.528892E3" lower="-3.2288591125E0" upper="3.2288591125E0" velocity="3.14159265358979E0"/>
+      <origin rpy="3.141592653589793 -0.0 0.0" xyz="0.0 0.0 0.23600000000000002"/>
+      <parent link="KR70R2100_FixedBase"/>
     </joint>
     <joint name="${prefix}joint_2" type="revolute">
       <axis xyz="0.0 0.0 1.0"/>
       <child link="${prefix}link_2"/>
-      <limit effort="17880.0E0" lower="-2.2689280275926285E0" upper="3.490658503988659E-1" velocity="${radians(80)}"/>
-      <origin rpy="${pi/2.0} 0.0 -0.0" xyz="0.5 0.0 -0.86"/>
+      <limit effort="4.63521860979619E3" lower="-3.0543261875E0" upper="1.04719755E0" velocity="2.75719614004311E0"/>
+      <origin rpy="1.5707963267948966 -0.0 0.0" xyz="0.17500000000000002 0.054 -0.339"/>
       <parent link="${prefix}link_1"/>
     </joint>
     <joint name="${prefix}joint_3" type="revolute">
       <axis xyz="0.0 0.0 1.0"/>
       <child link="${prefix}link_3"/>
-      <limit effort="15315.272850848E0" lower="-1.7453292519943295E0" upper="2.8797932657906435E0" velocity="${radians(75)}"/>
-      <origin rpy="0.0 0.0 -${pi/2.0}" xyz="1.55 0.0 0.0"/>
+      <limit effort="1.78564006036566E3" lower="-2.0943951E0" upper="2.8797932625E0" velocity="2.79252680319093E0"/>
+      <origin rpy="0.0 -0.0 0.0" xyz="0.89 0.0 -0.0975"/>
       <parent link="${prefix}link_2"/>
     </joint>
     <joint name="${prefix}joint_4" type="revolute">
       <axis xyz="0.0 0.0 1.0"/>
       <child link="${prefix}link_4"/>
-      <limit effort="4847.11596436905E0" lower="-6.1086523819801535E0" upper="6.1086523819801535E0" velocity="${radians(90)}"/>
-      <origin rpy="${pi/2.0} 0.0 -0.0" xyz="0.18 0.0 0.0"/>
+      <limit effort="6.45625632046567E2" lower="-3.14159265E0" upper="3.14159265E0" velocity="4.01425727958696E0"/>
+      <origin rpy="1.5707963267948966 -0.0 -1.5707963267948966" xyz="0.30805 -0.05 0.1515"/>
       <parent link="${prefix}link_3"/>
     </joint>
     <joint name="${prefix}joint_5" type="revolute">
       <axis xyz="0.0 0.0 1.0"/>
       <child link="${prefix}link_5"/>
-      <limit effort="4852.96953685247E0" lower="-2.0943951023931953E0" upper="2.0943951023931953E0" velocity="${radians(90)}"/>
-      <origin rpy="-${pi/2.0} 0.0 -0.0" xyz="0.0 0.0 -1.0345"/>
+      <limit effort="5.8309335940288E2" lower="-2.1816615625E0" upper="2.1816615625E0" velocity="4.01425727958696E0"/>
+      <origin rpy="0.0 1.5707963267948966 1.5707963267948966" xyz="0.0 0.047950000000000007 -0.7269500000000001"/>
       <parent link="${prefix}link_4"/>
     </joint>
     <joint name="${prefix}joint_6" type="revolute">
       <axis xyz="0.0 0.0 1.0"/>
       <child link="${prefix}link_6"/>
-      <limit effort="2675.4449432041E0" lower="-6.1086523819801535E0" upper="6.1086523819801535E0" velocity="${radians(130)}"/>
-      <origin rpy="${pi/2.0} 0.0 -0.0" xyz="0.0 0.0 0.0"/>
+      <limit effort="3.39155998042573E2" lower="-6.108652375E0" upper="6.108652375E0" velocity="5.58505360638185E0"/>
+      <origin rpy="1.5707963267948966 -0.0 -1.5707963267948966" xyz="0.149 0.0 -0.047950000000000007"/>
       <parent link="${prefix}link_5"/>
     </joint>
     <!-- ROS-Industrial 'base' frame - equivalent of 'KUKA ROBROOT'-->
@@ -197,14 +197,14 @@
     <link name="${prefix}flange"/>
     <joint name="${prefix}link6-flange" type="fixed">
       <child link="${prefix}flange"/>
-      <origin rpy="0 ${pi/2} -0.0" xyz="0.0 0.0 -0.305"/>
+      <origin rpy="0.0 ${pi/2} 0.0" xyz="0.0 0.0 -0.036"/>
       <parent link="${prefix}link_6"/>
     </joint>
     <!-- ROS-Industrial 'tool0' frame - all-zeros tool frame -->
     <link name="${prefix}tool0"/>
     <joint name="${prefix}link6-tool0" type="fixed">
       <child link="${prefix}tool0"/>
-      <origin rpy="0 ${pi} -0.0" xyz="0.0 0.0 -0.305"/>
+      <origin rpy="0.0 ${pi} 0.0" xyz="0.0 0.0 -0.036"/>
       <parent link="${prefix}link_6"/>
     </joint>
   </xacro:macro>
