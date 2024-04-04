@@ -24,4 +24,6 @@ moveit_simple_controller_manager:
 
 default_planning_pipeline: pilz_industrial_motion_planner
 
-capabilities: pilz_industrial_motion_planner/MoveGroupSequenceService
+capabilities: >-
+  pilz_industrial_motion_planner/MoveGroupSequenceAction
+  pilz_industrial_motion_planner/MoveGroupSequenceService
