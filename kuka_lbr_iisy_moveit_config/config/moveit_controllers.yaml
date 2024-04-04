@@ -21,3 +21,7 @@ moveit_simple_controller_manager:
       - joint_4
       - joint_5
       - joint_6
+
+default_planning_pipeline: pilz_industrial_motion_planner
+
+capabilities: pilz_industrial_motion_planner/MoveGroupSequenceService
