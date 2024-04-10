@@ -1,11 +1,10 @@
 <?xml version="1.0"?>
 <package format="2">
   <name>kuka_robot_descriptions</name>
-  <version>0.0.1</version>
+  <version>0.9.0</version>
   <description>Robot descriptions for KUKA robots</description>
-  <author>Aron Svastits</author>
   <maintainer email="svastits1@gmail.com">Aron Svastits</maintainer>
-  <license>BSD</license>
+  <license>Apache 2.0</license>
   <url type="bugtracker">https://github.com/kroshu/kuka_robot_descriptions/issues</url>
   <url type="repository">https://github.com/kroshu/kuka_robot_descriptions</url>
   <buildtool_depend>ament_cmake</buildtool_depend>

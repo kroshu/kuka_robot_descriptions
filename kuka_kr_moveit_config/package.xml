@@ -1,15 +1,12 @@
 <?xml version="1.0"?>
 <package format="3">
   <name>kuka_kr_moveit_config</name>
-  <version>0.1.0</version>
+  <version>0.9.0</version>
   <description>Package containing moveit configuration for KUKA KR robots</description>
   <author>Aron Svastits</author>
   <maintainer email="svastits1@gmail.com"/>
-  <license>BSD</license>
+  <license>Apache 2.0</license>
   <buildtool_depend>ament_cmake</buildtool_depend>
-  <test_depend>ament_copyright</test_depend>
-  <test_depend>ament_flake8</test_depend>
-  <test_depend>ament_pep257</test_depend>
   <depend>xacro</depend>
   <export>
     <architecture_independent/>
