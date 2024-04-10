@@ -92,6 +92,7 @@ Some of the data in the xacros might not be valid or missing, the following tabl
 |kr6_r900_sixx| agilus | ✓ | ✓ | ✓ | | | ✓ |
 |kr10_r1100_2| agilus | ✓ | ✓ | ✓ | ✓ | | |
 |kr16_r2010_2| cybertech | ✓ | ✓ | ✓ | ✓ | | |
+|kr70_r2100| iontec | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
 |kr210_r2700_2| quantec | ✓ | ✓ | ✓ | ✓ | | |
 |kr210_r3100_2| quantec | ✓ | ✓ | ✓ | ✓ | | |
 |kr560_r3100_2| fortec | ✓ | ✓ | ✓ | ✓ | | ✓|
