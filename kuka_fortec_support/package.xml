@@ -3,7 +3,6 @@
   <name>kuka_fortec_support</name>
   <version>0.9.0</version>
   <description>Robot models for the KUKA FORTEC family.</description>
-  <author>Eugenio Bernardi</author>
   <author email="e.bernardi@tudelft.nl">Eugenio Bernardi</maintainer>
   <maintainer email="svastits1@gmail.com">Aron Svastits</maintainer>
   <license>Apache 2.0</license>
