@@ -4,7 +4,7 @@
   <version>0.9.0</version>
   <description>Robot models for the KUKA agilus family.</description>
   <author>Brett Hemes (3M)</author>
-  <author email="g.a.vanderhoorn@tudelft.nl">G.A. vd. Hoorn (TU Delft Robotics Institute)</maintainer>
+  <author email="g.a.vanderhoorn@tudelft.nl">G.A. vd. Hoorn (TU Delft Robotics Institute)</author>
   <maintainer email="svastits1@gmail.com">Aron Svastits</maintainer>
   <license>Apache 2.0</license>
   <buildtool_depend>ament_cmake</buildtool_depend>
