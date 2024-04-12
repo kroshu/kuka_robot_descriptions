@@ -6,7 +6,7 @@
   <author>Brett Hemes (3M)</author>
   <author email="g.a.vanderhoorn@tudelft.nl">G.A. vd. Hoorn (TU Delft Robotics Institute)</author>
   <maintainer email="svastits1@gmail.com">Aron Svastits</maintainer>
-  <license>Apache 2.0</license>
+  <license>Apache-2.0</license>
   <buildtool_depend>ament_cmake</buildtool_depend>
   <depend>xacro</depend>
   <depend>launch_ros</depend>
