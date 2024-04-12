@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
-  <name>kuka_lbr_iiwa_support</name>
+  <name>kuka_resources</name>
   <version>0.9.0</version>
   <description>This package contains common urdf / xacro resources used by KUKA robot support packages within the ROS-Industrial program.</description>
   <author email="g.a.vanderhoorn@tudelft.nl">G.A. vd. Hoorn (TU Delft Robotics Institute)</author>
