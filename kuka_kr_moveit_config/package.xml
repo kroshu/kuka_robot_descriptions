@@ -6,6 +6,7 @@
   <maintainer email="svastits1@gmail.com">Aron Svastits</maintainer>
   <license>Apache-2.0</license>
   <buildtool_depend>ament_cmake</buildtool_depend>
+  <depend>urdf</depend>
   <depend>xacro</depend>
   <exec_depend>kuka_resources</exec_depend>
   <exec_depend>controller_manager</exec_depend>
