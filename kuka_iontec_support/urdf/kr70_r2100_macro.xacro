@@ -2,9 +2,9 @@
 <robot xmlns:xacro="http://wiki.ros.org/xacro">
   <xacro:include filename="$(find kuka_iontec_support)/urdf/kr_iontec_ros2_control.xacro"/>
   <xacro:include filename="$(find kuka_iontec_support)/urdf/kr_iontec_transmission.xacro"/>
-  <xacro:macro name="kuka_kr70_r2100_robot" params="client_ip client_port prefix use_fake_hardware *origin">
+  <xacro:macro name="kuka_kr70_r2100_robot" params="client_ip client_port prefix use_fake_hardware roundtrip_time *origin">
     <!-- ros2 control instance -->
-    <xacro:kuka_iontec_ros2_control name="${prefix}kr70_r2100" client_ip="${client_ip}" client_port="${client_port}" prefix="${prefix}" use_fake_hardware="${use_fake_hardware}"/>
+    <xacro:kuka_iontec_ros2_control name="${prefix}kr70_r2100" client_ip="${client_ip}" client_port="${client_port}" prefix="${prefix}" use_fake_hardware="${use_fake_hardware}" roundtrip_time="${roundtrip_time}" />
     <link name="world"/>
     <link name="${prefix}base_link">
       <collision>
