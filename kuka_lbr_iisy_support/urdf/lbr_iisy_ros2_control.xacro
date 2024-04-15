@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
-  <xacro:macro name="kuka_lbr_iisy_ros2_control" params="name prefix client_ip controller_ip use_fake_hardware qos_config_file">
+  <xacro:macro name="kuka_lbr_iisy_ros2_control" params="name prefix client_ip controller_ip use_fake_hardware qos_config_file roundtrip_time">
     <ros2_control name="${name}" type="system">
       <hardware>
         <xacro:if value="${use_fake_hardware}">
           <plugin>kuka_mock_hardware_interface::KukaMockHardwareInterface</plugin>
           <param name="cycle_time_ms">4</param>
-          <param name="roundtrip_time_micro">2500</param>
+          <param name="roundtrip_time_micro">${roundtrip_time}</param>
           <param name="mock_sensor_commands">false</param>
           <param name="state_following_offset">0.0</param>
         </xacro:if>
@@ -49,7 +49,7 @@
         <command_interface name="damping"/>
         <command_interface name="effort"/>
         <state_interface name="position">
-          <param name="initial_value">0.0</param>
+          <param name="initial_value">-1.5708</param>
         </state_interface>
         <state_interface name="effort">
           <param name="initial_value">0.0</param>
@@ -61,7 +61,7 @@
         <command_interface name="damping"/>
         <command_interface name="effort"/>
         <state_interface name="position">
-          <param name="initial_value">0.0</param>
+          <param name="initial_value">1.5708</param>
         </state_interface>
         <state_interface name="effort">
           <param name="initial_value">0.0</param>
