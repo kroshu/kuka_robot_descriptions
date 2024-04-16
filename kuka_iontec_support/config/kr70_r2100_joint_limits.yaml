@@ -1,0 +1,41 @@
+# joint_limits.yaml allows the dynamics properties specified in the URDF to be overwritten or augmented as needed
+# Specific joint properties can be changed with the keys [max_position, min_position, max_velocity, max_acceleration, max_jerk]
+# Joint limits can be turned off with [has_velocity_limits, has_acceleration_limits]
+
+# The default config of moveit does not take into account the jerk limits, the RuckigTrajectorySmoothing adapter must be
+# added to the planning pipeline to support jerk limits # TODO: check if jerk dimensions are ok!!
+
+# Easiest way to slow down the robot is to decrease the velocity and acceleration scaling factors
+default_velocity_scaling_factor: 1.0
+default_acceleration_scaling_factor: 1.0
+joint_limits:
+  joint_1:
+    has_velocity_limits: true
+    max_velocity: 3.1416
+    has_acceleration_limits: false
+    has_jerk: false
+  joint_2:
+    has_velocity_limits: true
+    max_velocity: 2.7576
+    has_acceleration_limits: false
+    has_jerk: false
+  joint_3:
+    has_velocity_limits: true
+    max_velocity: 2.7925
+    has_acceleration_limits: false
+    has_jerk: false
+  joint_4:
+    has_velocity_limits: true
+    max_velocity: 4.01426
+    has_acceleration_limits: false
+    has_jerk: false
+  joint_5:
+    has_velocity_limits: true
+    max_velocity: 4.01426
+    has_acceleration_limits: false
+    has_jerk: false
+  joint_6:
+    has_velocity_limits: true
+    max_velocity: 5.58505
+    has_acceleration_limits: false
+    has_jerk: false
