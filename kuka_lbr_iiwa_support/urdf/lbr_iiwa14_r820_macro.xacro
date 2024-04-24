@@ -1,0 +1,241 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://wiki.ros.org/xacro">
+  <!-- include helper xacros -->
+  <xacro:include filename="$(find kuka_lbr_iiwa_support)/urdf/lbr_iiwa_ros2_control.xacro"/>
+  <xacro:include filename="$(find kuka_resources)/urdf/common_materials.xacro"/>
+  <xacro:include filename="$(find kuka_lbr_iiwa_support)/urdf/lbr_iiwa_transmission.xacro"/>
+  <xacro:macro name="kuka_lbr_iiwa14_r820_robot" params="io_access prefix use_fake_hardware roundtrip_time *origin">
+    <!-- ros2 control instance -->
+    <xacro:kuka_lbr_iiwa_ros2_control name="${prefix}lbr_iiwa14_r820" prefix="${prefix}" io_access="${io_access}" use_fake_hardware="${use_fake_hardware}" roundtrip_time="${roundtrip_time}"/>
+    <!-- links - main serial chain -->
+    <link name="world"/>
+    <link name="${prefix}base_link">
+      <visual>
+        <geometry>
+          <mesh filename="package://kuka_lbr_iiwa_support/meshes/lbr_iiwa14_r820/visual/base_link.stl"/>
+        </geometry>
+        <origin rpy="-0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+      </visual>
+      <collision>
+        <origin rpy="-0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+        <geometry>
+          <mesh filename="package://kuka_lbr_iiwa_support/meshes/lbr_iiwa14_r820/collision/base_link.stl"/>
+        </geometry>
+      </collision>
+      <inertial>
+        <mass value="3.2832"/>
+        <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
+        <inertia ixx="5.0E-4" ixy="0.0" ixz="0.0" iyy="5.0E-4" iyz="0.0" izz="5.0E-4"/>
+      </inertial>
+    </link>
+    <link name="${prefix}link_1">
+      <visual>
+        <geometry>
+          <mesh filename="package://kuka_lbr_iiwa_support/meshes/lbr_iiwa14_r820/visual/link_1.stl"/>
+        </geometry>
+        <origin rpy="-0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+      </visual>
+      <collision>
+        <origin rpy="-0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+        <geometry>
+          <mesh filename="package://kuka_lbr_iiwa_support/meshes/lbr_iiwa14_r820/collision/link_1.stl"/>
+        </geometry>
+      </collision>
+      <inertial>
+        <mass value="6.495"/>
+        <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
+        <inertia ixx="0.06907" ixy="0.0" ixz="0.0" iyy="0.0711" iyz="0.0" izz="0.02"/>
+      </inertial>
+    </link>
+    <link name="${prefix}link_2">
+      <visual>
+        <geometry>
+          <mesh filename="package://kuka_lbr_iiwa_support/meshes/lbr_iiwa14_r820/visual/link_2.stl"/>
+        </geometry>
+        <origin rpy="-0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+      </visual>
+      <collision>
+        <origin rpy="-0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+        <geometry>
+          <mesh filename="package://kuka_lbr_iiwa_support/meshes/lbr_iiwa14_r820/collision/link_2.stl"/>
+        </geometry>
+      </collision>
+      <inertial>
+        <mass value="8.365"/>
+        <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
+        <inertia ixx="0.08" ixy="0.0" ixz="0.0" iyy="0.08" iyz="0.0" izz="0.01"/>
+      </inertial>
+    </link>
+    <link name="${prefix}link_3">
+      <visual>
+        <geometry>
+          <mesh filename="package://kuka_lbr_iiwa_support/meshes/lbr_iiwa14_r820/visual/link_3.stl"/>
+        </geometry>
+        <origin rpy="-0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+      </visual>
+      <collision>
+        <origin rpy="-0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+        <geometry>
+          <mesh filename="package://kuka_lbr_iiwa_support/meshes/lbr_iiwa14_r820/collision/link_3.stl"/>
+        </geometry>
+      </collision>
+      <inertial>
+        <mass value="2.5697"/>
+        <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
+        <inertia ixx="0.02" ixy="0.0" ixz="0.0" iyy="0.02" iyz="0.0" izz="0.06"/>
+      </inertial>
+    </link>
+    <link name="${prefix}link_4">
+      <visual>
+        <geometry>
+          <mesh filename="package://kuka_lbr_iiwa_support/meshes/lbr_iiwa14_r820/visual/link_4.stl"/>
+        </geometry>
+        <origin rpy="-0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+      </visual>
+      <collision>
+        <origin rpy="-0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+        <geometry>
+          <mesh filename="package://kuka_lbr_iiwa_support/meshes/lbr_iiwa14_r820/collision/link_4.stl"/>
+        </geometry>
+      </collision>
+      <inertial>
+        <mass value="5.41"/>
+        <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
+        <inertia ixx="0.04" ixy="0.0" ixz="0.0" iyy="0.03" iyz="0.0" izz="0.01"/>
+      </inertial>
+    </link>
+    <link name="${prefix}link_5">
+      <visual>
+        <geometry>
+          <mesh filename="package://kuka_lbr_iiwa_support/meshes/lbr_iiwa14_r820/visual/link_5.stl"/>
+        </geometry>
+        <origin rpy="-0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+      </visual>
+      <collision>
+        <origin rpy="-0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+        <geometry>
+          <mesh filename="package://kuka_lbr_iiwa_support/meshes/lbr_iiwa14_r820/collision/link_5.stl"/>
+        </geometry>
+      </collision>
+      <inertial>
+        <mass value="1.867"/>
+        <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
+        <inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.01" iyz="0.0" izz="0.01"/>
+      </inertial>
+    </link>
+    <link name="${prefix}link_6">
+      <visual>
+        <geometry>
+          <mesh filename="package://kuka_lbr_iiwa_support/meshes/lbr_iiwa14_r820/visual/link_6.stl"/>
+        </geometry>
+        <origin rpy="-0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+      </visual>
+      <collision>
+        <origin rpy="-0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+        <geometry>
+          <mesh filename="package://kuka_lbr_iiwa_support/meshes/lbr_iiwa14_r820/collision/link_6.stl"/>
+        </geometry>
+      </collision>
+      <inertial>
+        <mass value="2.458"/>
+        <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
+        <inertia ixx="0.007" ixy="0.0" ixz="0.0" iyy="0.006" iyz="0.0" izz="0.005"/>
+      </inertial>
+    </link>
+    <link name="${prefix}link_7">
+      <visual>
+        <geometry>
+          <mesh filename="package://kuka_lbr_iiwa_support/meshes/lbr_iiwa14_r820/visual/link_7.stl"/>
+        </geometry>
+        <origin rpy="-0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+      </visual>
+      <collision>
+        <origin rpy="-0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+        <geometry>
+          <mesh filename="package://kuka_lbr_iiwa_support/meshes/lbr_iiwa14_r820/collision/link_7.stl"/>
+        </geometry>
+      </collision>
+      <inertial>
+        <mass value="0.627"/>
+        <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
+        <inertia ixx="3.0E-4" ixy="0.0" ixz="0.0" iyy="3.0E-4" iyz="0.0" izz="5.0E-4"/>
+      </inertial>
+    </link>
+    <!-- joints - main serial chain -->
+    <joint name="${prefix}world-base_link" type="fixed">
+      <parent link="world"/>
+      <child link="${prefix}base_link"/>
+      <xacro:insert_block name="origin"/>
+    </joint>
+    <joint name="${prefix}joint_1" type="revolute">
+      <parent link="${prefix}base_link"/>
+      <child link="${prefix}link_1"/>
+      <origin rpy="-0.0 0.0 0.0" xyz="0.0 0.0 0.1375"/>
+      <axis xyz="0.0 0.0 1.0"/>
+      <limit effort="158.4" lower="-2.67035" upper="2.67035" velocity="6.283"/>
+    </joint>
+    <joint name="${prefix}joint_2" type="revolute">
+      <parent link="${prefix}link_1"/>
+      <child link="${prefix}link_2"/>
+      <origin rpy="-0.0 0.0 0.0" xyz="0.0 0.0 0.2025"/>
+      <axis xyz="0.0 1.0 0.0"/>
+      <limit effort="158.4" lower="-1.8849" upper="1.8849" velocity="6.283"/>
+    </joint>
+    <joint name="${prefix}joint_3" type="revolute">
+      <parent link="${prefix}link_2"/>
+      <child link="${prefix}link_3"/>
+      <origin rpy="-0.0 0.0 0.0" xyz="0.0 0.0 0.1845"/>
+      <axis xyz="0.0 0.0 1.0"/>
+      <limit effort="99" lower="-2.67035" upper="2.67035" velocity="6.283"/>
+    </joint>
+    <joint name="${prefix}joint_4" type="revolute">
+      <parent link="${prefix}link_3"/>
+      <child link="${prefix}link_4"/>
+      <origin rpy="-0.0 0.0 0.0" xyz="0.0 0.0 0.2155"/>
+      <axis xyz="0.0 -1.0 0.0"/>
+      <limit effort="99" lower="-1.8849" upper="1.8849" velocity="6.283"/>
+    </joint>
+    <joint name="${prefix}joint_5" type="revolute">
+      <parent link="${prefix}link_4"/>
+      <child link="${prefix}link_5"/>
+      <origin rpy="-0.0 0.0 0.0" xyz="0.0 0.0 0.1845"/>
+      <axis xyz="0.0 0.0 1.0"/>
+      <limit effort="99" lower="-2.67035" upper="2.67035" velocity="6.283"/>
+    </joint>
+    <joint name="${prefix}joint_6" type="revolute">
+      <parent link="${prefix}link_5"/>
+      <child link="${prefix}link_6"/>
+      <origin rpy="-0.0 0.0 0.0" xyz="0.0 0.0 0.2155"/>
+      <axis xyz="0.0 1.0 0.0"/>
+      <limit effort="36" lower="-1.8849" upper="1.8849" velocity="6.283"/>
+    </joint>
+    <joint name="${prefix}joint_7" type="revolute">
+      <parent link="${prefix}link_6"/>
+      <child link="${prefix}link_7"/>
+      <origin rpy="-0.0 0.0 0.0" xyz="0.0 0.0 0.081"/>
+      <axis xyz="0.0 0.0 1.0"/>
+      <limit effort="36" lower="-2.74889" upper="2.74889" velocity="6.283"/>
+    </joint>
+    <!-- ROS-Industrial 'base' frame - equivalent of 'KUKA ROBROOT'-->
+    <link name="${prefix}base"/>
+    <joint name="${prefix}base_link-base" type="fixed">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <parent link="${prefix}base_link"/>
+      <child link="${prefix}base"/>
+    </joint>
+    <!-- ROS-Industrial 'flange' frame - attachment point for EEF models -->
+    <link name="${prefix}flange"/>
+    <joint name="${prefix}link7-flange" type="fixed">
+      <parent link="${prefix}link_7"/>
+      <child link="${prefix}flange"/>
+      <origin rpy="-0.0 0.0 0.0" xyz="0.0 0.0 0.071"/>
+    </joint>
+    <!-- ROS-Industrial 'tool0' frame - all-zeros tool frame -->
+    <link name="${prefix}tool0"/>
+    <joint name="${prefix}link7-tool0" type="fixed">
+      <parent link="${prefix}link_7"/>
+      <child link="${prefix}tool0"/>
+      <origin rpy="-0.0 0.0 0.0" xyz="0.0 0.0 0.071"/>
+    </joint>
+  </xacro:macro>
+</robot>

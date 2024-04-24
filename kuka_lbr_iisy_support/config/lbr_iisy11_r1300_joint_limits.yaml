@@ -1,0 +1,44 @@
+# joint_limits.yaml allows the dynamics properties specified in the URDF to be overwritten or augmented as needed
+# Specific joint properties can be changed with the keys [max_position, min_position, max_velocity, max_acceleration, max_jerk]
+# Joint limits can be turned off with [has_velocity_limits, has_acceleration_limits]
+
+# Easiest way to slow down the robot is to decrease the velocity and acceleration scaling factors
+default_velocity_scaling_factor: 1.0
+default_acceleration_scaling_factor: 1.0
+joint_limits:
+  joint_1:
+    has_velocity_limits: true
+    max_velocity: 3.490656
+    has_acceleration_limits: true
+    max_acceleration: 11.089258
+    has_jerk: false
+  joint_2:
+    has_velocity_limits: true
+    max_velocity: 3.490656
+    has_acceleration_limits: true
+    max_acceleration: 1.105824
+    has_jerk: false
+  joint_3:
+    has_velocity_limits: true
+    max_velocity: 3.490656
+    has_acceleration_limits: true
+    max_acceleration: 1.836823
+    has_jerk: false
+  joint_4:
+    has_velocity_limits: true
+    max_velocity: 4.014255
+    has_acceleration_limits: true
+    max_acceleration: 40.248068
+    has_jerk: false
+  joint_5:
+    has_velocity_limits: true
+    max_velocity: 4.537856
+    has_acceleration_limits: true
+    max_acceleration: 43.739157
+    has_jerk: false
+  joint_6:
+    has_velocity_limits: true
+    max_velocity: 7.504909
+    has_acceleration_limits: true
+    max_acceleration: 134.647432
+    has_jerk: false

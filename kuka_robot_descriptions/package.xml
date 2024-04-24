@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>kuka_robot_descriptions</name>
+  <version>0.9.0</version>
+  <description>Robot descriptions and moveit configurations for KUKA robots</description>
+  <maintainer email="svastits1@gmail.com">Aron Svastits</maintainer>
+  <license>Apache-2.0</license>
+  <url type="bugtracker">https://github.com/kroshu/kuka_robot_descriptions/issues</url>
+  <url type="repository">https://github.com/kroshu/kuka_robot_descriptions</url>
+  <buildtool_depend>ament_cmake</buildtool_depend>
+  <exec_depend>kuka_agilus_support</exec_depend>
+  <exec_depend>kuka_cybertech_support</exec_depend>
+  <exec_depend>kuka_fortec_support</exec_depend>
+  <exec_depend>kuka_iontec_support</exec_depend>
+  <exec_depend>kuka_kr_moveit_config</exec_depend>
+  <exec_depend>kuka_lbr_iisy_moveit_config</exec_depend>
+  <exec_depend>kuka_lbr_iisy_support</exec_depend>
+  <exec_depend>kuka_lbr_iiwa_moveit_config</exec_depend>
+  <exec_depend>kuka_lbr_iiwa_support</exec_depend>
+  <exec_depend>kuka_mock_hardware_interface</exec_depend>
+  <exec_depend>kuka_quantec_support</exec_depend>
+  <exec_depend>kuka_resources</exec_depend>
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>

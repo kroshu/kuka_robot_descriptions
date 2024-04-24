@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="kr6_r900_sixx">
+  <!-- Import urdf file  -->
+  <xacro:include filename="$(find kuka_agilus_support)/urdf/kr6_r900_sixx_macro.xacro"/>
+  <!-- Read additional arguments  -->
+  <xacro:arg name="use_fake_hardware" default="false"/>
+  <xacro:arg name="roundtrip_time" default="0"/>
+  <xacro:arg name="client_ip" default="0.0.0.0"/>
+  <xacro:arg name="client_port" default="59152"/>
+  <xacro:arg name="prefix" default=""/>
+  <xacro:arg name="x" default="0"/>
+  <xacro:arg name="y" default="0"/>
+  <xacro:arg name="z" default="0"/>
+  <xacro:arg name="roll" default="0"/>
+  <xacro:arg name="pitch" default="0"/>
+  <xacro:arg name="yaw" default="0"/>
+  <xacro:kuka_kr6_r900_sixx_robot client_ip="$(arg client_ip)" client_port="$(arg client_port)" prefix="$(arg prefix)" use_fake_hardware="$(arg use_fake_hardware)" roundtrip_time="$(arg roundtrip_time)">
+    <origin xyz="$(arg x) $(arg y) $(arg z)" rpy="$(arg roll) $(arg pitch) $(arg yaw)"/>
+  </xacro:kuka_kr6_r900_sixx_robot>
+</robot>
