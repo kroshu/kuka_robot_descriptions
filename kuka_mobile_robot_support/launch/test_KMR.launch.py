@@ -78,7 +78,7 @@ def generate_launch_description():
     #)
     
     robot_description_config = load_file(
-        'kuka_mobile_robot_support', 'urdf/DifferentialMR.urdf')
+        'kuka_mobile_robot_support', 'urdf/KUKA_MR.urdf.xacro')
     robot_description = {'robot_description': robot_description_config}
     print(robot_description_config)
     rviz_config_file = PathJoinSubstitution(
