@@ -1,47 +1,25 @@
 <?xml version="1.0"?>
-<!-- Basic differential drive mobile base -->
-<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="diffdrive_robot">
-  <xacro:arg name="prefix" default="" />
-<!-- Import diffbot urdf file  -->
+<!-- Basic KUKA mobile base -->
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="KUKA_MR">
+<!-- Import mrob urdf file  -->
   <!-- <xacro:include filename="$(find kuka_mobile_robot_support)/urdf/diffbot_kuka_macro.xacro" /> -->
   <xacro:include filename="$(find kuka_mobile_robot_support)/urdf/mrob_kuka_macro.xacro" />
 
-
-  <!-- Read parameters from eci_config  -->
-  <xacro:property name="eci_config" value="$(find kuka_rox_hw_interface)/config/eci_config.yaml" />
-  <xacro:property name="eci_config_dict" value="${xacro.load_yaml(eci_config)}"/>
-  <xacro:property name="control_mode" value="${eci_config_dict['robot_manager']['ros__parameters']['control_mode']}" />
-  <xacro:property name="client_ip" value="${eci_config_dict['robot_manager']['ros__parameters']['client_ip']}" />
-  <xacro:property name="controller_ip" value="${eci_config_dict['robot_manager']['ros__parameters']['controller_ip']}" />
-  
-  <!-- Read QoS profile parameters  -->
-  <xacro:property name="qos_config" value="$(find kuka_rox_hw_interface)/config/qos_profiles.yaml" />
-  <xacro:property name="qos_config_dict" value="${xacro.load_yaml(qos_config)}"/>
-  <xacro:property name="consequent_lost_packets" value="${qos_config_dict['rt_packet_loss_profile']['consequent_lost_packets']}" />
-  <xacro:property name="lost_packets_in_timeframe" value="${qos_config_dict['rt_packet_loss_profile']['lost_packets_in_timeframe']}" />
-  <xacro:property name="timeframe_ms" value="${qos_config_dict['rt_packet_loss_profile']['timeframe_ms']}" />
-
-  <!-- <xacro:diffbot_kuka_robot prefix=""
-                  client_ip="${client_ip}" 
-                  controller_ip="${controller_ip}" 
-                  control_mode="${control_mode}"
-                  consequent_lost_packets="${consequent_lost_packets}" 
-                  lost_packets_in_timeframe="${lost_packets_in_timeframe}" 
-                  timeframe_ms="${timeframe_ms}"/>  -->
-  
-  <!-- Read additional arguments  -->
-  <xacro:arg name="use_fake_hardware" default="false" />
+   <!-- Read additional arguments  -->
   <xacro:arg name="gazebo_sim" default="false" />
-
-  <xacro:mrob_kuka prefix=""
-                  client_ip="${client_ip}" 
-                  controller_ip="${controller_ip}" 
-                  control_mode="${control_mode}"
-                  consequent_lost_packets="${consequent_lost_packets}" 
-                  lost_packets_in_timeframe="${lost_packets_in_timeframe}" 
-                  timeframe_ms="${timeframe_ms}"
-                  use_fake_hardware="$(arg use_fake_hardware)"
-                  gazebo_sim="$(arg gazebo_sim)" />
-  
-
+  <xacro:arg name="prefix" default=""/>
+  <xacro:arg name="controller_ip" default="0.0.0.0"/>
+  <xacro:arg name="client_ip" default="0.0.0.0"/>
+  <xacro:arg name="use_fake_hardware" default="false"/>
+  <xacro:arg name="roundtrip_time" default="0"/>
+  <xacro:arg name="qos_config_file" default=""/>
+  <xacro:arg name="x" default="0"/>
+  <xacro:arg name="y" default="0"/>
+  <xacro:arg name="z" default="0"/>
+  <xacro:arg name="roll" default="0"/>
+  <xacro:arg name="pitch" default="0"/>
+  <xacro:arg name="yaw" default="0"/>
+  <xacro:mrob_kuka prefix="$(arg prefix)" controller_ip="$(arg controller_ip)" client_ip="$(arg client_ip)" use_fake_hardware="$(arg use_fake_hardware)" roundtrip_time="$(arg roundtrip_time)" qos_config_file="$(arg qos_config_file)">
+    <origin xyz="$(arg x) $(arg y) $(arg z)" rpy="$(arg roll) $(arg pitch) $(arg yaw)"/>
+  </xacro:mrob_kuka>
 </robot>

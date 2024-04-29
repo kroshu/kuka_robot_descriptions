@@ -4,21 +4,11 @@
   <xacro:include filename="$(find kuka_mobile_robot_support)/ros2_control/mrob_kuka.ros2_control.xacro" />
   <xacro:include filename="$(find kuka_resources)/urdf/common_materials.xacro"/>
   
-  <xacro:macro name="mrob_kuka" params="prefix client_ip controller_ip control_mode consequent_lost_packets lost_packets_in_timeframe timeframe_ms use_fake_hardware:=false gazebo_sim:=false">
+  <xacro:macro name="mrob_kuka" params="prefix controller_ip client_ip use_fake_hardware roundtrip_time qos_config_file *origin">
     <!-- ros2 control instance -->
-    <xacro:mrob_kuka_ros2_control
-      name="KUKA_MR" 
-      prefix="${prefix}"
-      client_ip="${client_ip}"
-      controller_ip="${controller_ip}"
-      control_mode="${control_mode}"
-      consequent_lost_packets="${consequent_lost_packets}"
-      lost_packets_in_timeframe="${lost_packets_in_timeframe}"
-      timeframe_ms="${timeframe_ms}" 
-      use_fake_hardware="${use_fake_hardware}"
-      gazebo_sim="${gazebo_sim}"/>
+    <xacro:mrob_kuka_ros2_control name="KUKA_MR" prefix="${prefix}" client_ip="${client_ip}" controller_ip="${controller_ip}" use_fake_hardware="${use_fake_hardware}" roundtrip_time="${roundtrip_time}" qos_config_file="${qos_config_file}"/>
 
-     <joint name="odom_joint" type="planar">
+     <joint name="odom_joint" type="fixed">
             <axis xyz="0.0 1.0 0.0"/>
             <parent link="odom" />
             <child link="generic_mr_body_dummy" />
