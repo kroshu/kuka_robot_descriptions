@@ -19,8 +19,9 @@ jobs:
     - name: Run Xacro Command
       run: |
         source /opt/ros/humble/setup.bash
-        sudo apt update
-        sudo apt install python3-colcon-common-extensions xacro
+        apt update
+        apt list ros-humble-ros-core
+        apt install python3-colcon-common-extensions xacro
         colcon build
         xacro src/kuka_robot_descriptions/kuka_cybertech_support/urdf/kr16_r2010_2.urdf.xacro > tmp.urdf
       shell: bash
