@@ -24,6 +24,8 @@ jobs:
         apt install -y python3-colcon-common-extensions ros-humble-xacro
         colcon build --packages-select kuka_resources kuka_cybertech_support
         ls -l /__w/kuka_robot_descriptions
+        ls -l /__w
+        source /__w/install/setup.bash
         xacro /__w/kuka_robot_descriptions/kuka_robot_descriptions/kuka_cybertech_support/urdf/kr16_r2010_2.urdf.xacro > tmp.urdf
       shell: bash
 
