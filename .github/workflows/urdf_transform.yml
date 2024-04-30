@@ -11,7 +11,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     container:
-      image: ros:humble-ros-core
+      image: ros:humble-ros-base
     steps:
     - name: Check out repository
       uses: actions/checkout@v2
@@ -21,7 +21,7 @@ jobs:
         source /opt/ros/humble/setup.bash
         apt update
         apt list ros-humble-ros-core
-        apt install python3-colcon-common-extensions ros-humble-xacro
+        apt install -y python3-colcon-common-extensions ros-humble-xacro
         colcon build
         xacro src/kuka_robot_descriptions/kuka_cybertech_support/urdf/kr16_r2010_2.urdf.xacro > tmp.urdf
       shell: bash
