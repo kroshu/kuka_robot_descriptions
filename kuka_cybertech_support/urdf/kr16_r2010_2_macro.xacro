@@ -9,9 +9,9 @@
     <link name="${prefix}base_link">
       <collision>
         <geometry>
-          <mesh filename="package://kuka_cybertech_support/meshes/kr16_r2010_2/collision/base_link.stl"/>
+          <box size="0.6545662432909012 0.37630656361579895 0.28446903824806224"/>
         </geometry>
-        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
+        <origin rpy="0.0 0.0 0.0" xyz="-0.1380831003189087 0.0 0.14223451912403107"/>
       </collision>
       <inertial>
         <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0"/>
@@ -28,9 +28,9 @@
     <link name="${prefix}link_1">
       <collision>
         <geometry>
-          <mesh filename="package://kuka_cybertech_support/meshes/kr16_r2010_2/collision/link_1.stl"/>
+          <box size="0.4838663190603256 0.5623050630092621 0.4337000250816345"/>
         </geometry>
-        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
+        <origin rpy="0.0 0.0 0.0" xyz="0.0559331551194191 -0.0335475318133831 -0.47484999895095825"/>
       </collision>
       <inertial>
         <inertia ixx="9.85967888" ixy="0.0" ixz="0.0" iyy="0.91499458" iyz="0.0" izz="10.23026596"/>
@@ -47,9 +47,9 @@
     <link name="${prefix}link_2">
       <collision>
         <geometry>
-          <mesh filename="package://kuka_cybertech_support/meshes/kr16_r2010_2/collision/link_2.stl"/>
+           <box size="1.2043238580226898 0.2157236412167549 0.18066882342100143" />
         </geometry>
-        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
+        <origin rpy="-0.0 0.0 -0.0" xyz="0.4583 -0.0005 -0.1718"/>
       </collision>
       <inertial>
         <inertia ixx="0.34836069" ixy="0.0" ixz="0.0" iyy="1.0268737" iyz="0.0" izz="1.13887402"/>
@@ -66,9 +66,9 @@
     <link name="${prefix}link_3">
       <collision>
         <geometry>
-          <mesh filename="package://kuka_cybertech_support/meshes/kr16_r2010_2/collision/link_3.stl"/>
+          <box size="0.3508647680282593 0.5482000410556793 0.509911298751831"/>
         </geometry>
-        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
+        <origin rpy="0.0 0.0 0.0" xyz="0.04656773805618286 0.03590010106563568 -0.021755695343017578"/>
       </collision>
       <inertial>
         <inertia ixx="0.64549911" ixy="0.0" ixz="0.0" iyy="0.04236472" iyz="0.0" izz="0.6665241"/>
@@ -85,9 +85,9 @@
     <link name="${prefix}link_4">
       <collision>
         <geometry>
-          <mesh filename="package://kuka_cybertech_support/meshes/kr16_r2010_2/collision/link_4.stl"/>
+          <box size="0.1380000114440918 0.16130001097917557 0.6190000772476196"/>
         </geometry>
-        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
+        <origin rpy="0.0 0.0 0.0" xyz="1.1920928955078125e-07 0.011649999767541885 -0.6095001101493835"/>
       </collision>
       <inertial>
         <inertia ixx="0.64549911" ixy="0.0" ixz="0.0" iyy="0.04236472" iyz="0.0" izz="0.6665241"/>
@@ -104,9 +104,9 @@
     <link name="${prefix}link_5">
       <collision>
         <geometry>
-          <mesh filename="package://kuka_cybertech_support/meshes/kr16_r2010_2/collision/link_5.stl"/>
+          <box size="0.11500000953674316 0.20200002193450928 0.2007358893752098"/>
         </geometry>
-        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
+        <origin rpy="0.0 0.0 0.0" xyz="1.1920928955078125e-07 0.04350012540817261 0.007631983608007431"/>
       </collision>
       <inertial>
         <inertia ixx="1.0E-8" ixy="0.0" ixz="0.0" iyy="1.0E-8" iyz="0.0" izz="1.0E-8"/>
@@ -123,9 +123,9 @@
     <link name="${prefix}link_6">
       <collision>
         <geometry>
-          <mesh filename="package://kuka_cybertech_support/meshes/kr16_r2010_2/collision/link_6.stl"/>
+          <box size="0.06693124771118164 0.06696557998657227 0.0140000581741333"/>
         </geometry>
-        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
+        <origin rpy="0.0 0.0 0.0" xyz="-3.4332275390625e-05 0.0 -0.1460002064704895"/>
       </collision>
       <inertial>
         <inertia ixx="1.0E-8" ixy="0.0" ixz="0.0" iyy="1.0E-8" iyz="0.0" izz="1.0E-8"/>
