@@ -21,6 +21,7 @@ jobs:
         source /opt/ros/humble/setup.bash
         colcon build
         xacro src/kuka_robot_descriptions/kuka_cybertech_support/urdf/kr16_r2010_2.urdf.xacro > tmp.urdf
+      shell: bash
 
     - name: Upload URDF as artifact
       uses: actions/upload-artifact@v2
