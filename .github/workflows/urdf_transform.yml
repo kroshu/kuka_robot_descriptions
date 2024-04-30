@@ -15,19 +15,21 @@ jobs:
     steps:
     - name: Check out repository
       uses: actions/checkout@v2
+      with:
+        path: src
 
     - name: Run Xacro Command
       run: |
         source /opt/ros/humble/setup.bash
         apt update
-        apt list ros-humble-ros-core
-        apt install -y python3-colcon-common-extensions ros-humble-xacro
+        apt install -y ros-humble-xacro
         colcon build --packages-select kuka_resources kuka_cybertech_support
-        ls -l /__w/kuka_robot_descriptions
         ls -l /__w
+        ls -l /__w/src
         source /__w/install/setup.bash
-        xacro /__w/kuka_robot_descriptions/kuka_robot_descriptions/kuka_cybertech_support/urdf/kr16_r2010_2.urdf.xacro > tmp.urdf
+        xacro kuka_robot_descriptions/kuka_robot_descriptions/kuka_cybertech_support/urdf/kr16_r2010_2.urdf.xacro > tmp.urdf
       shell: bash
+      working-directory: /__w
 
     - name: Upload URDF as artifact
       uses: actions/upload-artifact@v2
