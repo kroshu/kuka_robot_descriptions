@@ -1,0 +1,29 @@
+name: URDF transform
+on:
+  push:
+    branches:
+      - '**'
+  pull_request:
+    branches:
+      - '**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: ros-humble-ros-base:latest
+    steps:
+    - name: Check out repository
+      uses: actions/checkout@v2
+
+    - name: Run Xacro Command
+      run: |
+        source /opt/ros/humble/setup.bash
+        colcon build
+        xacro src/kuka_robot_descriptions/kuka_cybertech_support/urdf/kr16_r2010_2.urdf.xacro > tmp.urdf
+
+    - name: Upload URDF as artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: urdf-artifact
+        path: tmp.urdf
