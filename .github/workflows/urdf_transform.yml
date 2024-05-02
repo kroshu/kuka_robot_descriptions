@@ -44,7 +44,7 @@ jobs:
           echo $file
           filename=$(basename -- "$file")
           filename="${filename%.*}"
-          xacro $file > urdf_out/${filename}.urdf
+          xacro --inorder $file use_fake_hardware:=true > urdf_out/${filename}.urdf
         done
       shell: bash
 
