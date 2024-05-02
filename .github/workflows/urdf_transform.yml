@@ -36,4 +36,4 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: urdf-artifact
-        path: tmp.urdf
+        path: /__w/tmp.urdf
