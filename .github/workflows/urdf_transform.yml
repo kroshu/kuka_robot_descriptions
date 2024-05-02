@@ -33,15 +33,27 @@ jobs:
         colcon build --packages-ignore kuka_mock_hardware_interface kuka_kr_moveit_config kuka_lbr_iisy_moveit_config kuka_lbr_iiwa_moveit_config 
       shell: bash
 
+    - name: List .urdf.xacro files
+      id: list_files
+      run: |
+        files=$(find src -name "*.urdf.xacro")
+        echo "::set-output name=files::$files"
+
     - name: Generate URDF files
       run: |
         source /opt/ros/humble/setup.bash
         source install/setup.bash
-        xacro src/kuka_robot_descriptions/kuka_cybertech_support/urdf/kr16_r2010_2.urdf.xacro > tmp.urdf
+        mkdir -p urdf_out
+        for file in ${{ steps.list_files.outputs.files }}
+        do
+          filename=$(basename -- "$file")
+          filename="${filename%.*}"
+          xacro $file > urdf_out/${filename}.urdf
+        done      
       shell: bash
 
-    - name: Upload URDF as artifact
+    - name: Upload URDF output directory as artifact
       uses: actions/upload-artifact@v2
       with:
         name: urdf-artifact
-        path: /__w/tmp.urdf
+        path: urdf_out
