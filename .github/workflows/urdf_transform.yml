@@ -45,13 +45,13 @@ jobs:
         source install/setup.bash
         mkdir -p urdf_out
         echo ${{ steps.list_files.outputs.files }}
-        for file in ${{ steps.list_files.outputs.files }}
+        echo "${{ steps.list_files.outputs.files }}" | while read file
         do
           echo $file
           filename=$(basename -- "$file")
           filename="${filename%.*}"
           xacro $file > urdf_out/${filename}.urdf
-        done      
+        done    
       shell: bash
 
     - name: Upload URDF output directory as artifact
