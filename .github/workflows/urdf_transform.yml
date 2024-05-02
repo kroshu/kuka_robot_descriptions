@@ -44,9 +44,10 @@ jobs:
         source /opt/ros/humble/setup.bash
         source install/setup.bash
         mkdir -p urdf_out
+        echo ${{ steps.list_files.outputs.files }}
         for file in ${{ steps.list_files.outputs.files }}
         do
-          echo file
+          echo $file
           filename=$(basename -- "$file")
           filename="${filename%.*}"
           xacro $file > urdf_out/${filename}.urdf
