@@ -46,6 +46,7 @@ jobs:
         mkdir -p urdf_out
         for file in ${{ steps.list_files.outputs.files }}
         do
+          echo file
           filename=$(basename -- "$file")
           filename="${filename%.*}"
           xacro $file > urdf_out/${filename}.urdf
