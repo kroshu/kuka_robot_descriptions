@@ -15,21 +15,19 @@ jobs:
     steps:
     - name: Check out repository
       uses: actions/checkout@v2
-      with:
-        path: src
 
-    - name: Run Xacro Command
+    - name: Set up colcon
       run: |
-        source /opt/ros/humble/setup.bash
         apt update
         apt install -y ros-humble-xacro
+
+    - name: Build workspace and generate URDF
+      run: |
+        source /opt/ros/humble/setup.bash
         colcon build --packages-select kuka_resources kuka_cybertech_support
-        ls -l /__w
-        ls -l /__w/src
         source /__w/install/setup.bash
         xacro kuka_robot_descriptions/kuka_robot_descriptions/kuka_cybertech_support/urdf/kr16_r2010_2.urdf.xacro > tmp.urdf
       shell: bash
-      working-directory: /__w
 
     - name: Upload URDF as artifact
       uses: actions/upload-artifact@v2
