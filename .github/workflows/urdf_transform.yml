@@ -34,18 +34,17 @@ jobs:
       shell: bash
 
     - name: List .urdf.xacro files
-      id: list_files
       run: |
         files=$(find src -name "*.urdf.xacro")
-        echo "::set-output name=files::$files"
+        echo $files
+        echo "files=$files" >> $GITHUB_OUTPUT
 
     - name: Generate URDF files
       run: |
         source /opt/ros/humble/setup.bash
         source install/setup.bash
         mkdir -p urdf_out
-        echo ${{ steps.list_files.outputs.files }}
-        echo "${{ steps.list_files.outputs.files }}" | while read file
+        for file in $files
         do
           echo $file
           filename=$(basename -- "$file")
