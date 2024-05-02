@@ -18,7 +18,7 @@ jobs:
       run: mkdir -p /github/home/ws/src
 
     - name: Check out repository
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
       with:
         path: src/kuka_robot_descriptions
 
@@ -44,12 +44,12 @@ jobs:
           echo $file
           filename=$(basename -- "$file")
           filename="${filename%.*}"
-          xacro --inorder $file use_fake_hardware:=true > urdf_out/${filename}.urdf
+          xacro $file use_fake_hardware:=true > urdf_out/${filename}
         done
       shell: bash
 
     - name: Upload URDF output directory as artifact
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
         name: urdf-artifact
         path: urdf_out
