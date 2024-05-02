@@ -26,6 +26,7 @@ jobs:
       run: |
         apt update
         apt install -y ros-humble-xacro
+        python3 -m pip install --upgrade pip
         python3 -m pip install lxml
 
     - name: Build support packages
