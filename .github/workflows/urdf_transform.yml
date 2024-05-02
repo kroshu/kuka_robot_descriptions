@@ -26,7 +26,7 @@ jobs:
       run: |
         apt update
         apt install -y ros-humble-xacro
-        python -m pip install lxml
+        python3 -m pip install lxml
 
     - name: Build support packages
       run: |
@@ -51,7 +51,7 @@ jobs:
     - name: Remove ros2_control and visual tags
       run: |
         for file in urdf_out/*.urdf; do
-          python src/kuka_robot_descriptions/.github/scripts/modify_urdf.py "$file"
+          python3 src/kuka_robot_descriptions/.github/scripts/modify_urdf.py "$file"
         done
 
     - name: Upload URDF output directory as artifact
