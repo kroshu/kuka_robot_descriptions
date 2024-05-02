@@ -46,6 +46,7 @@ jobs:
           filename="${filename%.*}"
           xacro $file > urdf_out/${filename}.urdf
         done
+      shell: bash
 
     - name: Upload URDF output directory as artifact
       uses: actions/upload-artifact@v2
