@@ -12,10 +12,10 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: ros:humble-ros-base
-      options: --workdir $HOME/ws
+      options: --workdir /github/home/ws
     steps:
     - name: Create working directory
-      run: mkdir -p $HOME/ws/src
+      run: mkdir -p /github/home/ws/src
 
     - name: Check out repository
       uses: actions/checkout@v2
