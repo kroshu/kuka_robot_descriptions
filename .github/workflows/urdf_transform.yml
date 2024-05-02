@@ -36,7 +36,7 @@ jobs:
     - name: List .urdf.xacro files
       run: |
         files=$(find src -name "*.urdf.xacro")
-        echo $files
+        mkdir -p urdf_out
         for file in $files
         do
           echo $file
