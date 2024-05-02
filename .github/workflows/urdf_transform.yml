@@ -25,6 +25,8 @@ jobs:
       run: |
         source /opt/ros/humble/setup.bash
         colcon build --packages-select kuka_resources kuka_cybertech_support
+        ls -l /__w
+        ls -l /__w/install
         source /__w/install/setup.bash
         xacro kuka_robot_descriptions/kuka_robot_descriptions/kuka_cybertech_support/urdf/kr16_r2010_2.urdf.xacro > tmp.urdf
       shell: bash
