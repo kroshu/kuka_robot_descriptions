@@ -22,10 +22,16 @@ jobs:
       with:
         path: src/kuka_robot_descriptions
 
-    - name: Install colcon
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+
+    - name: Install colcon and lxml
       run: |
         apt update
         apt install -y ros-humble-xacro
+        pip install lxml
 
     - name: Build support packages
       run: |
@@ -46,6 +52,12 @@ jobs:
           xacro $file use_fake_hardware:=true > urdf_out/${filename}
         done
       shell: bash
+
+    - name: Remove ros2_control and visual tags
+      run: |
+        for file in urdf_out/*.urdf; do
+          python src/kuka_robot_descriptions/.github/scripts/modify_urdf.py "$file"
+        done
 
     - name: Upload URDF output directory as artifact
       uses: actions/upload-artifact@v4
