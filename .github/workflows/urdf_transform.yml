@@ -37,21 +37,27 @@ jobs:
       run: |
         files=$(find src -name "*.urdf.xacro")
         echo $files
-        echo "files=$files" >> $GITHUB_OUTPUT
-
-    - name: Generate URDF files
-      run: |
-        source /opt/ros/humble/setup.bash
-        source install/setup.bash
-        mkdir -p urdf_out
         for file in $files
         do
           echo $file
           filename=$(basename -- "$file")
           filename="${filename%.*}"
           xacro $file > urdf_out/${filename}.urdf
-        done    
-      shell: bash
+        done
+
+    # - name: Generate URDF files
+    #   run: |
+    #     source /opt/ros/humble/setup.bash
+    #     source install/setup.bash
+    #     mkdir -p urdf_out
+    #     for file in $files
+    #     do
+    #       echo $file
+    #       filename=$(basename -- "$file")
+    #       filename="${filename%.*}"
+    #       xacro $file > urdf_out/${filename}.urdf
+    #     done    
+    #   shell: bash
 
     - name: Upload URDF output directory as artifact
       uses: actions/upload-artifact@v2
