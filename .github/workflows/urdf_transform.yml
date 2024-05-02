@@ -25,8 +25,7 @@ jobs:
     - name: Install colcon and lxml
       run: |
         apt update
-        apt install -y ros-humble-xacro
-        python3 get-pip.py
+        apt install -y ros-humble-xacro python3-pip
         python3 -m pip install lxml
 
     - name: Build support packages
