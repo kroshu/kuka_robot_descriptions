@@ -23,10 +23,14 @@ def remove_tags(urdf_file):
     for link in root.findall('.//link'):
         # Find the visual tag
         visual_tag = link.find('visual')
+
+        # Skip links without visual tag
+        if visual_tag is None:
+            continue
         # Find the mesh tag within the visual tag
         mesh_tag = visual_tag.find('.//mesh')
         # Get the filename attribute
-        filename = repo_root + mesh_tag.get('filename').replace("package://", "", 1)
+        filename = repo_root + "/" + mesh_tag.get('filename').replace("package://", "", 1)
         # Find the origin tag within the visual tag
         origin_tag = visual_tag.find('.//origin')
 
@@ -48,12 +52,14 @@ def remove_tags(urdf_file):
         # Set the size attribute of the box tag
         box_tag.set('size', ' '.join(map(str, size)))
         # Replace the mesh tag with the box tag
-        geometry_tag.replace(mesh_tag, box_tag)
+        index = list(geometry_tag).index(mesh_tag)
+        geometry_tag[index] = box_tag
 
         # TODO: modify origin tag
 
     # Write the modified tree back to the file
-    tree.write(urdf_file)
+    ET.indent(tree, space="  ", level=0)
+    tree.write(urdf_file, encoding="utf-8")
 
 
 def calc_bounding_box(file_path, xyz, rpy):
