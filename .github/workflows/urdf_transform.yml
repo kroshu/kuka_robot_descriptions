@@ -22,7 +22,7 @@ jobs:
       with:
         path: src/kuka_robot_descriptions
 
-    - name: Install colcon and lxml
+    - name: Install colcon, lxml and blender python module dependencies
       run: |
         apt update
         apt install -y ros-humble-xacro python3-pip libxxf86vm-dev libxfixes-dev libxi-dev libxrandr-dev libxinerama-dev libegl-dev libxkbcommon-dev
@@ -48,7 +48,7 @@ jobs:
         done
       shell: bash
 
-    - name: Remove ros2_control and visual tags
+    - name: Generate URDF without mesh files and ros2_control tag
       run: |
         for file in urdf_out/*.urdf; do
           python3 src/kuka_robot_descriptions/.github/scripts/modify_urdf.py "$file"

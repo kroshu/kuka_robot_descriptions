@@ -12,7 +12,7 @@ def remove_tags(urdf_file):
 
     # Get the absolute path of the URDF file
     abs_path = os.path.abspath(urdf_file)
-    index = abs_path.find('kuka_robot_descriptions')
+    index = abs_path.rfind('kuka_robot_descriptions')
     repo_root = abs_path[:index + len('kuka_robot_descriptions')]
 
     # Find the ros2_control tag and remove it
