@@ -31,7 +31,6 @@ def remove_tags(urdf_file):
         mesh_tag = visual_tag.find('.//mesh')
         # Get the filename attribute
         filename = workspace + "/src/kuka_robot_descriptions/" + mesh_tag.get('filename').replace("package://", "", 1)
-        print(filename)
         # Find the origin tag within the visual tag
         origin_tag = visual_tag.find('.//origin')
 
