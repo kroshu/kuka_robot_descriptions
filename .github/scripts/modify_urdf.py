@@ -12,10 +12,8 @@ def remove_tags(urdf_file):
 
     # Get the absolute path of the URDF file
     abs_path = os.path.abspath(urdf_file)
-    print(abs_path)
     index = abs_path.rfind('kuka_robot_descriptions')
-    repo_root = abs_path[:index + len('kuka_robot_descriptions')]
-    print(repo_root)
+    workspace = abs_path[:index + len('kuka_robot_descriptions')]
 
     # Find the ros2_control tag and remove it
     for ros2_control in root.findall('ros2_control'):
@@ -32,7 +30,7 @@ def remove_tags(urdf_file):
         # Find the mesh tag within the visual tag
         mesh_tag = visual_tag.find('.//mesh')
         # Get the filename attribute
-        filename = repo_root + "/" + mesh_tag.get('filename').replace("package://", "", 1)
+        filename = workspace + "/src/kuka_robot_descriptions/" + mesh_tag.get('filename').replace("package://", "", 1)
         print(filename)
         # Find the origin tag within the visual tag
         origin_tag = visual_tag.find('.//origin')
