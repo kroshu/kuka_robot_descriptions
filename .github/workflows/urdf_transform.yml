@@ -26,7 +26,7 @@ jobs:
       run: |
         apt update
         apt install -y ros-humble-xacro python3-pip
-        python3 -m pip install lxml
+        python3 -m pip install lxml bpy mathutils
 
     - name: Build support packages
       run: |
