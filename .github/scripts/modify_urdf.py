@@ -2,18 +2,15 @@ import xml.etree.ElementTree as ET
 import sys
 import bpy
 import os
-from mathutils import Vector
+from mathutils import Vector, Matrix
+from ament_index_python.packages import get_package_share_directory
+
 
 
 def remove_tags(urdf_file):
     # Parse the URDF file
     tree = ET.parse(urdf_file)
     root = tree.getroot()
-
-    # Get the absolute path of the URDF file
-    abs_path = os.path.abspath(urdf_file)
-    index = abs_path.rfind('kuka_robot_descriptions')
-    workspace = abs_path[:index + len('kuka_robot_descriptions')]
 
     # Find the ros2_control tag and remove it
     for ros2_control in root.findall('ros2_control'):
@@ -30,18 +27,25 @@ def remove_tags(urdf_file):
         # Find the mesh tag within the visual tag
         mesh_tag = visual_tag.find('.//mesh')
         # Get the filename attribute
-        filename = workspace + "/src/kuka_robot_descriptions/" + mesh_tag.get('filename').replace("package://", "", 1)
+        # Extract the package name and relative file path from the input string
+        package_name, relative_file_path = mesh_tag.get('filename').split("://")[1].split("/", 1)
+
+        # Get the package share directory
+        package_share_directory = get_package_share_directory(package_name)
+
+        # Combine the package share directory with the relative file path to get the absolute path
+        mesh_file = os.path.join(package_share_directory, relative_file_path)
         # Find the origin tag within the visual tag
         origin_tag = visual_tag.find('.//origin')
 
         # Get the coordinates
-        xyz = origin_tag.get('xyz')
-        rpy = origin_tag.get('rpy')
+        xyz = Vector(list(map(float, origin_tag.get('xyz').split())))
+        rpy = Vector(list(map(float, origin_tag.get('rpy').split())))
 
         # Remove the visual attribute
         link.remove(visual_tag)
 
-        origin, size = calc_bounding_box(filename, xyz, rpy)
+        origin, size = calc_bounding_box(mesh_file, xyz, rpy)
 
         collision_tag = visual_tag = link.find('collision')
         geometry_tag = collision_tag.find('geometry')
@@ -106,6 +110,17 @@ def calc_bounding_box(file_path, xyz, rpy):
 
     # Calculate the size of the bounding box
     bbox_size = [max(corner[i] for corner in bbox_corners) - min(corner[i] for corner in bbox_corners) for i in range(3)]
+
+    # Convert the original rotation from RPY to a rotation matrix
+    rotation_matrix = Matrix.Rotation(rpy.x, 3, 'X') @ \
+                    Matrix.Rotation(rpy.y, 3, 'Y') @ \
+                    Matrix.Rotation(rpy.z, 3, 'Z')
+
+    # Rotate the new translation by the original rotation
+    rotated_new_translation = rotation_matrix @ bbox_center
+
+    # Add the rotated new translation to the original translation
+    bbox_center = xyz + rotated_new_translation
 
     return bbox_center, bbox_size
 
