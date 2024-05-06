@@ -34,7 +34,7 @@ jobs:
     - name: Build support packages
       run: |
         source /opt/ros/humble/setup.bash
-        colcon build --packages-ignore kuka_mock_hardware_interface kuka_kr_moveit_config kuka_lbr_iisy_moveit_config kuka_lbr_iiwa_moveit_config 
+        colcon build --packages-ignore kuka_mock_hardware_interface kuka_kr_moveit_config kuka_lbr_iisy_moveit_config kuka_lbr_iiwa_moveit_config
       shell: bash
 
     - name: List .urdf.xacro files and generate .urdf-s
