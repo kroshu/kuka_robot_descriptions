@@ -68,7 +68,7 @@ The support packages contain a joint limits file for every supported robot model
 
 ### Extending the models
 
-In real applications, it's likely that the description will be more complex, involving multiple objects next to the robot and optionally end effectors. It is recommended to create a new, dedicated ROS2 package specifically for managing this extended description by copying and extending the base robot model.
+In real applications, it's likely that the description will be more complex, involving multiple objects next to the robot and optionally end effectors. It is recommended to create a new, dedicated ROS2 package specifically for managing this extended description by inlcuding the xacro of the the base robot model and extending it.
 
 Example of attaching an end effector (with link name `eef_base_link`) to the `flange` frame, which could be defined in a different xacro file:
 ```xml
@@ -81,7 +81,7 @@ Example of attaching an end effector (with link name `eef_base_link`) to the `fl
 
 ## What data is verified?
 
-Some of the data in the xacros might not be valid or missing, the following table shows what can be considered valid.
+The following table shows what data is included for each robot in the support packages:
 
 |Robot name | Robot family | Transformations | Joint position limits | Joint velocity limits | Joint effort limits | Inertial values | Simplified collision meshes|
 |---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
