@@ -72,7 +72,7 @@ The support packages contain a joint limits file for every supported robot model
 
 ### Extending the models
 
-In real applications, it's likely that the description will be more complex, involving multiple objects next to the robot and optionally end effectors. It is recommended to create a new, dedicated ROS2 package specifically for managing this extended description by inlcuding the xacro of the the base robot model and extending it.
+In real applications, it's likely that the description will be more complex, involving multiple objects next to the robot and optionally end effectors. It is recommended to create a new, dedicated ROS2 package specifically for managing this extended description by including the xacro of the the base robot model and extending it.
 
 Example of attaching an end effector (with link name `eef_base_link`) to the `flange` frame, which could be defined in a different xacro file:
 ```xml
