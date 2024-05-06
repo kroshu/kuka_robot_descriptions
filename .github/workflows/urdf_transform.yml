@@ -24,6 +24,7 @@ jobs:
 
     - name: Install xacro, blender python module dependencies and python packages
       run: |
+        source /opt/ros/humble/setup.bash
         apt update
         apt install -y ros-humble-xacro python3-pip
         apt install -y libxxf86vm-dev libxfixes-dev libxi-dev libxrandr-dev libxinerama-dev libegl-dev libxkbcommon-dev
