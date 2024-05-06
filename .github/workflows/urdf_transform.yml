@@ -53,9 +53,12 @@ jobs:
 
     - name: Generate URDF without mesh files and ros2_control tag
       run: |
+        source /opt/ros/humble/setup.bash
+        source install/setup.bash
         for file in urdf_out/*.urdf; do
           python3 src/kuka_robot_descriptions/.github/scripts/modify_urdf.py "$file"
         done
+      shell: bash
 
     - name: Upload URDF output directory as artifact
       uses: actions/upload-artifact@v4
