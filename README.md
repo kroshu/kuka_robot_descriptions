@@ -11,8 +11,9 @@ Github CI
 - `kuka_resources` contains general, common files. It is copied from [kuka_experimental](https://github.com/ros-industrial/kuka_experimental) and is ported from ROS to ROS2.
 - `kuka_agilus_support` contains urdf, config and mesh files for KUKA Agilus robots, it is copied from [kuka_experimental](https://github.com/ros-industrial/kuka_experimental) and ported to ROS2.
 - `kuka_cybertech_support` contains urdf, config and mesh files for KUKA cybertech robots.
-- `kuka_quantec_support` contains urdf, config and mesh files for KUKA quantec robots.
 - `kuka_fortec_support` contains urdf, config and mesh files for KUKA fortec robots.
+- `kuka_iontec_support` contains urdf, config and mesh files for KUKA iontec robots.
+- `kuka_quantec_support` contains urdf, config and mesh files for KUKA quantec robots.
 - `kuka_kr_moveit_config` contains configuration files for KUKA KR robots necessary for planning with MoveIt.
 - `kuka_lbr_iisy_support` contains urdf, config and mesh files for KUKA iisy robots.
 - `kuka_lbr_iisy_moveit_config` contains configuration files for KUKA LBR iisy robots necessary for planning with MoveIt.
