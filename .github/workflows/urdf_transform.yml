@@ -25,7 +25,7 @@ jobs:
     - name: Install xacro, blender python module dependencies and python packages
       run: |
         apt update
-        apt install -y ros-humble-xacro python3-pip
+        apt install -y ros-humble-xacro ros-humble-urdfdom python3-pip
         apt install -y libxxf86vm-dev libxfixes-dev libxi-dev libxrandr-dev libxinerama-dev libegl-dev libxkbcommon-dev
         python3 -m pip install bpy mathutils
 
@@ -55,6 +55,14 @@ jobs:
         source install/setup.bash
         for file in urdf_out/*.urdf; do
           python3 src/kuka_robot_descriptions/.github/scripts/modify_urdf.py "$file"
+        done
+      shell: bash
+
+    - name: Check URDF validity
+      run: |
+        source /opt/ros/humble/setup.bash
+        for file in urdf_out/*.urdf; do
+          check_urdf "$file"
         done
       shell: bash
 
