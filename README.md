@@ -11,8 +11,9 @@ Github CI
 - `kuka_resources` contains general, common files. It is copied from [kuka_experimental](https://github.com/ros-industrial/kuka_experimental) and is ported from ROS to ROS2.
 - `kuka_agilus_support` contains urdf, config and mesh files for KUKA Agilus robots, it is copied from [kuka_experimental](https://github.com/ros-industrial/kuka_experimental) and ported to ROS2.
 - `kuka_cybertech_support` contains urdf, config and mesh files for KUKA cybertech robots.
-- `kuka_quantec_support` contains urdf, config and mesh files for KUKA quantec robots.
 - `kuka_fortec_support` contains urdf, config and mesh files for KUKA fortec robots.
+- `kuka_iontec_support` contains urdf, config and mesh files for KUKA iontec robots.
+- `kuka_quantec_support` contains urdf, config and mesh files for KUKA quantec robots.
 - `kuka_kr_moveit_config` contains configuration files for KUKA KR robots necessary for planning with MoveIt.
 - `kuka_lbr_iisy_support` contains urdf, config and mesh files for KUKA iisy robots.
 - `kuka_lbr_iisy_moveit_config` contains configuration files for KUKA LBR iisy robots necessary for planning with MoveIt.
@@ -59,6 +60,10 @@ To visualise the robot models, the launch files in the `launch` directory of the
 The frames of the main serial chain in the xacros (`base_link` to `link_6` or `link_7`) follow the Denavit–Hartenberg conventions of Khalil-Dombre.
 The other frames, which are added to conform to ROS-Industrial follow the conventions defined there: `base` and `tool0` are defined to be identical to the frames on the controller, while `flange` follows [REP-103](https://www.ros.org/reps/rep-0103.html#coordinate-frame-conventions), meaning that in default position x+ points forwards and z+ upwards.
 
+### Collision geometry
+
+Collision meshes are provided for the robots to speed up collision avoidance and detection calculations. These are automatically generated from the visual meshes using the Blender python API (remesh modifier) with fixed parameter values. This generation process will be fine-tuned in the future to further optimize collision calculations.
+
 
 ### Joint limit configurations
 
@@ -67,7 +72,7 @@ The support packages contain a joint limits file for every supported robot model
 
 ### Extending the models
 
-In real applications, it's likely that the description will be more complex, involving multiple objects next to the robot and optionally end effectors. It is recommended to create a new, dedicated ROS2 package specifically for managing this extended description by copying and extending the base robot model.
+In real applications, it's likely that the description will be more complex, involving multiple objects next to the robot and optionally end effectors. It is recommended to create a new, dedicated ROS2 package specifically for managing this extended description by including the xacro of the the base robot model and extending it.
 
 Example of attaching an end effector (with link name `eef_base_link`) to the `flange` frame, which could be defined in a different xacro file:
 ```xml
@@ -80,22 +85,22 @@ Example of attaching an end effector (with link name `eef_base_link`) to the `fl
 
 ## What data is verified?
 
-Some of the data in the xacros might not be valid or missing, the following table shows what can be considered valid.
+The following table shows what data is included for each robot in the support packages:
 
 |Robot name | Robot family | Transformations | Joint position limits | Joint velocity limits | Joint effort limits | Inertial values | Simplified collision meshes|
 |---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 |lbr_iisy3_r760| - | ✓ | ✓ | ✓ | ✓ | | ✓ |
 |lbr_iisy11_r1300| - | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
-|lbr_iisy15_r930| - | ✓ | ✓ | ✓ | ✓ | | |
-|lbr_iiwa14_r820| - | ✓ | ✓ | ✓ | | | |
+|lbr_iisy15_r930| - | ✓ | ✓ | ✓ | ✓ | | ✓ |
+|lbr_iiwa14_r820| - | ✓ | ✓ | ✓ | | | ✓ |
 |kr6_r700_sixx| agilus | ✓ | ✓ | ✓ | | | ✓ |
 |kr6_r900_sixx| agilus | ✓ | ✓ | ✓ | | | ✓ |
-|kr10_r1100_2| agilus | ✓ | ✓ | ✓ | ✓ | | |
-|kr16_r2010_2| cybertech | ✓ | ✓ | ✓ | ✓ | | |
+|kr10_r1100_2| agilus | ✓ | ✓ | ✓ | ✓ | | ✓ |
+|kr16_r2010_2| cybertech | ✓ | ✓ | ✓ | ✓ | | ✓ |
 |kr70_r2100| iontec | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
-|kr210_r2700_2| quantec | ✓ | ✓ | ✓ | ✓ | | |
-|kr210_r3100_2| quantec | ✓ | ✓ | ✓ | ✓ | | |
-|kr560_r3100_2| fortec | ✓ | ✓ | ✓ | ✓ | | ✓|
+|kr210_r2700_2| quantec | ✓ | ✓ | ✓ | ✓ | | ✓ |
+|kr210_r3100_2| quantec | ✓ | ✓ | ✓ | ✓ | | ✓ |
+|kr560_r3100_2| fortec | ✓ | ✓ | ✓ | ✓ | | ✓ |
 
 ## Custom mock hardware
 
