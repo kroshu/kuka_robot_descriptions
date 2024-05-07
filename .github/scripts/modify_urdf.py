@@ -60,11 +60,13 @@ def remove_tags(urdf_file):
 
         origin, size = calc_bounding_box(mesh_file, xyz, rpy)
 
-        # Set modified xyz for origin
+        # Set modified xyz for collision origin
         # Orientation is not modified, as box is always aligned to original frame
-        origin_tag.set("xyz", " ".join(map(str, origin)))
+        collision_tag = link.find("collision")
+        coll_origin = collision_tag.find(".//origin")
+        coll_origin.set("xyz", " ".join(map(str, origin)))
+        coll_origin.set("rpy", " ".join(map(str, rpy)))
 
-        collision_tag = visual_tag = link.find("collision")
         geometry_tag = collision_tag.find("geometry")
         # Find the mesh tag within the geometry tag
         mesh_tag = geometry_tag.find("mesh")
@@ -130,10 +132,12 @@ def calc_bounding_box(file_path, xyz, rpy):
     ]
 
     # Convert the original rotation from RPY to a rotation matrix
+    # roll-pitch-yaw is extrinsic Euler rotation in x-y-z order
+    # -> R = R(Z)*R(Y)*R(X)
     rotation_matrix = (
-        Matrix.Rotation(rpy.x, 3, "X")
+        Matrix.Rotation(rpy.z, 3, "Z")
         @ Matrix.Rotation(rpy.y, 3, "Y")
-        @ Matrix.Rotation(rpy.z, 3, "Z")
+        @ Matrix.Rotation(rpy.x, 3, "X")
     )
 
     # Rotate the new translation by the original rotation
@@ -141,7 +145,6 @@ def calc_bounding_box(file_path, xyz, rpy):
 
     # Add the rotated new translation to the original translation
     bbox_center = xyz + rotated_new_translation
-
     return bbox_center, bbox_size
 
 
