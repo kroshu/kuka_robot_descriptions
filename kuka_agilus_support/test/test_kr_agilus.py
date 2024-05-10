@@ -18,8 +18,10 @@ import launch
 import launch.actions
 import launch_testing.actions
 import launch_testing.markers
+from launch_ros.actions import Node
 import pytest
 import os
+import re
 
 from launch.launch_description_sources.python_launch_description_source import (
     PythonLaunchDescriptionSource,
@@ -49,6 +51,12 @@ def generate_test_description(test_file):
                     [get_package_share_directory("kuka_agilus_support"), "/launch/", test_file]
                 )
             ),
+            # Echo tf between base_link and flange
+            Node(
+                package="tf2_ros",
+                executable="tf2_echo",
+                arguments=["world", "flange"],
+            ),
             launch_testing.actions.ReadyToTest(),
         ]
     )
@@ -60,3 +68,11 @@ class TestModels(unittest.TestCase):
         proc_output.assertWaitFor("got segment base", timeout=5)
         proc_output.assertWaitFor("got segment flange", timeout=5)
         proc_output.assertWaitFor("got segment tool0", timeout=5)
+
+        # Check ROS-In frame convention: world and flange should be aligned if joint angles are
+        # zero and world-base_link rotation is identity
+        proc_output.assertWaitFor(
+            re.compile(r"Rotation: in Quaternion \[-?0\.000, -?0\.000, -?0\.000, 1\.000\]"),
+            timeout=5,
+            stream="stdout",
+        )
