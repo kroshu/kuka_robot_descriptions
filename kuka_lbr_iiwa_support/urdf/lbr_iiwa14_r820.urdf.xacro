@@ -3,7 +3,11 @@
   <!-- Import iiwa urdf file  -->
   <xacro:include filename="$(find kuka_lbr_iiwa_support)/urdf/lbr_iiwa14_r820_macro.xacro"/>
   <!-- Read additional arguments  -->
+  <xacro:arg name="controller_ip" default="0.0.0.0"/>
+  <xacro:arg name="client_ip" default="0.0.0.0"/>
+  <xacro:arg name="client_port" default="30200"/>
   <xacro:arg name="use_fake_hardware" default="false"/>
+  <xacro:arg name="roundtrip_time" default="0"/>
   <xacro:arg name="x" default="0"/>
   <xacro:arg name="y" default="0"/>
   <xacro:arg name="z" default="0"/>
@@ -11,7 +15,7 @@
   <xacro:arg name="pitch" default="0"/>
   <xacro:arg name="yaw" default="0"/>
   <xacro:arg name="prefix" default=""/>
-  <xacro:kuka_lbr_iiwa14_r820_robot prefix="$(arg prefix)" io_access="false" use_fake_hardware="$(arg use_fake_hardware)">
+  <xacro:kuka_lbr_iiwa14_r820_robot prefix="$(arg prefix)" io_access="false" use_fake_hardware="$(arg use_fake_hardware)" roundtrip_time="$(arg roundtrip_time)" controller_ip="$(arg controller_ip)" client_ip="$(arg client_ip)" client_port="$(arg client_port)">
     <origin xyz="$(arg x) $(arg y) $(arg z)" rpy="$(arg roll) $(arg pitch) $(arg yaw)"/>
   </xacro:kuka_lbr_iiwa14_r820_robot>
 </robot>

@@ -4,9 +4,9 @@
   <xacro:include filename="$(find kuka_resources)/urdf/common_materials.xacro"/>
   <xacro:include filename="$(find kuka_agilus_support)/urdf/kr_agilus_ros2_control.xacro"/>
   <xacro:include filename="$(find kuka_agilus_support)/urdf/kr_agilus_transmission.xacro"/>
-  <xacro:macro name="kuka_kr6_r900_sixx_robot" params="client_ip client_port prefix use_fake_hardware *origin">
+  <xacro:macro name="kuka_kr6_r900_sixx_robot" params="client_ip client_port prefix use_fake_hardware roundtrip_time *origin">
     <!-- ros2 control instance -->
-    <xacro:kuka_agilus_ros2_control name="${prefix}kr6_r900_sixx" client_ip="${client_ip}" client_port="${client_port}" prefix="${prefix}" use_fake_hardware="${use_fake_hardware}"/>
+    <xacro:kuka_agilus_ros2_control name="${prefix}kr6_r900_sixx" client_ip="${client_ip}" client_port="${client_port}" prefix="${prefix}" use_fake_hardware="${use_fake_hardware}" roundtrip_time="${roundtrip_time}"/>
     <link name="world"/>
     <link name="${prefix}base_link">
       <visual>

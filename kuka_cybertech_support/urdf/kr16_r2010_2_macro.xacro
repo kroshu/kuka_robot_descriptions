@@ -2,9 +2,9 @@
 <robot xmlns:xacro="http://wiki.ros.org/xacro">
   <xacro:include filename="$(find kuka_cybertech_support)/urdf/kr_cybertech_ros2_control.xacro"/>
   <xacro:include filename="$(find kuka_cybertech_support)/urdf/kr_cybertech_transmission.xacro"/>
-  <xacro:macro name="kuka_kr16_r2010_2_robot" params="client_ip client_port prefix use_fake_hardware *origin">
+  <xacro:macro name="kuka_kr16_r2010_2_robot" params="client_ip client_port prefix use_fake_hardware roundtrip_time *origin">
     <!-- ros2 control instance -->
-    <xacro:kuka_cybertech_ros2_control name="${prefix}kr16_r2010_2" client_ip="${client_ip}" client_port="${client_port}" prefix="${prefix}" use_fake_hardware="${use_fake_hardware}"/>
+    <xacro:kuka_cybertech_ros2_control name="${prefix}kr16_r2010_2" client_ip="${client_ip}" client_port="${client_port}" prefix="${prefix}" use_fake_hardware="${use_fake_hardware}" roundtrip_time="${roundtrip_time}"/>
     <link name="world"/>
     <link name="${prefix}base_link">
       <collision>
@@ -13,11 +13,6 @@
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
       </collision>
-      <inertial>
-        <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0"/>
-        <mass value="6.5212E1"/>
-        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
-      </inertial>
       <visual>
         <geometry>
           <mesh filename="package://kuka_cybertech_support/meshes/kr16_r2010_2/visual/base_link.stl"/>
@@ -32,11 +27,6 @@
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
       </collision>
-      <inertial>
-        <inertia ixx="9.85967888" ixy="0.0" ixz="0.0" iyy="0.91499458" iyz="0.0" izz="10.23026596"/>
-        <mass value="8.4207E1"/>
-        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
-      </inertial>
       <visual>
         <geometry>
           <mesh filename="package://kuka_cybertech_support/meshes/kr16_r2010_2/visual/link_1.stl"/>
@@ -51,11 +41,6 @@
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
       </collision>
-      <inertial>
-        <inertia ixx="0.34836069" ixy="0.0" ixz="0.0" iyy="1.0268737" iyz="0.0" izz="1.13887402"/>
-        <mass value="6.1775E1"/>
-        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
-      </inertial>
       <visual>
         <geometry>
           <mesh filename="package://kuka_cybertech_support/meshes/kr16_r2010_2/visual/link_2.stl"/>
@@ -70,11 +55,6 @@
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
       </collision>
-      <inertial>
-        <inertia ixx="0.64549911" ixy="0.0" ixz="0.0" iyy="0.04236472" iyz="0.0" izz="0.6665241"/>
-        <mass value="3.5648E1"/>
-        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
-      </inertial>
       <visual>
         <geometry>
           <mesh filename="package://kuka_cybertech_support/meshes/kr16_r2010_2/visual/link_3.stl"/>
@@ -89,11 +69,6 @@
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
       </collision>
-      <inertial>
-        <inertia ixx="0.64549911" ixy="0.0" ixz="0.0" iyy="0.04236472" iyz="0.0" izz="0.6665241"/>
-        <mass value="1.6428E1"/>
-        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
-      </inertial>
       <visual>
         <geometry>
           <mesh filename="package://kuka_cybertech_support/meshes/kr16_r2010_2/visual/link_4.stl"/>
@@ -108,11 +83,6 @@
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
       </collision>
-      <inertial>
-        <inertia ixx="1.0E-8" ixy="0.0" ixz="0.0" iyy="1.0E-8" iyz="0.0" izz="1.0E-8"/>
-        <mass value="1.0E-6"/>
-        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
-      </inertial>
       <visual>
         <geometry>
           <mesh filename="package://kuka_cybertech_support/meshes/kr16_r2010_2/visual/link_5.stl"/>
@@ -127,11 +97,6 @@
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
       </collision>
-      <inertial>
-        <inertia ixx="1.0E-8" ixy="0.0" ixz="0.0" iyy="1.0E-8" iyz="0.0" izz="1.0E-8"/>
-        <mass value="1.0E-6"/>
-        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
-      </inertial>
       <visual>
         <geometry>
           <mesh filename="package://kuka_cybertech_support/meshes/kr16_r2010_2/visual/link_6.stl"/>

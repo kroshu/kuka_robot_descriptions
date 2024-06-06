@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>kuka_iontec_support</name>
+  <version>0.9.0</version>
+  <description>Robot models for the KUKA Iontec family.</description>
+  <maintainer email="svastits1@gmail.com">Aron Svastits</maintainer>
+  <license>Apache-2.0</license>
+  <buildtool_depend>ament_cmake</buildtool_depend>
+  <depend>urdf</depend>
+  <depend>xacro</depend>
+  <exec_depend>launch_ros</exec_depend>
+  <exec_depend>joint_state_publisher_gui</exec_depend>
+  <exec_depend>kuka_resources</exec_depend>
+  <exec_depend>robot_state_publisher</exec_depend>
+  <exec_depend>rviz2</exec_depend>
+  <test_depend>launch_testing_ament_cmake</test_depend>
+  <export>
+    <architecture_independent/>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <xacro:macro name="kuka_iontec_ros2_control" params="name client_ip client_port prefix use_fake_hardware roundtrip_time">
+    <ros2_control name="${name}" type="system">
+      <hardware>
+        <xacro:if value="${use_fake_hardware}">
+          <plugin>kuka_mock_hardware_interface::KukaMockHardwareInterface</plugin>
+          <param name="cycle_time_ms">4</param>
+          <param name="roundtrip_time_micro">${roundtrip_time}</param>
+          <param name="mock_sensor_commands">false</param>
+          <param name="state_following_offset">0.0</param>
+        </xacro:if>
+        <xacro:unless value="${use_fake_hardware}">
+          <plugin>kuka_kss_rsi_driver::KukaRSIHardwareInterface</plugin>
+          <param name="client_ip">${client_ip}</param>
+          <param name="client_port">${client_port}</param>
+        </xacro:unless>
+      </hardware>
+      <joint name="${prefix}joint_1">
+        <command_interface name="position"/>
+        <state_interface name="position">
+          <param name="initial_value">0.0</param>
+        </state_interface>
+      </joint>
+      <joint name="${prefix}joint_2">
+        <command_interface name="position"/>
+        <state_interface name="position">
+          <param name="initial_value">-1.5708</param>
+        </state_interface>
+      </joint>
+      <joint name="${prefix}joint_3">
+        <command_interface name="position"/>
+        <state_interface name="position">
+          <param name="initial_value">1.5708</param>
+        </state_interface>
+      </joint>
+      <joint name="${prefix}joint_4">
+        <command_interface name="position"/>
+        <state_interface name="position">
+          <param name="initial_value">0.0</param>
+        </state_interface>
+      </joint>
+      <joint name="${prefix}joint_5">
+        <command_interface name="position"/>
+        <state_interface name="position">
+          <param name="initial_value">0.0</param>
+        </state_interface>
+      </joint>
+      <joint name="${prefix}joint_6">
+        <command_interface name="position"/>
+        <state_interface name="position">
+          <param name="initial_value">0.0</param>
+        </state_interface>
+      </joint>
+    </ros2_control>
+  </xacro:macro>
+</robot>

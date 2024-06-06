@@ -4,9 +4,9 @@
   <xacro:include filename="$(find kuka_lbr_iisy_support)/urdf/lbr_iisy_ros2_control.xacro"/>
   <xacro:include filename="$(find kuka_resources)/urdf/common_materials.xacro"/>
   <xacro:include filename="$(find kuka_lbr_iisy_support)/urdf/lbr_iisy_transmission.xacro"/>
-  <xacro:macro name="kuka_lbr_iisy3_r760_robot" params="prefix controller_ip client_ip use_fake_hardware qos_config_file *origin">
+  <xacro:macro name="kuka_lbr_iisy3_r760_robot" params="prefix controller_ip client_ip use_fake_hardware roundtrip_time qos_config_file *origin">
     <!-- ros2 control instance -->
-    <xacro:kuka_lbr_iisy_ros2_control name="${prefix}lbr_iisy3_r760" prefix="${prefix}" client_ip="${client_ip}" controller_ip="${controller_ip}" use_fake_hardware="${use_fake_hardware}" qos_config_file="${qos_config_file}"/>
+    <xacro:kuka_lbr_iisy_ros2_control name="${prefix}lbr_iisy3_r760" prefix="${prefix}" client_ip="${client_ip}" controller_ip="${controller_ip}" use_fake_hardware="${use_fake_hardware}" roundtrip_time="${roundtrip_time}" qos_config_file="${qos_config_file}"/>
     <!-- links - main serial chain -->
     <link name="world"/>
     <link name="${prefix}base_link">
@@ -16,11 +16,6 @@
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
       </collision>
-      <inertial>
-        <inertia ixx="0.00865396" ixy="0.0" ixz="0.0" iyy="0.0057294" iyz="0.0" izz="0.00975485"/>
-        <mass value="3.6896E0"/>
-        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
-      </inertial>
       <visual>
         <geometry>
           <mesh filename="package://kuka_lbr_iisy_support/meshes/lbr_iisy3_r760/visual/base_link.stl"/>
@@ -36,11 +31,6 @@
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
       </collision>
-      <inertial>
-        <inertia ixx="0.05207611" ixy="0.0" ixz="0.0" iyy="0.00423" iyz="0.0" izz="0.05335256"/>
-        <mass value="3.2536E0"/>
-        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
-      </inertial>
       <visual>
         <geometry>
           <mesh filename="package://kuka_lbr_iisy_support/meshes/lbr_iisy3_r760/visual/link_1.stl"/>
@@ -56,11 +46,6 @@
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
       </collision>
-      <inertial>
-        <inertia ixx="0.01136164" ixy="0.0" ixz="0.0" iyy="0.0056706" iyz="0.0" izz="0.01338145"/>
-        <mass value="3.208E0"/>
-        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
-      </inertial>
       <visual>
         <geometry>
           <mesh filename="package://kuka_lbr_iisy_support/meshes/lbr_iisy3_r760/visual/link_2.stl"/>
@@ -76,11 +61,6 @@
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
       </collision>
-      <inertial>
-        <inertia ixx="0.00244685" ixy="0.0" ixz="0.0" iyy="0.00929301" iyz="0.0" izz="0.00957903"/>
-        <mass value="3.4737E0"/>
-        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
-      </inertial>
       <visual>
         <geometry>
           <mesh filename="package://kuka_lbr_iisy_support/meshes/lbr_iisy3_r760/visual/link_3.stl"/>
@@ -96,11 +76,6 @@
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
       </collision>
-      <inertial>
-        <inertia ixx="0.00235422" ixy="0.0" ixz="0.0" iyy="0.00141662" iyz="0.0" izz="0.00257108"/>
-        <mass value="2.0138E0"/>
-        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
-      </inertial>
       <visual>
         <geometry>
           <mesh filename="package://kuka_lbr_iisy_support/meshes/lbr_iisy3_r760/visual/link_4.stl"/>
@@ -116,11 +91,6 @@
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
       </collision>
-      <inertial>
-        <inertia ixx="0.00146739" ixy="0.0" ixz="0.0" iyy="0.00112132" iyz="0.0" izz="0.0015816"/>
-        <mass value="1.4344E0"/>
-        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
-      </inertial>
       <visual>
         <geometry>
           <mesh filename="package://kuka_lbr_iisy_support/meshes/lbr_iisy3_r760/visual/link_5.stl"/>
@@ -136,11 +106,6 @@
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
       </collision>
-      <inertial>
-        <inertia ixx="0.00146739" ixy="0.0" ixz="0.0" iyy="0.00112132" iyz="0.0" izz="0.0015816"/>
-        <mass value="8.43E-1"/>
-        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
-      </inertial>
       <visual>
         <geometry>
           <mesh filename="package://kuka_lbr_iisy_support/meshes/lbr_iisy3_r760/visual/link_6.stl"/>

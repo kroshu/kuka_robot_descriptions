@@ -2,9 +2,9 @@
 <robot xmlns:xacro="http://wiki.ros.org/xacro">
   <xacro:include filename="$(find kuka_quantec_support)/urdf/kr_quantec_ros2_control.xacro"/>
   <xacro:include filename="$(find kuka_quantec_support)/urdf/kr_quantec_transmission.xacro"/>
-  <xacro:macro name="kuka_kr210_r3100_2_robot" params="client_ip client_port prefix use_fake_hardware *origin">
+  <xacro:macro name="kuka_kr210_r3100_2_robot" params="client_ip client_port prefix use_fake_hardware roundtrip_time *origin">
     <!-- ros2 control instance -->
-    <xacro:kuka_quantec_ros2_control name="${prefix}kr210_r3100_2" client_ip="${client_ip}" client_port="${client_port}" prefix="${prefix}" use_fake_hardware="${use_fake_hardware}"/>
+    <xacro:kuka_quantec_ros2_control name="${prefix}kr210_r3100_2" client_ip="${client_ip}" client_port="${client_port}" prefix="${prefix}" use_fake_hardware="${use_fake_hardware}" roundtrip_time="${roundtrip_time}"/>
     <link name="world"/>
     <link name="${prefix}base_link">
       <collision>
@@ -13,11 +13,6 @@
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
       </collision>
-      <inertial>
-        <inertia ixx="31.78631557" ixy="0.0" ixz="0.0" iyy="13.33103186" iyz="0.0" izz="34.18067231"/>
-        <mass value="2.2596E2"/>
-        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
-      </inertial>
       <visual>
         <geometry>
           <mesh filename="package://kuka_quantec_support/meshes/kr210_r3100_2/visual/base_link.stl"/>
@@ -32,11 +27,6 @@
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
       </collision>
-      <inertial>
-        <inertia ixx="6.11156633" ixy="0.0" ixz="0.0" iyy="82.75093024" iyz="0.0" izz="83.25859672"/>
-        <mass value="3.6737E2"/>
-        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
-      </inertial>
       <visual>
         <geometry>
           <mesh filename="package://kuka_quantec_support/meshes/kr210_r3100_2/visual/link_1.stl"/>
@@ -51,11 +41,6 @@
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
       </collision>
-      <inertial>
-        <inertia ixx="3.68215916" ixy="0.0" ixz="0.0" iyy="33.53420017" iyz="0.0" izz="34.55729351"/>
-        <mass value="2.5056E2"/>
-        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
-      </inertial>
       <visual>
         <geometry>
           <mesh filename="package://kuka_quantec_support/meshes/kr210_r3100_2/visual/link_2.stl"/>
@@ -70,11 +55,6 @@
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
       </collision>
-      <inertial>
-        <inertia ixx="0.20114802" ixy="0.0" ixz="0.0" iyy="1.61560245" iyz="0.0" izz="1.64041745"/>
-        <mass value="2.0653E2"/>
-        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
-      </inertial>
       <visual>
         <geometry>
           <mesh filename="package://kuka_quantec_support/meshes/kr210_r3100_2/visual/link_3.stl"/>
@@ -89,11 +69,6 @@
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
       </collision>
-      <inertial>
-        <inertia ixx="0.34306034" ixy="0.0" ixz="0.0" iyy="0.1968928" iyz="0.0" izz="0.34797641"/>
-        <mass value="4.7942845677E1"/>
-        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
-      </inertial>
       <visual>
         <geometry>
           <mesh filename="package://kuka_quantec_support/meshes/kr210_r3100_2/visual/link_4.stl"/>
@@ -108,11 +83,6 @@
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
       </collision>
-      <inertial>
-        <inertia ixx="0.03694113" ixy="0.0" ixz="0.0" iyy="0.03695315" iyz="0.0" izz="0.048251"/>
-        <mass value="2.3687644624E1"/>
-        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
-      </inertial>
       <visual>
         <geometry>
           <mesh filename="package://kuka_quantec_support/meshes/kr210_r3100_2/visual/link_5.stl"/>
@@ -127,11 +97,6 @@
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
       </collision>
-      <inertial>
-        <inertia ixx="0.03694113" ixy="0.0" ixz="0.0" iyy="0.03695315" iyz="0.0" izz="0.048251"/>
-        <mass value="6.6E0"/>
-        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
-      </inertial>
       <visual>
         <geometry>
           <mesh filename="package://kuka_quantec_support/meshes/kr210_r3100_2/visual/link_6.stl"/>

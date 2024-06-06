@@ -1,0 +1,206 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://wiki.ros.org/xacro">
+  <xacro:include filename="$(find kuka_iontec_support)/urdf/kr_iontec_ros2_control.xacro"/>
+  <xacro:include filename="$(find kuka_iontec_support)/urdf/kr_iontec_transmission.xacro"/>
+  <xacro:macro name="kuka_kr70_r2100_robot" params="client_ip client_port prefix use_fake_hardware roundtrip_time *origin">
+    <!-- ros2 control instance -->
+    <xacro:kuka_iontec_ros2_control name="${prefix}kr70_r2100" client_ip="${client_ip}" client_port="${client_port}" prefix="${prefix}" use_fake_hardware="${use_fake_hardware}" roundtrip_time="${roundtrip_time}"/>
+    <link name="world"/>
+    <link name="${prefix}base_link">
+      <collision>
+        <geometry>
+          <mesh filename="package://kuka_iontec_support/meshes/kr70_r2100/collision/base_link.stl"/>
+        </geometry>
+        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
+      </collision>
+      <visual>
+        <geometry>
+          <mesh filename="package://kuka_iontec_support/meshes/kr70_r2100/visual/base_link.dae"/>
+        </geometry>
+        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
+      </visual>
+    </link>
+    <link name="${prefix}link_1">
+      <collision>
+        <geometry>
+          <mesh filename="package://kuka_iontec_support/meshes/kr70_r2100/collision/link_1.stl"/>
+        </geometry>
+        <origin rpy="3.1415927 0.0 0.0" xyz="0.0 0.0 0.236000"/>
+      </collision>
+      <inertial>
+        <inertia ixx="5.40709339054184" ixy="0.0" ixz="0.0" iyy="7.71982652844139" iyz="0.0" izz="9.08867781161129"/>
+        <mass value="1.75205E2"/>
+        <origin rpy="-0.7923258603339018 -0.8943966305036485 2.6984590381230245" xyz="0.0386086184755001 -0.0346095020119289 -0.237989526554607"/>
+      </inertial>
+      <visual>
+        <geometry>
+          <mesh filename="package://kuka_iontec_support/meshes/kr70_r2100/visual/link_1.dae"/>
+        </geometry>
+        <origin rpy="3.1415927 0.0 0.0" xyz="0.0 0.0 0.236000"/>
+      </visual>
+    </link>
+    <link name="${prefix}link_2">
+      <collision>
+        <geometry>
+          <mesh filename="package://kuka_iontec_support/meshes/kr70_r2100/collision/link_2.stl"/>
+        </geometry>
+        <origin rpy="1.5707963 0.0 1.5707963" xyz="-0.575000 -0.175000 0.054000 "/>
+      </collision>
+      <inertial>
+        <inertia ixx="15.3115976467419" ixy="0.0" ixz="0.0" iyy="1.25648697469284" iyz="0.0" izz="15.5308363638855"/>
+        <mass value="1.0886E2"/>
+        <origin rpy="2.0043980356557825 -1.4175712597169723 -0.4411071139781909" xyz="0.322390685283851 0.0011177475656806899 -0.0921965092779717"/>
+      </inertial>
+      <visual>
+        <geometry>
+          <mesh filename="package://kuka_iontec_support/meshes/kr70_r2100/visual/link_2.dae"/>
+        </geometry>
+        <origin rpy="1.5707963 0.0 1.5707963" xyz="-0.575000 -0.175000 0.054000 "/>
+      </visual>
+    </link>
+    <link name="${prefix}link_3">
+      <collision>
+        <geometry>
+          <mesh filename="package://kuka_iontec_support/meshes/kr70_r2100/collision/link_3.stl"/>
+        </geometry>
+        <origin rpy="1.5707963 0.0 -0.0" xyz="-0.175000 1.465000 0.151500"/>
+      </collision>
+      <inertial>
+        <inertia ixx="1.92337293034476" ixy="0.0" ixz="0.0" iyy="1.27849052849714" iyz="0.0" izz="2.39171458731211"/>
+        <mass value="7.6987E1"/>
+        <origin rpy="-1.4493563584878768 -1.5363130245492544 2.877566531592554" xyz="0.0313301089794381 -0.020586332757478502 0.14882084299946702"/>
+      </inertial>
+      <visual>
+        <geometry>
+          <mesh filename="package://kuka_iontec_support/meshes/kr70_r2100/visual/link_3.dae"/>
+        </geometry>
+        <origin rpy="1.5707963 0.0 -0.0" xyz="-0.175000 1.465000 0.151500"/>
+      </visual>
+    </link>
+    <link name="${prefix}link_4">
+      <collision>
+        <geometry>
+          <mesh filename="package://kuka_iontec_support/meshes/kr70_r2100/collision/link_4.stl"/>
+        </geometry>
+        <origin rpy="0.0 1.5707963 0" xyz="-1.515000 0 0.483050"/>
+      </collision>
+      <inertial>
+        <inertia ixx="0.155169399999395" ixy="0.0" ixz="0.0" iyy="2.40535850557874" iyz="0.0" izz="2.40600523859326"/>
+        <mass value="3.6937064569E1"/>
+        <origin rpy="0.828589798090399 -1.4728909399076815 -1.576276607483943" xyz="1.89432198144002E-4 0.024470785786346698 -0.41246255028967"/>
+      </inertial>
+      <visual>
+        <geometry>
+          <mesh filename="package://kuka_iontec_support/meshes/kr70_r2100/visual/link_4.dae"/>
+        </geometry>
+        <origin rpy="0.0 1.5707963 0" xyz="-1.515000 0 0.483050"/>
+      </visual>
+    </link>
+    <link name="${prefix}link_5">
+      <collision>
+        <geometry>
+          <mesh filename="package://kuka_iontec_support/meshes/kr70_r2100/collision/link_5.stl"/>
+        </geometry>
+        <origin rpy="1.5707963 0.0 -0.0" xyz="-1.210000 1.515000 -0.047950"/>
+      </collision>
+      <inertial>
+        <inertia ixx="0.104253153076611" ixy="0.0" ixz="0.0" iyy="0.080454547765652" iyz="0.0" izz="0.129775394933814"/>
+        <mass value="1.6209E1"/>
+        <origin rpy="-1.5546090234283156 -1.0268303292864105 -0.0223629762980488" xyz="0.0338747121969276 4.7815719661916203E-4 -0.0563914652353631"/>
+      </inertial>
+      <visual>
+        <geometry>
+          <mesh filename="package://kuka_iontec_support/meshes/kr70_r2100/visual/link_5.dae"/>
+        </geometry>
+        <origin rpy="1.5707963 0.0 -0.0" xyz="-1.210000 1.515000 -0.047950"/>
+      </visual>
+    </link>
+    <link name="${prefix}link_6">
+      <collision>
+        <geometry>
+          <mesh filename="package://kuka_iontec_support/meshes/kr70_r2100/collision/link_6.stl"/>
+        </geometry>
+        <origin rpy="-0.0 1.5707963 -0.0" xyz="-1.515000 0.0 1.359000"/>
+      </collision>
+      <inertial>
+        <inertia ixx="0.00543884122921238" ixy="0.0" ixz="0.0" iyy="0.00497050004638771" iyz="0.0" izz="0.00667989273554355"/>
+        <mass value="3.62E0"/>
+        <origin rpy="-0.2657207469665607 5.14585534055515E-4 1.571146297496868" xyz="-0.00392541436464088 5.41436464088398E-6 -0.00152140883977901"/>
+      </inertial>
+      <visual>
+        <geometry>
+          <mesh filename="package://kuka_iontec_support/meshes/kr70_r2100/visual/link_6.dae"/>
+        </geometry>
+        <origin rpy="-0.0 1.5707963 -0.0" xyz="-1.515000 0.0 1.359000"/>
+      </visual>
+    </link>
+    <joint name="${prefix}world-base_link" type="fixed">
+      <parent link="world"/>
+      <child link="${prefix}base_link"/>
+      <xacro:insert_block name="origin"/>
+    </joint>
+    <joint name="${prefix}joint_1" type="revolute">
+      <axis xyz="0.0 0.0 1.0"/>
+      <child link="${prefix}link_1"/>
+      <limit effort="5.528892E3" lower="-3.2288591125E0" upper="3.2288591125E0" velocity="3.14159265358979E0"/>
+      <origin rpy="3.141592653589793 -0.0 0.0" xyz="0.0 0.0 0.23600000000000002"/>
+      <parent link="${prefix}base_link"/>
+    </joint>
+    <joint name="${prefix}joint_2" type="revolute">
+      <axis xyz="0.0 0.0 1.0"/>
+      <child link="${prefix}link_2"/>
+      <limit effort="4.63521860979619E3" lower="-3.0543261875E0" upper="1.04719755E0" velocity="2.75719614004311E0"/>
+      <origin rpy="1.5707963267948966 -0.0 0.0" xyz="0.17500000000000002 0.054 -0.339"/>
+      <parent link="${prefix}link_1"/>
+    </joint>
+    <joint name="${prefix}joint_3" type="revolute">
+      <axis xyz="0.0 0.0 1.0"/>
+      <child link="${prefix}link_3"/>
+      <limit effort="1.78564006036566E3" lower="-2.0943951E0" upper="2.8797932625E0" velocity="2.79252680319093E0"/>
+      <origin rpy="0.0 -0.0 0.0" xyz="0.89 0.0 -0.0975"/>
+      <parent link="${prefix}link_2"/>
+    </joint>
+    <joint name="${prefix}joint_4" type="revolute">
+      <axis xyz="0.0 0.0 1.0"/>
+      <child link="${prefix}link_4"/>
+      <limit effort="6.45625632046567E2" lower="-3.14159265E0" upper="3.14159265E0" velocity="4.01425727958696E0"/>
+      <origin rpy="1.5707963267948966 -0.0 -1.5707963267948966" xyz="0.30805 -0.05 0.1515"/>
+      <parent link="${prefix}link_3"/>
+    </joint>
+    <joint name="${prefix}joint_5" type="revolute">
+      <axis xyz="0.0 0.0 1.0"/>
+      <child link="${prefix}link_5"/>
+      <limit effort="5.8309335940288E2" lower="-2.1816615625E0" upper="2.1816615625E0" velocity="4.01425727958696E0"/>
+      <origin rpy="0.0 1.5707963267948966 1.5707963267948966" xyz="0.0 0.047950000000000007 -0.7269500000000001"/>
+      <parent link="${prefix}link_4"/>
+    </joint>
+    <joint name="${prefix}joint_6" type="revolute">
+      <axis xyz="0.0 0.0 1.0"/>
+      <child link="${prefix}link_6"/>
+      <limit effort="3.39155998042573E2" lower="-6.108652375E0" upper="6.108652375E0" velocity="5.58505360638185E0"/>
+      <origin rpy="1.5707963267948966 -0.0 -1.5707963267948966" xyz="0.149 0.0 -0.047950000000000007"/>
+      <parent link="${prefix}link_5"/>
+    </joint>
+    <!-- ROS-Industrial 'base' frame - equivalent of 'KUKA ROBROOT'-->
+    <link name="${prefix}base"/>
+    <joint name="${prefix}base_link-base" type="fixed">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <parent link="${prefix}base_link"/>
+      <child link="${prefix}base"/>
+    </joint>
+    <!-- ROS-Industrial 'flange' frame - attachment point for EEF models -->
+    <link name="${prefix}flange"/>
+    <joint name="${prefix}link6-flange" type="fixed">
+      <child link="${prefix}flange"/>
+      <origin rpy="0.0 ${pi/2} 0.0" xyz="0.0 0.0 -0.036"/>
+      <parent link="${prefix}link_6"/>
+    </joint>
+    <!-- ROS-Industrial 'tool0' frame - all-zeros tool frame -->
+    <link name="${prefix}tool0"/>
+    <joint name="${prefix}link6-tool0" type="fixed">
+      <child link="${prefix}tool0"/>
+      <origin rpy="0.0 ${pi} 0.0" xyz="0.0 0.0 -0.036"/>
+      <parent link="${prefix}link_6"/>
+    </joint>
+  </xacro:macro>
+</robot>
