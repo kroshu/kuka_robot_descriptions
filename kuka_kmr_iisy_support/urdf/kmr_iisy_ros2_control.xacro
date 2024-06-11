@@ -11,17 +11,12 @@
           <param name="roundtrip_time_micro">${roundtrip_time}</param>
           <param name="mock_sensor_commands">false</param>
           <param name="state_following_offset">0.0</param>
-          
-          <!--<xacro:if value="${gazebo_sim}">
-            <plugin>kuka_eac::KukaEACHardwareInterface</plugin>
-            <plugin>gazebo_ros2_control/GazeboSystem</plugin>
-          </xacro:if> -->
         </xacro:if>
         <xacro:unless value="${use_fake_hardware}">
           
           <!-- Read QoS profile parameters  -->
           <xacro:if value="${qos_config_file == ''}">
-            <xacro:property name="qos_config" value="$(find kuka_iiqka_eac_driver)/config/qos_config.yaml"/>
+            <xacro:property name="qos_config" value="$(find kuka_kmr_iisy_eac_driver)/config/qos_config.yaml"/>
           </xacro:if>
           <xacro:unless value="${qos_config_file == ''}">
             <xacro:property name="qos_config" value="${qos_config_file}"/>
@@ -30,7 +25,7 @@
           <xacro:property name="consequent_lost_packets" value="${qos_config_dict['rt_packet_loss_profile']['consequent_lost_packets']}"/>
           <xacro:property name="lost_packets_in_timeframe" value="${qos_config_dict['rt_packet_loss_profile']['lost_packets_in_timeframe']}"/>
           <xacro:property name="timeframe_ms" value="${qos_config_dict['rt_packet_loss_profile']['timeframe_ms']}"/>
-          <plugin>kuka_eac::KukaEACHardwareInterface</plugin>
+          <plugin>kuka_eac::KukaKMRiisyEACHardwareInterface</plugin>
           <param name="client_ip">${client_ip}</param>
           <param name="controller_ip">${controller_ip}</param>
           <param name="consequent_lost_packets">${consequent_lost_packets}</param>
@@ -39,58 +34,29 @@
         </xacro:unless>
       </hardware>
       <!-- define joints and command/state interfaces for each joint -->
-      <joint name="${prefix}twist/linear">
-        <command_interface name="x"/>
-        <command_interface name="y"/>
-        <command_interface name="z"/>
-        <state_interface name="x"/>
-          <param name="initial_value">0.0</param>
-        <state_interface name="y"/>
-          <param name="initial_value">0.0</param>
-        <state_interface name="z"/>
-          <param name="initial_value">0.0</param>
-      </joint>
-      <joint name="${prefix}twist/angular">
-        <command_interface name="x"/>
-        <command_interface name="y"/>
-        <command_interface name="z"/>
-        <state_interface name="x"/>
-          <param name="initial_value">0.0</param>
-        <state_interface name="y"/>
-          <param name="initial_value">0.0</param>
-        <state_interface name="z"/>
-          <param name="initial_value">0.0</param>
-      </joint>
-      
+      <joint name="${prefix}twist">
+        <command_interface name="linear/x"/>
+        <command_interface name="linear/y"/>
+        <command_interface name="linear/z"/>
+        <command_interface name="angular/x"/>
+        <command_interface name="angular/y"/>
+        <command_interface name="angular/z"/>
 
-      <!--<joint name="left_wheel_motor">
-          <command_interface name="velocity">
-            <param name="min">-1</param>
-            <param name="max">1</param>
-          </command_interface>
-          <state_interface name="position"/>
-            <param name="initial_value">0.0</param>
-          <state_interface name="velocity"/>
-            <param name="initial_value">0.0</param>
-        </joint>
-        <joint name="right_wheel_motor">
-          <command_interface name="velocity">
-            <param name="min">-1</param>
-            <param name="max">1</param>
-          </command_interface>
-          <state_interface name="position"/>
-            <param name="initial_value">0.0</param>
-          <state_interface name="velocity"/>
-            <param name="initial_value">0.0</param>
-        </joint>  --> 
-
+        <state_interface name="linear/x"/>
+          <param name="initial_value">0.0</param>
+        <state_interface name="linear/y"/>
+          <param name="initial_value">0.0</param>
+        <state_interface name="linear/z"/>
+          <param name="initial_value">0.0</param>
+        <state_interface name="angular/x"/>
+          <param name="initial_value">0.0</param>
+        <state_interface name="angular/y"/>
+          <param name="initial_value">0.0</param>
+        <state_interface name="angular/z"/>
+          <param name="initial_value">0.0</param>
+        
+      </joint>
     </ros2_control>
- <!--<xacro:if value="${gazebo_sim}">
- config file with gazebo parameters
-            <xacro:include filename="$(find kuka_mobile_robot_support)/gazebo/diffbot.gazebo.xacro" />
-            <xacro:diffbot_gazebo  prefix="" ros2_control_sim="true"/>
- </xacro:if>--> 
-
   </xacro:macro>
 
 </robot>

@@ -1,23 +1,21 @@
 <?xml version="1.0"?>
-<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
-  <name>kuka_mobile_robot_support</name>
-  <version>0.0.0</version>
-  <description>Package with URDF and description files of a KUKA differential drive mobile robot.</description>
-
+  <name>kuka_kmr_iisy_support</name>
+  <version>0.0.1</version>
+  <description>Package with URDF and description files of a KUKA KMR iisy differential drive mobile robot.</description>
   <maintainer email="krmihaly42@gmail.com">Kristófi Mihály</maintainer>
-
   <license>Apache-2.0</license>
-
   <buildtool_depend>ament_cmake</buildtool_depend>
-
+  <depend>urdf</depend>
+  <depend>xacro</depend>
+  <exec_depend>launch_ros</exec_depend>
   <exec_depend>joint_state_publisher_gui</exec_depend>
+  <exec_depend>kuka_resources</exec_depend>
   <exec_depend>robot_state_publisher</exec_depend>
   <exec_depend>rviz2</exec_depend>
 
   <export>
+    <architecture_independent/>
     <build_type>ament_cmake</build_type>
-    <gazebo_ros gazebo_model_path="${prefix}/.." />
   </export>
-
 </package>

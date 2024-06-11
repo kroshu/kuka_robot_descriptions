@@ -1,12 +1,10 @@
 <?xml version="1.0"?>
 <!-- Basic KUKA mobile base -->
-<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="KUKA_MR">
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="kmr_iisy">
 <!-- Import mrob urdf file  -->
-  <!-- <xacro:include filename="$(find kuka_mobile_robot_support)/urdf/diffbot_kuka_macro.xacro" /> -->
-  <xacro:include filename="$(find kuka_mobile_robot_support)/urdf/mrob_kuka_macro.xacro" />
+  <xacro:include filename="$(find kuka_kmr_iisy_support)/urdf/kmr_iisy_macro.xacro" />
 
    <!-- Read additional arguments  -->
-  <xacro:arg name="gazebo_sim" default="false" />
   <xacro:arg name="prefix" default=""/>
   <xacro:arg name="controller_ip" default="0.0.0.0"/>
   <xacro:arg name="client_ip" default="0.0.0.0"/>

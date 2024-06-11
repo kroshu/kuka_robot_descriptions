@@ -1,0 +1,12 @@
+cmake_minimum_required(VERSION 3.5)
+project(kuka_kmr_iisy_support)
+
+find_package(ament_cmake REQUIRED)
+find_package(urdf REQUIRED)
+find_package(xacro REQUIRED)
+
+install(DIRECTORY  launch meshes ros2_control urdf config
+  DESTINATION share/${PROJECT_NAME})
+
+
+ament_package()
