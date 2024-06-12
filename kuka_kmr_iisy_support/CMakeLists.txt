@@ -5,7 +5,7 @@ find_package(ament_cmake REQUIRED)
 find_package(urdf REQUIRED)
 find_package(xacro REQUIRED)
 
-install(DIRECTORY  launch meshes ros2_control urdf config
+install(DIRECTORY  launch meshes urdf config
   DESTINATION share/${PROJECT_NAME})
 
 
