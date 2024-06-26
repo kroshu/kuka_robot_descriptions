@@ -43,7 +43,6 @@ def generate_launch_description():
         parameters=[robot_description, robot_controllers],
         output="both",
         namespace="platform",
-        respawn=True,
     )
 
 

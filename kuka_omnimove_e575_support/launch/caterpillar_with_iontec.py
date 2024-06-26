@@ -9,7 +9,9 @@ def generate_launch_description():
     omnimove_launch = IncludeLaunchDescription(PythonLaunchDescriptionSource(
         [FindPackageShare("kuka_omnimove_e575_support"), "/launch", "/caterpillar_launch.py"]))
     iontec_launch = IncludeLaunchDescription(
-        PythonLaunchDescriptionSource([FindPackageShare("kuka_kss_rsi_driver"), "/launch", "/startup.launch.py"]))
+        PythonLaunchDescriptionSource([FindPackageShare("kuka_kss_rsi_driver"), "/launch", "/startup.launch.py"]),
+        launch_arguments={'robot_model': 'kr70_r2100', 'robot_family': 'iontec'}.items())
+
     transform_publisher = LaunchDescription([Node(package='tf2_ros', executable='static_transform_publisher',
                                                   arguments=[
                                                       '--x', '0.559', '--y', '0.00', '--z', '0.674', '--frame-id',
