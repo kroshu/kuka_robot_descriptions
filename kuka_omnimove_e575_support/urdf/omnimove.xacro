@@ -20,7 +20,7 @@
    <xacro:macro name="omnimove_ros2_control" params="name">
 	    <ros2_control name="omnimove" type="system">
             <hardware>
-                <plugin>omnimove::OmnimoveExternalControl</plugin>
+                <plugin>omnimove::KukaUTV3HardwareInterface</plugin>
                 <param name ="host">127.0.0.1</param>
                 <param name="port">24000</param>
                 <param name="agv_type">omnimove</param>
