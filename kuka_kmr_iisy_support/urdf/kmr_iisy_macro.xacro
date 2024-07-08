@@ -303,7 +303,7 @@
             <xacro:material_kuka_ral_gray_white/>
           </visual>
         </link>
-   
-    
+
+
   </xacro:macro>
 </robot>
