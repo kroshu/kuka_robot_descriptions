@@ -4,7 +4,7 @@
   <xacro:include filename="$(find kuka_kmr_iisy_support)/urdf/kmr_iisy_ros2_control.xacro" />
   <xacro:include filename="$(find kuka_resources)/urdf/common_materials.xacro"/>
 
-  <xacro:macro name="mrob_kuka" params="prefix controller_ip client_ip use_fake_hardware roundtrip_time qos_config_file *origin">
+  <xacro:macro name="mrob_kuka" params="prefix controller_ip client_ip use_fake_hardware roundtrip_time qos_config_file">
     <!-- ros2 control instance -->
     <xacro:mrob_kuka_ros2_control name="kmr_iisy" prefix="${prefix}" client_ip="${client_ip}" controller_ip="${controller_ip}" use_fake_hardware="${use_fake_hardware}" roundtrip_time="${roundtrip_time}" qos_config_file="${qos_config_file}"/>
 
