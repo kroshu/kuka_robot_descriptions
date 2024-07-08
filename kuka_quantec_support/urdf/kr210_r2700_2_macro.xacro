@@ -13,11 +13,6 @@
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
       </collision>
-      <inertial>
-        <inertia ixx="13.2088588" ixy="0.0" ixz="0.0" iyy="31.49498532" iyz="0.0" izz="33.88389082"/>
-        <mass value="2.2596E2"/>
-        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
-      </inertial>
       <visual>
         <geometry>
           <mesh filename="package://kuka_quantec_support/meshes/kr210_r2700_2/visual/base_link.stl"/>
@@ -32,11 +27,6 @@
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
       </collision>
-      <inertial>
-        <inertia ixx="57.79570981" ixy="0.0" ixz="0.0" iyy="5.63272996" iyz="0.0" izz="58.55984559"/>
-        <mass value="3.6307E2"/>
-        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
-      </inertial>
       <visual>
         <geometry>
           <mesh filename="package://kuka_quantec_support/meshes/kr210_r2700_2/visual/link_1.stl"/>
@@ -51,11 +41,6 @@
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
       </collision>
-      <inertial>
-        <inertia ixx="3.46995403" ixy="0.0" ixz="0.0" iyy="21.17130073" iyz="0.0" izz="22.20677491"/>
-        <mass value="2.3206E2"/>
-        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
-      </inertial>
       <visual>
         <geometry>
           <mesh filename="package://kuka_quantec_support/meshes/kr210_r2700_2/visual/link_2.stl"/>
@@ -70,11 +55,6 @@
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
       </collision>
-      <inertial>
-        <inertia ixx="0.16132437" ixy="0.0" ixz="0.0" iyy="1.36451395" iyz="0.0" izz="1.39158128"/>
-        <mass value="1.9033E2"/>
-        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
-      </inertial>
       <visual>
         <geometry>
           <mesh filename="package://kuka_quantec_support/meshes/kr210_r2700_2/visual/link_3.stl"/>
@@ -89,11 +69,6 @@
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
       </collision>
-      <inertial>
-        <inertia ixx="0.20011191" ixy="0.0" ixz="0.0" iyy="0.12055363" iyz="0.0" izz="0.22095649"/>
-        <mass value="4.2411794929E1"/>
-        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
-      </inertial>
       <visual>
         <geometry>
           <mesh filename="package://kuka_quantec_support/meshes/kr210_r2700_2/visual/link_4.stl"/>
@@ -108,11 +83,6 @@
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
       </collision>
-      <inertial>
-        <inertia ixx="0.0114565" ixy="0.0" ixz="0.0" iyy="0.0114565" iyz="0.0" izz="0.014535"/>
-        <mass value="1.6991732133E1"/>
-        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
-      </inertial>
       <visual>
         <geometry>
           <mesh filename="package://kuka_quantec_support/meshes/kr210_r2700_2/visual/link_5.stl"/>
@@ -127,11 +97,6 @@
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
       </collision>
-      <inertial>
-        <inertia ixx="0.03694113" ixy="0.0" ixz="0.0" iyy="0.03695315" iyz="0.0" izz="0.048251"/>
-        <mass value="6.6E0"/>
-        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
-      </inertial>
       <visual>
         <geometry>
           <mesh filename="package://kuka_quantec_support/meshes/kr210_r2700_2/visual/link_6.stl"/>
