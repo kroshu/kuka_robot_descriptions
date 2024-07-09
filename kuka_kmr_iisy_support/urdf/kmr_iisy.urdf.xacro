@@ -1,10 +1,9 @@
 <?xml version="1.0"?>
 <!-- Basic KUKA mobile base -->
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="kmr_iisy">
-<!-- Import mrob urdf file  -->
-  <xacro:include filename="$(find kuka_kmr_iisy_support)/urdf/kmr_iisy_macro.xacro" />
-
-   <!-- Read additional arguments  -->
+  <!-- Import mrob urdf file  -->
+  <xacro:include filename="$(find kuka_kmr_iisy_support)/urdf/kmr_iisy_macro.xacro"/>
+  <!-- Read additional arguments  -->
   <xacro:arg name="prefix" default=""/>
   <xacro:arg name="controller_ip" default="0.0.0.0"/>
   <xacro:arg name="client_ip" default="0.0.0.0"/>

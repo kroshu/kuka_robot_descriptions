@@ -1,309 +1,307 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="">
   <!-- include helper xacros -->
-  <xacro:include filename="$(find kuka_kmr_iisy_support)/urdf/kmr_iisy_ros2_control.xacro" />
+  <xacro:include filename="$(find kuka_kmr_iisy_support)/urdf/kmr_iisy_ros2_control.xacro"/>
   <xacro:include filename="$(find kuka_resources)/urdf/common_materials.xacro"/>
-
   <xacro:macro name="mrob_kuka" params="prefix controller_ip client_ip use_fake_hardware roundtrip_time qos_config_file">
     <!-- ros2 control instance -->
     <xacro:mrob_kuka_ros2_control name="kmr_iisy" prefix="${prefix}" client_ip="${client_ip}" controller_ip="${controller_ip}" use_fake_hardware="${use_fake_hardware}" roundtrip_time="${roundtrip_time}" qos_config_file="${qos_config_file}"/>
-
-     <joint name="twist" type="fixed">
-            <axis xyz="0.0 1.0 0.0"/>
-            <parent link="odom" />
-            <child link="kmr_iisy_body_dummy" />
-            <origin xyz="0 0 0" rpy="0 0 0" />
-          </joint>
-      <joint name="kmr_iisy_body_dummy" type="fixed">
-            <parent link="kmr_iisy_body_dummy" />
-            <child link="kmr_iisy_body" />
-            <origin xyz="0 0 0" rpy="0 0 0" />
-          </joint>
-        <joint name="caster_wheel_br_joint" type="fixed">
-          <axis xyz="0.0 1.0 0.0"/>
-          <child link="caster_wheel_br_link"/>
-          <origin rpy="-0.0 0.0 -0.0" xyz="-0.015 0.0 -0.026"/>
-          <parent link="caster_base_br_link"/>
-        </joint>
-        <joint name="left_wheel_motor" type="fixed">
-          <axis xyz="0.0 1.0 0.0"/>
-          <child link="left_wheel"/>
-          <limit effort="5.0E2" velocity="1.0E2"/>
-          <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.325 0.028"/>  <!-- 0.06 -->
-          <parent link="kmr_iisy_body"/>
-        </joint>
-        <joint name="right_wheel_motor" type="fixed">
-          <axis xyz="0.0 1.0 0.0"/>
-          <child link="right_wheel"/>
-          <limit effort="5.0E2" velocity="1.0E1"/>
-          <origin rpy="-0.0 0.0 -0.0" xyz="0.0 -0.325 0.028"/>  <!-- 0.06 -->
-          <parent link="kmr_iisy_body"/>
-        </joint>
-        <joint name="caster_base_fl_joint" type="fixed">
-          <axis xyz="0.0 0.0 1.0"/>
-          <child link="caster_base_fl_link"/>
-          <origin rpy="-0.0 0.0 -0.0" xyz="0.48 0.27 0.055"/>
-          <parent link="kmr_iisy_body"/>
-        </joint>
-        <joint name="caster_base_rl_joint" type="fixed">
-          <axis xyz="0.0 0.0 1.0"/>
-          <child link="caster_base_rl_link"/>
-          <origin rpy="-0.0 0.0 -0.0" xyz="0.48 -0.27 0.055"/>
-          <parent link="kmr_iisy_body"/>
-        </joint>
-        <joint name="caster_base_bl_joint" type="fixed">
-          <axis xyz="0.0 0.0 1.0"/>
-          <child link="caster_base_bl_link"/>
-          <origin rpy="-0.0 0.0 -0.0" xyz="-0.48 0.27 0.055"/>
-          <parent link="kmr_iisy_body"/>
-        </joint>
-        <joint name="caster_base_br_joint" type="fixed">
-          <axis xyz="0.0 0.0 1.0"/>
-          <child link="caster_base_br_link"/>
-          <origin rpy="-0.0 0.0 -0.0" xyz="-0.48 -0.27 0.055"/>
-          <parent link="kmr_iisy_body"/>
-        </joint>
-        <joint name="caster_wheel_fl_joint" type="fixed">
-          <axis xyz="0.0 1.0 0.0"/>
-          <child link="caster_wheel_fl_link"/>
-          <origin rpy="-0.0 0.0 -0.0" xyz="-0.015 0.0 -0.026"/>
-          <parent link="caster_base_fl_link"/>
-        </joint>
-        <joint name="caster_wheel_rl_joint" type="fixed">
-          <axis xyz="0.0 1.0 0.0"/>
-          <child link="caster_wheel_rl_link"/>
-          <origin rpy="-0.0 0.0 -0.0" xyz="-0.015 0.0 -0.026"/>
-          <parent link="caster_base_rl_link"/>
-        </joint>
-        <joint name="caster_wheel_bl_joint" type="fixed">
-          <axis xyz="0.0 1.0 0.0"/>
-          <child link="caster_wheel_bl_link"/>
-          <origin rpy="-0.0 0.0 -0.0" xyz="-0.015 0.0 -0.026"/>
-          <parent link="caster_base_bl_link"/>
-        </joint>
-        <link name="kmr_iisy_body_dummy"/>
-        <link name="odom"/>
-        <link name="kmr_iisy_body">
-          <collision>
-            <geometry>
-              <mesh filename="package://kuka_kmr_iisy_support/meshes/collision/body.stl"/>
-            </geometry>
-            <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
-          </collision>
-          <inertial>
-            <inertia ixx="5.0" ixy="0.0" ixz="0.0" iyy="10.0" iyz="0.0" izz="10.0"/>
-            <mass value="1.0E2"/>
-            <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.325"/>
-          </inertial>
-          <visual>
-            <geometry>
-              <mesh filename="package://kuka_kmr_iisy_support/meshes/visual/body.stl"/>
-            </geometry>
-            <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
-            <xacro:material_kuka_ral_pure_white/>
-          </visual>
-        </link>
-        <link name="caster_wheel_fl_link">
-          <collision>
-            <geometry>
-              <mesh filename="package://kuka_kmr_iisy_support/meshes/collision/caster_wheel_link.stl"/>
-            </geometry>
-            <origin rpy="1.5707963267948963 0.0 -0.0" xyz="0.0 0.0 0.0"/>
-          </collision>
-          <inertial>
-            <inertia ixx="1.0E-4" ixy="0.0" ixz="0.0" iyy="1.0E-4" iyz="0.0" izz="1.0E-4"/>
-            <mass value="1.0E-1"/>
-            <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
-          </inertial>
-          <visual>
-            <geometry>
-              <mesh filename="package://kuka_kmr_iisy_support/meshes/visual/caster_wheel_link.stl"/>
-            </geometry>
-            <origin rpy="1.5707963267948963 0.0 -0.0" xyz="0.0 0.0 0.0"/>
-            <xacro:material_kuka_ral_gray_white/>
-          </visual>
-        </link>
-        <link name="left_wheel">
-          <collision>
-            <geometry>
-              <mesh filename="package://kuka_kmr_iisy_support/meshes/collision/left_wheel.stl"/>
-            </geometry>
-            <origin rpy="0.0 0.0 -1.5707963267948963" xyz="0.0 -0.02 0.0"/>
-          </collision>
-          <inertial>
-            <inertia ixx="5.0E-4" ixy="0.0" ixz="0.0" iyy="5.0E-4" iyz="0.0" izz="5.0E-4"/>
-            <mass value="3.0E0"/>
-            <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
-          </inertial>
-          <visual>
-            <geometry>
-              <mesh filename="package://kuka_kmr_iisy_support/meshes/visual/left_wheel.stl"/>
-            </geometry>
-            <origin rpy="0.0 0.0 -1.5707963267948963" xyz="0.0 -0.02 0.0"/>
-             <xacro:material_kuka_black/>
-          </visual>
-        </link>
-        <link name="caster_base_fl_link">
-          <collision>
-            <geometry>
-              <mesh filename="package://kuka_kmr_iisy_support/meshes/collision/caster_base_fl_link.stl"/>
-            </geometry>
-            <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
-          </collision>
-          <inertial>
-            <inertia ixx="1.0E-4" ixy="0.0" ixz="0.0" iyy="1.0E-4" iyz="0.0" izz="1.0E-4"/>
-            <mass value="1.0E-1"/>
-            <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
-          </inertial>
-          <visual>
-            <geometry>
-              <mesh filename="package://kuka_kmr_iisy_support/meshes/visual/caster_base_fl_link.stl"/>
-            </geometry>
-            <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
-            <xacro:material_kuka_ral_gray_white/>
-          </visual>
-        </link>
-        <link name="caster_wheel_rl_link">
-          <collision>
-            <geometry>
-              <mesh filename="package://kuka_kmr_iisy_support/meshes/collision/caster_wheel_link.stl"/>
-            </geometry>
-            <origin rpy="1.5707963267948963 0.0 -0.0" xyz="0.0 0.0 0.0"/>
-          </collision>
-          <inertial>
-            <inertia ixx="1.0E-4" ixy="0.0" ixz="0.0" iyy="1.0E-4" iyz="0.0" izz="1.0E-4"/>
-            <mass value="1.0E-1"/>
-            <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
-          </inertial>
-          <visual>
-            <geometry>
-              <mesh filename="package://kuka_kmr_iisy_support/meshes/visual/caster_wheel_link.stl"/>
-            </geometry>
-            <origin rpy="1.5707963267948963 0.0 -0.0" xyz="0.0 0.0 0.0"/>
-            <xacro:material_kuka_ral_gray_white/>
-          </visual>
-        </link>
-        <link name="caster_base_rl_link">
-          <collision>
-            <geometry>
-              <mesh filename="package://kuka_kmr_iisy_support/meshes/collision/caster_base_rl_link.stl"/>
-            </geometry>
-            <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
-          </collision>
-          <inertial>
-            <inertia ixx="1.0E-4" ixy="0.0" ixz="0.0" iyy="1.0E-4" iyz="0.0" izz="1.0E-4"/>
-            <mass value="1.0E-1"/>
-            <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
-          </inertial>
-          <visual>
-            <geometry>
-              <mesh filename="package://kuka_kmr_iisy_support/meshes/visual/caster_base_rl_link.stl"/>
-            </geometry>
-            <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
-            <xacro:material_kuka_ral_gray_white/>
-          </visual>
-        </link>
-        <link name="right_wheel">
-          <collision>
-            <geometry>
-              <mesh filename="package://kuka_kmr_iisy_support/meshes/collision/right_wheel.stl"/>
-            </geometry>
-            <origin rpy="-0.0 0.0 1.5707963267948963" xyz="0.0 0.02 0.0"/>
-          </collision>
-          <inertial>
-            <inertia ixx="5.0E-4" ixy="0.0" ixz="0.0" iyy="5.0E-4" iyz="0.0" izz="5.0E-4"/>
-            <mass value="3.0E0"/>
-            <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
-          </inertial>
-          <visual>
-            <geometry>
-              <mesh filename="package://kuka_kmr_iisy_support/meshes/visual/right_wheel.stl"/>
-            </geometry>
-            <origin rpy="-0.0 0.0 1.5707963267948963" xyz="0.0 0.02 0.0"/>
-            <xacro:material_kuka_black/>
-          </visual>
-        </link>
-        <link name="caster_wheel_bl_link">
-          <collision>
-            <geometry>
-              <mesh filename="package://kuka_kmr_iisy_support/meshes/collision/caster_wheel_link.stl"/>
-            </geometry>
-            <origin rpy="1.5707963267948963 0.0 -0.0" xyz="0.0 0.0 0.0"/>
-          </collision>
-          <inertial>
-            <inertia ixx="1.0E-4" ixy="0.0" ixz="0.0" iyy="1.0E-4" iyz="0.0" izz="1.0E-4"/>
-            <mass value="1.0E-1"/>
-            <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
-          </inertial>
-          <visual>
-            <geometry>
-              <mesh filename="package://kuka_kmr_iisy_support/meshes/visual/caster_wheel_link.stl"/>
-            </geometry>
-            <origin rpy="1.5707963267948963 0.0 -0.0" xyz="0.0 0.0 0.0"/>
-            <xacro:material_kuka_ral_gray_white/>
-          </visual>
-        </link>
-        <link name="caster_base_bl_link">
-          <collision>
-            <geometry>
-              <mesh filename="package://kuka_kmr_iisy_support/meshes/collision/caster_base_bl_link.stl"/>
-            </geometry>
-            <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
-          </collision>
-          <inertial>
-            <inertia ixx="1.0E-4" ixy="0.0" ixz="0.0" iyy="1.0E-4" iyz="0.0" izz="1.0E-4"/>
-            <mass value="1.0E-1"/>
-            <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
-          </inertial>
-          <visual>
-            <geometry>
-              <mesh filename="package://kuka_kmr_iisy_support/meshes/visual/caster_base_bl_link.stl"/>
-            </geometry>
-            <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
-            <xacro:material_kuka_ral_gray_white/>
-          </visual>
-        </link>
-        <link name="caster_wheel_br_link">
-          <collision>
-            <geometry>
-              <mesh filename="package://kuka_kmr_iisy_support/meshes/collision/caster_wheel_link.stl"/>
-            </geometry>
-            <origin rpy="1.5707963267948963 0.0 -0.0" xyz="0.0 0.0 0.0"/>
-          </collision>
-          <inertial>
-            <inertia ixx="1.0E-4" ixy="0.0" ixz="0.0" iyy="1.0E-4" iyz="0.0" izz="1.0E-4"/>
-            <mass value="1.0E-1"/>
-            <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
-          </inertial>
-          <visual>
-            <geometry>
-              <mesh filename="package://kuka_kmr_iisy_support/meshes/visual/caster_wheel_link.stl"/>
-            </geometry>
-            <origin rpy="1.5707963267948963 0.0 -0.0" xyz="0.0 0.0 0.0"/>
-            <xacro:material_kuka_ral_gray_white/>
-          </visual>
-        </link>
-        <link name="caster_base_br_link">
-          <collision>
-            <geometry>
-              <mesh filename="package://kuka_kmr_iisy_support/meshes/collision/caster_base_br_link.stl"/>
-            </geometry>
-            <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
-          </collision>
-          <inertial>
-            <inertia ixx="1.0E-4" ixy="0.0" ixz="0.0" iyy="1.0E-4" iyz="0.0" izz="1.0E-4"/>
-            <mass value="1.0E-1"/>
-            <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
-          </inertial>
-          <visual>
-            <geometry>
-              <mesh filename="package://kuka_kmr_iisy_support/meshes/visual/caster_base_br_link.stl"/>
-            </geometry>
-            <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
-            <xacro:material_kuka_ral_gray_white/>
-          </visual>
-        </link>
-
-
+    <joint name="twist" type="fixed">
+      <axis xyz="0.0 1.0 0.0"/>
+      <parent link="odom"/>
+      <child link="kmr_iisy_body_dummy"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+    </joint>
+    <joint name="kmr_iisy_body_dummy" type="fixed">
+      <parent link="kmr_iisy_body_dummy"/>
+      <child link="kmr_iisy_body"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+    </joint>
+    <joint name="caster_wheel_br_joint" type="fixed">
+      <axis xyz="0.0 1.0 0.0"/>
+      <child link="caster_wheel_br_link"/>
+      <origin rpy="-0.0 0.0 -0.0" xyz="-0.015 0.0 -0.026"/>
+      <parent link="caster_base_br_link"/>
+    </joint>
+    <joint name="left_wheel_motor" type="fixed">
+      <axis xyz="0.0 1.0 0.0"/>
+      <child link="left_wheel"/>
+      <limit effort="5.0E2" velocity="1.0E2"/>
+      <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.325 0.028"/>
+      <!-- 0.06 -->
+      <parent link="kmr_iisy_body"/>
+    </joint>
+    <joint name="right_wheel_motor" type="fixed">
+      <axis xyz="0.0 1.0 0.0"/>
+      <child link="right_wheel"/>
+      <limit effort="5.0E2" velocity="1.0E1"/>
+      <origin rpy="-0.0 0.0 -0.0" xyz="0.0 -0.325 0.028"/>
+      <!-- 0.06 -->
+      <parent link="kmr_iisy_body"/>
+    </joint>
+    <joint name="caster_base_fl_joint" type="fixed">
+      <axis xyz="0.0 0.0 1.0"/>
+      <child link="caster_base_fl_link"/>
+      <origin rpy="-0.0 0.0 -0.0" xyz="0.48 0.27 0.055"/>
+      <parent link="kmr_iisy_body"/>
+    </joint>
+    <joint name="caster_base_rl_joint" type="fixed">
+      <axis xyz="0.0 0.0 1.0"/>
+      <child link="caster_base_rl_link"/>
+      <origin rpy="-0.0 0.0 -0.0" xyz="0.48 -0.27 0.055"/>
+      <parent link="kmr_iisy_body"/>
+    </joint>
+    <joint name="caster_base_bl_joint" type="fixed">
+      <axis xyz="0.0 0.0 1.0"/>
+      <child link="caster_base_bl_link"/>
+      <origin rpy="-0.0 0.0 -0.0" xyz="-0.48 0.27 0.055"/>
+      <parent link="kmr_iisy_body"/>
+    </joint>
+    <joint name="caster_base_br_joint" type="fixed">
+      <axis xyz="0.0 0.0 1.0"/>
+      <child link="caster_base_br_link"/>
+      <origin rpy="-0.0 0.0 -0.0" xyz="-0.48 -0.27 0.055"/>
+      <parent link="kmr_iisy_body"/>
+    </joint>
+    <joint name="caster_wheel_fl_joint" type="fixed">
+      <axis xyz="0.0 1.0 0.0"/>
+      <child link="caster_wheel_fl_link"/>
+      <origin rpy="-0.0 0.0 -0.0" xyz="-0.015 0.0 -0.026"/>
+      <parent link="caster_base_fl_link"/>
+    </joint>
+    <joint name="caster_wheel_rl_joint" type="fixed">
+      <axis xyz="0.0 1.0 0.0"/>
+      <child link="caster_wheel_rl_link"/>
+      <origin rpy="-0.0 0.0 -0.0" xyz="-0.015 0.0 -0.026"/>
+      <parent link="caster_base_rl_link"/>
+    </joint>
+    <joint name="caster_wheel_bl_joint" type="fixed">
+      <axis xyz="0.0 1.0 0.0"/>
+      <child link="caster_wheel_bl_link"/>
+      <origin rpy="-0.0 0.0 -0.0" xyz="-0.015 0.0 -0.026"/>
+      <parent link="caster_base_bl_link"/>
+    </joint>
+    <link name="kmr_iisy_body_dummy"/>
+    <link name="odom"/>
+    <link name="kmr_iisy_body">
+      <collision>
+        <geometry>
+          <mesh filename="package://kuka_kmr_iisy_support/meshes/collision/body.stl"/>
+        </geometry>
+        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
+      </collision>
+      <inertial>
+        <inertia ixx="5.0" ixy="0.0" ixz="0.0" iyy="10.0" iyz="0.0" izz="10.0"/>
+        <mass value="1.0E2"/>
+        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.325"/>
+      </inertial>
+      <visual>
+        <geometry>
+          <mesh filename="package://kuka_kmr_iisy_support/meshes/visual/body.stl"/>
+        </geometry>
+        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
+        <xacro:material_kuka_ral_pure_white/>
+      </visual>
+    </link>
+    <link name="caster_wheel_fl_link">
+      <collision>
+        <geometry>
+          <mesh filename="package://kuka_kmr_iisy_support/meshes/collision/caster_wheel_link.stl"/>
+        </geometry>
+        <origin rpy="1.5707963267948963 0.0 -0.0" xyz="0.0 0.0 0.0"/>
+      </collision>
+      <inertial>
+        <inertia ixx="1.0E-4" ixy="0.0" ixz="0.0" iyy="1.0E-4" iyz="0.0" izz="1.0E-4"/>
+        <mass value="1.0E-1"/>
+        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
+      </inertial>
+      <visual>
+        <geometry>
+          <mesh filename="package://kuka_kmr_iisy_support/meshes/visual/caster_wheel_link.stl"/>
+        </geometry>
+        <origin rpy="1.5707963267948963 0.0 -0.0" xyz="0.0 0.0 0.0"/>
+        <xacro:material_kuka_ral_gray_white/>
+      </visual>
+    </link>
+    <link name="left_wheel">
+      <collision>
+        <geometry>
+          <mesh filename="package://kuka_kmr_iisy_support/meshes/collision/left_wheel.stl"/>
+        </geometry>
+        <origin rpy="0.0 0.0 -1.5707963267948963" xyz="0.0 -0.02 0.0"/>
+      </collision>
+      <inertial>
+        <inertia ixx="5.0E-4" ixy="0.0" ixz="0.0" iyy="5.0E-4" iyz="0.0" izz="5.0E-4"/>
+        <mass value="3.0E0"/>
+        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
+      </inertial>
+      <visual>
+        <geometry>
+          <mesh filename="package://kuka_kmr_iisy_support/meshes/visual/left_wheel.stl"/>
+        </geometry>
+        <origin rpy="0.0 0.0 -1.5707963267948963" xyz="0.0 -0.02 0.0"/>
+        <xacro:material_kuka_black/>
+      </visual>
+    </link>
+    <link name="caster_base_fl_link">
+      <collision>
+        <geometry>
+          <mesh filename="package://kuka_kmr_iisy_support/meshes/collision/caster_base_fl_link.stl"/>
+        </geometry>
+        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
+      </collision>
+      <inertial>
+        <inertia ixx="1.0E-4" ixy="0.0" ixz="0.0" iyy="1.0E-4" iyz="0.0" izz="1.0E-4"/>
+        <mass value="1.0E-1"/>
+        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
+      </inertial>
+      <visual>
+        <geometry>
+          <mesh filename="package://kuka_kmr_iisy_support/meshes/visual/caster_base_fl_link.stl"/>
+        </geometry>
+        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
+        <xacro:material_kuka_ral_gray_white/>
+      </visual>
+    </link>
+    <link name="caster_wheel_rl_link">
+      <collision>
+        <geometry>
+          <mesh filename="package://kuka_kmr_iisy_support/meshes/collision/caster_wheel_link.stl"/>
+        </geometry>
+        <origin rpy="1.5707963267948963 0.0 -0.0" xyz="0.0 0.0 0.0"/>
+      </collision>
+      <inertial>
+        <inertia ixx="1.0E-4" ixy="0.0" ixz="0.0" iyy="1.0E-4" iyz="0.0" izz="1.0E-4"/>
+        <mass value="1.0E-1"/>
+        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
+      </inertial>
+      <visual>
+        <geometry>
+          <mesh filename="package://kuka_kmr_iisy_support/meshes/visual/caster_wheel_link.stl"/>
+        </geometry>
+        <origin rpy="1.5707963267948963 0.0 -0.0" xyz="0.0 0.0 0.0"/>
+        <xacro:material_kuka_ral_gray_white/>
+      </visual>
+    </link>
+    <link name="caster_base_rl_link">
+      <collision>
+        <geometry>
+          <mesh filename="package://kuka_kmr_iisy_support/meshes/collision/caster_base_rl_link.stl"/>
+        </geometry>
+        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
+      </collision>
+      <inertial>
+        <inertia ixx="1.0E-4" ixy="0.0" ixz="0.0" iyy="1.0E-4" iyz="0.0" izz="1.0E-4"/>
+        <mass value="1.0E-1"/>
+        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
+      </inertial>
+      <visual>
+        <geometry>
+          <mesh filename="package://kuka_kmr_iisy_support/meshes/visual/caster_base_rl_link.stl"/>
+        </geometry>
+        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
+        <xacro:material_kuka_ral_gray_white/>
+      </visual>
+    </link>
+    <link name="right_wheel">
+      <collision>
+        <geometry>
+          <mesh filename="package://kuka_kmr_iisy_support/meshes/collision/right_wheel.stl"/>
+        </geometry>
+        <origin rpy="-0.0 0.0 1.5707963267948963" xyz="0.0 0.02 0.0"/>
+      </collision>
+      <inertial>
+        <inertia ixx="5.0E-4" ixy="0.0" ixz="0.0" iyy="5.0E-4" iyz="0.0" izz="5.0E-4"/>
+        <mass value="3.0E0"/>
+        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
+      </inertial>
+      <visual>
+        <geometry>
+          <mesh filename="package://kuka_kmr_iisy_support/meshes/visual/right_wheel.stl"/>
+        </geometry>
+        <origin rpy="-0.0 0.0 1.5707963267948963" xyz="0.0 0.02 0.0"/>
+        <xacro:material_kuka_black/>
+      </visual>
+    </link>
+    <link name="caster_wheel_bl_link">
+      <collision>
+        <geometry>
+          <mesh filename="package://kuka_kmr_iisy_support/meshes/collision/caster_wheel_link.stl"/>
+        </geometry>
+        <origin rpy="1.5707963267948963 0.0 -0.0" xyz="0.0 0.0 0.0"/>
+      </collision>
+      <inertial>
+        <inertia ixx="1.0E-4" ixy="0.0" ixz="0.0" iyy="1.0E-4" iyz="0.0" izz="1.0E-4"/>
+        <mass value="1.0E-1"/>
+        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
+      </inertial>
+      <visual>
+        <geometry>
+          <mesh filename="package://kuka_kmr_iisy_support/meshes/visual/caster_wheel_link.stl"/>
+        </geometry>
+        <origin rpy="1.5707963267948963 0.0 -0.0" xyz="0.0 0.0 0.0"/>
+        <xacro:material_kuka_ral_gray_white/>
+      </visual>
+    </link>
+    <link name="caster_base_bl_link">
+      <collision>
+        <geometry>
+          <mesh filename="package://kuka_kmr_iisy_support/meshes/collision/caster_base_bl_link.stl"/>
+        </geometry>
+        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
+      </collision>
+      <inertial>
+        <inertia ixx="1.0E-4" ixy="0.0" ixz="0.0" iyy="1.0E-4" iyz="0.0" izz="1.0E-4"/>
+        <mass value="1.0E-1"/>
+        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
+      </inertial>
+      <visual>
+        <geometry>
+          <mesh filename="package://kuka_kmr_iisy_support/meshes/visual/caster_base_bl_link.stl"/>
+        </geometry>
+        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
+        <xacro:material_kuka_ral_gray_white/>
+      </visual>
+    </link>
+    <link name="caster_wheel_br_link">
+      <collision>
+        <geometry>
+          <mesh filename="package://kuka_kmr_iisy_support/meshes/collision/caster_wheel_link.stl"/>
+        </geometry>
+        <origin rpy="1.5707963267948963 0.0 -0.0" xyz="0.0 0.0 0.0"/>
+      </collision>
+      <inertial>
+        <inertia ixx="1.0E-4" ixy="0.0" ixz="0.0" iyy="1.0E-4" iyz="0.0" izz="1.0E-4"/>
+        <mass value="1.0E-1"/>
+        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
+      </inertial>
+      <visual>
+        <geometry>
+          <mesh filename="package://kuka_kmr_iisy_support/meshes/visual/caster_wheel_link.stl"/>
+        </geometry>
+        <origin rpy="1.5707963267948963 0.0 -0.0" xyz="0.0 0.0 0.0"/>
+        <xacro:material_kuka_ral_gray_white/>
+      </visual>
+    </link>
+    <link name="caster_base_br_link">
+      <collision>
+        <geometry>
+          <mesh filename="package://kuka_kmr_iisy_support/meshes/collision/caster_base_br_link.stl"/>
+        </geometry>
+        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
+      </collision>
+      <inertial>
+        <inertia ixx="1.0E-4" ixy="0.0" ixz="0.0" iyy="1.0E-4" iyz="0.0" izz="1.0E-4"/>
+        <mass value="1.0E-1"/>
+        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
+      </inertial>
+      <visual>
+        <geometry>
+          <mesh filename="package://kuka_kmr_iisy_support/meshes/visual/caster_base_br_link.stl"/>
+        </geometry>
+        <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
+        <xacro:material_kuka_ral_gray_white/>
+      </visual>
+    </link>
   </xacro:macro>
 </robot>
