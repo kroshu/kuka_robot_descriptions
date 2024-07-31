@@ -65,8 +65,11 @@ def launch_setup(context, *args, **kwargs):
         parameters=[robot_description, controller_config],
     )
 
-    robot_description_kinematics = {"robot_description_kinematics": {
-        "manipulator": {"kinematics_solver": "kdl_kinematics_plugin/KDLKinematicsPlugin"}}}
+    robot_description_kinematics = {
+        "robot_description_kinematics": {
+            "manipulator": {"kinematics_solver": "kdl_kinematics_plugin/KDLKinematicsPlugin"}
+        }
+    }
 
     rviz = Node(
         package="rviz2",
