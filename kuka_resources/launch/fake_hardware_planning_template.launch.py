@@ -12,9 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import yaml
-import os
-
 from launch import LaunchDescription
 from launch_ros.actions import Node
 from ament_index_python.packages import get_package_share_directory
@@ -23,17 +20,6 @@ from launch.substitutions import LaunchConfiguration
 
 from launch.substitutions import Command, FindExecutable, PathJoinSubstitution
 from launch_ros.substitutions import FindPackageShare
-
-
-def load_yaml(package_name, file_path):
-    package_path = get_package_share_directory(package_name)
-    absolute_file_path = os.path.join(package_path, file_path)
-
-    try:
-        with open(absolute_file_path) as file:
-            return yaml.safe_load(file)
-    except OSError:  # parent of IOError, OSError *and* WindowsError where available
-        return None
 
 
 def launch_setup(context, *args, **kwargs):
@@ -79,9 +65,8 @@ def launch_setup(context, *args, **kwargs):
         parameters=[robot_description, controller_config],
     )
 
-    # Load kinematics yaml
-    kinematics_yaml = load_yaml("kuka_lbr_iisy_moveit_config", "config/kinematics.yaml")
-    robot_description_kinematics = {"robot_description_kinematics": kinematics_yaml}
+    robot_description_kinematics = {"robot_description_kinematics": {
+        "manipulator": {"kinematics_solver": "kdl_kinematics_plugin/KDLKinematicsPlugin"}}}
 
     rviz = Node(
         package="rviz2",
