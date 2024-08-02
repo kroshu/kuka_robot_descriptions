@@ -20,6 +20,8 @@ Github CI
 - `kuka_lbr_iiwa_support` contains urdf, config and mesh files for KUKA LBR iiwa robots
 - `kuka_lbr_iiwa_moveit_config` contains configuration files for KUKA LBR iiwa robots necessary for planning with MoveIt.
 - `kuka_mock_hardware_interface` contains a custom mock hardware interface for KUKA robots
+- `kuka_kmr_iisy_support` contains urdf, config and mesh files for KUKA KMR iisy mobile robot platform.
+
 
 ## Structure of the support packages
 
