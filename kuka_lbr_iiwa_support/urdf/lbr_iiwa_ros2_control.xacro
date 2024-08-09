@@ -123,6 +123,38 @@
           <param name="initial_value">0.0</param>
         </state_interface>
       </joint>
+      <xacro:if value="${use_fake_hardware}">
+        <joint name="${prefix}dummy_cart_joint/x">
+          <command_interface name="stiffness"/>
+          <command_interface name="damping"/>
+          <command_interface name="effort"/>
+        </joint>
+        <joint name="${prefix}dummy_cart_joint/y">
+          <command_interface name="stiffness"/>
+          <command_interface name="damping"/>
+          <command_interface name="effort"/>
+        </joint>
+        <joint name="${prefix}dummy_cart_joint/z">
+          <command_interface name="stiffness"/>
+          <command_interface name="damping"/>
+          <command_interface name="effort"/>
+        </joint>
+        <joint name="${prefix}dummy_cart_joint/a">
+          <command_interface name="stiffness"/>
+          <command_interface name="damping"/>
+          <command_interface name="effort"/>
+        </joint>
+        <joint name="${prefix}dummy_cart_joint/b">
+          <command_interface name="stiffness"/>
+          <command_interface name="damping"/>
+          <command_interface name="effort"/>
+        </joint>
+        <joint name="${prefix}dummy_cart_joint/c">
+          <command_interface name="stiffness"/>
+          <command_interface name="damping"/>
+          <command_interface name="effort"/>
+        </joint>
+      </xacro:if>
       <xacro:unless value="${use_fake_hardware}">
         <xacro:if value="${io_access}">
           <xacro:include filename="$(find kuka_sunrise_fri_driver)/config/gpio_config.xacro"/>
