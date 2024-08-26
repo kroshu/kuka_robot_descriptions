@@ -65,12 +65,21 @@ def launch_setup(context, *args, **kwargs):
         parameters=[robot_description, controller_config],
     )
 
+    robot_description_kinematics = {
+        "robot_description_kinematics": {
+            "manipulator": {"kinematics_solver": "kdl_kinematics_plugin/KDLKinematicsPlugin"}
+        }
+    }
+
     rviz = Node(
         package="rviz2",
         executable="rviz2",
         name="rviz2",
         output="log",
         arguments=["-d", rviz_config_file, "--ros-args", "--log-level", "error"],
+        parameters=[
+            robot_description_kinematics,
+        ],
     )
 
     robot_state_publisher = Node(
