@@ -1,4 +1,4 @@
-planning_plugins: 
+planning_plugins:
   - chomp_interface/CHOMPPlanner
 request_adapters:
   - default_planning_request_adapters/ResolveConstraintFrames
