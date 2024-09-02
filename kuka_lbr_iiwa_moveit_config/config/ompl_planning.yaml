@@ -1,13 +1,16 @@
-planning_plugin: ompl_interface/OMPLPlanner
-# To optionally use Ruckig for jerk-limited smoothing, add this line to the request adapters below
-# default_planner_request_adapters/AddRuckigTrajectorySmoothing
-request_adapters: >-
-  default_planner_request_adapters/AddTimeOptimalParameterization
-  default_planner_request_adapters/ResolveConstraintFrames
-  default_planner_request_adapters/FixWorkspaceBounds
-  default_planner_request_adapters/FixStartStateBounds
-  default_planner_request_adapters/FixStartStateCollision
-  default_planner_request_adapters/FixStartStatePathConstraints
+planning_plugins:
+  - ompl_interface/OMPLPlanner
+request_adapters:
+  - default_planning_request_adapters/ResolveConstraintFrames
+  - default_planning_request_adapters/ValidateWorkspaceBounds
+  - default_planning_request_adapters/CheckStartStateBounds
+  - default_planning_request_adapters/CheckStartStateCollision
+# To optionally use Ruckig for jerk-limited smoothing, add this line to the response adapters below
+# default_planning_response_adapters/AddRuckigTrajectorySmoothing
+response_adapters:
+  - default_planning_response_adapters/AddTimeOptimalParameterization
+  - default_planning_response_adapters/ValidateSolution
+  - default_planning_response_adapters/DisplayMotionPath
 start_state_max_bounds_error: 0.1
 planner_configs:
   APSConfigDefault:
@@ -16,7 +19,16 @@ planner_configs:
     hybridize: 1  # Compute hybrid solution trajectories
     max_hybrid_paths: 36  # Number of hybrid paths generated per iteration
     num_planners: 8  # The number of default planners to use for planning
-    planners: "RRTConnect,RRTConnect,RRTConnect,RRTConnect,RRTConnect,RRTConnect,RRTConnect,RRTConnect"  # A comma-separated list of planner types (e.g., "PRM,EST,RRTConnect"Optionally, planner parameters can be passed to change the default:"PRM[max_nearest_neighbors=5],EST[goal_bias=.5],RRT[range=10. goal_bias=.1]"
+    # Optionally, planner parameters can be passed to change the default: "PRM[max_nearest_neighbors=5]", "EST[goal_bias=.5]", "RRT[range=10. goal_bias=.1]"
+    planners:
+      - RRTConnect
+      - RRTConnect
+      - RRTConnect
+      - RRTConnect
+      - RRTConnect
+      - RRTConnect
+      - RRTConnect
+      - RRTConnect
   SBLkConfigDefault:
     type: geometric::SBL
     range: 0.0  # Max motion added to tree. ==> maxDistance_ default: 0.0, if 0.0, set on setup()
