@@ -91,11 +91,7 @@ def launch_setup(context, *args, **kwargs):
 
     # Spawn controllers
     def controller_spawner(controller_with_config):
-        arg_list = [
-            controller_with_config[0],
-            "-c",
-            controller_manager_node
-        ]
+        arg_list = [controller_with_config[0], "-c", controller_manager_node]
         if controller_with_config[1] is not None:
             arg_list.append("-p")
             arg_list.append(controller_with_config[1])
