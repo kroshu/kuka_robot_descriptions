@@ -94,14 +94,15 @@ def launch_setup(context, *args, **kwargs):
         arg_list = [
             controller_with_config[0],
             "-c",
-            controller_manager_node,
-            "-p",
-            controller_with_config[1],
+            controller_manager_node
         ]
+        if controller_with_config[1] is not None:
+            arg_list.append("-p")
+            arg_list.append(controller_with_config[1])
         return Node(package="controller_manager", executable="spawner", arguments=arg_list)
 
     controller_names_and_config = [
-        ("joint_state_broadcaster", []),
+        ("joint_state_broadcaster", None),
         ("joint_trajectory_controller", controller_config),
     ]
 
