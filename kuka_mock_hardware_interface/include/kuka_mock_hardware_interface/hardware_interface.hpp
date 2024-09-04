@@ -37,8 +37,7 @@ static constexpr size_t POSITION_INTERFACE_INDEX = 0;
 static constexpr size_t VELOCITY_INTERFACE_INDEX = 1;
 static constexpr size_t ACCELERATION_INTERFACE_INDEX = 2;
 
-class HARDWARE_INTERFACE_PUBLIC KukaMockHardwareInterface
-: public hardware_interface::SystemInterface
+class KukaMockHardwareInterface : public hardware_interface::SystemInterface
 {
 public:
   CallbackReturn on_init(const hardware_interface::HardwareInfo & info) override;
