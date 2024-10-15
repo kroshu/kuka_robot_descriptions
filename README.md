@@ -2,9 +2,10 @@
 
 This repository contains support packages that can be used with real KUKA robots as well as with simulations.
 
-Github CI
-------------
-[![Build Status](https://github.com/kroshu/kuka_robot_descriptions/workflows/CI/badge.svg?branch=main)](https://github.com/kroshu/kuka_robot_descriptions/actions)
+ROS2 Distro | Branch | Github CI
+------------ | -------------- | --------------
+**Jazzy** | [`master`](https://github.com/kroshu/kuka_robot_descriptions/tree/master) | [![Build Status](https://github.com/kroshu/kuka_robot_descriptions/actions/workflows/industrial_ci.yml/badge.svg?branch=master)](https://github.com/kroshu/kuka_robot_descriptions/actions)
+**Humble** | [`humble`](https://github.com/kroshu/kuka_robot_descriptions/tree/humble) | [![Build Status](https://github.com/kroshu/kuka_robot_descriptions/actions/workflows/industrial_ci.yml/badge.svg?branch=humble)](https://github.com/kroshu/kuka_robot_descriptions/actions)
 
 ## What is included?
 
@@ -67,8 +68,7 @@ Collision meshes are provided for the robots to speed up collision avoidance and
 
 ### Joint limit configurations
 
-The support packages contain a joint limits file for every supported robot model, necessary time parametrization of MoveIt-planned paths. They contain the velocity limits also available in the URDF model and additional acceleration limits. Acceleration limits can never be global, these values are calculated from the worst-case ramp-up time to reach maximum velocity. The easiest way to modify the allowed velocities and accelerations is to change the velocity and acceleration scaling factors also available in the same configuration files. (The scaling factor can never be smaller than 1.)
-
+The support packages contain a joint limits file for every supported robot model, necessary time parametrization of MoveIt-planned paths. They contain the velocity limits also available in the URDF model and additional acceleration limits. Acceleration limits can never be global, these values are calculated from the worst-case ramp-up time to reach maximum velocity. The easiest way to modify the allowed velocities and accelerations is to change the velocity and acceleration scaling factors also available in the same configuration files. (The scaling factor can never be greater than 1.)
 
 ### Extending the models
 
