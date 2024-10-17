@@ -197,5 +197,45 @@
       <child link="${prefix}tool0"/>
       <origin rpy="-0.0 0.0 0.0" xyz="0.0 0.0 0.071"/>
     </joint>
+    <joint name="${prefix}dummy_cart_joint/x" type="continuous">
+      <parent link="world"/>
+      <child link="${prefix}base_link"/>
+    </joint>
+    <joint name="${prefix}dummy_cart_joint/y" type="continuous">
+      <parent link="world"/>
+      <child link="${prefix}base_link"/>
+    </joint>
+    <joint name="${prefix}dummy_cart_joint/z" type="continuous">
+      <parent link="world"/>
+      <child link="${prefix}base_link"/>
+    </joint>
+    <joint name="${prefix}dummy_cart_joint/a" type="continuous">
+      <parent link="world"/>
+      <child link="${prefix}base_link"/>
+    </joint>
+    <joint name="${prefix}dummy_cart_joint/b" type="continuous">
+      <parent link="world"/>
+      <child link="${prefix}base_link"/>
+    </joint>
+    <joint name="${prefix}dummy_cart_joint/c" type="continuous">
+      <parent link="world"/>
+      <child link="${prefix}base_link"/>
+    </joint>
+    <joint name="${prefix}dummy_cart_joint/qw" type="continuous">
+      <parent link="world"/>
+      <child link="${prefix}base_link"/>
+    </joint>
+    <joint name="${prefix}dummy_cart_joint/qx" type="continuous">
+      <parent link="world"/>
+      <child link="${prefix}base_link"/>
+    </joint>
+    <joint name="${prefix}dummy_cart_joint/qy" type="continuous">
+      <parent link="world"/>
+      <child link="${prefix}base_link"/>
+    </joint>
+    <joint name="${prefix}dummy_cart_joint/qz" type="continuous">
+      <parent link="world"/>
+      <child link="${prefix}base_link"/>
+    </joint>
   </xacro:macro>
 </robot>
