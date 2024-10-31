@@ -155,7 +155,7 @@ planner_configs:
 
 manipulator:
   enforce_constrained_state_space: true
-  projection_evaluator: joints(joint_1,joint_2)
+  projection_evaluator: joints(test1_joint_1,test1_joint_2)
   planner_configs:
     - APSConfigDefault
     - SBLkConfigDefault
