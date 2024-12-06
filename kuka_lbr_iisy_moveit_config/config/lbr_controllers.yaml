@@ -1,0 +1,48 @@
+# Use of /** so that the configurations hold for controller
+# managers regardless of their namespace. Useful in multi-robot setups.
+/**/controller_manager:
+  ros__parameters:
+    update_rate: 1000
+
+    # ROS 2 control broadcasters
+    joint_state_broadcaster:
+      type: joint_state_broadcaster/JointStateBroadcaster
+
+    force_torque_broadcaster:
+      type: force_torque_sensor_broadcaster/ForceTorqueSensorBroadcaster
+
+    # ROS 2 control controllers
+    joint_trajectory_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+
+    forward_position_controller:
+      type: position_controllers/JointGroupPositionController
+
+# ROS 2 control controllers
+/**/joint_trajectory_controller:
+  ros__parameters:
+    joints:
+      - joint_1
+      - joint_2
+      - joint_3
+      - joint_4
+      - joint_5
+      - joint_6
+    command_interfaces:
+      - position
+    state_interfaces:
+      - position
+      - velocity
+    state_publish_rate: 50.0
+    action_monitor_rate: 20.0
+
+/**/forward_position_controller:
+  ros__parameters:
+    joints:
+      - joint_1
+      - joint_2
+      - joint_3
+      - joint_4
+      - joint_5
+      - joint_6
+    interface_name: position
