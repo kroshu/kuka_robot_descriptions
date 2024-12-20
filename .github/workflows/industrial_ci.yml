@@ -15,6 +15,10 @@ on:
       - feature/**
       - fix/**
 
+  schedule:
+    # Run every Monday at 1PM UTC
+    - cron: 0 13 * * 1
+
 jobs:
   industrial_ci:
     name: ROS-Industrial CI
