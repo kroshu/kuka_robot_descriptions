@@ -1,19 +1,14 @@
-name: ROS-Industrial CI
+name: ROS-Industrial CI humble
 run-name: ROS-Industrial CI - ${{ github.event_name }}
 
 on:
   push:
     branches:
-      - master
-      - feature/**
-      - fix/**
+      - humble
 
-  # When there is a pull request against master
   pull_request:
     branches:
-      - master
-      - feature/**
-      - fix/**
+      - humble
 
 jobs:
   industrial_ci:
@@ -23,7 +18,7 @@ jobs:
         env:
         - ROS_REPO: ros
           BUILDER: colcon
-          ROS_DISTRO: jazzy
+          ROS_DISTRO: humble
     env:
       CCACHE_DIR: /github/home/.ccache # Directory for ccache (and how we enable ccache in industrial_ci)
       EVENT_NAME: ${{ github.event_name }}
@@ -33,7 +28,7 @@ jobs:
       PR_NUMBER: ${{ github.event.number }}
       ANALYZER_TOKEN: ${{ secrets.ANALYZER_TOKEN }}
       DEBUG_BASH: true
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
         with:
