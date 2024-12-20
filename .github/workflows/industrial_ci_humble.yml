@@ -33,7 +33,15 @@ jobs:
       DEBUG_BASH: true
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout code
+        if: github.event.schedule != ''
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          ref: humble
+      - name: Checkout humble branch for scheduled runs
+        if: github.event.schedule == ''
+        uses: actions/checkout@v2
         with:
           fetch-depth: 0
       # This step will fetch/store the directory used by ccache before/after the ci run
