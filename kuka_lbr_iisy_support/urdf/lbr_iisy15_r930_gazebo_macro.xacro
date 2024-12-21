@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="lbr_iisy3_r760_gazebo">
-  <!-- Include helper xacros -->
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="lbr_iisy15_r930_gazebo">
+  <!-- include helper xacros -->
   <xacro:include filename="$(find kuka_lbr_iisy_support)/urdf/gazebo_control_macro.xacro"/>
   <xacro:include filename="$(find kuka_resources)/urdf/common_materials.xacro"/>
   <xacro:include filename="$(find kuka_lbr_iisy_support)/urdf/lbr_iisy_transmission.xacro"/>
-  <xacro:macro name="lbr_iisy3_r760_gazebo" params="prefix *origin">
+  <xacro:macro name="kuka_lbr_iisy15_r930_gazebo" params="prefix *origin">
     <!-- Gazebo Control Macro -->
     <xacro:gazebo_control_macro prefix="${prefix}"/>
-    <!-- Links - main serial chain -->
+    <!-- links - main serial chain -->
     <link name="world"/>
     <link name="${prefix}base_link">
       <inertial>
@@ -17,13 +17,13 @@
       </inertial>
       <collision>
         <geometry>
-          <mesh filename="package://kuka_lbr_iisy_support/meshes/lbr_iisy3_r760/collision/base_link.stl"/>
+          <mesh filename="package://kuka_lbr_iisy_support/meshes/lbr_iisy15_r930/collision/base_link.stl"/>
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
       </collision>
       <visual>
         <geometry>
-          <mesh filename="package://kuka_lbr_iisy_support/meshes/lbr_iisy3_r760/visual/base_link.stl"/>
+          <mesh filename="package://kuka_lbr_iisy_support/meshes/lbr_iisy15_r930/visual/base_link.stl"/>
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
         <xacro:material_kuka_ral_pure_white/>
@@ -37,13 +37,13 @@
       </inertial>
       <collision>
         <geometry>
-          <mesh filename="package://kuka_lbr_iisy_support/meshes/lbr_iisy3_r760/collision/link_1.stl"/>
+          <mesh filename="package://kuka_lbr_iisy_support/meshes/lbr_iisy15_r930/collision/link_1.stl"/>
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
       </collision>
       <visual>
         <geometry>
-          <mesh filename="package://kuka_lbr_iisy_support/meshes/lbr_iisy3_r760/visual/link_1.stl"/>
+          <mesh filename="package://kuka_lbr_iisy_support/meshes/lbr_iisy15_r930/visual/link_1.stl"/>
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
         <xacro:material_kuka_ral_pure_white/>
@@ -57,13 +57,13 @@
       </inertial>
       <collision>
         <geometry>
-          <mesh filename="package://kuka_lbr_iisy_support/meshes/lbr_iisy3_r760/collision/link_2.stl"/>
+          <mesh filename="package://kuka_lbr_iisy_support/meshes/lbr_iisy15_r930/collision/link_2.stl"/>
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
       </collision>
       <visual>
         <geometry>
-          <mesh filename="package://kuka_lbr_iisy_support/meshes/lbr_iisy3_r760/visual/link_2.stl"/>
+          <mesh filename="package://kuka_lbr_iisy_support/meshes/lbr_iisy15_r930/visual/link_2.stl"/>
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
         <xacro:material_kuka_ral_pure_white/>
@@ -77,13 +77,13 @@
       </inertial>
       <collision>
         <geometry>
-          <mesh filename="package://kuka_lbr_iisy_support/meshes/lbr_iisy3_r760/collision/link_3.stl"/>
+          <mesh filename="package://kuka_lbr_iisy_support/meshes/lbr_iisy15_r930/collision/link_3.stl"/>
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
       </collision>
       <visual>
         <geometry>
-          <mesh filename="package://kuka_lbr_iisy_support/meshes/lbr_iisy3_r760/visual/link_3.stl"/>
+          <mesh filename="package://kuka_lbr_iisy_support/meshes/lbr_iisy15_r930/visual/link_3.stl"/>
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
         <xacro:material_kuka_ral_pure_white/>
@@ -97,13 +97,13 @@
       </inertial>
       <collision>
         <geometry>
-          <mesh filename="package://kuka_lbr_iisy_support/meshes/lbr_iisy3_r760/collision/link_4.stl"/>
+          <mesh filename="package://kuka_lbr_iisy_support/meshes/lbr_iisy15_r930/collision/link_4.stl"/>
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
       </collision>
       <visual>
         <geometry>
-          <mesh filename="package://kuka_lbr_iisy_support/meshes/lbr_iisy3_r760/visual/link_4.stl"/>
+          <mesh filename="package://kuka_lbr_iisy_support/meshes/lbr_iisy15_r930/visual/link_4.stl"/>
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
         <xacro:material_kuka_ral_pure_white/>
@@ -117,13 +117,13 @@
       </inertial>
       <collision>
         <geometry>
-          <mesh filename="package://kuka_lbr_iisy_support/meshes/lbr_iisy3_r760/collision/link_5.stl"/>
+          <mesh filename="package://kuka_lbr_iisy_support/meshes/lbr_iisy15_r930/collision/link_5.stl"/>
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
       </collision>
       <visual>
         <geometry>
-          <mesh filename="package://kuka_lbr_iisy_support/meshes/lbr_iisy3_r760/visual/link_5.stl"/>
+          <mesh filename="package://kuka_lbr_iisy_support/meshes/lbr_iisy15_r930/visual/link_5.stl"/>
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
         <xacro:material_kuka_ral_pure_white/>
@@ -137,63 +137,63 @@
       </inertial>
       <collision>
         <geometry>
-          <mesh filename="package://kuka_lbr_iisy_support/meshes/lbr_iisy3_r760/collision/link_6.stl"/>
+          <mesh filename="package://kuka_lbr_iisy_support/meshes/lbr_iisy15_r930/collision/link_6.stl"/>
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
       </collision>
       <visual>
         <geometry>
-          <mesh filename="package://kuka_lbr_iisy_support/meshes/lbr_iisy3_r760/visual/link_6.stl"/>
+          <mesh filename="package://kuka_lbr_iisy_support/meshes/lbr_iisy15_r930/visual/link_6.stl"/>
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
         <xacro:material_kuka_ral_pure_white/>
       </visual>
     </link>
-    <!-- Joints - main serial chain -->
+    <!-- joints - main serial chain -->
     <joint name="${prefix}world-base_link" type="fixed">
       <parent link="world"/>
       <child link="${prefix}base_link"/>
       <xacro:insert_block name="origin"/>
     </joint>
     <joint name="${prefix}joint_1" type="revolute">
-      <axis xyz="0.0 0.0 -1.0"/>
+      <axis xyz="0.0 0.0 1.0"/>
       <child link="${prefix}link_1"/>
-      <limit effort="74.930405" lower="-3.2288591E0" upper="3.2288591E0" velocity="3.490656"/>
-      <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.1264"/>
+      <limit effort="398.011277" lower="-3.2288591161895095E0" upper="3.2288591161895095E0" velocity="3.490656"/>
+      <origin rpy="${-pi} 0.0 -0.0" xyz="0.0 0.0 0.0"/>
       <parent link="${prefix}base_link"/>
     </joint>
     <joint name="${prefix}joint_2" type="revolute">
       <axis xyz="0.0 0.0 1.0"/>
       <child link="${prefix}link_2"/>
-      <limit effort="74.472453" lower="-4.0142572796E0" upper="8.726646E-1" velocity="3.490656"/>
-      <origin rpy="${-pi/2.0} 0.0 -0.0" xyz="0.0 0.0 0.0886"/>
+      <limit effort="286.529873" lower="-4.014257279586958E0" upper="8.726646259971648E-1" velocity="3.490656"/>
+      <origin rpy="${pi/2.0} 0.0 -0.0" xyz="0.0 0.0 -0.3"/>
       <parent link="${prefix}link_1"/>
     </joint>
     <joint name="${prefix}joint_3" type="revolute">
       <axis xyz="0.0 0.0 1.0"/>
       <child link="${prefix}link_3"/>
-      <limit effort="43.393430" lower="-2.61799387799E0" upper="2.61799387799E0" velocity="3.490656"/>
-      <origin rpy="0.0 0.0 ${-pi/2.0}" xyz="0.3 0.0 0.0"/>
+      <limit effort="137.666701" lower="-2.6179938779914944E0" upper="2.6179938779914944E0" velocity="3.490656"/>
+      <origin rpy="0.0 0.0 ${-pi/2.0}" xyz="0.385 0.0 0.0"/>
       <parent link="${prefix}link_2"/>
     </joint>
     <joint name="${prefix}joint_4" type="revolute">
       <axis xyz="0.0 0.0 1.0"/>
       <child link="${prefix}link_4"/>
-      <limit effort="14.767719" lower="-3.05432619E0" upper="3.05432619E0" velocity="5.235988"/>
+      <limit effort="63.574238" lower="-3.141592653589793E0" upper="3.141592653589793E0" velocity="4.014255"/>
       <origin rpy="${pi/2.0} 0.0 -0.0" xyz="0.0 0.0 0.0"/>
       <parent link="${prefix}link_3"/>
     </joint>
     <joint name="${prefix}joint_5" type="revolute">
       <axis xyz="0.0 0.0 1.0"/>
       <child link="${prefix}link_5"/>
-      <limit effort="13.187655" lower="-1.919862177E0" upper="1.919862177E0" velocity="5.235988"/>
-      <origin rpy="${-pi/2.0} 0.0 -0.0" xyz="0.0 0.0 -0.3"/>
+      <limit effort="58.580298" lower="-1.9198621771937625E0" upper="1.9198621771937625E0" velocity="4.537856"/>
+      <origin rpy="${-pi/2.0} 0.0 -0.0" xyz="0.0 0.0 -0.367"/>
       <parent link="${prefix}link_4"/>
     </joint>
     <joint name="${prefix}joint_6" type="revolute">
       <axis xyz="0.0 0.0 1.0"/>
       <child link="${prefix}link_6"/>
-      <limit effort="4.834440" lower="-3.839724354E0" upper="3.839724354E0" velocity="6.981310"/>
+      <limit effort="15.927568" lower="-3.839724354387525E0" upper="3.839724354387525E0" velocity="7.504909"/>
       <origin rpy="${pi/2.0} 0.0 -0.0" xyz="0.0 0.0 0.0"/>
       <parent link="${prefix}link_5"/>
     </joint>
@@ -208,14 +208,14 @@
     <link name="${prefix}flange"/>
     <joint name="${prefix}link6-flange" type="fixed">
       <child link="${prefix}flange"/>
-      <origin rpy="0 ${pi/2} -0.0" xyz="0.0 0.0 -0.1605"/>
+      <origin rpy="0 ${pi/2} -0.0" xyz="0.0 0.0 -0.178"/>
       <parent link="${prefix}link_6"/>
     </joint>
     <!-- ROS-Industrial 'tool0' frame - all-zeros tool frame -->
     <link name="${prefix}tool0"/>
     <joint name="${prefix}link6-tool0" type="fixed">
       <child link="${prefix}tool0"/>
-      <origin rpy="0 ${pi} -0.0" xyz="0.0 0.0 -0.1605"/>
+      <origin rpy="0 ${pi} -0.0" xyz="0.0 0.0 -0.178"/>
       <parent link="${prefix}link_6"/>
     </joint>
   </xacro:macro>

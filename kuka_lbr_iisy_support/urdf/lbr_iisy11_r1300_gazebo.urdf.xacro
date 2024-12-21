@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
-<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="lbr_iisy3_r760">
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="lbr_iisy11_r1300">
   <!-- Import iisy gazebo urdf file  -->
-  <xacro:include filename="$(find kuka_lbr_iisy_support)/urdf/lbr_iisy3_r760_gazebo_macro.xacro"/>
+  <xacro:include filename="$(find kuka_lbr_iisy_support)/urdf/lbr_iisy11_r1300_gazebo_macro.xacro"/>
   <!-- Read additional arguments  -->
   <xacro:arg name="prefix" default=""/>
   <xacro:arg name="x" default="0"/>
@@ -10,9 +10,9 @@
   <xacro:arg name="roll" default="0"/>
   <xacro:arg name="pitch" default="0"/>
   <xacro:arg name="yaw" default="0"/>
-  <xacro:lbr_iisy3_r760_gazebo prefix="$(arg prefix)">
+  <xacro:kuka_lbr_iisy11_r1300_gazebo prefix="$(arg prefix)">
     <origin xyz="$(arg x) $(arg y) $(arg z)" rpy="$(arg roll) $(arg pitch) $(arg yaw)"/>
-  </xacro:lbr_iisy3_r760_gazebo>
+  </xacro:kuka_lbr_iisy11_r1300_gazebo>
   <xacro:include filename="$(find kuka_lbr_iisy_support)/urdf/gazebo_plugin_macro.xacro"/>
   <xacro:gazebo_plugin_macro/>
 </robot>

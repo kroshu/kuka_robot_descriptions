@@ -1,17 +1,14 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
-    <xacro:macro name="gazebo_plugin_macro">
-
-        <!-- ros_control-plugin -->
-        <gazebo>
-            <plugin name="gz_ros2_control::GazeboSimROS2ControlPlugin"
-                filename="gz_ros2_control-system">
-                <parameters>$(find kuka_lbr_iisy_moveit_config)/config/lbr_controllers.yaml</parameters>
-                <ros>
-                    <namespace>/</namespace>
-                </ros>
-            </plugin>
-        </gazebo>
-
-    </xacro:macro>
+  <xacro:macro name="gazebo_plugin_macro">
+    <!-- ros_control-plugin -->
+    <gazebo>
+      <plugin name="gz_ros2_control::GazeboSimROS2ControlPlugin" filename="gz_ros2_control-system">
+        <parameters>$(find kuka_lbr_iisy_moveit_config)/config/lbr_controllers.yaml</parameters>
+        <ros>
+          <namespace>/</namespace>
+        </ros>
+      </plugin>
+    </gazebo>
+  </xacro:macro>
 </robot>
