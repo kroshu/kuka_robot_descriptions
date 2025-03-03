@@ -15,7 +15,7 @@
   <xacro:arg name="roll" default="0"/>
   <xacro:arg name="pitch" default="0"/>
   <xacro:arg name="yaw" default="0"/>
-  <xacro:kuka_lbr_iisy11_r1300_robot prefix="$(arg prefix)" controller_ip="$(arg controller_ip)" client_ip="$(arg client_ip)" use_fake_hardware="$(arg use_fake_hardware)" roundtrip_time="$(arg roundtrip_time)" qos_config_file="$(arg qos_config_file)">
+  <xacro:kuka_lbr_iisy11_r1300_robot prefix="$(arg prefix)" io_access="false" controller_ip="$(arg controller_ip)" client_ip="$(arg client_ip)" use_fake_hardware="$(arg use_fake_hardware)" roundtrip_time="$(arg roundtrip_time)" qos_config_file="$(arg qos_config_file)">
     <origin xyz="$(arg x) $(arg y) $(arg z)" rpy="$(arg roll) $(arg pitch) $(arg yaw)"/>
   </xacro:kuka_lbr_iisy11_r1300_robot>
 </robot>

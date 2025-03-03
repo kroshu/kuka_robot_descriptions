@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
-  <xacro:macro name="kuka_lbr_iisy_ros2_control" params="name prefix client_ip controller_ip use_fake_hardware qos_config_file roundtrip_time">
+  <xacro:macro name="kuka_lbr_iisy_ros2_control" params="name prefix io_access client_ip controller_ip use_fake_hardware qos_config_file roundtrip_time">
     <ros2_control name="${name}" type="system">
       <hardware>
         <xacro:if value="${use_fake_hardware}">
@@ -103,6 +103,13 @@
           <param name="initial_value">0.0</param>
         </state_interface>
       </joint>
+      <xacro:if value="${io_access}">
+        <xacro:include filename="$(find kuka_lbr_iisy_support)/urdf/gpio_config.xacro"/>
+        <xacro:eci_gpio_config/>
+      </xacro:if>
+      <xacro:unless value="${io_access}">
+        <gpio name="gpio"/>
+      </xacro:unless>
     </ros2_control>
   </xacro:macro>
 </robot>

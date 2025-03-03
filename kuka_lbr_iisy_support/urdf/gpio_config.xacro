@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <xacro:macro name="eci_gpio_config">
+    <gpio name="gpio">
+      <command_interface name="Output pin 14" />
+
+      <state_interface name="Output pin 14" initial_value="0.0"/>
+      <state_interface name="Input pin 17" initial_value="0.0"/>
+    </gpio>
+    <!-- <gpio name="gpio_config">
+      <state_interface name="GPIO_1" size="3" />
+      <state_interface name="GPIO_2" size="3" />
+      <command_interface name="GPIO_1" />
+      <param name="VALUE_TYPE_BOOL">0</param>
+      <param name="VALUE_TYPE_RAW">1</param>
+      <param name="VALUE_TYPE_LONG">2</param>
+      <param name="DIRECTION_INPUT">0</param>
+      <param name="DIRECTION_OUTPUT">1</param>
+    </gpio> --> 
+  </xacro:macro>
+</robot>
