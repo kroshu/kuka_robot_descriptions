@@ -4,8 +4,8 @@
     <gpio name="gpio">
       <command_interface name="Output pin 14" />
 
-      <state_interface name="Output pin 14" initial_value="0.0"/>
-      <state_interface name="Input pin 17" initial_value="0.0"/>
+      <state_interface name="Output pin 14"/>
+      <!-- <state_interface name="Output pin 20" initial_value="0.0"/> -->
     </gpio>
     <!-- <gpio name="gpio_config">
       <state_interface name="GPIO_1" size="3" />
