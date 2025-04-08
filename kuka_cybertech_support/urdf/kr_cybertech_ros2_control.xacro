@@ -12,6 +12,7 @@
         </xacro:if>
         <xacro:unless value="${use_fake_hardware}">
           <plugin>kuka_kss_rsi_driver::KukaRSIHardwareInterface</plugin>
+          <param name="robot_name">${name}</param>
           <param name="client_ip">${client_ip}</param>
           <param name="client_port">${client_port}</param>
           <param name="controller_ip">${controller_ip}</param>
