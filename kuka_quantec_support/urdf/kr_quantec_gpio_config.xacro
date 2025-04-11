@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <xacro:macro name="kr_quantec_gpio_config">
+    <gpio name="gpio">
+      <!-- Guide how to fill GPIO fields-->
+      <!-- <command_interface name="Name of GPIO Output pin (from controller view point)" />
+
+      <state_interface name="Name of GPIO Output pin (from controller view point)" initial_value="0.0"/>
+      <state_interface name="Name of GPIO Input pin (from controller view point)" initial_value="0.0"/> -->
+    </gpio>
+  </xacro:macro>
+</robot>

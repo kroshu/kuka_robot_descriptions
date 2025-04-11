@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
-  <xacro:macro name="kuka_quantec_ros2_control" params="name client_ip client_port controller_ip prefix use_fake_hardware roundtrip_time">
+  <xacro:macro name="kuka_quantec_ros2_control" params="name client_ip client_port controller_ip prefix use_fake_hardware use_gpio roundtrip_time">
     <ros2_control name="${name}" type="system">
       <hardware>
         <xacro:if value="${use_fake_hardware}">
@@ -53,6 +53,12 @@
           <param name="initial_value">0.0</param>
         </state_interface>
       </joint>
+      <xacro:if value="${use_gpio}">
+        <xacro:include filename="$(find kuka_quantec_support)/urdf/kr_quantec_gpio_config.xacro"/>
+        <xacro:kr_quantec_gpio_config/>
+      </xacro:if>
+      <xacro:unless value="${use_gpio}">
+        <gpio name="gpio"/>
     </ros2_control>
   </xacro:macro>
 </robot>
