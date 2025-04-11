@@ -57,6 +57,9 @@
         <xacro:include filename="$(find kuka_fortec_support)/urdf/kr_fortec_gpio_config.xacro"/>
         <xacro:kr_fortec_gpio_config/>
       </xacro:if>
+      <xacro:unless value="${use_gpio}">
+        <gpio name="gpio"/>
+      </xacro:unless>
     </ros2_control>
   </xacro:macro>
 </robot>
