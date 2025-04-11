@@ -70,6 +70,10 @@ Collision meshes are provided for the robots to speed up collision avoidance and
 
 The support packages contain a joint limits file for every supported robot model, necessary time parametrization of MoveIt-planned paths. They contain the velocity limits also available in the URDF model and additional acceleration limits. Acceleration limits can never be global, these values are calculated from the worst-case ramp-up time to reach maximum velocity. The easiest way to modify the allowed velocities and accelerations is to change the velocity and acceleration scaling factors also available in the same configuration files. (The scaling factor can never be greater than 1.)
 
+### GPIO configuration
+
+The supported packages contain a gpio config file, which contains an extension for gpio control. These files offer a template for the user to set the desiered GPIOs as for there usecase. The driver uses this list to export the command and state interfaces for the ROS2 Control. If there is no need for GPIO control, the `use_gpio` tag can be set to false so the gpio config file is not going to load.
+
 ### Extending the models
 
 In real applications, it's likely that the description will be more complex, involving multiple objects next to the robot and optionally end effectors. It is recommended to create a new, dedicated ROS2 package specifically for managing this extended description by including the xacro of the the base robot model and extending it.
@@ -87,20 +91,20 @@ Example of attaching an end effector (with link name `eef_base_link`) to the `fl
 
 The following table shows what data is included for each robot in the support packages:
 
-|Robot name | Robot family | Transformations | Joint position limits | Joint velocity limits | Joint effort limits | Inertial values | Simplified collision meshes|
-|---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-|lbr_iisy3_r760| - | ✓ | ✓ | ✓ | ✓ | | ✓ |
-|lbr_iisy11_r1300| - | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
-|lbr_iisy15_r930| - | ✓ | ✓ | ✓ | ✓ | | ✓ |
-|lbr_iiwa14_r820| - | ✓ | ✓ | ✓ | | | ✓ |
-|kr6_r700_sixx| agilus | ✓ | ✓ | ✓ | | | ✓ |
-|kr6_r900_sixx| agilus | ✓ | ✓ | ✓ | | | ✓ |
-|kr10_r1100_2| agilus | ✓ | ✓ | ✓ | ✓ | | ✓ |
-|kr16_r2010_2| cybertech | ✓ | ✓ | ✓ | ✓ | | ✓ |
-|kr70_r2100| iontec | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
-|kr210_r2700_2| quantec | ✓ | ✓ | ✓ | ✓ | | ✓ |
-|kr210_r3100_2| quantec | ✓ | ✓ | ✓ | ✓ | | ✓ |
-|kr560_r3100_2| fortec | ✓ | ✓ | ✓ | ✓ | | ✓ |
+|Robot name | Robot family | Transformations | Joint position limits | Joint velocity limits | Joint effort limits | Inertial values | Simplified collision meshes| GPIO support |
+|---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+|lbr_iisy3_r760| - | ✓ | ✓ | ✓ | ✓ | | ✓ | |
+|lbr_iisy11_r1300| - | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | |
+|lbr_iisy15_r930| - | ✓ | ✓ | ✓ | ✓ | | ✓ | |
+|lbr_iiwa14_r820| - | ✓ | ✓ | ✓ | | | ✓ | |
+|kr6_r700_sixx| agilus | ✓ | ✓ | ✓ | | | ✓ | ✓ |
+|kr6_r900_sixx| agilus | ✓ | ✓ | ✓ | | | ✓ | ✓ |
+|kr10_r1100_2| agilus | ✓ | ✓ | ✓ | ✓ | | ✓ | ✓ |
+|kr16_r2010_2| cybertech | ✓ | ✓ | ✓ | ✓ | | ✓ | ✓ |
+|kr70_r2100| iontec | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+|kr210_r2700_2| quantec | ✓ | ✓ | ✓ | ✓ | | ✓ | ✓ |
+|kr210_r3100_2| quantec | ✓ | ✓ | ✓ | ✓ | | ✓ | ✓ |
+|kr560_r3100_2| fortec | ✓ | ✓ | ✓ | ✓ | | ✓ | ✓ |
 
 ## Custom mock hardware
 
