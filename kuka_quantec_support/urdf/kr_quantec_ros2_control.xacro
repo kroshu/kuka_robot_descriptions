@@ -59,6 +59,7 @@
       </xacro:if>
       <xacro:unless value="${use_gpio}">
         <gpio name="gpio"/>
+      </xacro:unless>
     </ros2_control>
   </xacro:macro>
 </robot>
