@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!-- Basic KUKA mobile base -->
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="kmr_iisy">
+  <!-- Import mrob urdf file  -->
+  <xacro:include filename="$(find kuka_kmr_iisy_support)/urdf/kmr_iisy_macro.xacro"/>
+  <!-- Read additional arguments  -->
+  <xacro:arg name="prefix" default=""/>
+  <xacro:arg name="controller_ip" default="0.0.0.0"/>
+  <xacro:arg name="client_ip" default="0.0.0.0"/>
+  <xacro:arg name="use_fake_hardware" default="false"/>
+  <xacro:arg name="roundtrip_time" default="0"/>
+  <xacro:arg name="qos_config_file" default=""/>
+  <xacro:mrob_kuka prefix="$(arg prefix)" controller_ip="$(arg controller_ip)" client_ip="$(arg client_ip)" use_fake_hardware="$(arg use_fake_hardware)" roundtrip_time="$(arg roundtrip_time)" qos_config_file="$(arg qos_config_file)">
+  </xacro:mrob_kuka>
+</robot>
