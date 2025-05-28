@@ -98,6 +98,7 @@ The following table shows what data is included for each robot in the support pa
 |kr10_r1100_2| agilus | ✓ | ✓ | ✓ | ✓ | | ✓ |
 |kr16_r2010_2| cybertech | ✓ | ✓ | ✓ | ✓ | | ✓ |
 |kr70_r2100| iontec | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+|kr150_r3100_2| quantec | ✓ | ✓ | ✓ | | | ✓ |
 |kr210_r2700_2| quantec | ✓ | ✓ | ✓ | ✓ | | ✓ |
 |kr210_r3100_2| quantec | ✓ | ✓ | ✓ | ✓ | | ✓ |
 |kr560_r3100_2| fortec | ✓ | ✓ | ✓ | ✓ | | ✓ |
