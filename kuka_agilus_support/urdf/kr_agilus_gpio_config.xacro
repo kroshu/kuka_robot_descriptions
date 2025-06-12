@@ -3,10 +3,10 @@
   <xacro:macro name="kr_agilus_gpio_config">
     <gpio name="gpio">
       <!-- Guide how to fill GPIO fields-->
-      <!-- <command_interface name="Name of GPIO Output pin (from controller view point)" />
+      <command_interface name="GPIO_01" />
 
-      <state_interface name="Name of GPIO Output pin (from controller view point)" initial_value="0.0"/>
-      <state_interface name="Name of GPIO Input pin (from controller view point)" initial_value="0.0"/> -->
+      <state_interface name="GPIO_01" initial_value="0.0"/>
+      <state_interface name="GPIO_02" initial_value="0.0"/>
     </gpio>
   </xacro:macro>
 </robot>
