@@ -1,12 +1,15 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://wiki.ros.org/xacro">
+  <xacro:include filename="$(find kuka_gazebo)/gazebo/kuka_gazebo.xacro"/>
   <xacro:include filename="$(find kuka_resources)/urdf/common_constants.xacro"/>
   <xacro:include filename="$(find kuka_resources)/urdf/common_materials.xacro"/>
   <xacro:include filename="$(find kuka_agilus_support)/urdf/kr_agilus_ros2_control.xacro"/>
   <xacro:include filename="$(find kuka_agilus_support)/urdf/kr_agilus_transmission.xacro"/>
-  <xacro:macro name="kuka_kr6_r900_sixx_robot" params="client_ip client_port prefix use_fake_hardware roundtrip_time *origin">
+  <xacro:macro name="kuka_kr6_r900_sixx_robot" params="client_ip client_port prefix mode roundtrip_time *origin">
+    <!-- gazebo -->
+    <xacro:kuka_gazebo controller_config_package="kuka_resources" controller_config_path="config/fake_hardware_config_6_axis.yaml" />
     <!-- ros2 control instance -->
-    <xacro:kuka_agilus_ros2_control name="${prefix}kr6_r900_sixx" client_ip="${client_ip}" client_port="${client_port}" prefix="${prefix}" use_fake_hardware="${use_fake_hardware}" roundtrip_time="${roundtrip_time}"/>
+    <xacro:kuka_agilus_ros2_control name="${prefix}kr6_r900_sixx" client_ip="${client_ip}" client_port="${client_port}" prefix="${prefix}" mode="${mode}" roundtrip_time="${roundtrip_time}"/>
     <link name="world"/>
     <link name="${prefix}base_link">
       <visual>
@@ -16,6 +19,11 @@
         </geometry>
         <xacro:material_kuka_pedestal/>
       </visual>
+      <inertial>
+        <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0"/>
+        <mass value="6.22E0"/>
+        <origin rpy="0.0 -0.0 0.0" xyz="0.0 0.0 0.0"/>
+      </inertial>
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0"/>
         <geometry>
@@ -31,6 +39,11 @@
         </geometry>
         <xacro:material_kuka_orange/>
       </visual>
+      <inertial>
+        <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.1"/>
+        <mass value="1.7555E1"/>
+        <origin rpy="0.0 -0.0 0.0" xyz="0.010625999999999998 -0.005681 -0.236731"/>
+      </inertial>
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0"/>
         <geometry>
@@ -46,6 +59,11 @@
         </geometry>
         <xacro:material_kuka_orange/>
       </visual>
+      <inertial>
+        <inertia ixx="0.508" ixy="0.0" ixz="0.0" iyy="0.043" iyz="0.0" izz="0.522"/>
+        <mass value="1.1835E1"/>
+        <origin rpy="0.0 -1.5707963267948966 -1.5707963267948968" xyz="0.223874 0.0 0.007783"/>
+      </inertial>
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0"/>
         <geometry>
@@ -61,6 +79,11 @@
         </geometry>
         <xacro:material_kuka_orange/>
       </visual>
+      <inertial>
+        <inertia ixx="0.007999999999999991" ixy="0.0" ixz="0.0" iyy="0.059999999999999984" iyz="0.0" izz="0.063"/>
+        <mass value="3.71E0"/>
+        <origin rpy="0.0 -0.0 3.141592653589793" xyz="0.019573999999999994 0.0 0.0014259999999999995"/>
+      </inertial>
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0"/>
         <geometry>
@@ -76,6 +99,11 @@
         </geometry>
         <xacro:material_kuka_orange/>
       </visual>
+      <inertial>
+        <inertia ixx="0.356" ixy="0.0" ixz="0.0" iyy="0.004" iyz="0.0" izz="0.359"/>
+        <mass value="8.502E0"/>
+        <origin rpy="1.5707963267948966 -0.0 1.5707963267948966" xyz="0.0 0.0 -0.193625"/>
+      </inertial>
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0"/>
         <geometry>
@@ -91,6 +119,11 @@
         </geometry>
         <xacro:material_kuka_orange/>
       </visual>
+      <inertial>
+        <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0"/>
+        <mass value="1.0E-6"/>
+        <origin rpy="0.0 -0.0 0.0" xyz="0.0 0.0 0.0"/>
+      </inertial>
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0"/>
         <geometry>
@@ -106,6 +139,11 @@
         </geometry>
         <xacro:material_kuka_pedestal/>
       </visual>
+      <inertial>
+        <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0"/>
+        <mass value="1.0E-6"/>
+        <origin rpy="0.0 -0.0 0.0" xyz="0.0 0.0 0.0"/>
+      </inertial>
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0"/>
         <geometry>

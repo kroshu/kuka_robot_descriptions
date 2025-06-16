@@ -1,20 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
-  <xacro:macro name="kuka_quantec_ros2_control" params="name client_ip client_port prefix use_fake_hardware roundtrip_time">
+  <xacro:macro name="kuka_quantec_ros2_control" params="name client_ip client_port prefix mode roundtrip_time">
     <ros2_control name="${name}" type="system">
       <hardware>
-        <xacro:if value="${use_fake_hardware}">
+        <xacro:if value="${mode == 'mock'}">
           <plugin>kuka_mock_hardware_interface::KukaMockHardwareInterface</plugin>
           <param name="cycle_time_ms">4</param>
           <param name="roundtrip_time_micro">${roundtrip_time}</param>
           <param name="mock_sensor_commands">false</param>
           <param name="state_following_offset">0.0</param>
         </xacro:if>
-        <xacro:unless value="${use_fake_hardware}">
+        <xacro:unless value="${mode != 'hardware'}">
           <plugin>kuka_kss_rsi_driver::KukaRSIHardwareInterface</plugin>
           <param name="client_ip">${client_ip}</param>
           <param name="client_port">${client_port}</param>
         </xacro:unless>
+        <xacro:if value="${mode == 'gazebo'}">
+          <plugin>gz_ros2_control/GazeboSimSystem</plugin>
+        </xacro:if>
       </hardware>
       <joint name="${prefix}joint_1">
         <command_interface name="position"/>
