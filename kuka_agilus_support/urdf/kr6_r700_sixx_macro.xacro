@@ -19,11 +19,6 @@
         </geometry>
         <xacro:material_kuka_pedestal/>
       </visual>
-      <inertial>
-        <inertia ixx="0.16209200415615" ixy="0.0" ixz="0.0" iyy="0.10881181598555635" iyz="0.0" izz="0.18461591505869543"/>
-        <mass value="1.6916E1"/>
-        <origin rpy="1.6165592773339865 -1.221289277333065 3.10031147437779" xyz="-0.03713348309292976 2.6602033577676952E-5 0.10863850792149446"/>
-      </inertial>
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0"/>
         <geometry>
@@ -39,11 +34,6 @@
         </geometry>
         <xacro:material_kuka_orange/>
       </visual>
-      <inertial>
-        <inertia ixx="0.07406183855390855" ixy="0.0" ixz="0.0" iyy="0.0890478351825312" iyz="0.0" izz="0.11039570662759429"/>
-        <mass value="8.4159999999999986E0"/>
-        <origin rpy="1.304519343134156 -0.9428616016893947 -1.4226510948637578" xyz="0.006410408745247152 -0.01626805370722434 -0.10658893773764262"/>
-      </inertial>
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0"/>
         <geometry>
@@ -59,11 +49,6 @@
         </geometry>
         <xacro:material_kuka_orange/>
       </visual>
-      <inertial>
-        <inertia ixx="0.27913939628518236" ixy="0.0" ixz="0.0" iyy="0.08120682412128737" iyz="0.0" izz="0.31885940962560827"/>
-        <mass value="1.55659E1"/>
-        <origin rpy="-1.3903732489969973 -1.5149954424356888 -0.1998085283039958" xyz="0.09688971405443952 -0.004085391785890956 -0.07157586711979391"/>
-      </inertial>
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0"/>
         <geometry>
@@ -79,11 +64,6 @@
         </geometry>
         <xacro:material_kuka_orange/>
       </visual>
-      <inertial>
-        <inertia ixx="0.016743444555446362" ixy="0.0" ixz="0.0" iyy="0.025482537016456808" iyz="0.0" izz="0.02822390996140248"/>
-        <mass value="5.303E0"/>
-        <origin rpy="2.3581203240627353 -0.21894199177335477 -3.004285178078088" xyz="0.022228738449934005 -0.011136149349424855 -0.06927623986422779"/>
-      </inertial>
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0"/>
         <geometry>
@@ -99,11 +79,6 @@
         </geometry>
         <xacro:material_kuka_orange/>
       </visual>
-      <inertial>
-        <inertia ixx="0.010531272787231831" ixy="0.0" ixz="0.0" iyy="0.03425565311920862" iyz="0.0" izz="0.037359032949440756"/>
-        <mass value="4.6129999999999995E0"/>
-        <origin rpy="-2.0540104905408416 -1.5266176566842766 2.01813464445371" xyz="1.0969000650336042E-4 0.010267591588987646 -0.09163862995881207"/>
-      </inertial>
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0"/>
         <geometry>
@@ -119,11 +94,6 @@
         </geometry>
         <xacro:material_kuka_orange/>
       </visual>
-      <inertial>
-        <inertia ixx="0.0017317756133102904" ixy="0.0" ixz="0.0" iyy="0.002219500805440681" iyz="0.0" izz="0.002467090055442975"/>
-        <mass value="1.6128E0"/>
-        <origin rpy="1.567898714902774 -0.8611716764868309 -3.100280255900493" xyz="0.009320696924603175 7.83482142857143E-4 -0.026462549603174602"/>
-      </inertial>
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0"/>
         <geometry>
@@ -139,11 +109,6 @@
         </geometry>
         <xacro:material_kuka_pedestal/>
       </visual>
-      <inertial>
-        <inertia ixx="1.83698267603013E-4" ixy="0.0" ixz="0.0" iyy="1.8213621766783165E-4" iyz="0.0" izz="2.9589000000000004E-4"/>
-        <mass value="7.34E-1"/>
-        <origin rpy="0.0 -0.0 1.223427188696551" xyz="0.0 0.0 -0.011764604904632152"/>
-      </inertial>
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0"/>
         <geometry>

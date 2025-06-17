@@ -90,18 +90,18 @@ The following table shows what data is included for each robot in the support pa
 
 |Robot name | Robot family | Transformations | Joint position limits | Joint velocity limits | Joint effort limits | Inertial values | Simplified collision meshes|
 |---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-|lbr_iisy3_r760| - | ✓ | ✓ | ✓ | ✓ | | ✓ |
+|lbr_iisy3_r760| - | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
 |lbr_iisy11_r1300| - | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
-|lbr_iisy15_r930| - | ✓ | ✓ | ✓ | ✓ | | ✓ |
+|lbr_iisy15_r930| - | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
 |lbr_iiwa14_r820| - | ✓ | ✓ | ✓ | | | ✓ |
 |kr6_r700_sixx| agilus | ✓ | ✓ | ✓ | | | ✓ |
 |kr6_r900_sixx| agilus | ✓ | ✓ | ✓ | | | ✓ |
-|kr10_r1100_2| agilus | ✓ | ✓ | ✓ | ✓ | | ✓ |
+|kr10_r1100_2| agilus | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
 |kr16_r2010_2| cybertech | ✓ | ✓ | ✓ | ✓ | | ✓ |
 |kr70_r2100| iontec | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
-|kr210_r2700_2| quantec | ✓ | ✓ | ✓ | ✓ | | ✓ |
-|kr210_r3100_2| quantec | ✓ | ✓ | ✓ | ✓ | | ✓ |
-|kr560_r3100_2| fortec | ✓ | ✓ | ✓ | ✓ | | ✓ |
+|kr210_r2700_2| quantec | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+|kr210_r3100_2| quantec | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+|kr560_r3100_2| fortec | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
 
 ## Custom mock hardware
 

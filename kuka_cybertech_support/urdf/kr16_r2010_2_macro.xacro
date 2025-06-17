@@ -16,11 +16,6 @@
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
       </collision>
-      <inertial>
-        <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0"/>
-        <mass value="6.52116E1"/>
-        <origin rpy="0.0 -0.0 0.0" xyz="0.0 0.0 0.0"/>
-      </inertial>
       <visual>
         <geometry>
           <mesh filename="package://kuka_cybertech_support/meshes/kr16_r2010_2/visual/base_link.stl"/>
@@ -35,11 +30,6 @@
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
       </collision>
-      <inertial>
-        <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="1.50392348"/>
-        <mass value="8.4207E1"/>
-        <origin rpy="0.0 -0.0 1.695151321341658" xyz="0.050473 0.0052792 -0.1312334"/>
-      </inertial>
       <visual>
         <geometry>
           <mesh filename="package://kuka_cybertech_support/meshes/kr16_r2010_2/visual/link_1.stl"/>
@@ -54,11 +44,6 @@
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
       </collision>
-      <inertial>
-        <inertia ixx="9.85967888" ixy="0.0" ixz="0.0" iyy="0.91499458" iyz="0.0" izz="10.23026596"/>
-        <mass value="6.1775E1"/>
-        <origin rpy="0.0 -1.5707963267948966 -1.5707963267948968" xyz="0.4020773724 0.0 -0.0731476"/>
-      </inertial>
       <visual>
         <geometry>
           <mesh filename="package://kuka_cybertech_support/meshes/kr16_r2010_2/visual/link_2.stl"/>
@@ -73,11 +58,6 @@
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
       </collision>
-      <inertial>
-        <inertia ixx="0.34836069" ixy="0.0" ixz="0.0" iyy="1.0268737" iyz="0.0" izz="1.13887402"/>
-        <mass value="3.5648E1"/>
-        <origin rpy="0.0 -0.0 0.0" xyz="0.10935396937 0.0 0.045030299999999995"/>
-      </inertial>
       <visual>
         <geometry>
           <mesh filename="package://kuka_cybertech_support/meshes/kr16_r2010_2/visual/link_3.stl"/>
@@ -92,11 +72,6 @@
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
       </collision>
-      <inertial>
-        <inertia ixx="0.64549911" ixy="0.0" ixz="0.0" iyy="0.04236472" iyz="0.0" izz="0.6665241"/>
-        <mass value="1.64280001E1"/>
-        <origin rpy="1.5707963267948966 -0.0 1.5707963267948966" xyz="0.0 0.0 -0.32342865478"/>
-      </inertial>
       <visual>
         <geometry>
           <mesh filename="package://kuka_cybertech_support/meshes/kr16_r2010_2/visual/link_4.stl"/>
@@ -111,11 +86,6 @@
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
       </collision>
-      <inertial>
-        <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0"/>
-        <mass value="1.0E-6"/>
-        <origin rpy="0.0 -0.0 0.0" xyz="0.0 0.0 0.0"/>
-      </inertial>
       <visual>
         <geometry>
           <mesh filename="package://kuka_cybertech_support/meshes/kr16_r2010_2/visual/link_5.stl"/>
@@ -130,11 +100,6 @@
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
       </collision>
-      <inertial>
-        <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0"/>
-        <mass value="1.0E-6"/>
-        <origin rpy="0.0 -0.0 0.0" xyz="0.0 0.0 0.0"/>
-      </inertial>
       <visual>
         <geometry>
           <mesh filename="package://kuka_cybertech_support/meshes/kr16_r2010_2/visual/link_6.stl"/>
