@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="lbr_iisy11_r1300">
   <!-- include helper xacros -->
+  <xacro:include filename="$(find kuka_gazebo)/gazebo/kuka_gazebo.xacro"/>
   <xacro:include filename="$(find kuka_lbr_iisy_support)/urdf/lbr_iisy_ros2_control.xacro"/>
   <xacro:include filename="$(find kuka_resources)/urdf/common_materials.xacro"/>
   <xacro:include filename="$(find kuka_lbr_iisy_support)/urdf/lbr_iisy_transmission.xacro"/>
-  <xacro:macro name="kuka_lbr_iisy11_r1300_robot" params="prefix controller_ip client_ip use_fake_hardware roundtrip_time qos_config_file *origin">
+  <xacro:macro name="kuka_lbr_iisy11_r1300_robot" params="prefix controller_ip client_ip mode roundtrip_time qos_config_file *origin">
+    <!-- gazebo -->
+    <xacro:kuka_gazebo controller_config_package="kuka_resources" controller_config_path="config/fake_hardware_config_6_axis.yaml" />
     <!-- ros2 control instance -->
-    <xacro:kuka_lbr_iisy_ros2_control name="${prefix}lbr_iisy11_r1300" prefix="${prefix}" client_ip="${client_ip}" controller_ip="${controller_ip}" use_fake_hardware="${use_fake_hardware}" roundtrip_time="${roundtrip_time}" qos_config_file="${qos_config_file}"/>
+    <xacro:kuka_lbr_iisy_ros2_control name="${prefix}lbr_iisy11_r1300" prefix="${prefix}" client_ip="${client_ip}" controller_ip="${controller_ip}" mode="${mode}" roundtrip_time="${roundtrip_time}" qos_config_file="${qos_config_file}"/>
     <!-- links - main serial chain -->
     <link name="world"/>
     <link name="${prefix}base_link">
@@ -16,6 +19,11 @@
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
       </collision>
+      <inertial>
+        <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+        <mass value="8.666E0"/>
+        <origin rpy="0.0 -0.0 0.0" xyz="0.0 0.0 0.0"/>
+      </inertial>
       <visual>
         <geometry>
           <mesh filename="package://kuka_lbr_iisy_support/meshes/lbr_iisy11_r1300/visual/base_link.stl"/>

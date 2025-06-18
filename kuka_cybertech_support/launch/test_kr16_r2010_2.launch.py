@@ -27,7 +27,7 @@ def generate_launch_description():
                 [FindPackageShare("kuka_cybertech_support"), "urdf", "kr16_r2010_2.urdf.xacro"]
             ),
             " ",
-            "use_fake_hardware:=true",
+            "mode:=mock",
         ]
     )
     robot_description = {"robot_description": robot_description_content}
