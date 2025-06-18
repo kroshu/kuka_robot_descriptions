@@ -21,6 +21,7 @@ ROS2 Distro | Branch | Github CI
 - `kuka_lbr_iiwa_support` contains urdf, config and mesh files for KUKA LBR iiwa robots
 - `kuka_lbr_iiwa_moveit_config` contains configuration files for KUKA LBR iiwa robots necessary for planning with MoveIt.
 - `kuka_mock_hardware_interface` contains a custom mock hardware interface for KUKA robots
+- `kuka_gazebo` contains a launch file to start Gazebo Ignition and an example moveit + gazebo implementation
 
 ## Structure of the support packages
 
@@ -84,24 +85,24 @@ Example of attaching an end effector (with link name `eef_base_link`) to the `fl
 </joint>
 ```
 
-## What data is verified?
+## What is verified and supported?
 
-The following table shows what data is included for each robot in the support packages:
+The following table shows what data is included and what features are supported for each robot in the support packages:
 
-|Robot name | Robot family | Transformations | Joint position limits | Joint velocity limits | Joint effort limits | Inertial values | Simplified collision meshes|
-|---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-|lbr_iisy3_r760| - | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
-|lbr_iisy11_r1300| - | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
-|lbr_iisy15_r930| - | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
-|lbr_iiwa14_r820| - | ✓ | ✓ | ✓ | | | ✓ |
-|kr6_r700_sixx| agilus | ✓ | ✓ | ✓ | | | ✓ |
-|kr6_r900_sixx| agilus | ✓ | ✓ | ✓ | | | ✓ |
-|kr10_r1100_2| agilus | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
-|kr16_r2010_2| cybertech | ✓ | ✓ | ✓ | ✓ | | ✓ |
-|kr70_r2100| iontec | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
-|kr210_r2700_2| quantec | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
-|kr210_r3100_2| quantec | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
-|kr560_r3100_2| fortec | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+|Robot name | Robot family | Transformations | Joint position limits | Joint velocity limits | Joint effort limits | Inertial values | Simplified collision meshes| Gazebo support |
+|---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+|lbr_iisy3_r760| - | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+|lbr_iisy11_r1300| - | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+|lbr_iisy15_r930| - | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+|lbr_iiwa14_r820| - | ✓ | ✓ | ✓ | | | ✓ | |
+|kr6_r700_sixx| agilus | ✓ | ✓ | ✓ | | | ✓ | |
+|kr6_r900_sixx| agilus | ✓ | ✓ | ✓ | | | ✓ | |
+|kr10_r1100_2| agilus | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+|kr16_r2010_2| cybertech | ✓ | ✓ | ✓ | ✓ | | ✓ | |
+|kr70_r2100| iontec | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+|kr210_r2700_2| quantec | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+|kr210_r3100_2| quantec | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+|kr560_r3100_2| fortec | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
 
 ## Custom mock hardware
 
@@ -112,6 +113,13 @@ Additionally two hardware parameters are added:
 - To be able to test whether a specific setup would fit into the roundtrip time enforced by a real robot, the `roundtrip_time_micro` parameter can be used. If the `write()` method is not called before the given timeout is exceeded (starting from the previous `read()` function), a warning message is logged (but the return value of the `write()` will be still SUCCESS). Default value is 0 [us], which means, that the roundrip time should not be monitored.
 
 The mock hardware was implemented in this repository to allow testing moveit capabilities for the robots without having to build the driver code.
+
+## Modes
+
+The repository distinguishes between three modes through a `mode` parameter: `hardware`, `mock`, and `gazebo`:
+- `hardware` mode should be used to set up robot descriptions to use a specific KUKA driver
+- `mock` option specifies the use of the mock hardware interface
+- `gazebo` option configures Gazebo's hardware interface
 
 ## Starting the move group server with mock hardware
 
@@ -135,3 +143,17 @@ ros2 launch kuka_lbr_iiwa_moveit_config moveit_planning_fake_hardware.launch.py
 A `robot_model` argument can be added after the command (e.g. `robot_model:=lbr_iisy11_r1300`). The default robot model is `lbr_iisy3_r760`
 
 These launch files are not using the actual driver implementation, they only start `rviz` the `move_group` server and a `ros2_control_node` with fake hardware and two controllers `joint_state_broadcaster` and `joint_trajectory_controller` The server will be able to accept planning requests from the plugin or from code. (An example how to create such a request from C++ code can be found in the `iiqka_moveit_example` package in the `kuka_drivers` repository.)
+
+## Starting the move group server with Gazebo
+
+First, Gazebo needs to be launched. By default, the `kuka_gazebo` launch file will spawn the `lbr iisy3 r760` robot model. The `mode` parameter is set to `gazebo` by default. To launch Gazebo with a different robot model, the following command can be used:
+
+**KR210 r2700:**
+
+```
+ros2 launch ros2 launch kuka_gazebo gazebo.launch.py robot_model:=kr210_r2700_2 robot_family_support:=kuka_quantec_support
+```
+
+The `robot_family_support` parameter is the name of the relevant support package.
+
+Launching Gazebo starts the `joint_trajectort_controller` and `joint_state_broadcaster`. The `joint_trajectory_controller` claims the `position` command interface
