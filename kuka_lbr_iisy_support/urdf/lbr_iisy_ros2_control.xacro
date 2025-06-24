@@ -10,7 +10,7 @@
           <param name="mock_sensor_commands">false</param>
           <param name="state_following_offset">0.0</param>
         </xacro:if>
-        <xacro:unless value="${mode != 'hardware'}">
+        <xacro:if value="${mode == 'hardware'}">
           <!-- Read QoS profile parameters  -->
           <xacro:if value="${qos_config_file == ''}">
             <xacro:property name="qos_config" value="$(find kuka_iiqka_eac_driver)/config/qos_config.yaml"/>
@@ -28,7 +28,7 @@
           <param name="consequent_lost_packets">${consequent_lost_packets}</param>
           <param name="lost_packets_in_timeframe">${lost_packets_in_timeframe}</param>
           <param name="timeframe_ms">${timeframe_ms}</param>
-        </xacro:unless>
+        </xacro:if>
         <xacro:if value="${mode == 'gazebo'}">
           <plugin>gz_ros2_control/GazeboSimSystem</plugin>
         </xacro:if>

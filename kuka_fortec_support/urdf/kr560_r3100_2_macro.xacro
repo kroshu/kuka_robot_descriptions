@@ -5,7 +5,9 @@
   <xacro:include filename="$(find kuka_fortec_support)/urdf/kr_fortec_transmission.xacro"/>
   <xacro:macro name="kuka_kr560_r3100_2_robot" params="client_ip client_port controller_ip prefix mode roundtrip_time *origin">
     <!-- gazebo -->
-    <xacro:kuka_gazebo controller_config_package="kuka_resources" controller_config_path="config/fake_hardware_config_6_axis.yaml" />
+    <xacro:if value="${mode == 'gazebo'}">
+      <xacro:kuka_gazebo controller_config_package="kuka_resources" controller_config_path="config/fake_hardware_config_6_axis.yaml" />
+    </xacro:if>
     <!-- ros2 control instance -->
     <xacro:kuka_fortec_ros2_control name="${prefix}kr560_r3100_2" client_ip="${client_ip}" client_port="${client_port}" controller_ip="${controller_ip}" prefix="${prefix}" mode="${mode}" roundtrip_time="${roundtrip_time}"/>
     <link name="world"/>

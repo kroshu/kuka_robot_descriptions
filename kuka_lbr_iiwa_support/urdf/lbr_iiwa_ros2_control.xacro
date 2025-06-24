@@ -10,12 +10,12 @@
           <param name="mock_sensor_commands">false</param>
           <param name="state_following_offset">0.0</param>
         </xacro:if>
-        <xacro:unless value="${mode != 'hardware'}">
+        <xacro:if value="${mode == 'hardware'}">
           <plugin>kuka_sunrise_fri_driver::KukaFRIHardwareInterface</plugin>
           <param name="controller_ip">${controller_ip}</param>
           <param name="client_ip">${client_ip}</param>
           <param name="client_port">${client_port}</param>
-        </xacro:unless>
+        </xacro:if>
       </hardware>
       <!-- define joints and command/state interfaces for each joint -->
       <joint name="${prefix}joint_1">

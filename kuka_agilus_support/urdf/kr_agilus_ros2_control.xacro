@@ -10,12 +10,12 @@
           <param name="mock_sensor_commands">false</param>
           <param name="state_following_offset">0.0</param>
         </xacro:if>
-        <xacro:unless value="${mode != 'hardware'}">
+        <xacro:if value="${mode == 'hardware'}">
           <plugin>kuka_rsi_driver::KukaRSIHardwareInterface</plugin>
           <param name="client_ip">${client_ip}</param>
           <param name="client_port">${client_port}</param>
           <param name="controller_ip">${controller_ip}</param>
-        </xacro:unless>
+        </xacro:if>
         <xacro:if value="${mode == 'gazebo'}">
           <plugin>gz_ros2_control/GazeboSimSystem</plugin>
         </xacro:if>
