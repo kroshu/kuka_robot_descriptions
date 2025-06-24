@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="kr10_r1100_2">
   <!-- include helper xacros -->
-  <xacro:include filename="$(find kuka_gazebo)/gazebo/kuka_gazebo.xacro"/>
   <xacro:include filename="$(find kuka_agilus_support)/urdf/kr_agilus_ros2_control.xacro"/>
   <xacro:include filename="$(find kuka_agilus_support)/urdf/kr_agilus_transmission.xacro"/>
   <xacro:include filename="$(find kuka_resources)/urdf/common_materials.xacro"/>
   <xacro:macro name="kuka_kr10_r1100_2_robot" params="client_ip client_port controller_ip prefix mode roundtrip_time *origin">
+    <xacro:if value="${mode == 'gazebo'}">
+      <xacro:include filename="$(find kuka_gazebo)/gazebo/kuka_gazebo.xacro"/>
+    </xacro:if>
     <!-- gazebo -->
     <xacro:if value="${mode == 'gazebo'}">
       <xacro:kuka_gazebo controller_config_package="kuka_resources" controller_config_path="config/fake_hardware_config_6_axis.yaml" />
