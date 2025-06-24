@@ -10,7 +10,7 @@
     </xacro:if>
     <!-- gazebo -->
     <xacro:if value="${mode == 'gazebo'}">
-      <xacro:kuka_gazebo controller_config_package="kuka_resources" controller_config_path="config/fake_hardware_config_6_axis.yaml" />
+      <xacro:kuka_gazebo controller_config_package="kuka_resources" controller_config_path="config/fake_hardware_config_6_axis.yaml"/>
     </xacro:if>
     <!-- ros2 control instance -->
     <xacro:kuka_lbr_iisy_ros2_control name="${prefix}lbr_iisy15_r930" prefix="${prefix}" client_ip="${client_ip}" controller_ip="${controller_ip}" mode="${mode}" roundtrip_time="${roundtrip_time}" qos_config_file="${qos_config_file}"/>

@@ -5,6 +5,7 @@ from moveit_configs_utils import MoveItConfigsBuilder
 from launch.actions import DeclareLaunchArgument, OpaqueFunction
 from launch.substitutions import LaunchConfiguration
 
+
 def launch_setup(context, *args, **kwargs):
     robot_model = LaunchConfiguration("robot_model")
     robot_family_path = LaunchConfiguration("robot_family_support")
@@ -36,9 +37,7 @@ def launch_setup(context, *args, **kwargs):
                 "prefix": tf_prefix,
             },
         )
-        .robot_description_semantic(
-            f"urdf/{robot_model.perform(context)}.srdf"
-        )
+        .robot_description_semantic(f"urdf/{robot_model.perform(context)}.srdf")
         .robot_description_kinematics(file_path="config/kinematics.yaml")
         .trajectory_execution(file_path="config/moveit_controllers.yaml")
         .planning_scene_monitor(
@@ -66,10 +65,10 @@ def launch_setup(context, *args, **kwargs):
         executable="move_group",
         output="screen",
         parameters=[
-            moveit_config.to_dict(), 
+            moveit_config.to_dict(),
             {"publish_planning_scene_hz": 30.0},
             {"allow_trajectory_execution": True},
-            {"use_sim_time": True}, 
+            {"use_sim_time": True},
             {"publish_planning_scene": True},
             {"publish_state_updates": True},
             {"publish_transforms_updates": True},
@@ -95,7 +94,9 @@ def launch_setup(context, *args, **kwargs):
 def generate_launch_description():
     launch_arguments = []
     launch_arguments.append(DeclareLaunchArgument("robot_model", default_value="lbr_iisy3_r760"))
-    launch_arguments.append(DeclareLaunchArgument("robot_family_support", default_value="kuka_lbr_iisy_support"))
+    launch_arguments.append(
+        DeclareLaunchArgument("robot_family_support", default_value="kuka_lbr_iisy_support")
+    )
     launch_arguments.append(DeclareLaunchArgument("namespace", default_value=""))
     launch_arguments.append(DeclareLaunchArgument("x", default_value="0"))
     launch_arguments.append(DeclareLaunchArgument("y", default_value="0"))

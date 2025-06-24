@@ -8,6 +8,7 @@ from launch_ros.substitutions import FindPackageShare
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 import os
 
+
 def launch_setup(context, *args, **kwargs):
     world = LaunchConfiguration("gz_world")
     robot_model = LaunchConfiguration("robot_model")
@@ -72,13 +73,14 @@ def launch_setup(context, *args, **kwargs):
         package="robot_state_publisher",
         executable="robot_state_publisher",
         output="both",
-        parameters=[robot_description, {"use_sim_time": True, "mode": "gazebo"},],
+        parameters=[
+            robot_description,
+            {"use_sim_time": True, "mode": "gazebo"},
+        ],
     )
 
     # Gazebo
-    world_path = os.path.join(
-        get_package_share_directory("kuka_gazebo"), world.perform(context)
-    )
+    world_path = os.path.join(get_package_share_directory("kuka_gazebo"), world.perform(context))
     gazebo_ld = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
             PathJoinSubstitution(
@@ -104,7 +106,8 @@ def launch_setup(context, *args, **kwargs):
             "-name",
             robot_model,
             "-allow_renaming",
-        ] + [item for pair in zip(label, tf) for item in pair],
+        ]
+        + [item for pair in zip(label, tf) for item in pair],
         output="screen",
     )
 
@@ -156,7 +159,9 @@ def launch_setup(context, *args, **kwargs):
 def generate_launch_description():
     launch_arguments = []
     launch_arguments.append(DeclareLaunchArgument("robot_model", default_value="lbr_iisy3_r760"))
-    launch_arguments.append(DeclareLaunchArgument("robot_family_support", default_value="kuka_lbr_iisy_support"))
+    launch_arguments.append(
+        DeclareLaunchArgument("robot_family_support", default_value="kuka_lbr_iisy_support")
+    )
     launch_arguments.append(DeclareLaunchArgument("namespace", default_value=""))
     launch_arguments.append(DeclareLaunchArgument("x", default_value="0"))
     launch_arguments.append(DeclareLaunchArgument("y", default_value="0"))

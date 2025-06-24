@@ -12,11 +12,13 @@
 #include "moveit_visual_tools/moveit_visual_tools.h"
 #include "rclcpp/rclcpp.hpp"
 
-class MoveitExample : public rclcpp::Node {
+class MoveitExample : public rclcpp::Node
+{
 public:
   MoveitExample() : rclcpp::Node("moveit_example") {}
 
-  void initialize() {
+  void initialize()
+  {
     this->set_parameter(rclcpp::Parameter("use_sim_time", true));
     move_group_interface_ = std::make_shared<moveit::planning_interface::MoveGroupInterface>(
       shared_from_this(), PLANNING_GROUP);
@@ -36,15 +38,19 @@ public:
     move_group_interface_->setMaxAccelerationScalingFactor(0.1);
   }
 
-  moveit_msgs::msg::RobotTrajectory::SharedPtr planToPosition(const std::vector<double> & joint_pos) {
+  moveit_msgs::msg::RobotTrajectory::SharedPtr planToPosition(const std::vector<double> & joint_pos)
+  {
     move_group_interface_->setJointValueTarget(joint_pos);
 
     moveit::planning_interface::MoveGroupInterface::Plan plan;
     RCLCPP_INFO(LOGGER, "Sending planning request");
-    if (!move_group_interface_->plan(plan)) {
+    if (!move_group_interface_->plan(plan))
+    {
       RCLCPP_INFO(LOGGER, "Planning failed");
       return nullptr;
-    } else {
+    }
+    else
+    {
       RCLCPP_INFO(LOGGER, "Planning successful");
       return std::make_shared<moveit_msgs::msg::RobotTrajectory>(plan.trajectory);
     }
@@ -53,8 +59,8 @@ public:
   moveit_msgs::msg::RobotTrajectory::SharedPtr planToPoint(
     const Eigen::Isometry3d & pose,
     const std::string & planning_pipeline = "pilz_industrial_motion_planner",
-    const std::string & planner_id = "PTP") {
-
+    const std::string & planner_id = "PTP")
+  {
     // Create planning request using pilz industrial motion planner
     move_group_interface_->setPlanningPipelineId(planning_pipeline);
     move_group_interface_->setPlannerId(planner_id);
@@ -76,8 +82,8 @@ public:
 
   moveit_msgs::msg::RobotTrajectory::SharedPtr planStraightPathAlongY(
     const std::string & planning_pipeline = "pilz_industrial_motion_planner",
-    const std::string & planner_id = "PTP") {
-
+    const std::string & planner_id = "PTP")
+  {
     // Create planning request using pilz industrial motion planner
     move_group_interface_->setPlanningPipelineId(planning_pipeline);
     move_group_interface_->setPlannerId(planner_id);
@@ -93,21 +99,26 @@ public:
     moveit_msgs::msg::RobotTrajectory trajectory;
     RCLCPP_INFO(LOGGER, "Sending planning request");
     double fraction = move_group_interface_->computeCartesianPath(waypoints, 0.05, 0.0, trajectory);
-    if (fraction == -1.0) {
+    if (fraction == -1.0)
+    {
       RCLCPP_INFO(LOGGER, "Planning failed");
       return nullptr;
-    } else {
+    }
+    else
+    {
       RCLCPP_INFO(LOGGER, "Planning successful");
       return std::make_shared<moveit_msgs::msg::RobotTrajectory>(trajectory);
     }
   }
 
-  void addBreakPoint() {
+  void addBreakPoint()
+  {
     moveit_visual_tools_->trigger();
     moveit_visual_tools_->prompt("Press 'Next' in the RvizVisualToolsGui window to execute");
   }
 
-  std::shared_ptr<moveit::planning_interface::MoveGroupInterface> moveGroupInterface() {
+  std::shared_ptr<moveit::planning_interface::MoveGroupInterface> moveGroupInterface()
+  {
     return move_group_interface_;
   }
 
