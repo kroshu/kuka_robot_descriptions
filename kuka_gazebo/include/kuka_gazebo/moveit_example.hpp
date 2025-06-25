@@ -12,10 +12,12 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#ifndef KUKA_GAZEBO__MOVEIT_EXAMPLE_HPP_
+#define KUKA_GAZEBO__MOVEIT_EXAMPLE_HPP_
+
 #include <math.h>
 
 #include <memory>
-#include <rclcpp/parameter.hpp>
 #include <string>
 #include <vector>
 
@@ -24,6 +26,7 @@
 #include "moveit/planning_scene_interface/planning_scene_interface.h"
 #include "moveit_msgs/msg/collision_object.hpp"
 #include "moveit_visual_tools/moveit_visual_tools.h"
+#include "rclcpp/parameter.hpp"
 #include "rclcpp/rclcpp.hpp"
 
 class MoveitExample : public rclcpp::Node
@@ -143,3 +146,5 @@ protected:
   const rclcpp::Logger LOGGER = rclcpp::get_logger("moveit_basic_plan");
   const std::string PLANNING_GROUP = "manipulator";
 };
+
+#endif  // KUKA_GAZEBO__MOVEIT_EXAMPLE_HPP_
