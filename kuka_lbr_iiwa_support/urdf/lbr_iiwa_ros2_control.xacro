@@ -123,7 +123,7 @@
           <param name="initial_value">0.0</param>
         </state_interface>
       </joint>
-      <xacro:unless value="${mode != 'hardware'}">
+      <xacro:if value="${mode == 'hardware'}">
         <xacro:if value="${io_access}">
           <xacro:include filename="$(find kuka_sunrise_fri_driver)/config/gpio_config.xacro"/>
           <xacro:fri_gpio_config/>
@@ -131,7 +131,7 @@
         <xacro:unless value="${io_access}">
           <gpio name="gpio"/>
         </xacro:unless>
-      </xacro:unless>
+      </xacro:if>
     </ros2_control>
   </xacro:macro>
 </robot>
