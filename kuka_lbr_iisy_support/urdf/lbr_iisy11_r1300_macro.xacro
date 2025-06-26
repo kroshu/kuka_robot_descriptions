@@ -5,11 +5,9 @@
   <xacro:include filename="$(find kuka_resources)/urdf/common_materials.xacro"/>
   <xacro:include filename="$(find kuka_lbr_iisy_support)/urdf/lbr_iisy_transmission.xacro"/>
   <xacro:macro name="kuka_lbr_iisy11_r1300_robot" params="prefix controller_ip client_ip mode roundtrip_time qos_config_file *origin">
-    <xacro:if value="${mode == 'gazebo'}">
-      <xacro:include filename="$(find kuka_gazebo)/gazebo/kuka_gazebo.xacro"/>
-    </xacro:if>
     <!-- gazebo -->
     <xacro:if value="${mode == 'gazebo'}">
+      <xacro:include filename="$(find kuka_gazebo)/gazebo/kuka_gazebo.xacro"/>
       <xacro:kuka_gazebo controller_config_package="kuka_resources" controller_config_path="config/fake_hardware_config_6_axis.yaml"/>
     </xacro:if>
     <!-- ros2 control instance -->
