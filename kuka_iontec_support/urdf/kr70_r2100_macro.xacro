@@ -2,9 +2,14 @@
 <robot xmlns:xacro="http://wiki.ros.org/xacro">
   <xacro:include filename="$(find kuka_iontec_support)/urdf/kr_iontec_ros2_control.xacro"/>
   <xacro:include filename="$(find kuka_iontec_support)/urdf/kr_iontec_transmission.xacro"/>
-  <xacro:macro name="kuka_kr70_r2100_robot" params="client_ip client_port controller_ip prefix use_fake_hardware use_gpio roundtrip_time *origin">
+  <xacro:macro name="kuka_kr70_r2100_robot" params="client_ip client_port controller_ip prefix mode use_gpio roundtrip_time *origin">
+    <!-- gazebo -->
+    <xacro:if value="${mode == 'gazebo'}">
+      <xacro:include filename="$(find kuka_gazebo)/gazebo/kuka_gazebo.xacro"/>
+      <xacro:kuka_gazebo controller_config_package="kuka_resources" controller_config_path="config/fake_hardware_config_6_axis.yaml"/>
+    </xacro:if>
     <!-- ros2 control instance -->
-    <xacro:kuka_iontec_ros2_control name="${prefix}kr70_r2100" client_ip="${client_ip}" controller_ip="${controller_ip}" client_port="${client_port}" prefix="${prefix}" use_fake_hardware="${use_fake_hardware}" use_gpio="${use_gpio}" roundtrip_time="${roundtrip_time}"/>
+    <xacro:kuka_iontec_ros2_control name="${prefix}kr70_r2100" client_ip="${client_ip}" controller_ip="${controller_ip}" client_port="${client_port}" prefix="${prefix}" mode="${mode}" use_gpio="${use_gpio}" roundtrip_time="${roundtrip_time}"/>
     <link name="world"/>
     <link name="${prefix}base_link">
       <collision>
@@ -13,6 +18,11 @@
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
       </collision>
+      <inertial>
+        <inertia ixx="3.21771450042138" ixy="0.0" ixz="0.0" iyy="2.20944166758376" iyz="0.0" izz="3.52194780966785"/>
+        <mass value="1.1102E2"/>
+        <origin rpy="-0.09552224276473971 0.005165689953881887 1.5692512343174831" xyz="-0.0353407754502021 3.24880558618159E-4 0.169880117603822"/>
+      </inertial>
       <visual>
         <geometry>
           <mesh filename="package://kuka_iontec_support/meshes/kr70_r2100/visual/base_link.dae"/>

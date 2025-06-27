@@ -3,7 +3,7 @@
   <!-- Import urdf file  -->
   <xacro:include filename="$(find kuka_fortec_support)/urdf/kr560_r3100_2_macro.xacro"/>
   <!-- Read additional arguments  -->
-  <xacro:arg name="use_fake_hardware" default="false"/>
+  <xacro:arg name="mode" default="hardware"/>
   <xacro:arg name="use_gpio" default="true"/>
   <xacro:arg name="roundtrip_time" default="0"/>
   <xacro:arg name="client_ip" default="0.0.0.0"/>
@@ -16,7 +16,7 @@
   <xacro:arg name="roll" default="0"/>
   <xacro:arg name="pitch" default="0"/>
   <xacro:arg name="yaw" default="0"/>
-  <xacro:kuka_kr560_r3100_2_robot client_ip="$(arg client_ip)" client_port="$(arg client_port)" controller_ip="$(arg controller_ip)" prefix="$(arg prefix)" use_fake_hardware="$(arg use_fake_hardware)" use_gpio="$(arg use_gpio)" roundtrip_time="$(arg roundtrip_time)">
+  <xacro:kuka_kr560_r3100_2_robot client_ip="$(arg client_ip)" client_port="$(arg client_port)" controller_ip="$(arg controller_ip)" prefix="$(arg prefix)" mode="$(arg mode)" use_gpio="$(arg use_gpio)" roundtrip_time="$(arg roundtrip_time)">
     <origin xyz="$(arg x) $(arg y) $(arg z)" rpy="$(arg roll) $(arg pitch) $(arg yaw)"/>
   </xacro:kuka_kr560_r3100_2_robot>
 </robot>
