@@ -27,7 +27,7 @@ def generate_launch_description():
                 [FindPackageShare("kuka_quantec_support"), "urdf", "kr210_r3100_2.urdf.xacro"]
             ),
             " ",
-            "use_fake_hardware:=true",
+            "mode:=mock",
         ]
     )
     robot_description = {"robot_description": robot_description_content}

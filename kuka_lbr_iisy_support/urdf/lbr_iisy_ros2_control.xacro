@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
-  <xacro:macro name="kuka_lbr_iisy_ros2_control" params="name prefix client_ip controller_ip use_fake_hardware qos_config_file roundtrip_time">
+  <xacro:macro name="kuka_lbr_iisy_ros2_control" params="name prefix client_ip controller_ip mode qos_config_file roundtrip_time">
     <ros2_control name="${name}" type="system">
       <hardware>
-        <xacro:if value="${use_fake_hardware}">
+        <xacro:if value="${mode == 'mock'}">
           <plugin>kuka_mock_hardware_interface::KukaMockHardwareInterface</plugin>
           <param name="cycle_time_ms">4</param>
           <param name="roundtrip_time_micro">${roundtrip_time}</param>
           <param name="mock_sensor_commands">false</param>
           <param name="state_following_offset">0.0</param>
         </xacro:if>
-        <xacro:unless value="${use_fake_hardware}">
+        <xacro:if value="${mode == 'hardware'}">
           <!-- Read QoS profile parameters  -->
           <xacro:if value="${qos_config_file == ''}">
             <xacro:property name="qos_config" value="$(find kuka_iiqka_eac_driver)/config/qos_config.yaml"/>
@@ -28,14 +28,19 @@
           <param name="consequent_lost_packets">${consequent_lost_packets}</param>
           <param name="lost_packets_in_timeframe">${lost_packets_in_timeframe}</param>
           <param name="timeframe_ms">${timeframe_ms}</param>
-        </xacro:unless>
+        </xacro:if>
+        <xacro:if value="${mode == 'gazebo'}">
+          <plugin>gz_ros2_control/GazeboSimSystem</plugin>
+        </xacro:if>
       </hardware>
       <!-- define joints and command/state interfaces for each joint -->
       <joint name="${prefix}joint_1">
         <command_interface name="position"/>
-        <command_interface name="stiffness"/>
-        <command_interface name="damping"/>
-        <command_interface name="effort"/>
+        <xacro:unless value="${mode == 'gazebo'}">
+          <command_interface name="stiffness"/>
+          <command_interface name="damping"/>
+          <command_interface name="effort"/>
+        </xacro:unless>
         <state_interface name="position">
           <param name="initial_value">0.0</param>
         </state_interface>
@@ -57,9 +62,11 @@
       </joint>
       <joint name="${prefix}joint_3">
         <command_interface name="position"/>
-        <command_interface name="stiffness"/>
-        <command_interface name="damping"/>
-        <command_interface name="effort"/>
+        <xacro:unless value="${mode == 'gazebo'}">
+          <command_interface name="stiffness"/>
+          <command_interface name="damping"/>
+          <command_interface name="effort"/>
+        </xacro:unless>
         <state_interface name="position">
           <param name="initial_value">1.5708</param>
         </state_interface>
@@ -69,9 +76,11 @@
       </joint>
       <joint name="${prefix}joint_4">
         <command_interface name="position"/>
-        <command_interface name="stiffness"/>
-        <command_interface name="damping"/>
-        <command_interface name="effort"/>
+        <xacro:unless value="${mode == 'gazebo'}">
+          <command_interface name="stiffness"/>
+          <command_interface name="damping"/>
+          <command_interface name="effort"/>
+        </xacro:unless>
         <state_interface name="position">
           <param name="initial_value">0.0</param>
         </state_interface>
@@ -81,9 +90,11 @@
       </joint>
       <joint name="${prefix}joint_5">
         <command_interface name="position"/>
-        <command_interface name="stiffness"/>
-        <command_interface name="damping"/>
-        <command_interface name="effort"/>
+        <xacro:unless value="${mode == 'gazebo'}">
+          <command_interface name="stiffness"/>
+          <command_interface name="damping"/>
+          <command_interface name="effort"/>
+        </xacro:unless>
         <state_interface name="position">
           <param name="initial_value">0.0</param>
         </state_interface>
@@ -93,9 +104,11 @@
       </joint>
       <joint name="${prefix}joint_6">
         <command_interface name="position"/>
-        <command_interface name="stiffness"/>
-        <command_interface name="damping"/>
-        <command_interface name="effort"/>
+        <xacro:unless value="${mode == 'gazebo'}">
+          <command_interface name="stiffness"/>
+          <command_interface name="damping"/>
+          <command_interface name="effort"/>
+        </xacro:unless>
         <state_interface name="position">
           <param name="initial_value">0.0</param>
         </state_interface>
