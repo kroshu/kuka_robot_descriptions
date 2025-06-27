@@ -31,7 +31,7 @@ def generate_launch_description():
                 ]
             ),
             " ",
-            "use_fake_hardware:=true",
+            "mode:=mock",
         ]
     )
     robot_description = {"robot_description": robot_description_content}

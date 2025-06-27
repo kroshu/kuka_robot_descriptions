@@ -45,8 +45,8 @@ def launch_setup(context, *args, **kwargs):
                 ]
             ),
             " ",
-            "use_fake_hardware:=",
-            "true",
+            "mode:=",
+            "mock",
         ]
     )
 

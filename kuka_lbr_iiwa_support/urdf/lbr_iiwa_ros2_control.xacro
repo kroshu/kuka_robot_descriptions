@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
-  <xacro:macro name="kuka_lbr_iiwa_ros2_control" params="name prefix io_access use_fake_hardware roundtrip_time controller_ip client_ip client_port">
+  <xacro:macro name="kuka_lbr_iiwa_ros2_control" params="name prefix io_access mode roundtrip_time controller_ip client_ip client_port">
     <ros2_control name="${name}" type="system">
       <hardware>
-        <xacro:if value="${use_fake_hardware}">
+        <xacro:if value="${mode == 'mock'}">
           <plugin>kuka_mock_hardware_interface::KukaMockHardwareInterface</plugin>
           <param name="cycle_time_ms">5</param>
           <param name="roundtrip_time_micro">${roundtrip_time}</param>
           <param name="mock_sensor_commands">false</param>
           <param name="state_following_offset">0.0</param>
         </xacro:if>
-        <xacro:unless value="${use_fake_hardware}">
+        <xacro:if value="${mode == 'hardware'}">
           <plugin>kuka_sunrise_fri_driver::KukaFRIHardwareInterface</plugin>
           <param name="controller_ip">${controller_ip}</param>
           <param name="client_ip">${client_ip}</param>
           <param name="client_port">${client_port}</param>
-        </xacro:unless>
+        </xacro:if>
       </hardware>
       <!-- define joints and command/state interfaces for each joint -->
       <joint name="${prefix}joint_1">
@@ -123,7 +123,7 @@
           <param name="initial_value">0.0</param>
         </state_interface>
       </joint>
-      <xacro:unless value="${use_fake_hardware}">
+      <xacro:if value="${mode == 'hardware'}">
         <xacro:if value="${io_access}">
           <xacro:include filename="$(find kuka_sunrise_fri_driver)/config/gpio_config.xacro"/>
           <xacro:fri_gpio_config/>
@@ -131,7 +131,7 @@
         <xacro:unless value="${io_access}">
           <gpio name="gpio"/>
         </xacro:unless>
-      </xacro:unless>
+      </xacro:if>
     </ros2_control>
   </xacro:macro>
 </robot>
