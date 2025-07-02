@@ -28,7 +28,7 @@ def generate_launch_description():
                 [FindPackageShare("kuka_lbr_iiwa_support"), "urdf", "lbr_iiwa14_r820.urdf.xacro"]
             ),
             " ",
-            "use_fake_hardware:=true",
+            "mode:=mock",
         ]
     )
     robot_description = {"robot_description": robot_description_content}

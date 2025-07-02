@@ -4,9 +4,14 @@
   <xacro:include filename="$(find kuka_agilus_support)/urdf/kr_agilus_ros2_control.xacro"/>
   <xacro:include filename="$(find kuka_agilus_support)/urdf/kr_agilus_transmission.xacro"/>
   <xacro:include filename="$(find kuka_resources)/urdf/common_materials.xacro"/>
-  <xacro:macro name="kuka_kr10_r1100_2_robot" params="client_ip client_port prefix use_fake_hardware roundtrip_time *origin">
+  <xacro:macro name="kuka_kr10_r1100_2_robot" params="client_ip client_port controller_ip prefix mode roundtrip_time *origin">
+    <!-- gazebo -->
+    <xacro:if value="${mode == 'gazebo'}">
+      <xacro:include filename="$(find kuka_gazebo)/gazebo/kuka_gazebo.xacro"/>
+      <xacro:kuka_gazebo controller_config_package="kuka_resources" controller_config_path="config/fake_hardware_config_6_axis.yaml"/>
+    </xacro:if>
     <!-- ros2 control instance -->
-    <xacro:kuka_agilus_ros2_control name="${prefix}kr10_r1100_2" client_ip="${client_ip}" client_port="${client_port}" prefix="${prefix}" use_fake_hardware="${use_fake_hardware}" roundtrip_time="${roundtrip_time}"/>
+    <xacro:kuka_agilus_ros2_control name="${prefix}kr10_r1100_2" client_ip="${client_ip}" client_port="${client_port}" controller_ip="${controller_ip}" prefix="${prefix}" mode="${mode}" roundtrip_time="${roundtrip_time}"/>
     <!-- links - main serial chain -->
     <link name="world"/>
     <link name="${prefix}base_link">
@@ -16,6 +21,11 @@
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
       </collision>
+      <inertial>
+        <inertia ixx="0.16209200415615" ixy="0.0" ixz="0.0" iyy="0.10881181598555635" iyz="0.0" izz="0.18461591505869543"/>
+        <mass value="1.6916E1"/>
+        <origin rpy="1.6165592773339865 -1.221289277333065 3.10031147437779" xyz="-0.03713348309292976 2.6602033577676952E-5 0.10863850792149446"/>
+      </inertial>
       <visual>
         <geometry>
           <mesh filename="package://kuka_agilus_support/meshes/kr10_r1100_2/visual/base_link.stl"/>
@@ -31,6 +41,11 @@
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
       </collision>
+      <inertial>
+        <inertia ixx="0.07406183855390855" ixy="0.0" ixz="0.0" iyy="0.0890478351825312" iyz="0.0" izz="0.11039570662759429"/>
+        <mass value="8.4159999999999986E0"/>
+        <origin rpy="1.304519343134156 -0.9428616016893947 -1.4226510948637578" xyz="0.006410408745247152 -0.01626805370722434 -0.10658893773764262"/>
+      </inertial>
       <visual>
         <geometry>
           <mesh filename="package://kuka_agilus_support/meshes/kr10_r1100_2/visual/link_1.stl"/>
@@ -46,6 +61,11 @@
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
       </collision>
+      <inertial>
+        <inertia ixx="0.8751595055066254" ixy="0.0" ixz="0.0" iyy="0.09215049446198915" iyz="0.0" izz="0.9157117764876721"/>
+        <mass value="1.78369E1"/>
+        <origin rpy="1.9524873827550635 -1.5422358773344043 -0.3902815673307173" xyz="0.191160133767639 -0.004651344123698628 -0.07520541854245974"/>
+      </inertial>
       <visual>
         <geometry>
           <mesh filename="package://kuka_agilus_support/meshes/kr10_r1100_2/visual/link_2.stl"/>
@@ -61,6 +81,11 @@
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
       </collision>
+      <inertial>
+        <inertia ixx="0.04469381119929391" ixy="0.0" ixz="0.0" iyy="0.018969508933922696" iyz="0.0" izz="0.0498412586885908"/>
+        <mass value="6.075E0"/>
+        <origin rpy="-2.676930368410595 -1.321895859309871 1.1860920267202666" xyz="0.04386106995884774 -0.012506995884773664 -0.06825142386831277"/>
+      </inertial>
       <visual>
         <geometry>
           <mesh filename="package://kuka_agilus_support/meshes/kr10_r1100_2/visual/link_3.stl"/>
@@ -76,6 +101,11 @@
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
       </collision>
+      <inertial>
+        <inertia ixx="0.012301413884477554" ixy="0.0" ixz="0.0" iyy="0.08469612193319441" iyz="0.0" izz="0.08739834186747329"/>
+        <mass value="5.1623807059999995E0"/>
+        <origin rpy="-2.228094247436686 -1.5326119469267911 2.179783954730353" xyz="0.0013191433102012267 0.008607757626765767 -0.14098161935749579"/>
+      </inertial>
       <visual>
         <geometry>
           <mesh filename="package://kuka_agilus_support/meshes/kr10_r1100_2/visual/link_4.stl"/>
@@ -91,6 +121,11 @@
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
       </collision>
+      <inertial>
+        <inertia ixx="0.0017317756133102904" ixy="0.0" ixz="0.0" iyy="0.002219500805440681" iyz="0.0" izz="0.002467090055442975"/>
+        <mass value="1.6128E0"/>
+        <origin rpy="1.567898714902774 -0.8611716764868309 -3.100280255900493" xyz="0.009320696924603175 7.83482142857143E-4 -0.026462549603174602"/>
+      </inertial>
       <visual>
         <geometry>
           <mesh filename="package://kuka_agilus_support/meshes/kr10_r1100_2/visual/link_5.stl"/>
@@ -106,6 +141,11 @@
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
       </collision>
+      <inertial>
+        <inertia ixx="1.83698267603013E-4" ixy="0.0" ixz="0.0" iyy="1.8213621766783165E-4" iyz="0.0" izz="2.9589000000000004E-4"/>
+        <mass value="7.34E-1"/>
+        <origin rpy="0.0 -0.0 1.223427188696551" xyz="0.0 0.0 -0.011764604904632152"/>
+      </inertial>
       <visual>
         <geometry>
           <mesh filename="package://kuka_agilus_support/meshes/kr10_r1100_2/visual/link_6.stl"/>

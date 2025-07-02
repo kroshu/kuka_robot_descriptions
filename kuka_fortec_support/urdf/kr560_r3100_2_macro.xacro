@@ -2,9 +2,14 @@
 <robot xmlns:xacro="http://wiki.ros.org/xacro">
   <xacro:include filename="$(find kuka_fortec_support)/urdf/kr_fortec_ros2_control.xacro"/>
   <xacro:include filename="$(find kuka_fortec_support)/urdf/kr_fortec_transmission.xacro"/>
-  <xacro:macro name="kuka_kr560_r3100_2_robot" params="client_ip client_port prefix use_fake_hardware roundtrip_time *origin">
+  <xacro:macro name="kuka_kr560_r3100_2_robot" params="client_ip client_port controller_ip prefix mode roundtrip_time *origin">
+    <!-- gazebo -->
+    <xacro:if value="${mode == 'gazebo'}">
+      <xacro:include filename="$(find kuka_gazebo)/gazebo/kuka_gazebo.xacro"/>
+      <xacro:kuka_gazebo controller_config_package="kuka_resources" controller_config_path="config/fake_hardware_config_6_axis.yaml"/>
+    </xacro:if>
     <!-- ros2 control instance -->
-    <xacro:kuka_fortec_ros2_control name="${prefix}kr560_r3100_2" client_ip="${client_ip}" client_port="${client_port}" prefix="${prefix}" use_fake_hardware="${use_fake_hardware}" roundtrip_time="${roundtrip_time}"/>
+    <xacro:kuka_fortec_ros2_control name="${prefix}kr560_r3100_2" client_ip="${client_ip}" client_port="${client_port}" controller_ip="${controller_ip}" prefix="${prefix}" mode="${mode}" roundtrip_time="${roundtrip_time}"/>
     <link name="world"/>
     <link name="${prefix}base_link">
       <collision>
@@ -13,6 +18,11 @@
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
       </collision>
+      <inertial>
+        <inertia ixx="35.410866659826" ixy="0.0" ixz="0.0" iyy="34.5547429413375" iyz="0.0" izz="38.9749152422865"/>
+        <mass value="4.3839E2"/>
+        <origin rpy="-0.26345077947988915 -0.011417952338033863 -1.5831162104095253" xyz="-0.0219634111179543 2.66337735806023E-4 0.290824658865394"/>
+      </inertial>
       <visual>
         <geometry>
           <mesh filename="package://kuka_fortec_support/meshes/kr560_r3100_2/visual/base_link.dae"/>
@@ -27,6 +37,11 @@
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
       </collision>
+      <inertial>
+        <inertia ixx="68.8871727481765" ixy="0.0" ixz="0.0" iyy="31.9479323362134" iyz="0.0" izz="84.5563373850467"/>
+        <mass value="5.5748E2"/>
+        <origin rpy="-1.8734135274052497 -1.508489219626719 0.30671025878674923" xyz="0.0812269789050728 0.00860667378201908 -0.29662668257157204"/>
+      </inertial>
       <visual>
         <geometry>
           <mesh filename="package://kuka_fortec_support/meshes/kr560_r3100_2/visual/link_1.dae"/>
@@ -41,6 +56,11 @@
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
       </collision>
+      <inertial>
+        <inertia ixx="344.9055856506" ixy="0.0" ixz="0.0" iyy="45.4306396522043" iyz="0.0" izz="376.577425687136"/>
+        <mass value="7.4023E2"/>
+        <origin rpy="-1.4188791588206504 -1.5562308152773727 3.0008589795117246" xyz="0.673327322588925 -0.006679975683233591 0.022081825378598603"/>
+      </inertial>
       <visual>
         <geometry>
           <mesh filename="package://kuka_fortec_support/meshes/kr560_r3100_2/visual/link_2.dae"/>
@@ -55,6 +75,11 @@
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
       </collision>
+      <inertial>
+        <inertia ixx="6.30840213271945" ixy="0.0" ixz="0.0" iyy="26.687628198328" iyz="0.0" izz="29.5636589044743"/>
+        <mass value="2.41307E2"/>
+        <origin rpy="0.028058985026686887 -0.003311222914120114 -0.07508596727782266" xyz="0.129307355539367 -0.12237728273757201 -0.005238577401690441"/>
+      </inertial>
       <visual>
         <geometry>
           <mesh filename="package://kuka_fortec_support/meshes/kr560_r3100_2/visual/link_3.dae"/>
@@ -69,6 +94,11 @@
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
       </collision>
+      <inertial>
+        <inertia ixx="0.693678008600892" ixy="0.0" ixz="0.0" iyy="2.78506557610754" iyz="0.0" izz="2.86251005408283"/>
+        <mass value="9.7442E1"/>
+        <origin rpy="1.570932272091058 -1.2743253802401948 -1.570766714386286" xyz="-5.43869794830743E-7 0.042293334372276704 -0.18193497897866"/>
+      </inertial>
       <visual>
         <geometry>
           <mesh filename="package://kuka_fortec_support/meshes/kr560_r3100_2/visual/link_4.dae"/>
@@ -83,6 +113,11 @@
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
       </collision>
+      <inertial>
+        <inertia ixx="1.10203832546012" ixy="0.0" ixz="0.0" iyy="0.783938692397306" iyz="0.0" izz="1.20828474699799"/>
+        <mass value="5.36088E1"/>
+        <origin rpy="-1.5642278602027897 -0.8175710147649964 -0.011709797778755686" xyz="0.06813413576091991 -4.9894728477414005E-5 -0.0893390051226664"/>
+      </inertial>
       <visual>
         <geometry>
           <mesh filename="package://kuka_fortec_support/meshes/kr560_r3100_2/visual/link_5.dae"/>
@@ -97,6 +132,11 @@
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
       </collision>
+      <inertial>
+        <inertia ixx="0.154627253223927" ixy="0.0" ixz="0.0" iyy="0.154759872890913" iyz="0.0" izz="0.18961138268388"/>
+        <mass value="3.202E1"/>
+        <origin rpy="0.0020471651340902924 7.476904024900575E-5 -1.5692303732486164" xyz="-4.86570893191755E-5 -2.5301686445971304E-6 -0.0203013397876327"/>
+      </inertial>
       <visual>
         <geometry>
           <mesh filename="package://kuka_fortec_support/meshes/kr560_r3100_2/visual/link_6.dae"/>
