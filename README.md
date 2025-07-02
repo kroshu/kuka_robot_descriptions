@@ -5,7 +5,7 @@ This repository contains support packages that can be used with real KUKA robots
 ROS2 Distro | Branch | Github CI
 ------------ | -------------- | --------------
 **Jazzy** | [`master`](https://github.com/kroshu/kuka_robot_descriptions/tree/master) | [![Build Status](https://github.com/kroshu/kuka_robot_descriptions/actions/workflows/industrial_ci.yml/badge.svg?branch=master)](https://github.com/kroshu/kuka_robot_descriptions/actions)
-**Humble** | [`humble`](https://github.com/kroshu/kuka_robot_descriptions/tree/humble) | [![Build Status](https://github.com/kroshu/kuka_robot_descriptions/actions/workflows/industrial_ci.yml/badge.svg?branch=humble)](https://github.com/kroshu/kuka_robot_descriptions/actions)
+**Humble** | [`humble`](https://github.com/kroshu/kuka_robot_descriptions/tree/humble) | [![Build Status](https://github.com/kroshu/kuka_robot_descriptions/actions/workflows/industrial_ci_humble.yml/badge.svg?branch=humble)](https://github.com/kroshu/kuka_robot_descriptions/actions)
 
 ## What is included?
 
