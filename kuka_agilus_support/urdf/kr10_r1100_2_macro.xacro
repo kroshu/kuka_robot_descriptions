@@ -4,14 +4,14 @@
   <xacro:include filename="$(find kuka_agilus_support)/urdf/kr_agilus_ros2_control.xacro"/>
   <xacro:include filename="$(find kuka_agilus_support)/urdf/kr_agilus_transmission.xacro"/>
   <xacro:include filename="$(find kuka_resources)/urdf/common_materials.xacro"/>
-  <xacro:macro name="kuka_kr10_r1100_2_robot" params="client_ip client_port controller_ip prefix mode roundtrip_time *origin">
+  <xacro:macro name="kuka_kr10_r1100_2_robot" params="driver_version client_ip client_port controller_ip prefix mode roundtrip_time *origin">
     <!-- gazebo -->
     <xacro:if value="${mode == 'gazebo'}">
       <xacro:include filename="$(find kuka_gazebo)/gazebo/kuka_gazebo.xacro"/>
       <xacro:kuka_gazebo controller_config_package="kuka_resources" controller_config_path="config/fake_hardware_config_6_axis.yaml"/>
     </xacro:if>
     <!-- ros2 control instance -->
-    <xacro:kuka_agilus_ros2_control name="${prefix}kr10_r1100_2" client_ip="${client_ip}" client_port="${client_port}" controller_ip="${controller_ip}" prefix="${prefix}" mode="${mode}" roundtrip_time="${roundtrip_time}"/>
+    <xacro:kuka_agilus_ros2_control name="${prefix}kr10_r1100_2" driver_version="${driver_version}" client_ip="${client_ip}" client_port="${client_port}" controller_ip="${controller_ip}" prefix="${prefix}" mode="${mode}" roundtrip_time="${roundtrip_time}"/>
     <!-- links - main serial chain -->
     <link name="world"/>
     <link name="${prefix}base_link">
