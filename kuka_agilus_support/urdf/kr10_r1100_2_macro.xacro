@@ -1,23 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="kr10_r1100_2">
   <!-- include helper xacros -->
-  <xacro:include filename="$(find kuka_agilus_support)/urdf/kr_agilus_ros2_control.xacro"/>
-  <xacro:include filename="$(find kuka_agilus_support)/urdf/kr_agilus_transmission.xacro"/>
   <xacro:include filename="$(find kuka_resources)/urdf/common_materials.xacro"/>
-  <xacro:macro name="kuka_kr10_r1100_2_robot" params="client_ip client_port controller_ip prefix mode roundtrip_time *origin">
-    <!-- gazebo -->
-    <xacro:if value="${mode == 'gazebo'}">
-      <xacro:include filename="$(find kuka_gazebo)/gazebo/kuka_gazebo.xacro"/>
-      <xacro:kuka_gazebo controller_config_package="kuka_resources" controller_config_path="config/fake_hardware_config_6_axis.yaml"/>
-    </xacro:if>
-    <!-- ros2 control instance -->
-    <xacro:kuka_agilus_ros2_control name="${prefix}kr10_r1100_2" client_ip="${client_ip}" client_port="${client_port}" controller_ip="${controller_ip}" prefix="${prefix}" mode="${mode}" roundtrip_time="${roundtrip_time}"/>
+  <xacro:macro name="kuka_kr10_r1100_2_robot" params="prefix package_name *origin">
     <!-- links - main serial chain -->
     <link name="world"/>
     <link name="${prefix}base_link">
       <collision>
         <geometry>
-          <mesh filename="package://kuka_agilus_support/meshes/kr10_r1100_2/collision/base_link.stl"/>
+          <mesh filename="package://${package_name}/meshes/kr10_r1100_2/collision/base_link.stl"/>
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
       </collision>
@@ -28,7 +19,7 @@
       </inertial>
       <visual>
         <geometry>
-          <mesh filename="package://kuka_agilus_support/meshes/kr10_r1100_2/visual/base_link.stl"/>
+          <mesh filename="package://${package_name}/meshes/kr10_r1100_2/visual/base_link.stl"/>
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
         <xacro:material_kuka_ral_pure_white/>
@@ -37,7 +28,7 @@
     <link name="${prefix}link_1">
       <collision>
         <geometry>
-          <mesh filename="package://kuka_agilus_support/meshes/kr10_r1100_2/collision/link_1.stl"/>
+          <mesh filename="package://${package_name}/meshes/kr10_r1100_2/collision/link_1.stl"/>
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
       </collision>
@@ -48,7 +39,7 @@
       </inertial>
       <visual>
         <geometry>
-          <mesh filename="package://kuka_agilus_support/meshes/kr10_r1100_2/visual/link_1.stl"/>
+          <mesh filename="package://${package_name}/meshes/kr10_r1100_2/visual/link_1.stl"/>
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
         <xacro:material_kuka_ral_pure_white/>
@@ -57,7 +48,7 @@
     <link name="${prefix}link_2">
       <collision>
         <geometry>
-          <mesh filename="package://kuka_agilus_support/meshes/kr10_r1100_2/collision/link_2.stl"/>
+          <mesh filename="package://${package_name}/meshes/kr10_r1100_2/collision/link_2.stl"/>
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
       </collision>
@@ -68,7 +59,7 @@
       </inertial>
       <visual>
         <geometry>
-          <mesh filename="package://kuka_agilus_support/meshes/kr10_r1100_2/visual/link_2.stl"/>
+          <mesh filename="package://${package_name}/meshes/kr10_r1100_2/visual/link_2.stl"/>
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
         <xacro:material_kuka_ral_pure_white/>
@@ -77,7 +68,7 @@
     <link name="${prefix}link_3">
       <collision>
         <geometry>
-          <mesh filename="package://kuka_agilus_support/meshes/kr10_r1100_2/collision/link_3.stl"/>
+          <mesh filename="package://${package_name}/meshes/kr10_r1100_2/collision/link_3.stl"/>
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
       </collision>
@@ -88,7 +79,7 @@
       </inertial>
       <visual>
         <geometry>
-          <mesh filename="package://kuka_agilus_support/meshes/kr10_r1100_2/visual/link_3.stl"/>
+          <mesh filename="package://${package_name}/meshes/kr10_r1100_2/visual/link_3.stl"/>
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
         <xacro:material_kuka_ral_pure_white/>
@@ -97,7 +88,7 @@
     <link name="${prefix}link_4">
       <collision>
         <geometry>
-          <mesh filename="package://kuka_agilus_support/meshes/kr10_r1100_2/collision/link_4.stl"/>
+          <mesh filename="package://${package_name}/meshes/kr10_r1100_2/collision/link_4.stl"/>
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
       </collision>
@@ -108,7 +99,7 @@
       </inertial>
       <visual>
         <geometry>
-          <mesh filename="package://kuka_agilus_support/meshes/kr10_r1100_2/visual/link_4.stl"/>
+          <mesh filename="package://${package_name}/meshes/kr10_r1100_2/visual/link_4.stl"/>
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
         <xacro:material_kuka_ral_pure_white/>
@@ -117,7 +108,7 @@
     <link name="${prefix}link_5">
       <collision>
         <geometry>
-          <mesh filename="package://kuka_agilus_support/meshes/kr10_r1100_2/collision/link_5.stl"/>
+          <mesh filename="package://${package_name}/meshes/kr10_r1100_2/collision/link_5.stl"/>
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
       </collision>
@@ -128,7 +119,7 @@
       </inertial>
       <visual>
         <geometry>
-          <mesh filename="package://kuka_agilus_support/meshes/kr10_r1100_2/visual/link_5.stl"/>
+          <mesh filename="package://${package_name}/meshes/kr10_r1100_2/visual/link_5.stl"/>
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
         <xacro:material_kuka_ral_pure_white/>
@@ -137,7 +128,7 @@
     <link name="${prefix}link_6">
       <collision>
         <geometry>
-          <mesh filename="package://kuka_agilus_support/meshes/kr10_r1100_2/collision/link_6.stl"/>
+          <mesh filename="package://${package_name}/meshes/kr10_r1100_2/collision/link_6.stl"/>
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
       </collision>
@@ -148,7 +139,7 @@
       </inertial>
       <visual>
         <geometry>
-          <mesh filename="package://kuka_agilus_support/meshes/kr10_r1100_2/visual/link_6.stl"/>
+          <mesh filename="package://${package_name}/meshes/kr10_r1100_2/visual/link_6.stl"/>
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
         <xacro:material_kuka_ral_pure_white/>
