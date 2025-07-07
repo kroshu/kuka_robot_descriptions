@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
-  <xacro:macro name="kuka_quantec_ros2_control" params="name client_ip client_port controller_ip prefix mode use_gpio roundtrip_time">
+  <xacro:macro name="kuka_fortec_ros2_control" params="name client_ip client_port controller_ip prefix mode use_gpio roundtrip_time">
+    <!-- gazebo -->
+    <xacro:if value="${mode == 'gazebo'}">
+      <xacro:include filename="$(find kuka_gazebo)/gazebo/kuka_gazebo.xacro"/>
+      <xacro:kuka_gazebo controller_config_package="kuka_resources" controller_config_path="config/fake_hardware_config_6_axis.yaml"/>
+    </xacro:if>
+    <!-- ros2 control -->
     <ros2_control name="${name}" type="system">
       <hardware>
         <xacro:if value="${mode == 'mock'}">
@@ -57,8 +63,8 @@
         </state_interface>
       </joint>
       <xacro:if value="${use_gpio}">
-        <xacro:include filename="$(find kuka_quantec_support)/urdf/kr_quantec_gpio_config.xacro"/>
-        <xacro:kr_quantec_gpio_config/>
+        <xacro:include filename="$(find kuka_fortec_support)/urdf/kr_fortec_gpio_config.xacro"/>
+        <xacro:kr_fortec_gpio_config/>
       </xacro:if>
       <xacro:unless value="${use_gpio}">
         <gpio name="gpio"/>
