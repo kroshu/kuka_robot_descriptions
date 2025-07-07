@@ -1,21 +1,18 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://wiki.ros.org/xacro">
-  <xacro:include filename="$(find kuka_cybertech_support)/urdf/kr_cybertech_ros2_control.xacro"/>
-  <xacro:include filename="$(find kuka_cybertech_support)/urdf/kr_cybertech_transmission.xacro"/>
-  <xacro:macro name="kuka_kr16_r2010_2_robot" params="driver_version client_ip client_port controller_ip prefix mode roundtrip_time *origin">
-    <!-- ros2 control instance -->
-    <xacro:kuka_cybertech_ros2_control name="${prefix}kr16_r2010_2" driver_version="${driver_version}" client_ip="${client_ip}" client_port="${client_port}" controller_ip="${controller_ip}" prefix="${prefix}" mode="${mode}" roundtrip_time="${roundtrip_time}"/>
+  <xacro:macro name="kuka_kr16_r2010_2_robot" params="prefix package_name *origin">
+    <!-- links - main serial chain -->
     <link name="world"/>
     <link name="${prefix}base_link">
       <collision>
         <geometry>
-          <mesh filename="package://kuka_cybertech_support/meshes/kr16_r2010_2/collision/base_link.stl"/>
+          <mesh filename="package://${package_name}/meshes/kr16_r2010_2/collision/base_link.stl"/>
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
       </collision>
       <visual>
         <geometry>
-          <mesh filename="package://kuka_cybertech_support/meshes/kr16_r2010_2/visual/base_link.stl"/>
+          <mesh filename="package://${package_name}/meshes/kr16_r2010_2/visual/base_link.stl"/>
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
       </visual>
@@ -23,13 +20,13 @@
     <link name="${prefix}link_1">
       <collision>
         <geometry>
-          <mesh filename="package://kuka_cybertech_support/meshes/kr16_r2010_2/collision/link_1.stl"/>
+          <mesh filename="package://${package_name}/meshes/kr16_r2010_2/collision/link_1.stl"/>
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
       </collision>
       <visual>
         <geometry>
-          <mesh filename="package://kuka_cybertech_support/meshes/kr16_r2010_2/visual/link_1.stl"/>
+          <mesh filename="package://${package_name}/meshes/kr16_r2010_2/visual/link_1.stl"/>
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
       </visual>
@@ -37,13 +34,13 @@
     <link name="${prefix}link_2">
       <collision>
         <geometry>
-          <mesh filename="package://kuka_cybertech_support/meshes/kr16_r2010_2/collision/link_2.stl"/>
+          <mesh filename="package://${package_name}/meshes/kr16_r2010_2/collision/link_2.stl"/>
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
       </collision>
       <visual>
         <geometry>
-          <mesh filename="package://kuka_cybertech_support/meshes/kr16_r2010_2/visual/link_2.stl"/>
+          <mesh filename="package://${package_name}/meshes/kr16_r2010_2/visual/link_2.stl"/>
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
       </visual>
@@ -51,13 +48,13 @@
     <link name="${prefix}link_3">
       <collision>
         <geometry>
-          <mesh filename="package://kuka_cybertech_support/meshes/kr16_r2010_2/collision/link_3.stl"/>
+          <mesh filename="package://${package_name}/meshes/kr16_r2010_2/collision/link_3.stl"/>
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
       </collision>
       <visual>
         <geometry>
-          <mesh filename="package://kuka_cybertech_support/meshes/kr16_r2010_2/visual/link_3.stl"/>
+          <mesh filename="package://${package_name}/meshes/kr16_r2010_2/visual/link_3.stl"/>
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
       </visual>
@@ -65,13 +62,13 @@
     <link name="${prefix}link_4">
       <collision>
         <geometry>
-          <mesh filename="package://kuka_cybertech_support/meshes/kr16_r2010_2/collision/link_4.stl"/>
+          <mesh filename="package://${package_name}/meshes/kr16_r2010_2/collision/link_4.stl"/>
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
       </collision>
       <visual>
         <geometry>
-          <mesh filename="package://kuka_cybertech_support/meshes/kr16_r2010_2/visual/link_4.stl"/>
+          <mesh filename="package://${package_name}/meshes/kr16_r2010_2/visual/link_4.stl"/>
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
       </visual>
@@ -79,13 +76,13 @@
     <link name="${prefix}link_5">
       <collision>
         <geometry>
-          <mesh filename="package://kuka_cybertech_support/meshes/kr16_r2010_2/collision/link_5.stl"/>
+          <mesh filename="package://${package_name}/meshes/kr16_r2010_2/collision/link_5.stl"/>
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
       </collision>
       <visual>
         <geometry>
-          <mesh filename="package://kuka_cybertech_support/meshes/kr16_r2010_2/visual/link_5.stl"/>
+          <mesh filename="package://${package_name}/meshes/kr16_r2010_2/visual/link_5.stl"/>
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
       </visual>
@@ -93,13 +90,13 @@
     <link name="${prefix}link_6">
       <collision>
         <geometry>
-          <mesh filename="package://kuka_cybertech_support/meshes/kr16_r2010_2/collision/link_6.stl"/>
+          <mesh filename="package://${package_name}/meshes/kr16_r2010_2/collision/link_6.stl"/>
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
       </collision>
       <visual>
         <geometry>
-          <mesh filename="package://kuka_cybertech_support/meshes/kr16_r2010_2/visual/link_6.stl"/>
+          <mesh filename="package://${package_name}/meshes/kr16_r2010_2/visual/link_6.stl"/>
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
       </visual>

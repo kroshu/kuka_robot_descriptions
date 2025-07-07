@@ -1,7 +1,8 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="kr16_r2010_2">
-  <!-- Import urdf file  -->
+  <!-- Import macro files  -->
   <xacro:include filename="$(find kuka_cybertech_support)/urdf/kr16_r2010_2_macro.xacro"/>
+  <xacro:include filename="$(find kuka_cybertech_support)/urdf/kr_cybertech_ros2_control_macro.xacro"/>
   <!-- Read additional arguments  -->
   <xacro:arg name="driver_version" default="eki_rsi"/>
   <xacro:arg name="mode" default="hardware"/>
@@ -16,7 +17,8 @@
   <xacro:arg name="roll" default="0"/>
   <xacro:arg name="pitch" default="0"/>
   <xacro:arg name="yaw" default="0"/>
-  <xacro:kuka_kr16_r2010_2_robot driver_version="$(arg driver_version)" client_ip="$(arg client_ip)" client_port="$(arg client_port)" controller_ip="$(arg controller_ip)" prefix="$(arg prefix)" mode="$(arg mode)" roundtrip_time="$(arg roundtrip_time)">
+  <xacro:kuka_cybertech_ros2_control name="$(arg prefix)kr16_r2010_2" driver_version="$(arg driver_version)" client_ip="$(arg client_ip)" client_port="$(arg client_port)" controller_ip="$(arg controller_ip)" prefix="$(arg prefix)" mode="$(arg mode)" roundtrip_time="$(arg roundtrip_time)"/>
+  <xacro:kuka_kr16_r2010_2_robot prefix="$(arg prefix)" package_name="kuka_cybertech_support">
     <origin xyz="$(arg x) $(arg y) $(arg z)" rpy="$(arg roll) $(arg pitch) $(arg yaw)"/>
   </xacro:kuka_kr16_r2010_2_robot>
 </robot>

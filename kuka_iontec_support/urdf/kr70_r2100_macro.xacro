@@ -1,20 +1,12 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://wiki.ros.org/xacro">
-  <xacro:include filename="$(find kuka_iontec_support)/urdf/kr_iontec_ros2_control.xacro"/>
-  <xacro:include filename="$(find kuka_iontec_support)/urdf/kr_iontec_transmission.xacro"/>
-  <xacro:macro name="kuka_kr70_r2100_robot" params="driver_version client_ip client_port controller_ip prefix mode roundtrip_time *origin">
-    <!-- gazebo -->
-    <xacro:if value="${mode == 'gazebo'}">
-      <xacro:include filename="$(find kuka_gazebo)/gazebo/kuka_gazebo.xacro"/>
-      <xacro:kuka_gazebo controller_config_package="kuka_resources" controller_config_path="config/fake_hardware_config_6_axis.yaml"/>
-    </xacro:if>
-    <!-- ros2 control instance -->
-    <xacro:kuka_iontec_ros2_control name="${prefix}kr70_r2100" driver_version="${driver_version}" client_ip="${client_ip}" controller_ip="${controller_ip}" client_port="${client_port}" prefix="${prefix}" mode="${mode}" roundtrip_time="${roundtrip_time}"/>
+  <xacro:macro name="kuka_kr70_r2100_robot" params="prefix package_name *origin">
+    <!-- links - main serial chain -->
     <link name="world"/>
     <link name="${prefix}base_link">
       <collision>
         <geometry>
-          <mesh filename="package://kuka_iontec_support/meshes/kr70_r2100/collision/base_link.stl"/>
+          <mesh filename="package://${package_name}/meshes/kr70_r2100/collision/base_link.stl"/>
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
       </collision>
@@ -25,7 +17,7 @@
       </inertial>
       <visual>
         <geometry>
-          <mesh filename="package://kuka_iontec_support/meshes/kr70_r2100/visual/base_link.dae"/>
+          <mesh filename="package://${package_name}/meshes/kr70_r2100/visual/base_link.dae"/>
         </geometry>
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
       </visual>
@@ -33,7 +25,7 @@
     <link name="${prefix}link_1">
       <collision>
         <geometry>
-          <mesh filename="package://kuka_iontec_support/meshes/kr70_r2100/collision/link_1.stl"/>
+          <mesh filename="package://${package_name}/meshes/kr70_r2100/collision/link_1.stl"/>
         </geometry>
         <origin rpy="3.1415927 0.0 0.0" xyz="0.0 0.0 0.236000"/>
       </collision>
@@ -44,7 +36,7 @@
       </inertial>
       <visual>
         <geometry>
-          <mesh filename="package://kuka_iontec_support/meshes/kr70_r2100/visual/link_1.dae"/>
+          <mesh filename="package://${package_name}/meshes/kr70_r2100/visual/link_1.dae"/>
         </geometry>
         <origin rpy="3.1415927 0.0 0.0" xyz="0.0 0.0 0.236000"/>
       </visual>
@@ -52,7 +44,7 @@
     <link name="${prefix}link_2">
       <collision>
         <geometry>
-          <mesh filename="package://kuka_iontec_support/meshes/kr70_r2100/collision/link_2.stl"/>
+          <mesh filename="package://${package_name}/meshes/kr70_r2100/collision/link_2.stl"/>
         </geometry>
         <origin rpy="1.5707963 0.0 1.5707963" xyz="-0.575000 -0.175000 0.054000 "/>
       </collision>
@@ -63,7 +55,7 @@
       </inertial>
       <visual>
         <geometry>
-          <mesh filename="package://kuka_iontec_support/meshes/kr70_r2100/visual/link_2.dae"/>
+          <mesh filename="package://${package_name}/meshes/kr70_r2100/visual/link_2.dae"/>
         </geometry>
         <origin rpy="1.5707963 0.0 1.5707963" xyz="-0.575000 -0.175000 0.054000 "/>
       </visual>
@@ -71,7 +63,7 @@
     <link name="${prefix}link_3">
       <collision>
         <geometry>
-          <mesh filename="package://kuka_iontec_support/meshes/kr70_r2100/collision/link_3.stl"/>
+          <mesh filename="package://${package_name}/meshes/kr70_r2100/collision/link_3.stl"/>
         </geometry>
         <origin rpy="1.5707963 0.0 -0.0" xyz="-0.175000 1.465000 0.151500"/>
       </collision>
@@ -82,7 +74,7 @@
       </inertial>
       <visual>
         <geometry>
-          <mesh filename="package://kuka_iontec_support/meshes/kr70_r2100/visual/link_3.dae"/>
+          <mesh filename="package://${package_name}/meshes/kr70_r2100/visual/link_3.dae"/>
         </geometry>
         <origin rpy="1.5707963 0.0 -0.0" xyz="-0.175000 1.465000 0.151500"/>
       </visual>
@@ -90,7 +82,7 @@
     <link name="${prefix}link_4">
       <collision>
         <geometry>
-          <mesh filename="package://kuka_iontec_support/meshes/kr70_r2100/collision/link_4.stl"/>
+          <mesh filename="package://${package_name}/meshes/kr70_r2100/collision/link_4.stl"/>
         </geometry>
         <origin rpy="0.0 1.5707963 0" xyz="-1.515000 0 0.483050"/>
       </collision>
@@ -101,7 +93,7 @@
       </inertial>
       <visual>
         <geometry>
-          <mesh filename="package://kuka_iontec_support/meshes/kr70_r2100/visual/link_4.dae"/>
+          <mesh filename="package://${package_name}/meshes/kr70_r2100/visual/link_4.dae"/>
         </geometry>
         <origin rpy="0.0 1.5707963 0" xyz="-1.515000 0 0.483050"/>
       </visual>
@@ -109,7 +101,7 @@
     <link name="${prefix}link_5">
       <collision>
         <geometry>
-          <mesh filename="package://kuka_iontec_support/meshes/kr70_r2100/collision/link_5.stl"/>
+          <mesh filename="package://${package_name}/meshes/kr70_r2100/collision/link_5.stl"/>
         </geometry>
         <origin rpy="1.5707963 0.0 -0.0" xyz="-1.210000 1.515000 -0.047950"/>
       </collision>
@@ -120,7 +112,7 @@
       </inertial>
       <visual>
         <geometry>
-          <mesh filename="package://kuka_iontec_support/meshes/kr70_r2100/visual/link_5.dae"/>
+          <mesh filename="package://${package_name}/meshes/kr70_r2100/visual/link_5.dae"/>
         </geometry>
         <origin rpy="1.5707963 0.0 -0.0" xyz="-1.210000 1.515000 -0.047950"/>
       </visual>
@@ -128,7 +120,7 @@
     <link name="${prefix}link_6">
       <collision>
         <geometry>
-          <mesh filename="package://kuka_iontec_support/meshes/kr70_r2100/collision/link_6.stl"/>
+          <mesh filename="package://${package_name}/meshes/kr70_r2100/collision/link_6.stl"/>
         </geometry>
         <origin rpy="-0.0 1.5707963 -0.0" xyz="-1.515000 0.0 1.359000"/>
       </collision>
@@ -139,7 +131,7 @@
       </inertial>
       <visual>
         <geometry>
-          <mesh filename="package://kuka_iontec_support/meshes/kr70_r2100/visual/link_6.dae"/>
+          <mesh filename="package://${package_name}/meshes/kr70_r2100/visual/link_6.dae"/>
         </geometry>
         <origin rpy="-0.0 1.5707963 -0.0" xyz="-1.515000 0.0 1.359000"/>
       </visual>

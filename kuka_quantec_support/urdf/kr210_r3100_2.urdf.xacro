@@ -1,7 +1,8 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="kr210_r3100_2">
-  <!-- Import urdf file  -->
+  <!-- Import macro files  -->
   <xacro:include filename="$(find kuka_quantec_support)/urdf/kr210_r3100_2_macro.xacro"/>
+  <xacro:include filename="$(find kuka_quantec_support)/urdf/kr_quantec_ros2_control_macro.xacro"/>
   <!-- Read additional arguments  -->
   <xacro:arg name="driver_version" default="rsi_only"/>
   <xacro:arg name="mode" default="hardware"/>
@@ -16,7 +17,8 @@
   <xacro:arg name="roll" default="0"/>
   <xacro:arg name="pitch" default="0"/>
   <xacro:arg name="yaw" default="0"/>
-  <xacro:kuka_kr210_r3100_2_robot driver_version="$(arg driver_version)" client_ip="$(arg client_ip)" client_port="$(arg client_port)" controller_ip="$(arg controller_ip)" prefix="$(arg prefix)" mode="$(arg mode)" roundtrip_time="$(arg roundtrip_time)">
+  <xacro:kuka_quantec_ros2_control name="$(arg prefix)kr210_r3100_2" driver_version="$(arg driver_version)" client_ip="$(arg client_ip)" client_port="$(arg client_port)" controller_ip="$(arg controller_ip)" prefix="$(arg prefix)" mode="$(arg mode)" roundtrip_time="$(arg roundtrip_time)"/>
+  <xacro:kuka_kr210_r3100_2_robot prefix="$(arg prefix)" package_name="kuka_quantec_support">
     <origin xyz="$(arg x) $(arg y) $(arg z)" rpy="$(arg roll) $(arg pitch) $(arg yaw)"/>
   </xacro:kuka_kr210_r3100_2_robot>
 </robot>
