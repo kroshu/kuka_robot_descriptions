@@ -1,20 +1,12 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://wiki.ros.org/xacro">
-  <xacro:include filename="$(find kuka_quantec_support)/urdf/kr_quantec_ros2_control.xacro"/>
-  <xacro:include filename="$(find kuka_quantec_support)/urdf/kr_quantec_transmission.xacro"/>
-  <xacro:macro name="kuka_kr150_r3100_2_robot" params="client_ip client_port controller_ip prefix mode roundtrip_time *origin">
-    <!-- gazebo -->
-    <xacro:if value="${mode == 'gazebo'}">
-      <xacro:include filename="$(find kuka_gazebo)/gazebo/kuka_gazebo.xacro"/>
-      <xacro:kuka_gazebo controller_config_package="kuka_resources" controller_config_path="config/fake_hardware_config_6_axis.yaml"/>
-    </xacro:if>
-    <!-- ros2 control instance -->
-    <xacro:kuka_quantec_ros2_control name="${prefix}kr150_r3100_2" client_ip="${client_ip}" client_port="${client_port}" controller_ip="${controller_ip}" prefix="${prefix}" mode="${mode}" roundtrip_time="${roundtrip_time}"/>
+  <xacro:macro name="kuka_kr150_r3100_2_robot" params="prefix package_name *origin">
+    <!-- links - main serial chain -->
     <link name="world"/>
     <link name="${prefix}base_link">
       <collision>
         <geometry>
-          <mesh filename="package://kuka_quantec_support/meshes/kr150_r3100_2/collision/base_link.stl"/>
+          <mesh filename="package://${package_name}/meshes/kr150_r3100_2/collision/base_link.stl"/>
         </geometry>
         <origin rpy="0.0 -0.0 0.0" xyz="0.0 0.0 0.0"/>
       </collision>
@@ -25,7 +17,7 @@
       </inertial>
       <visual>
         <geometry>
-          <mesh filename="package://kuka_quantec_support/meshes/kr150_r3100_2/visual/base_link.dae"/>
+          <mesh filename="package://${package_name}/meshes/kr150_r3100_2/visual/base_link.dae"/>
         </geometry>
         <origin rpy="0.0 -0.0 0.0" xyz="0.0 0.0 0.0"/>
       </visual>
@@ -33,7 +25,7 @@
     <link name="${prefix}link_1">
       <collision>
         <geometry>
-          <mesh filename="package://kuka_quantec_support/meshes/kr150_r3100_2/collision/link_1.stl"/>
+          <mesh filename="package://${package_name}/meshes/kr150_r3100_2/collision/link_1.stl"/>
         </geometry>
         <origin rpy="-3.141592653589793 0.0 -0.0" xyz="0.0 -3.742520618194312e-17 0.30560000000000004"/>
       </collision>
@@ -44,7 +36,7 @@
       </inertial>
       <visual>
         <geometry>
-          <mesh filename="package://kuka_quantec_support/meshes/kr150_r3100_2/visual/link_1.dae"/>
+          <mesh filename="package://${package_name}/meshes/kr150_r3100_2/visual/link_1.dae"/>
         </geometry>
         <origin rpy="-3.141592653589793 0.0 -0.0" xyz="0.0 -3.742520618194312e-17 0.30560000000000004"/>
       </visual>
@@ -52,7 +44,7 @@
     <link name="${prefix}link_2">
       <collision>
         <geometry>
-          <mesh filename="package://kuka_quantec_support/meshes/kr150_r3100_2/collision/link_2.stl"/>
+          <mesh filename="package://${package_name}/meshes/kr150_r3100_2/collision/link_2.stl"/>
         </geometry>
         <origin rpy="1.5707963267948968 -0.0 1.5707963267948966" xyz="-0.645 -0.32999999999999996 0.07200000000000009"/>
       </collision>
@@ -63,7 +55,7 @@
       </inertial>
       <visual>
         <geometry>
-          <mesh filename="package://kuka_quantec_support/meshes/kr150_r3100_2/visual/link_2.dae"/>
+          <mesh filename="package://${package_name}/meshes/kr150_r3100_2/visual/link_2.dae"/>
         </geometry>
         <origin rpy="1.5707963267948968 -0.0 1.5707963267948966" xyz="-0.645 -0.32999999999999996 0.07200000000000009"/>
       </visual>
@@ -71,7 +63,7 @@
     <link name="${prefix}link_3">
       <collision>
         <geometry>
-          <mesh filename="package://kuka_quantec_support/meshes/kr150_r3100_2/collision/link_3.stl"/>
+          <mesh filename="package://${package_name}/meshes/kr150_r3100_2/collision/link_3.stl"/>
         </geometry>
         <origin rpy="1.5707963267948968 -0.0 -0.0" xyz="-0.33000000000000007 1.995 0.1750000000000001"/>
       </collision>
@@ -82,7 +74,7 @@
       </inertial>
       <visual>
         <geometry>
-          <mesh filename="package://kuka_quantec_support/meshes/kr150_r3100_2/visual/link_3.dae"/>
+          <mesh filename="package://${package_name}/meshes/kr150_r3100_2/visual/link_3.dae"/>
         </geometry>
         <origin rpy="1.5707963267948968 -0.0 -0.0" xyz="-0.33000000000000007 1.995 0.1750000000000001"/>
       </visual>
@@ -90,7 +82,7 @@
     <link name="${prefix}link_4">
       <collision>
         <geometry>
-          <mesh filename="package://kuka_quantec_support/meshes/kr150_r3100_2/collision/link_4.stl"/>
+          <mesh filename="package://${package_name}/meshes/kr150_r3100_2/collision/link_4.stl"/>
         </geometry>
         <origin rpy="1.8369701987210297e-16 1.5707963267948966 0.0" xyz="-2.11 2.0519898299681579e-19 1.3579999999999999"/>
       </collision>
@@ -101,7 +93,7 @@
       </inertial>
       <visual>
         <geometry>
-          <mesh filename="package://kuka_quantec_support/meshes/kr150_r3100_2/visual/link_4.dae"/>
+          <mesh filename="package://${package_name}/meshes/kr150_r3100_2/visual/link_4.dae"/>
         </geometry>
         <origin rpy="1.8369701987210297e-16 1.5707963267948966 0.0" xyz="-2.11 2.0519898299681579e-19 1.3579999999999999"/>
       </visual>
@@ -109,7 +101,7 @@
     <link name="${prefix}link_5">
       <collision>
         <geometry>
-          <mesh filename="package://kuka_quantec_support/meshes/kr150_r3100_2/collision/link_5.stl"/>
+          <mesh filename="package://${package_name}/meshes/kr150_r3100_2/collision/link_5.stl"/>
         </geometry>
         <origin rpy="1.5707963267948968 -3.749399456654644e-33 -6.123233995736766e-17" xyz="-1.7499999999999998 2.11 -0.09600000000000004"/>
       </collision>
@@ -120,7 +112,7 @@
       </inertial>
       <visual>
         <geometry>
-          <mesh filename="package://kuka_quantec_support/meshes/kr150_r3100_2/visual/link_5.dae"/>
+          <mesh filename="package://${package_name}/meshes/kr150_r3100_2/visual/link_5.dae"/>
         </geometry>
         <origin rpy="1.5707963267948968 -3.749399456654644e-33 -6.123233995736766e-17" xyz="-1.7499999999999998 2.11 -0.09600000000000004"/>
       </visual>
@@ -128,7 +120,7 @@
     <link name="${prefix}link_6">
       <collision>
         <geometry>
-          <mesh filename="package://kuka_quantec_support/meshes/kr150_r3100_2/collision/link_6.stl"/>
+          <mesh filename="package://${package_name}/meshes/kr150_r3100_2/collision/link_6.stl"/>
         </geometry>
         <origin rpy="1.2246467991473532e-16 1.5707963267948966 0.0" xyz="-2.1100000000000003 -1.3543772457760985e-16 1.9164999999999999"/>
       </collision>
@@ -139,7 +131,7 @@
       </inertial>
       <visual>
         <geometry>
-          <mesh filename="package://kuka_quantec_support/meshes/kr150_r3100_2/visual/link_6.dae"/>
+          <mesh filename="package://${package_name}/meshes/kr150_r3100_2/visual/link_6.dae"/>
         </geometry>
         <origin rpy="1.2246467991473532e-16 1.5707963267948966 0.0" xyz="-2.1100000000000003 -1.3543772457760985e-16 1.9164999999999999"/>
       </visual>
