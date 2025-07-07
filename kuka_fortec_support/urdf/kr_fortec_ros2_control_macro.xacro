@@ -17,7 +17,7 @@
           <param name="state_following_offset">0.0</param>
         </xacro:if>
         <xacro:if value="${mode == 'hardware'}">
-          <plugin>kuka_rsi_driver::HardwareInterface</plugin>
+          <plugin>kuka_rsi_driver::KukaRSIHardwareInterface</plugin>
           <param name="client_ip">${client_ip}</param>
           <param name="client_port">${client_port}</param>
           <param name="controller_ip">${controller_ip}</param>
