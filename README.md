@@ -75,7 +75,7 @@ The support packages contain a joint limits file for every supported robot model
 
 ### GPIO configuration
 
-The drivers for the supported packages include a GPIO configuration file, which contains an extension for GPIO control. These xacro files be found in `DRIVER/config/gpio_config.xacro` offer a template for users to set the desired GPIOs according to their use case. The driver uses this list to export the command and state interfaces for ROS 2 Control. If GPIO control is not required, the `use_gpio` tag can be set to `false`, preventing the GPIO configuration file from loading.
+The drivers for the supported packages include a GPIO configuration file, which contains an extension for GPIO control. These xacro files can be found in `DRIVER/config/gpio_config.xacro` and offer a template for users to set the desired GPIOs according to their use case. The driver uses this list to export the command and state interfaces for ROS 2 Control. If GPIO control is not required, the `use_gpio` tag can be set to `false`, preventing the GPIO configuration file from loading.
 
 ### Extending the models
 
