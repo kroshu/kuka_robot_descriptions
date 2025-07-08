@@ -73,7 +73,7 @@ The support packages contain a joint limits file for every supported robot model
 
 ### GPIO configuration
 
-The supported packages contain a gpio config file, which contains an extension for gpio control. These files offer a template for the user to set the desiered GPIOs as for there usecase. The driver uses this list to export the command and state interfaces for the ROS2 Control. If there is no need for GPIO control, the `use_gpio` tag can be set to false so the gpio config file is not going to load.
+The supported packages include a GPIO configuration file, which contains an extension for GPIO control. These files offer a template for users to set the desired GPIOs according to their use case. The driver uses this list to export the command and state interfaces for ROS 2 Control. If GPIO control is not required, the `use_gpio` tag can be set to `false`, preventing the GPIO configuration file from loading.
 
 ### Extending the models
 
