@@ -63,8 +63,8 @@
         </state_interface>
       </joint>
       <xacro:if value="${use_gpio}">
-        <xacro:include filename="$(find kuka_cybertech_support)/urdf/kr_cybertech_gpio_config.xacro"/>
-        <xacro:kr_cybertech_gpio_config/>
+        <xacro:include filename="$(find kuka_rsi_driver)/config/gpio_config.xacro"/>
+        <xacro:gpio_config/>
       </xacro:if>
       <xacro:unless value="${use_gpio}">
         <gpio name="gpio"/>
