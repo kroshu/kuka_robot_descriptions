@@ -4,6 +4,7 @@
   <xacro:include filename="$(find kuka_iontec_support)/urdf/kr70_r2100_macro.xacro"/>
   <xacro:include filename="$(find kuka_iontec_support)/urdf/kr_iontec_ros2_control_macro.xacro"/>
   <!-- Read additional arguments  -->
+  <xacro:arg name="driver_version" default="rsi_only"/>
   <xacro:arg name="mode" default="hardware"/>
   <xacro:arg name="roundtrip_time" default="0"/>
   <xacro:arg name="client_ip" default="0.0.0.0"/>
@@ -16,7 +17,7 @@
   <xacro:arg name="roll" default="0"/>
   <xacro:arg name="pitch" default="0"/>
   <xacro:arg name="yaw" default="0"/>
-  <xacro:kuka_iontec_ros2_control name="$(arg prefix)kr70_r2100" client_ip="$(arg client_ip)" controller_ip="$(arg controller_ip)" client_port="$(arg client_port)" prefix="$(arg prefix)" mode="$(arg mode)" roundtrip_time="$(arg roundtrip_time)"/>
+  <xacro:kuka_iontec_ros2_control name="$(arg prefix)kr70_r2100" driver_version="$(arg driver_version)" client_ip="$(arg client_ip)" controller_ip="$(arg controller_ip)" client_port="$(arg client_port)" prefix="$(arg prefix)" mode="$(arg mode)" roundtrip_time="$(arg roundtrip_time)"/>
   <xacro:kuka_kr70_r2100_robot prefix="$(arg prefix)" package_name="kuka_iontec_support">
     <origin xyz="$(arg x) $(arg y) $(arg z)" rpy="$(arg roll) $(arg pitch) $(arg yaw)"/>
   </xacro:kuka_kr70_r2100_robot>

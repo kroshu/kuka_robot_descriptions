@@ -4,6 +4,7 @@
   <xacro:include filename="$(find kuka_agilus_support)/urdf/kr6_r700_sixx_macro.xacro"/>
   <xacro:include filename="$(find kuka_agilus_support)/urdf/kr_agilus_ros2_control_macro.xacro"/>
   <!-- Read additional arguments  -->
+  <xacro:arg name="driver_version" default="rsi_only"/>
   <xacro:arg name="mode" default="hardware"/>
   <xacro:arg name="roundtrip_time" default="0"/>
   <xacro:arg name="client_ip" default="0.0.0.0"/>
@@ -16,7 +17,7 @@
   <xacro:arg name="roll" default="0"/>
   <xacro:arg name="pitch" default="0"/>
   <xacro:arg name="yaw" default="0"/>
-  <xacro:kuka_agilus_ros2_control name="$(arg prefix)kr6_r700_sixx" client_ip="$(arg client_ip)" client_port="$(arg client_port)" controller_ip="$(arg controller_ip)" prefix="$(arg prefix)" mode="$(arg mode)" roundtrip_time="$(arg roundtrip_time)"/>
+  <xacro:kuka_agilus_ros2_control name="$(arg prefix)kr6_r700_sixx" driver_version="$(arg driver_version)" client_ip="$(arg client_ip)" client_port="$(arg client_port)" controller_ip="$(arg controller_ip)" prefix="$(arg prefix)" mode="$(arg mode)" roundtrip_time="$(arg roundtrip_time)"/>
   <xacro:kuka_kr6_r700_sixx_robot prefix="$(arg prefix)" package_name="kuka_agilus_support">
     <origin xyz="$(arg x) $(arg y) $(arg z)" rpy="$(arg roll) $(arg pitch) $(arg yaw)"/>
   </xacro:kuka_kr6_r700_sixx_robot>
