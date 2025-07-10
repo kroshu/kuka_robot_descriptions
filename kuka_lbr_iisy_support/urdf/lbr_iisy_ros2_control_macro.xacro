@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
   <xacro:macro name="kuka_lbr_iisy_ros2_control" params="name prefix client_ip controller_ip mode qos_config_file roundtrip_time">
+    <!-- gazebo -->
+    <xacro:if value="${mode == 'gazebo'}">
+      <xacro:include filename="$(find kuka_gazebo)/gazebo/kuka_gazebo.xacro"/>
+      <xacro:kuka_gazebo controller_config_package="kuka_resources" controller_config_path="config/fake_hardware_config_6_axis.yaml"/>
+    </xacro:if>
+    <!-- ros2 control -->
     <ros2_control name="${name}" type="system">
       <hardware>
         <xacro:if value="${mode == 'mock'}">
@@ -50,9 +56,11 @@
       </joint>
       <joint name="${prefix}joint_2">
         <command_interface name="position"/>
-        <command_interface name="stiffness"/>
-        <command_interface name="damping"/>
-        <command_interface name="effort"/>
+        <xacro:unless value="${mode == 'gazebo'}">
+          <command_interface name="stiffness"/>
+          <command_interface name="damping"/>
+          <command_interface name="effort"/>
+        </xacro:unless>
         <state_interface name="position">
           <param name="initial_value">-1.5708</param>
         </state_interface>
