@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
-  <xacro:macro name="kuka_fortec_ros2_control" params="name client_ip client_port controller_ip prefix mode use_gpio roundtrip_time">
+  <xacro:macro name="kuka_fortec_ros2_control" params="name driver_version client_ip client_port controller_ip prefix mode use_gpio roundtrip_time">
     <!-- gazebo -->
     <xacro:if value="${mode == 'gazebo'}">
       <xacro:include filename="$(find kuka_gazebo)/gazebo/kuka_gazebo.xacro"/>
@@ -17,10 +17,14 @@
           <param name="state_following_offset">0.0</param>
         </xacro:if>
         <xacro:if value="${mode == 'hardware'}">
-          <plugin>kuka_rsi_driver::KukaRSIHardwareInterface</plugin>
-          <param name="client_ip">${client_ip}</param>
-          <param name="client_port">${client_port}</param>
-          <param name="controller_ip">${controller_ip}</param>
+          <xacro:if value="${driver_version == 'eki_rsi'}">
+            <plugin>kuka_rsi_driver::KukaEkiRsiHardwareInterface</plugin>
+            <param name="controller_ip">${controller_ip}</param>
+            <param name="name">${name}</param>
+          </xacro:if>
+          <xacro:if value="${driver_version == 'rsi_only'}">
+            <plugin>kuka_rsi_driver::KukaRSIHardwareInterface</plugin>
+          </xacro:if>
         </xacro:if>
         <xacro:if value="${mode == 'gazebo'}">
           <plugin>gz_ros2_control/GazeboSimSystem</plugin>
