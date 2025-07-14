@@ -5,7 +5,7 @@
   <xacro:include filename="$(find kuka_agilus_support)/urdf/kr_agilus_ros2_control_macro.xacro"/>
   <!-- Read additional arguments  -->
   <xacro:arg name="mode" default="hardware"/>
-  <xacro:arg name="use_gpio" default="true"/>
+  <xacro:arg name="use_gpio" default="false"/>
   <xacro:arg name="roundtrip_time" default="0"/>
   <xacro:arg name="client_ip" default="0.0.0.0"/>
   <xacro:arg name="client_port" default="59152"/>
