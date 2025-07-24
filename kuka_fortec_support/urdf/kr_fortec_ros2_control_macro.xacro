@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
-  <xacro:macro name="kuka_fortec_ros2_control" params="name driver_version client_ip client_port controller_ip prefix mode roundtrip_time verify_robot_model">
+  <xacro:macro name="kuka_fortec_ros2_control" params="name driver_version client_ip client_port controller_ip prefix mode use_gpio roundtrip_time verify_robot_model">
     <!-- gazebo -->
     <xacro:if value="${mode == 'gazebo'}">
       <xacro:include filename="$(find kuka_gazebo)/gazebo/kuka_gazebo.xacro"/>
@@ -67,6 +67,13 @@
           <param name="initial_value">0.0</param>
         </state_interface>
       </joint>
+      <xacro:if value="${use_gpio}">
+        <xacro:include filename="$(find kuka_rsi_driver)/config/gpio_config.xacro"/>
+        <xacro:gpio_config/>
+      </xacro:if>
+      <xacro:unless value="${use_gpio}">
+        <gpio name="gpio"/>
+      </xacro:unless>
     </ros2_control>
   </xacro:macro>
 </robot>
