@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="kr240_r3330">
+  <xacro:include filename="$(find kr240_r3330)/urdf/kr240_r3330_macro.xacro"/>
+  <xacro:arg name="prefix" default=""/>
+  <xacro:arg name="x" default="0"/>
+  <xacro:arg name="y" default="0"/>
+  <xacro:arg name="z" default="0"/>
+  <xacro:arg name="roll" default="0"/>
+  <xacro:arg name="pitch" default="0"/>
+  <xacro:arg name="yaw" default="0"/>
+  <xacro:kuka_kr240_r3330_robot prefix="$(arg prefix)" package_name="kr240_r3330">
+    <origin xyz="$(arg x) $(arg y) $(arg z)" rpy="$(arg roll) $(arg pitch) $(arg yaw)"/>
+  </xacro:kuka_kr240_r3330_robot>
+  <version>2024-11-08_17-00-00</version>
+</robot>
