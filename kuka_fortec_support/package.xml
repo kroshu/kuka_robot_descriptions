@@ -5,6 +5,7 @@
   <description>Robot models for the KUKA FORTEC family.</description>
   <author email="e.bernardi@tudelft.nl">Eugenio Bernardi</author>
   <maintainer email="svastits1@gmail.com">Aron Svastits</maintainer>
+  <maintainer email="pepo.tamas@gmail.com">Tamas Pepo</maintainer>
   <license>Apache-2.0</license>
   <buildtool_depend>ament_cmake</buildtool_depend>
   <depend>urdf</depend>
