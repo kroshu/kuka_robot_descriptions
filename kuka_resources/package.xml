@@ -6,6 +6,10 @@
   <description>This package contains common urdf / xacro resources used by KUKA robot support packages within the ROS-Industrial program.</description>
   <author email="g.a.vanderhoorn@tudelft.nl">G.A. vd. Hoorn (TU Delft Robotics Institute)</author>
   <maintainer email="svastits1@gmail.com">Aron Svastits</maintainer>
+  <maintainer email="kovacsge.work@gmail.com">Gergely Kovacs</maintainer>
+  <maintainer email="sanyi.komaromi@gmail.com">Sandor Komaromi</maintainer>
+  <maintainer email="pasztor.kristof.kp@gmail.com">Kristof Matyas Pasztor</maintainer>
+  <maintainer email="pepo.tamas@gmail.com">Tamas Pepo</maintainer>
   <license>Apache-2.0</license>
   <buildtool_depend>ament_cmake</buildtool_depend>
   <depend>urdf</depend>
