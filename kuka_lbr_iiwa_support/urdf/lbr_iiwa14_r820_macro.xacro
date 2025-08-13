@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <robot xmlns:xacro="http://wiki.ros.org/xacro" name="lbr_iiwa14_r820">
   <!-- include helper xacros -->
-  <xacro:include filename="$(find kuka_resources)/urdf/common_materials.xacro"/>
   <xacro:macro name="kuka_lbr_iiwa14_r820_robot" params="prefix package_name *origin">
     <!-- links - main serial chain -->
     <link name="world"/>
     <link name="${prefix}base_link">
       <visual>
         <geometry>
-          <mesh filename="package://${package_name}/meshes/lbr_iiwa14_r820/visual/base_link.stl"/>
+          <mesh filename="package://${package_name}/meshes/lbr_iiwa14_r820/visual/base_link.dae"/>
         </geometry>
         <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
-        <xacro:material_kuka_ral_gray_aluminium/>
       </visual>
       <collision>
         <geometry>
@@ -28,10 +26,9 @@
     <link name="${prefix}link_1">
       <visual>
         <geometry>
-          <mesh filename="package://${package_name}/meshes/lbr_iiwa14_r820/visual/link_1.stl"/>
+          <mesh filename="package://${package_name}/meshes/lbr_iiwa14_r820/visual/link_1.dae"/>
         </geometry>
         <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
-        <xacro:material_kuka_ral_gray_aluminium/>
       </visual>
       <collision>
         <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
@@ -48,10 +45,9 @@
     <link name="${prefix}link_2">
       <visual>
         <geometry>
-          <mesh filename="package://${package_name}/meshes/lbr_iiwa14_r820/visual/link_2.stl"/>
+          <mesh filename="package://${package_name}/meshes/lbr_iiwa14_r820/visual/link_2.dae"/>
         </geometry>
         <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
-        <xacro:material_kuka_orange/>
       </visual>
       <collision>
         <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
@@ -68,10 +64,9 @@
     <link name="${prefix}link_3">
       <visual>
         <geometry>
-          <mesh filename="package://${package_name}/meshes/lbr_iiwa14_r820/visual/link_3.stl"/>
+          <mesh filename="package://${package_name}/meshes/lbr_iiwa14_r820/visual/link_3.dae"/>
         </geometry>
         <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
-        <xacro:material_kuka_ral_gray_aluminium/>
       </visual>
       <collision>
         <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
@@ -88,10 +83,9 @@
     <link name="${prefix}link_4">
       <visual>
         <geometry>
-          <mesh filename="package://${package_name}/meshes/lbr_iiwa14_r820/visual/link_4.stl"/>
+          <mesh filename="package://${package_name}/meshes/lbr_iiwa14_r820/visual/link_4.dae"/>
         </geometry>
         <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
-        <xacro:material_kuka_orange/>
       </visual>
       <collision>
         <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
@@ -108,10 +102,9 @@
     <link name="${prefix}link_5">
       <visual>
         <geometry>
-          <mesh filename="package://${package_name}/meshes/lbr_iiwa14_r820/visual/link_5.stl"/>
+          <mesh filename="package://${package_name}/meshes/lbr_iiwa14_r820/visual/link_5.dae"/>
         </geometry>
         <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
-        <xacro:material_kuka_ral_gray_aluminium/>
       </visual>
       <collision>
         <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
@@ -128,10 +121,9 @@
     <link name="${prefix}link_6">
       <visual>
         <geometry>
-          <mesh filename="package://${package_name}/meshes/lbr_iiwa14_r820/visual/link_6.stl"/>
+          <mesh filename="package://${package_name}/meshes/lbr_iiwa14_r820/visual/link_6.dae"/>
         </geometry>
         <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
-        <xacro:material_kuka_orange/>
       </visual>
       <collision>
         <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
@@ -148,10 +140,9 @@
     <link name="${prefix}link_7">
       <visual>
         <geometry>
-          <mesh filename="package://${package_name}/meshes/lbr_iiwa14_r820/visual/link_7.stl"/>
+          <mesh filename="package://${package_name}/meshes/lbr_iiwa14_r820/visual/link_7.dae"/>
         </geometry>
         <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
-        <xacro:material_kuka_ral_gray_aluminium/>
       </visual>
       <collision>
         <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
