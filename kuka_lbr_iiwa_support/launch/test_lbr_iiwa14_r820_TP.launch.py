@@ -25,7 +25,11 @@ def generate_launch_description():
             PathJoinSubstitution([FindExecutable(name="xacro")]),
             " ",
             PathJoinSubstitution(
-                [FindPackageShare("kuka_lbr_iiwa_support"), "urdf", "lbr_iiwa14_r820_TP.urdf.xacro"]
+                [
+                    FindPackageShare("kuka_lbr_iiwa_support"),
+                    "urdf",
+                    "lbr_iiwa14_r820_TP.urdf.xacro",
+                ]
             ),
             " ",
             "mode:=mock",
@@ -63,4 +67,6 @@ def generate_launch_description():
         output="log",
     )
 
-    return LaunchDescription([robot_state_publisher, rviz_node, joint_state_publisher_gui])
+    return LaunchDescription(
+        [robot_state_publisher, rviz_node, joint_state_publisher_gui]
+    )
