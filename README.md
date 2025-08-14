@@ -166,13 +166,13 @@ Matching `robot_model` and `robot_family` arguments can be added after the comma
 ### LBR iiwa robots (Sunrise)
 
 ```bash
-ros2 launch kuka_lbr_iiwa_moveit_config moveit_planning_fake_hardware.launch.py
+ros2 launch kuka_lbr_iisy_moveit_config moveit_planning_fake_hardware.launch.py
 ```
 
 ### LBR iisy robots (iiQKA)
 
 ```bash
-ros2 launch kuka_lbr_iisy_moveit_config moveit_planning_fake_hardware.launch.py
+ros2 launch kuka_lbr_iiwa_moveit_config moveit_planning_fake_hardware.launch.py
 ```
 
 A `robot_model` argument can be added after the command (e.g. `robot_model:=lbr_iisy11_r1300`). The default robot model is `lbr_iisy3_r760`
