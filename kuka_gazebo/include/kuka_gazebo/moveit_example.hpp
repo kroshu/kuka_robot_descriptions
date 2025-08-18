@@ -22,8 +22,8 @@
 #include <vector>
 
 #include "geometry_msgs/msg/vector3.hpp"
-#include "moveit/move_group_interface/move_group_interface.h"
-#include "moveit/planning_scene_interface/planning_scene_interface.h"
+#include "moveit/move_group_interface/move_group_interface.hpp"
+#include "moveit/planning_scene_interface/planning_scene_interface.hpp"
 #include "moveit_msgs/msg/collision_object.hpp"
 #include "moveit_visual_tools/moveit_visual_tools.h"
 #include "rclcpp/parameter.hpp"
@@ -115,7 +115,7 @@ public:
 
     moveit_msgs::msg::RobotTrajectory trajectory;
     RCLCPP_INFO(LOGGER, "Sending planning request");
-    double fraction = move_group_interface_->computeCartesianPath(waypoints, 0.05, 0.0, trajectory);
+    double fraction = move_group_interface_->computeCartesianPath(waypoints, 0.05, trajectory);
     if (fraction == -1.0)
     {
       RCLCPP_INFO(LOGGER, "Planning failed");
