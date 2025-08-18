@@ -69,7 +69,7 @@ public:
     else
     {
       RCLCPP_INFO(LOGGER, "Planning successful");
-      return std::make_shared<moveit_msgs::msg::RobotTrajectory>(plan.trajectory);
+      return std::make_shared<moveit_msgs::msg::RobotTrajectory>(plan.trajectory_);
     }
   }
 
@@ -93,7 +93,7 @@ public:
     else
     {
       RCLCPP_INFO(LOGGER, "Planning successful");
-      return std::make_shared<moveit_msgs::msg::RobotTrajectory>(plan.trajectory);
+      return std::make_shared<moveit_msgs::msg::RobotTrajectory>(plan.trajectory_);
     }
   }
 
