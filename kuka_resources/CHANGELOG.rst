@@ -2,6 +2,10 @@
 Changelog for package kuka_resources
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Gazebo support
+
 0.9.0 (2024-05-06)
 ------------------
 * Add common resources used in kuka support packages or moveit configurations
