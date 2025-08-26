@@ -2,8 +2,8 @@
 Changelog for package kuka_agilus_support
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.0.0 (2025-08-26)
+------------------
 * GPIO support
 * Robot model verification
 * Xacro restructure

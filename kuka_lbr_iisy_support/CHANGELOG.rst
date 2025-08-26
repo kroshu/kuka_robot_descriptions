@@ -2,8 +2,8 @@
 Changelog for package kuka_lbr_iisy_support
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.0.0 (2025-08-26)
+------------------
 * Xacro restructure
 * Gazebo support
 

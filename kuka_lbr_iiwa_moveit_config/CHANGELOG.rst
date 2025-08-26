@@ -2,8 +2,8 @@
 Changelog for package kuka_lbr_iiwa_moveit_config
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.0.0 (2025-08-26)
+------------------
 * Update package version
 
 0.9.0 (2024-05-06)

@@ -2,8 +2,8 @@
 Changelog for package kuka_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.0.0 (2025-08-26)
+------------------
 * Gazebo support
 
 
