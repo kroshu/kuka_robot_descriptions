@@ -2,6 +2,8 @@
 
 This repository contains support packages that can be used with real KUKA robots as well as with simulations.
 
+If you find something confusing, not working, or would like to contribute, please read our [contributing guide](https://github.com/kroshu/kuka_robot_descriptions/blob/master/CONTRIBUTING.md) before opening an issue or creating a pull request.
+
 ROS2 Distro | Branch | Github CI
 ------------ | -------------- | --------------
 **Jazzy** | [`master`](https://github.com/kroshu/kuka_robot_descriptions/tree/master) | [![Build Status](https://github.com/kroshu/kuka_robot_descriptions/actions/workflows/industrial_ci.yml/badge.svg?branch=master)](https://github.com/kroshu/kuka_robot_descriptions/actions)
@@ -101,7 +103,9 @@ The following table shows what data is verified for each robot in the support pa
 |lbr_iisy11_r1300| - | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
 |lbr_iisy15_r930| - | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
 |lbr_iiwa14_r820| - | ✓ | ✓ | ✓ | | | ✓ |
+|kr6_r700_2| agilus | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
 |kr6_r700_sixx| agilus | ✓ | ✓ | ✓ | | | ✓ |
+|kr6_r900_2| agilus | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
 |kr6_r900_sixx| agilus | ✓ | ✓ | ✓ | | | ✓ |
 |kr10_r1100_2| agilus | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
 |kr16_r2010_2| cybertech | ✓ | ✓ | ✓ | ✓ | | ✓ |
@@ -122,7 +126,9 @@ The following table shows the supported customizable features for each robot in 
 |lbr_iisy11_r1300| - | | | ✓ |
 |lbr_iisy15_r930| - | | | ✓ |
 |lbr_iiwa14_r820| - | | | |
+|kr6_r700_2| agilus | ✓ | | ✓ |
 |kr6_r700_sixx| agilus | ✓ | | |
+|kr6_r900_2| agilus | ✓ | | ✓ |
 |kr6_r900_sixx| agilus | ✓ | | |
 |kr10_r1100_2| agilus | ✓ | | ✓ |
 |kr16_r2010_2| cybertech | ✓ | | ✓ |
