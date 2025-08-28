@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="kr240_r3330">
   <xacro:macro name="kuka_kr240_r3330_robot" params="prefix package_name *origin">
     <link name="${prefix}base"/>

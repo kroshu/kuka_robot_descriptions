@@ -11,7 +11,7 @@ Please do not add labels to the issue, that should be handled by the maintainers
 
 ## Contributing
 
-**The urdf/xacro files are automatically generated, therefore we do not accept any pull requests, that add new robot models.**
+**The urdf/xacro files are automatically generated, therefore we do not accept any pull requests, that add new robot models.** If you'd like us to add a new robot model, please open a *GitHub issue* and specify the model you'd like to see included.
 
 Other contributions are much appreciated. Before sending us a pull request, please:
 
