@@ -2,6 +2,8 @@
 
 This repository contains support packages that can be used with real KUKA robots as well as with simulations.
 
+If you find something confusing, not working, or would like to contribute, please read our [contributing guide](https://github.com/kroshu/kuka_robot_descriptions/blob/master/CONTRIBUTING.md) before opening an issue or creating a pull request.
+
 ROS2 Distro | Branch | Github CI
 ------------ | -------------- | --------------
 **Jazzy** | [`master`](https://github.com/kroshu/kuka_robot_descriptions/tree/master) | [![Build Status](https://github.com/kroshu/kuka_robot_descriptions/actions/workflows/industrial_ci.yml/badge.svg?branch=master)](https://github.com/kroshu/kuka_robot_descriptions/actions)
