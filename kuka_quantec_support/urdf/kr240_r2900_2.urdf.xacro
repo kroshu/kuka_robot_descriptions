@@ -3,6 +3,7 @@
   <!-- Import macro files  -->
   <xacro:include filename="$(find kuka_quantec_support)/urdf/kr240_r2900_2_macro.xacro"/>
   <xacro:include filename="$(find kuka_quantec_support)/urdf/kr_quantec_ros2_control_macro.xacro"/>
+  <!-- Read additional arguments  -->
   <xacro:arg name="driver_version" default="rsi_only"/>
   <xacro:arg name="mode" default="hardware"/>
   <xacro:arg name="use_gpio" default="false"/>
