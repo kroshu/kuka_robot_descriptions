@@ -108,6 +108,8 @@ The following table shows what data is verified for each robot in the support pa
 |kr6_r900_2| agilus | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
 |kr6_r900_sixx| agilus | ✓ | ✓ | ✓ | | | ✓ |
 |kr10_r1100_2| agilus | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+|kr8_r1440_2_arc_hw| cybertech | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+|kr12_r1450_3_hw| cybertech | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
 |kr16_r2010_2| cybertech | ✓ | ✓ | ✓ | ✓ | | ✓ |
 |kr70_r2100| iontec | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
 |kr150_r3100| quantec | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
@@ -132,6 +134,8 @@ The following table shows the supported customizable features for each robot in 
 |kr6_r900_2| agilus | ✓ | | ✓ |
 |kr6_r900_sixx| agilus | ✓ | | |
 |kr10_r1100_2| agilus | ✓ | | ✓ |
+|kr8_r1440_2_arc_hw| cybertech | ✓ | | ✓ |
+|kr12_r1450_3_hw| cybertech | ✓ | | ✓ |
 |kr16_r2010_2| cybertech | ✓ | | ✓ |
 |kr70_r2100| iontec | ✓ | | ✓ |
 |kr210_r2700_2| quantec | ✓ | | ✓ |
