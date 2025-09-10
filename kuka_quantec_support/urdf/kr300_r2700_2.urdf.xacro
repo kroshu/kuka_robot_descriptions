@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro" name="kr300_r2700_2">
-    <!-- Import macro files  -->
+  <!-- Import macro files  -->
   <xacro:include filename="$(find kuka_quantec_support)/urdf/kr300_r2700_2_macro.xacro"/>
   <xacro:include filename="$(find kuka_quantec_support)/urdf/kr_quantec_ros2_control_macro.xacro"/>
   <!-- Read additional arguments  -->
