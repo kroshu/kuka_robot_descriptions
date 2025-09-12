@@ -5,8 +5,7 @@ if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
 endif()
 
-# find dependencies
-find_package(ament_cmake REQUIRED)
+# Find dependencies
 find_package(ament_cmake REQUIRED)
 find_package(moveit_ros_planning_interface REQUIRED)
 find_package(moveit_visual_tools REQUIRED)
@@ -29,5 +28,11 @@ install(
   DIRECTORY gazebo launch world
   DESTINATION share/${PROJECT_NAME}
 )
+
+# Testing
+if(BUILD_TESTING)
+  find_package(launch_testing_ament_cmake)
+  add_launch_test(test/gazebo_activation_test.py)
+endif()
 
 ament_package()

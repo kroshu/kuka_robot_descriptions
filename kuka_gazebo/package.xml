@@ -4,17 +4,20 @@
   <name>kuka_gazebo</name>
   <version>1.0.0</version>
   <description>A helper package for Gazebo support with KUKA robots</description>
+
   <maintainer email="svastits1@gmail.com">Aron Svastits</maintainer>
   <maintainer email="kovacsge.work@gmail.com">Gergely Kovacs</maintainer>
   <maintainer email="sanyi.komaromi@gmail.com">Sandor Komaromi</maintainer>
   <maintainer email="pasztor.kristof.kp@gmail.com">Kristof Matyas Pasztor</maintainer>
   <maintainer email="pepo.tamas@gmail.com">Tamas Pepo</maintainer>
+
   <license>Apache-2.0</license>
+
   <buildtool_depend>ament_cmake</buildtool_depend>
-  <test_depend>ament_lint_auto</test_depend>
-  <test_depend>ament_lint_common</test_depend>
+
   <depend>moveit_ros_planning_interface</depend>
   <depend>moveit_visual_tools</depend>
+
   <exec_depend>gz_ros2_control</exec_depend>
   <exec_depend>ros_gz_bridge</exec_depend>
   <exec_depend>ros_gz_sim</exec_depend>
@@ -22,6 +25,16 @@
   <exec_depend>urdf</exec_depend>
   <exec_depend>robot_state_publisher</exec_depend>
   <exec_depend>controller_manager</exec_depend>
+
+  <!-- Test dependencies -->
+  <test_depend>ros2lifecycle</test_depend>
+  <test_depend>launch_testing_ament_cmake</test_depend>
+
+  <!-- Earlier Test dependencies -->
+  <test_depend>ament_lint_auto</test_depend>
+  <test_depend>ament_lint_common</test_depend>
+
+
   <export>
     <build_type>ament_cmake</build_type>
   </export>
