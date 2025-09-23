@@ -29,10 +29,14 @@ install(
   DESTINATION share/${PROJECT_NAME}
 )
 
+install(
+  PROGRAMS test/run_gazebo_tests.py
+  DESTINATION lib/${PROJECT_NAME}
+)
+
 # Testing
 if(BUILD_TESTING)
   find_package(launch_testing_ament_cmake)
-  add_launch_test(test/gazebo_activation_test.py)
 endif()
 
 ament_package()

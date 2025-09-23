@@ -1,0 +1,63 @@
+#!/usr/bin/env python3
+
+import os
+import unittest
+import launch
+import launch_ros.actions
+import launch_testing
+import launch_testing.markers
+import pytest
+from ament_index_python.packages import get_package_share_directory
+from launch import LaunchDescription
+from launch.actions import IncludeLaunchDescription, TimerAction, Shutdown
+from launch.launch_description_sources import PythonLaunchDescriptionSource
+from launch.substitutions import LaunchConfiguration
+from launch_testing.actions import ReadyToTest
+
+@pytest.mark.launch_test
+@launch_testing.markers.keep_alive
+def generate_test_description():
+    robot_model = LaunchConfiguration('robot_model')
+    robot_family_support = LaunchConfiguration('robot_family_support')
+
+    launch_file_path = os.path.join(
+        get_package_share_directory('kuka_gazebo'),
+        'launch',
+        'gazebo.launch.py'
+    )
+
+    ld = LaunchDescription([
+        IncludeLaunchDescription(
+            PythonLaunchDescriptionSource(launch_file_path),
+            launch_arguments={
+                'robot_model': robot_model,
+                'robot_family_support': robot_family_support,
+            }.items()
+        ),
+        TimerAction(period=20.0, actions=[Shutdown()]),
+        ReadyToTest()
+    ])
+
+    return ld, {
+        'robot_model': robot_model
+    }
+
+@launch_testing.markers.keep_alive
+class TestDuringLaunch(unittest.TestCase):
+
+    def test_robot_initialization(self, proc_output, robot_model):
+        proc_output.assertWaitFor(
+            f"Successful initialization of hardware ", timeout=15
+        )
+        proc_output.assertWaitFor(
+            f"Successful 'configure' of hardware ", timeout=5
+        )
+        proc_output.assertWaitFor(
+            f"Successful 'activate' of hardware ", timeout=5
+        )
+        proc_output.assertWaitFor(
+            "Configured and activated joint_state_broadcaster", timeout=5
+        )
+        proc_output.assertWaitFor(
+            "Configured and activated joint_trajectory_controller", timeout=5
+        )
