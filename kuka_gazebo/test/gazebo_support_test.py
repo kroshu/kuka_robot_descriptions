@@ -34,7 +34,6 @@ def generate_test_description():
                 'robot_family_support': robot_family_support,
             }.items()
         ),
-        TimerAction(period=20.0, actions=[Shutdown()]),
         ReadyToTest()
     ])
 

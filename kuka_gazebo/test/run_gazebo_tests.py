@@ -25,20 +25,56 @@ def kill_gazebo_gui( *args, **kwargs):
     except Exception as e:
         print(f"Error occurred: {e}")
 
-# List of models and their support packages
-tests = [
-    ("lbr_iisy3_r760", "kuka_lbr_iisy_support"),
-    ("lbr_iisy11_r1300", "kuka_lbr_iisy_support"),
-    ("lbr_iisy15_r930", "kuka_lbr_iisy_support"),
-    ("kr10_r1100_2", "kuka_agilus_support"),
-    ("kr16_r2010_2", "kuka_cybertech_support"),
-    ("kr70_r2100", "kuka_iontec_support"),
-    ("kr210_r2700_2", "kuka_quantec_support"),
-    ("kr210_r3100_2", "kuka_quantec_support"),
-    ("kr240_r3330", "kuka_fortec_support"),
-    ("kr560_r3100_2", "kuka_fortec_support"),
-]
+def get_robots():
+    supported_robots = []
+    intable = False
+    scan_complete = False
 
+    
+
+    # Get the directory of the current script
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+
+    # Go four levels up
+    root_dir = current_dir
+    for _ in range(4):
+        root_dir = os.path.dirname(root_dir)
+
+    # Navigate into src/kuka_robot_descriptions
+    target_dir = os.path.join(root_dir, "src", "kuka_robot_descriptions")
+
+
+    # Construct the full path to README.md
+    file_path = os.path.join(target_dir, "README.md")
+
+    try:
+        with open(file_path, 'r') as readme:
+            for line in readme:
+                line = line.strip()
+                if intable == False:
+                    if 'Supported features' in line:
+                        intable = True
+                else:
+                    if line.startswith('|'):
+                        parts = [part.strip() for part in line.strip('|').split('|')]
+                        if len(parts) >= 5 and parts[4] == '✓':
+                            robot_name = parts[0]
+                            robot_family = parts[1]
+                            robot_family_support_read = 'kuka_' + robot_family + '_support'
+                            supported_robots.append((robot_name, robot_family_support_read))
+                            
+                            scan_complete = True
+                    elif scan_complete == True and intable == True:
+                        intable = False
+        return supported_robots
+    except FileNotFoundError:
+        return f"Error: The file '{file_path}' was not found."
+    except IOError as e:
+        return f"Error reading file: {e}"
+
+
+tests = get_robots()
+print(tests)
 summary = []
 problems = []
 
@@ -85,14 +121,16 @@ for model, support, status in summary:
 
 prev_robot = 0
 
-print("\nDetailed error log:")
-for model, line in problems:
-    if prev_robot == model:
-        print(f"\t{line}")
-    else:
-        print(f"Robot: {model}")
-        print(f"\t{line}")
-        prev_robot = model
 
+if not problems:
+    print("\nNo errors in supported robots")
+else:
+    print("\nDetailed error log:")
+    for model, line in problems:
+        if prev_robot == model:
+            print(f"\t{line}")
+        else:
+            print(f"Robot: {model}")
+            print(f"\t{line}")
+            prev_robot = model
 
- 
