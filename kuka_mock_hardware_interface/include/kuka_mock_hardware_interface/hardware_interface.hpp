@@ -118,6 +118,8 @@ protected:
   double control_mode_ = 0;  // default to undefined
   double receive_multiplier_ = 1;
   double send_period_ms_ = 10;
+  double cycle_time_ms_ = 4;
+  double drive_state_ = 0;
   double server_state_;
 
   // KUKA-specific parameters
