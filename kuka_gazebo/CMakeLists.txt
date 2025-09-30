@@ -5,7 +5,7 @@ if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
 endif()
 
-# Find dependencies
+# Dependencies
 find_package(ament_cmake REQUIRED)
 find_package(moveit_ros_planning_interface REQUIRED)
 find_package(moveit_visual_tools REQUIRED)
@@ -34,9 +34,21 @@ install(
   DESTINATION lib/${PROJECT_NAME}
 )
 
-# Testing
+install(
+  PROGRAMS test/test_gazebo_robot_support.py
+  DESTINATION lib/${PROJECT_NAME}
+)
+
+#Testing
 if(BUILD_TESTING)
-  find_package(launch_testing_ament_cmake)
+  find_package(launch_testing_ament_cmake REQUIRED)
+
+  enable_testing()
+  add_launch_test(test/test_gazebo_robot_support.py)
+
 endif()
+
+
+
 
 ament_package()

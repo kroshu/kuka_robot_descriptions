@@ -113,24 +113,31 @@ for model, support in tests:
         summary.append((model, support, 'PASS'))
 
 # Print summary
-print("\nTest Summary:")
+log_file_path = os.path.expanduser("~/ros2_ws/src/kuka_robot_descriptions/kuka_gazebo/test")
+file_path = os.path.join(log_file_path, "gazebo_test.txt")
 
-for model, support, status in summary:
-    color = GREEN if status == 'PASS' else RED
-    print(f"{color}Model: {model}, Support: {support}, Status: {status}{RESET}")
+with open(file_path, 'w') as gazebo_test:
+    gazebo_test.write("\nTest Summary:\n")
+    for model, support, status in summary:
+        color = GREEN if status == 'PASS' else RED
+        line = f"Model: {model}, Support: {support}, Status: {status}\n"
+        gazebo_test.write(line)
+        print(f"{color}{line.strip()}{RESET}")
 
-prev_robot = 0
-
-
-if not problems:
-    print("\nNo errors in supported robots")
-else:
-    print("\nDetailed error log:")
-    for model, line in problems:
-        if prev_robot == model:
-            print(f"\t{line}")
-        else:
-            print(f"Robot: {model}")
-            print(f"\t{line}")
-            prev_robot = model
-
+    prev_robot = 0
+    if not problems:
+        gazebo_test.write("\nNo errors in supported robots\n")
+        print("\nNo errors in supported robots")
+    else:
+        gazebo_test.write("\nDetailed error log:\n")
+        print("\nDetailed error log:")
+        for model, line in problems:
+            if prev_robot == model:
+                gazebo_test.write(f"\t{line}\n")
+                print(f"\t{line}")
+            else:
+                gazebo_test.write(f"Robot: {model}\n")
+                gazebo_test.write(f"\t{line}\n")
+                print(f"Robot: {model}")
+                print(f"\t{line}")
+                prev_robot = model

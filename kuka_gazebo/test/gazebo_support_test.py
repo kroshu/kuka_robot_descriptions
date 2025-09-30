@@ -34,14 +34,27 @@ def generate_test_description():
                 'robot_family_support': robot_family_support,
             }.items()
         ),
-        ReadyToTest()
+        ReadyToTest(),
+
+        # TimerAction(
+        #     period=10.0,
+        #     #actions=[Shutdown()] #nem működik
+            
+        # )
+        # TimerAction(
+        #     period=10.0,
+        #     actions=[
+        #         EmitEvent(event=Shutdown(reason="Test complete"))
+        #     ]
+        # )
     ])
+
 
     return ld, {
         'robot_model': robot_model
     }
 
-@launch_testing.markers.keep_alive
+#@launch_testing.markers.keep_alive
 class TestDuringLaunch(unittest.TestCase):
 
     def test_robot_initialization(self, proc_output, robot_model):
@@ -60,3 +73,4 @@ class TestDuringLaunch(unittest.TestCase):
         proc_output.assertWaitFor(
             "Configured and activated joint_trajectory_controller", timeout=5
         )
+        print("end of test")
