@@ -2,7 +2,6 @@
 
 import os
 import unittest
-import launch
 import launch_testing
 import launch_testing.markers
 import pytest
