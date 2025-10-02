@@ -2,7 +2,6 @@
 
 import subprocess
 import os
-import re
 # Absolute path to your workspace
 workspace_path = os.path.expanduser("~/ros2_ws/src/kuka_robot_descriptions/kuka_gazebo/test")
 
@@ -51,7 +50,7 @@ def get_robots():
         with open(file_path, 'r') as readme:
             for line in readme:
                 line = line.strip()
-                if intable == False:
+                if not intable:
                     if 'Supported features' in line:
                         intable = True
                 else:
@@ -64,7 +63,7 @@ def get_robots():
                             supported_robots.append((robot_name, robot_family_support_read))
                             
                             scan_complete = True
-                    elif scan_complete == True and intable == True:
+                    elif scan_complete and intable:
                         intable = False
         return supported_robots
     except FileNotFoundError:
@@ -95,7 +94,7 @@ for model, support in tests:
 
     print("--- STDOUT ---")
     print(result.stdout)
-    
+
     for line in result.stdout.splitlines():
         if '[Err]' in line:
             print(line)
@@ -105,7 +104,7 @@ for model, support in tests:
     print(result.stderr)
     kill_gazebo_gui()
     print("--- END OF TEST ---\n")
-    
+
     # Check for 'OK' in stdout
     if 'test_robot_initialization (gazebo_support_test.TestDuringLaunch) ... FAIL' in result.stderr:
         summary.append((model, support, 'FAIL'))

@@ -31,7 +31,7 @@ jobs:
       PR_NUMBER: ${{ github.event.number }}
       ANALYZER_TOKEN: ${{ secrets.ANALYZER_TOKEN }}
       DEBUG_BASH: true
-      BEFORE_TEST_HOOK: run_gazebo_test
+      BEFORE_TEST_HOOK: ./after_build_hook.sh
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -45,14 +45,12 @@ jobs:
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
-      # This step will fetch/store the directory used by ccache before/after the ci run
-      - name: Run industrial_ci with hooks
-        run: |
-          source .ci-hooks.sh
       - uses: actions/cache@v4
         with:
           path: ${{ env.CCACHE_DIR }}
           key: ccache-${{ matrix.env.ROS_DISTRO }}-${{ matrix.env.ROS_REPO }}
+      - name: Make hook script executable
+        run: chmod +x ./after_build_hook.sh
       # Run industrial_ci
       - uses: 'kroshu/industrial_ci@master'
         env: ${{ matrix.env }}
