@@ -25,7 +25,7 @@
   <depend>launch_testing_ament_cmake</depend>
   <depend>ament_lint_auto</depend>
   <depend>ament_lint_common</depend>
-  <test_depend>pytest</test_depend>
+  <depend>python3-pytest</depend>
   <export>
     <build_type>ament_cmake</build_type>
   </export>
