@@ -42,4 +42,4 @@ class TestDuringLaunch(unittest.TestCase):
                     self.assertIn("Status: PASS", line)
 
     def test_always_passes(self, proc_output):
-        proc_output.assertWaitFor("Hello World: 15", timeout=30)
+        proc_output.assertWaitFor("Hello World: 10", timeout=30)

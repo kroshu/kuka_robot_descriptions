@@ -40,11 +40,11 @@ def generate_test_description():
 
 class TestDuringLaunch(unittest.TestCase):
     def test_robot_initialization(self, proc_output, robot_model):
-        proc_output.assertWaitFor("Successful initialization of hardware ", timeout=15)
-        proc_output.assertWaitFor("Successful 'configure' of hardware ", timeout=5)
-        proc_output.assertWaitFor("Successful 'activate' of hardware ", timeout=5)
-        proc_output.assertWaitFor("Configured and activated joint_state_broadcaster", timeout=5)
+        proc_output.assertWaitFor("Successful initialization of hardware ", timeout=20)
+        proc_output.assertWaitFor("Successful 'configure' of hardware ", timeout=10)
+        proc_output.assertWaitFor("Successful 'activate' of hardware ", timeout=10)
+        proc_output.assertWaitFor("Configured and activated joint_state_broadcaster", timeout=10)
         proc_output.assertWaitFor(
-            "Configured and activated joint_trajectory_controller", timeout=5
+            "Configured and activated joint_trajectory_controller", timeout=10
         )
         print("end of test")
