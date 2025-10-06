@@ -9,22 +9,20 @@ from launch_ros.actions import Node
 
 # Define a dummy node to simulate a ROS 2 node during launch
 dummy_node = Node(
-    package="demo_nodes_cpp",
-    executable="listener",
-    name="dummy_node",
-    output="screen"
+    package="demo_nodes_cpp", executable="listener", name="dummy_node", output="screen"
 )
 
 @pytest.mark.launch_test
 def generate_test_description():
-    ld = LaunchDescription([
-        dummy_node,
-        ReadyToTest(),
-    ])
+    ld = LaunchDescription(
+        [
+            dummy_node,
+            ReadyToTest(),
+        ]
+    )
     return ld, {}
 
 class TestDuringLaunch(unittest.TestCase):
-
     def test_robot_initialization(self):
         """
         Checks that all robot models in the test summary file passed.

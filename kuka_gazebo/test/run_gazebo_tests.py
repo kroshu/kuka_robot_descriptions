@@ -10,6 +10,7 @@ GREEN = "\033[92m"
 RED = "\033[91m"
 RESET = "\033[0m"
 
+
 def kill_gazebo_gui(*args, **kwargs):
     try:
         result = subprocess.run(["ps", "aux"], stdout=subprocess.PIPE, text=True)
@@ -24,6 +25,7 @@ def kill_gazebo_gui(*args, **kwargs):
             print("No matching Gazebo process found.")
     except Exception as e:
         print(f"Error occurred: {e}")
+
 
 def get_robots():
     supported_robots = []
@@ -68,6 +70,7 @@ def get_robots():
     except OSError as e:
         return f"Error reading file: {e}"
 
+
 tests = get_robots()
 print(tests)
 summary = []
@@ -78,7 +81,7 @@ for model, support in tests:
     test_file = os.path.join(workspace_path, "gazebo_support_test.py")
 
     if not os.path.exists(test_file):
-        print(f"❌ Test file '{test_file}' does not exist\n")
+        print(f"Test file '{test_file}' does not exist\n")
         continue
 
     result = subprocess.run(

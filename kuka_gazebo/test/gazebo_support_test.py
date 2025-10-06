@@ -12,6 +12,7 @@ from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch.substitutions import LaunchConfiguration
 from launch_testing.actions import ReadyToTest
 
+
 @pytest.mark.launch_test
 @launch_testing.markers.keep_alive
 def generate_test_description():
@@ -22,17 +23,18 @@ def generate_test_description():
         get_package_share_directory("kuka_gazebo"), "launch", "gazebo.launch.py"
     )
 
-    ld = LaunchDescription([
-        IncludeLaunchDescription(
-            PythonLaunchDescriptionSource(launch_file_path),
-            launch_arguments={
-                "robot_model": robot_model,
-                "robot_family_support": robot_family_support,
-            }.items(),
-        ),
-        ReadyToTest(),
-    ])
-
+    ld = LaunchDescription(
+        [
+            IncludeLaunchDescription(
+                PythonLaunchDescriptionSource(launch_file_path),
+                launch_arguments={
+                    "robot_model": robot_model,
+                    "robot_family_support": robot_family_support,
+                }.items(),
+            ),
+            ReadyToTest(),
+        ]
+    )
     return ld, {"robot_model": robot_model}
 
 
