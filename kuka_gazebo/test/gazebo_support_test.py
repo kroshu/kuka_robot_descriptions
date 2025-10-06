@@ -15,60 +15,33 @@ from launch_testing.actions import ReadyToTest
 @pytest.mark.launch_test
 @launch_testing.markers.keep_alive
 def generate_test_description():
-    robot_model = LaunchConfiguration('robot_model')
-    robot_family_support = LaunchConfiguration('robot_family_support')
+    robot_model = LaunchConfiguration("robot_model")
+    robot_family_support = LaunchConfiguration("robot_family_support")
 
     launch_file_path = os.path.join(
-        get_package_share_directory('kuka_gazebo'),
-        'launch',
-        'gazebo.launch.py'
+        get_package_share_directory("kuka_gazebo"), "launch", "gazebo.launch.py"
     )
 
     ld = LaunchDescription([
         IncludeLaunchDescription(
             PythonLaunchDescriptionSource(launch_file_path),
             launch_arguments={
-                'robot_model': robot_model,
-                'robot_family_support': robot_family_support,
-            }.items()
+                "robot_model": robot_model,
+                "robot_family_support": robot_family_support,
+            }.items(),
         ),
         ReadyToTest(),
-
-        # TimerAction(
-        #     period=10.0,
-        #     #actions=[Shutdown()] #nem működik
-
-        # )
-        # TimerAction(
-        #     period=10.0,
-        #     actions=[
-        #         EmitEvent(event=Shutdown(reason="Test complete"))
-        #     ]
-        # )
     ])
 
+    return ld, {"robot_model": robot_model}
 
-    return ld, {
-        'robot_model': robot_model
-    }
 
-#@launch_testing.markers.keep_alive
 class TestDuringLaunch(unittest.TestCase):
 
     def test_robot_initialization(self, proc_output, robot_model):
-        proc_output.assertWaitFor(
-            f"Successful initialization of hardware ", timeout=15
-        )
-        proc_output.assertWaitFor(
-            f"Successful 'configure' of hardware ", timeout=5
-        )
-        proc_output.assertWaitFor(
-            f"Successful 'activate' of hardware ", timeout=5
-        )
-        proc_output.assertWaitFor(
-            "Configured and activated joint_state_broadcaster", timeout=5
-        )
-        proc_output.assertWaitFor(
-            "Configured and activated joint_trajectory_controller", timeout=5
-        )
+        proc_output.assertWaitFor("Successful initialization of hardware ", timeout=15)
+        proc_output.assertWaitFor("Successful 'configure' of hardware ", timeout=5)
+        proc_output.assertWaitFor("Successful 'activate' of hardware ", timeout=5)
+        proc_output.assertWaitFor("Configured and activated joint_state_broadcaster", timeout=5)
+        proc_output.assertWaitFor("Configured and activated joint_trajectory_controller", timeout=5)
         print("end of test")
