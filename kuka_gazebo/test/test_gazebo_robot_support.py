@@ -9,7 +9,7 @@ from launch_ros.actions import Node
 
 # Define a dummy node to simulate a ROS 2 node during launch
 dummy_node = Node(
-    package="demo_nodes_cpp", executable="listener", name="dummy_node", output="screen"
+    package="demo_nodes_cpp", executable="talker", name="dummy_node", output="screen"
 )
 
 
@@ -40,8 +40,6 @@ class TestDuringLaunch(unittest.TestCase):
                 if "Model:" in line:
                     self.assertIn("Status: PASS", line)
 
-    def test_always_passes(self):
-        """
-        A dummy test that always passes.
-        """
-        self.assertTrue(True)
+    def test_always_passes(self, proc_output):
+        proc_output.assertWaitFor("Hello World: 15", timeout=30)
+
