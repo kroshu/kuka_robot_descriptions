@@ -45,5 +45,7 @@ class TestDuringLaunch(unittest.TestCase):
         proc_output.assertWaitFor("Successful 'configure' of hardware ", timeout=5)
         proc_output.assertWaitFor("Successful 'activate' of hardware ", timeout=5)
         proc_output.assertWaitFor("Configured and activated joint_state_broadcaster", timeout=5)
-        proc_output.assertWaitFor("Configured and activated joint_trajectory_controller", timeout=5)
+        proc_output.assertWaitFor(
+            "Configured and activated joint_trajectory_controller", timeout=5
+        )
         print("end of test")

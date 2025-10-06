@@ -12,6 +12,7 @@ dummy_node = Node(
     package="demo_nodes_cpp", executable="listener", name="dummy_node", output="screen"
 )
 
+
 @pytest.mark.launch_test
 def generate_test_description():
     ld = LaunchDescription(
@@ -21,6 +22,7 @@ def generate_test_description():
         ]
     )
     return ld, {}
+
 
 class TestDuringLaunch(unittest.TestCase):
     def test_robot_initialization(self):
