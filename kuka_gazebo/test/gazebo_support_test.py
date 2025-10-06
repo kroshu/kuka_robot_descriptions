@@ -39,7 +39,6 @@ def generate_test_description():
 
 
 class TestDuringLaunch(unittest.TestCase):
-
     def test_robot_initialization(self, proc_output, robot_model):
         proc_output.assertWaitFor("Successful initialization of hardware ", timeout=15)
         proc_output.assertWaitFor("Successful 'configure' of hardware ", timeout=5)
