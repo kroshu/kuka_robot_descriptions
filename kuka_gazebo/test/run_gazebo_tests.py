@@ -111,8 +111,7 @@ for model, support in tests:
     print("--- END OF TEST ---\n")
 
     if (
-        "test_robot_initialization (gazebo_support_test.TestDuringLaunch) ... ok"
-        in result.stderr
+        "test_robot_initialization (gazebo_support_test.TestDuringLaunch) ... ok" in result.stderr
     ):
         summary.append((model, support, "PASS"))
     else:
