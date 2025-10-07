@@ -111,12 +111,12 @@ for model, support in tests:
     print("--- END OF TEST ---\n")
 
     if (
-        "test_robot_initialization (gazebo_support_test.TestDuringLaunch) ... FAIL"
+        "test_robot_initialization (gazebo_support_test.TestDuringLaunch) ... ok"
         in result.stderr
     ):
-        summary.append((model, support, "FAIL"))
-    else:
         summary.append((model, support, "PASS"))
+    else:
+        summary.append((model, support, "FAIL"))
 
 # Print summary
 log_file_path = os.path.expanduser("~/ros2_ws/src/kuka_robot_descriptions/kuka_gazebo/test")
