@@ -108,8 +108,7 @@ for model, support in tests:
     print("--- STDERR ---")
     if (
         "test_robot_initialization "
-        "(gazebo_support_test.TestDuringLaunch.test_robot_initialization) ... ok"
-        in result.stderr
+        "(gazebo_support_test.TestDuringLaunch.test_robot_initialization) ... ok" in result.stderr
     ):
         summary.append((model, support, "PASS"))
     else:
