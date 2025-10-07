@@ -37,6 +37,7 @@ jobs:
       PR_NUMBER: ${{ github.event.number }}
       ANALYZER_TOKEN: ${{ secrets.ANALYZER_TOKEN }}
       DEBUG_BASH: true
+      BEFORE_TEST_HOOK: ./after_build_hook.sh
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v2
@@ -48,5 +49,7 @@ jobs:
           path: ${{ env.CCACHE_DIR }}
           key: ccache-${{ matrix.env.ROS_DISTRO }}-${{ matrix.env.ROS_REPO }}
       # Run industrial_ci
+      - name: Make hook script executable
+        run: chmod +x ./after_build_hook.sh
       - uses: 'kroshu/industrial_ci@master'
         env: ${{ matrix.env }}

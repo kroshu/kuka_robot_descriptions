@@ -127,10 +127,10 @@ The following table shows the supported customizable features for each robot in 
 
 |Robot name | Robot family | GPIO support | External axis support | Gazebo support |
 |---|:---:|:---:|:---:|:---:|
-|lbr_iisy3_r760| - | | | ✓ |
-|lbr_iisy11_r1300| - | | | ✓ |
-|lbr_iisy15_r930| - | | | ✓ |
-|lbr_iiwa14_r820| - | | | |
+|lbr_iisy3_r760| lbr_iisy | | | ✓ |
+|lbr_iisy11_r1300| lbr_iisy | | | ✓ |
+|lbr_iisy15_r930| lbr_iisy | | | ✓ |
+|lbr_iiwa14_r820| lbr_iiwa | | | |
 |kr6_r700_2| agilus | ✓ | | ✓ |
 |kr6_r700_sixx| agilus | ✓ | | |
 |kr6_r900_2| agilus | ✓ | | ✓ |
@@ -138,7 +138,7 @@ The following table shows the supported customizable features for each robot in 
 |kr10_r1100_2| agilus | ✓ | | ✓ |
 |kr8_r1440_2_arc_hw| cybertech | ✓ | | ✓ |
 |kr12_r1450_3_hw| cybertech | ✓ | | ✓ |
-|kr16_r2010_2| cybertech | ✓ | | ✓ |
+|kr16_r2010_2| cybertech | ✓ | | |
 |kr70_r2100| iontec | ✓ | | ✓ |
 |kr210_r2700_2| quantec | ✓ | | ✓ |
 |kr210_r3100_2| quantec | ✓ | | ✓ |
