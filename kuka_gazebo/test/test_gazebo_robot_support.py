@@ -9,7 +9,7 @@ from launch_ros.actions import Node
 
 # Define a dummy node to simulate a ROS 2 node during launch
 dummy_node = Node(
-    package="demo_nodes_cpp", executable="talker", name="dummy_node", output="screen"
+    package="kuka_gazebo", executable="test_keep_alive", name="dummy_node", output="screen"
 )
 
 
@@ -42,4 +42,4 @@ class TestDuringLaunch(unittest.TestCase):
                     self.assertIn("Status: PASS", line)
 
     def test_always_passes(self, proc_output):
-        proc_output.assertWaitFor("Hello World: 10", timeout=30)
+        proc_output.assertWaitFor("Remaining time: 0", timeout=30)

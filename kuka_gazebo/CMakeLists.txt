@@ -10,8 +10,13 @@ find_package(ament_cmake REQUIRED)
 find_package(ament_cmake REQUIRED)
 find_package(moveit_ros_planning_interface REQUIRED)
 find_package(moveit_visual_tools REQUIRED)
+find_package(rclcpp REQUIRED)
+find_package(std_msgs REQUIRED)
 
 include_directories(include)
+
+add_executable(test_keep_alive test/gazebo_test_keep_alive.cpp)
+ament_target_dependencies(test_keep_alive rclcpp std_msgs)
 
 add_executable(gazebo_moveit_example src/gazebo_lbr_iisy3_r760_moveit_example.cpp)
 ament_target_dependencies(gazebo_moveit_example
@@ -39,6 +44,10 @@ install(
   PROGRAMS test/test_gazebo_robot_support.py
   DESTINATION lib/${PROJECT_NAME}
 )
+
+install(TARGETS
+  test_keep_alive
+  DESTINATION lib/${PROJECT_NAME})
 
 #Testing
 if(BUILD_TESTING)
