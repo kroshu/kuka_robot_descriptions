@@ -234,3 +234,56 @@ Finally, run the example:
 ```bash
 ros2 run kuka_gazebo gazebo_moveit_example
 ```
+
+# Gazebo-Supported Robot Testing in CI Pipeline
+
+The tests for Gazebo-supported robots have been successfully integrated into the existing Continuous Integration (CI) architecture. The testing process follows a **two-part structure**, as illustrated in the diagram below.
+
+## 1. After-Build Hook Phase
+
+Immediately after the build phase (but before the testing phase), the CI pipeline triggers the `after_build_hook.sh` script. This script launches `run_gazebo_tests.py`, which performs the following tasks:
+
+- **Reads robot names and families** from the `README.md` file to ensure all Gazebo-supported robots are included.
+- **Executes parameterized tests** using `gazebo_support_test.py`, a parametrized test script, which:
+  - Launches Gazebo.
+  - Checks whether the simulation successfully configures and activates:
+    - Hardware interfaces
+    - Joint State Broadcaster
+    - Joint Trajectory Controller
+  - Collects and returns the test results.
+
+However, Gazebo does not shut down automatically after the test. To handle this, `run_gazebo_tests.py` manually terminates Gazebo using a `kill` command. Since invoking `kill` within a test causes an automatic test failure, this step is performed **outside the testing framework**.
+
+## 2. Testing Phase
+
+To bridge the gap between the actual Gazebo tests and the CI testing framework, we use a workaround:
+
+- Test results are written to a text file: `gazebo_test.txt`.
+- During the testing phase, `test_gazebo_robot_support.py` reads and evaluates the results from this file.
+- To keep the test alive long enough for evaluation, we launch `gazebo_test_keep_alive.cpp`, a simple publisher node that ensures the test file remains active.
+
+This workaround is necessary because Gazebo lacks a proper software shutdown mechanism, making parameterized testing more complex than it should be.
+
+> **Note:** The current test uses **Gazebo Harmonic (Gazebo Sim v8.9.0)** for verification.
+
+```mermaid
+graph TD
+    subgraph CI Pipeline
+        A[industrial_ci.yml] -->|runs| B[after_build_hook.sh]
+        A -->|Colcon test runs| H[test_gazebo_robot_support.py]
+        H -->|Launch| J[gazebo_test_keep_alive.cpp]
+        J -->|Keep alive| H
+    end
+
+    subgraph Test Execution
+        B -->|executes| C[run_gazebo_tests.py]
+        F[README.md] -->|reads robot, family| C
+        C -->|execute test robot, family| D[gazebo_support_test.py]
+        D -->|launch Gazebo| E[Gazebo]
+        E -->|output| D
+        D -->|test result| C
+        C -->|KILL| E
+        C -->|write test results| G[gazebo_test.txt]
+        G -->|test results| H
+    end
+```
