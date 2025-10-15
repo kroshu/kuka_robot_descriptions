@@ -36,6 +36,16 @@ install(
 )
 
 install(
+  PROGRAMS test/gazebo_support_test.py
+  DESTINATION lib/${PROJECT_NAME}
+)
+
+install(FILES
+  ${CMAKE_CURRENT_SOURCE_DIR}/../README.md
+  DESTINATION share/${PROJECT_NAME}
+)
+
+install(
   PROGRAMS test/run_gazebo_tests.py
   DESTINATION lib/${PROJECT_NAME}
 )

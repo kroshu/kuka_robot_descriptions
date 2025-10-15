@@ -2,9 +2,10 @@
 
 import subprocess
 import os
+from ament_index_python.packages import get_package_prefix, get_package_share_directory
 
-# Absolute path to your workspace
-workspace_path = os.path.expanduser("~/ros2_ws/src/kuka_robot_descriptions/kuka_gazebo/test")
+workspace_path= get_package_prefix('kuka_gazebo')
+test_path = os.path.join(workspace_path, 'lib', 'kuka_gazebo')
 
 GREEN = "\033[92m"
 RED = "\033[91m"
@@ -32,16 +33,7 @@ def get_robots():
     intable = False
     scan_complete = False
 
-    # Get the directory of the current script
-    current_dir = os.path.dirname(os.path.abspath(__file__))
-
-    # Go four levels up
-    root_dir = current_dir
-    for _ in range(4):
-        root_dir = os.path.dirname(root_dir)
-
-    # Navigate into src/kuka_robot_descriptions
-    target_dir = os.path.join(root_dir, "src", "kuka_robot_descriptions")
+    target_dir = get_package_share_directory('kuka_gazebo')
 
     # Construct the full path to README.md
     file_path = os.path.join(target_dir, "README.md")
@@ -78,7 +70,7 @@ problems = []
 
 for model, support in tests:
     print(f"Running test for model: {model}, support: {support}")
-    test_file = os.path.join(workspace_path, "gazebo_support_test.py")
+    test_file = os.path.join(test_path, "gazebo_support_test.py")
 
     if not os.path.exists(test_file):
         print(f"Test file '{test_file}' does not exist\n")
@@ -119,8 +111,7 @@ for model, support in tests:
 
 
 # Print summary
-log_file_path = os.path.expanduser("~/ros2_ws/src/kuka_robot_descriptions/kuka_gazebo/test")
-file_path = os.path.join(log_file_path, "gazebo_test.txt")
+file_path = os.path.join(workspace_path, "gazebo_test.txt")
 
 with open(file_path, "w") as gazebo_test:
     gazebo_test.write("\nTest Summary:\n")
@@ -146,3 +137,4 @@ with open(file_path, "w") as gazebo_test:
                 gazebo_test.write(f"\t{line}\n")
                 print(f"Robot: {model}")
                 print(f"\t{line}")
+            prev_robot = model

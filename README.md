@@ -235,11 +235,11 @@ Finally, run the example:
 ros2 run kuka_gazebo gazebo_moveit_example
 ```
 
-# Gazebo-Supported Robot Testing in CI Pipeline
+## Gazebo-Supported Robot Testing in CI Pipeline
 
 The tests for Gazebo-supported robots have been successfully integrated into the existing Continuous Integration (CI) architecture. The testing process follows a **two-part structure**, as illustrated in the diagram below.
 
-## 1. After-Build Hook Phase
+### 1. After-Build Hook Phase
 
 Immediately after the build phase (but before the testing phase), the CI pipeline triggers the `after_build_hook.sh` script. This script launches `run_gazebo_tests.py`, which performs the following tasks:
 
@@ -254,15 +254,13 @@ Immediately after the build phase (but before the testing phase), the CI pipelin
 
 However, Gazebo does not shut down automatically after the test. To handle this, `run_gazebo_tests.py` manually terminates Gazebo using a `kill` command. Since invoking `kill` within a test causes an automatic test failure, this step is performed **outside the testing framework**.
 
-## 2. Testing Phase
+### 2. Testing Phase
 
-To bridge the gap between the actual Gazebo tests and the CI testing framework, we use a workaround:
+To bridge the gap between the actual Gazebo tests and the CI testing framework, we use the following solution:
 
 - Test results are written to a text file: `gazebo_test.txt`.
 - During the testing phase, `test_gazebo_robot_support.py` reads and evaluates the results from this file.
 - To keep the test alive long enough for evaluation, we launch `gazebo_test_keep_alive.cpp`, a simple publisher node that ensures the test file remains active.
-
-This workaround is necessary because Gazebo lacks a proper software shutdown mechanism, making parameterized testing more complex than it should be.
 
 > **Note:** The current test uses **Gazebo Harmonic (Gazebo Sim v8.9.0)** for verification.
 
