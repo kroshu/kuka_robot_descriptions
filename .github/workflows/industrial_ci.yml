@@ -28,7 +28,7 @@ jobs:
         - ROS_REPO: ros
           BUILDER: colcon
           ROS_DISTRO: jazzy
-          BEFORE_TEST_HOOK: ./after_build_hook.sh
+          AFTER_BUILD_HOOK: ./after_build_hook.sh
     env:
       CCACHE_DIR: /github/home/.ccache # Directory for ccache (and how we enable ccache in industrial_ci)
       EVENT_NAME: ${{ github.event_name }}
