@@ -6,7 +6,7 @@ import pytest
 from launch import LaunchDescription
 from launch_testing.actions import ReadyToTest
 from launch_ros.actions import Node
-from ament_index_python.packages import get_package_prefix
+from ament_index_python.packages import get_package_share_directory
 
 # Define a dummy node to simulate a ROS 2 node during launch
 dummy_node = Node(
@@ -30,7 +30,7 @@ class TestDuringLaunch(unittest.TestCase):
         """
         Checks that all robot models in the test summary file passed.
         """
-        directory_path = get_package_prefix('kuka_gazebo')
+        directory_path = get_package_share_directory("kuka_gazebo")
         file_path = os.path.join(directory_path, "gazebo_test.txt")
         with open(file_path) as gazebo_result:
             for line in gazebo_result:

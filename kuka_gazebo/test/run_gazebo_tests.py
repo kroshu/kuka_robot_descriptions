@@ -4,8 +4,8 @@ import subprocess
 import os
 from ament_index_python.packages import get_package_prefix, get_package_share_directory
 
-workspace_path= get_package_prefix('kuka_gazebo')
-test_path = os.path.join(workspace_path, 'lib', 'kuka_gazebo')
+workspace_path = get_package_prefix("kuka_gazebo")
+test_path = os.path.join(workspace_path, "lib", "kuka_gazebo")
 
 GREEN = "\033[92m"
 RED = "\033[91m"
@@ -33,7 +33,7 @@ def get_robots():
     intable = False
     scan_complete = False
 
-    target_dir = get_package_share_directory('kuka_gazebo')
+    target_dir = get_package_share_directory("kuka_gazebo")
 
     # Construct the full path to README.md
     file_path = os.path.join(target_dir, "README.md")
@@ -111,7 +111,7 @@ for model, support in tests:
 
 
 # Print summary
-file_path = os.path.join(workspace_path, "gazebo_test.txt")
+file_path = os.path.join(get_package_share_directory("kuka_gazebo"), "gazebo_test.txt")
 
 with open(file_path, "w") as gazebo_test:
     gazebo_test.write("\nTest Summary:\n")
