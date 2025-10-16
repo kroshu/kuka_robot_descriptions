@@ -22,7 +22,9 @@
   <exec_depend>controller_manager</exec_depend>
   <!-- Test dependencies -->
   <depend>ros2lifecycle</depend>
-  <depend>launch_testing_ament_cmake</depend>
+  <test_depend>launch_testing_ament_cmake</test_depend>
+  <test_depend>launch_testing</test_depend>
+  <test_depend>ament_cmake</test_depend>
   <depend>ament_lint_auto</depend>
   <depend>ament_lint_common</depend>
   <depend>python3-pytest</depend>
