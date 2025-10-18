@@ -68,6 +68,4 @@ def generate_launch_description():
         output="log",
     )
 
-    return LaunchDescription(
-        [robot_state_publisher, rviz_node, joint_state_publisher_gui]
-    )
+    return LaunchDescription([robot_state_publisher, rviz_node, joint_state_publisher_gui])
