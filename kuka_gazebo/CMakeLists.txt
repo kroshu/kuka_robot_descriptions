@@ -46,7 +46,7 @@ install(FILES
 )
 
 install(
-  PROGRAMS test/run_gazebo_tests.py
+  PROGRAMS src/run_gazebo_tests.py
   DESTINATION lib/${PROJECT_NAME}
 )
 
