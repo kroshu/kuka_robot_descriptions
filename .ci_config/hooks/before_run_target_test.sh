@@ -21,4 +21,4 @@ cd ..
 cd ..
 source /opt/ros/$ROS_DISTRO/setup.bash
 ros2 launch kuka_gazebo gazebo.launch.py
-ros2 launch kuka_gazebo run_gazebo_tests.py
+ros2 run kuka_gazebo run_gazebo_tests.py
