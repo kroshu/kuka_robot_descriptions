@@ -131,7 +131,7 @@ The following table shows the supported customizable features for each robot in 
 |lbr_iisy3_r760| lbr_iisy | | | ✓ |
 |lbr_iisy11_r1300| lbr_iisy | | | ✓ |
 |lbr_iisy15_r930| lbr_iisy | | | ✓ |
-|lbr_iiwa14_r820| lbr_iiwa | | | |
+|lbr_iiwa14_r820| lbr_iiwa | | | ✓ |
 |kr6_r700_2| agilus | ✓ | | ✓ |
 |kr6_r700_sixx| agilus | ✓ | | |
 |kr6_r900_2| agilus | ✓ | | ✓ |
