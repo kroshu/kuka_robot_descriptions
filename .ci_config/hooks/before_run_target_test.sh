@@ -1,6 +1,10 @@
 #!/bin/bash
 echo "Running before run test target hook Gazebo test script..."
-ls
+Xvfb :99 -screen 0 1024x768x24 &
+XVFB_PID=$!
+sleep 2
+export DISPLAY=:99
+echo "virtual dsplay set"
 cd ~/target_ws
 ls
 source install/setup.bash

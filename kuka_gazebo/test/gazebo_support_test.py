@@ -40,14 +40,14 @@ def generate_test_description():
 
 class TestDuringLaunch(unittest.TestCase):
     def test_robot_initialization(self, proc_output, robot_model):
-        #for GITHUB CI
-        proc_output.assertWaitFor("Entity creation successful.", timeout=30)
-        #for local testing
-        # proc_output.assertWaitFor("Successful initialization of hardware ", timeout=20)
-        # proc_output.assertWaitFor("Successful 'configure' of hardware ", timeout=10)
-        # proc_output.assertWaitFor("Successful 'activate' of hardware ", timeout=10)
-        # proc_output.assertWaitFor("Configured and activated joint_state_broadcaster", timeout=10)
-        # proc_output.assertWaitFor(
-        #     "Configured and activated joint_trajectory_controller", timeout=10
-        # )
+        # for GITHUB CI
+        # proc_output.assertWaitFor("Entity creation successful.", timeout=30)
+        # for local testing
+        proc_output.assertWaitFor("Successful initialization of hardware ", timeout=20)
+        proc_output.assertWaitFor("Successful 'configure' of hardware ", timeout=10)
+        proc_output.assertWaitFor("Successful 'activate' of hardware ", timeout=10)
+        proc_output.assertWaitFor("Configured and activated joint_state_broadcaster", timeout=10)
+        proc_output.assertWaitFor(
+            "Configured and activated joint_trajectory_controller", timeout=10
+        )
         print("end of test")
