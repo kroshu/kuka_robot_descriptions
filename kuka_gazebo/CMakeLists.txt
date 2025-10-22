@@ -10,8 +10,16 @@ find_package(ament_cmake REQUIRED)
 find_package(ament_cmake REQUIRED)
 find_package(moveit_ros_planning_interface REQUIRED)
 find_package(moveit_visual_tools REQUIRED)
+find_package(rclcpp REQUIRED)
+find_package(std_msgs REQUIRED)
+find_package(ros2_control REQUIRED)
+find_package(ros2_controllers REQUIRED)
+find_package(controller_manager REQUIRED)
 
 include_directories(include)
+
+add_executable(test_keep_alive test/gazebo_test_keep_alive.cpp)
+ament_target_dependencies(test_keep_alive rclcpp std_msgs)
 
 add_executable(gazebo_moveit_example src/gazebo_lbr_iisy3_r760_moveit_example.cpp)
 ament_target_dependencies(gazebo_moveit_example
@@ -29,5 +37,43 @@ install(
   DIRECTORY gazebo launch world
   DESTINATION share/${PROJECT_NAME}
 )
+
+install(
+  DIRECTORY config
+  DESTINATION share/${PROJECT_NAME}
+)
+
+install(
+  PROGRAMS test/gazebo_support_test.py
+  DESTINATION lib/${PROJECT_NAME}
+)
+
+install(FILES
+  ${CMAKE_CURRENT_SOURCE_DIR}/../README.md
+  DESTINATION share/${PROJECT_NAME}
+)
+
+install(
+  PROGRAMS launch/run_gazebo_tests.py
+  DESTINATION lib/${PROJECT_NAME}
+)
+
+install(
+  PROGRAMS test/test_gazebo_robot_support.py
+  DESTINATION lib/${PROJECT_NAME}
+)
+
+install(TARGETS
+  test_keep_alive
+  DESTINATION lib/${PROJECT_NAME})
+
+#Testing
+if(BUILD_TESTING)
+  find_package(launch_testing_ament_cmake REQUIRED)
+
+  enable_testing()
+  add_launch_test(test/test_gazebo_robot_support.py)
+
+endif()
 
 ament_package()
