@@ -100,7 +100,7 @@ def launch_setup(context, *args, **kwargs):
             PathJoinSubstitution([FindPackageShare("ros_gz_sim"), "launch", "gz_server.launch.py"])
         ),
         launch_arguments={
-           "world_sdf_file": world_path,
+            "world_sdf_file": world_path,
             "container_name": "ros_gz_container",
             "create_own_container": "False",
             "use_composition": "False",
