@@ -96,37 +96,29 @@ def launch_setup(context, *args, **kwargs):
     # Gazebo
     world_path = os.path.join(get_package_share_directory("kuka_gazebo"), world.perform(context))
     gz_server_ld = IncludeLaunchDescription(
-    PythonLaunchDescriptionSource(
-        PathJoinSubstitution([
-            FindPackageShare("ros_gz_sim"),
-            "launch",
-            "gz_server.launch.py"
-        ])
-    ),
-    launch_arguments={
-        "world_sdf_file": world_path,
-        "container_name": "ros_gz_container",
-        "create_own_container": "False",
-        "use_composition": "False"
-    }.items()
+        PythonLaunchDescriptionSource(
+            PathJoinSubstitution([FindPackageShare("ros_gz_sim"), "launch", "gz_server.launch.py"])
+        ),
+        launch_arguments={
+           "world_sdf_file": world_path,
+            "container_name": "ros_gz_container",
+            "create_own_container": "False",
+            "use_composition": "False",
+        }.items(),
     )
 
     ros_gz_bridge_ld = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
-            PathJoinSubstitution([
-                FindPackageShare("ros_gz_bridge"),
-                "launch",
-                "ros_gz_bridge.launch.py"
-            ])
+            PathJoinSubstitution(
+                [FindPackageShare("ros_gz_bridge"), "launch", "ros_gz_bridge.launch.py"]
+            )
         ),
         launch_arguments={
-            "config_file": PathJoinSubstitution([
-                FindPackageShare("kuka_gazebo"),
-                "config",
-                "bridge_config.yaml"
-            ]),
-            "bridge_name": "ros_gz_bridge"
-        }.items()
+            "config_file": PathJoinSubstitution(
+                [FindPackageShare("kuka_gazebo"), "config", "bridge_config.yaml"]
+            ),
+            "bridge_name": "ros_gz_bridge",
+        }.items(),
     )
 
     label = ["-x", "-y", "-z", "-R", "-P", "-Y"]
