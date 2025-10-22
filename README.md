@@ -131,7 +131,7 @@ The following table shows the supported customizable features for each robot in 
 |lbr_iisy3_r760| lbr_iisy | | | ✓ |
 |lbr_iisy11_r1300| lbr_iisy | | | ✓ |
 |lbr_iisy15_r930| lbr_iisy | | | ✓ |
-|lbr_iiwa14_r820| lbr_iiwa | | | ✓ |
+|lbr_iiwa14_r820| lbr_iiwa | | | |
 |kr6_r700_2| agilus | ✓ | | ✓ |
 |kr6_r700_sixx| agilus | ✓ | | |
 |kr6_r900_2| agilus | ✓ | | ✓ |
@@ -247,7 +247,7 @@ Immediately after the build phase (but before the testing phase), the CI pipelin
 
 - **Reads robot names and families** from the `README.md` file to ensure all Gazebo-supported robots are included.
 - **Executes parameterized tests** using `gazebo_support_test.py`, a parametrized test script, which:
-  - Launches Gazebo.
+  - Launches Gazebo in headless mode, launching the server and the ros gazebo bridge separately.
   - Checks whether the simulation successfully configures and activates:
     - Hardware interfaces
     - Joint State Broadcaster
@@ -268,6 +268,7 @@ To bridge the gap between the actual Gazebo tests and the CI testing framework, 
 
 ```mermaid
 graph TD
+    %% CI Pipeline Section
     subgraph CI Pipeline
         A[industrial_ci.yml] -->|runs| B[after_build_hook.sh]
         A -->|Colcon test runs| H[test_gazebo_robot_support.py]
@@ -275,15 +276,20 @@ graph TD
         J -->|Keep alive| H
     end
 
+    %% Test Execution Section
     subgraph Test Execution
         B -->|executes| C[run_gazebo_tests.py]
         F[README.md] -->|reads robot, family| C
-        C -->|execute test robot, family| D[gazebo_support_test.py]
-        D -->|launch Gazebo| E[Gazebo]
-        E -->|output| D
-        D -->|test result| C
-        C -->|KILL| E
-        C -->|write test results| G[gazebo_test.txt]
+        C -->|executes test| D[gazebo_support_test.py]
+        K[bridge_config.yaml] -->|configures bridge| E
+        D -->|launch ros_gz_bridge| E[ros_gz_bridge.launch.py]
+        D -->|launch Gazebo server| I[gz_server.launch.py]
+        E -->|translate| L[headless Gazebo]
+        I -->|launches server| L
+        L -->|outputs to| D
+        C -->|KILL| L
+        D -->|returns result| C
+        C -->|writes results| G[gazebo_test.txt]
         G -->|test results| H
     end
 ```
