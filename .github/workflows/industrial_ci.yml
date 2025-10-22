@@ -51,15 +51,5 @@ jobs:
       # Run industrial_ci
       - name: Make hook script executable
         run: chmod +x .ci_config/hooks/before_run_target_test.sh
-      - name: Install virtual display
-        run: |
-          sudo apt update
-          sudo apt install -y xvfb mesa-utils
-      - name: Start virtual display
-        run: |
-          Xvfb :1 -screen 0 1280x1024x24 &
-          export DISPLAY=:1
-          echo "DISPLAY=:1" >> $GITHUB_ENV
-
       - uses: 'kroshu/industrial_ci@master'
         env: ${{ matrix.env }}
