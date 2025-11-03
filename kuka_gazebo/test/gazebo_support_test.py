@@ -10,7 +10,8 @@ from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch.substitutions import LaunchConfiguration
 from launch_testing.actions import ReadyToTest
 
-#Parametrized test for a robot
+
+# Parametrized test for a robot
 @pytest.mark.launch_test
 @launch_testing.markers.keep_alive
 def generate_test_description():

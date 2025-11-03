@@ -7,7 +7,7 @@
 
 using namespace std::chrono_literals;
 
-//simple publisher node, to keep the test file active while checking results
+// simple publisher node, to keep the test file active while checking results
 class TestKeepAlive : public rclcpp::Node
 {
 public:

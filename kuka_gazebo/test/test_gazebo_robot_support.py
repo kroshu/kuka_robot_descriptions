@@ -22,7 +22,8 @@ def generate_test_description():
     )
     return ld, {}
 
-#Check the summary file of gazebo supported robots
+
+# Check the summary file of gazebo supported robots
 class TestDuringLaunch(unittest.TestCase):
     def test_robot_initialization(self):
         """

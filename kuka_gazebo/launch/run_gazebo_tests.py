@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import subprocess
 import os
 from ament_index_python.packages import get_package_prefix, get_package_share_directory
@@ -9,7 +11,8 @@ GREEN = "\033[92m"
 RED = "\033[91m"
 RESET = "\033[0m"
 
-#Shutting down gazebo
+
+# Shutting down gazebo
 def kill_gazebo_gui(*args, **kwargs):
     try:
         result = subprocess.run(["ps", "aux"], stdout=subprocess.PIPE, text=True)
@@ -25,7 +28,8 @@ def kill_gazebo_gui(*args, **kwargs):
     except Exception as e:
         print(f"Error occurred: {e}")
 
-#Getting the list of robots from README.md
+
+# Getting the list of robots from README.md
 def get_robots():
     supported_robots = []
     intable = False
@@ -66,7 +70,7 @@ print(tests)
 summary = []
 problems = []
 
-#Testing the supported robots
+# Testing the supported robots
 for model, support in tests:
     print(f"Running test for model: {model}, support: {support}")
     test_file = os.path.join(test_path, "gazebo_support_test.py")
