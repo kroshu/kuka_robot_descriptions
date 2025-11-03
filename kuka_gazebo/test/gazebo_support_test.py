@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 import os
 import unittest
 import launch_testing
@@ -12,7 +10,7 @@ from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch.substitutions import LaunchConfiguration
 from launch_testing.actions import ReadyToTest
 
-
+#Parametrized test for a robot
 @pytest.mark.launch_test
 @launch_testing.markers.keep_alive
 def generate_test_description():
@@ -40,9 +38,6 @@ def generate_test_description():
 
 class TestDuringLaunch(unittest.TestCase):
     def test_robot_initialization(self, proc_output, robot_model):
-        # for GITHUB CI
-        # proc_output.assertWaitFor("Entity creation successful.", timeout=30)
-        # for local testing
         proc_output.assertWaitFor("Successful initialization of hardware ", timeout=20)
         proc_output.assertWaitFor("Successful 'configure' of hardware ", timeout=10)
         proc_output.assertWaitFor("Successful 'activate' of hardware ", timeout=10)
