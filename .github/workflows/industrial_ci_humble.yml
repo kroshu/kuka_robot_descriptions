@@ -1,14 +1,18 @@
 name: ROS-Industrial CI humble
-run-name: ROS-Industrial CI - ${{ github.event_name }}
+run-name: ROS-Industrial CI humble - ${{ github.event_name }}
 
 on:
   push:
     branches:
       - humble
+      - feature/**
+      - fix/**
 
   pull_request:
     branches:
       - humble
+      - feature/**
+      - fix/**
 
   schedule:
     # Run every Monday at 1PM UTC
@@ -22,6 +26,7 @@ jobs:
         - ROS_REPO: ros
           BUILDER: colcon
           ROS_DISTRO: humble
+          BEFORE_RUN_TARGET_TEST: .ci_config/hooks/before_run_target_test.sh
     env:
       CCACHE_DIR: /github/home/.ccache # Directory for ccache (and how we enable ccache in industrial_ci)
       EVENT_NAME: ${{ github.event_name }}
@@ -31,20 +36,13 @@ jobs:
       PR_NUMBER: ${{ github.event.number }}
       ANALYZER_TOKEN: ${{ secrets.ANALYZER_TOKEN }}
       DEBUG_BASH: true
-      BEFORE_TEST_HOOK: ./after_build_hook.sh
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        if: github.event.schedule != ''
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
-          ref: humble
-      - name: Checkout humble branch for scheduled runs
-        if: github.event.schedule == ''
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
+      # This step will fetch/store the directory used by ccache before/after the ci run
       - uses: actions/cache@v4
         with:
           path: ${{ env.CCACHE_DIR }}
