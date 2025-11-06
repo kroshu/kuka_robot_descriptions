@@ -28,6 +28,7 @@ jobs:
         - ROS_REPO: ros
           BUILDER: colcon
           ROS_DISTRO: humble
+          BEFORE_RUN_TARGET_TEST: .ci_config/hooks/before_run_target_test.sh
     env:
       CCACHE_DIR: /github/home/.ccache # Directory for ccache (and how we enable ccache in industrial_ci)
       EVENT_NAME: ${{ github.event_name }}
@@ -48,5 +49,7 @@ jobs:
           path: ${{ env.CCACHE_DIR }}
           key: ccache-${{ matrix.env.ROS_DISTRO }}-${{ matrix.env.ROS_REPO }}
       # Run industrial_ci
+      - name: Make hook script executable
+        run: chmod +x .ci_config/hooks/before_run_target_test.sh
       - uses: 'kroshu/industrial_ci@master'
         env: ${{ matrix.env }}

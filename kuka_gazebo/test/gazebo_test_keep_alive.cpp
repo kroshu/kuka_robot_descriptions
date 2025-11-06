@@ -2,12 +2,12 @@
 #include <functional>
 #include <memory>
 #include <string>
-
 #include "rclcpp/rclcpp.hpp"
 #include "std_msgs/msg/string.hpp"
 
 using namespace std::chrono_literals;
 
+// simple publisher node, to keep the test file active while checking results
 class TestKeepAlive : public rclcpp::Node
 {
 public:

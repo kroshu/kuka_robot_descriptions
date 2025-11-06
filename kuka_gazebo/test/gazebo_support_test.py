@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 import os
 import unittest
 import launch_testing
@@ -13,6 +11,7 @@ from launch.substitutions import LaunchConfiguration
 from launch_testing.actions import ReadyToTest
 
 
+# Parametrized test for a robot
 @pytest.mark.launch_test
 @launch_testing.markers.keep_alive
 def generate_test_description():
@@ -20,7 +19,7 @@ def generate_test_description():
     robot_family_support = LaunchConfiguration("robot_family_support")
 
     launch_file_path = os.path.join(
-        get_package_share_directory("kuka_gazebo"), "launch", "gazebo.launch.py"
+        get_package_share_directory("kuka_gazebo"), "launch", "test_gazebo.launch.py"
     )
 
     ld = LaunchDescription(

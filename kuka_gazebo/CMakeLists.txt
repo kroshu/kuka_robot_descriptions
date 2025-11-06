@@ -11,6 +11,9 @@ find_package(moveit_ros_planning_interface REQUIRED)
 find_package(moveit_visual_tools REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
+find_package(ros2_control REQUIRED)
+find_package(ros2_controllers REQUIRED)
+find_package(controller_manager REQUIRED)
 
 include_directories(include)
 
@@ -35,7 +38,22 @@ install(
 )
 
 install(
-  PROGRAMS test/run_gazebo_tests.py
+  DIRECTORY config
+  DESTINATION share/${PROJECT_NAME}
+)
+
+install(
+  PROGRAMS test/gazebo_support_test.py
+  DESTINATION lib/${PROJECT_NAME}
+)
+
+install(FILES
+  ${CMAKE_CURRENT_SOURCE_DIR}/../README.md
+  DESTINATION share/${PROJECT_NAME}
+)
+
+install(
+  PROGRAMS launch/run_gazebo_tests.py
   DESTINATION lib/${PROJECT_NAME}
 )
 
@@ -56,8 +74,5 @@ if(BUILD_TESTING)
   add_launch_test(test/test_gazebo_robot_support.py)
 
 endif()
-
-
-
 
 ament_package()
