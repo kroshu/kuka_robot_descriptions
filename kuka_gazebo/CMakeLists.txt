@@ -38,11 +38,6 @@ install(
 )
 
 install(
-  DIRECTORY config
-  DESTINATION share/${PROJECT_NAME}
-)
-
-install(
   PROGRAMS test/gazebo_support_test.py
   DESTINATION lib/${PROJECT_NAME}
 )

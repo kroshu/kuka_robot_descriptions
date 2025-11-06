@@ -225,11 +225,11 @@ The tests for Gazebo-supported robots have been successfully integrated into the
 
 ### 1. After-Build Hook Phase
 
-Immediately after the build phase (but before the testing phase), the CI pipeline triggers the `after_build_hook.sh` script. This script launches `run_gazebo_tests.py`, which performs the following tasks:
+Immediately after the build phase (but before the testing phase), the CI pipeline triggers the `before_run_target_test.sh` script. This script launches `run_gazebo_tests.py`, which performs the following tasks:
 
 - **Reads robot names and families** from the `README.md` file to ensure all Gazebo-supported robots are included.
 - **Executes parameterized tests** using `gazebo_support_test.py`, a parametrized test script, which:
-  - Launches Gazebo in headless mode, launching the server and the ros gazebo bridge separately.
+  - Launches Gazebo in headless mode through test_gazebo.launch.py.
   - Checks whether the simulation successfully configures and activates:
     - Hardware interfaces
     - Joint State Broadcaster
@@ -263,11 +263,8 @@ graph TD
         B -->|executes| C[run_gazebo_tests.py]
         F[README.md] -->|reads robot, family| C
         C -->|executes test| D[gazebo_support_test.py]
-        K[bridge_config.yaml] -->|configures bridge| E
-        D -->|launch ros_gz_bridge| E[ros_gz_bridge.launch.py]
-        D -->|launch Gazebo server| I[gz_server.launch.py]
-        E -->|translate| L[headless Gazebo]
-        I -->|launches server| L
+        D -->|launch Gazebo server| I[test_gazebo.launch.py]
+        I -->|launches server| L[headless Gazebo]
         L -->|outputs to| D
         C -->|KILL| L
         D -->|returns result| C

@@ -49,8 +49,6 @@ jobs:
         with:
           path: ${{ env.CCACHE_DIR }}
           key: ccache-${{ matrix.env.ROS_DISTRO }}-${{ matrix.env.ROS_REPO }}
-      - name: Make hook script executable
-        run: chmod +x ./after_build_hook.sh
       # Run industrial_ci
       - uses: 'kroshu/industrial_ci@master'
         env: ${{ matrix.env }}
