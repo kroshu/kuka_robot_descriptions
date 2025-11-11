@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <xacro:macro name="dummy_rail_ext_axes_links" params="">
+    <!-- links -->
+    <link name="rail_link">
+      <visual>
+        <geometry>
+           <box size="2 0.2 0.2"/>
+        </geometry>
+        <xacro:material_kuka_black/>
+      </visual>
+    </link>
+  </xacro:macro>
+  <xacro:macro name="dummy_rail_ext_axes_joints" params="robot_base_link">
+    <!-- joints -->
+    <joint name="world-rail_link" type="fixed">
+      <parent link="world"/>
+      <child link="rail_link"/>
+      <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+    </joint>
+    <joint name="rail_joint" type="prismatic">
+      <parent link="rail_link"/>
+      <child link="${robot_base_link}"/>
+      <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+      <axis xyz="1 0 0"/>
+      <limit lower="-1" upper="1" effort="100.0" velocity="1.0"/>
+    </joint>
+  </xacro:macro>
+  <xacro:macro name="dummy_rail_ext_axes_ros2_control_joints" params="">
+    <!-- ros2 control joints -->
+    <joint name="rail_joint">
+      <command_interface name="position"/>
+      <state_interface name="position">
+        <param name="initial_value">0.0</param>
+      </state_interface>
+    </joint>
+  </xacro:macro>
+</robot>
