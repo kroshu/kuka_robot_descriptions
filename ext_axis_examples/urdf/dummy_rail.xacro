@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
-  <xacro:macro name="dummy_rail_ext_axes_links" params="">
+  <xacro:macro name="dummy_rail_links" params="">
     <!-- links -->
     <link name="rail_link">
       <visual>
@@ -11,7 +11,7 @@
       </visual>
     </link>
   </xacro:macro>
-  <xacro:macro name="dummy_rail_ext_axes_joints" params="robot_base_link">
+  <xacro:macro name="dummy_rail_joints" params="robot_base_link">
     <!-- joints -->
     <joint name="world-rail_link" type="fixed">
       <parent link="world"/>
@@ -26,7 +26,7 @@
       <limit lower="-1" upper="1" effort="100.0" velocity="1.0"/>
     </joint>
   </xacro:macro>
-  <xacro:macro name="dummy_rail_ext_axes_ros2_control_joints" params="">
+  <xacro:macro name="dummy_rail_ros2_control_joints" params="">
     <!-- ros2 control joints -->
     <joint name="rail_joint">
       <command_interface name="position"/>
@@ -34,5 +34,13 @@
         <param name="initial_value">0.0</param>
       </state_interface>
     </joint>
+  </xacro:macro>
+  <xacro::macro name="dummy_rail_srdf_adjacent_links" params="">
+    <!-- adjacent links -->
+    <disable_collisions link1="rail_link" link2="base_link" reason="Adjacent"/>
+  </xacro::macro>
+  <xacro:macro name="dummy_rail_srdf_joints" params="">
+    <!-- srdf joints TODO remove redundancy -->
+    <joint name="rail_joint" value="0"/>
   </xacro:macro>
 </robot>
