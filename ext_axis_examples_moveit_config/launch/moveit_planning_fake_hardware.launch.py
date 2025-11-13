@@ -31,22 +31,26 @@ def launch_setup(context, *args, **kwargs):
 
     moveit_config = (
         MoveItConfigsBuilder("ext_axis_examples")
-        .robot_description(file_path=get_package_share_directory("ext_axis_examples") +
-                           f"/urdf/{robot_model.perform(context)}.urdf.xacro"
+        .robot_description(
+            file_path=get_package_share_directory("ext_axis_examples")
+            + f"/urdf/{robot_model.perform(context)}.urdf.xacro"
         )
-        .robot_description_semantic(file_path=get_package_share_directory("ext_axis_examples_moveit_config") +
-                                    f"/srdf/{robot_model.perform(context)}.srdf.xacro"
+        .robot_description_semantic(
+            file_path=get_package_share_directory("ext_axis_examples_moveit_config")
+            + f"/srdf/{robot_model.perform(context)}.srdf.xacro"
         )
-        .robot_description_kinematics(file_path=get_package_share_directory("ext_axis_examples_moveit_config") +
-                                      "/config/kinematics.yaml")
-        .trajectory_execution(file_path=get_package_share_directory("ext_axis_examples_moveit_config") +
-                              f"/config/moveit_controllers_{robot_dof.perform(context)}_axis_{ext_axes_model.perform(context)}.yaml")
+        .robot_description_kinematics(
+            file_path=get_package_share_directory("ext_axis_examples_moveit_config")
+            + "/config/kinematics.yaml")
+        .trajectory_execution(
+            file_path=get_package_share_directory("ext_axis_examples_moveit_config")
+            + f"/config/moveit_controllers_{robot_dof.perform(context)}_axis_{ext_axes_model.perform(context)}.yaml")
         .planning_scene_monitor(
             publish_robot_description=True, publish_robot_description_semantic=True
         )
         .joint_limits(
-            file_path=get_package_share_directory("ext_axis_examples") +
-            f"/config/{robot_dof.perform(context)}_axis_{ext_axes_model.perform(context)}_joint_limits.yaml"
+            file_path=get_package_share_directory("ext_axis_examples")
+            + f"/config/{robot_dof.perform(context)}_axis_{ext_axes_model.perform(context)}_joint_limits.yaml"
         )
         .to_moveit_configs()
     )
@@ -79,7 +83,9 @@ def launch_setup(context, *args, **kwargs):
 
 def generate_launch_description():
     launch_arguments = []
-    launch_arguments.append(DeclareLaunchArgument("robot_model", default_value="kr10_r1100_2_with_dummy_rail"))
+    launch_arguments.append(
+        DeclareLaunchArgument("robot_model", default_value="kr10_r1100_2_with_dummy_rail")
+    )
     launch_arguments.append(DeclareLaunchArgument("ext_axes_model", default_value="dummy_rail"))
     launch_arguments.append(DeclareLaunchArgument("robot_dof", default_value="6"))
     return LaunchDescription(launch_arguments + [OpaqueFunction(function=launch_setup)])

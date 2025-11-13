@@ -5,7 +5,7 @@
     <link name="rail_link">
       <visual>
         <geometry>
-           <box size="2 0.2 0.2"/>
+          <box size="2 0.2 0.2"/>
         </geometry>
         <xacro:material_kuka_black/>
       </visual>

@@ -24,7 +24,11 @@ def generate_launch_description():
             PathJoinSubstitution([FindExecutable(name="xacro")]),
             " ",
             PathJoinSubstitution(
-                [FindPackageShare("ext_axis_examples"), "urdf", "kr10_r1100_2_with_dummy_rail.urdf.xacro"]
+                [
+                    FindPackageShare("ext_axis_examples"),
+                    "urdf",
+                    "kr10_r1100_2_with_dummy_rail.urdf.xacro",
+                ]
             ),
             " ",
             "mode:=mock",
@@ -36,7 +40,12 @@ def generate_launch_description():
 
     # RViz
     rviz_config_file = PathJoinSubstitution(
-        [FindPackageShare("ext_axis_examples"), "config", "rviz", "view_6_axis_dummy_rail_urdf.rviz"]
+        [
+            FindPackageShare("ext_axis_examples"),
+            "config",
+            "rviz",
+            "view_6_axis_dummy_rail_urdf.rviz"
+        ]
     )
     rviz_node = Node(
         package="rviz2",

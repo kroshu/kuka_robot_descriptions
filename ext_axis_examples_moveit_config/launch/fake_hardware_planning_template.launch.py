@@ -113,7 +113,9 @@ def launch_setup(context, *args, **kwargs):
 
 def generate_launch_description():
     launch_arguments = []
-    launch_arguments.append(DeclareLaunchArgument("robot_model", default_value="kr10_r1100_2_with_dummy_rail"))
+    launch_arguments.append(
+        DeclareLaunchArgument("robot_model", default_value="kr10_r1100_2_with_dummy_rail")
+    )
     launch_arguments.append(DeclareLaunchArgument("ext_axes_model", default_value="dummy_rail"))
     launch_arguments.append(DeclareLaunchArgument("robot_dof", default_value="6"))
     return LaunchDescription(launch_arguments + [OpaqueFunction(function=launch_setup)])

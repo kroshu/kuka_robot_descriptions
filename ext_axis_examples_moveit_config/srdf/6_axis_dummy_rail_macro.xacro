@@ -3,7 +3,6 @@
     This is a format for representing semantic information about the robot structure.
     A URDF file must exist for this robot as well, where the joints and the links that are referenced are defined
 -->
-
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
   <xacro:macro name="srdf_6_axis_dummy_rail" params="prefix">
     <xacro:include filename="$(find ext_axis_examples)/urdf/dummy_rail.xacro"/>

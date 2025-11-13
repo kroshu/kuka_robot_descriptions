@@ -8,4 +8,3 @@
   <xacro:include filename="$(find ext_axis_examples_moveit_config)/srdf/6_axis_dummy_rail_macro.xacro"/>
   <xacro:srdf_6_axis_dummy_rail prefix="$(arg prefix)"/>
 </robot>
-
