@@ -35,7 +35,7 @@ def launch_setup(context, *args, **kwargs):
                            f"/urdf/{robot_model.perform(context)}.urdf.xacro"
         )
         .robot_description_semantic(file_path=get_package_share_directory("ext_axis_examples_moveit_config") +
-                                    f"/srdf/{robot_dof.perform(context)}_axis_{ext_axes_model.perform(context)}.srdf"
+                                    f"/srdf/{robot_model.perform(context)}.srdf.xacro"
         )
         .robot_description_kinematics(file_path=get_package_share_directory("ext_axis_examples_moveit_config") +
                                       "/config/kinematics.yaml")

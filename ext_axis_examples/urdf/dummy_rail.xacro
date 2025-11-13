@@ -35,10 +35,10 @@
       </state_interface>
     </joint>
   </xacro:macro>
-  <xacro::macro name="dummy_rail_srdf_adjacent_links" params="">
+  <xacro:macro name="dummy_rail_srdf_adjacent_links" params="">
     <!-- adjacent links -->
     <disable_collisions link1="rail_link" link2="base_link" reason="Adjacent"/>
-  </xacro::macro>
+  </xacro:macro>
   <xacro:macro name="dummy_rail_srdf_joints" params="">
     <!-- srdf joints TODO remove redundancy -->
     <joint name="rail_joint" value="0"/>
