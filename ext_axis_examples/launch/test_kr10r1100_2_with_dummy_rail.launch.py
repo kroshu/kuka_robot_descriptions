@@ -44,7 +44,7 @@ def generate_launch_description():
             FindPackageShare("ext_axis_examples"),
             "config",
             "rviz",
-            "view_6_axis_dummy_rail_urdf.rviz"
+            "view_6_axis_dummy_rail_urdf.rviz",
         ]
     )
     rviz_node = Node(

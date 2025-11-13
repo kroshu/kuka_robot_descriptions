@@ -29,7 +29,8 @@ def launch_setup(context, *args, **kwargs):
 
     rviz_config_file = (
         get_package_share_directory("ext_axis_examples")
-        + f"/config/rviz/planning_{robot_dof.perform(context)}_axis_{ext_axes_model.perform(context)}.rviz"
+        + "/config/rviz/planning_"
+        + f"{robot_dof.perform(context)}_axis_{ext_axes_model.perform(context)}.rviz"
     )
 
     # Get URDF via xacro
@@ -54,7 +55,8 @@ def launch_setup(context, *args, **kwargs):
 
     controller_config = (
         get_package_share_directory("ext_axis_examples")
-        + f"/config/fake_hardware_config_{robot_dof.perform(context)}_axis_{ext_axes_model.perform(context)}.yaml"
+        + "/config/fake_hardware_config_"
+        + f"{robot_dof.perform(context)}_axis_{ext_axes_model.perform(context)}.yaml"
     )
 
     controller_manager_node = "/controller_manager"

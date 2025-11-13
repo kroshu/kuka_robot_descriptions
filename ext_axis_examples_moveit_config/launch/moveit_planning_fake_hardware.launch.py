@@ -41,16 +41,20 @@ def launch_setup(context, *args, **kwargs):
         )
         .robot_description_kinematics(
             file_path=get_package_share_directory("ext_axis_examples_moveit_config")
-            + "/config/kinematics.yaml")
+            + "/config/kinematics.yaml"
+        )
         .trajectory_execution(
             file_path=get_package_share_directory("ext_axis_examples_moveit_config")
-            + f"/config/moveit_controllers_{robot_dof.perform(context)}_axis_{ext_axes_model.perform(context)}.yaml")
+            + "/config/moveit_controllers_"
+            + f"{robot_dof.perform(context)}_axis_{ext_axes_model.perform(context)}.yaml"
+        )
         .planning_scene_monitor(
             publish_robot_description=True, publish_robot_description_semantic=True
         )
         .joint_limits(
             file_path=get_package_share_directory("ext_axis_examples")
-            + f"/config/{robot_dof.perform(context)}_axis_{ext_axes_model.perform(context)}_joint_limits.yaml"
+            + f"/config/{robot_dof.perform(context)}"
+            + f"_axis_{ext_axes_model.perform(context)}_joint_limits.yaml"
         )
         .to_moveit_configs()
     )
@@ -66,7 +70,7 @@ def launch_setup(context, *args, **kwargs):
         PythonLaunchDescriptionSource(
             [
                 get_package_share_directory("ext_axis_examples_moveit_config"),
-                f"/launch/fake_hardware_planning_template.launch.py",
+                "/launch/fake_hardware_planning_template.launch.py",
             ]
         ),
         launch_arguments={
