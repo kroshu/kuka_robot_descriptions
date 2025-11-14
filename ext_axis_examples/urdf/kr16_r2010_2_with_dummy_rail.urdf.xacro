@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="kr16_r2010_2_with_dummy_rail">
+  <!-- Import urdf file  -->
+  <xacro:include filename="$(find kuka_cybertech_support)/urdf/kr16_r2010_2_macro.xacro"/>
+  <xacro:include filename="$(find kuka_cybertech_support)/urdf/kr_cybertech_ros2_control_macro.xacro"/>
+  <xacro:include filename="$(find ext_axis_examples)/urdf/dummy_rail.xacro"/>
+  <!-- Read additional arguments  -->
+  <xacro:arg name="driver_version" default="rsi_only"/>
+  <xacro:arg name="mode" default="hardware"/>
+  <xacro:arg name="use_gpio" default="false"/>
+  <xacro:arg name="roundtrip_time" default="0"/>
+  <xacro:arg name="client_ip" default="0.0.0.0"/>
+  <xacro:arg name="client_port" default="59152"/>
+  <xacro:arg name="controller_ip" default="0.0.0.0"/>
+  <xacro:arg name="verify_robot_model" default="true"/>
+  <xacro:arg name="prefix" default=""/>
+  <xacro:arg name="x" default="0"/>
+  <xacro:arg name="y" default="0"/>
+  <xacro:arg name="z" default="0"/>
+  <xacro:arg name="roll" default="0"/>
+  <xacro:arg name="pitch" default="0"/>
+  <xacro:arg name="yaw" default="0"/>
+  <xacro:kuka_cybertech_ros2_control name="$(arg prefix)kr16_r2010_2_with_dummy_rail" driver_version="$(arg driver_version)" client_ip="$(arg client_ip)" client_port="$(arg client_port)" controller_ip="$(arg controller_ip)" prefix="$(arg prefix)" mode="$(arg mode)" use_gpio="$(arg use_gpio)" roundtrip_time="$(arg roundtrip_time)" verify_robot_model="$(arg verify_robot_model)" use_ext_axes="true">
+    <ext_axes_ros2_control_joints>
+      <xacro:dummy_rail_ros2_control_joints/>
+    </ext_axes_ros2_control_joints>
+  </xacro:kuka_cybertech_ros2_control>
+  <xacro:kuka_kr16_r2010_2_robot prefix="$(arg prefix)" package_name="kuka_cybertech_support" use_ext_axes="true">
+    <origin xyz="$(arg x) $(arg y) $(arg z)" rpy="$(arg roll) $(arg pitch) $(arg yaw)"/>
+    <ext_axes_links>
+      <xacro:dummy_rail_links/>
+    </ext_axes_links>
+    <ext_axes_joints>
+      <xacro:dummy_rail_joints robot_base_link="$(arg prefix)base_link"/>
+    </ext_axes_joints>
+  </xacro:kuka_kr16_r2010_2_robot>
+</robot>
