@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <xacro:include filename="$(find kuka_resources)/urdf/common_materials.xacro"/>
   <xacro:macro name="dummy_rail_links" params="">
     <!-- links -->
     <link name="rail_link">

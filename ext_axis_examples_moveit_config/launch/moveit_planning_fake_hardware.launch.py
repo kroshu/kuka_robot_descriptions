@@ -53,8 +53,7 @@ def launch_setup(context, *args, **kwargs):
         )
         .joint_limits(
             file_path=get_package_share_directory("ext_axis_examples")
-            + f"/config/{robot_dof.perform(context)}"
-            + f"_axis_{ext_axes_model.perform(context)}_joint_limits.yaml"
+            + f"/config/{robot_model.perform(context)}_joint_limits.yaml"
         )
         .to_moveit_configs()
     )

@@ -12,6 +12,9 @@
   <buildtool_depend>ament_cmake</buildtool_depend>
   <depend>urdf</depend>
   <depend>xacro</depend>
+  <exec_depend>kuka_resources</exec_depend>
+  <exec_depend>kuka_agilus_support</exec_depend>
+  <exec_depend>kuka_cybertech_support</exec_depend>
   <export>
     <architecture_independent/>
     <build_type>ament_cmake</build_type>
