@@ -7,7 +7,6 @@ endif()
 
 # find dependencies
 find_package(ament_cmake REQUIRED)
-find_package(ament_cmake REQUIRED)
 find_package(moveit_ros_planning_interface REQUIRED)
 find_package(moveit_visual_tools REQUIRED)
 find_package(rclcpp REQUIRED)
@@ -65,12 +64,12 @@ install(TARGETS
   DESTINATION lib/${PROJECT_NAME})
 
 #Testing
-if(BUILD_TESTING)
+set(GAZEBO_TEST_ENV "$ENV{GAZEBO_TEST}")
+if(BUILD_TESTING AND (GAZEBO_TEST_ENV STREQUAL "true"))
+  message(STATUS "Gazebo test environment variable detected, enabling gazebo tests")
   find_package(launch_testing_ament_cmake REQUIRED)
-
   enable_testing()
   add_launch_test(test/test_gazebo_robot_support.py)
-
 endif()
 
 ament_package()
