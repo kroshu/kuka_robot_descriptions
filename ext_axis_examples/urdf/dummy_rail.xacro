@@ -12,12 +12,12 @@
       </visual>
     </link>
   </xacro:macro>
-  <xacro:macro name="dummy_rail_joints" params="robot_base_link">
+  <xacro:macro name="dummy_rail_joints" params="robot_base_link *origin">
     <!-- joints -->
     <joint name="world-rail_link" type="fixed">
       <parent link="world"/>
       <child link="rail_link"/>
-      <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+      <xacro:insert_block name="origin"/>
     </joint>
     <joint name="rail_joint" type="prismatic">
       <parent link="rail_link"/>
