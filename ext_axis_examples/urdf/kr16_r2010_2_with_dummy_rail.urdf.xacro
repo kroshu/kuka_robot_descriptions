@@ -25,14 +25,13 @@
       <xacro:dummy_rail_ros2_control_joints/>
     </ext_axes_ros2_control_joints>
   </xacro:kuka_cybertech_ros2_control>
-  <xacro:kuka_kr16_r2010_2_robot prefix="$(arg prefix)" package_name="kuka_cybertech_support">
-    <ext_axes_links>
-      <xacro:dummy_rail_links/>
-    </ext_axes_links>
-    <world-base_link_joints>
-      <xacro:dummy_rail_joints robot_base_link="$(arg prefix)base_link">
-        <origin xyz="$(arg x) $(arg y) $(arg z)" rpy="$(arg roll) $(arg pitch) $(arg yaw)"/>
-      </xacro:dummy_rail_joints>
-    </world-base_link_joints>
-  </xacro:kuka_kr16_r2010_2_robot>
+  <!-- world link -->
+  <link name="world"/>
+  <!-- dummy rail links -->
+  <xacro:dummy_rail_links/>
+  <xacro:kuka_kr16_r2010_2_robot prefix="$(arg prefix)" package_name="kuka_cybertech_support"/>
+  <!-- dummy rail joints -->
+  <xacro:dummy_rail_joints robot_base_link="$(arg prefix)base_link">
+    <origin xyz="$(arg x) $(arg y) $(arg z)" rpy="$(arg roll) $(arg pitch) $(arg yaw)"/>
+  </xacro:dummy_rail_joints>
 </robot>

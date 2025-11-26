@@ -3,10 +3,8 @@
   <!-- include helper xacros -->
   <xacro:include filename="$(find kuka_resources)/urdf/common_constants.xacro"/>
   <xacro:include filename="$(find kuka_resources)/urdf/common_materials.xacro"/>
-  <xacro:macro name="kuka_kr6_r700_sixx_robot" params="prefix package_name **ext_axes_links **world-base_link_joints">
+  <xacro:macro name="kuka_kr6_r700_sixx_robot" params="prefix package_name">
     <!-- links - main serial chain -->
-    <link name="world"/>
-    <xacro:insert_block name="ext_axes_links"/>
     <link name="${prefix}base_link">
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0"/>
@@ -114,7 +112,6 @@
     </link>
     <!-- Following REP199, this frame shall be use to attach EEF or other equipment -->
     <link name="${prefix}flange"/>
-    <xacro:insert_block name="world-base_link_joints"/>
     <joint name="${prefix}joint_1" type="revolute">
       <origin xyz="0 0 0.4" rpy="0 0 0"/>
       <parent link="${prefix}base_link"/>

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="kr16_r1610_2">
-  <xacro:macro name="kuka_kr16_r1610_2_robot" params="prefix package_name **ext_axes_links **world-base_link_joints">
-    <xacro:insert_block name="ext_axes_links"/>
+  <xacro:macro name="kuka_kr16_r1610_2_robot" params="prefix package_name">
     <link name="${prefix}base"/>
     <link name="${prefix}base_link">
       <collision>
@@ -138,8 +137,6 @@
       </visual>
     </link>
     <link name="${prefix}tool0"/>
-    <link name="world"/>
-    <xacro:insert_block name="world-base_link_joints"/>
     <joint name="${prefix}base_link-base" type="fixed">
       <child link="${prefix}base"/>
       <parent link="${prefix}base_link"/>
