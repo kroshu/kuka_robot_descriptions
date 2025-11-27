@@ -29,7 +29,6 @@ jobs:
           BUILDER: colcon
           ROS_DISTRO: jazzy
           BEFORE_RUN_TARGET_TEST: .ci_config/hooks/before_run_target_test.sh
-          GAZEBO_TEST: true
     env:
       CCACHE_DIR: /github/home/.ccache # Directory for ccache (and how we enable ccache in industrial_ci)
       EVENT_NAME: ${{ github.event_name }}

@@ -64,8 +64,7 @@ install(TARGETS
   DESTINATION lib/${PROJECT_NAME})
 
 #Testing
-set(GAZEBO_TEST_ENV "$ENV{GAZEBO_TEST}")
-if(BUILD_TESTING AND (GAZEBO_TEST_ENV STREQUAL "true"))
+if(BUILD_TESTING AND (DEFINED ENV{GITHUB_ACTIONS}))
   message(STATUS "Gazebo test environment variable detected, enabling gazebo tests")
   find_package(launch_testing_ament_cmake REQUIRED)
   enable_testing()
