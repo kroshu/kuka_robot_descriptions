@@ -436,6 +436,10 @@ KukaMockHardwareInterface::export_command_interfaces()
     &receive_multiplier_);
   command_interfaces.emplace_back(
     hardware_interface::CONFIG_PREFIX, hardware_interface::SEND_PERIOD, &send_period_ms_);
+  command_interfaces.emplace_back(
+    hardware_interface::CONFIG_PREFIX, hardware_interface::DRIVE_STATE, &drive_state_);
+  command_interfaces.emplace_back(
+    hardware_interface::CONFIG_PREFIX, hardware_interface::CYCLE_TIME, &cycle_time_ms_);
 
   return command_interfaces;
 }
