@@ -64,7 +64,10 @@ install(TARGETS
   DESTINATION lib/${PROJECT_NAME})
 
 #Testing
-if(DEFINED ENV{GITHUB_ACTIONS})
+message(STATUS "GITHUB_ACTIONS in CMake: $ENV{GITHUB_ACTIONS}")
+option(GITHUB_CI_TESTS "Enable tests for GitHub CI" OFF)
+
+if(GITHUB_CI_TESTS)
   message(STATUS "Gazebo test environment variable detected, enabling gazebo tests")
   find_package(launch_testing_ament_cmake REQUIRED)
   enable_testing()
