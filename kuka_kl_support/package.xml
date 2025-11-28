@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <package format="3">
-  <name>ext_axis_examples</name>
-  <version>0.0.1</version>
-  <description>Examples for external axis support.</description>
+  <name>kuka_kl_support</name>
+  <version>1.0.0</version>
+  <description>Robot models for the KUKA KL family.</description>
   <author email="kovacsge.work@gmail.com">Gergely Kovacs</author>
   <maintainer email="svastits1@gmail.com">Aron Svastits</maintainer>
   <maintainer email="kovacsge.work@gmail.com">Gergely Kovacs</maintainer>
@@ -12,11 +12,9 @@
   <buildtool_depend>ament_cmake</buildtool_depend>
   <depend>urdf</depend>
   <depend>xacro</depend>
-  <exec_depend>kuka_resources</exec_depend>
-  <exec_depend>kuka_agilus_support</exec_depend>
-  <exec_depend>kuka_cybertech_support</exec_depend>
   <export>
     <architecture_independent/>
     <build_type>ament_cmake</build_type>
   </export>
 </package>
+

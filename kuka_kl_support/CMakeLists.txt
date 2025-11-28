@@ -1,12 +1,12 @@
 cmake_minimum_required(VERSION 3.5)
 
-project(ext_axis_examples_moveit_config)
+project(kuka_kl_support)
 
 find_package(ament_cmake REQUIRED)
 find_package(urdf REQUIRED)
 find_package(xacro REQUIRED)
 
-install(DIRECTORY config launch srdf
+install(DIRECTORY config meshes srdf urdf
   DESTINATION share/${PROJECT_NAME})
 
 ament_package()

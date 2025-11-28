@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <xacro:macro name="kl100_links" params="">
+    <!-- links -->
+    <link name="rail_base_link">
+      <visual>
+        <geometry>
+          <mesh filename="package://kuka_kl_support/meshes/kl100/visual/rail_base_link.dae"/>
+        </geometry>
+      </visual>
+    </link>
+    <link name="rail_moving_link" >
+      <visual>
+        <geometry>
+          <mesh filename="package://kuka_kl_support/meshes/kl100/visual/rail_moving_link.dae"/>
+        </geometry>
+      </visual>
+    </link>
+  </xacro:macro>
+  <xacro:macro name="kl100_joints" params="robot_base_link *origin">
+    <!-- joints -->
+    <joint name="world-rail_base" type="fixed">
+      <parent link="world"/>
+      <child link="rail_base_link"/>
+      <xacro:insert_block name="origin"/>
+    </joint>
+    <joint name="rail_joint" type="prismatic">
+      <parent link="rail_base_link"/>
+      <child link="rail_moving_link"/>
+      <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+      <axis xyz="1 0 0"/>
+      <limit lower="-1" upper="1" effort="100.0" velocity="1.0"/>
+    </joint>
+    <joint name="rail-robot_base" type="fixed">
+      <parent link="rail_moving_link"/>
+      <child link="${robot_base_link}"/>
+      <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+    </joint>
+  </xacro:macro>
+</robot>
