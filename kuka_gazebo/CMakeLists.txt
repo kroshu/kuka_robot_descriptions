@@ -7,14 +7,10 @@ endif()
 
 # find dependencies
 find_package(ament_cmake REQUIRED)
-find_package(ament_cmake REQUIRED)
 find_package(moveit_ros_planning_interface REQUIRED)
 find_package(moveit_visual_tools REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
-find_package(ros2_control REQUIRED)
-find_package(ros2_controllers REQUIRED)
-find_package(controller_manager REQUIRED)
 
 include_directories(include)
 
@@ -63,12 +59,14 @@ install(TARGETS
   DESTINATION lib/${PROJECT_NAME})
 
 #Testing
-if(BUILD_TESTING)
-  find_package(launch_testing_ament_cmake REQUIRED)
+message(STATUS "GITHUB_ACTIONS in CMake: $ENV{GITHUB_ACTIONS}")
+option(GITHUB_CI_TESTS "Enable tests for GitHub CI" OFF)
 
+if(GITHUB_CI_TESTS)
+  message(STATUS "Gazebo test environment variable detected, enabling gazebo tests")
+  find_package(launch_testing_ament_cmake REQUIRED)
   enable_testing()
   add_launch_test(test/test_gazebo_robot_support.py)
-
 endif()
 
 ament_package()
