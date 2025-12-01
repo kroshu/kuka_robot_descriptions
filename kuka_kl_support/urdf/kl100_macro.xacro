@@ -9,7 +9,7 @@
         </geometry>
       </visual>
     </link>
-    <link name="rail_moving_link" >
+    <link name="rail_moving_link">
       <visual>
         <geometry>
           <mesh filename="package://kuka_kl_support/meshes/kl100/visual/rail_moving_link.dae"/>
