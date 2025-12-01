@@ -12,8 +12,6 @@
   <url type="bugtracker">https://github.com/kroshu/kuka_robot_descriptions/issues</url>
   <url type="repository">https://github.com/kroshu/kuka_robot_descriptions</url>
   <buildtool_depend>ament_cmake</buildtool_depend>
-  <exec_depend>ext_axis_examples</exec_depend>
-  <exec_depend>ext_axis_examples_moveit_config</exec_depend>
   <exec_depend>kuka_agilus_support</exec_depend>
   <exec_depend>kuka_cybertech_support</exec_depend>
   <exec_depend>kuka_fortec_support</exec_depend>
