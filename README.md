@@ -97,8 +97,8 @@ Example of attaching an end effector (with link name `eef_base_link`) to the `fl
 The robots marked in [this section](#supported-features) with external axis support have their URDFs prepared for this feature:
 - the world link and the world-base_link joint (and essentially the origin block) are moved to the URDF xacro from the macro
   - this creates the possibility to:
-    - easily modify the link chain between world and the robot base - so e.g. add external axes 
-    - align to a multi-robot scenario (one world link for all) 
+    - easily modify the link chain between world and the robot base - so e.g. add external axes
+    - align to a multi-robot scenario (one world link for all)
 - an additional parameter `ext_axes_ros2_control_joints` is introduced for the `ros2_control` macro of the robot family
   - it's needed for inserting the additional joints from the external axes to the right section of the macro
   - this indicates the need of an empty block in the case without any external axes, too
