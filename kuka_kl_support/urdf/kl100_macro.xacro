@@ -8,6 +8,11 @@
           <mesh filename="package://kuka_kl_support/meshes/kl100/visual/rail_base_link.dae"/>
         </geometry>
       </visual>
+      <collision>
+        <geometry>
+          <mesh filename="package://kuka_kl_support/meshes/kl100/collision/rail_base_link.stl"/>
+        </geometry>
+      </collision>
     </link>
     <link name="rail_moving_link">
       <visual>
@@ -15,6 +20,11 @@
           <mesh filename="package://kuka_kl_support/meshes/kl100/visual/rail_moving_link.dae"/>
         </geometry>
       </visual>
+      <collision>
+        <geometry>
+          <mesh filename="package://kuka_kl_support/meshes/kl100/collision/rail_moving_link.stl"/>
+        </geometry>
+      </collision>
     </link>
   </xacro:macro>
   <xacro:macro name="kl100_joints" params="robot_base_link *origin">
