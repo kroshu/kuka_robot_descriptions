@@ -363,6 +363,24 @@ std::vector<hardware_interface::StateInterface> KukaMockHardwareInterface::expor
     &robot_state_.tracking_performance_);
   state_interfaces.emplace_back(
     hardware_interface::STATE_PREFIX, hardware_interface::SERVER_STATE, &server_state_);
+  state_interfaces.emplace_back(
+    hardware_interface::STATE_PREFIX, hardware_interface::CONTROL_MODE, 
+    &control_mode_state_);
+  state_interfaces.emplace_back(
+    hardware_interface::STATE_PREFIX, hardware_interface::CYCLE_TIME, 
+    &cycle_time_state_);
+  state_interfaces.emplace_back(
+    hardware_interface::STATE_PREFIX, hardware_interface::EMERGENCY_STOP, 
+    &emergency_stop_);
+  state_interfaces.emplace_back(
+    hardware_interface::STATE_PREFIX, hardware_interface::GUARD_STOP, 
+    &guard_stop_);
+  state_interfaces.emplace_back(
+    hardware_interface::STATE_PREFIX, hardware_interface::IN_MOTION, 
+    &in_motion_);
+  state_interfaces.emplace_back(
+    hardware_interface::STATE_PREFIX, hardware_interface::MOTION_POSSIBLE, 
+    &motion_possible_);        
 
   return state_interfaces;
 }
