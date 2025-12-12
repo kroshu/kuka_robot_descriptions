@@ -131,6 +131,8 @@ protected:
   double guard_stop_;
   double in_motion_;
   double motion_possible_;
+  double operation_mode_;
+  double robot_stopped_;
 
   // KUKA-specific parameters
   std::chrono::nanoseconds cycle_time_nano_;

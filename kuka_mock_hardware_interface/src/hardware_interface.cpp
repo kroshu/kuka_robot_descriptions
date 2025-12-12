@@ -370,6 +370,9 @@ std::vector<hardware_interface::StateInterface> KukaMockHardwareInterface::expor
     hardware_interface::STATE_PREFIX, hardware_interface::CYCLE_TIME, 
     &cycle_time_state_);
   state_interfaces.emplace_back(
+    hardware_interface::STATE_PREFIX, hardware_interface::DRIVES_POWERED, 
+    &drives_powered_);
+  state_interfaces.emplace_back(
     hardware_interface::STATE_PREFIX, hardware_interface::EMERGENCY_STOP, 
     &emergency_stop_);
   state_interfaces.emplace_back(
@@ -380,7 +383,13 @@ std::vector<hardware_interface::StateInterface> KukaMockHardwareInterface::expor
     &in_motion_);
   state_interfaces.emplace_back(
     hardware_interface::STATE_PREFIX, hardware_interface::MOTION_POSSIBLE, 
-    &motion_possible_);        
+    &motion_possible_);
+  state_interfaces.emplace_back(
+    hardware_interface::STATE_PREFIX, hardware_interface::OPERATION_MODE, 
+    &operation_mode_);       
+  state_interfaces.emplace_back(
+    hardware_interface::STATE_PREFIX, hardware_interface::ROBOT_STOPPED, 
+    &robot_stopped_);    
 
   return state_interfaces;
 }
