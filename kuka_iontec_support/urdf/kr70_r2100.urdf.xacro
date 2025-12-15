@@ -10,6 +10,7 @@
   <xacro:arg name="roundtrip_time" default="0"/>
   <xacro:arg name="client_ip" default="0.0.0.0"/>
   <xacro:arg name="client_port" default="59152"/>
+  <xacro:arg name="mxa_client_port" default="1337"/>
   <xacro:arg name="controller_ip" default="0.0.0.0"/>
   <xacro:arg name="verify_robot_model" default="true"/>
   <xacro:arg name="prefix" default=""/>

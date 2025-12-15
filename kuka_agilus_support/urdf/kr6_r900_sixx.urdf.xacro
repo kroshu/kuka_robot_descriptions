@@ -10,6 +10,7 @@
   <xacro:arg name="roundtrip_time" default="0"/>
   <xacro:arg name="client_ip" default="0.0.0.0"/>
   <xacro:arg name="client_port" default="59152"/>
+  <xacro:arg name="mxa_client_port" default="1337"/>
   <xacro:arg name="controller_ip" default="0.0.0.0"/>
   <xacro:arg name="verify_robot_model" default="true"/>
   <xacro:arg name="prefix" default=""/>
@@ -19,7 +20,7 @@
   <xacro:arg name="roll" default="0"/>
   <xacro:arg name="pitch" default="0"/>
   <xacro:arg name="yaw" default="0"/>
-  <xacro:kuka_agilus_ros2_control name="$(arg prefix)kr6_r900_sixx" driver_version="$(arg driver_version)" client_ip="$(arg client_ip)" client_port="$(arg client_port)" controller_ip="$(arg controller_ip)" prefix="$(arg prefix)" mode="$(arg mode)" use_gpio="$(arg use_gpio)" roundtrip_time="$(arg roundtrip_time)" verify_robot_model="$(arg verify_robot_model)"/>
+  <xacro:kuka_agilus_ros2_control name="$(arg prefix)kr6_r900_sixx" driver_version="$(arg driver_version)" client_ip="$(arg client_ip)" client_port="$(arg client_port)" mxa_client_port="$(arg mxa_client_port)" controller_ip="$(arg controller_ip)" prefix="$(arg prefix)" mode="$(arg mode)" use_gpio="$(arg use_gpio)" roundtrip_time="$(arg roundtrip_time)" verify_robot_model="$(arg verify_robot_model)"/>
   <xacro:kuka_kr6_r900_sixx_robot prefix="$(arg prefix)" package_name="kuka_agilus_support">
     <origin xyz="$(arg x) $(arg y) $(arg z)" rpy="$(arg roll) $(arg pitch) $(arg yaw)"/>
   </xacro:kuka_kr6_r900_sixx_robot>
