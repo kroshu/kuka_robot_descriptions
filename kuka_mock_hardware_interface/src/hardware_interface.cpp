@@ -364,32 +364,23 @@ std::vector<hardware_interface::StateInterface> KukaMockHardwareInterface::expor
   state_interfaces.emplace_back(
     hardware_interface::STATE_PREFIX, hardware_interface::SERVER_STATE, &server_state_);
   state_interfaces.emplace_back(
-    hardware_interface::STATE_PREFIX, hardware_interface::CONTROL_MODE, 
-    &control_mode_state_);
+    hardware_interface::STATE_PREFIX, hardware_interface::CONTROL_MODE, &control_mode_state_);
   state_interfaces.emplace_back(
-    hardware_interface::STATE_PREFIX, hardware_interface::CYCLE_TIME, 
-    &cycle_time_state_);
+    hardware_interface::STATE_PREFIX, hardware_interface::CYCLE_TIME, &cycle_time_state_);
   state_interfaces.emplace_back(
-    hardware_interface::STATE_PREFIX, hardware_interface::DRIVES_POWERED, 
-    &drives_powered_);
+    hardware_interface::STATE_PREFIX, hardware_interface::DRIVES_POWERED, &drives_powered_);
   state_interfaces.emplace_back(
-    hardware_interface::STATE_PREFIX, hardware_interface::EMERGENCY_STOP, 
-    &emergency_stop_);
+    hardware_interface::STATE_PREFIX, hardware_interface::EMERGENCY_STOP, &emergency_stop_);
   state_interfaces.emplace_back(
-    hardware_interface::STATE_PREFIX, hardware_interface::GUARD_STOP, 
-    &guard_stop_);
+    hardware_interface::STATE_PREFIX, hardware_interface::GUARD_STOP, &guard_stop_);
   state_interfaces.emplace_back(
-    hardware_interface::STATE_PREFIX, hardware_interface::IN_MOTION, 
-    &in_motion_);
+    hardware_interface::STATE_PREFIX, hardware_interface::IN_MOTION, &in_motion_);
   state_interfaces.emplace_back(
-    hardware_interface::STATE_PREFIX, hardware_interface::MOTION_POSSIBLE, 
-    &motion_possible_);
+    hardware_interface::STATE_PREFIX, hardware_interface::MOTION_POSSIBLE, &motion_possible_);
   state_interfaces.emplace_back(
-    hardware_interface::STATE_PREFIX, hardware_interface::OPERATION_MODE, 
-    &operation_mode_);       
+    hardware_interface::STATE_PREFIX, hardware_interface::OPERATION_MODE, &operation_mode_);
   state_interfaces.emplace_back(
-    hardware_interface::STATE_PREFIX, hardware_interface::ROBOT_STOPPED, 
-    &robot_stopped_);    
+    hardware_interface::STATE_PREFIX, hardware_interface::ROBOT_STOPPED, &robot_stopped_);
 
   return state_interfaces;
 }
