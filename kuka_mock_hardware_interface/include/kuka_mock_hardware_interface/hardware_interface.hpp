@@ -116,12 +116,24 @@ protected:
 
   RobotState robot_state_;
 
+  // Command interfaces
   double control_mode_ = 0;  // default to undefined
   double receive_multiplier_ = 1;
   double send_period_ms_ = 10;
   double cycle_time_ms_ = 4;
+
+  // State interfaces
   double drive_state_ = 0;
   double server_state_;
+  double control_mode_state_;
+  double cycle_time_state_;
+  double drives_powered_;
+  double emergency_stop_;
+  double guard_stop_;
+  double in_motion_;
+  double motion_possible_;
+  double operation_mode_;
+  double robot_stopped_;
 
   // KUKA-specific parameters
   std::chrono::nanoseconds cycle_time_nano_;
