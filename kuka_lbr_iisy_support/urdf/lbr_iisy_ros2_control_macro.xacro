@@ -76,19 +76,11 @@
       </joint>
       <joint name="${prefix}joint_2">
         <command_interface name="position"/>
-<<<<<<< HEAD
-        <xacro:unless value="${mode == 'gazebo'}">
-          <command_interface name="stiffness"/>
-          <command_interface name="damping"/>
-          <command_interface name="effort"/>
-        </xacro:unless>
-=======
         <xacro:if value="${driver_version == 'eac' and mode != 'gazebo'}">
           <command_interface name="stiffness"/>
           <command_interface name="damping"/>
           <command_interface name="effort"/>
         </xacro:if>
->>>>>>> 5ff538e (Add RSI option for LBR iisy robots (iiQKA.OS2) (#142))
         <state_interface name="position">
           <param name="initial_value">-1.5708</param>
         </state_interface>
