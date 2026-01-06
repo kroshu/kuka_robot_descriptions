@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
-  <xacro:macro name="kuka_lbr_iisy_ros2_control" params="name driver_version prefix client_ip client_port controller_ip use_gpio mode qos_config_file roundtrip_time verify_robot_model">
+  <xacro:macro name="kuka_lbr_iisy_ros2_control" params="name driver_version prefix client_ip client_port mxa_client_port controller_ip use_gpio mode qos_config_file roundtrip_time verify_robot_model">
     <!-- gazebo -->
     <xacro:if value="${mode == 'gazebo'}">
       <xacro:include filename="$(find kuka_gazebo)/gazebo/kuka_gazebo.xacro"/>
