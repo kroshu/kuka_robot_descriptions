@@ -4,19 +4,22 @@
   <xacro:include filename="$(find kuka_lbr_iisy_support)/urdf/lbr_iisy15_r930_macro.xacro"/>
   <xacro:include filename="$(find kuka_lbr_iisy_support)/urdf/lbr_iisy_ros2_control_macro.xacro"/>
   <!-- Read additional arguments  -->
-  <xacro:arg name="prefix" default=""/>
-  <xacro:arg name="controller_ip" default="0.0.0.0"/>
-  <xacro:arg name="client_ip" default="0.0.0.0"/>
+  <xacro:arg name="driver_version" default="rsi_only"/>
   <xacro:arg name="mode" default="hardware"/>
+  <xacro:arg name="use_gpio" default="false"/>
   <xacro:arg name="roundtrip_time" default="0"/>
-  <xacro:arg name="qos_config_file" default=""/>
+  <xacro:arg name="client_ip" default="0.0.0.0"/>
+  <xacro:arg name="client_port" default="59152"/>
+  <xacro:arg name="controller_ip" default="0.0.0.0"/>
+  <xacro:arg name="verify_robot_model" default="true"/>
+  <xacro:arg name="prefix" default=""/>
   <xacro:arg name="x" default="0"/>
   <xacro:arg name="y" default="0"/>
   <xacro:arg name="z" default="0"/>
   <xacro:arg name="roll" default="0"/>
   <xacro:arg name="pitch" default="0"/>
   <xacro:arg name="yaw" default="0"/>
-  <xacro:kuka_lbr_iisy_ros2_control name="$(arg prefix)lbr_iisy15_r930" prefix="$(arg prefix)" controller_ip="$(arg controller_ip)" client_ip="$(arg client_ip)" mode="$(arg mode)" roundtrip_time="$(arg roundtrip_time)" qos_config_file="$(arg qos_config_file)"/>
+  <xacro:kuka_lbr_iisy_ros2_control name="$(arg prefix)lbr_iisy3_r760" driver_version="$(arg driver_version)" client_ip="$(arg client_ip)" client_port="$(arg client_port)" controller_ip="$(arg controller_ip)" prefix="$(arg prefix)" mode="$(arg mode)" use_gpio="$(arg use_gpio)" roundtrip_time="$(arg roundtrip_time)" verify_robot_model="$(arg verify_robot_model)"/>
   <xacro:kuka_lbr_iisy15_r930_robot prefix="$(arg prefix)" package_name="kuka_lbr_iisy_support">
     <origin xyz="$(arg x) $(arg y) $(arg z)" rpy="$(arg roll) $(arg pitch) $(arg yaw)"/>
   </xacro:kuka_lbr_iisy15_r930_robot>
