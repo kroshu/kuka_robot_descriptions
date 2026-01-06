@@ -3,7 +3,6 @@
   <!-- Import iisy macro files  -->
   <xacro:include filename="$(find kuka_lbr_iisy_support)/urdf/lbr_iisy3_r760_macro.xacro"/>
   <xacro:include filename="$(find kuka_lbr_iisy_support)/urdf/lbr_iisy_ros2_control_macro.xacro"/>
-
   <!-- Read additional arguments  -->
   <xacro:arg name="driver_version" default="rsi_only"/>
   <xacro:arg name="mode" default="hardware"/>
