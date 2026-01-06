@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
-  <xacro:macro name="kuka_lbr_iisy_ros2_control" params="name prefix client_ip controller_ip mode qos_config_file roundtrip_time">
+  <xacro:macro name="kuka_lbr_iisy_ros2_control" params="name driver_version prefix client_ip client_port mxa_client_port controller_ip use_gpio mode qos_config_file roundtrip_time verify_robot_model">
     <!-- gazebo -->
     <xacro:if value="${mode == 'gazebo'}">
       <xacro:include filename="$(find kuka_gazebo)/gazebo/kuka_gazebo.xacro"/>
@@ -17,23 +17,41 @@
           <param name="state_following_offset">0.0</param>
         </xacro:if>
         <xacro:if value="${mode == 'hardware'}">
-          <!-- Read QoS profile parameters  -->
-          <xacro:if value="${qos_config_file == ''}">
-            <xacro:property name="qos_config" value="$(find kuka_iiqka_eac_driver)/config/qos_config.yaml"/>
+          <xacro:if value="${driver_version == 'eac'}">
+            <!-- Read QoS profile parameters  -->
+            <xacro:if value="${qos_config_file == ''}">
+              <xacro:property name="qos_config" value="$(find kuka_iiqka_eac_driver)/config/qos_config.yaml"/>
+            </xacro:if>
+            <xacro:unless value="${qos_config_file == ''}">
+              <xacro:property name="qos_config" value="${qos_config_file}"/>
+            </xacro:unless>
+            <xacro:property name="qos_config_dict" value="${xacro.load_yaml(qos_config)}"/>
+            <xacro:property name="consequent_lost_packets" value="${qos_config_dict['rt_packet_loss_profile']['consequent_lost_packets']}"/>
+            <xacro:property name="lost_packets_in_timeframe" value="${qos_config_dict['rt_packet_loss_profile']['lost_packets_in_timeframe']}"/>
+            <xacro:property name="timeframe_ms" value="${qos_config_dict['rt_packet_loss_profile']['timeframe_ms']}"/>
+            <plugin>kuka_eac::KukaEACHardwareInterface</plugin>
+            <param name="client_ip">${client_ip}</param>
+            <param name="controller_ip">${controller_ip}</param>
+            <param name="consequent_lost_packets">${consequent_lost_packets}</param>
+            <param name="lost_packets_in_timeframe">${lost_packets_in_timeframe}</param>
+            <param name="timeframe_ms">${timeframe_ms}</param>
           </xacro:if>
-          <xacro:unless value="${qos_config_file == ''}">
-            <xacro:property name="qos_config" value="${qos_config_file}"/>
-          </xacro:unless>
-          <xacro:property name="qos_config_dict" value="${xacro.load_yaml(qos_config)}"/>
-          <xacro:property name="consequent_lost_packets" value="${qos_config_dict['rt_packet_loss_profile']['consequent_lost_packets']}"/>
-          <xacro:property name="lost_packets_in_timeframe" value="${qos_config_dict['rt_packet_loss_profile']['lost_packets_in_timeframe']}"/>
-          <xacro:property name="timeframe_ms" value="${qos_config_dict['rt_packet_loss_profile']['timeframe_ms']}"/>
-          <plugin>kuka_eac::KukaEACHardwareInterface</plugin>
-          <param name="client_ip">${client_ip}</param>
-          <param name="controller_ip">${controller_ip}</param>
-          <param name="consequent_lost_packets">${consequent_lost_packets}</param>
-          <param name="lost_packets_in_timeframe">${lost_packets_in_timeframe}</param>
-          <param name="timeframe_ms">${timeframe_ms}</param>
+          <xacro:if value="${driver_version == 'eki_rsi'}">
+            <plugin>kuka_rsi_driver::KukaEkiRsiHardwareInterface</plugin>
+            <param name="controller_ip">${controller_ip}</param>
+            <param name="name">${name}</param>
+            <param name="verify_robot_model">${verify_robot_model}</param>
+          </xacro:if>
+          <xacro:if value="${driver_version == 'mxa_rsi'}">
+            <plugin>kuka_rsi_driver::KukaMxaRsiHardwareInterface</plugin>
+            <param name="controller_ip">${controller_ip}</param>
+            <param name="client_port">${client_port}</param>
+            <param name="mxa_client_port">${mxa_client_port}</param>
+            <param name="verify_robot_model">${verify_robot_model}</param>
+          </xacro:if>
+          <xacro:if value="${driver_version == 'rsi_only'}">
+            <plugin>kuka_rsi_driver::KukaRSIHardwareInterface</plugin>
+          </xacro:if>
         </xacro:if>
         <xacro:if value="${mode == 'gazebo'}">
           <plugin>gz_ros2_control/GazeboSimSystem</plugin>
@@ -42,86 +60,107 @@
       <!-- define joints and command/state interfaces for each joint -->
       <joint name="${prefix}joint_1">
         <command_interface name="position"/>
-        <xacro:unless value="${mode == 'gazebo'}">
+        <xacro:if value="${driver_version == 'eac' and mode != 'gazebo'}">
           <command_interface name="stiffness"/>
           <command_interface name="damping"/>
           <command_interface name="effort"/>
-        </xacro:unless>
+        </xacro:if>
         <state_interface name="position">
           <param name="initial_value">0.0</param>
         </state_interface>
-        <state_interface name="effort">
-          <param name="initial_value">0.0</param>
-        </state_interface>
+        <xacro:if value="${driver_version == 'eac'}">
+          <state_interface name="effort">
+            <param name="initial_value">0.0</param>
+          </state_interface>
+        </xacro:if>
       </joint>
       <joint name="${prefix}joint_2">
         <command_interface name="position"/>
-        <command_interface name="stiffness"/>
-        <command_interface name="damping"/>
-        <command_interface name="effort"/>
+        <xacro:if value="${driver_version == 'eac' and mode != 'gazebo'}">
+          <command_interface name="stiffness"/>
+          <command_interface name="damping"/>
+          <command_interface name="effort"/>
+        </xacro:if>
         <state_interface name="position">
           <param name="initial_value">-1.5708</param>
         </state_interface>
-        <state_interface name="effort">
-          <param name="initial_value">0.0</param>
-        </state_interface>
+        <xacro:if value="${driver_version == 'eac'}">
+          <state_interface name="effort">
+            <param name="initial_value">0.0</param>
+          </state_interface>
+        </xacro:if>
       </joint>
       <joint name="${prefix}joint_3">
         <command_interface name="position"/>
-        <xacro:unless value="${mode == 'gazebo'}">
+        <xacro:if value="${driver_version == 'eac' and mode != 'gazebo'}">
           <command_interface name="stiffness"/>
           <command_interface name="damping"/>
           <command_interface name="effort"/>
-        </xacro:unless>
+        </xacro:if>
         <state_interface name="position">
           <param name="initial_value">1.5708</param>
         </state_interface>
-        <state_interface name="effort">
-          <param name="initial_value">0.0</param>
-        </state_interface>
+        <xacro:if value="${driver_version == 'eac'}">
+          <state_interface name="effort">
+            <param name="initial_value">0.0</param>
+          </state_interface>
+        </xacro:if>
       </joint>
       <joint name="${prefix}joint_4">
         <command_interface name="position"/>
-        <xacro:unless value="${mode == 'gazebo'}">
+        <xacro:if value="${driver_version == 'eac' and mode != 'gazebo'}">
           <command_interface name="stiffness"/>
           <command_interface name="damping"/>
           <command_interface name="effort"/>
-        </xacro:unless>
+        </xacro:if>
         <state_interface name="position">
           <param name="initial_value">0.0</param>
         </state_interface>
-        <state_interface name="effort">
-          <param name="initial_value">0.0</param>
-        </state_interface>
+        <xacro:if value="${driver_version == 'eac'}">
+          <state_interface name="effort">
+            <param name="initial_value">0.0</param>
+          </state_interface>
+        </xacro:if>
       </joint>
       <joint name="${prefix}joint_5">
         <command_interface name="position"/>
-        <xacro:unless value="${mode == 'gazebo'}">
+        <xacro:if value="${driver_version == 'eac' and mode != 'gazebo'}">
           <command_interface name="stiffness"/>
           <command_interface name="damping"/>
           <command_interface name="effort"/>
-        </xacro:unless>
+        </xacro:if>
         <state_interface name="position">
           <param name="initial_value">0.0</param>
         </state_interface>
-        <state_interface name="effort">
-          <param name="initial_value">0.0</param>
-        </state_interface>
+        <xacro:if value="${driver_version == 'eac'}">
+          <state_interface name="effort">
+            <param name="initial_value">0.0</param>
+          </state_interface>
+        </xacro:if>
       </joint>
       <joint name="${prefix}joint_6">
         <command_interface name="position"/>
-        <xacro:unless value="${mode == 'gazebo'}">
+        <xacro:if value="${driver_version == 'eac' and mode != 'gazebo'}">
           <command_interface name="stiffness"/>
           <command_interface name="damping"/>
           <command_interface name="effort"/>
-        </xacro:unless>
+        </xacro:if>
         <state_interface name="position">
           <param name="initial_value">0.0</param>
         </state_interface>
-        <state_interface name="effort">
-          <param name="initial_value">0.0</param>
-        </state_interface>
+        <xacro:if value="${driver_version == 'eac'}">
+          <state_interface name="effort">
+            <param name="initial_value">0.0</param>
+          </state_interface>
+        </xacro:if>
       </joint>
+      <xacro:if value="${use_gpio}">
+        <xacro:include filename="$(find kuka_rsi_driver)/config/gpio_config.xacro"/>
+        <xacro:gpio_config/>
+      </xacro:if>
+      <xacro:unless value="${use_gpio}">
+        <gpio name="gpio"/>
+      </xacro:unless>
     </ros2_control>
   </xacro:macro>
 </robot>
