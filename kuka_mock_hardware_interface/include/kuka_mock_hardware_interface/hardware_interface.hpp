@@ -123,17 +123,17 @@ protected:
   double cycle_time_ms_ = 4;
 
   // State interfaces
-  double drive_state_ = 0;
-  double server_state_;
-  double control_mode_state_;
-  double cycle_time_state_;
-  double drives_powered_;
-  double emergency_stop_;
-  double guard_stop_;
-  double in_motion_;
-  double motion_possible_;
-  double operation_mode_;
-  double robot_stopped_;
+  double drive_state_ = 0.0;
+  double server_state_ = 0.0;
+  double control_mode_state_ = 0.0;
+  double cycle_time_state_ = 0.0;
+  double drives_powered_ = 0.0;
+  double emergency_stop_ = 0.0;
+  double guard_stop_ = 0.0;
+  double in_motion_ = 0.0;
+  double motion_possible_ = 0.0;
+  double operation_mode_ = 0.0;
+  double robot_stopped_ = 1.0;
 
   // KUKA-specific parameters
   std::chrono::nanoseconds cycle_time_nano_;
