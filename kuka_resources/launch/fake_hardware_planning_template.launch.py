@@ -103,9 +103,7 @@ def launch_setup(context, *args, **kwargs):
         "joint_trajectory_controller",
     ]
 
-    controller_spawners = [
-        controller_spawner(name) for name in controller_names
-    ]
+    controller_spawners = [controller_spawner(name) for name in controller_names]
 
     to_start = [control_node, robot_state_publisher, rviz] + controller_spawners
 
