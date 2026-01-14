@@ -65,12 +65,21 @@ def launch_setup(context, *args, **kwargs):
         parameters=[robot_description, controller_config],
     )
 
+    robot_description_kinematics = {
+        "robot_description_kinematics": {
+            "manipulator": {"kinematics_solver": "kdl_kinematics_plugin/KDLKinematicsPlugin"}
+        }
+    }
+
     rviz = Node(
         package="rviz2",
         executable="rviz2",
         name="rviz2",
         output="log",
         arguments=["-d", rviz_config_file, "--ros-args", "--log-level", "error"],
+        parameters=[
+            robot_description_kinematics,
+        ],
     )
 
     robot_state_publisher = Node(
@@ -81,23 +90,21 @@ def launch_setup(context, *args, **kwargs):
     )
 
     # Spawn controllers
-    def controller_spawner(controller_with_config):
+    def controller_spawner(controller_names):
         arg_list = [
-            controller_with_config[0],
+            controller_names,
             "-c",
             controller_manager_node,
-            "-p",
-            controller_with_config[1],
         ]
         return Node(package="controller_manager", executable="spawner", arguments=arg_list)
 
-    controller_names_and_config = [
-        ("joint_state_broadcaster", []),
-        ("joint_trajectory_controller", controller_config),
+    controller_names = [
+        "joint_state_broadcaster",
+        "joint_trajectory_controller",
     ]
 
     controller_spawners = [
-        controller_spawner(controllers) for controllers in controller_names_and_config
+        controller_spawner(name) for name in controller_names
     ]
 
     to_start = [control_node, robot_state_publisher, rviz] + controller_spawners
