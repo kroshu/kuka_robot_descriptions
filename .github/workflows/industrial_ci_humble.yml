@@ -24,10 +24,6 @@ jobs:
           ROS_DISTRO: humble
           BEFORE_RUN_TARGET_TEST: .ci_config/hooks/before_run_target_test.sh
           CMAKE_ARGS: "--cmake-args -DGITHUB_CI_TESTS=ON"
-<<<<<<< HEAD
-
-=======
->>>>>>> b3fa205 (Gazebo CI fixes (#146))
     env:
       CCACHE_DIR: /github/home/.ccache # Directory for ccache (and how we enable ccache in industrial_ci)
       EVENT_NAME: ${{ github.event_name }}
@@ -55,8 +51,6 @@ jobs:
         with:
           path: ${{ env.CCACHE_DIR }}
           key: ccache-${{ matrix.env.ROS_DISTRO }}-${{ matrix.env.ROS_REPO }}
-      - name: Make hook script executable
-        run: chmod +x .ci_config/hooks/before_run_target_test.sh
       # Run industrial_ci
       - name: Make hook script executable
         run: chmod +x .ci_config/hooks/before_run_target_test.sh
