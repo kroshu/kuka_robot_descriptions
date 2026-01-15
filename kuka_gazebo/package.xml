@@ -27,6 +27,7 @@
   <exec_depend>controller_manager</exec_depend>
   <!-- Test dependencies -->
   <depend>ros2lifecycle</depend>
+  <test_depend>ros2run</test_depend>
   <test_depend>launch_testing_ament_cmake</test_depend>
   <test_depend>launch_testing</test_depend>
   <test_depend>ament_cmake</test_depend>
