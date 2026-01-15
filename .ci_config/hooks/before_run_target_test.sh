@@ -1,4 +1,5 @@
 #!/bin/bash
+source /opt/ros/humble/setup.bash
 
 # Which 'ros2' is being executed?
 type -a ros2
@@ -20,6 +21,5 @@ python3 -c "import importlib; print(importlib.util.find_spec('ros2run'))"
 
 echo "Running before run test target hook Gazebo test script..."
 cd ~/target_ws
-source /opt/ros/humble/setup.bash
 source install/setup.bash
 ros2 run kuka_gazebo run_gazebo_tests.py
