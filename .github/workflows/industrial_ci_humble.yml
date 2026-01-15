@@ -22,6 +22,8 @@ jobs:
         - ROS_REPO: ros
           BUILDER: colcon
           ROS_DISTRO: humble
+          BEFORE_RUN_TARGET_TEST: .ci_config/hooks/before_run_target_test.sh
+          CMAKE_ARGS: "--cmake-args -DGITHUB_CI_TESTS=ON"
     env:
       CCACHE_DIR: /github/home/.ccache # Directory for ccache (and how we enable ccache in industrial_ci)
       EVENT_NAME: ${{ github.event_name }}
