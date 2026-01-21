@@ -72,6 +72,9 @@
           <state_interface name="effort">
             <param name="initial_value">0.0</param>
           </state_interface>
+          <state_interface name="commanded_position">
+            <param name="initial_value">0.0</param>
+          </state_interface>
         </xacro:if>
       </joint>
       <joint name="${prefix}joint_2">
@@ -88,6 +91,9 @@
           <state_interface name="effort">
             <param name="initial_value">0.0</param>
           </state_interface>
+          <state_interface name="commanded_position">
+            <param name="initial_value">0.0</param>
+          </state_interface>          
         </xacro:if>
       </joint>
       <joint name="${prefix}joint_3">
@@ -102,6 +108,9 @@
         </state_interface>
         <xacro:if value="${driver_version == 'eac'}">
           <state_interface name="effort">
+            <param name="initial_value">0.0</param>
+          </state_interface>
+          <state_interface name="commanded_position">
             <param name="initial_value">0.0</param>
           </state_interface>
         </xacro:if>
@@ -120,6 +129,9 @@
           <state_interface name="effort">
             <param name="initial_value">0.0</param>
           </state_interface>
+          <state_interface name="commanded_position">
+            <param name="initial_value">0.0</param>
+          </state_interface>
         </xacro:if>
       </joint>
       <joint name="${prefix}joint_5">
@@ -136,6 +148,9 @@
           <state_interface name="effort">
             <param name="initial_value">0.0</param>
           </state_interface>
+          <state_interface name="commanded_position">
+            <param name="initial_value">0.0</param>
+          </state_interface>
         </xacro:if>
       </joint>
       <joint name="${prefix}joint_6">
@@ -150,6 +165,9 @@
         </state_interface>
         <xacro:if value="${driver_version == 'eac'}">
           <state_interface name="effort">
+            <param name="initial_value">0.0</param>
+          </state_interface>
+          <state_interface name="commanded_position">
             <param name="initial_value">0.0</param>
           </state_interface>
         </xacro:if>
