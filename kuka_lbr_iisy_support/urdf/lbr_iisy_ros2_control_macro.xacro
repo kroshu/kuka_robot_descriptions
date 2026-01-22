@@ -15,6 +15,8 @@
           <param name="roundtrip_time_micro">${roundtrip_time}</param>
           <param name="mock_sensor_commands">false</param>
           <param name="state_following_offset">0.0</param>
+          <param name="custom_interface_with_following_offset">commanded_position</param>
+          <param name="position_state_following_offset">0.0</param>
         </xacro:if>
         <xacro:if value="${mode == 'hardware'}">
           <xacro:if value="${driver_version == 'eac'}">
