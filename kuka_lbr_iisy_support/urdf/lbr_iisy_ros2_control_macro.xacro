@@ -95,7 +95,7 @@
           </state_interface>
           <state_interface name="commanded_position">
             <param name="initial_value">0.0</param>
-          </state_interface>          
+          </state_interface>
         </xacro:if>
       </joint>
       <joint name="${prefix}joint_3">
