@@ -15,6 +15,8 @@
           <param name="roundtrip_time_micro">${roundtrip_time}</param>
           <param name="mock_sensor_commands">false</param>
           <param name="state_following_offset">0.0</param>
+          <param name="custom_interface_with_following_offset">commanded_position</param>
+          <param name="position_state_following_offset">0.0</param>
         </xacro:if>
         <xacro:if value="${mode == 'hardware'}">
           <plugin>kuka_sunrise_fri_driver::KukaFRIHardwareInterface</plugin>
@@ -43,6 +45,9 @@
         <state_interface name="external_torque">
           <param name="initial_value">0.0</param>
         </state_interface>
+        <state_interface name="commanded_position">
+          <param name="initial_value">0.0</param>
+        </state_interface>
       </joint>
       <joint name="${prefix}joint_2">
         <command_interface name="position"/>
@@ -58,6 +63,9 @@
           <param name="initial_value">0.0</param>
         </state_interface>
         <state_interface name="external_torque">
+          <param name="initial_value">0.0</param>
+        </state_interface>
+        <state_interface name="commanded_position">
           <param name="initial_value">0.0</param>
         </state_interface>
       </joint>
@@ -77,6 +85,9 @@
         <state_interface name="external_torque">
           <param name="initial_value">0.0</param>
         </state_interface>
+        <state_interface name="commanded_position">
+          <param name="initial_value">0.0</param>
+        </state_interface>
       </joint>
       <joint name="${prefix}joint_4">
         <command_interface name="position"/>
@@ -92,6 +103,9 @@
           <param name="initial_value">0.0</param>
         </state_interface>
         <state_interface name="external_torque">
+          <param name="initial_value">0.0</param>
+        </state_interface>
+        <state_interface name="commanded_position">
           <param name="initial_value">0.0</param>
         </state_interface>
       </joint>
@@ -111,6 +125,9 @@
         <state_interface name="external_torque">
           <param name="initial_value">0.0</param>
         </state_interface>
+        <state_interface name="commanded_position">
+          <param name="initial_value">0.0</param>
+        </state_interface>
       </joint>
       <joint name="${prefix}joint_6">
         <command_interface name="position"/>
@@ -128,6 +145,9 @@
         <state_interface name="external_torque">
           <param name="initial_value">0.0</param>
         </state_interface>
+        <state_interface name="commanded_position">
+          <param name="initial_value">0.0</param>
+        </state_interface>
       </joint>
       <joint name="${prefix}joint_7">
         <command_interface name="position"/>
@@ -143,6 +163,9 @@
           <param name="initial_value">0.0</param>
         </state_interface>
         <state_interface name="external_torque">
+          <param name="initial_value">0.0</param>
+        </state_interface>
+        <state_interface name="commanded_position">
           <param name="initial_value">0.0</param>
         </state_interface>
       </joint>
