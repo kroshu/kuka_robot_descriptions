@@ -8,6 +8,7 @@ find_package(xacro REQUIRED)
 
 # TODO: add more robots to this list
 set(supported_robots
+  kr4_r600
   kr6_r700_sixx
   kr6_r700_2
   kr6_r900_sixx
