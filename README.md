@@ -101,6 +101,7 @@ The following table shows what data is verified for each robot in the support pa
 |lbr_iisy11_r1300| - | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
 |lbr_iisy15_r930| - | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
 |lbr_iiwa14_r820| - | ✓ | ✓ | ✓ | | | ✓ |
+|kr4_r600| agilus | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
 |kr6_r700_2| agilus | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
 |kr6_r700_sixx| agilus | ✓ | ✓ | ✓ | | | ✓ |
 |kr6_r900_2| agilus | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
@@ -132,6 +133,7 @@ The following table shows the supported customizable features for each robot in 
 |lbr_iisy11_r1300| lbr_iisy | | | ✓ |
 |lbr_iisy15_r930| lbr_iisy | | | ✓ |
 |lbr_iiwa14_r820| lbr_iiwa | | | |
+|kr4_r600| agilus | ✓ | | ✓ |
 |kr6_r700_2| agilus | ✓ | | ✓ |
 |kr6_r700_sixx| agilus | ✓ | | |
 |kr6_r900_2| agilus | ✓ | | ✓ |
