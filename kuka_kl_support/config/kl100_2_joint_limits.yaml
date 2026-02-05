@@ -3,7 +3,11 @@ default_acceleration_scaling_factor: 1.0
 joint_limits:
   rail_joint:
     has_velocity_limits: true
-    max_velocity: 0.1
+    max_velocity: 2.5
+
+    # NB: The acceleration limit is incorrect
     has_acceleration_limits: true
     max_acceleration: 0.1
+    # END NB
+
     has_jerk: false

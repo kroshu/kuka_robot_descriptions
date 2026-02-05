@@ -95,10 +95,10 @@ Example of attaching an end effector (with link name `eef_base_link`) to the `fl
 ### External axis support
 
 The robots marked in [this section](#supported-features) with external axis support have their URDFs prepared for this feature:
-- the world link and the world-base_link joint (and essentially the origin block) are moved to the URDF xacro from the macro
+- the `world` link and the `world-base_link` joint (and essentially the origin block) are moved to the URDF xacro from the macro
   - this creates the possibility to:
-    - easily modify the link chain between world and the robot base - so e.g. add external axes
-    - align to a multi-robot scenario (one world link for all)
+    - easily modify the link chain between world and the robot base (e.g. add external axes)
+    - align to a multi-robot scenario (i.e. one `world` link for all)
 - an additional parameter `ext_axes_ros2_control_joints` is introduced for the `ros2_control` macro of the robot family
   - it's needed for inserting the additional joints from the external axes to the right section of the macro
   - this indicates the need of an empty block in the case without any external axes, too
@@ -121,7 +121,7 @@ So without any external axes the end of the URDF is altered to the following (wi
 </joint>
 ```
 
-The same for an external axis (in this case KL100) integrated:
+The same for an external axis (in this case KL100-2) integrated:
 
 ```xml
 <xacro:kuka_robotfamily_ros2_control ...>
@@ -132,20 +132,20 @@ The same for an external axis (in this case KL100) integrated:
 </xacro:kuka_robotfamily_ros2_control>
 <!-- world link -->
 <link name="world"/>
-<!-- kl100 links -->
-<xacro:kl100_links/>
+<!-- kl100_2 links -->
+<xacro:kl100_2_links/>
 <xacro:robotmodel prefix="$(arg prefix)" package_name="kuka_robotfamily_support"/>
-<!-- kl100 joints -->
-<xacro:kl100_joints robot_base_link="$(arg prefix)base_link">
+<!-- kl100_2 joints -->
+<xacro:kl100_2_joints robot_base_link="$(arg prefix)base_link">
   <origin xyz="$(arg x) $(arg y) $(arg z)" rpy="$(arg roll) $(arg pitch) $(arg yaw)"/>
-</xacro:kl100_joints>
+</xacro:kl100_2_joints>
 ```
 
 The order of the tags is important to get the expected valid URDF in the end.
 
 #### Support for KL units
 
-In order to provide an example of an external axis integration within the KUKA ecosystem, we created a support package for KUKA KL units with the KL100 as a first example.
+In order to provide an example of an external axis integration within the KUKA ecosystem, we created a support package for KUKA KL units with the KL100-2 as a first example.
 
 The package differs from the other support packages: it doesn't contain full URDFs, it contains macros which then can be used to create a URDF of a robot with KL units integrated.
 
