@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="kr4_r600">
-  <xacro:macro name="kuka_kr4_r600_robot" params="prefix package_name *origin">
+  <xacro:macro name="kuka_kr4_r600_robot" params="prefix package_name">
     <link name="${prefix}base"/>
     <link name="${prefix}base_link">
       <collision>
@@ -137,7 +137,6 @@
       </visual>
     </link>
     <link name="${prefix}tool0"/>
-    <link name="world"/>
     <joint name="${prefix}base_link-base" type="fixed">
       <child link="${prefix}base"/>
       <parent link="${prefix}base_link"/>
@@ -193,11 +192,6 @@
       <child link="${prefix}tool0"/>
       <origin rpy="3.141592653589793 1.2246467991473532E-16 3.141592653589793" xyz="0.0 0.0 -0.0285"/>
       <parent link="${prefix}link_6"/>
-    </joint>
-    <joint name="${prefix}world-base_link" type="fixed">
-      <child link="${prefix}base_link"/>
-      <parent link="world"/>
-      <xacro:insert_block name="origin"/>
     </joint>
   </xacro:macro>
 </robot>
