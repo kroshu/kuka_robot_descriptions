@@ -17,6 +17,7 @@ ROS2 Distro | Branch | Github CI
 - `kuka_fortec_support` contains urdf, config and mesh files for KUKA fortec robots.
 - `kuka_iontec_support` contains urdf, config and mesh files for KUKA iontec robots.
 - `kuka_quantec_support` contains urdf, config and mesh files for KUKA quantec robots.
+- `kuka_kl_support` contains urdf, config and mesh files for KUKA KL units.
 - `kuka_kr_moveit_config` contains configuration files for KUKA KR robots necessary for planning with MoveIt.
 - `kuka_lbr_iisy_support` contains urdf, config and mesh files for KUKA iisy robots.
 - `kuka_lbr_iisy_moveit_config` contains configuration files for KUKA LBR iisy robots necessary for planning with MoveIt.
@@ -93,6 +94,65 @@ Example of attaching an end effector (with link name `eef_base_link`) to the `fl
 </joint>
 ```
 
+### External axis support
+
+The robots marked in [this section](#supported-features) with external axis support have their URDFs prepared for this feature:
+- the `world` link and the `world-base_link` joint (and essentially the origin block) are moved to the URDF xacro from the macro
+  - this creates the possibility to:
+    - easily modify the link chain between world and the robot base (e.g. add external axes)
+    - align to a multi-robot scenario (i.e. one `world` link for all)
+- an additional parameter `ext_axes_ros2_control_joints` is introduced for the `ros2_control` macro of the robot family
+  - it's needed for inserting the additional joints from the external axes to the right section of the macro
+  - this indicates the need of an empty block in the case without any external axes, too
+
+So without any external axes the end of the URDF is altered to the following (with _robotfamily_ and _robotmodel_ as respective placeholders):
+
+```xml
+<xacro:kuka_robotfamily_ros2_control ...>
+  <ext_axes_ros2_control_joints/>
+</xacro:kuka_robotfamily_ros2_control>
+<!-- world link -->
+<link name="world"/>
+<!-- robot links, joints -->
+<xacro:robotmodel prefix="$(arg prefix)" package_name="kuka_robotfamily_support"/>
+<!-- default world - base_link joint -->
+<joint name="$(arg prefix)world-base_link" type="fixed">
+  <parent link="world"/>
+  <child link="$(arg prefix)base_link"/>
+  <origin xyz="$(arg x) $(arg y) $(arg z)" rpy="$(arg roll) $(arg pitch) $(arg yaw)"/>
+</joint>
+```
+
+The same for an external axis (in this case KL100-2) integrated:
+
+```xml
+<xacro:kuka_robotfamily_ros2_control ...>
+  <ext_axes_ros2_control_joints>
+    <!-- kl ros2 control joints -->
+    <xacro:kuka_kl_ros2_control_joints/>
+  </ext_axes_ros2_control_joints>
+</xacro:kuka_robotfamily_ros2_control>
+<!-- world link -->
+<link name="world"/>
+<!-- kl100_2 links -->
+<xacro:kl100_2_links/>
+<xacro:robotmodel prefix="$(arg prefix)" package_name="kuka_robotfamily_support"/>
+<!-- kl100_2 joints -->
+<xacro:kl100_2_joints robot_base_link="$(arg prefix)base_link">
+  <origin xyz="$(arg x) $(arg y) $(arg z)" rpy="$(arg roll) $(arg pitch) $(arg yaw)"/>
+</xacro:kl100_2_joints>
+```
+
+The order of the tags is important to get the expected valid URDF in the end.
+
+#### Support for KL units
+
+In order to provide an example of an external axis integration within the KUKA ecosystem, we created a support package for KUKA KL units with the KL100-2 as a first example.
+
+The package differs from the other support packages: it doesn't contain full URDFs, it contains macros which then can be used to create a URDF of a robot with KL units integrated.
+
+To get more details for an example of how to integrate external axis support, see the [kuka_drivers repo](https://github.com/kroshu/kuka_drivers/blob/humble/doc/wiki/Home.md#additional-packages).
+
 ## What is verified?
 
 The following table shows what data is verified for each robot in the support packages:
@@ -132,31 +192,31 @@ The following table shows the supported customizable features for each robot in 
 
 |Robot name | Robot family | GPIO support | External axis support | Gazebo support |
 |---|:---:|:---:|:---:|:---:|
-|lbr_iisy3_r760| lbr_iisy | | | ✓ |
-|lbr_iisy11_r1300| lbr_iisy | | | ✓ |
-|lbr_iisy15_r930| lbr_iisy | | | ✓ |
-|lbr_iiwa14_r820| lbr_iiwa | | | |
-|kr4_r600| agilus | ✓ | | ✓ |
-|kr6_r700_2| agilus | ✓ | | ✓ |
-|kr6_r700_sixx| agilus | ✓ | | |
-|kr6_r900_2| agilus | ✓ | | ✓ |
-|kr6_r900_sixx| agilus | ✓ | | |
-|kr10_r900_2| agilus | ✓ | | ✓ |
-|kr10_r1100_2| agilus | ✓ | | ✓ |
-|kr8_r1440_2_arc_hw| cybertech | ✓ | | ✓ |
-|kr8_r2100_2_arc_hw| cybertech | ✓ | | ✓ |
-|kr12_r1450_3_hw| cybertech | ✓ | | ✓ |
-|kr16_r1610_2| cybertech | ✓ | | |
-|kr16_r2010_2| cybertech | ✓ | | |
-|kr20_r1810_2| cybertech | ✓ | | |
-|kr70_r2100| iontec | ✓ | | ✓ |
-|kr210_r2700_2| quantec | ✓ | | ✓ |
-|kr210_r3100_2| quantec | ✓ | | ✓ |
-|kr240_r2900_2| quantec | ✓ | | ✓ |
-|kr300_r2700_2| quantec | ✓ | | ✓ |
-|kr240_r3330| fortec | ✓ | | |
-|kr300_r2800_2_mt| fortec | ✓ | | ✓ |
-|kr560_r3100_2| fortec | ✓ | | ✓ |
+|lbr_iisy3_r760| lbr_iisy | | ✓ | ✓ |
+|lbr_iisy11_r1300| lbr_iisy | | ✓ | ✓ |
+|lbr_iisy15_r930| lbr_iisy | | ✓ | ✓ |
+|lbr_iiwa14_r820| lbr_iiwa | | ✓ | |
+|kr4_r600| agilus | ✓ | ✓ | ✓ |
+|kr6_r700_2| agilus | ✓ | ✓ | ✓ |
+|kr6_r700_sixx| agilus | ✓ | ✓ | |
+|kr6_r900_2| agilus | ✓ | ✓ | ✓ |
+|kr6_r900_sixx| agilus | ✓ | ✓ | |
+|kr10_r900_2| agilus | ✓ | ✓ | ✓ |
+|kr10_r1100_2| agilus | ✓ | ✓ | ✓ |
+|kr8_r1440_2_arc_hw| cybertech | ✓ | ✓ | ✓ |
+|kr8_r2100_2_arc_hw| cybertech | ✓ | ✓ | ✓ |
+|kr12_r1450_3_hw| cybertech | ✓ | ✓ | ✓ |
+|kr16_r1610_2| cybertech | ✓ | ✓ | |
+|kr16_r2010_2| cybertech | ✓ | ✓ | |
+|kr20_r1810_2| cybertech | ✓ | ✓ | |
+|kr70_r2100| iontec | ✓ | ✓ | ✓ |
+|kr210_r2700_2| quantec | ✓ | ✓ | ✓ |
+|kr210_r3100_2| quantec | ✓ | ✓ | ✓ |
+|kr240_r2900_2| quantec | ✓ | ✓ | ✓ |
+|kr300_r2700_2| quantec | ✓ | ✓ | ✓ |
+|kr240_r3330| fortec | ✓ | ✓ | |
+|kr300_r2800_2_mt| fortec | ✓ | ✓ | ✓ |
+|kr560_r3100_2| fortec | ✓ | ✓ | ✓ |
 
 ## Custom mock hardware
 
