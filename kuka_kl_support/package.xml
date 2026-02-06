@@ -9,12 +9,9 @@
   <maintainer email="kristof.pasztor.kp@gmail.com">Kristof Matyas Pasztor</maintainer>
   <maintainer email="pepo.tamas@gmail.com">Tamas Pepo</maintainer>
   <license>Apache-2.0</license>
-
   <buildtool_depend>ament_cmake</buildtool_depend>
-
   <depend>urdf</depend>
   <depend>xacro</depend>
-
   <export>
     <architecture_independent/>
     <build_type>ament_cmake</build_type>
