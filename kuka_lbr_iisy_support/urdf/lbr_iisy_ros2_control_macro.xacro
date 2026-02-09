@@ -41,18 +41,23 @@
           <xacro:if value="${driver_version == 'eki_rsi'}">
             <plugin>kuka_rsi_driver::KukaEkiRsiHardwareInterface</plugin>
             <param name="controller_ip">${controller_ip}</param>
+            <param name="client_ip">${client_ip}</param>
+            <param name="client_port">${client_port}</param>
             <param name="name">${name}</param>
             <param name="verify_robot_model">${verify_robot_model}</param>
           </xacro:if>
           <xacro:if value="${driver_version == 'mxa_rsi'}">
             <plugin>kuka_rsi_driver::KukaMxaRsiHardwareInterface</plugin>
             <param name="controller_ip">${controller_ip}</param>
+            <param name="client_ip">${client_ip}</param>
             <param name="client_port">${client_port}</param>
             <param name="mxa_client_port">${mxa_client_port}</param>
             <param name="verify_robot_model">${verify_robot_model}</param>
           </xacro:if>
           <xacro:if value="${driver_version == 'rsi_only'}">
             <plugin>kuka_rsi_driver::KukaRSIHardwareInterface</plugin>
+            <param name="client_ip">${client_ip}</param>
+            <param name="client_port">${client_port}</param>
           </xacro:if>
         </xacro:if>
         <xacro:if value="${mode == 'gazebo'}">
