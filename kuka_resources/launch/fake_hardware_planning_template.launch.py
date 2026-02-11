@@ -44,9 +44,7 @@ def launch_setup(context, *args, **kwargs):
                     robot_model.perform(context) + ".urdf.xacro",
                 ]
             ),
-            " ",
-            "mode:=",
-            "mock",
+            " mode:=mock",
         ]
     )
 
