@@ -26,7 +26,7 @@ import os
 def launch_setup(context, *args, **kwargs):
     world = LaunchConfiguration("gz_world")
     robot_model = LaunchConfiguration("robot_model")
-    robot_family_path = LaunchConfiguration("robot_family_support")
+    robot_family = LaunchConfiguration("robot_family")
     ns = LaunchConfiguration("namespace")
     x = LaunchConfiguration("x")
     y = LaunchConfiguration("y")
@@ -46,7 +46,7 @@ def launch_setup(context, *args, **kwargs):
             " ",
             PathJoinSubstitution(
                 [
-                    FindPackageShare(robot_family_path.perform(context)),
+                    FindPackageShare(f"kuka_{robot_family.perform(context)}_support"),
                     "urdf",
                     robot_model.perform(context) + ".urdf.xacro",
                 ]
@@ -173,9 +173,7 @@ def launch_setup(context, *args, **kwargs):
 def generate_launch_description():
     launch_arguments = []
     launch_arguments.append(DeclareLaunchArgument("robot_model", default_value="lbr_iisy3_r760"))
-    launch_arguments.append(
-        DeclareLaunchArgument("robot_family_support", default_value="kuka_lbr_iisy_support")
-    )
+    launch_arguments.append(DeclareLaunchArgument("robot_family", default_value="lbr_iisy"))
     launch_arguments.append(DeclareLaunchArgument("namespace", default_value=""))
     launch_arguments.append(DeclareLaunchArgument("x", default_value="0"))
     launch_arguments.append(DeclareLaunchArgument("y", default_value="0"))

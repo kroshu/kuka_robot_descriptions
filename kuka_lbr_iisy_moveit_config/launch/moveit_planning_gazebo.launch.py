@@ -22,7 +22,7 @@ from launch.substitutions import LaunchConfiguration
 
 def launch_setup(context, *args, **kwargs):
     robot_model = LaunchConfiguration("robot_model")
-    robot_family_path = LaunchConfiguration("robot_family_support")
+    robot_family = LaunchConfiguration("robot_family")
     ns = LaunchConfiguration("namespace")
     x = LaunchConfiguration("x")
     y = LaunchConfiguration("y")
@@ -39,7 +39,7 @@ def launch_setup(context, *args, **kwargs):
     moveit_config = (
         MoveItConfigsBuilder("kuka_lbr_iisy")
         .robot_description(
-            file_path=get_package_share_directory(robot_family_path.perform(context))
+            file_path=get_package_share_directory(f"kuka_{robot_family.perform(context)}_support")
             + f"/urdf/{robot_model.perform(context)}.urdf.xacro",
             mappings={
                 "x": x.perform(context),
@@ -58,7 +58,7 @@ def launch_setup(context, *args, **kwargs):
             publish_robot_description=True, publish_robot_description_semantic=True
         )
         .joint_limits(
-            file_path=get_package_share_directory(robot_family_path.perform(context))
+            file_path=get_package_share_directory(f"kuka_{robot_family.perform(context)}_support")
             + f"/config/{robot_model.perform(context)}_joint_limits.yaml"
         )
         .to_moveit_configs()
@@ -108,9 +108,7 @@ def launch_setup(context, *args, **kwargs):
 def generate_launch_description():
     launch_arguments = []
     launch_arguments.append(DeclareLaunchArgument("robot_model", default_value="lbr_iisy3_r760"))
-    launch_arguments.append(
-        DeclareLaunchArgument("robot_family_support", default_value="kuka_lbr_iisy_support")
-    )
+    launch_arguments.append(DeclareLaunchArgument("robot_family", default_value="lbr_iisy"))
     launch_arguments.append(DeclareLaunchArgument("namespace", default_value=""))
     launch_arguments.append(DeclareLaunchArgument("x", default_value="0"))
     launch_arguments.append(DeclareLaunchArgument("y", default_value="0"))
