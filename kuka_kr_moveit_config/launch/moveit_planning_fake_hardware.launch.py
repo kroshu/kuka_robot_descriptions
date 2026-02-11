@@ -36,7 +36,7 @@ def launch_setup(context, *args, **kwargs):
         )
         .robot_description_semantic(
             get_package_share_directory("kuka_kr_moveit_config")
-            + f"/urdf/{robot_model.perform(context)}_arm.srdf"
+            + f"/urdf/{robot_model.perform(context)}.srdf"
         )
         .robot_description_kinematics(file_path="config/kinematics.yaml")
         .trajectory_execution(file_path="config/moveit_controllers.yaml")

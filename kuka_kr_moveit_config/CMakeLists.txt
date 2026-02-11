@@ -33,7 +33,7 @@ set(supported_robots
 )
 
 foreach(model IN LISTS supported_robots)
-  xacro_add_files(TARGET ${model} srdf/kr_arm.srdf.xacro REMAP robot_name:=${model} OUTPUT ${model}_arm.srdf INSTALL DESTINATION urdf)
+  xacro_add_files(TARGET ${model} srdf/kr_arm.srdf.xacro REMAP robot_name:=${model} OUTPUT ${model}.srdf INSTALL DESTINATION urdf)
 endforeach()
 
 install(DIRECTORY config srdf launch
