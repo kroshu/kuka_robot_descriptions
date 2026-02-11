@@ -179,9 +179,7 @@ def launch_setup(context, *args, **kwargs):
 def generate_launch_description():
     launch_arguments = []
     launch_arguments.append(DeclareLaunchArgument("robot_model", default_value="lbr_iisy3_r760"))
-    launch_arguments.append(
-        DeclareLaunchArgument("robot_family", default_value="lbr_iisy")
-    )
+    launch_arguments.append(DeclareLaunchArgument("robot_family", default_value="lbr_iisy"))
     launch_arguments.append(DeclareLaunchArgument("namespace", default_value=""))
     launch_arguments.append(DeclareLaunchArgument("x", default_value="0"))
     launch_arguments.append(DeclareLaunchArgument("y", default_value="0"))
