@@ -53,8 +53,7 @@ def get_robots():
                         if len(parts) >= 5 and parts[4] == "✓":
                             robot_name = parts[0]
                             robot_family = parts[1]
-                            robot_family_support_read = "kuka_" + robot_family + "_support"
-                            supported_robots.append((robot_name, robot_family_support_read))
+                            supported_robots.append((robot_name, robot_family))
                             scan_complete = True
                     elif scan_complete and intable:
                         intable = False
@@ -86,7 +85,7 @@ for model, support in tests:
             "launch_testing.launch_test",
             test_file,
             f"robot_model:={model}",
-            f"robot_family_support:={support}",
+            f"robot_family:={support}",
         ],
         capture_output=True,
         text=True,
