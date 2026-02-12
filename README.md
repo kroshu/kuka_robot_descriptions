@@ -22,6 +22,7 @@ ROS2 Distro | Branch | Github CI
 - `kuka_lbr_iisy_moveit_config` contains configuration files for KUKA LBR iisy robots necessary for planning with MoveIt.
 - `kuka_lbr_iiwa_support` contains urdf, config and mesh files for KUKA LBR iiwa robots
 - `kuka_lbr_iiwa_moveit_config` contains configuration files for KUKA LBR iiwa robots necessary for planning with MoveIt.
+- `kuka_omnimove_e575_support` contains urdf, config and mesh files for the KUKA Omnimove E575 platforms
 - `kuka_mock_hardware_interface` contains a custom mock hardware interface for KUKA robots
 - `kuka_gazebo` contains a launch file to start Gazebo Ignition and an example moveit + Gazebo implementation
 
