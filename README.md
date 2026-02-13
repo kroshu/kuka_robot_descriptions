@@ -96,25 +96,33 @@ Example of attaching an end effector (with link name `eef_base_link`) to the `fl
 
 ### External axis support
 
-The robots marked in [this section](#supported-features) with external axis support have their URDFs prepared for this feature:
-- the `world` link and the `world-base_link` joint (and essentially the origin block) are moved to the URDF xacro from the macro
-  - this creates the possibility to:
-    - easily modify the link chain between world and the robot base (e.g. add external axes)
-    - align to a multi-robot scenario (i.e. one `world` link for all)
-- an additional parameter `ext_axes_ros2_control_joints` is introduced for the `ros2_control` macro of the robot family
-  - it's needed for inserting the additional joints from the external axes to the right section of the macro
-  - this indicates the need of an empty block in the case without any external axes, too
+Robots marked as supporting external exis in the [supported features](#supported-features) have URDFs prepared for this feature.
 
-So without any external axes the end of the URDF is altered to the following (with _robotfamily_ and _robotmodel_ as respective placeholders):
+- The `world` link and the `world-base_link` joint (and the `origin` block) are moved from the macro into the URDF xacro.
+
+  - This allows you to:
+
+    - easily modify the link chain between `world` and the robot base (e.g., add external axes),
+    - align multiple robots to a shared `world` link.
+
+- A new parameter, `ext_axes_ros2_control_joints`, is added to the robot family's `ros2_control` macro.
+
+  - It is used to insert joints from external axes into the correct section of the macro.
+  - An empty block is required even when no external axes are used.
+
+Without any external axes, the end of the URDF looks as follows (with _robotfamily_ and _robotmodel_ as placeholders):
 
 ```xml
 <xacro:kuka_robotfamily_ros2_control ...>
   <ext_axes_ros2_control_joints/>
 </xacro:kuka_robotfamily_ros2_control>
+
 <!-- world link -->
 <link name="world"/>
+
 <!-- robot links, joints -->
 <xacro:robotmodel prefix="$(arg prefix)" package_name="kuka_robotfamily_support"/>
+
 <!-- default world - base_link joint -->
 <joint name="$(arg prefix)world-base_link" type="fixed">
   <parent link="world"/>
@@ -123,7 +131,7 @@ So without any external axes the end of the URDF is altered to the following (wi
 </joint>
 ```
 
-The same for an external axis (in this case KL100-2) integrated:
+With an external axis (KL100-2 in this example):
 
 ```xml
 <xacro:kuka_robotfamily_ros2_control ...>
@@ -132,26 +140,30 @@ The same for an external axis (in this case KL100-2) integrated:
     <xacro:kuka_kl_ros2_control_joints/>
   </ext_axes_ros2_control_joints>
 </xacro:kuka_robotfamily_ros2_control>
+
 <!-- world link -->
 <link name="world"/>
+
 <!-- kl100_2 links -->
 <xacro:kl100_2_links/>
+
 <xacro:robotmodel prefix="$(arg prefix)" package_name="kuka_robotfamily_support"/>
+
 <!-- kl100_2 joints -->
 <xacro:kl100_2_joints robot_base_link="$(arg prefix)base_link">
   <origin xyz="$(arg x) $(arg y) $(arg z)" rpy="$(arg roll) $(arg pitch) $(arg yaw)"/>
 </xacro:kl100_2_joints>
 ```
 
-The order of the tags is important to get the expected valid URDF in the end.
+The order of these tags is important to produce a valid URDF.
+
+To support different external axis types (prismatic and revolute), custom `ros2_control` joint parameters were introduced: `type` and `is_external`. An example can be found in [`kl_ros2_control_macro.xacro`](./kuka_kl_support/urdf/kl_ros2_control_macro.xacro). These parameters are optional; if omitted, the driver assumes revolute internal joints.
+
+Although these parameters increase configuration complexity, they are necessary. Without them, the driver could not correctly distinguish between internal and external joints, which is critical for the RobotSensorInterface option package. They also allow the driver to convert between ROS 2 units (meters/radians) and KUKA units (millimetres/degrees).
 
 #### Support for KL units
 
-In order to provide an example of an external axis integration within the KUKA ecosystem, we created a support package for KUKA KL units with the KL100-2 as a first example.
-
-The package differs from the other support packages: it doesn't contain full URDFs, it contains macros which then can be used to create a URDF of a robot with KL units integrated.
-
-To get more details for an example of how to integrate external axis support, see the [kuka_drivers repo](https://github.com/kroshu/kuka_drivers/blob/humble/doc/wiki/Home.md#additional-packages).
+To demonstrate external axis integration in the KUKA ecosystem, we provide a support package for KUKA KL units, with the KL100‑2 as the first example, see the [`kuka_kl_support`](./kuka_kl_support/) directory. This package differs from the others: instead of full URDFs, it provides xacro macros used to build a robot URDF with integrated KL units.
 
 ## What is verified?
 
