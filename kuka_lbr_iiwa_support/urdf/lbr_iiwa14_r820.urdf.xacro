@@ -16,8 +16,17 @@
   <xacro:arg name="pitch" default="0"/>
   <xacro:arg name="yaw" default="0"/>
   <xacro:arg name="prefix" default=""/>
-  <xacro:kuka_lbr_iiwa_ros2_control name="$(arg prefix)lbr_iiwa14_r820" prefix="$(arg prefix)" io_access="false" mode="$(arg mode)" roundtrip_time="$(arg roundtrip_time)" controller_ip="$(arg controller_ip)" client_ip="$(arg client_ip)" client_port="$(arg client_port)"/>
-  <xacro:kuka_lbr_iiwa14_r820_robot prefix="$(arg prefix)" package_name="kuka_lbr_iiwa_support">
+  <xacro:kuka_lbr_iiwa_ros2_control name="$(arg prefix)lbr_iiwa14_r820" prefix="$(arg prefix)" io_access="false" mode="$(arg mode)" roundtrip_time="$(arg roundtrip_time)" controller_ip="$(arg controller_ip)" client_ip="$(arg client_ip)" client_port="$(arg client_port)">
+    <ext_axes_ros2_control_joints/>
+  </xacro:kuka_lbr_iiwa_ros2_control>
+  <!-- world link -->
+  <link name="world"/>
+  <!-- robot links, joints -->
+  <xacro:kuka_lbr_iiwa14_r820_robot prefix="$(arg prefix)" package_name="kuka_lbr_iiwa_support"/>
+  <!-- default world - base_link joint -->
+  <joint name="$(arg prefix)world-base_link" type="fixed">
+    <parent link="world"/>
+    <child link="$(arg prefix)base_link"/>
     <origin xyz="$(arg x) $(arg y) $(arg z)" rpy="$(arg roll) $(arg pitch) $(arg yaw)"/>
-  </xacro:kuka_lbr_iiwa14_r820_robot>
+  </joint>
 </robot>
