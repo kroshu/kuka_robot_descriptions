@@ -210,17 +210,14 @@ First, Gazebo needs to be launched. By default, the `kuka_gazebo` launch file wi
 **KR210 r2700:**
 
 ```bash
-ros2 launch kuka_gazebo gazebo.launch.py robot_model:=kr210_r2700_2 robot_family_support:=kuka_quantec_support
+ros2 launch kuka_gazebo gazebo.launch.py robot_model:=kr210_r2700_2 robot_family:=quantec
 ```
-
-The `robot_family_support` parameter is the name of the relevant support package.
-
 Launching Gazebo starts the `joint_trajectory_controller` and `joint_state_broadcaster`. The `joint_trajectory_controller` claims the `position` command interface.
 
 Once Gazebo is launched, the move group server can be launched as well:
 
 ```bash
-ros2 launch kuka_kr_moveit_config moveit_planning_gazebo.launch.py robot_model:=kr210_r2700_2 robot_family_support:=kuka_quantec_support
+ros2 launch kuka_kr_moveit_config moveit_planning_gazebo.launch.py robot_model:=kr210_r2700_2 robot_family:=quantec
 ```
 
 ## Running the Gazebo example
@@ -228,13 +225,13 @@ ros2 launch kuka_kr_moveit_config moveit_planning_gazebo.launch.py robot_model:=
 First, launch gazebo with the lbr iisy3 r760 robot and the Gazebo world containing the box:
 
 ```bash
-ros2 launch kuka_gazebo gazebo.launch.py robot_model:=lbr_iisy3_r760 robot_family_support:=kuka_lbr_iisy_support gz_world:=world/box.sdf
+ros2 launch kuka_gazebo gazebo.launch.py robot_model:=lbr_iisy3_r760 robot_family:=lbr_iisy gz_world:=world/box.sdf
 ```
 
 Next, start the move group server with the lbr iisy3 r760 robot:
 
 ```bash
-ros2 launch kuka_lbr_iisy_moveit_config moveit_planning_gazebo.launch.py robot_model:=lbr_iisy3_r760 robot_family_support:=kuka_lbr_iisy_support
+ros2 launch kuka_lbr_iisy_moveit_config moveit_planning_gazebo.launch.py robot_model:=lbr_iisy3_r760 robot_family:=lbr_iisy
 ```
 
 Finally, run the example:

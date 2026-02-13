@@ -16,7 +16,7 @@ from launch_testing.actions import ReadyToTest
 @launch_testing.markers.keep_alive
 def generate_test_description():
     robot_model = LaunchConfiguration("robot_model")
-    robot_family_support = LaunchConfiguration("robot_family_support")
+    robot_family = LaunchConfiguration("robot_family")
 
     launch_file_path = os.path.join(
         get_package_share_directory("kuka_gazebo"), "launch", "test_gazebo.launch.py"
@@ -28,7 +28,7 @@ def generate_test_description():
                 PythonLaunchDescriptionSource(launch_file_path),
                 launch_arguments={
                     "robot_model": robot_model,
-                    "robot_family_support": robot_family_support,
+                    "robot_family": robot_family,
                 }.items(),
             ),
             ReadyToTest(),
