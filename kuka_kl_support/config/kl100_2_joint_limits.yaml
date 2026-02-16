@@ -1,0 +1,9 @@
+default_velocity_scaling_factor: 1.0
+default_acceleration_scaling_factor: 1.0
+joint_limits:
+  rail_joint:
+    has_velocity_limits: true
+    max_velocity: 2.5
+    has_acceleration_limits: true
+    max_acceleration: 6.8119
+    has_jerk: false

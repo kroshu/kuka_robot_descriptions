@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
-  <xacro:macro name="kuka_agilus_ros2_control" params="name driver_version client_ip client_port mxa_client_port controller_ip prefix mode use_gpio roundtrip_time verify_robot_model">
+  <xacro:macro name="kuka_agilus_ros2_control" params="name driver_version client_ip client_port mxa_client_port controller_ip prefix mode use_gpio roundtrip_time verify_robot_model **ext_axes_ros2_control_joints">
     <!-- gazebo -->
     <xacro:if value="${mode == 'gazebo'}">
       <xacro:include filename="$(find kuka_gazebo)/gazebo/kuka_gazebo.xacro"/>
@@ -43,6 +43,7 @@
           <plugin>gz_ros2_control/GazeboSimSystem</plugin>
         </xacro:if>
       </hardware>
+      <xacro:insert_block name="ext_axes_ros2_control_joints"/>
       <joint name="${prefix}joint_1">
         <command_interface name="position"/>
         <state_interface name="position">
