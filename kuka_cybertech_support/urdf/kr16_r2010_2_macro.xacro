@@ -1,8 +1,7 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://wiki.ros.org/xacro">
-  <xacro:macro name="kuka_kr16_r2010_2_robot" params="prefix package_name *origin">
+  <xacro:macro name="kuka_kr16_r2010_2_robot" params="prefix package_name">
     <!-- links - main serial chain -->
-    <link name="world"/>
     <link name="${prefix}base_link">
       <collision>
         <geometry>
@@ -101,11 +100,6 @@
         <origin rpy="-0.0 0.0 -0.0" xyz="0.0 0.0 0.0"/>
       </visual>
     </link>
-    <joint name="${prefix}world-base_link" type="fixed">
-      <parent link="world"/>
-      <child link="${prefix}base_link"/>
-      <xacro:insert_block name="origin"/>
-    </joint>
     <joint name="${prefix}joint_1" type="revolute">
       <axis xyz="0.0 0.0 1.0"/>
       <child link="${prefix}link_1"/>
