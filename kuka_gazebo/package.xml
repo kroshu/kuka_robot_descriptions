@@ -10,8 +10,6 @@
   <maintainer email="pepo.tamas@gmail.com">Tamas Pepo</maintainer>
   <license>Apache-2.0</license>
   <buildtool_depend>ament_cmake</buildtool_depend>
-  <depend>moveit_ros_planning_interface</depend>
-  <depend>moveit_visual_tools</depend>
   <exec_depend>joint_state_broadcaster</exec_depend>
   <exec_depend>joint_trajectory_controller</exec_depend>
   <exec_depend>controller_manager</exec_depend>
