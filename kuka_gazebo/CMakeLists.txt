@@ -20,7 +20,7 @@ install(
 )
 
 install(
-  PROGRAMS test/gazebo_support_test.py launch/run_gazebo_tests.py test/test_gazebo_robot_support.py
+  PROGRAMS test/gazebo_support_test.py test/run_gazebo_tests.py test/test_gazebo_robot_support.py
   DESTINATION lib/${PROJECT_NAME}
 )
 
