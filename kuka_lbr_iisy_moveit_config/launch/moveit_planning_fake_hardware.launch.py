@@ -34,7 +34,7 @@ def launch_setup(context, *args, **kwargs):
         ),
         launch_arguments={
             "robot_family": "{}".format("lbr_iisy"),
-            "robot_model": "{}".format(robot_model.perform(context)),
+            "robot_model": f"{robot_model.perform(context)}",
             "dof": f"{6}",
             "moveit_config": "lbr_iisy",
         }.items(),

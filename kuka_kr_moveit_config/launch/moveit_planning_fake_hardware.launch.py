@@ -34,14 +34,15 @@ def launch_setup(context, *args, **kwargs):
             ]
         ),
         launch_arguments={
-            "robot_family": "{}".format(robot_family.perform(context)),
-            "robot_model": "{}".format(robot_model.perform(context)),
+            "robot_family": f"{robot_family.perform(context)}",
+            "robot_model": f"{robot_model.perform(context)}",
             "dof": f"{6}",
             "moveit_config": "kr",
         }.items(),
     )
 
     return [fake_hardware_launch]
+
 
 def generate_launch_description():
     launch_arguments = []
