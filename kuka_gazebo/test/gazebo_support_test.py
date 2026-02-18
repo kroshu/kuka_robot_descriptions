@@ -19,7 +19,7 @@ def generate_test_description():
     robot_family = LaunchConfiguration("robot_family")
 
     launch_file_path = os.path.join(
-        get_package_share_directory("kuka_gazebo"), "launch", "test_gazebo.launch.py"
+        get_package_share_directory("kuka_gazebo"), "launch", "gazebo_startup.launch.py"
     )
 
     ld = LaunchDescription(
@@ -29,6 +29,7 @@ def generate_test_description():
                 launch_arguments={
                     "robot_model": robot_model,
                     "robot_family": robot_family,
+                    "use_gui": "false",
                 }.items(),
             ),
             ReadyToTest(),

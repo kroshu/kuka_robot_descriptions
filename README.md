@@ -279,12 +279,12 @@ These launch files are not using the actual driver implementation, they only sta
 
 ## Starting the move group server with Gazebo
 
-First, Gazebo needs to be launched. By default, the `kuka_gazebo` launch file will spawn the `lbr iisy3 r760` robot model. The `mode` parameter is set to `gazebo` by default. To launch Gazebo with a different robot model, the following command can be used:
+First, Gazebo needs to be launched. By default, the `kuka_gazebo` launch file will start the gazebo server with UI and spawn the `lbr_iisy3_r760` robot model with the `mode` parameter set to `gazebo`. To launch Gazebo with a different robot model, the following command can be used:
 
 **KR210 r2700:**
 
 ```bash
-ros2 launch kuka_gazebo gazebo.launch.py robot_model:=kr210_r2700_2 robot_family:=quantec
+ros2 launch kuka_gazebo gazebo_startup.launch.py robot_model:=kr210_r2700_2 robot_family:=quantec
 ```
 Launching Gazebo starts the `joint_trajectory_controller` and `joint_state_broadcaster`. The `joint_trajectory_controller` claims the `position` command interface.
 
