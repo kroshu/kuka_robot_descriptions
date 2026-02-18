@@ -292,25 +292,7 @@ Once Gazebo is launched, the move group server can be launched as well:
 ros2 launch kuka_kr_moveit_config moveit_planning_gazebo.launch.py robot_model:=kr210_r2700_2 robot_family:=quantec
 ```
 
-## Running the Gazebo example
-
-First, launch gazebo with the lbr iisy3 r760 robot and the Gazebo world containing the box:
-
-```bash
-ros2 launch kuka_gazebo gazebo.launch.py robot_model:=lbr_iisy3_r760 robot_family:=lbr_iisy gz_world:=world/box.sdf
-```
-
-Next, start the move group server with the lbr iisy3 r760 robot:
-
-```bash
-ros2 launch kuka_lbr_iisy_moveit_config moveit_planning_gazebo.launch.py robot_model:=lbr_iisy3_r760 robot_family:=lbr_iisy
-```
-
-Finally, run the example:
-
-```bash
-ros2 run kuka_gazebo gazebo_moveit_example
-```
+The moveit server will be able to accept planning requests from the plugin or from code, similarly to the mock hardware (or real robots).
 
 
 ## Gazebo-Supported Robot Testing in CI Pipeline
