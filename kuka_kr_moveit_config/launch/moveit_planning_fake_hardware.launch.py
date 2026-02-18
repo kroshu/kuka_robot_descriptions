@@ -13,9 +13,7 @@
 # limitations under the License.
 
 from launch import LaunchDescription
-from launch_ros.actions import Node
 from ament_index_python.packages import get_package_share_directory
-from moveit_configs_utils import MoveItConfigsBuilder
 from launch.actions.include_launch_description import IncludeLaunchDescription
 from launch.actions import DeclareLaunchArgument, OpaqueFunction
 from launch.launch_description_sources.python_launch_description_source import (
@@ -28,35 +26,6 @@ def launch_setup(context, *args, **kwargs):
     robot_model = LaunchConfiguration("robot_model")
     robot_family = LaunchConfiguration("robot_family")
 
-    moveit_config = (
-        MoveItConfigsBuilder("kuka_kr")
-        .robot_description(
-            file_path=get_package_share_directory(f"kuka_{robot_family.perform(context)}_support")
-            + f"/urdf/{robot_model.perform(context)}.urdf.xacro"
-        )
-        .robot_description_semantic(
-            get_package_share_directory("kuka_kr_moveit_config")
-            + f"/urdf/{robot_model.perform(context)}.srdf"
-        )
-        .robot_description_kinematics(file_path="config/kinematics.yaml")
-        .trajectory_execution(file_path="config/moveit_controllers.yaml")
-        .planning_scene_monitor(
-            publish_robot_description=True, publish_robot_description_semantic=True
-        )
-        .joint_limits(
-            file_path=get_package_share_directory(f"kuka_{robot_family.perform(context)}_support")
-            + f"/config/{robot_model.perform(context)}_joint_limits.yaml"
-        )
-        .to_moveit_configs()
-    )
-
-    move_group_server = Node(
-        package="moveit_ros_move_group",
-        executable="move_group",
-        output="screen",
-        parameters=[moveit_config.to_dict()],
-    )
-
     fake_hardware_launch = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
             [
@@ -65,14 +34,14 @@ def launch_setup(context, *args, **kwargs):
             ]
         ),
         launch_arguments={
+            "robot_family": "{}".format(robot_family.perform(context)),
+            "robot_model": "{}".format(robot_model.perform(context)),
             "dof": f"{6}",
+            "moveit_config": "kr",
         }.items(),
     )
 
-    to_start = [fake_hardware_launch, move_group_server]
-
-    return to_start
-
+    return [fake_hardware_launch]
 
 def generate_launch_description():
     launch_arguments = []
