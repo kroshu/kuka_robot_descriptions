@@ -20,11 +20,7 @@ install(
 )
 
 install(
-<<<<<<< HEAD
-  PROGRAMS test/gazebo_support_test.py
-=======
   PROGRAMS test/gazebo_support_test.py test/run_gazebo_tests.py test/test_gazebo_robot_support.py
->>>>>>> a237b35 (Cleanup package.xml dependencies (#167))
   DESTINATION lib/${PROJECT_NAME}
 )
 
