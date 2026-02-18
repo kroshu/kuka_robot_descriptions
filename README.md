@@ -279,22 +279,18 @@ These launch files are not using the actual driver implementation, they only sta
 
 ## Starting the move group server with Gazebo
 
-First, Gazebo needs to be launched. By default, the `kuka_gazebo` launch file will start the gazebo server with UI and spawn the `lbr_iisy3_r760` robot model with the `mode` parameter set to `gazebo`. To launch Gazebo with a different robot model, the following command can be used:
-
-**KR210 r2700:**
+It is also possible to plan with moveit for robots spawned in Gazebo, first the `gazebo_startup` launch file has to be started. By default, the launch file will start the gazebo server with UI and spawn the `lbr_iisy3_r760` robot model with the `mode` parameter set to `gazebo`. To launch Gazebo with a different robot model and family (KR 210 R2700-2 in the example), the following command can be used:
 
 ```bash
 ros2 launch kuka_gazebo gazebo_startup.launch.py robot_model:=kr210_r2700_2 robot_family:=quantec
 ```
-Launching Gazebo starts the `joint_trajectory_controller` and `joint_state_broadcaster`. The `joint_trajectory_controller` claims the `position` command interface.
-
-Once Gazebo is launched, the move group server can be launched as well:
+Starting the launch file also starts the `joint_trajectory_controller`, which claims the `position` command interface and `joint_state_broadcaster`. Once Gazebo is launched, the move group server can be started as well, with the `use_sim_time` argument set to True:
 
 ```bash
-ros2 launch kuka_kr_moveit_config moveit_planning_gazebo.launch.py robot_model:=kr210_r2700_2 robot_family:=quantec
+ros2 launch kuka_kr_moveit_config moveit_server.launch.py robot_model:=kr210_r2700_2 robot_family:=quantec use_sim_time:=True
 ```
 
-The moveit server will be able to accept planning requests from the plugin or from code, similarly to the mock hardware (or real robots).
+The moveit server will be able to accept planning requests from the rviz plugin or from code, similarly to the mock hardware. The same launch file can also be used to start a moveit server that will command real robots.
 
 ## Gazebo-Supported Robot Testing in CI Pipeline
 
