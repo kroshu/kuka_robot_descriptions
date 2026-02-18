@@ -5,7 +5,6 @@
   <description>Package containing moveit configurations for KUKA LBR iisy family</description>
   <maintainer email="svastits1@gmail.com">Aron Svastits</maintainer>
   <maintainer email="kovacsge.work@gmail.com">Gergely Kovacs</maintainer>
-  <maintainer email="sanyi.komaromi@gmail.com">Sandor Komaromi</maintainer>
   <maintainer email="pasztor.kristof.kp@gmail.com">Kristof Matyas Pasztor</maintainer>
   <maintainer email="pepo.tamas@gmail.com">Tamas Pepo</maintainer>
   <license>Apache-2.0</license>
@@ -17,7 +16,7 @@
   <exec_depend>moveit</exec_depend>
   <exec_depend>moveit_planners</exec_depend>
   <exec_depend>robot_state_publisher</exec_depend>
-  <exec_depend>rviz2</exec_depend>
+  <test_depend>rviz2</test_depend>
   <export>
     <architecture_independent/>
     <build_type>ament_cmake</build_type>
