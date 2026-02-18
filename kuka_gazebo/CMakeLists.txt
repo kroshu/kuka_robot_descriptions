@@ -15,7 +15,7 @@ add_executable(test_keep_alive test/gazebo_test_keep_alive.cpp)
 ament_target_dependencies(test_keep_alive rclcpp std_msgs)
 
 install(
-  DIRECTORY gazebo launch world config
+  DIRECTORY gazebo launch world
   DESTINATION share/${PROJECT_NAME}
 )
 
