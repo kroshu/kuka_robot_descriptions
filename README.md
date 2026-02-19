@@ -290,7 +290,7 @@ Starting the launch file also starts the `joint_trajectory_controller`, which cl
 ros2 launch kuka_kr_moveit_config moveit_server.launch.py robot_model:=kr210_r2700_2 robot_family:=quantec use_sim_time:=True
 ```
 
-The moveit server will be able to accept planning requests from the rviz plugin or from code, similarly to the mock hardware. The same launch file can also be used to start a moveit server that will command real robots. 
+The moveit server will be able to accept planning requests from the rviz plugin or from code, similarly to the mock hardware. The same launch file can also be used to start a moveit server that will command real robots.
 
 *Note: LBR iiwa robots do not have acceleration limits available, therefore planning currently fails for them.*
 
