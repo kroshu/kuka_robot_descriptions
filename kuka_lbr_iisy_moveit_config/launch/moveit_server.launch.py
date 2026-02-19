@@ -25,25 +25,25 @@ from launch.substitutions import LaunchConfiguration
 def launch_setup(context, *args, **kwargs):
     robot_model = LaunchConfiguration("robot_model")
 
-    fake_hardware_launch = IncludeLaunchDescription(
+    moveit_server = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
             [
                 get_package_share_directory("kuka_resources"),
-                "/launch/fake_hardware_planning_template.launch.py",
+                "/launch/moveit_server_template.launch.py",
             ]
         ),
         launch_arguments={
-            "robot_family": "{}".format("lbr_iiwa"),
+            "robot_family": "lbr_iisy",
             "robot_model": f"{robot_model.perform(context)}",
-            "dof": f"{7}",
-            "moveit_config": "lbr_iiwa",
+            "dof": f"{6}",
+            "moveit_config": "lbr_iisy",
         }.items(),
     )
 
-    return [fake_hardware_launch]
+    return [moveit_server]
 
 
 def generate_launch_description():
     launch_arguments = []
-    launch_arguments.append(DeclareLaunchArgument("robot_model", default_value="lbr_iiwa14_r820"))
+    launch_arguments.append(DeclareLaunchArgument("robot_model", default_value="lbr_iisy3_r760"))
     return LaunchDescription(launch_arguments + [OpaqueFunction(function=launch_setup)])

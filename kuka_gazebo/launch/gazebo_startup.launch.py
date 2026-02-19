@@ -13,33 +13,44 @@
 # limitations under the License.
 
 from ament_index_python.packages import get_package_share_directory
-
 from launch import LaunchDescription
 from launch.actions import IncludeLaunchDescription, DeclareLaunchArgument, OpaqueFunction
-from launch.substitutions import Command, FindExecutable, PathJoinSubstitution, LaunchConfiguration
+from launch.substitutions import (
+    Command,
+    FindExecutable,
+    LaunchConfiguration,
+    PathJoinSubstitution,
+)
 from launch_ros.actions import Node
 from launch_ros.substitutions import FindPackageShare
 from launch.launch_description_sources import PythonLaunchDescriptionSource
+from launch.conditions import IfCondition, UnlessCondition
 import os
 
 
 def launch_setup(context, *args, **kwargs):
+    # Launch configurations
     world = LaunchConfiguration("gz_world")
     robot_model = LaunchConfiguration("robot_model")
     robot_family = LaunchConfiguration("robot_family")
     ns = LaunchConfiguration("namespace")
+
     x = LaunchConfiguration("x")
     y = LaunchConfiguration("y")
     z = LaunchConfiguration("z")
     roll = LaunchConfiguration("roll")
     pitch = LaunchConfiguration("pitch")
     yaw = LaunchConfiguration("yaw")
-    if ns.perform(context) == "":
-        tf_prefix = ""
-    else:
-        tf_prefix = ns.perform(context) + "_"
 
-    # Get URDF via xacro
+    use_gui = LaunchConfiguration("use_gui")
+
+    # TF prefix
+    tf_prefix = (ns.perform(context) + "_") if ns.perform(context) != "" else ""
+
+    # Resolve world path inside kuka_gazebo share
+    world_path = os.path.join(get_package_share_directory("kuka_gazebo"), world.perform(context))
+
+    # Build robot_description from xacro
     robot_description_content = Command(
         [
             PathJoinSubstitution([FindExecutable(name="xacro")]),
@@ -78,24 +89,48 @@ def launch_setup(context, *args, **kwargs):
         ],
         on_stderr="capture",
     )
-
-    # Get URDF via xacro
     robot_description = {"robot_description": robot_description_content}
 
+    # robot_state_publisher
     robot_state_publisher = Node(
         namespace=ns,
         package="robot_state_publisher",
         executable="robot_state_publisher",
         output="both",
-        parameters=[
-            robot_description,
-            {"use_sim_time": True, "mode": "gazebo"},
-        ],
+        parameters=[robot_description, {"use_sim_time": True, "mode": "gazebo"}],
     )
 
+<<<<<<< HEAD:kuka_gazebo/launch/test_gazebo.launch.py
     # Gazebo
     world_path = os.path.join(get_package_share_directory("kuka_gazebo"), world.perform(context))
     gazebo_ld = IncludeLaunchDescription(
+=======
+    # Gazebo (GUI mode)
+    gz_sim_ld = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(
+            PathJoinSubstitution([FindPackageShare("ros_gz_sim"), "launch", "gz_sim.launch.py"])
+        ),
+        launch_arguments={"gz_args": [world_path, " -r -v1"]}.items(),
+        condition=IfCondition(use_gui),
+    )
+
+    # Gazebo (headless CI mode)
+    gz_server_ld = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(
+            PathJoinSubstitution([FindPackageShare("ros_gz_sim"), "launch", "gz_server.launch.py"])
+        ),
+        launch_arguments={
+            "world_sdf_file": world_path,
+            "container_name": "ros_gz_container",
+            "create_own_container": "False",
+            "use_composition": "False",
+        }.items(),
+        condition=UnlessCondition(use_gui),
+    )
+
+    # Bridge via the ros_gz_bridge launch file + config (works for both modes)
+    ros_gz_bridge_ld = IncludeLaunchDescription(
+>>>>>>> dea496b (Reduce code duplication and cleanup (#169)):kuka_gazebo/launch/gazebo_startup.launch.py
         PythonLaunchDescriptionSource(
             PathJoinSubstitution(
                 [
@@ -105,12 +140,12 @@ def launch_setup(context, *args, **kwargs):
                 ]
             ),
         ),
-        launch_arguments={"gz_args": [world_path, " -r -v1"]}.items(),
+        launch_arguments={"gz_args": [world_path, " -r -s -v1"]}.items(),
     )
 
+    # Spawn the robot into Gazebo
     label = ["-x", "-y", "-z", "-R", "-P", "-Y"]
-    tf = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
-    tf = [str(x) for x in tf]
+    tf = [str(v) for v in [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]]
     gazebo_robot_node = Node(
         package="ros_gz_sim",
         executable="create",
@@ -125,6 +160,7 @@ def launch_setup(context, *args, **kwargs):
         output="screen",
     )
 
+<<<<<<< HEAD:kuka_gazebo/launch/test_gazebo.launch.py
     gazebo_bridge = Node(
         package="ros_gz_bridge",
         executable="parameter_bridge",
@@ -133,59 +169,60 @@ def launch_setup(context, *args, **kwargs):
     )
 
     # Spawn controllers
+=======
+    # Controller spawner helper
+>>>>>>> dea496b (Reduce code duplication and cleanup (#169)):kuka_gazebo/launch/gazebo_startup.launch.py
     def controller_spawner(controller_name, param_file=None, activate=False):
-        arg_list = [
-            controller_name,
-            "-c",
-            "controller_manager",
-            "-n",
-            ns,
-        ]
-
-        # Add param-file if it's provided
+        args = [controller_name, "-c", "controller_manager", "-n", ns]
         if param_file:
-            arg_list.extend(["--param-file", param_file])
-
+            args.extend(["--param-file", param_file])
         if not activate:
-            arg_list.append("--inactive")
-
-        return Node(package="controller_manager", executable="spawner", arguments=arg_list)
+            args.append("--inactive")
+        return Node(package="controller_manager", executable="spawner", arguments=args)
 
     controllers = {
         "joint_state_broadcaster": None,
         "joint_trajectory_controller": None,
     }
-
     controller_spawners = [
         controller_spawner(name, param_file, True) for name, param_file in controllers.items()
     ]
 
-    nodes_to_start = [
+    nodes = [
         robot_state_publisher,
+<<<<<<< HEAD:kuka_gazebo/launch/test_gazebo.launch.py
         gazebo_ld,
+=======
+        gz_sim_ld,
+        gz_server_ld,
+>>>>>>> dea496b (Reduce code duplication and cleanup (#169)):kuka_gazebo/launch/gazebo_startup.launch.py
         gazebo_robot_node,
         gazebo_bridge,
     ] + controller_spawners
 
-    return nodes_to_start
+    return nodes
 
 
 def generate_launch_description():
-    launch_arguments = []
-    launch_arguments.append(DeclareLaunchArgument("robot_model", default_value="lbr_iisy3_r760"))
-    launch_arguments.append(DeclareLaunchArgument("robot_family", default_value="lbr_iisy"))
-    launch_arguments.append(DeclareLaunchArgument("namespace", default_value=""))
-    launch_arguments.append(DeclareLaunchArgument("x", default_value="0"))
-    launch_arguments.append(DeclareLaunchArgument("y", default_value="0"))
-    launch_arguments.append(DeclareLaunchArgument("z", default_value="0"))
-    launch_arguments.append(DeclareLaunchArgument("roll", default_value="0"))
-    launch_arguments.append(DeclareLaunchArgument("pitch", default_value="0"))
-    launch_arguments.append(DeclareLaunchArgument("yaw", default_value="0"))
-    launch_arguments.append(
+    launch_args = [
+        DeclareLaunchArgument("robot_model", default_value="lbr_iisy3_r760"),
+        DeclareLaunchArgument("robot_family", default_value="lbr_iisy"),
+        DeclareLaunchArgument("namespace", default_value=""),
+        DeclareLaunchArgument("x", default_value="0"),
+        DeclareLaunchArgument("y", default_value="0"),
+        DeclareLaunchArgument("z", default_value="0"),
+        DeclareLaunchArgument("roll", default_value="0"),
+        DeclareLaunchArgument("pitch", default_value="0"),
+        DeclareLaunchArgument("yaw", default_value="0"),
         DeclareLaunchArgument(
-            name="gz_world",
+            "gz_world",
             default_value="world/empty_world.sdf",
             description="The world to be loaded by Gazebo.",
-        )
-    )
-    return LaunchDescription(launch_arguments + [OpaqueFunction(function=launch_setup)])
+        ),
+        DeclareLaunchArgument(
+            "use_gui",
+            default_value="true",
+            description="If true, launch gz_sim (GUI). If false, launch gz_server (headless).",
+        ),
+    ]
+    return LaunchDescription(launch_args + [OpaqueFunction(function=launch_setup)])
