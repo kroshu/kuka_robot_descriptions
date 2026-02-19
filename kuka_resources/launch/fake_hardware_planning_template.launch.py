@@ -1,4 +1,4 @@
-# Copyright 2022 Aron Svastits
+# Copyright 2022 KUKA Hungaria Kft.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -16,21 +16,18 @@ from launch import LaunchDescription
 from launch_ros.actions import Node
 from ament_index_python.packages import get_package_share_directory
 from launch.actions import DeclareLaunchArgument, OpaqueFunction
-from launch.substitutions import LaunchConfiguration
-
-from launch.substitutions import Command, FindExecutable, PathJoinSubstitution
+from launch.actions.include_launch_description import IncludeLaunchDescription
+from launch.substitutions import Command, FindExecutable, PathJoinSubstitution, LaunchConfiguration
 from launch_ros.substitutions import FindPackageShare
+from launch.launch_description_sources.python_launch_description_source import (
+    PythonLaunchDescriptionSource,
+)
 
 
 def launch_setup(context, *args, **kwargs):
     robot_model = LaunchConfiguration("robot_model")
     robot_family = LaunchConfiguration("robot_family")
     dof = LaunchConfiguration("dof")
-
-    rviz_config_file = (
-        get_package_share_directory("kuka_resources")
-        + f"/config/planning_{dof.perform(context)}_axis.rviz"
-    )
 
     # Get URDF via xacro
     robot_description_content = Command(
@@ -65,23 +62,6 @@ def launch_setup(context, *args, **kwargs):
         parameters=[robot_description, controller_config],
     )
 
-    robot_description_kinematics = {
-        "robot_description_kinematics": {
-            "manipulator": {"kinematics_solver": "kdl_kinematics_plugin/KDLKinematicsPlugin"}
-        }
-    }
-
-    rviz = Node(
-        package="rviz2",
-        executable="rviz2",
-        name="rviz2",
-        output="log",
-        arguments=["-d", rviz_config_file, "--ros-args", "--log-level", "error"],
-        parameters=[
-            robot_description_kinematics,
-        ],
-    )
-
     robot_state_publisher = Node(
         package="robot_state_publisher",
         executable="robot_state_publisher",
@@ -106,7 +86,16 @@ def launch_setup(context, *args, **kwargs):
         controller_spawner(controllers) for controllers in controller_names_and_config
     ]
 
-    to_start = [control_node, robot_state_publisher, rviz] + controller_spawners
+    moveit_server = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(
+            [
+                get_package_share_directory("kuka_resources"),
+                "/launch/moveit_server_template.launch.py",
+            ]
+        )
+    )
+
+    to_start = [control_node, robot_state_publisher, moveit_server] + controller_spawners
 
     return to_start
 
