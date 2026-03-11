@@ -151,14 +151,14 @@
     <joint name="${prefix}joint_2" type="revolute">
       <axis xyz="0.0 0.0 1.0"/>
       <child link="${prefix}link_2"/>
-      <limit effort="1.6893729997505432E2" lower="-3.316125575E0" upper="7.853981625E-1" velocity="5.2359877559829888E0"/>
+      <limit effort="1.6893729997505432E2" lower="-2.5" upper="0.1" velocity="5.2359877559829888E0"/>
       <origin rpy="1.5707963267948966 -0.0 0.0" xyz="0.025 -0.0907 -0.192"/>
       <parent link="${prefix}link_1"/>
     </joint>
     <joint name="${prefix}joint_3" type="revolute">
       <axis xyz="0.0 0.0 1.0"/>
       <child link="${prefix}link_3"/>
-      <limit effort="8.1493186258254326E1" lower="-2.0943951E0" upper="2.72271363E0" velocity="6.2831853071795862E0"/>
+      <limit effort="8.1493186258254326E1" lower="-0.5" upper="2.5" velocity="6.2831853071795862E0"/>
       <origin rpy="0.0 -0.0 0.0" xyz="0.335 0.0 -0.004200000000000001"/>
       <parent link="${prefix}link_2"/>
     </joint>
