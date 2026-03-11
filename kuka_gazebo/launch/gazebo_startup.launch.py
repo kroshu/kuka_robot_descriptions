@@ -100,11 +100,6 @@ def launch_setup(context, *args, **kwargs):
         parameters=[robot_description, {"use_sim_time": True, "mode": "gazebo"}],
     )
 
-<<<<<<< HEAD:kuka_gazebo/launch/test_gazebo.launch.py
-    # Gazebo
-    world_path = os.path.join(get_package_share_directory("kuka_gazebo"), world.perform(context))
-    gazebo_ld = IncludeLaunchDescription(
-=======
     # Gazebo (GUI mode)
     gz_sim_ld = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
@@ -128,21 +123,6 @@ def launch_setup(context, *args, **kwargs):
         condition=UnlessCondition(use_gui),
     )
 
-    # Bridge via the ros_gz_bridge launch file + config (works for both modes)
-    ros_gz_bridge_ld = IncludeLaunchDescription(
->>>>>>> dea496b (Reduce code duplication and cleanup (#169)):kuka_gazebo/launch/gazebo_startup.launch.py
-        PythonLaunchDescriptionSource(
-            PathJoinSubstitution(
-                [
-                    FindPackageShare("ros_gz_sim"),
-                    "launch",
-                    "gz_sim.launch.py",
-                ]
-            ),
-        ),
-        launch_arguments={"gz_args": [world_path, " -r -s -v1"]}.items(),
-    )
-
     # Spawn the robot into Gazebo
     label = ["-x", "-y", "-z", "-R", "-P", "-Y"]
     tf = [str(v) for v in [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]]
@@ -160,7 +140,6 @@ def launch_setup(context, *args, **kwargs):
         output="screen",
     )
 
-<<<<<<< HEAD:kuka_gazebo/launch/test_gazebo.launch.py
     gazebo_bridge = Node(
         package="ros_gz_bridge",
         executable="parameter_bridge",
@@ -169,9 +148,6 @@ def launch_setup(context, *args, **kwargs):
     )
 
     # Spawn controllers
-=======
-    # Controller spawner helper
->>>>>>> dea496b (Reduce code duplication and cleanup (#169)):kuka_gazebo/launch/gazebo_startup.launch.py
     def controller_spawner(controller_name, param_file=None, activate=False):
         args = [controller_name, "-c", "controller_manager", "-n", ns]
         if param_file:
@@ -190,12 +166,8 @@ def launch_setup(context, *args, **kwargs):
 
     nodes = [
         robot_state_publisher,
-<<<<<<< HEAD:kuka_gazebo/launch/test_gazebo.launch.py
-        gazebo_ld,
-=======
         gz_sim_ld,
         gz_server_ld,
->>>>>>> dea496b (Reduce code duplication and cleanup (#169)):kuka_gazebo/launch/gazebo_startup.launch.py
         gazebo_robot_node,
         gazebo_bridge,
     ] + controller_spawners
