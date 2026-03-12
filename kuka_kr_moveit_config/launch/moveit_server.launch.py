@@ -1,4 +1,4 @@
-# Copyright 2022 KUKA Hungaria Kft.
+# Copyright 2026 KUKA Hungaria Kft.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -24,26 +24,28 @@ from launch.substitutions import LaunchConfiguration
 
 def launch_setup(context, *args, **kwargs):
     robot_model = LaunchConfiguration("robot_model")
+    robot_family = LaunchConfiguration("robot_family")
 
-    fake_hardware_launch = IncludeLaunchDescription(
+    moveit_server = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
             [
                 get_package_share_directory("kuka_resources"),
-                "/launch/fake_hardware_planning_template.launch.py",
+                "/launch/moveit_server_template.launch.py",
             ]
         ),
         launch_arguments={
-            "robot_family": "{}".format("lbr_iiwa"),
+            "robot_family": f"{robot_family.perform(context)}",
             "robot_model": f"{robot_model.perform(context)}",
-            "dof": f"{7}",
-            "moveit_config": "lbr_iiwa",
+            "dof": f"{6}",
+            "moveit_config": "kr",
         }.items(),
     )
 
-    return [fake_hardware_launch]
+    return [moveit_server]
 
 
 def generate_launch_description():
     launch_arguments = []
-    launch_arguments.append(DeclareLaunchArgument("robot_model", default_value="lbr_iiwa14_r820"))
+    launch_arguments.append(DeclareLaunchArgument("robot_model", default_value="kr6_r700_sixx"))
+    launch_arguments.append(DeclareLaunchArgument("robot_family", default_value="agilus"))
     return LaunchDescription(launch_arguments + [OpaqueFunction(function=launch_setup)])

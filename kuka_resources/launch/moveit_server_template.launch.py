@@ -1,4 +1,4 @@
-# Copyright 2025 KUKA Hungaria Kft.
+# Copyright 2026 KUKA Hungaria Kft.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -15,43 +15,33 @@
 from launch import LaunchDescription
 from launch_ros.actions import Node
 from ament_index_python.packages import get_package_share_directory
-from moveit_configs_utils import MoveItConfigsBuilder
 from launch.actions import DeclareLaunchArgument, OpaqueFunction
 from launch.substitutions import LaunchConfiguration
+from moveit_configs_utils import MoveItConfigsBuilder
 
 
 def launch_setup(context, *args, **kwargs):
     robot_model = LaunchConfiguration("robot_model")
     robot_family = LaunchConfiguration("robot_family")
-    ns = LaunchConfiguration("namespace")
-    x = LaunchConfiguration("x")
-    y = LaunchConfiguration("y")
-    z = LaunchConfiguration("z")
-    roll = LaunchConfiguration("roll")
-    pitch = LaunchConfiguration("pitch")
-    yaw = LaunchConfiguration("yaw")
+    moveit_config_pkg = LaunchConfiguration("moveit_config")
+    use_sim_time = LaunchConfiguration("use_sim_time")
+    dof = LaunchConfiguration("dof")
 
-    if ns.perform(context) == "":
-        tf_prefix = ""
-    else:
-        tf_prefix = ns.perform(context) + "_"
+    rviz_config_file = (
+        get_package_share_directory("kuka_resources")
+        + f"/config/planning_{dof.perform(context)}_axis.rviz"
+    )
 
     moveit_config = (
-        MoveItConfigsBuilder("kuka_kr")
+        MoveItConfigsBuilder(f"kuka_{moveit_config_pkg.perform(context)}")
         .robot_description(
             file_path=get_package_share_directory(f"kuka_{robot_family.perform(context)}_support")
-            + f"/urdf/{robot_model.perform(context)}.urdf.xacro",
-            mappings={
-                "x": x.perform(context),
-                "y": y.perform(context),
-                "z": z.perform(context),
-                "roll": roll.perform(context),
-                "pitch": pitch.perform(context),
-                "yaw": yaw.perform(context),
-                "prefix": tf_prefix,
-            },
+            + f"/urdf/{robot_model.perform(context)}.urdf.xacro"
         )
-        .robot_description_semantic(f"urdf/{robot_model.perform(context)}.srdf")
+        .robot_description_semantic(
+            get_package_share_directory(f"kuka_{moveit_config_pkg.perform(context)}_moveit_config")
+            + f"/urdf/{robot_model.perform(context)}.srdf"
+        )
         .robot_description_kinematics(file_path="config/kinematics.yaml")
         .trajectory_execution(file_path="config/moveit_controllers.yaml")
         .planning_scene_monitor(
@@ -64,16 +54,6 @@ def launch_setup(context, *args, **kwargs):
         .to_moveit_configs()
     )
 
-    rviz_config_file = (
-        get_package_share_directory("kuka_resources") + "/config/planning_6_axis.rviz"
-    )
-
-    robot_description_kinematics = {
-        "robot_description_kinematics": {
-            "manipulator": {"kinematics_solver": "kdl_kinematics_plugin/KDLKinematicsPlugin"}
-        }
-    }
-
     move_group_server = Node(
         package="moveit_ros_move_group",
         executable="move_group",
@@ -81,13 +61,15 @@ def launch_setup(context, *args, **kwargs):
         parameters=[
             moveit_config.to_dict(),
             {"publish_planning_scene_hz": 30.0},
-            {"allow_trajectory_execution": True},
-            {"use_sim_time": True},
-            {"publish_planning_scene": True},
-            {"publish_state_updates": True},
-            {"publish_transforms_updates": True},
+            {"use_sim_time": use_sim_time},
         ],
     )
+
+    robot_description_kinematics = {
+        "robot_description_kinematics": {
+            "manipulator": {"kinematics_solver": "kdl_kinematics_plugin/KDLKinematicsPlugin"}
+        }
+    }
 
     rviz = Node(
         package="rviz2",
@@ -100,20 +82,14 @@ def launch_setup(context, *args, **kwargs):
         ],
     )
 
-    to_start = [move_group_server, rviz]
-
-    return to_start
+    return [rviz, move_group_server]
 
 
 def generate_launch_description():
     launch_arguments = []
-    launch_arguments.append(DeclareLaunchArgument("robot_model", default_value="kr6_r700_2"))
-    launch_arguments.append(DeclareLaunchArgument("robot_family", default_value="agilus"))
-    launch_arguments.append(DeclareLaunchArgument("namespace", default_value=""))
-    launch_arguments.append(DeclareLaunchArgument("x", default_value="0"))
-    launch_arguments.append(DeclareLaunchArgument("y", default_value="0"))
-    launch_arguments.append(DeclareLaunchArgument("z", default_value="0"))
-    launch_arguments.append(DeclareLaunchArgument("roll", default_value="0"))
-    launch_arguments.append(DeclareLaunchArgument("pitch", default_value="0"))
-    launch_arguments.append(DeclareLaunchArgument("yaw", default_value="0"))
+    launch_arguments.append(DeclareLaunchArgument("robot_model", default_value=""))
+    launch_arguments.append(DeclareLaunchArgument("robot_family", default_value=""))
+    launch_arguments.append(DeclareLaunchArgument("moveit_config", default_value=""))
+    launch_arguments.append(DeclareLaunchArgument("dof", default_value="6"))
+    launch_arguments.append(DeclareLaunchArgument("use_sim_time", default_value="False"))
     return LaunchDescription(launch_arguments + [OpaqueFunction(function=launch_setup)])
