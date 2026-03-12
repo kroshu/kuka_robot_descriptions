@@ -112,15 +112,17 @@ def launch_setup(context, *args, **kwargs):
     # Gazebo (headless CI mode)
     gz_server_ld = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
-            PathJoinSubstitution([FindPackageShare("ros_gz_sim"), "launch", "gz_server.launch.py"])
+            PathJoinSubstitution([FindPackageShare("ros_gz_sim"), "launch", "gz_sim.launch.py"])
         ),
-        launch_arguments={
-            "world_sdf_file": world_path,
-            "container_name": "ros_gz_container",
-            "create_own_container": "False",
-            "use_composition": "False",
-        }.items(),
+        launch_arguments={"gz_args": [world_path, " -r -s -v1"]}.items(),
         condition=UnlessCondition(use_gui),
+    )
+
+    gazebo_bridge = Node(
+        package="ros_gz_bridge",
+        executable="parameter_bridge",
+        arguments=["/clock@rosgraph_msgs/msg/Clock[gz.msgs.Clock"],
+        output="screen",
     )
 
     # Spawn the robot into Gazebo
@@ -137,13 +139,6 @@ def launch_setup(context, *args, **kwargs):
             "-allow_renaming",
         ]
         + [item for pair in zip(label, tf) for item in pair],
-        output="screen",
-    )
-
-    gazebo_bridge = Node(
-        package="ros_gz_bridge",
-        executable="parameter_bridge",
-        arguments=["/clock@rosgraph_msgs/msg/Clock[gz.msgs.Clock"],
         output="screen",
     )
 
