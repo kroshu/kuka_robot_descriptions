@@ -34,12 +34,15 @@
 
 namespace kuka_mock_hardware_interface
 {
-CallbackReturn KukaMockHardwareInterface::on_init(const hardware_interface::HardwareInfo & info)
+CallbackReturn KukaMockHardwareInterface::on_init(
+  const hardware_interface::HardwareComponentInterfaceParams & params)
 {
-  if (hardware_interface::SystemInterface::on_init(info) != CallbackReturn::SUCCESS)
+  if (
+    hardware_interface::SystemInterface::on_init(params) != CallbackReturn::SUCCESS)
   {
     return CallbackReturn::ERROR;
   }
+  const auto & info = params.hardware_info;
 
   auto populate_non_standard_interfaces =
     [this](auto interface_list, auto & non_standard_interfaces)
