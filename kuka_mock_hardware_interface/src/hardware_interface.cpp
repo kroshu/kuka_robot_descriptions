@@ -37,8 +37,7 @@ namespace kuka_mock_hardware_interface
 CallbackReturn KukaMockHardwareInterface::on_init(
   const hardware_interface::HardwareComponentInterfaceParams & params)
 {
-  if (
-    hardware_interface::SystemInterface::on_init(params) != CallbackReturn::SUCCESS)
+  if (hardware_interface::SystemInterface::on_init(params) != CallbackReturn::SUCCESS)
   {
     return CallbackReturn::ERROR;
   }
