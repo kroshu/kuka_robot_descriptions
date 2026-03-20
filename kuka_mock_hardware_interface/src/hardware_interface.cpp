@@ -331,7 +331,8 @@ std::vector<hardware_interface::StateInterface> KukaMockHardwareInterface::expor
   };
 
   // GPIO state interfaces
-  if (!populate_interfaces(get_hardware_info().gpios, gpio_interfaces_, gpio_states_, state_interfaces, true))
+  if (!populate_interfaces(
+        get_hardware_info().gpios, gpio_interfaces_, gpio_states_, state_interfaces, true))
   {
     throw std::runtime_error("Interface is not found in the gpio list. This should never happen!");
   }
@@ -421,7 +422,8 @@ KukaMockHardwareInterface::export_command_interfaces()
   if (use_mock_sensor_command_interfaces_)
   {
     if (!populate_interfaces(
-          get_hardware_info().sensors, sensor_interfaces_, sensor_mock_commands_, command_interfaces, true))
+          get_hardware_info().sensors, sensor_interfaces_, sensor_mock_commands_,
+          command_interfaces, true))
     {
       throw std::runtime_error(
         "Interface is not found in the standard nor other list. This should never happen!");
@@ -432,7 +434,8 @@ KukaMockHardwareInterface::export_command_interfaces()
   if (use_mock_gpio_command_interfaces_)
   {
     if (!populate_interfaces(
-          get_hardware_info().gpios, gpio_interfaces_, gpio_mock_commands_, command_interfaces, true))
+          get_hardware_info().gpios, gpio_interfaces_, gpio_mock_commands_, command_interfaces,
+          true))
     {
       throw std::runtime_error(
         "Interface is not found in the gpio list. This should never happen!");
@@ -495,11 +498,15 @@ return_type KukaMockHardwareInterface::prepare_command_mode_switch(
         joint_found_in_x_requests_[joint_index] = FOUND_ONCE_FLAG;
       }
 
-      if (key == get_hardware_info().joints[joint_index].name + "/" + hardware_interface::HW_IF_POSITION)
+      if (
+        key ==
+        get_hardware_info().joints[joint_index].name + "/" + hardware_interface::HW_IF_POSITION)
       {
         joint_found_in_x_requests_[joint_index] += 1;
       }
-      if (key == get_hardware_info().joints[joint_index].name + "/" + hardware_interface::HW_IF_VELOCITY)
+      if (
+        key ==
+        get_hardware_info().joints[joint_index].name + "/" + hardware_interface::HW_IF_VELOCITY)
       {
         if (!calculate_dynamics_)
         {
@@ -511,7 +518,9 @@ return_type KukaMockHardwareInterface::prepare_command_mode_switch(
         }
         joint_found_in_x_requests_[joint_index] += 1;
       }
-      if (key == get_hardware_info().joints[joint_index].name + "/" + hardware_interface::HW_IF_ACCELERATION)
+      if (
+        key ==
+        get_hardware_info().joints[joint_index].name + "/" + hardware_interface::HW_IF_ACCELERATION)
       {
         if (!calculate_dynamics_)
         {
@@ -551,7 +560,8 @@ return_type KukaMockHardwareInterface::prepare_command_mode_switch(
         "mock_generic_system",
         "Got multiple (%zu) starting interfaces for joint '%s' - this is not "
         "supported!",
-        joint_found_in_x_requests_[i] - FOUND_ONCE_FLAG, get_hardware_info().joints[i].name.c_str());
+        joint_found_in_x_requests_[i] - FOUND_ONCE_FLAG,
+        get_hardware_info().joints[i].name.c_str());
       ret_val = hardware_interface::return_type::ERROR;
     }
   }
@@ -579,15 +589,21 @@ return_type KukaMockHardwareInterface::perform_command_mode_switch(
     {
       const size_t joint_index = std::distance(get_hardware_info().joints.begin(), joint_it_found);
 
-      if (key == get_hardware_info().joints[joint_index].name + "/" + hardware_interface::HW_IF_POSITION)
+      if (
+        key ==
+        get_hardware_info().joints[joint_index].name + "/" + hardware_interface::HW_IF_POSITION)
       {
         joint_control_mode_[joint_index] = POSITION_INTERFACE_INDEX;
       }
-      if (key == get_hardware_info().joints[joint_index].name + "/" + hardware_interface::HW_IF_VELOCITY)
+      if (
+        key ==
+        get_hardware_info().joints[joint_index].name + "/" + hardware_interface::HW_IF_VELOCITY)
       {
         joint_control_mode_[joint_index] = VELOCITY_INTERFACE_INDEX;
       }
-      if (key == get_hardware_info().joints[joint_index].name + "/" + hardware_interface::HW_IF_ACCELERATION)
+      if (
+        key ==
+        get_hardware_info().joints[joint_index].name + "/" + hardware_interface::HW_IF_ACCELERATION)
       {
         joint_control_mode_[joint_index] = ACCELERATION_INTERFACE_INDEX;
       }
