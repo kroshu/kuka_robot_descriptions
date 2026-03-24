@@ -1,0 +1,39 @@
+default_velocity_scaling_factor: 1.0
+default_acceleration_scaling_factor: 1.0
+joint_limits:
+  joint_1:
+    has_velocity_limits: true
+    max_velocity: 2.038482441150218
+    has_acceleration_limits: true
+    max_acceleration: 2.0696399451798935
+    has_jerk: false
+  joint_2:
+    has_velocity_limits: true
+    max_velocity: 1.9451869809220728
+    has_acceleration_limits: true
+    max_acceleration: 1.6231631714293322
+    has_jerk: false
+  joint_3:
+    has_velocity_limits: true
+    max_velocity: 2.0832834197299266
+    has_acceleration_limits: true
+    max_acceleration: 5.602875870025982
+    has_jerk: false
+  joint_4:
+    has_velocity_limits: true
+    max_velocity: 3.3161255787892263
+    has_acceleration_limits: true
+    max_acceleration: 15.986922446845478
+    has_jerk: false
+  joint_5:
+    has_velocity_limits: true
+    max_velocity: 3.141592653589793
+    has_acceleration_limits: true
+    max_acceleration: 9.04139906918719
+    has_jerk: false
+  joint_6:
+    has_velocity_limits: true
+    max_velocity: 4.537856055185257
+    has_acceleration_limits: true
+    max_acceleration: 8.588792336625382
+    has_jerk: false
