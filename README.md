@@ -188,6 +188,9 @@ The following table shows what data is verified for each robot in the support pa
 |kr16_r1610_2| cybertech | ✓ | ✓ | ✓ | ✓ | | ✓ |
 |kr16_r2010_2| cybertech | ✓ | ✓ | ✓ | ✓ | | ✓ |
 |kr20_r1810_2| cybertech | ✓ | ✓ | ✓ | ✓ | | ✓ |
+|kr20_r3100| iontec | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+|kr30_r2100| iontec | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+|kr50_r2500| iontec | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
 |kr70_r2100| iontec | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
 |kr150_r3100| quantec | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
 |kr210_r2700_2| quantec | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
@@ -196,7 +199,9 @@ The following table shows what data is verified for each robot in the support pa
 |kr300_r2700_2| quantec | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
 |kr240_r3330| fortec | ✓ | ✓ | ✓ | ✓ | | ✓ |
 |kr300_r2800_2_mt| fortec | ✓ | ✓ | ✓ | ✓ | | ✓ |
+|kr500_r2800_2| fortec | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
 |kr560_r3100_2| fortec | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+|kr800_r2800_2| fortec | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
 
 ## Supported features
 
@@ -221,6 +226,9 @@ The following table shows the supported customizable features for each robot in 
 |kr16_r1610_2| cybertech | ✓ | ✓ | |
 |kr16_r2010_2| cybertech | ✓ | ✓ | |
 |kr20_r1810_2| cybertech | ✓ | ✓ | |
+|kr20_r3100| iontec | ✓ | ✓ | ✓ |
+|kr30_r2100| iontec | ✓ | ✓ | ✓ |
+|kr50_r2500| iontec | ✓ | ✓ | ✓ |
 |kr70_r2100| iontec | ✓ | ✓ | ✓ |
 |kr210_r2700_2| quantec | ✓ | ✓ | ✓ |
 |kr210_r3100_2| quantec | ✓ | ✓ | ✓ |
@@ -228,7 +236,9 @@ The following table shows the supported customizable features for each robot in 
 |kr300_r2700_2| quantec | ✓ | ✓ | ✓ |
 |kr240_r3330| fortec | ✓ | ✓ | |
 |kr300_r2800_2_mt| fortec | ✓ | ✓ | ✓ |
+|kr500_r2800_2| fortec | ✓ | ✓ | ✓ |
 |kr560_r3100_2| fortec | ✓ | ✓ | ✓ |
+|kr800_r2800_2| fortec | ✓ | ✓ | ✓ |
 
 ## Custom mock hardware
 
