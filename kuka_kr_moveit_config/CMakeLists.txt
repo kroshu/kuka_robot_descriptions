@@ -21,6 +21,9 @@ set(supported_robots
   kr16_r1610_2
   kr16_r2010_2
   kr20_r1810_2
+  kr20_r3100
+  kr30_r2100
+  kr50_r2500
   kr70_r2100
   kr150_r3100_2
   kr210_r2700_2
@@ -29,7 +32,9 @@ set(supported_robots
   kr240_r3330
   kr300_r2700_2
   kr300_r2800_2_mt
+  kr500_r2800_2
   kr560_r3100_2
+  kr800_r2800_2
 )
 
 foreach(model IN LISTS supported_robots)
