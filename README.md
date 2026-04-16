@@ -196,6 +196,7 @@ The following table shows what data is verified for each robot in the support pa
 |kr210_r2700_2| quantec | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
 |kr210_r3100_2| quantec | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
 |kr210_r3100_ultra| quantec | ✓ | ✓ | ✓ | ✓ | | ✓ |
+|kr210_r3300_2_k| quantec | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
 |kr240_r2900_2| quantec | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
 |kr300_r2700_2| quantec | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
 |kr240_r3330| fortec | ✓ | ✓ | ✓ | ✓ | | ✓ |
@@ -234,6 +235,7 @@ The following table shows the supported customizable features for each robot in 
 |kr210_r2700_2| quantec | ✓ | ✓ | ✓ |
 |kr210_r3100_2| quantec | ✓ | ✓ | ✓ |
 |kr210_r3100_ultra| quantec | ✓ | ✓ | |
+|kr210_r3300_2_k| quantec | ✓ | ✓ | ✓ |
 |kr240_r2900_2| quantec | ✓ | ✓ | ✓ |
 |kr300_r2700_2| quantec | ✓ | ✓ | ✓ |
 |kr240_r3330| fortec | ✓ | ✓ | |
