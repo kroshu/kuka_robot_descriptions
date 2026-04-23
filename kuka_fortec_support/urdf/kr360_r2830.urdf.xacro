@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0"?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro" name="kr360_r2830">
   <!-- Import macro files  -->
   <xacro:include filename="$(find kuka_fortec_support)/urdf/kr360_r2830_macro.xacro"/>
