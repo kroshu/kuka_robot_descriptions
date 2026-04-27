@@ -26,10 +26,8 @@
   <!-- world link -->
   <link name="world"/>
   <!-- robot links, joints -->
-  <xacro:kuka_kr360_r2830_robot prefix="$(arg prefix)" package_name="kuka_fortec_support">
-    <origin xyz="$(arg x) $(arg y) $(arg z)" rpy="$(arg roll) $(arg pitch) $(arg yaw)"/>
-  </xacro:kuka_kr360_r2830_robot>
-   <!-- default world - base_link joint -->
+  <xacro:kuka_kr360_r2830_robot prefix="$(arg prefix)" package_name="kuka_fortec_support"/>
+  <!-- default world - base_link joint -->
   <joint name="$(arg prefix)world-base_link" type="fixed">
     <parent link="world"/>
     <child link="$(arg prefix)base_link"/>
