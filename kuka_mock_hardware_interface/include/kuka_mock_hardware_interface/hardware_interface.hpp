@@ -42,7 +42,7 @@ public:
   return_type write(const rclcpp::Time & time, const rclcpp::Duration & period) override;
 
 protected:
-  // Sunrise robot state stucture
+  // Sunrise robot state structure
   struct RobotState
   {
     double tracking_performance_ = 1;
@@ -81,9 +81,8 @@ protected:
   std::chrono::nanoseconds cycle_time_nano_;
   int roundtrip_time_micro_;
   bool init_clock_ = true;
-  std::chrono::time_point<std::chrono::system_clock, std::chrono::nanoseconds> next_iteration_time_;
+  std::chrono::steady_clock::time_point next_iteration_time_;
 };
-
 
 }  // namespace kuka_mock_hardware_interface
 

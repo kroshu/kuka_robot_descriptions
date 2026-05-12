@@ -38,7 +38,7 @@ CallbackReturn KukaMockHardwareInterface::on_init(
   {
     return CallbackReturn::ERROR;
   }
- 
+
   // Parse KUKA-specific parameters
   auto info = get_hardware_info();
   auto it = info.hardware_parameters.find("cycle_time_ms");
@@ -64,7 +64,7 @@ CallbackReturn KukaMockHardwareInterface::on_init(
   return CallbackReturn::SUCCESS;
 }
 
-CallbackReturn KukaMockHardwareInterface::on_configure(const rclcpp_lifecycle::State& state)
+CallbackReturn KukaMockHardwareInterface::on_configure(const rclcpp_lifecycle::State & state)
 {
   if (mock_components::GenericSystem::on_configure(state) != CallbackReturn::SUCCESS)
   {
@@ -76,7 +76,8 @@ CallbackReturn KukaMockHardwareInterface::on_configure(const rclcpp_lifecycle::S
 
 std::vector<hardware_interface::StateInterface> KukaMockHardwareInterface::export_state_interfaces()
 {
-  std::vector<hardware_interface::StateInterface> state_interfaces = mock_components::GenericSystem::export_state_interfaces();
+  std::vector<hardware_interface::StateInterface> state_interfaces =
+    mock_components::GenericSystem::export_state_interfaces();
 
   state_interfaces.emplace_back(
     hardware_interface::FRI_STATE_PREFIX, hardware_interface::SESSION_STATE,
@@ -132,7 +133,8 @@ std::vector<hardware_interface::StateInterface> KukaMockHardwareInterface::expor
 std::vector<hardware_interface::CommandInterface>
 KukaMockHardwareInterface::export_command_interfaces()
 {
-  std::vector<hardware_interface::CommandInterface> command_interfaces = mock_components::GenericSystem::export_command_interfaces();
+  std::vector<hardware_interface::CommandInterface> command_interfaces =
+    mock_components::GenericSystem::export_command_interfaces();
 
   command_interfaces.emplace_back(
     hardware_interface::CONFIG_PREFIX, hardware_interface::CONTROL_MODE, &control_mode_);
@@ -149,19 +151,19 @@ KukaMockHardwareInterface::export_command_interfaces()
   return command_interfaces;
 }
 
-
 return_type KukaMockHardwareInterface::read(
   const rclcpp::Time & time, const rclcpp::Duration & period)
 {
-
   auto ret = mock_components::GenericSystem::read(time, period);
-  if (ret != return_type::OK) return ret;
+  if (ret != return_type::OK)
+  {
+    return ret;
+  }
 
   if (init_clock_)
   {
-    next_iteration_time_ =
-      std::chrono::time_point<std::chrono::system_clock, std::chrono::nanoseconds>(
-        std::chrono::nanoseconds(time.nanoseconds()));
+    // Initialize from a monotonic clock to avoid wall-clock jumps
+    next_iteration_time_ = std::chrono::steady_clock::now();
     init_clock_ = false;
   }
 
@@ -171,21 +173,27 @@ return_type KukaMockHardwareInterface::read(
   return return_type::OK;
 }
 
-return_type KukaMockHardwareInterface::write(const rclcpp::Time & time, const rclcpp::Duration & period)
+return_type KukaMockHardwareInterface::write(
+  const rclcpp::Time & time, const rclcpp::Duration & period)
 {
-
   auto ret = mock_components::GenericSystem::write(time, period);
-  if (ret != return_type::OK) return ret;
+  if (ret != return_type::OK)
+  {
+    return ret;
+  }
 
   if (roundtrip_time_micro_ != 0)
   {
-    if (
-      time.nanoseconds() >
-      next_iteration_time_.time_since_epoch().count() + roundtrip_time_micro_ * 1000)
+    const auto now = std::chrono::steady_clock::now();
+    const auto allowed_time =
+      next_iteration_time_ + std::chrono::microseconds(roundtrip_time_micro_);
+
+    if (now > allowed_time)
     {
       RCUTILS_LOG_WARN_NAMED("mock_generic_system", "Cycle exceeded allowed round-trip time");
     }
   }
+
   return return_type::OK;
 }
 
