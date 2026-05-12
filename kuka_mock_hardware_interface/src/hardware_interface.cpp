@@ -15,18 +15,6 @@
 #include "kuka_mock_hardware_interface/hardware_interface.hpp"
 #include "kuka_mock_hardware_interface/hardware_interface_types.hpp"
 
-#include <algorithm>
-#include <cmath>
-#include <iterator>
-#include <limits>
-#include <set>
-#include <string>
-#include <thread>
-#include <vector>
-
-#include "hardware_interface/component_parser.hpp"
-#include "hardware_interface/lexical_casts.hpp"
-#include "hardware_interface/types/hardware_interface_type_values.hpp"
 #include "rcutils/logging_macros.h"
 
 namespace kuka_mock_hardware_interface
@@ -45,20 +33,26 @@ CallbackReturn KukaMockHardwareInterface::on_init(
   if (it != info.hardware_parameters.end())
   {
     cycle_time_nano_ = std::chrono::nanoseconds(std::stoi(it->second) * 1'000'000);
+    RCUTILS_LOG_INFO_NAMED(
+      "mock_generic_system", "Using configured cycle time of %d [ms]", std::stoi(it->second));
   }
   else
   {
     cycle_time_nano_ = std::chrono::nanoseconds(4'000'000);  // Default to 4 ms
+    RCUTILS_LOG_INFO_NAMED("mock_generic_system", "Using default cycle time of 4 [ms]");
   }
 
   it = info.hardware_parameters.find("roundtrip_time_micro");
   if (it != info.hardware_parameters.end())
   {
-    roundtrip_time_micro_ = std::stod(it->second);
+    roundtrip_time_micro_ = std::stoi(it->second);
+    RCUTILS_LOG_INFO_NAMED(
+      "mock_generic_system", "Setting allowed roundtrip time to %d [us]", std::stoi(it->second));
   }
   else
   {
     roundtrip_time_micro_ = 0;  // Default to no timeout checking
+    RCUTILS_LOG_INFO_NAMED("mock_generic_system", "Roundtrip time will not be monitored");
   }
 
   return CallbackReturn::SUCCESS;
