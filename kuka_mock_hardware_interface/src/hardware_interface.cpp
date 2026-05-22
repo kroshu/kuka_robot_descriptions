@@ -22,15 +22,17 @@ namespace kuka_mock_hardware_interface
 CallbackReturn KukaMockHardwareInterface::on_init(
   const hardware_interface::HardwareComponentInterfaceParams & params)
 {
-  if (mock_components::GenericSystem::on_init(params) != CallbackReturn::SUCCESS)
+
+  auto ret = mock_components::GenericSystem::on_init(params);
+  if (ret != CallbackReturn::SUCCESS)
   {
-    return CallbackReturn::ERROR;
+    return ret;
   }
 
   // Parse KUKA-specific parameters
   auto info = get_hardware_info();
   auto it = info.hardware_parameters.find("cycle_time_ms");
-  if (it != info.hardware_parameters.end())
+  if (it != info.hardware_parameters.end() && std::stoi(it->second) > 0)
   {
     cycle_time_nano_ = std::chrono::nanoseconds(std::stoi(it->second) * 1'000'000);
     RCUTILS_LOG_INFO_NAMED(
@@ -60,9 +62,10 @@ CallbackReturn KukaMockHardwareInterface::on_init(
 
 CallbackReturn KukaMockHardwareInterface::on_configure(const rclcpp_lifecycle::State & state)
 {
-  if (mock_components::GenericSystem::on_configure(state) != CallbackReturn::SUCCESS)
+  auto ret = mock_components::GenericSystem::on_configure(state);
+  if (ret != CallbackReturn::SUCCESS)
   {
-    return CallbackReturn::ERROR;
+    return ret;
   }
   init_clock_ = true;
   return CallbackReturn::SUCCESS;
