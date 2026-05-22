@@ -22,7 +22,6 @@ namespace kuka_mock_hardware_interface
 CallbackReturn KukaMockHardwareInterface::on_init(
   const hardware_interface::HardwareComponentInterfaceParams & params)
 {
-
   auto ret = mock_components::GenericSystem::on_init(params);
   if (ret != CallbackReturn::SUCCESS)
   {
