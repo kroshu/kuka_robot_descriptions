@@ -45,7 +45,7 @@ CallbackReturn KukaMockHardwareInterface::on_init(
   }
 
   it = info.hardware_parameters.find("roundtrip_time_micro");
-  if (it != info.hardware_parameters.end())
+  if (it != info.hardware_parameters.end() && std::stoi(it->second) > 0)
   {
     roundtrip_time_micro_ = std::stoi(it->second);
     RCUTILS_LOG_INFO_NAMED(
