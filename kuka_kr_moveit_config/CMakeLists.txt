@@ -34,8 +34,10 @@ set(supported_robots
   kr240_r3330
   kr300_r2700_2
   kr300_r2800_2_mt
+  kr360_r2830
   kr500_r2800_2
   kr560_r3100_2
+  kr600_r2830
   kr800_r2800_2
 )
 
