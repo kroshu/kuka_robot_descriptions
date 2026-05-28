@@ -180,7 +180,7 @@ The following table shows what data is verified for each robot in the support pa
 |kr6_r700_sixx| agilus | ✓ | ✓ | ✓ | | | ✓ |
 |kr6_r900_2| agilus | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
 |kr6_r900_sixx| agilus | ✓ | ✓ | ✓ | | | ✓ |
-|kr7_r900_3| agilus | ✓ | ✓ | ✓ | | | ✓ |
+|kr7_r900_3| agilus | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
 |kr10_r900_2| agilus | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
 |kr10_r1100_2| agilus | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
 |kr8_r1440_2_arc_hw| cybertech | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
