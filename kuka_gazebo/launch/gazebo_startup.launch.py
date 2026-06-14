@@ -157,12 +157,14 @@ def launch_setup(context, *args, **kwargs):
 
     # Controller spawner helper
     def controller_spawner(controller_name, param_file=None, activate=False):
-        args = [controller_name, "-c", "controller_manager", "-n", ns]
+        args = [controller_name, "-c", "controller_manager"]
         if param_file:
             args.extend(["--param-file", param_file])
         if not activate:
             args.append("--inactive")
-        return Node(package="controller_manager", executable="spawner", arguments=args)
+        return Node(
+            package="controller_manager", executable="spawner", arguments=args, namespace=ns
+        )
 
     controllers = {
         "joint_state_broadcaster": None,
