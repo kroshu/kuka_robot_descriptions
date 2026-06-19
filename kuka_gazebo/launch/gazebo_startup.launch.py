@@ -31,6 +31,7 @@ import os
 def launch_setup(context, *args, **kwargs):
     # Launch configurations
     world = LaunchConfiguration("gz_world")
+    world_package = LaunchConfiguration("gz_world_package")
     robot_model = LaunchConfiguration("robot_model")
     robot_family = LaunchConfiguration("robot_family")
     ns = LaunchConfiguration("namespace")
@@ -48,7 +49,10 @@ def launch_setup(context, *args, **kwargs):
     tf_prefix = (ns.perform(context) + "_") if ns.perform(context) != "" else ""
 
     # Resolve world path inside kuka_gazebo share
-    world_path = os.path.join(get_package_share_directory("kuka_gazebo"), world.perform(context))
+    world_pkg = world_package.perform(context)
+    world_file = world.perform(context)
+
+    world_path = os.path.join(get_package_share_directory(world_pkg), world_file)
 
     # Build robot_description from xacro
     robot_description_content = Command(
