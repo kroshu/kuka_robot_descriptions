@@ -1,4 +1,4 @@
-// Copyright (c) 2021 PickNik, Inc.
+// Copyright 2026 KUKA Hungaria Kft.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -11,31 +11,19 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-//
-// Author: Jafar Abdi, Denis Stogl
-// Maintainer: Aron Svastits
 
 #include "kuka_mock_hardware_interface/hardware_interface.hpp"
 #include "kuka_mock_hardware_interface/hardware_interface_types.hpp"
 
-#include <algorithm>
-#include <cmath>
-#include <iterator>
-#include <limits>
-#include <set>
-#include <string>
-#include <thread>
-#include <vector>
+#include <memory>
 
-#include "hardware_interface/component_parser.hpp"
-#include "hardware_interface/lexical_casts.hpp"
-#include "hardware_interface/types/hardware_interface_type_values.hpp"
 #include "rcutils/logging_macros.h"
 
 namespace kuka_mock_hardware_interface
 {
 CallbackReturn KukaMockHardwareInterface::on_init(const hardware_interface::HardwareInfo & info)
 {
+<<<<<<< HEAD
   if (hardware_interface::SystemInterface::on_init(info) != CallbackReturn::SUCCESS)
   {
     return CallbackReturn::ERROR;
@@ -151,22 +139,45 @@ CallbackReturn KukaMockHardwareInterface::on_init(const hardware_interface::Hard
   // Parse KUKA-specific parameters
   it = info_.hardware_parameters.find("cycle_time_ms");
   if (it != info.hardware_parameters.end())
+=======
+  auto ret = mock_components::GenericSystem::on_init(params);
+  if (ret != CallbackReturn::SUCCESS)
+  {
+    return ret;
+  }
+
+  // Parse KUKA-specific parameters
+  auto info = get_hardware_info();
+  auto it = info.hardware_parameters.find("cycle_time_ms");
+  if (it != info.hardware_parameters.end() && std::stoi(it->second) > 0)
+>>>>>>> f417daf (Clean up KUKA mock hardware implementation (#195))
   {
     cycle_time_nano_ = std::chrono::nanoseconds(std::stoi(it->second) * 1'000'000);
+    RCUTILS_LOG_INFO_NAMED(
+      "mock_generic_system", "Using configured cycle time of %d [ms]", std::stoi(it->second));
   }
   else
   {
     cycle_time_nano_ = std::chrono::nanoseconds(4'000'000);  // Default to 4 ms
+    RCUTILS_LOG_INFO_NAMED("mock_generic_system", "Using default cycle time of 4 [ms]");
   }
 
+<<<<<<< HEAD
   it = info_.hardware_parameters.find("roundtrip_time_micro");
   if (it != info.hardware_parameters.end())
+=======
+  it = info.hardware_parameters.find("roundtrip_time_micro");
+  if (it != info.hardware_parameters.end() && std::stoi(it->second) > 0)
+>>>>>>> f417daf (Clean up KUKA mock hardware implementation (#195))
   {
-    roundtrip_time_micro_ = std::stod(it->second);
+    roundtrip_time_micro_ = std::stoi(it->second);
+    RCUTILS_LOG_INFO_NAMED(
+      "mock_generic_system", "Setting allowed roundtrip time to %d [us]", std::stoi(it->second));
   }
   else
   {
     roundtrip_time_micro_ = 0;  // Default to no timeout checking
+<<<<<<< HEAD
   }
 
   // its extremlly improbably that std::distance results int this value - therefore default
@@ -284,21 +295,31 @@ CallbackReturn KukaMockHardwareInterface::on_init(const hardware_interface::Hard
   else
   {
     initialize_storage_vectors(gpio_commands_, gpio_states_, gpio_interfaces_, info_.gpios);
+=======
+    RCUTILS_LOG_INFO_NAMED("mock_generic_system", "Roundtrip time will not be monitored");
+>>>>>>> f417daf (Clean up KUKA mock hardware implementation (#195))
   }
 
   return CallbackReturn::SUCCESS;
 }
 
-CallbackReturn KukaMockHardwareInterface::on_configure(const rclcpp_lifecycle::State &)
+CallbackReturn KukaMockHardwareInterface::on_configure(const rclcpp_lifecycle::State & state)
 {
+  auto ret = mock_components::GenericSystem::on_configure(state);
+  if (ret != CallbackReturn::SUCCESS)
+  {
+    return ret;
+  }
   init_clock_ = true;
   return CallbackReturn::SUCCESS;
 }
 
-std::vector<hardware_interface::StateInterface> KukaMockHardwareInterface::export_state_interfaces()
+std::vector<hardware_interface::StateInterface::ConstSharedPtr>
+KukaMockHardwareInterface::on_export_state_interfaces()
 {
-  std::vector<hardware_interface::StateInterface> state_interfaces;
+  auto state_interfaces = mock_components::GenericSystem::on_export_state_interfaces();
 
+<<<<<<< HEAD
   // Joints' state interfaces
   for (auto i = 0u; i < info_.joints.size(); i++)
   {
@@ -335,61 +356,65 @@ std::vector<hardware_interface::StateInterface> KukaMockHardwareInterface::expor
   }
 
   state_interfaces.emplace_back(
+=======
+  state_interfaces.emplace_back(std::make_shared<hardware_interface::StateInterface>(
+>>>>>>> f417daf (Clean up KUKA mock hardware implementation (#195))
     hardware_interface::FRI_STATE_PREFIX, hardware_interface::SESSION_STATE,
-    &robot_state_.session_state_);
-  state_interfaces.emplace_back(
+    &robot_state_.session_state_));
+  state_interfaces.emplace_back(std::make_shared<hardware_interface::StateInterface>(
     hardware_interface::FRI_STATE_PREFIX, hardware_interface::CONNECTION_QUALITY,
-    &robot_state_.connection_quality_);
-  state_interfaces.emplace_back(
+    &robot_state_.connection_quality_));
+  state_interfaces.emplace_back(std::make_shared<hardware_interface::StateInterface>(
     hardware_interface::FRI_STATE_PREFIX, hardware_interface::SAFETY_STATE,
-    &robot_state_.safety_state_);
-  state_interfaces.emplace_back(
+    &robot_state_.safety_state_));
+  state_interfaces.emplace_back(std::make_shared<hardware_interface::StateInterface>(
     hardware_interface::FRI_STATE_PREFIX, hardware_interface::COMMAND_MODE,
-    &robot_state_.command_mode_);
-  state_interfaces.emplace_back(
+    &robot_state_.command_mode_));
+  state_interfaces.emplace_back(std::make_shared<hardware_interface::StateInterface>(
     hardware_interface::FRI_STATE_PREFIX, hardware_interface::CONTROL_MODE,
-    &robot_state_.control_mode_);
-  state_interfaces.emplace_back(
+    &robot_state_.control_mode_));
+  state_interfaces.emplace_back(std::make_shared<hardware_interface::StateInterface>(
     hardware_interface::FRI_STATE_PREFIX, hardware_interface::OPERATION_MODE,
-    &robot_state_.operation_mode_);
-  state_interfaces.emplace_back(
+    &robot_state_.operation_mode_));
+  state_interfaces.emplace_back(std::make_shared<hardware_interface::StateInterface>(
     hardware_interface::FRI_STATE_PREFIX, hardware_interface::DRIVE_STATE,
-    &robot_state_.drive_state_);
-  state_interfaces.emplace_back(
+    &robot_state_.drive_state_));
+  state_interfaces.emplace_back(std::make_shared<hardware_interface::StateInterface>(
     hardware_interface::FRI_STATE_PREFIX, hardware_interface::OVERLAY_TYPE,
-    &robot_state_.overlay_type_);
-  state_interfaces.emplace_back(
+    &robot_state_.overlay_type_));
+  state_interfaces.emplace_back(std::make_shared<hardware_interface::StateInterface>(
     hardware_interface::FRI_STATE_PREFIX, hardware_interface::TRACKING_PERFORMANCE,
-    &robot_state_.tracking_performance_);
-  state_interfaces.emplace_back(
-    hardware_interface::STATE_PREFIX, hardware_interface::SERVER_STATE, &server_state_);
-  state_interfaces.emplace_back(
-    hardware_interface::STATE_PREFIX, hardware_interface::CONTROL_MODE, &control_mode_state_);
-  state_interfaces.emplace_back(
-    hardware_interface::STATE_PREFIX, hardware_interface::CYCLE_TIME, &cycle_time_state_);
-  state_interfaces.emplace_back(
-    hardware_interface::STATE_PREFIX, hardware_interface::DRIVES_POWERED, &drives_powered_);
-  state_interfaces.emplace_back(
-    hardware_interface::STATE_PREFIX, hardware_interface::EMERGENCY_STOP, &emergency_stop_);
-  state_interfaces.emplace_back(
-    hardware_interface::STATE_PREFIX, hardware_interface::GUARD_STOP, &guard_stop_);
-  state_interfaces.emplace_back(
-    hardware_interface::STATE_PREFIX, hardware_interface::IN_MOTION, &in_motion_);
-  state_interfaces.emplace_back(
-    hardware_interface::STATE_PREFIX, hardware_interface::MOTION_POSSIBLE, &motion_possible_);
-  state_interfaces.emplace_back(
-    hardware_interface::STATE_PREFIX, hardware_interface::OPERATION_MODE, &operation_mode_);
-  state_interfaces.emplace_back(
-    hardware_interface::STATE_PREFIX, hardware_interface::ROBOT_STOPPED, &robot_stopped_);
+    &robot_state_.tracking_performance_));
+  state_interfaces.emplace_back(std::make_shared<hardware_interface::StateInterface>(
+    hardware_interface::STATE_PREFIX, hardware_interface::SERVER_STATE, &server_state_));
+  state_interfaces.emplace_back(std::make_shared<hardware_interface::StateInterface>(
+    hardware_interface::STATE_PREFIX, hardware_interface::CONTROL_MODE, &control_mode_state_));
+  state_interfaces.emplace_back(std::make_shared<hardware_interface::StateInterface>(
+    hardware_interface::STATE_PREFIX, hardware_interface::CYCLE_TIME, &cycle_time_state_));
+  state_interfaces.emplace_back(std::make_shared<hardware_interface::StateInterface>(
+    hardware_interface::STATE_PREFIX, hardware_interface::DRIVES_POWERED, &drives_powered_));
+  state_interfaces.emplace_back(std::make_shared<hardware_interface::StateInterface>(
+    hardware_interface::STATE_PREFIX, hardware_interface::EMERGENCY_STOP, &emergency_stop_));
+  state_interfaces.emplace_back(std::make_shared<hardware_interface::StateInterface>(
+    hardware_interface::STATE_PREFIX, hardware_interface::GUARD_STOP, &guard_stop_));
+  state_interfaces.emplace_back(std::make_shared<hardware_interface::StateInterface>(
+    hardware_interface::STATE_PREFIX, hardware_interface::IN_MOTION, &in_motion_));
+  state_interfaces.emplace_back(std::make_shared<hardware_interface::StateInterface>(
+    hardware_interface::STATE_PREFIX, hardware_interface::MOTION_POSSIBLE, &motion_possible_));
+  state_interfaces.emplace_back(std::make_shared<hardware_interface::StateInterface>(
+    hardware_interface::STATE_PREFIX, hardware_interface::OPERATION_MODE, &operation_mode_));
+  state_interfaces.emplace_back(std::make_shared<hardware_interface::StateInterface>(
+    hardware_interface::STATE_PREFIX, hardware_interface::ROBOT_STOPPED, &robot_stopped_));
 
   return state_interfaces;
 }
 
-std::vector<hardware_interface::CommandInterface>
-KukaMockHardwareInterface::export_command_interfaces()
+std::vector<hardware_interface::CommandInterface::SharedPtr>
+KukaMockHardwareInterface::on_export_command_interfaces()
 {
-  std::vector<hardware_interface::CommandInterface> command_interfaces;
+  auto command_interfaces = mock_components::GenericSystem::on_export_command_interfaces();
 
+<<<<<<< HEAD
   // Joints' state interfaces
   for (size_t i = 0; i < info_.joints.size(); ++i)
   {
@@ -450,18 +475,24 @@ KukaMockHardwareInterface::export_command_interfaces()
   command_interfaces.emplace_back(
     hardware_interface::CONFIG_PREFIX, hardware_interface::CONTROL_MODE, &control_mode_);
   command_interfaces.emplace_back(
+=======
+  command_interfaces.emplace_back(std::make_shared<hardware_interface::CommandInterface>(
+    hardware_interface::CONFIG_PREFIX, hardware_interface::CONTROL_MODE, &control_mode_));
+  command_interfaces.emplace_back(std::make_shared<hardware_interface::CommandInterface>(
+>>>>>>> f417daf (Clean up KUKA mock hardware implementation (#195))
     hardware_interface::CONFIG_PREFIX, hardware_interface::RECEIVE_MULTIPLIER,
-    &receive_multiplier_);
-  command_interfaces.emplace_back(
-    hardware_interface::CONFIG_PREFIX, hardware_interface::SEND_PERIOD, &send_period_ms_);
-  command_interfaces.emplace_back(
-    hardware_interface::CONFIG_PREFIX, hardware_interface::DRIVE_STATE, &drive_state_);
-  command_interfaces.emplace_back(
-    hardware_interface::CONFIG_PREFIX, hardware_interface::CYCLE_TIME, &cycle_time_ms_);
+    &receive_multiplier_));
+  command_interfaces.emplace_back(std::make_shared<hardware_interface::CommandInterface>(
+    hardware_interface::CONFIG_PREFIX, hardware_interface::SEND_PERIOD, &send_period_ms_));
+  command_interfaces.emplace_back(std::make_shared<hardware_interface::CommandInterface>(
+    hardware_interface::CONFIG_PREFIX, hardware_interface::DRIVE_STATE, &drive_state_));
+  command_interfaces.emplace_back(std::make_shared<hardware_interface::CommandInterface>(
+    hardware_interface::CONFIG_PREFIX, hardware_interface::CYCLE_TIME, &cycle_time_ms_));
 
   return command_interfaces;
 }
 
+<<<<<<< HEAD
 return_type KukaMockHardwareInterface::prepare_command_mode_switch(
   const std::vector<std::string> & start_interfaces,
   const std::vector<std::string> & /*stop_interfaces*/)
@@ -595,169 +626,21 @@ return_type KukaMockHardwareInterface::perform_command_mode_switch(
   return hardware_interface::return_type::OK;
 }
 
+=======
+>>>>>>> f417daf (Clean up KUKA mock hardware implementation (#195))
 return_type KukaMockHardwareInterface::read(
   const rclcpp::Time & time, const rclcpp::Duration & period)
 {
-  if (command_propagation_disabled_)
+  auto ret = mock_components::GenericSystem::read(time, period);
+  if (ret != return_type::OK)
   {
-    RCUTILS_LOG_WARN_NAMED(
-      "mock_generic_system", "Command propagation is disabled - no values will be returned!");
-    return return_type::OK;
-  }
-
-  auto mirror_command_to_state = [](auto & states_, auto commands_, size_t start_index = 0)
-  {
-    for (size_t i = start_index; i < states_.size(); ++i)
-    {
-      for (size_t j = 0; j < states_[i].size(); ++j)
-      {
-        if (!std::isnan(commands_[i][j]))
-        {
-          states_[i][j] = commands_[i][j];
-        }
-      }
-    }
-  };
-
-  for (size_t j = 0; j < joint_states_[POSITION_INTERFACE_INDEX].size(); ++j)
-  {
-    if (calculate_dynamics_)
-    {
-      switch (joint_control_mode_[j])
-      {
-        case ACCELERATION_INTERFACE_INDEX:
-        {
-          // currently we do backward integration
-          joint_states_[POSITION_INTERFACE_INDEX][j] +=  // apply offset to positions only
-            joint_states_[VELOCITY_INTERFACE_INDEX][j] * period.seconds() +
-            (custom_interface_with_following_offset_.empty() ? position_state_following_offset_
-                                                             : 0.0);
-
-          joint_states_[VELOCITY_INTERFACE_INDEX][j] +=
-            joint_states_[ACCELERATION_INTERFACE_INDEX][j] * period.seconds();
-
-          if (!std::isnan(joint_commands_[ACCELERATION_INTERFACE_INDEX][j]))
-          {
-            joint_states_[ACCELERATION_INTERFACE_INDEX][j] =
-              joint_commands_[ACCELERATION_INTERFACE_INDEX][j];
-          }
-          break;
-        }
-        case VELOCITY_INTERFACE_INDEX:
-        {
-          // currently we do backward integration
-          joint_states_[POSITION_INTERFACE_INDEX][j] +=  // apply offset to positions only
-            joint_states_[VELOCITY_INTERFACE_INDEX][j] * period.seconds() +
-            (custom_interface_with_following_offset_.empty() ? position_state_following_offset_
-                                                             : 0.0);
-
-          if (!std::isnan(joint_commands_[VELOCITY_INTERFACE_INDEX][j]))
-          {
-            const double old_velocity = joint_states_[VELOCITY_INTERFACE_INDEX][j];
-
-            joint_states_[VELOCITY_INTERFACE_INDEX][j] =
-              joint_commands_[VELOCITY_INTERFACE_INDEX][j];
-
-            joint_states_[ACCELERATION_INTERFACE_INDEX][j] =
-              (joint_states_[VELOCITY_INTERFACE_INDEX][j] - old_velocity) / period.seconds();
-          }
-          break;
-        }
-        case POSITION_INTERFACE_INDEX:
-        {
-          if (!std::isnan(joint_commands_[POSITION_INTERFACE_INDEX][j]))
-          {
-            const double old_position = joint_states_[POSITION_INTERFACE_INDEX][j];
-            const double old_velocity = joint_states_[VELOCITY_INTERFACE_INDEX][j];
-
-            joint_states_[POSITION_INTERFACE_INDEX][j] =  // apply offset to positions only
-              joint_commands_[POSITION_INTERFACE_INDEX][j] +
-              (custom_interface_with_following_offset_.empty() ? position_state_following_offset_
-                                                               : 0.0);
-
-            joint_states_[VELOCITY_INTERFACE_INDEX][j] =
-              (joint_states_[POSITION_INTERFACE_INDEX][j] - old_position) / period.seconds();
-
-            joint_states_[ACCELERATION_INTERFACE_INDEX][j] =
-              (joint_states_[VELOCITY_INTERFACE_INDEX][j] - old_velocity) / period.seconds();
-          }
-          break;
-        }
-      }
-    }
-    else
-    {
-      for (size_t j = 0; j < joint_states_[POSITION_INTERFACE_INDEX].size(); ++j)
-      {
-        if (!std::isnan(joint_commands_[POSITION_INTERFACE_INDEX][j]))
-        {
-          joint_states_[POSITION_INTERFACE_INDEX][j] =  // apply offset to positions only
-            joint_commands_[POSITION_INTERFACE_INDEX][j] +
-            (custom_interface_with_following_offset_.empty() ? position_state_following_offset_
-                                                             : 0.0);
-        }
-      }
-    }
-  }
-
-  // do loopback on all other interfaces - starts from 1 or 3 because 0, 1, 3 are position,
-  // velocity, and acceleration interface
-  if (calculate_dynamics_)
-  {
-    mirror_command_to_state(joint_states_, joint_commands_, 3);
-  }
-  else
-  {
-    mirror_command_to_state(joint_states_, joint_commands_, 1);
-  }
-
-  for (const auto & mimic_joint : mimic_joints_)
-  {
-    for (auto i = 0u; i < joint_states_.size(); ++i)
-    {
-      joint_states_[i][mimic_joint.joint_index] =
-        mimic_joint.multiplier * joint_states_[i][mimic_joint.mimicked_joint_index];
-    }
-  }
-
-  for (size_t i = 0; i < other_states_.size(); ++i)
-  {
-    for (size_t j = 0; j < other_states_[i].size(); ++j)
-    {
-      if (
-        i == index_custom_interface_with_following_offset_ &&
-        !std::isnan(joint_commands_[POSITION_INTERFACE_INDEX][j]))
-      {
-        other_states_[i][j] =
-          joint_commands_[POSITION_INTERFACE_INDEX][j] + position_state_following_offset_;
-      }
-      else if (!std::isnan(other_commands_[i][j]))
-      {
-        other_states_[i][j] = other_commands_[i][j];
-      }
-    }
-  }
-
-  if (use_mock_sensor_command_interfaces_)
-  {
-    mirror_command_to_state(sensor_states_, sensor_mock_commands_);
-  }
-
-  // do loopback on all gpio interfaces
-  if (use_mock_gpio_command_interfaces_)
-  {
-    mirror_command_to_state(gpio_states_, gpio_mock_commands_);
-  }
-  else
-  {
-    mirror_command_to_state(gpio_states_, gpio_commands_);
+    return ret;
   }
 
   if (init_clock_)
   {
-    next_iteration_time_ =
-      std::chrono::time_point<std::chrono::system_clock, std::chrono::nanoseconds>(
-        std::chrono::nanoseconds(time.nanoseconds()));
+    // Initialize from a monotonic clock to avoid wall-clock jumps
+    next_iteration_time_ = std::chrono::steady_clock::now();
     init_clock_ = false;
   }
 
@@ -767,122 +650,30 @@ return_type KukaMockHardwareInterface::read(
   return return_type::OK;
 }
 
-return_type KukaMockHardwareInterface::write(const rclcpp::Time & time, const rclcpp::Duration &)
+return_type KukaMockHardwareInterface::write(
+  const rclcpp::Time & time, const rclcpp::Duration & period)
 {
+  auto ret = mock_components::GenericSystem::write(time, period);
+  if (ret != return_type::OK)
+  {
+    return ret;
+  }
+
   if (roundtrip_time_micro_ != 0)
   {
-    if (
-      time.nanoseconds() >
-      next_iteration_time_.time_since_epoch().count() + roundtrip_time_micro_ * 1000)
+    const auto now = std::chrono::steady_clock::now();
+    const auto allowed_time =
+      next_iteration_time_ + std::chrono::microseconds(roundtrip_time_micro_);
+
+    if (now > allowed_time)
     {
       RCUTILS_LOG_WARN_NAMED("mock_generic_system", "Cycle exceeded allowed round-trip time");
     }
   }
+
   return return_type::OK;
 }
 
-// Private methods
-template <typename HandleType>
-bool KukaMockHardwareInterface::get_interface(
-  const std::string & name, const std::vector<std::string> & interface_list,
-  const std::string & interface_name, const size_t vector_index,
-  std::vector<std::vector<double>> & values, std::vector<HandleType> & interfaces)
-{
-  auto it = std::find(interface_list.begin(), interface_list.end(), interface_name);
-  if (it != interface_list.end())
-  {
-    auto j = std::distance(interface_list.begin(), it);
-    interfaces.emplace_back(name, *it, &values[j][vector_index]);
-    return true;
-  }
-  return false;
-}
-
-void KukaMockHardwareInterface::initialize_storage_vectors(
-  std::vector<std::vector<double>> & commands, std::vector<std::vector<double>> & states,
-  const std::vector<std::string> & interfaces,
-  const std::vector<hardware_interface::ComponentInfo> & component_infos)
-{
-  // Initialize storage for all joints, regardless of their existence
-  commands.resize(interfaces.size());
-  states.resize(interfaces.size());
-  for (auto i = 0u; i < interfaces.size(); i++)
-  {
-    commands[i].resize(component_infos.size(), std::numeric_limits<double>::quiet_NaN());
-    states[i].resize(component_infos.size(), std::numeric_limits<double>::quiet_NaN());
-  }
-
-  // Initialize with values from URDF
-  bool print_hint = false;
-  for (auto i = 0u; i < component_infos.size(); i++)
-  {
-    const auto & component = component_infos[i];
-    for (const auto & interface : component.state_interfaces)
-    {
-      auto it = std::find(interfaces.begin(), interfaces.end(), interface.name);
-
-      // If interface name is found in the interfaces list
-      if (it != interfaces.end())
-      {
-        auto index = std::distance(interfaces.begin(), it);
-
-        // Check the initial_value param is used
-        if (!interface.initial_value.empty())
-        {
-          states[index][i] = std::stod(interface.initial_value);
-        }
-        else
-        {
-          // Initialize the value in old way with warning message
-          auto it2 = component.parameters.find("initial_" + interface.name);
-          if (it2 != component.parameters.end())
-          {
-            states[index][i] = std::stod(it2->second);
-            print_hint = true;
-          }
-          else
-          {
-            print_hint = true;
-          }
-        }
-      }
-    }
-  }
-  if (print_hint)
-  {
-    RCUTILS_LOG_WARN_ONCE_NAMED(
-      "mock_generic_system",
-      "Parsing of optional initial interface values failed or uses a deprecated format. Add "
-      "initial values for every state interface in the ros2_control.xacro. For example: \n"
-      "<state_interface name=\"velocity\"> \n"
-      "  <param name=\"initial_value\">0.0</param> \n"
-      "</state_interface>");
-  }
-}
-
-template <typename InterfaceType>
-bool KukaMockHardwareInterface::populate_interfaces(
-  const std::vector<hardware_interface::ComponentInfo> & components,
-  std::vector<std::string> & interface_names, std::vector<std::vector<double>> & storage,
-  std::vector<InterfaceType> & target_interfaces, bool using_state_interfaces)
-{
-  for (auto i = 0u; i < components.size(); i++)
-  {
-    const auto & component = components[i];
-    const auto interfaces =
-      (using_state_interfaces) ? component.state_interfaces : component.command_interfaces;
-    for (const auto & interface : interfaces)
-    {
-      if (!get_interface(
-            component.name, interface_names, interface.name, i, storage, target_interfaces))
-      {
-        return false;
-      }
-    }
-  }
-
-  return true;
-}
 }  // namespace kuka_mock_hardware_interface
 
 #include "pluginlib/class_list_macros.hpp"
