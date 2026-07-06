@@ -94,7 +94,7 @@ Example of attaching an end effector (with link name `eef_base_link`) to the `fl
 
 ### External axis support
 
-Robots marked as supporting external exis in the [supported features](#supported-features) have URDFs prepared for this feature.
+Robots marked as supporting external axis in the [supported features](#supported-features) have URDFs prepared for this feature.
 
 - The `world` link and the `world-base_link` joint (and the `origin` block) are moved from the macro into the URDF xacro.
 
