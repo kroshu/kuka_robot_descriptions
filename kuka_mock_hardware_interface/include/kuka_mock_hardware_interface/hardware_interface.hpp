@@ -82,6 +82,7 @@ protected:
   // KUKA-specific parameters
   std::chrono::nanoseconds cycle_time_nano_;
   int roundtrip_time_micro_;
+  std::string interface_prefix_;
   bool init_clock_ = true;
   std::chrono::steady_clock::time_point next_iteration_time_;
 };

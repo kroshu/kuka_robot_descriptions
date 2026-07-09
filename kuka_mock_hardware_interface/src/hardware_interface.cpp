@@ -58,6 +58,13 @@ CallbackReturn KukaMockHardwareInterface::on_init(
     RCUTILS_LOG_INFO_NAMED("mock_generic_system", "Roundtrip time will not be monitored");
   }
 
+  interface_prefix_ = info.name + "/";
+  it = info.hardware_parameters.find("interface_prefix");
+  if (it != info.hardware_parameters.end())
+  {
+    interface_prefix_ = it->second;
+  }
+
   return CallbackReturn::SUCCESS;
 }
 
@@ -77,53 +84,56 @@ KukaMockHardwareInterface::on_export_state_interfaces()
 {
   auto state_interfaces = mock_components::GenericSystem::on_export_state_interfaces();
 
+  const auto fri_state_prefix = interface_prefix_ + hardware_interface::FRI_STATE_PREFIX;
+  const auto state_prefix = interface_prefix_ + hardware_interface::STATE_PREFIX;
+
   state_interfaces.emplace_back(std::make_shared<hardware_interface::StateInterface>(
-    hardware_interface::FRI_STATE_PREFIX, hardware_interface::SESSION_STATE,
+    fri_state_prefix, hardware_interface::SESSION_STATE,
     &robot_state_.session_state_));
   state_interfaces.emplace_back(std::make_shared<hardware_interface::StateInterface>(
-    hardware_interface::FRI_STATE_PREFIX, hardware_interface::CONNECTION_QUALITY,
+    fri_state_prefix, hardware_interface::CONNECTION_QUALITY,
     &robot_state_.connection_quality_));
   state_interfaces.emplace_back(std::make_shared<hardware_interface::StateInterface>(
-    hardware_interface::FRI_STATE_PREFIX, hardware_interface::SAFETY_STATE,
+    fri_state_prefix, hardware_interface::SAFETY_STATE,
     &robot_state_.safety_state_));
   state_interfaces.emplace_back(std::make_shared<hardware_interface::StateInterface>(
-    hardware_interface::FRI_STATE_PREFIX, hardware_interface::COMMAND_MODE,
+    fri_state_prefix, hardware_interface::COMMAND_MODE,
     &robot_state_.command_mode_));
   state_interfaces.emplace_back(std::make_shared<hardware_interface::StateInterface>(
-    hardware_interface::FRI_STATE_PREFIX, hardware_interface::CONTROL_MODE,
+    fri_state_prefix, hardware_interface::CONTROL_MODE,
     &robot_state_.control_mode_));
   state_interfaces.emplace_back(std::make_shared<hardware_interface::StateInterface>(
-    hardware_interface::FRI_STATE_PREFIX, hardware_interface::OPERATION_MODE,
+    fri_state_prefix, hardware_interface::OPERATION_MODE,
     &robot_state_.operation_mode_));
   state_interfaces.emplace_back(std::make_shared<hardware_interface::StateInterface>(
-    hardware_interface::FRI_STATE_PREFIX, hardware_interface::DRIVE_STATE,
+    fri_state_prefix, hardware_interface::DRIVE_STATE,
     &robot_state_.drive_state_));
   state_interfaces.emplace_back(std::make_shared<hardware_interface::StateInterface>(
-    hardware_interface::FRI_STATE_PREFIX, hardware_interface::OVERLAY_TYPE,
+    fri_state_prefix, hardware_interface::OVERLAY_TYPE,
     &robot_state_.overlay_type_));
   state_interfaces.emplace_back(std::make_shared<hardware_interface::StateInterface>(
-    hardware_interface::FRI_STATE_PREFIX, hardware_interface::TRACKING_PERFORMANCE,
+    fri_state_prefix, hardware_interface::TRACKING_PERFORMANCE,
     &robot_state_.tracking_performance_));
   state_interfaces.emplace_back(std::make_shared<hardware_interface::StateInterface>(
-    hardware_interface::STATE_PREFIX, hardware_interface::SERVER_STATE, &server_state_));
+    state_prefix, hardware_interface::SERVER_STATE, &server_state_));
   state_interfaces.emplace_back(std::make_shared<hardware_interface::StateInterface>(
-    hardware_interface::STATE_PREFIX, hardware_interface::CONTROL_MODE, &control_mode_state_));
+    state_prefix, hardware_interface::CONTROL_MODE, &control_mode_state_));
   state_interfaces.emplace_back(std::make_shared<hardware_interface::StateInterface>(
-    hardware_interface::STATE_PREFIX, hardware_interface::CYCLE_TIME, &cycle_time_state_));
+    state_prefix, hardware_interface::CYCLE_TIME, &cycle_time_state_));
   state_interfaces.emplace_back(std::make_shared<hardware_interface::StateInterface>(
-    hardware_interface::STATE_PREFIX, hardware_interface::DRIVES_POWERED, &drives_powered_));
+    state_prefix, hardware_interface::DRIVES_POWERED, &drives_powered_));
   state_interfaces.emplace_back(std::make_shared<hardware_interface::StateInterface>(
-    hardware_interface::STATE_PREFIX, hardware_interface::EMERGENCY_STOP, &emergency_stop_));
+    state_prefix, hardware_interface::EMERGENCY_STOP, &emergency_stop_));
   state_interfaces.emplace_back(std::make_shared<hardware_interface::StateInterface>(
-    hardware_interface::STATE_PREFIX, hardware_interface::GUARD_STOP, &guard_stop_));
+    state_prefix, hardware_interface::GUARD_STOP, &guard_stop_));
   state_interfaces.emplace_back(std::make_shared<hardware_interface::StateInterface>(
-    hardware_interface::STATE_PREFIX, hardware_interface::IN_MOTION, &in_motion_));
+    state_prefix, hardware_interface::IN_MOTION, &in_motion_));
   state_interfaces.emplace_back(std::make_shared<hardware_interface::StateInterface>(
-    hardware_interface::STATE_PREFIX, hardware_interface::MOTION_POSSIBLE, &motion_possible_));
+    state_prefix, hardware_interface::MOTION_POSSIBLE, &motion_possible_));
   state_interfaces.emplace_back(std::make_shared<hardware_interface::StateInterface>(
-    hardware_interface::STATE_PREFIX, hardware_interface::OPERATION_MODE, &operation_mode_));
+    state_prefix, hardware_interface::OPERATION_MODE, &operation_mode_));
   state_interfaces.emplace_back(std::make_shared<hardware_interface::StateInterface>(
-    hardware_interface::STATE_PREFIX, hardware_interface::ROBOT_STOPPED, &robot_stopped_));
+    state_prefix, hardware_interface::ROBOT_STOPPED, &robot_stopped_));
 
   return state_interfaces;
 }
@@ -133,17 +143,19 @@ KukaMockHardwareInterface::on_export_command_interfaces()
 {
   auto command_interfaces = mock_components::GenericSystem::on_export_command_interfaces();
 
+  const auto config_prefix = interface_prefix_ + hardware_interface::CONFIG_PREFIX;
+
   command_interfaces.emplace_back(std::make_shared<hardware_interface::CommandInterface>(
-    hardware_interface::CONFIG_PREFIX, hardware_interface::CONTROL_MODE, &control_mode_));
+    config_prefix, hardware_interface::CONTROL_MODE, &control_mode_));
   command_interfaces.emplace_back(std::make_shared<hardware_interface::CommandInterface>(
-    hardware_interface::CONFIG_PREFIX, hardware_interface::RECEIVE_MULTIPLIER,
+    config_prefix, hardware_interface::RECEIVE_MULTIPLIER,
     &receive_multiplier_));
   command_interfaces.emplace_back(std::make_shared<hardware_interface::CommandInterface>(
-    hardware_interface::CONFIG_PREFIX, hardware_interface::SEND_PERIOD, &send_period_ms_));
+    config_prefix, hardware_interface::SEND_PERIOD, &send_period_ms_));
   command_interfaces.emplace_back(std::make_shared<hardware_interface::CommandInterface>(
-    hardware_interface::CONFIG_PREFIX, hardware_interface::DRIVE_STATE, &drive_state_));
+    config_prefix, hardware_interface::DRIVE_STATE, &drive_state_));
   command_interfaces.emplace_back(std::make_shared<hardware_interface::CommandInterface>(
-    hardware_interface::CONFIG_PREFIX, hardware_interface::CYCLE_TIME, &cycle_time_ms_));
+    config_prefix, hardware_interface::CYCLE_TIME, &cycle_time_ms_));
 
   return command_interfaces;
 }
@@ -167,6 +179,8 @@ return_type KukaMockHardwareInterface::read(
   next_iteration_time_ += std::chrono::nanoseconds(cycle_time_nano_);
   std::this_thread::sleep_until(next_iteration_time_);
 
+  RCUTILS_LOG_INFO_NAMED("mock_generic_system", "Read done");
+
   return return_type::OK;
 }
 
@@ -187,9 +201,11 @@ return_type KukaMockHardwareInterface::write(
 
     if (now > allowed_time)
     {
-      RCUTILS_LOG_WARN_NAMED("mock_generic_system", "Cycle exceeded allowed round-trip time");
+      // RCUTILS_LOG_WARN_NAMED("mock_generic_system", "Cycle exceeded allowed round-trip time");
     }
   }
+
+  RCUTILS_LOG_INFO_NAMED("mock_generic_system", "Write done");
 
   return return_type::OK;
 }
