@@ -196,6 +196,7 @@ The following table shows what data is verified for each robot in the support pa
 |kr50_r2500| iontec | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
 |kr50_r2100| iontec | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
 |kr70_r2100| iontec | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+|kr120_r2700_2| quantec | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
 |kr150_r3100| quantec | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
 |kr210_r2700_2| quantec | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
 |kr210_r3100_2| quantec | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
@@ -244,6 +245,7 @@ The following table shows the supported customizable features for each robot in 
 |kr50_r2500| iontec | ✓ | ✓ | ✓ |
 |kr50_r2100| iontec | ✓ | ✓ | ✓ |
 |kr70_r2100| iontec | ✓ | ✓ | ✓ |
+|kr120_r2700_2| quantec | ✓ | ✓ | ✓ |
 |kr210_r2700_2| quantec | ✓ | ✓ | ✓ |
 |kr210_r3100_2| quantec | ✓ | ✓ | ✓ |
 |kr210_r3100_ultra| quantec | ✓ | ✓ | |
