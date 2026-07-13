@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
-  <xacro:macro name="kuka_cybertech_ros2_control" params="name driver_version client_ip client_port mxa_client_port controller_ip prefix mode use_gpio roundtrip_time verify_robot_model **ext_axes_ros2_control_joints">
+  <xacro:macro name="kuka_cybertech_ros2_control" params="name driver_version client_ip client_port mxa_client_port controller_ip prefix mode use_gpio roundtrip_time verify_robot_model is_async **ext_axes_ros2_control_joints">
     <!-- gazebo -->
     <xacro:if value="${mode == 'gazebo'}">
       <xacro:include filename="$(find kuka_gazebo)/gazebo/kuka_gazebo.xacro"/>
       <xacro:kuka_gazebo controller_config_package="kuka_resources" controller_config_path="config/fake_hardware_config_6_axis.yaml"/>
     </xacro:if>
     <!-- ros2 control -->
-    <ros2_control name="${name}" type="system">
+    <ros2_control name="${name}" type="system" is_async="${is_async}">
+      <properties>
+        <async scheduling_policy="detached" print_warnings="false" thread_priority="50"/>
+      </properties>
       <hardware>
         <param name="interface_prefix">${prefix}</param>
         <xacro:if value="${mode == 'mock'}">
