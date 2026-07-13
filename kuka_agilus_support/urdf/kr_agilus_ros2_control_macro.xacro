@@ -12,9 +12,9 @@
         <async scheduling_policy="detached" print_warnings="false" thread_priority="50"/>
       </properties>
       <hardware>
+        <param name="interface_prefix">${prefix}</param>
         <xacro:if value="${mode == 'mock'}">
           <plugin>kuka_mock_hardware_interface::KukaMockHardwareInterface</plugin>
-          <param name="interface_prefix">${prefix}</param>
           <param name="cycle_time_ms">4</param>
           <param name="roundtrip_time_micro">${roundtrip_time}</param>
           <param name="mock_sensor_commands">false</param>

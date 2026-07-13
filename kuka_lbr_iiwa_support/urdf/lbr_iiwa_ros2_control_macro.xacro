@@ -9,6 +9,7 @@
     <!-- ros2 control -->
     <ros2_control name="${name}" type="system">
       <hardware>
+        <param name="interface_prefix">${prefix}</param>
         <xacro:if value="${mode == 'mock'}">
           <plugin>kuka_mock_hardware_interface::KukaMockHardwareInterface</plugin>
           <param name="cycle_time_ms">5</param>
