@@ -43,7 +43,6 @@
             <param name="client_ip">${client_ip}</param>
             <param name="client_port">${client_port}</param>
             <param name="rsi_xml_config_file">${rsi_xml_config_file}</param>
-
             <xacro:if value="${driver_version == 'rsi_only'}">
               <plugin>kuka_rsi_driver::KukaRSIHardwareInterface</plugin>
             </xacro:if>
@@ -51,7 +50,6 @@
               <!-- Common params for the EKI and mxAutomation drivers -->
               <param name="controller_ip">${controller_ip}</param>
               <param name="verify_robot_model">${verify_robot_model}</param>
-
               <xacro:if value="${driver_version == 'eki_rsi'}">
                 <plugin>kuka_rsi_driver::KukaEkiRsiHardwareInterface</plugin>
                 <param name="name">${name}</param>
