@@ -1,0 +1,7 @@
+<?xml version="1.0" ?>
+
+<robot name="omnimove" xmlns:xacro="http://wiki.ros.org/xacro">
+  <xacro:include filename="$(find kuka_omnimove_e575_support)/urdf/caterpillar.xacro"/>
+  <xacro:omnimove prefix="caterpillar_"/> <!-- need to make this a config parameter -->
+  <xacro:omnimove_ros2_control name="caterpillar"/>
+</robot>
