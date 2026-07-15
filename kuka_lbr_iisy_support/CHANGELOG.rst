@@ -2,8 +2,8 @@
 Changelog for package kuka_lbr_iisy_support
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.1.0 (2026-07-15)
+------------------
 * Add new robot models
 * Add external axis support
 * Add RSI hardware interface to ros2_control xacros 

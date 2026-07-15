@@ -2,8 +2,8 @@
 Changelog for package kuka_kr_moveit_config
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.1.0 (2026-07-15)
+------------------
 * Unify SRDF names and robot_family arguments
 * Add new robot models
 
