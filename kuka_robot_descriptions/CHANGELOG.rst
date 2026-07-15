@@ -2,6 +2,10 @@
 Changelog for package kuka_robot_descriptions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Cleanup package.xml dependencies 
+
 1.0.0 (2025-08-26)
 ------------------
 * KR240-R3330 Support

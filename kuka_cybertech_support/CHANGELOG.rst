@@ -2,6 +2,12 @@
 Changelog for package kuka_cybertech_support
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Add new robot models
+* Add external axis support
+* Add mxA hardware interface to ros2_control xacros 
+
 1.0.0 (2025-08-26)
 ------------------
 * GPIO support
