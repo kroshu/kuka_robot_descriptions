@@ -2,8 +2,8 @@
 Changelog for package kuka_lbr_iiwa_support
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+2.0.0 (2026-07-15)
+------------------
 * Cleanup package.xml dependencies 
 * Add commanded_position state interfaces to joint impedance controlled robots
 

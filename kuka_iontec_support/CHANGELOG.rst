@@ -2,8 +2,8 @@
 Changelog for package kuka_iontec_support
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+2.0.0 (2026-07-15)
+------------------
 * Add new robot models
 * Add external axis support
 * Add mxA hardware interface to ros2_control xacros 

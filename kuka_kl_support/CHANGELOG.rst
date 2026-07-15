@@ -2,6 +2,6 @@
 Changelog for package kuka_kl_support
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+2.0.0 (2026-07-15)
+------------------
 * Add external axis support
