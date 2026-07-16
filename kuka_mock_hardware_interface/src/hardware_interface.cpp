@@ -194,8 +194,6 @@ return_type KukaMockHardwareInterface::read(
   next_iteration_time_ += std::chrono::nanoseconds(cycle_time_nano_);
   std::this_thread::sleep_until(next_iteration_time_);
 
-  RCUTILS_LOG_INFO_NAMED("mock_generic_system", "Read done");
-
   return return_type::OK;
 }
 
@@ -219,8 +217,6 @@ return_type KukaMockHardwareInterface::write(
       // RCUTILS_LOG_WARN_NAMED("mock_generic_system", "Cycle exceeded allowed round-trip time");
     }
   }
-
-  RCUTILS_LOG_INFO_NAMED("mock_generic_system", "Write done");
 
   return return_type::OK;
 }
