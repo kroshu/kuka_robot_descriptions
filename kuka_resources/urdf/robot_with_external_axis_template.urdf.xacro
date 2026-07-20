@@ -1,0 +1,134 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="$(arg composed_model)">
+  <!-- Read additional arguments -->
+  <xacro:arg name="composed_model" default="robot_with_external_axis"/>
+  <xacro:arg name="driver_version" default="rsi_only"/>
+  <xacro:arg name="mode" default="hardware"/>
+  <xacro:arg name="use_gpio" default="false"/>
+  <xacro:arg name="roundtrip_time" default="0"/>
+  <xacro:arg name="client_ip" default="0.0.0.0"/>
+  <xacro:arg name="client_port" default="59152"/>
+  <xacro:arg name="mxa_client_port" default="1337"/>
+  <xacro:arg name="controller_ip" default="0.0.0.0"/>
+  <xacro:arg name="verify_robot_model" default="true"/>
+  <xacro:arg name="prefix" default=""/>
+  <xacro:arg name="kl_prefix" default="rail_"/>
+  <xacro:arg name="x" default="0"/>
+  <xacro:arg name="y" default="0"/>
+  <xacro:arg name="z" default="0"/>
+  <xacro:arg name="roll" default="0"/>
+  <xacro:arg name="pitch" default="0"/>
+  <xacro:arg name="yaw" default="0"/>
+
+  <xacro:arg name="robot_family" default="agilus"/>
+  <xacro:arg name="robot_model" default="kr10_r1100_2"/>
+  <xacro:arg name="robot_support_package" default="kuka_agilus_support"/>
+  <xacro:arg name="kl_urdf_package" default="kuka_kl_support"/>
+  <xacro:arg name="robot_ros2_control_macro_file" default="kr_agilus_ros2_control_macro.xacro"/>
+  <xacro:arg name="kl_model" default="kl100_2"/>
+
+  <!-- Define properties for dynamic macro and package resolution -->
+  <xacro:property name="robot_family_value" value="$(arg robot_family)"/>
+  <xacro:property name="robot_model_value" value="$(arg robot_model)"/>
+  <xacro:property name="robot_support_package_value" value="$(arg robot_support_package)"/>
+  <xacro:property name="kl_urdf_package_value" value="$(arg kl_urdf_package)"/>
+  <xacro:property name="kl_model_value" value="$(arg kl_model)"/>
+  <xacro:property name="kl_prefix_value" value="$(arg kl_prefix)"/>
+  <xacro:property name="prefix_value" value="$(arg prefix)"/>
+  <xacro:property
+    name="robot_support_urdf_dir"
+    value="$(find ${robot_support_package_value})/urdf"
+  />
+  <xacro:property
+    name="kl_support_urdf_dir"
+    value="$(find ${kl_urdf_package_value})/urdf"
+  />
+
+  <xacro:property
+    name="robot_model_macro_name"
+    value="${'kuka_' + robot_model_value + '_robot'}"
+  />
+  <xacro:property
+    name="robot_ros2_control_macro_name"
+    value="${'kuka_' + robot_family_value + '_ros2_control'}"
+  />
+  <xacro:property
+    name="kl_model_links_macro_name"
+    value="${kl_model_value + '_links'}"
+  />
+  <xacro:property
+    name="kl_model_joints_macro_name"
+    value="${kl_model_value + '_joints'}"
+   />
+  <xacro:property name="kl_full_prefix" value="${prefix_value + kl_prefix_value}"/>
+
+  <!-- gazebo -->
+  <xacro:property name="mode_value" value="$(arg mode)"/>
+  <xacro:if value="${mode_value == 'gazebo'}">
+    <xacro:include filename="$(find kuka_gazebo)/gazebo/kuka_gazebo.xacro"/>
+    <xacro:kuka_gazebo controller_config_package="kuka_resources" controller_config_path="config/fake_hardware_config_6_axis_kl.yaml"/>
+  </xacro:if>
+
+  <!-- Include urdf macro files -->
+  <xacro:include filename="${robot_support_urdf_dir}/${robot_model_value}_macro.xacro"/>
+  <xacro:include filename="${robot_support_urdf_dir}/$(arg robot_ros2_control_macro_file)"/>
+  <xacro:include filename="${kl_support_urdf_dir}/${kl_model_value}_macro.xacro"/>
+  <xacro:include filename="${kl_support_urdf_dir}/kl_ros2_control_macro.xacro"/>
+
+  <!-- ros2 control configuration -->
+  <xacro:if value="${robot_ros2_control_macro_name == 'kuka_lbr_iisy_ros2_control'}">
+    <xacro:call macro="${robot_ros2_control_macro_name}"
+      name="$(arg prefix)$(arg composed_model)"
+      driver_version="$(arg driver_version)"
+      client_ip="$(arg client_ip)"
+      client_port="$(arg client_port)"
+      mxa_client_port="$(arg mxa_client_port)"
+      controller_ip="$(arg controller_ip)"
+      prefix="$(arg prefix)"
+      use_gpio="$(arg use_gpio)"
+      mode="$(arg mode)"
+      qos_config_file=""
+      roundtrip_time="$(arg roundtrip_time)"
+      verify_robot_model="$(arg verify_robot_model)">
+      <ext_axes_ros2_control_joints>
+        <xacro:kuka_kl_ros2_control_joints prefix="${kl_full_prefix}"/>
+      </ext_axes_ros2_control_joints>
+    </xacro:call>
+  </xacro:if>
+  <xacro:unless value="${robot_ros2_control_macro_name == 'kuka_lbr_iisy_ros2_control'}">
+    <xacro:call macro="${robot_ros2_control_macro_name}"
+      name="$(arg prefix)$(arg composed_model)"
+      driver_version="$(arg driver_version)"
+      client_ip="$(arg client_ip)"
+      client_port="$(arg client_port)"
+      mxa_client_port="$(arg mxa_client_port)"
+      controller_ip="$(arg controller_ip)"
+      prefix="$(arg prefix)"
+      use_gpio="$(arg use_gpio)"
+      mode="$(arg mode)"
+      roundtrip_time="$(arg roundtrip_time)"
+      verify_robot_model="$(arg verify_robot_model)">
+      <ext_axes_ros2_control_joints>
+        <xacro:kuka_kl_ros2_control_joints prefix="${kl_full_prefix}"/>
+      </ext_axes_ros2_control_joints>
+    </xacro:call>
+  </xacro:unless>
+
+  <!-- world link -->
+  <link name="world"/>
+  <!-- external axis links -->
+  <xacro:call macro="${kl_model_links_macro_name}" prefix="${kl_full_prefix}"/>
+  <!-- robot links -->
+  <xacro:call
+    macro="${robot_model_macro_name}"
+    prefix="$(arg prefix)"
+    package_name="$(arg robot_support_package)"
+  />
+  <!-- external axis joints -->
+  <xacro:call
+    macro="${kl_model_joints_macro_name}"
+    prefix="${kl_full_prefix}"
+    robot_base_link="$(arg prefix)base_link">
+    <origin xyz="$(arg x) $(arg y) $(arg z)" rpy="$(arg roll) $(arg pitch) $(arg yaw)"/>
+  </xacro:call>
+</robot>
