@@ -2,6 +2,9 @@
 Changelog for package kuka_lbr_iisy_moveit_config
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+
 1.1.1 (2026-07-20)
 ------------------
 * Fix missing package dependencies

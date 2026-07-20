@@ -2,6 +2,9 @@
 Changelog for package kuka_resources
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+
 1.1.1 (2026-07-20)
 ------------------
 * Fix missing package dependencies
