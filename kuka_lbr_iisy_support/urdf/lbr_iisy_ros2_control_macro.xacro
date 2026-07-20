@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
-  <xacro:macro name="kuka_lbr_iisy_ros2_control" params="name driver_version prefix client_ip client_port mxa_client_port controller_ip use_gpio mode qos_config_file roundtrip_time verify_robot_model is_async **ext_axes_ros2_control_joints">
+  <xacro:macro name="kuka_lbr_iisy_ros2_control" params="name driver_version prefix client_ip client_port mxa_client_port controller_ip use_gpio mode qos_config_file roundtrip_time verify_robot_model is_async async_thread_priority:=69 async_affinity:='' **ext_axes_ros2_control_joints">
     <!-- gazebo -->
     <xacro:if value="${mode == 'gazebo'}">
       <xacro:include filename="$(find kuka_gazebo)/gazebo/kuka_gazebo.xacro"/>
@@ -9,7 +9,7 @@
     <!-- ros2 control -->
     <ros2_control name="${name}" type="system" is_async="${is_async}">
       <properties>
-        <async scheduling_policy="detached" print_warnings="false" thread_priority="69"/>
+        <async affinity="${async_affinity}" scheduling_policy="detached" print_warnings="false" thread_priority="${async_thread_priority}"/>
       </properties>
       <hardware>
         <param name="interface_prefix">${prefix}</param>
