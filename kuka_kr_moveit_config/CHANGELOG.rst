@@ -2,6 +2,9 @@
 Changelog for package kuka_kr_moveit_config
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+
 2.0.1 (2026-07-20)
 ------------------
 * Fix missing package dependencies
