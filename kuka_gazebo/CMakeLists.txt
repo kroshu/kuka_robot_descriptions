@@ -24,18 +24,21 @@ install(
   DESTINATION lib/${PROJECT_NAME}
 )
 
-install(FILES
-  ${CMAKE_CURRENT_SOURCE_DIR}/../README.md
-  DESTINATION share/${PROJECT_NAME}
-)
+# Testing
+message(STATUS "GITHUB_ACTIONS in CMake: $ENV{GITHUB_ACTIONS}")
+option(GITHUB_CI_TESTS "Enable tests for GitHub CI" OFF)
+
+# If CI tests are disabled, do not install README.md unnecessarily (it could also break binary package build, where root folder is package root)
+if(GITHUB_CI_TESTS)
+  install(FILES
+    ${CMAKE_CURRENT_SOURCE_DIR}/../README.md
+    DESTINATION share/${PROJECT_NAME}
+  )
+endif()
 
 install(TARGETS
   test_keep_alive
   DESTINATION lib/${PROJECT_NAME})
-
-#Testing
-message(STATUS "GITHUB_ACTIONS in CMake: $ENV{GITHUB_ACTIONS}")
-option(GITHUB_CI_TESTS "Enable tests for GitHub CI" OFF)
 
 if(GITHUB_CI_TESTS)
   message(STATUS "Gazebo test environment variable detected, enabling gazebo tests")
