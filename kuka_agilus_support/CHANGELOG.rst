@@ -2,8 +2,8 @@
 Changelog for package kuka_agilus_support
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.1.1 (2026-07-20)
+------------------
 * Fix missing package dependencies
 
 1.1.0 (2026-07-15)
