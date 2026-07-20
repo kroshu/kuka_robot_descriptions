@@ -9,7 +9,7 @@
     <!-- ros2 control -->
     <ros2_control name="${name}" type="system" is_async="${is_async}">
       <properties>
-        <async scheduling_policy="detached" print_warnings="false" thread_priority="50"/>
+        <async scheduling_policy="detached" print_warnings="false" thread_priority="69"/>
       </properties>
       <hardware>
         <param name="interface_prefix">${prefix}</param>
