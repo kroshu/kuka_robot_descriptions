@@ -10,6 +10,8 @@
   <maintainer email="pepo.tamas@gmail.com">Tamas Pepo</maintainer>
   <license>Apache-2.0</license>
   <buildtool_depend>ament_cmake</buildtool_depend>
+  <depend>rclcpp</depend>
+  <depend>std_msgs</depend>
   <exec_depend>joint_state_broadcaster</exec_depend>
   <exec_depend>joint_trajectory_controller</exec_depend>
   <exec_depend>controller_manager</exec_depend>
@@ -23,7 +25,6 @@
   <test_depend>ros2run</test_depend>
   <test_depend>launch_testing_ament_cmake</test_depend>
   <test_depend>launch_testing</test_depend>
-  <depend>std_msgs</depend>
   <export>
     <build_type>ament_cmake</build_type>
   </export>
