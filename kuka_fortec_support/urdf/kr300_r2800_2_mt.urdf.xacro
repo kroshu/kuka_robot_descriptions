@@ -16,7 +16,7 @@
   <xacro:arg name="prefix" default=""/>
   <xacro:arg name="is_async" default="false"/>
   <xacro:arg name="async_thread_priority" default="69"/>
-  <xacro:arg name="async_affinity" default=""/>
+  <xacro:arg name="async_affinity" default="[]"/>
   <xacro:arg name="x" default="0"/>
   <xacro:arg name="y" default="0"/>
   <xacro:arg name="z" default="0"/>
