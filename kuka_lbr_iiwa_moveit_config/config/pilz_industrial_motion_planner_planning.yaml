@@ -14,6 +14,6 @@ response_adapters:
   - default_planning_response_adapters/DisplayMotionPath
 
 default_planner_config: PTP
-capabilities:
-  - pilz_industrial_motion_planner/MoveGroupSequenceAction
-  - pilz_industrial_motion_planner/MoveGroupSequenceService
+capabilities: >-
+    pilz_industrial_motion_planner/MoveGroupSequenceAction
+    pilz_industrial_motion_planner/MoveGroupSequenceService
