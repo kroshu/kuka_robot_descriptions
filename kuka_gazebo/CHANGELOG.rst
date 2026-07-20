@@ -2,8 +2,8 @@
 Changelog for package kuka_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.1.2 (2026-07-20)
+------------------
 * Fix kuka_gazebo binary package build
 
 1.1.1 (2026-07-20)
