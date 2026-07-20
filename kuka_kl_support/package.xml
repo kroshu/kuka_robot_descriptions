@@ -2,7 +2,7 @@
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
   <name>kuka_kl_support</name>
-  <version>2.0.1</version>
+  <version>2.0.2</version>
   <description>Robot model for the KUKA KL family</description>
   <maintainer email="svastits1@gmail.com">Aron Svastits</maintainer>
   <maintainer email="kovacsge.work@gmail.com">Gergely Kovacs</maintainer>
