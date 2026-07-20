@@ -2,6 +2,10 @@
 Changelog for package kuka_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Fix missing package dependencies
+
 1.1.0 (2026-07-15)
 ------------------
 * Cleanup package.xml dependencies
