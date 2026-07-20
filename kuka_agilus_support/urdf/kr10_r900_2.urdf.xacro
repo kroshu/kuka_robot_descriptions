@@ -15,13 +15,15 @@
   <xacro:arg name="verify_robot_model" default="true"/>
   <xacro:arg name="prefix" default=""/>
   <xacro:arg name="is_async" default="false"/>
+  <xacro:arg name="async_thread_priority" default="69"/>
+  <xacro:arg name="async_affinity" default=""/>
   <xacro:arg name="x" default="0"/>
   <xacro:arg name="y" default="0"/>
   <xacro:arg name="z" default="0"/>
   <xacro:arg name="roll" default="0"/>
   <xacro:arg name="pitch" default="0"/>
   <xacro:arg name="yaw" default="0"/>
-  <xacro:kuka_agilus_ros2_control name="$(arg prefix)kr10_r900_2" driver_version="$(arg driver_version)" client_ip="$(arg client_ip)" client_port="$(arg client_port)" mxa_client_port="$(arg mxa_client_port)" controller_ip="$(arg controller_ip)" prefix="$(arg prefix)" mode="$(arg mode)" use_gpio="$(arg use_gpio)" roundtrip_time="$(arg roundtrip_time)" verify_robot_model="$(arg verify_robot_model)" is_async="$(arg is_async)">
+  <xacro:kuka_agilus_ros2_control name="$(arg prefix)kr10_r900_2" driver_version="$(arg driver_version)" client_ip="$(arg client_ip)" client_port="$(arg client_port)" mxa_client_port="$(arg mxa_client_port)" controller_ip="$(arg controller_ip)" prefix="$(arg prefix)" mode="$(arg mode)" use_gpio="$(arg use_gpio)" roundtrip_time="$(arg roundtrip_time)" verify_robot_model="$(arg verify_robot_model)" is_async="$(arg is_async)" async_thread_priority="$(arg async_thread_priority)" async_affinity="$(arg async_affinity)">
     <ext_axes_ros2_control_joints/>
   </xacro:kuka_agilus_ros2_control>
   <!-- world link -->
