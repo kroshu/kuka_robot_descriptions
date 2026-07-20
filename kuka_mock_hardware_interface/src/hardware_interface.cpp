@@ -214,7 +214,7 @@ return_type KukaMockHardwareInterface::write(
 
     if (now > allowed_time)
     {
-      // RCUTILS_LOG_WARN_NAMED("mock_generic_system", "Cycle exceeded allowed round-trip time");
+      RCUTILS_LOG_WARN_NAMED("mock_generic_system", "Cycle exceeded allowed round-trip time");
     }
   }
 
