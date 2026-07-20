@@ -2,6 +2,9 @@
 Changelog for package kuka_mock_hardware_interface
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+2.0.2 (2026-07-20)
+------------------
+
 2.0.1 (2026-07-20)
 ------------------
 * Fix missing package dependencies
