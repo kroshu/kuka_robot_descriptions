@@ -189,6 +189,11 @@ return_type KukaMockHardwareInterface::read(
     // Initialize from a monotonic clock to avoid wall-clock jumps
     next_iteration_time_ = std::chrono::steady_clock::now();
     init_clock_ = false;
+    // Async hw interface should not block in the first cycle
+    if (get_hardware_info().is_async) 
+    {
+      next_iteration_time_ -= std::chrono::nanoseconds(cycle_time_nano_);
+    }
   }
 
   next_iteration_time_ += std::chrono::nanoseconds(cycle_time_nano_);
