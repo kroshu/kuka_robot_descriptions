@@ -69,6 +69,10 @@
       <!-- define joints and command/state interfaces for each joint -->
       <joint name="${prefix}joint_1">
         <command_interface name="position"/>
+        <xacro:unless value="${driver_version == 'eac'}">
+          <command_interface name="velocity"/>
+          <command_interface name="effort"/>
+        </xacro:unless>
         <xacro:if value="${driver_version == 'eac' and mode != 'gazebo'}">
           <command_interface name="stiffness"/>
           <command_interface name="damping"/>
@@ -77,6 +81,10 @@
         <state_interface name="position">
           <param name="initial_value">0.0</param>
         </state_interface>
+        <xacro:unless value="${driver_version == 'eac'}">
+          <state_interface name="velocity"/>
+          <state_interface name="effort"/>
+        </xacro:unless>
         <xacro:if value="${driver_version == 'eac'}">
           <state_interface name="effort">
             <param name="initial_value">0.0</param>
@@ -88,6 +96,10 @@
       </joint>
       <joint name="${prefix}joint_2">
         <command_interface name="position"/>
+        <xacro:unless value="${driver_version == 'eac'}">
+          <command_interface name="velocity"/>
+          <command_interface name="effort"/>
+        </xacro:unless>
         <xacro:if value="${driver_version == 'eac' and mode != 'gazebo'}">
           <command_interface name="stiffness"/>
           <command_interface name="damping"/>
@@ -96,6 +108,10 @@
         <state_interface name="position">
           <param name="initial_value">-1.5708</param>
         </state_interface>
+        <xacro:unless value="${driver_version == 'eac'}">
+          <state_interface name="velocity"/>
+          <state_interface name="effort"/>
+        </xacro:unless>
         <xacro:if value="${driver_version == 'eac'}">
           <state_interface name="effort">
             <param name="initial_value">0.0</param>
@@ -107,6 +123,10 @@
       </joint>
       <joint name="${prefix}joint_3">
         <command_interface name="position"/>
+        <xacro:unless value="${driver_version == 'eac'}">
+          <command_interface name="velocity"/>
+          <command_interface name="effort"/>
+        </xacro:unless>
         <xacro:if value="${driver_version == 'eac' and mode != 'gazebo'}">
           <command_interface name="stiffness"/>
           <command_interface name="damping"/>
@@ -115,6 +135,10 @@
         <state_interface name="position">
           <param name="initial_value">1.5708</param>
         </state_interface>
+        <xacro:unless value="${driver_version == 'eac'}">
+          <state_interface name="velocity"/>
+          <state_interface name="effort"/>
+        </xacro:unless>
         <xacro:if value="${driver_version == 'eac'}">
           <state_interface name="effort">
             <param name="initial_value">0.0</param>
@@ -126,6 +150,10 @@
       </joint>
       <joint name="${prefix}joint_4">
         <command_interface name="position"/>
+        <xacro:unless value="${driver_version == 'eac'}">
+          <command_interface name="velocity"/>
+          <command_interface name="effort"/>
+        </xacro:unless>
         <xacro:if value="${driver_version == 'eac' and mode != 'gazebo'}">
           <command_interface name="stiffness"/>
           <command_interface name="damping"/>
@@ -134,6 +162,10 @@
         <state_interface name="position">
           <param name="initial_value">0.0</param>
         </state_interface>
+        <xacro:unless value="${driver_version == 'eac'}">
+          <state_interface name="velocity"/>
+          <state_interface name="effort"/>
+        </xacro:unless>
         <xacro:if value="${driver_version == 'eac'}">
           <state_interface name="effort">
             <param name="initial_value">0.0</param>
@@ -145,6 +177,10 @@
       </joint>
       <joint name="${prefix}joint_5">
         <command_interface name="position"/>
+        <xacro:unless value="${driver_version == 'eac'}">
+          <command_interface name="velocity"/>
+          <command_interface name="effort"/>
+        </xacro:unless>
         <xacro:if value="${driver_version == 'eac' and mode != 'gazebo'}">
           <command_interface name="stiffness"/>
           <command_interface name="damping"/>
@@ -153,6 +189,10 @@
         <state_interface name="position">
           <param name="initial_value">0.0</param>
         </state_interface>
+        <xacro:unless value="${driver_version == 'eac'}">
+          <state_interface name="velocity"/>
+          <state_interface name="effort"/>
+        </xacro:unless>
         <xacro:if value="${driver_version == 'eac'}">
           <state_interface name="effort">
             <param name="initial_value">0.0</param>
@@ -164,6 +204,10 @@
       </joint>
       <joint name="${prefix}joint_6">
         <command_interface name="position"/>
+        <xacro:unless value="${driver_version == 'eac'}">
+          <command_interface name="velocity"/>
+          <command_interface name="effort"/>
+        </xacro:unless>
         <xacro:if value="${driver_version == 'eac' and mode != 'gazebo'}">
           <command_interface name="stiffness"/>
           <command_interface name="damping"/>
@@ -172,6 +216,10 @@
         <state_interface name="position">
           <param name="initial_value">0.0</param>
         </state_interface>
+        <xacro:unless value="${driver_version == 'eac'}">
+          <state_interface name="velocity"/>
+          <state_interface name="effort"/>
+        </xacro:unless>
         <xacro:if value="${driver_version == 'eac'}">
           <state_interface name="effort">
             <param name="initial_value">0.0</param>
