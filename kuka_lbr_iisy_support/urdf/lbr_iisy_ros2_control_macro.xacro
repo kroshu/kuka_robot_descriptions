@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
-  <xacro:macro name="kuka_lbr_iisy_ros2_control" params="name driver_version prefix client_ip client_port mxa_client_port controller_ip use_gpio mode qos_config_file roundtrip_time verify_robot_model **ext_axes_ros2_control_joints">
+  <xacro:macro name="kuka_lbr_iisy_ros2_control" params="name driver_version prefix client_ip client_port mxa_client_port controller_ip use_gpio mode qos_config_file roundtrip_time verify_robot_model rsi_xml_config_file **ext_axes_ros2_control_joints">
     <!-- gazebo -->
     <xacro:if value="${mode == 'gazebo'}">
       <xacro:include filename="$(find kuka_gazebo)/gazebo/kuka_gazebo.xacro"/>
@@ -38,27 +38,28 @@
             <param name="lost_packets_in_timeframe">${lost_packets_in_timeframe}</param>
             <param name="timeframe_ms">${timeframe_ms}</param>
           </xacro:if>
-          <xacro:if value="${driver_version == 'eki_rsi'}">
-            <plugin>kuka_rsi_driver::KukaEkiRsiHardwareInterface</plugin>
-            <param name="controller_ip">${controller_ip}</param>
+          <xacro:unless value="${driver_version == 'eac'}">
+            <!-- Common params for all three KSS drivers -->
             <param name="client_ip">${client_ip}</param>
             <param name="client_port">${client_port}</param>
-            <param name="name">${name}</param>
-            <param name="verify_robot_model">${verify_robot_model}</param>
-          </xacro:if>
-          <xacro:if value="${driver_version == 'mxa_rsi'}">
-            <plugin>kuka_rsi_driver::KukaMxaRsiHardwareInterface</plugin>
-            <param name="controller_ip">${controller_ip}</param>
-            <param name="client_ip">${client_ip}</param>
-            <param name="client_port">${client_port}</param>
-            <param name="mxa_client_port">${mxa_client_port}</param>
-            <param name="verify_robot_model">${verify_robot_model}</param>
-          </xacro:if>
-          <xacro:if value="${driver_version == 'rsi_only'}">
-            <plugin>kuka_rsi_driver::KukaRSIHardwareInterface</plugin>
-            <param name="client_ip">${client_ip}</param>
-            <param name="client_port">${client_port}</param>
-          </xacro:if>
+            <param name="rsi_xml_config_file">${rsi_xml_config_file}</param>
+            <xacro:if value="${driver_version == 'rsi_only'}">
+              <plugin>kuka_rsi_driver::KukaRSIHardwareInterface</plugin>
+            </xacro:if>
+            <xacro:unless value="${driver_version == 'rsi_only'}">
+              <!-- Common params for the EKI and mxAutomation drivers -->
+              <param name="controller_ip">${controller_ip}</param>
+              <param name="verify_robot_model">${verify_robot_model}</param>
+              <xacro:if value="${driver_version == 'eki_rsi'}">
+                <plugin>kuka_rsi_driver::KukaEkiRsiHardwareInterface</plugin>
+                <param name="name">${name}</param>
+              </xacro:if>
+              <xacro:if value="${driver_version == 'mxa_rsi'}">
+                <plugin>kuka_rsi_driver::KukaMxaRsiHardwareInterface</plugin>
+                <param name="mxa_client_port">${mxa_client_port}</param>
+              </xacro:if>
+            </xacro:unless>
+          </xacro:unless>
         </xacro:if>
         <xacro:if value="${mode == 'gazebo'}">
           <plugin>gz_ros2_control/GazeboSimSystem</plugin>
