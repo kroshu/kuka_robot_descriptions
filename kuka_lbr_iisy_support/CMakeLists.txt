@@ -9,6 +9,7 @@ find_package(xacro REQUIRED)
 install(DIRECTORY launch meshes urdf config
   DESTINATION share/${PROJECT_NAME})
 
+# Required for Gazebo integration via package environment setup.
 ament_environment_hooks("${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}.dsv")
 
 if(BUILD_TESTING)
