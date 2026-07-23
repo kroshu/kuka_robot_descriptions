@@ -26,6 +26,7 @@
   <xacro:arg name="kl_urdf_package" default="kuka_kl_support"/>
   <xacro:arg name="robot_ros2_control_macro_file" default="kr_agilus_ros2_control_macro.xacro"/>
   <xacro:arg name="kl_model" default="kl100_2"/>
+  <xacro:arg name="gazebo_controller_config_path" default="config/fake_hardware_config_6_axis_kl.yaml"/>
 
   <!-- Define properties for dynamic macro and package resolution -->
   <xacro:property name="robot_family_value" value="$(arg robot_family)"/>
@@ -62,13 +63,6 @@
    />
   <xacro:property name="kl_full_prefix" value="${prefix_value + kl_prefix_value}"/>
 
-  <!-- gazebo -->
-  <xacro:property name="mode_value" value="$(arg mode)"/>
-  <xacro:if value="${mode_value == 'gazebo'}">
-    <xacro:include filename="$(find kuka_gazebo)/gazebo/kuka_gazebo.xacro"/>
-    <xacro:kuka_gazebo controller_config_package="kuka_resources" controller_config_path="config/fake_hardware_config_6_axis_kl.yaml"/>
-  </xacro:if>
-
   <!-- Include urdf macro files -->
   <xacro:include filename="${robot_support_urdf_dir}/${robot_model_value}_macro.xacro"/>
   <xacro:include filename="${robot_support_urdf_dir}/$(arg robot_ros2_control_macro_file)"/>
@@ -89,7 +83,8 @@
       mode="$(arg mode)"
       qos_config_file=""
       roundtrip_time="$(arg roundtrip_time)"
-      verify_robot_model="$(arg verify_robot_model)">
+      verify_robot_model="$(arg verify_robot_model)"
+      gazebo_controller_config_path="$(arg gazebo_controller_config_path)">
       <ext_axes_ros2_control_joints>
         <xacro:kuka_kl_ros2_control_joints prefix="${kl_full_prefix}"/>
       </ext_axes_ros2_control_joints>
@@ -107,7 +102,8 @@
       use_gpio="$(arg use_gpio)"
       mode="$(arg mode)"
       roundtrip_time="$(arg roundtrip_time)"
-      verify_robot_model="$(arg verify_robot_model)">
+      verify_robot_model="$(arg verify_robot_model)"
+      gazebo_controller_config_path="$(arg gazebo_controller_config_path)">
       <ext_axes_ros2_control_joints>
         <xacro:kuka_kl_ros2_control_joints prefix="${kl_full_prefix}"/>
       </ext_axes_ros2_control_joints>
@@ -115,9 +111,21 @@
   </xacro:unless>
 
   <!-- world link -->
-  <link name="world"/>
+    <link name="world"/>
+
+  <!-- default world - external-axis base joint -->
+    <joint name="world-${kl_full_prefix}base_link" type="fixed">
+      <parent link="world"/>
+      <child link="${kl_full_prefix}base_link"/>
+      <origin xyz="$(arg x) $(arg y) $(arg z)" rpy="$(arg roll) $(arg pitch) $(arg yaw)"/>
+    </joint>
+
   <!-- external axis links -->
-  <xacro:call macro="${kl_model_links_macro_name}" prefix="${kl_full_prefix}"/>
+  <xacro:call
+    macro="${kl_model_links_macro_name}"
+    prefix="${kl_full_prefix}"
+    package_name="${kl_urdf_package_value}"
+  />
   <!-- robot links -->
   <xacro:call
     macro="${robot_model_macro_name}"

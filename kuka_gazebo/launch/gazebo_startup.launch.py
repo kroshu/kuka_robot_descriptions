@@ -28,6 +28,12 @@ from launch.conditions import IfCondition, UnlessCondition
 import os
 
 
+def _ros2_control_macro_file_from_family(robot_family):
+    if robot_family.startswith("lbr_"):
+        return f"{robot_family}_ros2_control_macro.xacro"
+    return f"kr_{robot_family}_ros2_control_macro.xacro"
+
+
 def launch_setup(context, *args, **kwargs):
     # Launch configurations
     world = LaunchConfiguration("gz_world")
@@ -43,6 +49,18 @@ def launch_setup(context, *args, **kwargs):
     yaw = LaunchConfiguration("yaw")
 
     use_gui = LaunchConfiguration("use_gui")
+    use_external_axis = LaunchConfiguration("use_external_axis")
+    use_external_axis_value = use_external_axis.perform(context).lower() == "true"
+    kl_model = LaunchConfiguration("kl_model")
+    kl_prefix = LaunchConfiguration("kl_prefix")
+    kl_urdf_package = LaunchConfiguration("kl_urdf_package")
+
+    robot_model_value = robot_model.perform(context)
+    robot_family_value = robot_family.perform(context)
+    kl_model_value = kl_model.perform(context)
+    kl_prefix_value = kl_prefix.perform(context)
+    kl_urdf_package_value = kl_urdf_package.perform(context)
+    robot_support_package = f"kuka_{robot_family_value}_support"
 
     # TF prefix
     tf_prefix = (ns.perform(context) + "_") if ns.perform(context) != "" else ""
@@ -51,42 +69,80 @@ def launch_setup(context, *args, **kwargs):
     world_path = os.path.join(get_package_share_directory("kuka_gazebo"), world.perform(context))
 
     # Build robot_description from xacro
+    xacro_arguments = [
+        PathJoinSubstitution([FindExecutable(name="xacro")]),
+        " ",
+        "mode:=",
+        "gazebo",
+        " ",
+        "prefix:=",
+        tf_prefix,
+        " ",
+        "x:=",
+        x,
+        " ",
+        "y:=",
+        y,
+        " ",
+        "z:=",
+        z,
+        " ",
+        "roll:=",
+        roll,
+        " ",
+        "pitch:=",
+        pitch,
+        " ",
+        "yaw:=",
+        yaw,
+    ]
+
+    if use_external_axis_value:
+        urdf_source = PathJoinSubstitution(
+            [FindPackageShare("kuka_resources"), "urdf", "robot_with_external_axis_template.urdf.xacro"]
+        )
+        model_name = f"{robot_model_value}_with_{kl_model_value}"
+        xacro_arguments.extend(
+            [
+                " ",
+                "composed_model:=",
+                model_name,
+                " ",
+                "robot_model:=",
+                robot_model_value,
+                " ",
+                "robot_family:=",
+                robot_family_value,
+                " ",
+                "robot_support_package:=",
+                robot_support_package,
+                " ",
+                "kl_urdf_package:=",
+                kl_urdf_package_value,
+                " ",
+                "robot_ros2_control_macro_file:=",
+                _ros2_control_macro_file_from_family(robot_family_value),
+                " ",
+                "kl_model:=",
+                kl_model_value,
+                " ",
+                "kl_prefix:=",
+                kl_prefix_value,
+            ]
+        )
+    else:
+        urdf_source = PathJoinSubstitution(
+            [FindPackageShare(robot_support_package), "urdf", robot_model_value + ".urdf.xacro"]
+        )
+        model_name = robot_model_value
+
+    xacro_arguments.extend([
+        " ",
+        urdf_source,
+    ])
+
     robot_description_content = Command(
-        [
-            PathJoinSubstitution([FindExecutable(name="xacro")]),
-            " ",
-            PathJoinSubstitution(
-                [
-                    FindPackageShare(f"kuka_{robot_family.perform(context)}_support"),
-                    "urdf",
-                    robot_model.perform(context) + ".urdf.xacro",
-                ]
-            ),
-            " ",
-            "mode:=",
-            "gazebo",
-            " ",
-            "prefix:=",
-            tf_prefix,
-            " ",
-            "x:=",
-            x,
-            " ",
-            "y:=",
-            y,
-            " ",
-            "z:=",
-            z,
-            " ",
-            "roll:=",
-            roll,
-            " ",
-            "pitch:=",
-            pitch,
-            " ",
-            "yaw:=",
-            yaw,
-        ],
+        xacro_arguments,
         on_stderr="capture",
     )
     robot_description = {"robot_description": robot_description_content}
@@ -148,7 +204,7 @@ def launch_setup(context, *args, **kwargs):
             "-topic",
             "robot_description",
             "-name",
-            robot_model,
+            model_name,
             "-allow_renaming",
         ]
         + [item for pair in zip(label, tf) for item in pair],
@@ -203,6 +259,26 @@ def generate_launch_description():
             "use_gui",
             default_value="true",
             description="If true, launch gz_sim (GUI). If false, launch gz_server (headless).",
+        ),
+        DeclareLaunchArgument(
+            "use_external_axis",
+            default_value="false",
+            description="Enable external axis support in the robot xacro model.",
+        ),
+        DeclareLaunchArgument(
+            "kl_model",
+            default_value="kl100_2",
+            description="External axis model used when use_external_axis is true.",
+        ),
+        DeclareLaunchArgument(
+            "kl_urdf_package",
+            default_value="kuka_kl_support",
+            description="Package containing the external axis URDF files.",
+        ),
+        DeclareLaunchArgument(
+            "kl_prefix",
+            default_value="rail_",
+            description="Joint/link prefix for the external axis when use_external_axis is true.",
         ),
     ]
     return LaunchDescription(launch_args + [OpaqueFunction(function=launch_setup)])

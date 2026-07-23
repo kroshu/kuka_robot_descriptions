@@ -7,4 +7,6 @@ find_package(xacro REQUIRED)
 
 install(DIRECTORY config meshes srdf urdf DESTINATION share/${PROJECT_NAME})
 
+ament_environment_hooks("${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}.dsv")
+
 ament_package()
