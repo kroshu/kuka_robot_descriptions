@@ -4,7 +4,7 @@
     <group name="${prefix}manipulator">
       <chain base_link="${prefix}${kl_prefix}base_link" tip_link="${prefix}tool0"/>
     </group>
-    <group name="end_effector">
+    <group name="${prefix}end_effector">
       <link name="${prefix}tool0"/>
     </group>
     <group_state name="home" group="${prefix}manipulator">
