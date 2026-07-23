@@ -56,36 +56,96 @@
         <state_interface name="position">
           <param name="initial_value">0.0</param>
         </state_interface>
+        <xacro:unless value="${mode == 'gazebo'}">
+          <command_interface name="velocity"/>
+          <command_interface name="effort"/>
+          <state_interface name="velocity">
+            <param name="initial_value">0.0</param>
+          </state_interface>
+          <state_interface name="effort">
+            <param name="initial_value">0.0</param>
+          </state_interface>
+        </xacro:unless>
       </joint>
       <joint name="${prefix}joint_2">
         <command_interface name="position"/>
         <state_interface name="position">
           <param name="initial_value">-1.5708</param>
         </state_interface>
+        <xacro:unless value="${mode == 'gazebo'}">
+          <command_interface name="velocity"/>
+          <command_interface name="effort"/>
+          <state_interface name="velocity">
+            <param name="initial_value">0.0</param>
+          </state_interface>
+          <state_interface name="effort">
+            <param name="initial_value">0.0</param>
+          </state_interface>
+        </xacro:unless>
       </joint>
       <joint name="${prefix}joint_3">
         <command_interface name="position"/>
         <state_interface name="position">
           <param name="initial_value">1.5708</param>
         </state_interface>
+        <xacro:unless value="${mode == 'gazebo'}">
+          <command_interface name="velocity"/>
+          <command_interface name="effort"/>
+          <state_interface name="velocity">
+            <param name="initial_value">0.0</param>
+          </state_interface>
+          <state_interface name="effort">
+            <param name="initial_value">0.0</param>
+          </state_interface>
+        </xacro:unless>
       </joint>
       <joint name="${prefix}joint_4">
         <command_interface name="position"/>
         <state_interface name="position">
           <param name="initial_value">0.0</param>
         </state_interface>
+        <xacro:unless value="${mode == 'gazebo'}">
+          <command_interface name="velocity"/>
+          <command_interface name="effort"/>
+          <state_interface name="velocity">
+            <param name="initial_value">0.0</param>
+          </state_interface>
+          <state_interface name="effort">
+            <param name="initial_value">0.0</param>
+          </state_interface>
+        </xacro:unless>
       </joint>
       <joint name="${prefix}joint_5">
         <command_interface name="position"/>
         <state_interface name="position">
           <param name="initial_value">0.0</param>
         </state_interface>
+        <xacro:unless value="${mode == 'gazebo'}">
+          <command_interface name="velocity"/>
+          <command_interface name="effort"/>
+          <state_interface name="velocity">
+            <param name="initial_value">0.0</param>
+          </state_interface>
+          <state_interface name="effort">
+            <param name="initial_value">0.0</param>
+          </state_interface>
+        </xacro:unless>
       </joint>
       <joint name="${prefix}joint_6">
         <command_interface name="position"/>
         <state_interface name="position">
           <param name="initial_value">0.0</param>
         </state_interface>
+        <xacro:unless value="${mode == 'gazebo'}">
+          <command_interface name="velocity"/>
+          <command_interface name="effort"/>
+          <state_interface name="velocity">
+            <param name="initial_value">0.0</param>
+          </state_interface>
+          <state_interface name="effort">
+            <param name="initial_value">0.0</param>
+          </state_interface>
+        </xacro:unless>
       </joint>
       <xacro:if value="${use_gpio}">
         <xacro:include filename="$(find kuka_rsi_driver)/config/gpio_config.xacro"/>
