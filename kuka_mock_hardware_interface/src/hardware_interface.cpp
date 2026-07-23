@@ -222,8 +222,8 @@ return_type KukaMockHardwareInterface::write(
   {
     const uint32_t expected_count =
       (last_interpolation_count_command_ == std::numeric_limits<uint32_t>::max())
-      ? 0
-      : last_interpolation_count_command_ + 1;
+        ? 0
+        : last_interpolation_count_command_ + 1;
 
     if (current_count != expected_count)
     {
@@ -234,10 +234,8 @@ return_type KukaMockHardwareInterface::write(
           "mock_generic_system", "interpolation_count mismatch before write: expected %u, got %u",
           expected_count, current_count);
 
-        const auto retry_deadline =
-          std::chrono::steady_clock::now() + std::chrono::milliseconds(1);
-        const auto retry_step =
-          std::chrono::duration_cast<std::chrono::steady_clock::duration>(
+        const auto retry_deadline = std::chrono::steady_clock::now() + std::chrono::milliseconds(1);
+        const auto retry_step = std::chrono::duration_cast<std::chrono::steady_clock::duration>(
           std::chrono::microseconds(200));
 
         while (current_count != expected_count)
