@@ -37,7 +37,6 @@ def launch_setup(context, *args, **kwargs):
     kl_model = LaunchConfiguration("kl_model")
     kl_prefix = LaunchConfiguration("kl_prefix")
     kl_urdf_package = LaunchConfiguration("kl_urdf_package")
-    mode = LaunchConfiguration("mode")
     prefix = LaunchConfiguration("prefix")
 
     robot_model_value = robot_model.perform(context)
@@ -132,7 +131,6 @@ def launch_setup(context, *args, **kwargs):
 
     with open(
         robot_joint_limits_file_path,
-        "r",
         encoding="utf-8",
     ) as joint_limits_file:
         merged_joint_limits = yaml.safe_load(joint_limits_file)
@@ -140,7 +138,6 @@ def launch_setup(context, *args, **kwargs):
         with open(
             get_package_share_directory(kl_urdf_package_value)
             + f"/config/{kl_model_value}_joint_limits.yaml",
-            "r",
             encoding="utf-8",
         ) as ext_axis_joint_limits_file:
             ext_axis_joint_limits = yaml.safe_load(ext_axis_joint_limits_file)
@@ -210,7 +207,9 @@ def generate_launch_description():
     launch_arguments.append(DeclareLaunchArgument("dof", default_value="6"))
     launch_arguments.append(DeclareLaunchArgument("use_external_axis", default_value="false"))
     launch_arguments.append(DeclareLaunchArgument("kl_model", default_value="kl100_2"))
-    launch_arguments.append(DeclareLaunchArgument("kl_urdf_package", default_value="kuka_kl_support"))
+    launch_arguments.append(
+        DeclareLaunchArgument("kl_urdf_package", default_value="kuka_kl_support")
+    )
     launch_arguments.append(DeclareLaunchArgument("kl_prefix", default_value="rail_"))
     launch_arguments.append(DeclareLaunchArgument("prefix", default_value=""))
     launch_arguments.append(DeclareLaunchArgument("use_sim_time", default_value="False"))

@@ -7,7 +7,6 @@
   <xacro:macro name="robot_with_external_axis_srdf" params="prefix kl_prefix kl_urdf_package">
     <xacro:include filename="$(find ${kl_urdf_package})/srdf/kl_macro.xacro"/>
     <xacro:include filename="robot_arm_group_macro.xacro"/>
-
     <xacro:srdf_robot_with_ext_axes prefix="${prefix}" kl_prefix="${kl_prefix}">
       <ext_joints>
         <xacro:kl_srdf_joints prefix="${prefix}${kl_prefix}"/>

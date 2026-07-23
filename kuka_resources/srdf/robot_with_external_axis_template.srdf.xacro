@@ -8,14 +8,9 @@
   <xacro:arg name="kl_urdf_package" default="kuka_kl_support"/>
   <xacro:arg name="prefix" default=""/>
   <xacro:arg name="kl_prefix" default="rail_"/>
-
   <xacro:property name="kl_urdf_package_value" value="$(arg kl_urdf_package)"/>
   <xacro:property name="prefix_value" value="$(arg prefix)"/>
   <xacro:property name="kl_prefix_value" value="$(arg kl_prefix)"/>
-
   <xacro:include filename="robot_arm_macro.xacro"/>
-  <xacro:robot_with_external_axis_srdf
-    prefix="${prefix_value}"
-    kl_prefix="${kl_prefix_value}"
-    kl_urdf_package="${kl_urdf_package_value}"/>
+  <xacro:robot_with_external_axis_srdf prefix="${prefix_value}" kl_prefix="${kl_prefix_value}" kl_urdf_package="${kl_urdf_package_value}"/>
 </robot>

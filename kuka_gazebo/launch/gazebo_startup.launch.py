@@ -99,7 +99,11 @@ def launch_setup(context, *args, **kwargs):
 
     if use_external_axis_value:
         urdf_source = PathJoinSubstitution(
-            [FindPackageShare("kuka_resources"), "urdf", "robot_with_external_axis_template.urdf.xacro"]
+            [
+                FindPackageShare("kuka_resources"),
+                "urdf",
+                "robot_with_external_axis_template.urdf.xacro",
+            ]
         )
         model_name = f"{robot_model_value}_with_{kl_model_value}"
         xacro_arguments.extend(
@@ -136,10 +140,12 @@ def launch_setup(context, *args, **kwargs):
         )
         model_name = robot_model_value
 
-    xacro_arguments.extend([
-        " ",
-        urdf_source,
-    ])
+    xacro_arguments.extend(
+        [
+            " ",
+            urdf_source,
+        ]
+    )
 
     robot_description_content = Command(
         xacro_arguments,
