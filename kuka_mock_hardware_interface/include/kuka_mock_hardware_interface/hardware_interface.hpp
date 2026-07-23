@@ -15,6 +15,7 @@
 #ifndef KUKA_MOCK_HARDWARE_INTERFACE__HARDWARE_INTERFACE_HPP_
 #define KUKA_MOCK_HARDWARE_INTERFACE__HARDWARE_INTERFACE_HPP_
 
+#include <cstdint>
 #include <string>
 #include <vector>
 
@@ -61,6 +62,9 @@ protected:
 
   // Command interfaces
   double control_mode_ = 0;  // default to undefined
+  double interpolation_count_ = 0;
+  uint32_t last_interpolation_count_command_ = 0;
+  bool interpolation_count_initialized_ = false;
   double receive_multiplier_ = 1;
   double send_period_ms_ = 10;
   double cycle_time_ms_ = 4;
@@ -83,6 +87,7 @@ protected:
   std::chrono::nanoseconds cycle_time_nano_;
   int roundtrip_time_micro_;
   std::string interface_prefix_;
+  bool is_async_hardware_ = false;
   bool init_clock_ = true;
   std::chrono::steady_clock::time_point next_iteration_time_;
 };

@@ -15,6 +15,7 @@
 #include "kuka_mock_hardware_interface/hardware_interface.hpp"
 #include "kuka_mock_hardware_interface/hardware_interface_types.hpp"
 
+#include <limits>
 #include <memory>
 
 #include "rcutils/logging_macros.h"
@@ -32,6 +33,7 @@ CallbackReturn KukaMockHardwareInterface::on_init(
 
   // Parse KUKA-specific parameters
   auto info = get_hardware_info();
+  is_async_hardware_ = info.is_async;
   auto it = info.hardware_parameters.find("cycle_time_ms");
   if (it != info.hardware_parameters.end() && std::stoi(it->second) > 0)
   {
@@ -76,6 +78,7 @@ CallbackReturn KukaMockHardwareInterface::on_configure(const rclcpp_lifecycle::S
     return ret;
   }
   init_clock_ = true;
+  interpolation_count_initialized_ = false;
   return CallbackReturn::SUCCESS;
 }
 
@@ -161,6 +164,9 @@ KukaMockHardwareInterface::on_export_command_interfaces()
       config_prefix, hardware_interface::CONTROL_MODE, &control_mode_));
   command_interfaces.emplace_back(
     std::make_shared<hardware_interface::CommandInterface>(
+      config_prefix, hardware_interface::INTERPOLATION_COUNT, &interpolation_count_));
+  command_interfaces.emplace_back(
+    std::make_shared<hardware_interface::CommandInterface>(
       config_prefix, hardware_interface::RECEIVE_MULTIPLIER, &receive_multiplier_));
   command_interfaces.emplace_back(
     std::make_shared<hardware_interface::CommandInterface>(
@@ -210,6 +216,60 @@ return_type KukaMockHardwareInterface::write(
   {
     return ret;
   }
+
+  uint32_t current_count = static_cast<uint32_t>(interpolation_count_);
+  if (interpolation_count_initialized_)
+  {
+    const uint32_t expected_count =
+      (last_interpolation_count_command_ == std::numeric_limits<uint32_t>::max())
+      ? 0
+      : last_interpolation_count_command_ + 1;
+
+    if (current_count != expected_count)
+    {
+      // Async components may lag one cycle behind controller updates; retry up to 1 ms.
+      if (is_async_hardware_)
+      {
+        RCUTILS_LOG_DEBUG_NAMED(
+          "mock_generic_system", "interpolation_count mismatch before write: expected %u, got %u",
+          expected_count, current_count);
+
+        const auto retry_deadline =
+          std::chrono::steady_clock::now() + std::chrono::milliseconds(1);
+        const auto retry_step =
+          std::chrono::duration_cast<std::chrono::steady_clock::duration>(
+          std::chrono::microseconds(200));
+
+        while (current_count != expected_count)
+        {
+          const auto now = std::chrono::steady_clock::now();
+          if (now >= retry_deadline)
+          {
+            break;
+          }
+
+          auto sleep_time = retry_step;
+          const auto remaining = retry_deadline - now;
+          if (remaining < sleep_time)
+          {
+            sleep_time = remaining;
+          }
+
+          std::this_thread::sleep_for(sleep_time);
+          current_count = static_cast<uint32_t>(interpolation_count_);
+        }
+      }
+
+      if (current_count != expected_count)
+      {
+        RCUTILS_LOG_WARN_NAMED(
+          "mock_generic_system", "interpolation_count mismatch before write: expected %u, got %u",
+          expected_count, current_count);
+      }
+    }
+  }
+  interpolation_count_initialized_ = true;
+  last_interpolation_count_command_ = current_count;
 
   if (roundtrip_time_micro_ != 0)
   {
