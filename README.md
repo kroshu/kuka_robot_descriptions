@@ -269,7 +269,7 @@ This is necessary, as the driver workflow also activates controllers, which is p
 Additionally two hardware parameters are added:
 
 - To support similar timing behaviour as the actual robots, the mock hardware was extended with a blocking wait, so that the read function does not return immediately, but cyclically. The frequency of the loops is defined by the `cycle_time_ms` parameter. Default value is 4  [ms].
-- To be able to test whether a specific setup would fit into the roundtrip time enforced by a real robot, the `roundtrip_time_micro` parameter can be used. If the `write()` method is not called before the given timeout is exceeded (starting from the previous `read()` function), a warning message is logged (but the return value of the `write()` will be still SUCCESS). Default value is 0 [us], which means, that the roundrip time should not be monitored. If such a warning is triggered, two root causes are possible:
+- To be able to test whether a specific setup would fit into the roundtrip time enforced by a real robot, the `roundtrip_time_micro` parameter can be used. If the `write()` method is not called before the given timeout is exceeded (starting from the previous `read()` function), a warning message is logged (but the return value of the `write()` will be still SUCCESS). Default value is 0 [us], which means, that the roundtrip time should not be monitored. If such a warning is triggered, two root causes are possible:
 - Controller update takes too long, therefore `write` is also delayed
 - Scheduling jitter is high, main thread could not wake up in time
 

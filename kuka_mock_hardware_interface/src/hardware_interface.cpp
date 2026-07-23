@@ -217,6 +217,18 @@ return_type KukaMockHardwareInterface::write(
     return ret;
   }
 
+  if (roundtrip_time_micro_ != 0)
+  {
+    const auto now = std::chrono::steady_clock::now();
+    const auto allowed_time =
+      next_iteration_time_ + std::chrono::microseconds(roundtrip_time_micro_);
+
+    if (now > allowed_time)
+    {
+      RCUTILS_LOG_WARN_NAMED("mock_generic_system", "Cycle exceeded allowed round-trip time");
+    }
+  }
+
   uint32_t current_count = static_cast<uint32_t>(interpolation_count_);
   if (interpolation_count_initialized_)
   {
@@ -268,18 +280,6 @@ return_type KukaMockHardwareInterface::write(
   }
   interpolation_count_initialized_ = true;
   last_interpolation_count_command_ = current_count;
-
-  if (roundtrip_time_micro_ != 0)
-  {
-    const auto now = std::chrono::steady_clock::now();
-    const auto allowed_time =
-      next_iteration_time_ + std::chrono::microseconds(roundtrip_time_micro_);
-
-    if (now > allowed_time)
-    {
-      RCUTILS_LOG_WARN_NAMED("mock_generic_system", "Cycle exceeded allowed round-trip time");
-    }
-  }
 
   return return_type::OK;
 }
