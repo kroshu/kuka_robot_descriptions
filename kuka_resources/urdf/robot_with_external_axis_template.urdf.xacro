@@ -51,20 +51,11 @@
   <xacro:include filename="${kl_support_urdf_dir}/${kl_model_value}_macro.xacro"/>
   <xacro:include filename="${kl_support_urdf_dir}/$(arg kl_ros2_control_macro_file)"/>
   <!-- ros2 control configuration -->
-  <xacro:if value="${robot_ros2_control_macro_name == 'kuka_lbr_iisy_ros2_control'}">
-    <xacro:call macro="${robot_ros2_control_macro_name}" name="$(arg prefix)$(arg composed_model)" driver_version="$(arg driver_version)" client_ip="$(arg client_ip)" client_port="$(arg client_port)" mxa_client_port="$(arg mxa_client_port)" controller_ip="$(arg controller_ip)" prefix="$(arg prefix)" use_gpio="$(arg use_gpio)" mode="$(arg mode)" qos_config_file="" roundtrip_time="$(arg roundtrip_time)" verify_robot_model="$(arg verify_robot_model)" rsi_xml_config_file="$(arg rsi_xml_config_file)" gazebo_controller_config_path="$(arg gazebo_controller_config_path)">
-      <ext_axes_ros2_control_joints>
-        <xacro:call macro="${kl_ros2_control_joints_macro_name}" prefix="${kl_full_prefix}" mode="$(arg mode)"/>
-      </ext_axes_ros2_control_joints>
-    </xacro:call>
-  </xacro:if>
-  <xacro:unless value="${robot_ros2_control_macro_name == 'kuka_lbr_iisy_ros2_control'}">
-    <xacro:call macro="${robot_ros2_control_macro_name}" name="$(arg prefix)$(arg composed_model)" driver_version="$(arg driver_version)" client_ip="$(arg client_ip)" client_port="$(arg client_port)" mxa_client_port="$(arg mxa_client_port)" controller_ip="$(arg controller_ip)" prefix="$(arg prefix)" use_gpio="$(arg use_gpio)" mode="$(arg mode)" roundtrip_time="$(arg roundtrip_time)" verify_robot_model="$(arg verify_robot_model)" rsi_xml_config_file="$(arg rsi_xml_config_file)" gazebo_controller_config_path="$(arg gazebo_controller_config_path)">
-      <ext_axes_ros2_control_joints>
-        <xacro:call macro="${kl_ros2_control_joints_macro_name}" prefix="${kl_full_prefix}" mode="$(arg mode)"/>
-      </ext_axes_ros2_control_joints>
-    </xacro:call>
-  </xacro:unless>
+  <xacro:call macro="${robot_ros2_control_macro_name}" name="$(arg prefix)$(arg composed_model)" driver_version="$(arg driver_version)" client_ip="$(arg client_ip)" client_port="$(arg client_port)" mxa_client_port="$(arg mxa_client_port)" controller_ip="$(arg controller_ip)" prefix="$(arg prefix)" use_gpio="$(arg use_gpio)" mode="$(arg mode)" roundtrip_time="$(arg roundtrip_time)" verify_robot_model="$(arg verify_robot_model)" rsi_xml_config_file="$(arg rsi_xml_config_file)" gazebo_controller_config_path="$(arg gazebo_controller_config_path)">
+    <ext_axes_ros2_control_joints>
+      <xacro:call macro="${kl_ros2_control_joints_macro_name}" prefix="${kl_full_prefix}" mode="$(arg mode)"/>
+    </ext_axes_ros2_control_joints>
+  </xacro:call>
   <!-- world link -->
   <link name="world"/>
   <!-- default world - external-axis base joint -->
