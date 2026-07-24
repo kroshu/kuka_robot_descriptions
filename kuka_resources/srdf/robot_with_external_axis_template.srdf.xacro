@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--This does not replace URDF, and is not an extension of URDF.
+    This is a format for representing semantic information about the robot structure.
+    A URDF file must exist for this robot as well, where the joints and the links that are referenced are defined
+-->
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="$(arg composed_model)">
+  <xacro:arg name="composed_model" default="robot_with_external_axis"/>
+  <xacro:arg name="kl_support_package" default="kuka_kl_support"/>
+  <xacro:arg name="kl_srdf_macro_file" default="kl_macro.xacro"/>
+  <xacro:arg name="kl_srdf_joints_macro" default="kl_srdf_joints"/>
+  <xacro:arg name="kl_srdf_adjacent_links_macro" default="kl_srdf_adjacent_links"/>
+  <xacro:arg name="prefix" default=""/>
+  <xacro:arg name="kl_prefix" default="rail_"/>
+  <xacro:property name="kl_support_package_value" value="$(arg kl_support_package)"/>
+  <xacro:property name="kl_srdf_macro_file_value" value="$(arg kl_srdf_macro_file)"/>
+  <xacro:property name="kl_srdf_joints_macro_value" value="$(arg kl_srdf_joints_macro)"/>
+  <xacro:property name="kl_srdf_adjacent_links_macro_value" value="$(arg kl_srdf_adjacent_links_macro)"/>
+  <xacro:property name="prefix_value" value="$(arg prefix)"/>
+  <xacro:property name="kl_prefix_value" value="$(arg kl_prefix)"/>
+  <xacro:include filename="robot_arm_macro.xacro"/>
+  <xacro:robot_with_external_axis_srdf prefix="${prefix_value}" kl_prefix="${kl_prefix_value}" kl_support_package="${kl_support_package_value}" kl_srdf_macro_file="${kl_srdf_macro_file_value}" kl_srdf_joints_macro="${kl_srdf_joints_macro_value}" kl_srdf_adjacent_links_macro="${kl_srdf_adjacent_links_macro_value}"/>
+</robot>

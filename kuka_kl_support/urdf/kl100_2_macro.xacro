@@ -1,48 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
-  <xacro:macro name="kl100_2_links" params="">
+  <xacro:macro name="kl100_2_links" params="prefix">
     <!-- links -->
-    <link name="rail_base_link">
+    <link name="${prefix}base_link">
+      <inertial>
+        <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+        <mass value="500.0"/>
+        <inertia ixx="8" ixy="0.0" ixz="0.0" iyy="190" iyz="0.0" izz="190"/>
+      </inertial>
       <visual>
         <geometry>
-          <mesh filename="package://kuka_kl_support/meshes/kl100_2/visual/rail_base_link.dae"/>
+          <mesh filename="package://kuka_kl_support/meshes/kl100_2/visual/base_link.dae"/>
         </geometry>
       </visual>
       <collision>
         <geometry>
-          <mesh filename="package://kuka_kl_support/meshes/kl100_2/collision/rail_base_link.stl"/>
+          <mesh filename="package://kuka_kl_support/meshes/kl100_2/collision/base_link.stl"/>
         </geometry>
       </collision>
     </link>
-    <link name="rail_moving_link">
+    <link name="${prefix}link_1">
+      <inertial>
+        <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+        <mass value="43.0"/>
+        <inertia ixx="1.03" ixy="0.0" ixz="0.0" iyy="1.135" iyz="0.0" izz="1.517"/>
+      </inertial>
       <visual>
         <geometry>
-          <mesh filename="package://kuka_kl_support/meshes/kl100_2/visual/rail_moving_link.dae"/>
+          <mesh filename="package://kuka_kl_support/meshes/kl100_2/visual/link_1.dae"/>
         </geometry>
       </visual>
       <collision>
         <geometry>
-          <mesh filename="package://kuka_kl_support/meshes/kl100_2/collision/rail_moving_link.stl"/>
+          <mesh filename="package://kuka_kl_support/meshes/kl100_2/collision/link_1.stl"/>
         </geometry>
       </collision>
     </link>
   </xacro:macro>
-  <xacro:macro name="kl100_2_joints" params="robot_base_link *origin">
+  <xacro:macro name="kl100_2_joints" params="prefix robot_base_link *origin">
     <!-- joints -->
-    <joint name="world-rail_base" type="fixed">
-      <parent link="world"/>
-      <child link="rail_base_link"/>
-      <xacro:insert_block name="origin"/>
-    </joint>
-    <joint name="rail_joint" type="prismatic">
-      <parent link="rail_base_link"/>
-      <child link="rail_moving_link"/>
+    <joint name="${prefix}joint_1" type="prismatic">
+      <parent link="${prefix}base_link"/>
+      <child link="${prefix}link_1"/>
       <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
       <axis xyz="1 0 0"/>
       <limit lower="-1.0" upper="1.0" effort="702.0" velocity="2.5"/>
     </joint>
-    <joint name="rail-robot_base" type="fixed">
-      <parent link="rail_moving_link"/>
+    <joint name="${prefix}link_1-${robot_base_link}" type="fixed">
+      <parent link="${prefix}link_1"/>
       <child link="${robot_base_link}"/>
       <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.356"/>
     </joint>
