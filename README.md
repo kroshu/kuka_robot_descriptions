@@ -121,6 +121,15 @@ Prefixing behavior for external-axis joints and links:
 - The global robot `prefix` is applied on top of `kl_prefix`.
 - Effective external-axis prefix is `prefix + kl_prefix`.
 
+When you change `kl_prefix`, replace `rail_` with the new prefix in the following files:
+
+- Using with RViz: `view_6_axis_kl_urdf.rviz`
+- Using with MoveIt:
+  - The joint limits of the KL model, so e.g. `kl100_2_joint_limits.yaml`
+  - `moveit_controllers_6_axis_kl.yaml`
+  - `planning_6_axis_kl.rviz`
+- Using with Gazebo: `fake_hardware_config_6_axis_kl.yaml`
+
 Without any external axes, the end of a robot URDF still looks like this (with _robotfamily_ and _robotmodel_ as placeholders):
 
 ```xml
