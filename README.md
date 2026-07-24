@@ -96,21 +96,32 @@ Example of attaching an end effector (with link name `eef_base_link`) to the `fl
 
 ### External axis support
 
-Robots marked as supporting external exis in the [supported features](#supported-features) have URDFs prepared for this feature.
+Robots marked as supporting external axes in the [supported features](#supported-features) can be composed with a rail model through shared templates.
 
-- The `world` link and the `world-base_link` joint (and the `origin` block) are moved from the macro into the URDF xacro.
+The composition is now template-based and parameterized in `kuka_resources`:
 
-  - This allows you to:
+- URDF template: `kuka_resources/urdf/robot_with_external_axis_template.urdf.xacro`
+- SRDF template: `kuka_resources/srdf/robot_with_external_axis_template.srdf.xacro`
+- MoveIt launch template wiring: `kuka_resources/launch/moveit_server_template.launch.py`
 
-    - easily modify the link chain between `world` and the robot base (e.g., add external axes),
-    - align multiple robots to a shared `world` link.
+This means you can use any supported combination of `robot_model` and `kl_model` via launch arguments. A separate examples repository is not required for model composition.
 
-- A new parameter, `ext_axes_ros2_control_joints`, is added to the robot family's `ros2_control` macro.
+The URDF template composes the model in this order:
 
-  - It is used to insert joints from external axes into the correct section of the macro.
-  - An empty block is required even when no external axes are used.
+1. `world` link and world-to-rail base joint
+2. external-axis links
+3. robot links
+4. external-axis joints connecting the rail to `prefix + base_link`
 
-Without any external axes, the end of the URDF looks as follows (with _robotfamily_ and _robotmodel_ as placeholders):
+Maintaining this order is required for a valid URDF.
+
+Prefixing behavior for external-axis joints and links:
+
+- External-axis names use `kl_prefix`.
+- The global robot `prefix` is applied on top of `kl_prefix`.
+- Effective external-axis prefix is `prefix + kl_prefix`.
+
+Without any external axes, the end of a robot URDF still looks like this (with _robotfamily_ and _robotmodel_ as placeholders):
 
 ```xml
 <xacro:kuka_robotfamily_ros2_control ...>
@@ -131,35 +142,50 @@ Without any external axes, the end of the URDF looks as follows (with _robotfami
 </joint>
 ```
 
-With an external axis (KL100-2 in this example):
+With an external axis (KL100-2 in this example), the template composes the rail and robot as follows:
 
 ```xml
 <xacro:kuka_robotfamily_ros2_control ...>
   <ext_axes_ros2_control_joints>
-    <!-- kl ros2 control joints -->
-    <xacro:kuka_kl_ros2_control_joints/>
+    <xacro:kuka_kl_ros2_control_joints prefix="$(arg prefix)$(arg kl_prefix)" mode="$(arg mode)"/>
   </ext_axes_ros2_control_joints>
 </xacro:kuka_robotfamily_ros2_control>
 
 <!-- world link -->
 <link name="world"/>
 
-<!-- kl100_2 links -->
-<xacro:kl100_2_links/>
+<!-- world - external-axis base joint -->
+<joint name="world-$(arg prefix)$(arg kl_prefix)base_link" type="fixed">
+  <parent link="world"/>
+  <child link="$(arg prefix)$(arg kl_prefix)base_link"/>
+  <origin xyz="$(arg x) $(arg y) $(arg z)" rpy="$(arg roll) $(arg pitch) $(arg yaw)"/>
+</joint>
 
+<!-- external-axis links -->
+<xacro:kl100_2_links prefix="$(arg prefix)$(arg kl_prefix)"/>
+
+<!-- robot links -->
 <xacro:robotmodel prefix="$(arg prefix)" package_name="kuka_robotfamily_support"/>
 
-<!-- kl100_2 joints -->
-<xacro:kl100_2_joints robot_base_link="$(arg prefix)base_link">
+<!-- external-axis joints -->
+<xacro:kl100_2_joints prefix="$(arg prefix)$(arg kl_prefix)" robot_base_link="$(arg prefix)base_link">
   <origin xyz="$(arg x) $(arg y) $(arg z)" rpy="$(arg roll) $(arg pitch) $(arg yaw)"/>
 </xacro:kl100_2_joints>
 ```
 
-The order of these tags is important to produce a valid URDF.
-
 To support different external axis types (prismatic and revolute), custom `ros2_control` joint parameters were introduced: `type` and `is_external`. An example can be found in [`kl_ros2_control_macro.xacro`](./kuka_kl_support/urdf/kl_ros2_control_macro.xacro). These parameters are optional; if omitted, the driver assumes revolute internal joints.
 
 Although these parameters increase configuration complexity, they are necessary. Without them, the driver could not correctly distinguish between internal and external joints, which is critical for the RobotSensorInterface option package. They also allow the driver to convert between ROS 2 units (meters/radians) and KUKA units (millimetres/degrees).
+
+To support integration with third-party tracks or linear rails, the launch and xacro wiring expose these parameters:
+
+- `kl_support_package`
+- `kl_ros2_control_macro_file`
+- `kl_ros2_control_joints_macro`
+- `kl_srdf_macro_file`
+- `kl_srdf_adjacent_links_macro`
+
+These parameters are required to keep external-axis integration generic, so custom rail packages can provide their own URDF/SRDF and `ros2_control` macro entry points.
 
 #### Support for KL units
 
