@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
-  <xacro:macro name="kl100_2_links" params="prefix package_name">
+  <xacro:macro name="kl100_2_links" params="prefix">
     <!-- links -->
     <link name="${prefix}base_link">
       <inertial>
@@ -10,12 +10,12 @@
       </inertial>
       <visual>
         <geometry>
-          <mesh filename="package://${package_name}/meshes/kl100_2/visual/base_link.dae"/>
+          <mesh filename="package://kuka_kl_support/meshes/kl100_2/visual/base_link.dae"/>
         </geometry>
       </visual>
       <collision>
         <geometry>
-          <mesh filename="package://${package_name}/meshes/kl100_2/collision/base_link.stl"/>
+          <mesh filename="package://kuka_kl_support/meshes/kl100_2/collision/base_link.stl"/>
         </geometry>
       </collision>
     </link>
@@ -27,12 +27,12 @@
       </inertial>
       <visual>
         <geometry>
-          <mesh filename="package://${package_name}/meshes/kl100_2/visual/link_1.dae"/>
+          <mesh filename="package://kuka_kl_support/meshes/kl100_2/visual/link_1.dae"/>
         </geometry>
       </visual>
       <collision>
         <geometry>
-          <mesh filename="package://${package_name}/meshes/kl100_2/collision/link_1.stl"/>
+          <mesh filename="package://kuka_kl_support/meshes/kl100_2/collision/link_1.stl"/>
         </geometry>
       </collision>
     </link>

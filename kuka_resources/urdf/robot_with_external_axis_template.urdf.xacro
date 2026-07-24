@@ -70,7 +70,7 @@
     <origin xyz="$(arg x) $(arg y) $(arg z)" rpy="$(arg roll) $(arg pitch) $(arg yaw)"/>
   </joint>
   <!-- external axis links -->
-  <xacro:call macro="${kl_model_links_macro_name}" prefix="${kl_full_prefix}" package_name="${kl_urdf_package_value}"/>
+  <xacro:call macro="${kl_model_links_macro_name}" prefix="${kl_full_prefix}"/>
   <!-- robot links -->
   <xacro:call macro="${robot_model_macro_name}" prefix="$(arg prefix)" package_name="$(arg robot_support_package)"/>
   <!-- external axis joints -->
