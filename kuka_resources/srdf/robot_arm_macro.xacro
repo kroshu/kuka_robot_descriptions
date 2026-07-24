@@ -4,15 +4,15 @@
     A URDF file must exist for this robot as well, where the joints and the links that are referenced are defined
 -->
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
-  <xacro:macro name="robot_with_external_axis_srdf" params="prefix kl_prefix kl_urdf_package">
-    <xacro:include filename="$(find ${kl_urdf_package})/srdf/kl_macro.xacro"/>
+  <xacro:macro name="robot_with_external_axis_srdf" params="prefix kl_prefix kl_support_package kl_srdf_macro_file:=kl_macro.xacro kl_srdf_joints_macro:=kl_srdf_joints kl_srdf_adjacent_links_macro:=kl_srdf_adjacent_links">
+    <xacro:include filename="$(find ${kl_support_package})/srdf/${kl_srdf_macro_file}"/>
     <xacro:include filename="robot_arm_group_macro.xacro"/>
     <xacro:srdf_robot_with_ext_axes prefix="${prefix}" kl_prefix="${kl_prefix}">
       <ext_joints>
-        <xacro:kl_srdf_joints prefix="${prefix}${kl_prefix}"/>
+        <xacro:call macro="${kl_srdf_joints_macro}" prefix="${prefix}${kl_prefix}"/>
       </ext_joints>
       <ext_adjacent_links>
-        <xacro:kl_srdf_adjacent_links robot_base_link="${prefix}base_link" prefix="${prefix}${kl_prefix}"/>
+        <xacro:call macro="${kl_srdf_adjacent_links_macro}" robot_base_link="${prefix}base_link" prefix="${prefix}${kl_prefix}"/>
       </ext_adjacent_links>
     </xacro:srdf_robot_with_ext_axes>
   </xacro:macro>

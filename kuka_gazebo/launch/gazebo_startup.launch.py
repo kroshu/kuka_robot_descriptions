@@ -53,13 +53,17 @@ def launch_setup(context, *args, **kwargs):
     use_external_axis_value = use_external_axis.perform(context).lower() == "true"
     kl_model = LaunchConfiguration("kl_model")
     kl_prefix = LaunchConfiguration("kl_prefix")
-    kl_urdf_package = LaunchConfiguration("kl_urdf_package")
+    kl_support_package = LaunchConfiguration("kl_support_package")
+    kl_ros2_control_macro_file = LaunchConfiguration("kl_ros2_control_macro_file")
+    kl_ros2_control_joints_macro = LaunchConfiguration("kl_ros2_control_joints_macro")
 
     robot_model_value = robot_model.perform(context)
     robot_family_value = robot_family.perform(context)
     kl_model_value = kl_model.perform(context)
     kl_prefix_value = kl_prefix.perform(context)
-    kl_urdf_package_value = kl_urdf_package.perform(context)
+    kl_support_package_value = kl_support_package.perform(context)
+    kl_ros2_control_macro_file_value = kl_ros2_control_macro_file.perform(context)
+    kl_ros2_control_joints_macro_value = kl_ros2_control_joints_macro.perform(context)
     robot_support_package = f"kuka_{robot_family_value}_support"
 
     # TF prefix
@@ -121,14 +125,20 @@ def launch_setup(context, *args, **kwargs):
                 "robot_support_package:=",
                 robot_support_package,
                 " ",
-                "kl_urdf_package:=",
-                kl_urdf_package_value,
+                "kl_support_package:=",
+                kl_support_package_value,
                 " ",
                 "robot_ros2_control_macro_file:=",
                 _ros2_control_macro_file_from_family(robot_family_value),
                 " ",
+                "kl_ros2_control_macro_file:=",
+                kl_ros2_control_macro_file_value,
+                " ",
                 "kl_model:=",
                 kl_model_value,
+                " ",
+                "kl_ros2_control_joints_macro:=",
+                kl_ros2_control_joints_macro_value,
                 " ",
                 "kl_prefix:=",
                 kl_prefix_value,
@@ -277,9 +287,19 @@ def generate_launch_description():
             description="External axis model used when use_external_axis is true.",
         ),
         DeclareLaunchArgument(
-            "kl_urdf_package",
+            "kl_support_package",
             default_value="kuka_kl_support",
             description="Package containing the external axis URDF files.",
+        ),
+        DeclareLaunchArgument(
+            "kl_ros2_control_macro_file",
+            default_value="kl_ros2_control_macro.xacro",
+            description="External axis ros2_control macro file in the external axis package.",
+        ),
+        DeclareLaunchArgument(
+            "kl_ros2_control_joints_macro",
+            default_value="kuka_kl_ros2_control_joints",
+            description="External axis ros2_control joints macro name in the external axis package.",
         ),
         DeclareLaunchArgument(
             "kl_prefix",

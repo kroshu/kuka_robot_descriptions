@@ -36,7 +36,12 @@ def launch_setup(context, *args, **kwargs):
     use_external_axis = LaunchConfiguration("use_external_axis")
     kl_model = LaunchConfiguration("kl_model")
     kl_prefix = LaunchConfiguration("kl_prefix")
-    kl_urdf_package = LaunchConfiguration("kl_urdf_package")
+    kl_support_package = LaunchConfiguration("kl_support_package")
+    kl_ros2_control_macro_file = LaunchConfiguration("kl_ros2_control_macro_file")
+    kl_ros2_control_joints_macro = LaunchConfiguration("kl_ros2_control_joints_macro")
+    kl_srdf_macro_file = LaunchConfiguration("kl_srdf_macro_file")
+    kl_srdf_joints_macro = LaunchConfiguration("kl_srdf_joints_macro")
+    kl_srdf_adjacent_links_macro = LaunchConfiguration("kl_srdf_adjacent_links_macro")
     prefix = LaunchConfiguration("prefix")
 
     robot_model_value = robot_model.perform(context)
@@ -45,7 +50,12 @@ def launch_setup(context, *args, **kwargs):
     use_external_axis_value = use_external_axis.perform(context).lower() == "true"
     kl_model_value = kl_model.perform(context)
     kl_prefix_value = kl_prefix.perform(context)
-    kl_urdf_package_value = kl_urdf_package.perform(context)
+    kl_support_package_value = kl_support_package.perform(context)
+    kl_ros2_control_macro_file_value = kl_ros2_control_macro_file.perform(context)
+    kl_ros2_control_joints_macro_value = kl_ros2_control_joints_macro.perform(context)
+    kl_srdf_macro_file_value = kl_srdf_macro_file.perform(context)
+    kl_srdf_joints_macro_value = kl_srdf_joints_macro.perform(context)
+    kl_srdf_adjacent_links_macro_value = kl_srdf_adjacent_links_macro.perform(context)
 
     robot_support_package = f"kuka_{robot_family_value}_support"
 
@@ -59,11 +69,13 @@ def launch_setup(context, *args, **kwargs):
             "robot_model": robot_model_value,
             "robot_family": robot_family_value,
             "robot_support_package": robot_support_package,
-            "kl_urdf_package": kl_urdf_package_value,
+            "kl_support_package": kl_support_package_value,
             "robot_ros2_control_macro_file": _ros2_control_macro_file_from_family(
                 robot_family_value
             ),
+            "kl_ros2_control_macro_file": kl_ros2_control_macro_file_value,
             "kl_model": kl_model_value,
+            "kl_ros2_control_joints_macro": kl_ros2_control_joints_macro_value,
             "kl_prefix": kl_prefix_value,
             "prefix": prefix,
         }
@@ -74,7 +86,10 @@ def launch_setup(context, *args, **kwargs):
         )
         srdf_mappings = {
             "composed_model": f"{robot_model_value}_with_{kl_model_value}",
-            "kl_urdf_package": kl_urdf_package_value,
+            "kl_support_package": kl_support_package_value,
+            "kl_srdf_macro_file": kl_srdf_macro_file_value,
+            "kl_srdf_joints_macro": kl_srdf_joints_macro_value,
+            "kl_srdf_adjacent_links_macro": kl_srdf_adjacent_links_macro_value,
             "prefix": prefix,
             "kl_prefix": kl_prefix_value,
         }
@@ -136,7 +151,7 @@ def launch_setup(context, *args, **kwargs):
         merged_joint_limits = yaml.safe_load(joint_limits_file)
     if use_external_axis_value:
         with open(
-            get_package_share_directory(kl_urdf_package_value)
+            get_package_share_directory(kl_support_package_value)
             + f"/config/{kl_model_value}_joint_limits.yaml",
             encoding="utf-8",
         ) as ext_axis_joint_limits_file:
@@ -208,7 +223,31 @@ def generate_launch_description():
     launch_arguments.append(DeclareLaunchArgument("use_external_axis", default_value="false"))
     launch_arguments.append(DeclareLaunchArgument("kl_model", default_value="kl100_2"))
     launch_arguments.append(
-        DeclareLaunchArgument("kl_urdf_package", default_value="kuka_kl_support")
+        DeclareLaunchArgument("kl_support_package", default_value="kuka_kl_support")
+    )
+    launch_arguments.append(
+        DeclareLaunchArgument(
+            "kl_ros2_control_macro_file",
+            default_value="kl_ros2_control_macro.xacro",
+        )
+    )
+    launch_arguments.append(
+        DeclareLaunchArgument(
+            "kl_ros2_control_joints_macro",
+            default_value="kuka_kl_ros2_control_joints",
+        )
+    )
+    launch_arguments.append(
+        DeclareLaunchArgument("kl_srdf_macro_file", default_value="kl_macro.xacro")
+    )
+    launch_arguments.append(
+        DeclareLaunchArgument("kl_srdf_joints_macro", default_value="kl_srdf_joints")
+    )
+    launch_arguments.append(
+        DeclareLaunchArgument(
+            "kl_srdf_adjacent_links_macro",
+            default_value="kl_srdf_adjacent_links",
+        )
     )
     launch_arguments.append(DeclareLaunchArgument("kl_prefix", default_value="rail_"))
     launch_arguments.append(DeclareLaunchArgument("prefix", default_value=""))
