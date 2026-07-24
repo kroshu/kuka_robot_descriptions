@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
-  <xacro:macro name="kuka_iontec_ros2_control" params="name driver_version client_ip client_port mxa_client_port controller_ip prefix mode use_gpio roundtrip_time verify_robot_model rsi_xml_config_file **ext_axes_ros2_control_joints">
+  <xacro:macro name="kuka_iontec_ros2_control" params="name driver_version client_ip client_port mxa_client_port controller_ip prefix mode use_gpio roundtrip_time verify_robot_model rsi_xml_config_file is_async async_thread_priority async_affinity **ext_axes_ros2_control_joints">
     <!-- gazebo -->
     <xacro:if value="${mode == 'gazebo'}">
       <xacro:include filename="$(find kuka_gazebo)/gazebo/kuka_gazebo.xacro"/>
       <xacro:kuka_gazebo controller_config_package="kuka_resources" controller_config_path="config/fake_hardware_config_6_axis.yaml"/>
     </xacro:if>
     <!-- ros2 control -->
-    <ros2_control name="${name}" type="system">
+    <ros2_control name="${name}" type="system" is_async="${is_async}">
+      <properties>
+        <async affinity="${async_affinity}" scheduling_policy="detached" print_warnings="false" thread_priority="${async_thread_priority}"/>
+      </properties>
       <hardware>
+        <param name="interface_prefix">${prefix}</param>
         <xacro:if value="${mode == 'mock'}">
           <plugin>kuka_mock_hardware_interface::KukaMockHardwareInterface</plugin>
           <param name="cycle_time_ms">4</param>

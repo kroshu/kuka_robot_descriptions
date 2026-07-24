@@ -1,0 +1,19 @@
+planning_plugins:
+  - pilz_industrial_motion_planner/CommandPlanner
+# The order of the elements in the adapter corresponds to the order they are processed by the motion planning pipeline.
+request_adapters:
+  - default_planning_request_adapters/ResolveConstraintFrames
+  - default_planning_request_adapters/ValidateWorkspaceBounds
+  - default_planning_request_adapters/CheckStartStateBounds
+  - default_planning_request_adapters/CheckStartStateCollision
+# To optionally use Ruckig for jerk-limited smoothing, add this line to the response adapters below
+# default_planning_response_adapters/AddRuckigTrajectorySmoothing
+response_adapters:
+  - default_planning_response_adapters/AddTimeOptimalParameterization
+  - default_planning_response_adapters/ValidateSolution
+  - default_planning_response_adapters/DisplayMotionPath
+
+default_planner_config: PTP
+capabilities: >-
+    pilz_industrial_motion_planner/MoveGroupSequenceAction
+    pilz_industrial_motion_planner/MoveGroupSequenceService

@@ -28,7 +28,8 @@ install(
 message(STATUS "GITHUB_ACTIONS in CMake: $ENV{GITHUB_ACTIONS}")
 option(GITHUB_CI_TESTS "Enable tests for GitHub CI" OFF)
 
-# If CI tests are disabled, do not install README.md unnecessarily (it could also break binary package build, where root folder is package root)
+# If CI tests are disabled, do not install README.md unnecessarily
+# (it could also break binary package build, where root folder is package root)
 if(GITHUB_CI_TESTS)
   install(FILES
     ${CMAKE_CURRENT_SOURCE_DIR}/../README.md

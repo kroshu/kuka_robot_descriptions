@@ -96,7 +96,7 @@ Example of attaching an end effector (with link name `eef_base_link`) to the `fl
 
 ### External axis support
 
-Robots marked as supporting external exis in the [supported features](#supported-features) have URDFs prepared for this feature.
+Robots marked as supporting external axis in the [supported features](#supported-features) have URDFs prepared for this feature.
 
 - The `world` link and the `world-base_link` joint (and the `origin` block) are moved from the macro into the URDF xacro.
 
@@ -269,7 +269,9 @@ This is necessary, as the driver workflow also activates controllers, which is p
 Additionally two hardware parameters are added:
 
 - To support similar timing behaviour as the actual robots, the mock hardware was extended with a blocking wait, so that the read function does not return immediately, but cyclically. The frequency of the loops is defined by the `cycle_time_ms` parameter. Default value is 4  [ms].
-- To be able to test whether a specific setup would fit into the roundtrip time enforced by a real robot, the `roundtrip_time_micro` parameter can be used. If the `write()` method is not called before the given timeout is exceeded (starting from the previous `read()` function), a warning message is logged (but the return value of the `write()` will be still SUCCESS). Default value is 0 [us], which means, that the roundrip time should not be monitored.
+- To be able to test whether a specific setup would fit into the roundtrip time enforced by a real robot, the `roundtrip_time_micro` parameter can be used. If the `write()` method is not called before the given timeout is exceeded (starting from the previous `read()` function), a warning message is logged (but the return value of the `write()` will be still SUCCESS). Default value is 0 [us], which means, that the roundtrip time should not be monitored. If such a warning is triggered, two root causes are possible:
+- Controller update takes too long, therefore `write` is also delayed
+- Scheduling jitter is high, main thread could not wake up in time
 
 The mock hardware was implemented in this repository to allow testing moveit capabilities for the robots without having to build the driver code.
 
