@@ -90,6 +90,7 @@ protected:
   bool is_async_hardware_ = false;
   bool init_clock_ = true;
   std::chrono::steady_clock::time_point next_iteration_time_;
+  rclcpp::Time last_ros_time_;
 };
 
 }  // namespace kuka_mock_hardware_interface
