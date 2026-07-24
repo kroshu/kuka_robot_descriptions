@@ -40,7 +40,6 @@ def launch_setup(context, *args, **kwargs):
     robot_model = LaunchConfiguration("robot_model")
     robot_family = LaunchConfiguration("robot_family")
     ns = LaunchConfiguration("namespace")
-    prefix = LaunchConfiguration("prefix")
 
     x = LaunchConfiguration("x")
     y = LaunchConfiguration("y")
@@ -67,14 +66,8 @@ def launch_setup(context, *args, **kwargs):
     kl_ros2_control_joints_macro_value = kl_ros2_control_joints_macro.perform(context)
     robot_support_package = f"kuka_{robot_family_value}_support"
 
-    # TF prefix: explicit prefix wins, then fallback to namespace + '_'.
-    prefix_value = prefix.perform(context)
-    if prefix_value != "":
-        tf_prefix = prefix_value
-    elif ns.perform(context) != "":
-        tf_prefix = ns.perform(context) + "_"
-    else:
-        tf_prefix = ""
+    # TF prefix
+    tf_prefix = (ns.perform(context) + "_") if ns.perform(context) != "" else ""
 
     # Resolve world path inside kuka_gazebo share
     world_path = os.path.join(get_package_share_directory("kuka_gazebo"), world.perform(context))
@@ -267,14 +260,6 @@ def generate_launch_description():
         DeclareLaunchArgument("robot_model", default_value="lbr_iisy3_r760"),
         DeclareLaunchArgument("robot_family", default_value="lbr_iisy"),
         DeclareLaunchArgument("namespace", default_value=""),
-        DeclareLaunchArgument(
-            "prefix",
-            default_value="",
-            description=(
-                "Joint name prefix used in URDF/xacro (for multi-robot setups). "
-                "If empty, namespace + '_' is used when namespace is set."
-            ),
-        ),
         DeclareLaunchArgument("x", default_value="0"),
         DeclareLaunchArgument("y", default_value="0"),
         DeclareLaunchArgument("z", default_value="0"),
