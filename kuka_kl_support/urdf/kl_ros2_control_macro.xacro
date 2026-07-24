@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
-  <xacro:macro name="kuka_kl_ros2_control_joints" params="prefix">
+  <xacro:macro name="kuka_kl_ros2_control_joints" params="prefix mode">
     <joint name="${prefix}joint_1">
       <param name="type">prismatic</param>
       <param name="is_external">true</param>

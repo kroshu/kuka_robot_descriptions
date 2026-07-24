@@ -299,7 +299,9 @@ def generate_launch_description():
         DeclareLaunchArgument(
             "kl_ros2_control_joints_macro",
             default_value="kuka_kl_ros2_control_joints",
-            description="External axis ros2_control joints macro name in the external axis package.",
+            description=(
+                "External axis ros2_control joints macro name in the external axis package."
+            ),
         ),
         DeclareLaunchArgument(
             "kl_prefix",
