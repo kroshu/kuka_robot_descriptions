@@ -239,7 +239,6 @@ return_type KukaMockHardwareInterface::write(
 
     if (current_count != expected_count)
     {
-      // Async components may lag one cycle behind controller updates; retry up to 1 ms.
       if (is_async_hardware_)
       {
         RCUTILS_LOG_DEBUG_NAMED(
@@ -250,7 +249,8 @@ return_type KukaMockHardwareInterface::write(
         const auto retry_step = std::chrono::duration_cast<std::chrono::steady_clock::duration>(
           std::chrono::microseconds(200));
 
-        while (current_count != expected_count)
+        // Async components may lag one cycle behind controller updates; retry up to 1 ms if only one cycle behind 
+        while (current_count == expected_count - 1)
         {
           const auto now = std::chrono::steady_clock::now();
           if (now >= retry_deadline)
@@ -273,8 +273,8 @@ return_type KukaMockHardwareInterface::write(
       if (current_count != expected_count)
       {
         RCUTILS_LOG_WARN_NAMED(
-          "mock_generic_system", "interpolation_count mismatch before write: expected %u, got %u",
-          expected_count, current_count);
+          "mock_generic_system", "interpolation_count mismatch before write: expected %u, got %u, hardware is %s", expected_count,
+          current_count, is_async_hardware_ ? "async" : "sync");
       }
     }
   }
