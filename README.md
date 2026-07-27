@@ -137,7 +137,7 @@ With an external axis (KL100-2 in this example):
 <xacro:kuka_robotfamily_ros2_control ...>
   <ext_axes_ros2_control_joints>
     <!-- kl ros2 control joints -->
-    <xacro:kuka_kl_ros2_control_joints/>
+    <xacro:kuka_kl_ros2_control_joints mode="..."/>
   </ext_axes_ros2_control_joints>
 </xacro:kuka_robotfamily_ros2_control>
 
