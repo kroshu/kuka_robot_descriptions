@@ -1,0 +1,25 @@
+name: New Robot Model Request
+description: Request generation of a new robot model
+title: "[Model Request]: "
+labels:
+  - "new robot model"
+assignees:
+  - Svastits
+  - Groebehavn
+
+body:
+  - type: input
+    id: robot_name
+    attributes:
+      label: Robot name
+      description: Full commercial robot name, e.g. KR 210 R3300-2 K
+      placeholder: KR 210 R3300-2 K
+    validations:
+      required: true
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: Additional notes
+      description: Optional comments, documentation links, source references, or special requirements for model generation
+      placeholder: Any additional information that you would like to share with the maintainers
