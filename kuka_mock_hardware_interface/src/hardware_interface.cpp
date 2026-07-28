@@ -82,6 +82,28 @@ CallbackReturn KukaMockHardwareInterface::on_configure(const rclcpp_lifecycle::S
   return CallbackReturn::SUCCESS;
 }
 
+CallbackReturn KukaMockHardwareInterface::on_activate(const rclcpp_lifecycle::State & state)
+{
+  auto ret = mock_components::GenericSystem::on_activate(state);
+  if (ret != CallbackReturn::SUCCESS)
+  {
+    return ret;
+  }
+  server_state_ = static_cast<double>(HardwareEvent::CONTROL_STARTED);
+  return CallbackReturn::SUCCESS;
+}
+
+CallbackReturn KukaMockHardwareInterface::on_deactivate(const rclcpp_lifecycle::State & state)
+{
+  auto ret = mock_components::GenericSystem::on_deactivate(state);
+  if (ret != CallbackReturn::SUCCESS)
+  {
+    return ret;
+  }
+  server_state_ = static_cast<double>(HardwareEvent::CONTROL_STOPPED);
+  return CallbackReturn::SUCCESS;
+}
+
 std::vector<hardware_interface::StateInterface::ConstSharedPtr>
 KukaMockHardwareInterface::on_export_state_interfaces()
 {
@@ -230,7 +252,9 @@ return_type KukaMockHardwareInterface::write(
   }
 
   uint32_t current_count = static_cast<uint32_t>(interpolation_count_);
-  if (interpolation_count_initialized_)
+  // Skip validation while count is 0: EventBroadcaster only increments after all HW interfaces
+  // report CONTROL_STARTED
+  if (current_count > 0 && interpolation_count_initialized_)
   {
     const uint32_t expected_count =
       (last_interpolation_count_command_ == std::numeric_limits<uint32_t>::max())
@@ -275,8 +299,11 @@ return_type KukaMockHardwareInterface::write(
       }
     }
   }
-  interpolation_count_initialized_ = true;
-  last_interpolation_count_command_ = current_count;
+  if (current_count > 0)
+  {
+    interpolation_count_initialized_ = true;
+    last_interpolation_count_command_ = current_count;
+  }
 
   return return_type::OK;
 }

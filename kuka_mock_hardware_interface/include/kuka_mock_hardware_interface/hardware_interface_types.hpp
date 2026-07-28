@@ -18,6 +18,8 @@
 #ifndef KUKA_MOCK_HARDWARE_INTERFACE__HARDWARE_INTERFACE_TYPES_HPP_
 #define KUKA_MOCK_HARDWARE_INTERFACE__HARDWARE_INTERFACE_TYPES_HPP_
 
+#include <cstdint>
+
 namespace hardware_interface
 {
 /* Custom interfaces */
@@ -70,5 +72,22 @@ static constexpr char TRACKING_PERFORMANCE[] = "tracking_performance";
 static constexpr char SERVER_STATE[] = "server_state";
 
 }  // namespace hardware_interface
+
+namespace kuka_mock_hardware_interface
+{
+/**
+ * @brief Enum for controller-side events (mirrors kuka_drivers_core::HardwareEvent)
+ */
+enum class HardwareEvent : std::uint8_t
+{
+  HARDWARE_EVENT_UNSPECIFIED = 0,
+  COMMAND_ACCEPTED = 2,
+  CONTROL_STARTED = 3,
+  CONTROL_STOPPED = 4,
+  CONTROL_MODE_SWITCH = 5,
+  ERROR = 6
+};
+
+}  // namespace kuka_mock_hardware_interface
 
 #endif  // KUKA_MOCK_HARDWARE_INTERFACE__HARDWARE_INTERFACE_TYPES_HPP_
