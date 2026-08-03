@@ -248,6 +248,7 @@ The following table shows what data is verified for each robot in the support pa
 |kr560_r3100_2| fortec | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
 |kr600_r2830| fortec | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
 |kr800_r2800_2| fortec | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+|lbr_iico7_r900| lbr_iico | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
 
 ## Supported features
 
@@ -296,6 +297,7 @@ The following table shows the supported customizable features for each robot in 
 |kr560_r3100_2| fortec | ✓ | ✓ | ✓ |
 |kr600_r2830| fortec | ✓ | ✓ | ✓ |
 |kr800_r2800_2| fortec | ✓ | ✓ | ✓ |
+|lbr_iico7_r900| lbr_iico | ✓ | ✓ | ✓ |
 
 ## Custom mock hardware
 
