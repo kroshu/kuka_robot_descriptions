@@ -24,11 +24,7 @@ def generate_launch_description():
             PathJoinSubstitution([FindExecutable(name="xacro")]),
             " ",
             PathJoinSubstitution(
-                [
-                    FindPackageShare("kuka_lbr_iico_support"),
-                    "urdf",
-                    "lbr_iico7_r900.urdf.xacro"
-                ]
+                [FindPackageShare("kuka_lbr_iico_support"), "urdf", "lbr_iico7_r900.urdf.xacro"]
             ),
             " ",
             "mode:=mock",
