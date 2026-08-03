@@ -12,7 +12,7 @@ body:
     id: robot_name
     attributes:
       label: Robot name
-      description: Full commercial robot name, e.g. KR 210 R3300-2 K
+      description: Full commercial robot name for a single robot request, e.g. KR 210 R3300-2 K
       placeholder: KR 210 R3300-2 K
     validations:
       required: true
