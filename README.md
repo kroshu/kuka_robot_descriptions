@@ -19,6 +19,8 @@ ROS2 Distro | Branch | Github CI
 - `kuka_quantec_support` contains urdf, config and mesh files for KUKA quantec robots.
 - `kuka_kl_support` contains urdf, config and mesh files for KUKA KL units.
 - `kuka_kr_moveit_config` contains configuration files for KUKA KR robots necessary for planning with MoveIt.
+- `kuka_lbr_iico_support` contains urdf, config and mesh files for KUKA iico robots.
+- `kuka_lbr_iico_moveit_config` contains configuration files for KUKA LBR iico robots necessary for planning with MoveIt.
 - `kuka_lbr_iisy_support` contains urdf, config and mesh files for KUKA iisy robots.
 - `kuka_lbr_iisy_moveit_config` contains configuration files for KUKA LBR iisy robots necessary for planning with MoveIt.
 - `kuka_lbr_iiwa_support` contains urdf, config and mesh files for KUKA LBR iiwa robots
