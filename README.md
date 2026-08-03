@@ -228,6 +228,7 @@ The following table shows what data is verified for each robot in the support pa
 |kr16_r2010_2| cybertech | ✓ | ✓ | ✓ | ✓ | | ✓ |
 |kr20_r1810_2| cybertech | ✓ | ✓ | ✓ | ✓ | | ✓ |
 |kr20_r1820_2_e| cybertech | ✓ | ✓ | ✓ | ✓ | | ✓ |
+|kr35_r1840_3_hw| cybertech | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
 |kr20_r3100| iontec | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
 |kr30_r2100| iontec | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
 |kr50_r2500| iontec | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
@@ -277,6 +278,7 @@ The following table shows the supported customizable features for each robot in 
 |kr16_r2010_2| cybertech | ✓ | ✓ | |
 |kr20_r1810_2| cybertech | ✓ | ✓ | |
 |kr20_r1820_2_e| cybertech | ✓ | ✓ | ✓ |
+|kr35_r1840_3_hw| cybertech | ✓ | ✓ | ✓ |
 |kr20_r3100| iontec | ✓ | ✓ | ✓ |
 |kr30_r2100| iontec | ✓ | ✓ | ✓ |
 |kr50_r2500| iontec | ✓ | ✓ | ✓ |
