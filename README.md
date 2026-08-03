@@ -169,10 +169,19 @@ The following table shows what data is verified for each robot in the support pa
 
 |Robot name | Robot family | Transformations | Joint position limits | Joint velocity limits | Joint effort limits | Inertial values | Simplified collision meshes|
 |---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+<<<<<<< HEAD
 |lbr_iisy3_r760| - | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
 |lbr_iisy11_r1300| - | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
 |lbr_iisy15_r930| - | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
 |lbr_iiwa14_r820| - | ✓ | ✓ | ✓ | | | ✓ |
+=======
+|lbr_iico7_r900| lbr_iico | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+|lbr_iico12_r1260| lbr_iico | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+|lbr_iisy3_r760| lbr_iisy | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+|lbr_iisy11_r1300| lbr_iisy | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+|lbr_iisy15_r930| lbr_iisy | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+|lbr_iiwa14_r820| lbr_iiwa | ✓ | ✓ | ✓ | | | ✓ |
+>>>>>>> 3b6a74d (Add robot model for issue #249 (#257))
 |kr4_r600| agilus | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
 |kr6_r700_2| agilus | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
 |kr6_r700_sixx| agilus | ✓ | ✓ | ✓ | | | ✓ |
@@ -219,6 +228,11 @@ The following table shows the supported customizable features for each robot in 
 
 |Robot name | Robot family | GPIO support | External axis support | Gazebo support |
 |---|:---:|:---:|:---:|:---:|
+<<<<<<< HEAD
+=======
+|lbr_iico7_r900| lbr_iico | ✓ | ✓ | ✓ |
+|lbr_iico12_r1260| lbr_iico | ✓ | ✓ | ✓ |
+>>>>>>> 3b6a74d (Add robot model for issue #249 (#257))
 |lbr_iisy3_r760| lbr_iisy | | ✓ | ✓ |
 |lbr_iisy11_r1300| lbr_iisy | | ✓ | ✓ |
 |lbr_iisy15_r930| lbr_iisy | | ✓ | ✓ |
