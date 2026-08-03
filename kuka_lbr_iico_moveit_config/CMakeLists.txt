@@ -8,7 +8,7 @@ find_package(xacro REQUIRED)
 
 # TODO: add more robots to this list
 set(supported_robots
-
+  lbr_iico7_r900
 )
 
 foreach(model IN LISTS supported_robots)
