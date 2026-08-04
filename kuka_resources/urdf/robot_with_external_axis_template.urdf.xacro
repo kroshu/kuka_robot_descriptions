@@ -30,6 +30,7 @@
   <xacro:arg name="kl_ros2_control_macro_file" default="kl_ros2_control_macro.xacro"/>
   <xacro:arg name="kl_model" default="kl100_2"/>
   <xacro:arg name="kl_ros2_control_joints_macro" default="kuka_kl_ros2_control_joints"/>
+  <xacro:arg name="kl_rated_travel" default="2.0"/>
   <xacro:arg name="rsi_xml_config_file" default=""/>
   <xacro:arg name="gazebo_controller_config_path" default="config/fake_hardware_config_6_axis_kl.yaml"/>
   <!-- Define properties for dynamic macro and package resolution -->
@@ -47,6 +48,7 @@
   <xacro:property name="kl_model_links_macro_name" value="${kl_model_value + '_links'}"/>
   <xacro:property name="kl_model_joints_macro_name" value="${kl_model_value + '_joints'}"/>
   <xacro:property name="kl_ros2_control_joints_macro_name" value="$(arg kl_ros2_control_joints_macro)"/>
+  <xacro:property name="kl_rated_travel_value" value="$(arg kl_rated_travel)"/>
   <xacro:property name="kl_full_prefix" value="${prefix_value + kl_prefix_value}"/>
   <!-- Include urdf macro files -->
   <xacro:include filename="${robot_support_urdf_dir}/${robot_model_value}_macro.xacro"/>
@@ -68,11 +70,11 @@
     <origin xyz="$(arg x) $(arg y) $(arg z)" rpy="$(arg roll) $(arg pitch) $(arg yaw)"/>
   </joint>
   <!-- external axis links -->
-  <xacro:call macro="${kl_model_links_macro_name}" prefix="${kl_full_prefix}"/>
+  <xacro:call macro="${kl_model_links_macro_name}" prefix="${kl_full_prefix}" rated_travel="${kl_rated_travel_value}"/>
   <!-- robot links -->
   <xacro:call macro="${robot_model_macro_name}" prefix="$(arg prefix)" package_name="$(arg robot_support_package)"/>
   <!-- external axis joints -->
-  <xacro:call macro="${kl_model_joints_macro_name}" prefix="${kl_full_prefix}" robot_base_link="$(arg prefix)base_link">
+  <xacro:call macro="${kl_model_joints_macro_name}" prefix="${kl_full_prefix}" robot_base_link="$(arg prefix)base_link" rated_travel="${kl_rated_travel_value}">
     <origin xyz="$(arg x) $(arg y) $(arg z)" rpy="$(arg roll) $(arg pitch) $(arg yaw)"/>
   </xacro:call>
 </robot>

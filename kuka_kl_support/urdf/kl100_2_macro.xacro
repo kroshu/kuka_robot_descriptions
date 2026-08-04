@@ -1,29 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
-  <xacro:macro name="kl100_2_links" params="prefix">
-    <!-- links -->
-    <link name="${prefix}base_link">
-      <inertial>
-        <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
-        <mass value="500.0"/>
-        <inertia ixx="8" ixy="0.0" ixz="0.0" iyy="190" iyz="0.0" izz="190"/>
-      </inertial>
+
+  <!-- Recursive macro: place beam sections along the beam -->
+  <xacro:macro name="kl100_2_beam_sections" params="count x spacing">
+    <xacro:if value="${count > 0}">
       <visual>
+        <origin xyz="${x} 0.0075 0.042" rpy="0 0 0"/>
         <geometry>
-          <mesh filename="package://kuka_kl_support/meshes/kl100_2/visual/base_link.dae"/>
+          <mesh filename="package://kuka_kl_support/meshes/kl100_2/visual/beam_section.dae"/>
         </geometry>
       </visual>
-      <collision>
+      <xacro:kl100_2_beam_sections count="${count - 1}" x="${x + spacing}" spacing="${spacing}"/>
+    </xacro:if>
+  </xacro:macro>
+
+  <xacro:macro name="kl100_2_links" params="prefix rated_travel:=2.0">
+    <!-- Beam geometry constants derived from the repeatable CAD section -->
+    <xacro:property name="segment_length" value="0.25"/>
+    <xacro:property name="beam_end_length" value="0.3475"/>
+    <xacro:property name="num_beam_sections" value="${int(rated_travel / segment_length)}"/>
+    <xacro:property name="beam_section_start" value="${-(num_beam_sections - 1) * segment_length / 2}"/>
+    <xacro:property name="beam_left_edge" value="${beam_section_start - segment_length / 2}"/>
+    <xacro:property name="beam_right_edge" value="${beam_section_start + (num_beam_sections - 0.5) * segment_length}"/>
+    <xacro:property name="beam_length" value="${num_beam_sections * segment_length + 2 * beam_end_length}"/>
+
+    <!-- Inertia scaling (reference: 2.695m beam, 500kg) -->
+    <xacro:property name="ref_beam_length" value="2.695"/>
+    <xacro:property name="lr" value="${beam_length / ref_beam_length}"/>
+
+    <link name="${prefix}base_link">
+      <inertial>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <mass value="${500.0 * lr}"/>
+        <inertia ixx="${8 * lr}" ixy="0" ixz="0" iyy="${190 * lr * lr * lr}" iyz="0" izz="${190 * lr * lr * lr}"/>
+      </inertial>
+
+      <!-- Repeatable beam sections from the CAD export -->
+      <xacro:kl100_2_beam_sections count="${num_beam_sections}" x="${beam_section_start}" spacing="${segment_length}"/>
+
+      <!-- Right beam end piece -->
+      <visual>
+        <origin xyz="${beam_right_edge} -0.001 0.357" rpy="0 0 ${pi}"/>
         <geometry>
-          <mesh filename="package://kuka_kl_support/meshes/kl100_2/collision/base_link.stl"/>
+          <mesh filename="package://kuka_kl_support/meshes/kl100_2/visual/beam_end_right.dae"/>
+        </geometry>
+      </visual>
+
+      <!-- Left beam end piece -->
+      <visual>
+        <origin xyz="${beam_left_edge} -0.001 0.357" rpy="0 0 ${pi}"/>
+        <geometry>
+          <mesh filename="package://kuka_kl_support/meshes/kl100_2/visual/beam_end_left.dae"/>
+        </geometry>
+      </visual>
+
+      <!-- Collision - parametric box covering the whole beam envelope -->
+      <collision>
+        <origin xyz="0 0.1675 0.1035" rpy="0 0 0"/>
+        <geometry>
+          <box size="${beam_length} 0.697 0.207"/>
         </geometry>
       </collision>
     </link>
+
     <link name="${prefix}link_1">
       <inertial>
-        <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
         <mass value="43.0"/>
-        <inertia ixx="1.03" ixy="0.0" ixz="0.0" iyy="1.135" iyz="0.0" izz="1.517"/>
+        <inertia ixx="1.03" ixy="0" ixz="0" iyy="1.135" iyz="0" izz="1.517"/>
       </inertial>
       <visual>
         <geometry>
@@ -37,19 +81,19 @@
       </collision>
     </link>
   </xacro:macro>
-  <xacro:macro name="kl100_2_joints" params="prefix robot_base_link *origin">
-    <!-- joints -->
+
+  <xacro:macro name="kl100_2_joints" params="prefix robot_base_link rated_travel:=2.0 *origin">
     <joint name="${prefix}joint_1" type="prismatic">
       <parent link="${prefix}base_link"/>
       <child link="${prefix}link_1"/>
-      <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
       <axis xyz="1 0 0"/>
-      <limit lower="-1.0" upper="1.0" effort="702.0" velocity="2.5"/>
+      <limit lower="${-rated_travel / 2}" upper="${rated_travel / 2}" effort="702.0" velocity="2.5"/>
     </joint>
     <joint name="${prefix}link_1-${robot_base_link}" type="fixed">
       <parent link="${prefix}link_1"/>
       <child link="${robot_base_link}"/>
-      <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.356"/>
+      <origin rpy="0 0 0" xyz="0 0 0.356"/>
     </joint>
   </xacro:macro>
 </robot>
