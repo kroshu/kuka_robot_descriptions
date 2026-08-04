@@ -17,6 +17,8 @@ ROS2 Distro | Branch | Github CI
 - `kuka_quantec_support` contains urdf, config and mesh files for KUKA quantec robots.
 - `kuka_kl_support` contains urdf, config and mesh files for KUKA KL units.
 - `kuka_kr_moveit_config` contains configuration files for KUKA KR robots necessary for planning with MoveIt.
+- `kuka_lbr_iico_support` contains urdf, config and mesh files for KUKA iico robots.
+- `kuka_lbr_iico_moveit_config` contains configuration files for KUKA LBR iico robots necessary for planning with MoveIt.
 - `kuka_lbr_iisy_support` contains urdf, config and mesh files for KUKA iisy robots.
 - `kuka_lbr_iisy_moveit_config` contains configuration files for KUKA LBR iisy robots necessary for planning with MoveIt.
 - `kuka_lbr_iiwa_support` contains urdf, config and mesh files for KUKA LBR iiwa robots
@@ -169,10 +171,11 @@ The following table shows what data is verified for each robot in the support pa
 
 |Robot name | Robot family | Transformations | Joint position limits | Joint velocity limits | Joint effort limits | Inertial values | Simplified collision meshes|
 |---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-|lbr_iisy3_r760| - | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
-|lbr_iisy11_r1300| - | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
-|lbr_iisy15_r930| - | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
-|lbr_iiwa14_r820| - | ✓ | ✓ | ✓ | | | ✓ |
+|lbr_iico7_r900| lbr_iico | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+|lbr_iisy3_r760| lbr_iisy | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+|lbr_iisy11_r1300| lbr_iisy | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+|lbr_iisy15_r930| lbr_iisy | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+|lbr_iiwa14_r820| lbr_iiwa | ✓ | ✓ | ✓ | | | ✓ |
 |kr4_r600| agilus | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
 |kr6_r700_2| agilus | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
 |kr6_r700_sixx| agilus | ✓ | ✓ | ✓ | | | ✓ |
@@ -219,6 +222,7 @@ The following table shows the supported customizable features for each robot in 
 
 |Robot name | Robot family | GPIO support | External axis support | Gazebo support |
 |---|:---:|:---:|:---:|:---:|
+|lbr_iico7_r900| lbr_iico | ✓ | ✓ | ✓ |
 |lbr_iisy3_r760| lbr_iisy | | ✓ | ✓ |
 |lbr_iisy11_r1300| lbr_iisy | | ✓ | ✓ |
 |lbr_iisy15_r930| lbr_iisy | | ✓ | ✓ |
