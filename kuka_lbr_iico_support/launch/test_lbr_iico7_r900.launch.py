@@ -34,10 +34,10 @@ def generate_launch_description():
     )
     robot_description = {"robot_description": robot_description_content}
 
-    # RViz
     rviz_config_file = PathJoinSubstitution(
         [FindPackageShare("kuka_resources"), "config", "view_6_axis_urdf.rviz"]
     )
+
     rviz_node = Node(
         package="rviz2",
         executable="rviz2",
@@ -47,7 +47,6 @@ def generate_launch_description():
         parameters=[robot_description],
     )
 
-    # Publish TF
     robot_state_publisher = Node(
         package="robot_state_publisher",
         executable="robot_state_publisher",
@@ -56,7 +55,6 @@ def generate_launch_description():
         parameters=[robot_description],
     )
 
-    # Joint state publisher
     joint_state_publisher_gui = Node(
         package="joint_state_publisher_gui",
         executable="joint_state_publisher_gui",
