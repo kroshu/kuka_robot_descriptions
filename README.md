@@ -211,6 +211,7 @@ The following table shows what data is verified for each robot in the support pa
 |lbr_iico7_r900| lbr_iico | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
 |lbr_iico12_r1260| lbr_iico | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
 |lbr_iisy3_r760| lbr_iisy | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+|lbr_iisy8_r930| lbr_iisy | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
 |lbr_iisy11_r1300| lbr_iisy | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
 |lbr_iisy15_r930| lbr_iisy | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
 |lbr_iiwa14_r820| lbr_iiwa | ✓ | ✓ | ✓ | | | ✓ |
@@ -263,6 +264,7 @@ The following table shows the supported customizable features for each robot in 
 |lbr_iico7_r900| lbr_iico | ✓ | ✓ | ✓ |
 |lbr_iico12_r1260| lbr_iico | ✓ | ✓ | ✓ |
 |lbr_iisy3_r760| lbr_iisy | | ✓ | ✓ |
+|lbr_iisy8_r930| lbr_iisy | ✓ | ✓ | ✓ |
 |lbr_iisy11_r1300| lbr_iisy | | ✓ | ✓ |
 |lbr_iisy15_r930| lbr_iisy | | ✓ | ✓ |
 |lbr_iiwa14_r820| lbr_iiwa | | ✓ | |
