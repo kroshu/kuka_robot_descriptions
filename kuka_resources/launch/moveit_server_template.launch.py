@@ -43,6 +43,8 @@ def launch_setup(context, *args, **kwargs):
     kl_srdf_joints_macro = LaunchConfiguration("kl_srdf_joints_macro")
     kl_srdf_adjacent_links_macro = LaunchConfiguration("kl_srdf_adjacent_links_macro")
     prefix = LaunchConfiguration("prefix")
+    kl_rated_travel = LaunchConfiguration("kl_rated_travel")
+    kl_energy_supply_placement = LaunchConfiguration("kl_energy_supply_placement")
 
     robot_model_value = robot_model.perform(context)
     robot_family_value = robot_family.perform(context)
@@ -78,6 +80,8 @@ def launch_setup(context, *args, **kwargs):
             "kl_ros2_control_joints_macro": kl_ros2_control_joints_macro_value,
             "kl_prefix": kl_prefix_value,
             "prefix": prefix,
+            "kl_rated_travel": kl_rated_travel.perform(context),
+            "kl_energy_supply_placement": kl_energy_supply_placement.perform(context),
         }
 
         srdf_file_path = (
@@ -251,5 +255,9 @@ def generate_launch_description():
     )
     launch_arguments.append(DeclareLaunchArgument("kl_prefix", default_value="rail_"))
     launch_arguments.append(DeclareLaunchArgument("prefix", default_value=""))
+    launch_arguments.append(DeclareLaunchArgument("kl_rated_travel", default_value="2.0"))
+    launch_arguments.append(
+        DeclareLaunchArgument("kl_energy_supply_placement", default_value="side")
+    )
     launch_arguments.append(DeclareLaunchArgument("use_sim_time", default_value="False"))
     return LaunchDescription(launch_arguments + [OpaqueFunction(function=launch_setup)])
