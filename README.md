@@ -94,11 +94,7 @@ Example of attaching an end effector (with link name `eef_base_link`) to the `fl
 
 ### External axis support
 
-<<<<<<< HEAD
-Robots marked as supporting external axis in the [supported features](#supported-features) have URDFs prepared for this feature.
-=======
 Robots marked as supporting external axes in the [supported features](#supported-features) can be composed with a rail model through shared templates.
->>>>>>> aec995a (External axis support refactor (#227))
 
 The composition is now template-based and parameterized in `kuka_resources`:
 
