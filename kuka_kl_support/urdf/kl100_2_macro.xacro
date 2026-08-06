@@ -1,20 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-  <!-- Recursive macro: place beam sections along the beam -->
-  <xacro:macro name="kl100_2_beam_sections" params="count x spacing">
-    <xacro:if value="${count > 0}">
-      <visual>
-        <origin xyz="${x} 0.0075 0.042" rpy="0 0 0"/>
-        <geometry>
-          <mesh filename="package://kuka_kl_support/meshes/kl100_2/visual/beam_section.dae"/>
-        </geometry>
-      </visual>
-      <xacro:kl100_2_beam_sections count="${count - 1}" x="${x + spacing}" spacing="${spacing}"/>
-    </xacro:if>
-  </xacro:macro>
-
-  <xacro:macro name="kl100_2_links" params="prefix rated_travel:=2.0">
+  <xacro:macro name="kl100_2_links" params="prefix rated_travel:=2.0 energy_supply_placement:=side">
     <!-- Beam geometry constants derived from the repeatable CAD section -->
     <xacro:property name="segment_length" value="0.25"/>
     <xacro:property name="beam_end_length" value="0.3475"/>
@@ -23,8 +10,17 @@
     <xacro:property name="beam_left_edge" value="${beam_section_start - segment_length / 2}"/>
     <xacro:property name="beam_right_edge" value="${beam_section_start + (num_beam_sections - 0.5) * segment_length}"/>
     <xacro:property name="beam_length" value="${num_beam_sections * segment_length + 2 * beam_end_length}"/>
+    <xacro:property name="beam_end_outer_extension" value="0.3075"/>
+    <xacro:property name="beam_section_scale_x" value="${num_beam_sections}"/>
+    <xacro:property name="installation_area_length" value="${beam_length}"/>
+    <xacro:property name="installation_area_start" value="${(beam_left_edge + beam_right_edge - installation_area_length) / 2.0}"/>
 
-    <!-- Inertia scaling (reference: 2.695m beam, 500kg) -->
+    <!-- Side energy supply length mapping from rated travel (m) -->
+    <xacro:property name="energy_supply_mesh_length" value="0.305"/>
+    <xacro:property name="energy_supply_length" value="${0.467 + 0.25 * int(rated_travel / 0.5)}"/>
+    <xacro:property name="energy_supply_scale_x" value="${energy_supply_length / energy_supply_mesh_length}"/>
+
+    <!-- Inertia scaling (reference 2.695m beam, 500kg) -->
     <xacro:property name="ref_beam_length" value="2.695"/>
     <xacro:property name="lr" value="${beam_length / ref_beam_length}"/>
 
@@ -35,8 +31,31 @@
         <inertia ixx="${8 * lr}" ixy="0" ixz="0" iyy="${190 * lr * lr * lr}" iyz="0" izz="${190 * lr * lr * lr}"/>
       </inertial>
 
-      <!-- Repeatable beam sections from the CAD export -->
-      <xacro:kl100_2_beam_sections count="${num_beam_sections}" x="${beam_section_start}" spacing="${segment_length}"/>
+      <!-- Mesh1 from original base_link.dae - installation area preserving COLLADA material -->
+      <visual>
+        <origin xyz="${installation_area_start} -0.181 0.0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://kuka_kl_support/meshes/kl100_2/visual/installation_area.dae" scale="${installation_area_length / 2.695} 1 1"/>
+        </geometry>
+      </visual>
+
+      <!-- Beam sections from the CAD export as a single scaled mesh -->
+      <visual>
+        <origin xyz="0 0.0075 0.042" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://kuka_kl_support/meshes/kl100_2/visual/beam_section.dae" scale="${beam_section_scale_x} 1 1"/>
+        </geometry>
+      </visual>
+
+      <!-- Mesh6/Mesh7 reworked use a single side energy-supply visual if placement is side -->
+      <xacro:if value="${energy_supply_placement == 'side'}">
+        <visual>
+          <origin xyz="${beam_left_edge - beam_end_outer_extension} -0.001 0.356" rpy="0 0 ${pi}"/>
+          <geometry>
+            <mesh filename="package://kuka_kl_support/meshes/kl100_2/visual/energy_supply_section.dae" scale="${energy_supply_scale_x} 1 1"/>
+          </geometry>
+        </visual>
+      </xacro:if>
 
       <!-- Right beam end piece -->
       <visual>
@@ -53,6 +72,16 @@
           <mesh filename="package://kuka_kl_support/meshes/kl100_2/visual/beam_end_left.dae"/>
         </geometry>
       </visual>
+
+      <!-- Mesh5 from original base_link.dae - energy supply station shown only for side placement -->
+      <xacro:if value="${energy_supply_placement == 'side'}">
+        <visual>
+          <origin xyz="0.212 0.485 0.0305" rpy="0 0 ${pi}"/>
+          <geometry>
+            <mesh filename="package://kuka_kl_support/meshes/kl100_2/visual/energy_supply_station.dae"/>
+          </geometry>
+        </visual>
+      </xacro:if>
 
       <!-- Collision - parametric box covering the whole beam envelope -->
       <collision>

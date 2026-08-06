@@ -84,6 +84,7 @@ def launch_setup(context, *args, **kwargs):
     kl_ros2_control_macro_file = LaunchConfiguration("kl_ros2_control_macro_file")
     kl_ros2_control_joints_macro = LaunchConfiguration("kl_ros2_control_joints_macro")
     kl_rated_travel = LaunchConfiguration("kl_rated_travel")
+    kl_energy_supply_placement = LaunchConfiguration("kl_energy_supply_placement")
 
     robot_model_value = robot_model.perform(context)
     robot_family_value = robot_family.perform(context)
@@ -93,6 +94,7 @@ def launch_setup(context, *args, **kwargs):
     kl_ros2_control_macro_file_value = kl_ros2_control_macro_file.perform(context)
     kl_ros2_control_joints_macro_value = kl_ros2_control_joints_macro.perform(context)
     kl_rated_travel_value = _validate_kl_rated_travel(kl_rated_travel.perform(context))
+    kl_energy_supply_placement_value = kl_energy_supply_placement.perform(context)
     robot_support_package = f"kuka_{robot_family_value}_support"
 
     # TF prefix
@@ -174,6 +176,9 @@ def launch_setup(context, *args, **kwargs):
                 " ",
                 "kl_rated_travel:=",
                 kl_rated_travel_value,
+                " ",
+                "kl_energy_supply_placement:=",
+                kl_energy_supply_placement_value,
             ]
         )
     else:
@@ -346,6 +351,15 @@ def generate_launch_description():
             description=(
                 "Rated travel of the KL linear unit in meters. "
                 "Valid range: 0.25 to 30.0. Steps: 0.25m to 2.0m, then 0.5m."
+            ),
+        ),
+        DeclareLaunchArgument(
+            "kl_energy_supply_placement",
+            default_value="side",
+            choices=["side", "center"],
+            description=(
+                "Energy supply placement for KL base link visual composition. "
+                "Use 'side' to show side supply mesh or 'center' to disable it for now."
             ),
         ),
     ]
