@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
-  <xacro:macro name="kuka_lbr_iiwa_ros2_control" params="name prefix io_access mode roundtrip_time controller_ip client_ip client_port **ext_axes_ros2_control_joints">
+  <xacro:macro name="kuka_lbr_iiwa_ros2_control" params="name prefix io_access mode roundtrip_time controller_ip client_ip client_port gazebo_controller_config_path:=config/fake_hardware_config_7_axis.yaml **ext_axes_ros2_control_joints">
     <!-- gazebo -->
     <xacro:if value="${mode == 'gazebo'}">
       <xacro:include filename="$(find kuka_gazebo)/gazebo/kuka_gazebo.xacro"/>
-      <xacro:kuka_gazebo controller_config_package="kuka_resources" controller_config_path="config/fake_hardware_config_7_axis.yaml"/>
+      <xacro:kuka_gazebo controller_config_package="kuka_resources" controller_config_path="${gazebo_controller_config_path}"/>
     </xacro:if>
     <!-- ros2 control -->
     <ros2_control name="${name}" type="system">
