@@ -83,13 +83,50 @@
         </visual>
       </xacro:if>
 
-      <!-- Collision - parametric box covering the whole beam envelope -->
+      <!-- Collision meshes mirror the visual composition with coarse STL assets -->
       <collision>
-        <origin xyz="0 0.1675 0.1035" rpy="0 0 0"/>
+        <origin xyz="${installation_area_start} -0.181 0.0" rpy="0 0 0"/>
         <geometry>
-          <box size="${beam_length} 0.697 0.207"/>
+          <mesh filename="package://kuka_kl_support/meshes/kl100_2/collision/installation_area.stl" scale="${installation_area_length / 2.695} 1 1"/>
         </geometry>
       </collision>
+
+      <collision>
+        <origin xyz="0 0.0075 0.042" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://kuka_kl_support/meshes/kl100_2/collision/beam_section.stl" scale="${beam_section_scale_x} 1 1"/>
+        </geometry>
+      </collision>
+
+      <collision>
+        <origin xyz="${beam_right_edge} -0.001 0.357" rpy="0 0 ${pi}"/>
+        <geometry>
+          <mesh filename="package://kuka_kl_support/meshes/kl100_2/collision/beam_end_right.stl"/>
+        </geometry>
+      </collision>
+
+      <collision>
+        <origin xyz="${beam_left_edge} -0.001 0.357" rpy="0 0 ${pi}"/>
+        <geometry>
+          <mesh filename="package://kuka_kl_support/meshes/kl100_2/collision/beam_end_left.stl"/>
+        </geometry>
+      </collision>
+
+      <xacro:if value="${energy_supply_placement == 'side'}">
+        <collision>
+          <origin xyz="${beam_left_edge - beam_end_outer_extension} -0.001 0.356" rpy="0 0 ${pi}"/>
+          <geometry>
+            <mesh filename="package://kuka_kl_support/meshes/kl100_2/collision/energy_supply_section.stl" scale="${energy_supply_scale_x} 1 1"/>
+          </geometry>
+        </collision>
+
+        <collision>
+          <origin xyz="0.212 0.485 0.0305" rpy="0 0 ${pi}"/>
+          <geometry>
+            <mesh filename="package://kuka_kl_support/meshes/kl100_2/collision/energy_supply_station.stl"/>
+          </geometry>
+        </collision>
+      </xacro:if>
     </link>
 
     <link name="${prefix}link_1">
