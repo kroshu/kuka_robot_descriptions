@@ -38,7 +38,9 @@ def _validate_kl_rated_travel(raw_value):
     try:
         value = float(raw_value)
     except ValueError as exc:
-        raise RuntimeError(f"Invalid kl_rated_travel '{raw_value}': expected a float value.") from exc
+        raise RuntimeError(
+            f"Invalid kl_rated_travel '{raw_value}': expected a float value."
+        ) from exc
 
     if value < 0.25 or value > 30.0:
         raise RuntimeError(
