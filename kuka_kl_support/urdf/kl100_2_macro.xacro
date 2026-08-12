@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
-
-  <xacro:macro name="kl100_2_links" params="prefix rated_travel:=2.0 energy_supply_placement:=side">
+  <xacro:macro name="kl100_2_links" params="prefix rated_travel:=2.0 kl_config_file">
+    <xacro:property name="kl_config" value="${xacro.load_yaml(kl_config_file)}"/>
+    <xacro:property name="energy_supply_placement" value="${kl_config['energy_supply_placement']}"/>
+    <xacro:property name="installation_area" value="${kl_config['installation_area']}"/>
+    <xacro:property name="carriage_rotation" value="${kl_config['carriage_rotation']}"/>
+    <xacro:property name="energy_supply_left" value="${kl_config['energy_supply_left']}"/>
     <!-- Beam geometry constants derived from the repeatable CAD section -->
     <xacro:property name="segment_length" value="0.25"/>
     <xacro:property name="beam_end_length" value="0.3475"/>
@@ -14,31 +18,28 @@
     <xacro:property name="beam_section_scale_x" value="${num_beam_sections}"/>
     <xacro:property name="installation_area_length" value="${beam_length}"/>
     <xacro:property name="installation_area_start" value="${(beam_left_edge + beam_right_edge - installation_area_length) / 2.0}"/>
-
     <!-- Side energy supply length mapping from rated travel (m) -->
     <xacro:property name="energy_supply_mesh_length" value="0.305"/>
     <xacro:property name="energy_supply_length" value="${0.467 + 0.25 * int(rated_travel / 0.5)}"/>
     <xacro:property name="energy_supply_scale_x" value="${energy_supply_length / energy_supply_mesh_length}"/>
-
     <!-- Inertia scaling (reference 2.695m beam, 500kg) -->
     <xacro:property name="ref_beam_length" value="2.695"/>
     <xacro:property name="lr" value="${beam_length / ref_beam_length}"/>
-
     <link name="${prefix}base_link">
       <inertial>
         <origin rpy="0 0 0" xyz="0 0 0"/>
         <mass value="${500.0 * lr}"/>
         <inertia ixx="${8 * lr}" ixy="0" ixz="0" iyy="${190 * lr * lr * lr}" iyz="0" izz="${190 * lr * lr * lr}"/>
       </inertial>
-
       <!-- Mesh1 from original base_link.dae - installation area preserving COLLADA material -->
-      <visual>
-        <origin xyz="${installation_area_start} -0.181 0.0" rpy="0 0 0"/>
-        <geometry>
-          <mesh filename="package://kuka_kl_support/meshes/kl100_2/visual/installation_area.dae" scale="${installation_area_length / 2.695} 1 1"/>
-        </geometry>
-      </visual>
-
+      <xacro:if value="${installation_area}">
+         <visual>
+            <origin xyz="${installation_area_start} -0.181 0.0" rpy="0 0 0"/>
+            <geometry>
+               <mesh filename="package://kuka_kl_support/meshes/kl100_2/visual/installation_area.dae" scale="${installation_area_length / 2.695} 1 1"/>
+            </geometry>
+         </visual>
+      </xacro:if>
       <!-- Beam sections from the CAD export as a single scaled mesh -->
       <visual>
         <origin xyz="0 0.0075 0.042" rpy="0 0 0"/>
@@ -46,7 +47,6 @@
           <mesh filename="package://kuka_kl_support/meshes/kl100_2/visual/beam_section.dae" scale="${beam_section_scale_x} 1 1"/>
         </geometry>
       </visual>
-
       <!-- Mesh6/Mesh7 reworked use a single side energy-supply visual if placement is side -->
       <xacro:if value="${energy_supply_placement == 'side'}">
         <visual>
@@ -56,7 +56,6 @@
           </geometry>
         </visual>
       </xacro:if>
-
       <!-- Right beam end piece -->
       <visual>
         <origin xyz="${beam_right_edge} -0.001 0.357" rpy="0 0 ${pi}"/>
@@ -64,7 +63,6 @@
           <mesh filename="package://kuka_kl_support/meshes/kl100_2/visual/beam_end_right.dae"/>
         </geometry>
       </visual>
-
       <!-- Left beam end piece -->
       <visual>
         <origin xyz="${beam_left_edge} -0.001 0.357" rpy="0 0 ${pi}"/>
@@ -72,7 +70,6 @@
           <mesh filename="package://kuka_kl_support/meshes/kl100_2/visual/beam_end_left.dae"/>
         </geometry>
       </visual>
-
       <!-- Mesh5 from original base_link.dae - energy supply station shown only for side placement -->
       <xacro:if value="${energy_supply_placement == 'side'}">
         <visual>
@@ -82,7 +79,6 @@
           </geometry>
         </visual>
       </xacro:if>
-
       <!-- Collision meshes mirror the visual composition with coarse STL assets -->
       <collision>
         <origin xyz="${installation_area_start} -0.181 0.0" rpy="0 0 0"/>
@@ -90,28 +86,24 @@
           <mesh filename="package://kuka_kl_support/meshes/kl100_2/collision/installation_area.stl" scale="${installation_area_length / 2.695} 1 1"/>
         </geometry>
       </collision>
-
       <collision>
         <origin xyz="0 0.0075 0.042" rpy="0 0 0"/>
         <geometry>
           <mesh filename="package://kuka_kl_support/meshes/kl100_2/collision/beam_section.stl" scale="${beam_section_scale_x} 1 1"/>
         </geometry>
       </collision>
-
       <collision>
         <origin xyz="${beam_right_edge} -0.001 0.357" rpy="0 0 ${pi}"/>
         <geometry>
           <mesh filename="package://kuka_kl_support/meshes/kl100_2/collision/beam_end_right.stl"/>
         </geometry>
       </collision>
-
       <collision>
         <origin xyz="${beam_left_edge} -0.001 0.357" rpy="0 0 ${pi}"/>
         <geometry>
           <mesh filename="package://kuka_kl_support/meshes/kl100_2/collision/beam_end_left.stl"/>
         </geometry>
       </collision>
-
       <xacro:if value="${energy_supply_placement == 'side'}">
         <collision>
           <origin xyz="${beam_left_edge - beam_end_outer_extension} -0.001 0.356" rpy="0 0 ${pi}"/>
@@ -119,7 +111,6 @@
             <mesh filename="package://kuka_kl_support/meshes/kl100_2/collision/energy_supply_section.stl" scale="${energy_supply_scale_x} 1 1"/>
           </geometry>
         </collision>
-
         <collision>
           <origin xyz="0.212 0.485 0.0305" rpy="0 0 ${pi}"/>
           <geometry>
@@ -128,7 +119,6 @@
         </collision>
       </xacro:if>
     </link>
-
     <link name="${prefix}link_1">
       <inertial>
         <origin rpy="0 0 0" xyz="0 0 0"/>
@@ -147,19 +137,18 @@
       </collision>
     </link>
   </xacro:macro>
-
-  <xacro:macro name="kl100_2_joints" params="prefix robot_base_link rated_travel:=2.0 *origin">
+  <xacro:macro name="kl100_2_joints" params="prefix robot_base_link rated_travel:=2.0 pedestal_size:=0.0 offset:=0.0 robot_position:=0.0 *origin">
     <joint name="${prefix}joint_1" type="prismatic">
       <parent link="${prefix}base_link"/>
       <child link="${prefix}link_1"/>
-      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <origin rpy="0 0 0" xyz="${offset} 0 0"/>
       <axis xyz="1 0 0"/>
-      <limit lower="${-rated_travel / 2}" upper="${rated_travel / 2}" effort="702.0" velocity="2.5"/>
+      <limit lower="${-rated_travel / 2 + offset}" upper="${rated_travel / 2 + offset}" effort="702.0" velocity="2.5"/>
     </joint>
     <joint name="${prefix}link_1-${robot_base_link}" type="fixed">
       <parent link="${prefix}link_1"/>
       <child link="${robot_base_link}"/>
-      <origin rpy="0 0 0" xyz="0 0 0.356"/>
+      <origin rpy="0 0 ${-1.57079633 + robot_position}" xyz="0 0 ${0.356 + pedestal_size}"/>
     </joint>
   </xacro:macro>
 </robot>

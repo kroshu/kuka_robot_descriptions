@@ -18,6 +18,7 @@ from ament_index_python.packages import get_package_share_directory
 from launch.actions import DeclareLaunchArgument, OpaqueFunction
 from launch.substitutions import LaunchConfiguration
 from moveit_configs_utils import MoveItConfigsBuilder
+import os
 import yaml
 
 
@@ -44,7 +45,9 @@ def launch_setup(context, *args, **kwargs):
     kl_srdf_adjacent_links_macro = LaunchConfiguration("kl_srdf_adjacent_links_macro")
     prefix = LaunchConfiguration("prefix")
     kl_rated_travel = LaunchConfiguration("kl_rated_travel")
-    kl_energy_supply_placement = LaunchConfiguration("kl_energy_supply_placement")
+    kl_pedestal_size = LaunchConfiguration("kl_pedestal_size")
+    kl_offset = LaunchConfiguration("kl_offset")
+    kl_robot_position = LaunchConfiguration("kl_robot_position")
 
     robot_model_value = robot_model.perform(context)
     robot_family_value = robot_family.perform(context)
@@ -81,7 +84,14 @@ def launch_setup(context, *args, **kwargs):
             "kl_prefix": kl_prefix_value,
             "prefix": prefix,
             "kl_rated_travel": kl_rated_travel.perform(context),
-            "kl_energy_supply_placement": kl_energy_supply_placement.perform(context),
+            "kl_pedestal_size": kl_pedestal_size.perform(context),
+            "kl_offset": kl_offset.perform(context),
+            "kl_robot_position": kl_robot_position.perform(context),
+            "kl_config_file": os.path.join(
+                get_package_share_directory(kl_support_package_value),
+                "config",
+                kl_model_value + "_config.yaml",
+            ),
         }
 
         srdf_file_path = (
@@ -257,7 +267,25 @@ def generate_launch_description():
     launch_arguments.append(DeclareLaunchArgument("prefix", default_value=""))
     launch_arguments.append(DeclareLaunchArgument("kl_rated_travel", default_value="2.0"))
     launch_arguments.append(
-        DeclareLaunchArgument("kl_energy_supply_placement", default_value="side")
+        DeclareLaunchArgument(
+            "kl_pedestal_size",
+            default_value="0.0",
+            description="Pedestal height in meters applied to z between rail_base_link and rail_link_1.",
+        )
+    )
+    launch_arguments.append(
+        DeclareLaunchArgument(
+            "kl_offset",
+            default_value="0.0",
+            description="Offset in meters that shifts rail_joint_1 limits.",
+        )
+    )
+    launch_arguments.append(
+        DeclareLaunchArgument(
+            "kl_robot_position",
+            default_value="0.0",
+            description="Additional rotation in radians around z axis between rail_link_1 and robot base link.",
+        )
     )
     launch_arguments.append(DeclareLaunchArgument("use_sim_time", default_value="False"))
     return LaunchDescription(launch_arguments + [OpaqueFunction(function=launch_setup)])

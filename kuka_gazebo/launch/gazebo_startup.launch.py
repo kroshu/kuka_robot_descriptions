@@ -86,7 +86,9 @@ def launch_setup(context, *args, **kwargs):
     kl_ros2_control_macro_file = LaunchConfiguration("kl_ros2_control_macro_file")
     kl_ros2_control_joints_macro = LaunchConfiguration("kl_ros2_control_joints_macro")
     kl_rated_travel = LaunchConfiguration("kl_rated_travel")
-    kl_energy_supply_placement = LaunchConfiguration("kl_energy_supply_placement")
+    kl_pedestal_size = LaunchConfiguration("kl_pedestal_size")
+    kl_offset = LaunchConfiguration("kl_offset")
+    kl_robot_position = LaunchConfiguration("kl_robot_position")
 
     robot_model_value = robot_model.perform(context)
     robot_family_value = robot_family.perform(context)
@@ -96,7 +98,9 @@ def launch_setup(context, *args, **kwargs):
     kl_ros2_control_macro_file_value = kl_ros2_control_macro_file.perform(context)
     kl_ros2_control_joints_macro_value = kl_ros2_control_joints_macro.perform(context)
     kl_rated_travel_value = _validate_kl_rated_travel(kl_rated_travel.perform(context))
-    kl_energy_supply_placement_value = kl_energy_supply_placement.perform(context)
+    kl_pedestal_size_value = kl_pedestal_size.perform(context)
+    kl_offset_value = kl_offset.perform(context)
+    kl_robot_position_value = kl_robot_position.perform(context)
     robot_support_package = f"kuka_{robot_family_value}_support"
 
     # TF prefix
@@ -179,8 +183,21 @@ def launch_setup(context, *args, **kwargs):
                 "kl_rated_travel:=",
                 kl_rated_travel_value,
                 " ",
-                "kl_energy_supply_placement:=",
-                kl_energy_supply_placement_value,
+                "kl_pedestal_size:=",
+                kl_pedestal_size_value,
+                " ",
+                "kl_offset:=",
+                kl_offset_value,
+                " ",
+                "kl_robot_position:=",
+                kl_robot_position_value,
+                " ",
+                "kl_config_file:=",
+                os.path.join(
+                    get_package_share_directory(kl_support_package_value),
+                    "config",
+                    kl_model_value + "_config.yaml",
+                ),
             ]
         )
     else:
@@ -356,13 +373,19 @@ def generate_launch_description():
             ),
         ),
         DeclareLaunchArgument(
-            "kl_energy_supply_placement",
-            default_value="side",
-            choices=["side", "center"],
-            description=(
-                "Energy supply placement for KL base link visual composition. "
-                "Use 'side' to show side supply mesh or 'center' to disable it for now."
-            ),
+            "kl_pedestal_size",
+            default_value="0.0",
+            description="Pedestal height in meters applied to z between rail_base_link and rail_link_1.",
+        ),
+        DeclareLaunchArgument(
+            "kl_offset",
+            default_value="0.0",
+            description="Offset in meters that shifts rail_joint_1 limits.",
+        ),
+        DeclareLaunchArgument(
+            "kl_robot_position",
+            default_value="0.0",
+            description="Additional rotation in radians around z axis between rail_link_1 and robot base link.",
         ),
     ]
     return LaunchDescription(launch_args + [OpaqueFunction(function=launch_setup)])

@@ -31,7 +31,10 @@
   <xacro:arg name="kl_model" default="kl100_2"/>
   <xacro:arg name="kl_ros2_control_joints_macro" default="kuka_kl_ros2_control_joints"/>
   <xacro:arg name="kl_rated_travel" default="2.0"/>
-  <xacro:arg name="kl_energy_supply_placement" default="side"/>
+  <xacro:arg name="kl_pedestal_size" default="0.0"/>
+  <xacro:arg name="kl_offset" default="0.0"/>
+  <xacro:arg name="kl_robot_position" default="0.0"/>
+  <xacro:arg name="kl_config_file" default=""/>
   <xacro:arg name="rsi_xml_config_file" default=""/>
   <xacro:arg name="gazebo_controller_config_path" default="config/fake_hardware_config_6_axis_kl.yaml"/>
   <!-- Define properties for dynamic macro and package resolution -->
@@ -50,6 +53,9 @@
   <xacro:property name="kl_model_joints_macro_name" value="${kl_model_value + '_joints'}"/>
   <xacro:property name="kl_ros2_control_joints_macro_name" value="$(arg kl_ros2_control_joints_macro)"/>
   <xacro:property name="kl_rated_travel_value" value="$(arg kl_rated_travel)"/>
+  <xacro:property name="kl_pedestal_size_value" value="$(arg kl_pedestal_size)"/>
+  <xacro:property name="kl_offset_value" value="$(arg kl_offset)"/>
+  <xacro:property name="kl_robot_position_value" value="$(arg kl_robot_position)"/>
   <xacro:property name="kl_full_prefix" value="${prefix_value + kl_prefix_value}"/>
   <!-- Include urdf macro files -->
   <xacro:include filename="${robot_support_urdf_dir}/${robot_model_value}_macro.xacro"/>
@@ -71,11 +77,11 @@
     <origin xyz="$(arg x) $(arg y) $(arg z)" rpy="$(arg roll) $(arg pitch) $(arg yaw)"/>
   </joint>
   <!-- external axis links -->
-  <xacro:call macro="${kl_model_links_macro_name}" prefix="${kl_full_prefix}" rated_travel="${kl_rated_travel_value}" energy_supply_placement="$(arg kl_energy_supply_placement)"/>
+  <xacro:call macro="${kl_model_links_macro_name}" prefix="${kl_full_prefix}" rated_travel="${kl_rated_travel_value}" kl_config_file="$(arg kl_config_file)"/>
   <!-- robot links -->
   <xacro:call macro="${robot_model_macro_name}" prefix="$(arg prefix)" package_name="$(arg robot_support_package)"/>
   <!-- external axis joints -->
-  <xacro:call macro="${kl_model_joints_macro_name}" prefix="${kl_full_prefix}" robot_base_link="$(arg prefix)base_link" rated_travel="${kl_rated_travel_value}">
+  <xacro:call macro="${kl_model_joints_macro_name}" prefix="${kl_full_prefix}" robot_base_link="$(arg prefix)base_link" rated_travel="${kl_rated_travel_value}" pedestal_size="${kl_pedestal_size_value}" offset="${kl_offset_value}" robot_position="${kl_robot_position_value}">
     <origin xyz="$(arg x) $(arg y) $(arg z)" rpy="$(arg roll) $(arg pitch) $(arg yaw)"/>
   </xacro:call>
 </robot>

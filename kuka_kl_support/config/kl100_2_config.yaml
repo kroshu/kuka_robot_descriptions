@@ -1,0 +1,5 @@
+# KL100-2 configuration parameters
+energy_supply_placement: side  # side or center
+installation_area: false
+carriage_rotation: false
+energy_supply_left: true  # true = left, false = right
