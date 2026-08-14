@@ -79,7 +79,7 @@
     <ext_axes_ros2_control_joints/>
   </xacro:call>
 
-  <!-- ros2_control for Robot 2 (async) -->
+  <!-- ros2_control for Robot 2 (sync) -->
   <xacro:call macro="${robot2_ros2_control_macro_name}" name="${robot2_prefix_value}$(arg robot2_model)" driver_version="$(arg driver_version)" client_ip="$(arg robot2_client_ip)" client_port="$(arg robot2_client_port)" mxa_client_port="$(arg robot2_mxa_client_port)" controller_ip="$(arg robot2_controller_ip)" prefix="$(arg robot2_prefix)" use_gpio="$(arg robot2_use_gpio)" mode="$(arg mode)" roundtrip_time="$(arg robot2_roundtrip_time)" verify_robot_model="$(arg robot2_verify_robot_model)" rsi_xml_config_file="$(arg robot2_rsi_xml_config_file)" is_async="false" async_thread_priority="$(arg robot2_async_thread_priority)" async_affinity="$(arg robot2_async_affinity)">
     <ext_axes_ros2_control_joints/>
   </xacro:call>
