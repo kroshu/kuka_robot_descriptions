@@ -1,0 +1,94 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="dual_arm">
+  <!-- Global arguments -->
+  <xacro:arg name="mode" default="hardware"/>
+  <xacro:arg name="driver_version" default="rsi_only"/>
+  <!-- Robot 1 arguments -->
+  <xacro:arg name="robot1_model" default="kr6_r700_sixx"/>
+  <xacro:arg name="robot1_family" default="agilus"/>
+  <xacro:arg name="robot1_prefix" default="robot1_"/>
+  <xacro:arg name="robot1_x" default="0"/>
+  <xacro:arg name="robot1_y" default="0"/>
+  <xacro:arg name="robot1_z" default="0"/>
+  <xacro:arg name="robot1_roll" default="0"/>
+  <xacro:arg name="robot1_pitch" default="0"/>
+  <xacro:arg name="robot1_yaw" default="0"/>
+  <xacro:arg name="robot1_client_ip" default="0.0.0.0"/>
+  <xacro:arg name="robot1_client_port" default="59152"/>
+  <xacro:arg name="robot1_mxa_client_port" default="1337"/>
+  <xacro:arg name="robot1_controller_ip" default="0.0.0.0"/>
+  <xacro:arg name="robot1_roundtrip_time" default="4000"/>
+  <xacro:arg name="robot1_use_gpio" default="false"/>
+  <xacro:arg name="robot1_verify_robot_model" default="true"/>
+  <xacro:arg name="robot1_rsi_xml_config_file" default=""/>
+  <xacro:arg name="robot1_async_thread_priority" default="69"/>
+  <xacro:arg name="robot1_async_affinity" default="[]"/>
+  <!-- Robot 2 arguments -->
+  <xacro:arg name="robot2_model" default="kr6_r700_sixx"/>
+  <xacro:arg name="robot2_family" default="agilus"/>
+  <xacro:arg name="robot2_prefix" default="robot2_"/>
+  <xacro:arg name="robot2_x" default="0"/>
+  <xacro:arg name="robot2_y" default="1.0"/>
+  <xacro:arg name="robot2_z" default="0"/>
+  <xacro:arg name="robot2_roll" default="0"/>
+  <xacro:arg name="robot2_pitch" default="0"/>
+  <xacro:arg name="robot2_yaw" default="0"/>
+  <xacro:arg name="robot2_client_ip" default="0.0.0.0"/>
+  <xacro:arg name="robot2_client_port" default="59153"/>
+  <xacro:arg name="robot2_mxa_client_port" default="1338"/>
+  <xacro:arg name="robot2_controller_ip" default="0.0.0.0"/>
+  <xacro:arg name="robot2_roundtrip_time" default="4000"/>
+  <xacro:arg name="robot2_use_gpio" default="false"/>
+  <xacro:arg name="robot2_verify_robot_model" default="true"/>
+  <xacro:arg name="robot2_rsi_xml_config_file" default=""/>
+  <xacro:arg name="robot2_async_thread_priority" default="69"/>
+  <xacro:arg name="robot2_async_affinity" default="[]"/>
+  <!-- Resolve package/file properties for robot 1 -->
+  <xacro:property name="robot1_family_value" value="$(arg robot1_family)"/>
+  <xacro:property name="robot1_model_value" value="$(arg robot1_model)"/>
+  <xacro:property name="robot1_support_package" value="${'kuka_' + robot1_family_value + '_support'}"/>
+  <xacro:property name="robot1_urdf_dir" value="$(find ${robot1_support_package})/urdf"/>
+  <xacro:property name="robot1_ros2_control_macro_name" value="${'kuka_' + robot1_family_value + '_ros2_control'}"/>
+  <xacro:property name="robot1_model_macro_name" value="${'kuka_' + robot1_model_value + '_robot'}"/>
+  <xacro:property name="robot1_prefix_value" value="$(arg robot1_prefix)"/>
+  <!-- Resolve package/file properties for robot 2 -->
+  <xacro:property name="robot2_family_value" value="$(arg robot2_family)"/>
+  <xacro:property name="robot2_model_value" value="$(arg robot2_model)"/>
+  <xacro:property name="robot2_support_package" value="${'kuka_' + robot2_family_value + '_support'}"/>
+  <xacro:property name="robot2_urdf_dir" value="$(find ${robot2_support_package})/urdf"/>
+  <xacro:property name="robot2_ros2_control_macro_name" value="${'kuka_' + robot2_family_value + '_ros2_control'}"/>
+  <xacro:property name="robot2_model_macro_name" value="${'kuka_' + robot2_model_value + '_robot'}"/>
+  <xacro:property name="robot2_prefix_value" value="$(arg robot2_prefix)"/>
+  <!-- Determine ros2_control macro file names -->
+  <xacro:property name="robot1_ros2_control_file" value="${'kr_' + robot1_family_value + '_ros2_control_macro.xacro' if not robot1_family_value.startswith('lbr_') else robot1_family_value + '_ros2_control_macro.xacro'}"/>
+  <xacro:property name="robot2_ros2_control_file" value="${'kr_' + robot2_family_value + '_ros2_control_macro.xacro' if not robot2_family_value.startswith('lbr_') else robot2_family_value + '_ros2_control_macro.xacro'}"/>
+  <!-- Include macro files for both robots -->
+  <xacro:include filename="${robot1_urdf_dir}/${robot1_model_value}_macro.xacro"/>
+  <xacro:include filename="${robot1_urdf_dir}/${robot1_ros2_control_file}"/>
+  <xacro:include filename="${robot2_urdf_dir}/${robot2_model_value}_macro.xacro"/>
+  <xacro:include filename="${robot2_urdf_dir}/${robot2_ros2_control_file}"/>
+  <!-- ros2_control for Robot 1 (async) -->
+  <xacro:call macro="${robot1_ros2_control_macro_name}" name="${robot1_prefix_value}$(arg robot1_model)" driver_version="$(arg driver_version)" client_ip="$(arg robot1_client_ip)" client_port="$(arg robot1_client_port)" mxa_client_port="$(arg robot1_mxa_client_port)" controller_ip="$(arg robot1_controller_ip)" prefix="$(arg robot1_prefix)" use_gpio="$(arg robot1_use_gpio)" mode="$(arg mode)" roundtrip_time="$(arg robot1_roundtrip_time)" verify_robot_model="$(arg robot1_verify_robot_model)" rsi_xml_config_file="$(arg robot1_rsi_xml_config_file)" is_async="true" async_thread_priority="$(arg robot1_async_thread_priority)" async_affinity="$(arg robot1_async_affinity)">
+    <ext_axes_ros2_control_joints/>
+  </xacro:call>
+  <!-- ros2_control for Robot 2 (sync) -->
+  <xacro:call macro="${robot2_ros2_control_macro_name}" name="${robot2_prefix_value}$(arg robot2_model)" driver_version="$(arg driver_version)" client_ip="$(arg robot2_client_ip)" client_port="$(arg robot2_client_port)" mxa_client_port="$(arg robot2_mxa_client_port)" controller_ip="$(arg robot2_controller_ip)" prefix="$(arg robot2_prefix)" use_gpio="$(arg robot2_use_gpio)" mode="$(arg mode)" roundtrip_time="$(arg robot2_roundtrip_time)" verify_robot_model="$(arg robot2_verify_robot_model)" rsi_xml_config_file="$(arg robot2_rsi_xml_config_file)" is_async="false" async_thread_priority="$(arg robot2_async_thread_priority)" async_affinity="$(arg robot2_async_affinity)">
+    <ext_axes_ros2_control_joints/>
+  </xacro:call>
+  <!-- world link -->
+  <link name="world"/>
+  <!-- Robot 1 links and joints -->
+  <xacro:call macro="${robot1_model_macro_name}" prefix="$(arg robot1_prefix)" package_name="${robot1_support_package}"/>
+  <joint name="${robot1_prefix_value}world-base_link" type="fixed">
+    <parent link="world"/>
+    <child link="${robot1_prefix_value}base_link"/>
+    <origin xyz="$(arg robot1_x) $(arg robot1_y) $(arg robot1_z)" rpy="$(arg robot1_roll) $(arg robot1_pitch) $(arg robot1_yaw)"/>
+  </joint>
+  <!-- Robot 2 links and joints -->
+  <xacro:call macro="${robot2_model_macro_name}" prefix="$(arg robot2_prefix)" package_name="${robot2_support_package}"/>
+  <joint name="${robot2_prefix_value}world-base_link" type="fixed">
+    <parent link="world"/>
+    <child link="${robot2_prefix_value}base_link"/>
+    <origin xyz="$(arg robot2_x) $(arg robot2_y) $(arg robot2_z)" rpy="$(arg robot2_roll) $(arg robot2_pitch) $(arg robot2_yaw)"/>
+  </joint>
+</robot>

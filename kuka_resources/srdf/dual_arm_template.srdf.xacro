@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="dual_arm">
+  <xacro:arg name="robot1_prefix" default="robot1_"/>
+  <xacro:arg name="robot2_prefix" default="robot2_"/>
+  <xacro:include filename="robot_arm_group_macro.xacro"/>
+  <!-- Robot 1 planning group -->
+  <xacro:srdf_robot_with_ext_axes prefix="$(arg robot1_prefix)" kl_prefix="">
+    <ext_joints/>
+    <ext_adjacent_links/>
+  </xacro:srdf_robot_with_ext_axes>
+  <!-- Robot 2 planning group -->
+  <xacro:srdf_robot_with_ext_axes prefix="$(arg robot2_prefix)" kl_prefix="">
+    <ext_joints/>
+    <ext_adjacent_links/>
+  </xacro:srdf_robot_with_ext_axes>
+</robot>
