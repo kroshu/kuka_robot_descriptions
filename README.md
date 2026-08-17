@@ -249,6 +249,7 @@ The following table shows what data is verified for each robot in the support pa
 |kr300_r2700_2| quantec | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
 |kr240_r3330| fortec | ✓ | ✓ | ✓ | ✓ | | ✓ |
 |kr300_r2800_2_mt| fortec | ✓ | ✓ | ✓ | ✓ | | ✓ |
+|kr340_r3400_2| fortec | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
 |kr360_r2830| fortec | ✓ | ✓ | ✓ | ✓ | | ✓ |
 |kr500_r2800_2| fortec | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
 |kr560_r3100_2| fortec | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
@@ -301,6 +302,7 @@ The following table shows the supported customizable features for each robot in 
 |kr300_r2700_2| quantec | ✓ | ✓ | ✓ |
 |kr240_r3330| fortec | ✓ | ✓ | |
 |kr300_r2800_2_mt| fortec | ✓ | ✓ | ✓ |
+|kr340_r3400_2| fortec | ✓ | ✓ | ✓ |
 |kr360_r2830| fortec | ✓ | ✓ | |
 |kr500_r2800_2| fortec | ✓ | ✓ | ✓ |
 |kr560_r3100_2| fortec | ✓ | ✓ | ✓ |
