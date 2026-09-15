@@ -48,6 +48,7 @@ set(supported_robots
   kr800_r2800_2
   kr35_r1840_3_hw
   kr340_r3400_2
+  kr210_r2700_extra
   kr35_r1840_3
 )
 
