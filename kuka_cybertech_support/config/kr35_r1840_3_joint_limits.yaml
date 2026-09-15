@@ -3,37 +3,37 @@ default_acceleration_scaling_factor: 1.0
 joint_limits:
   joint_1:
     has_velocity_limits: true
-    max_velocity: 1.83259571459405
+    max_velocity: 3.141592653589793
     has_acceleration_limits: true
-    max_acceleration: 1.4647370753429299
+    max_acceleration: 6.544984694978735
     has_jerk_limits: false
   joint_2:
     has_velocity_limits: true
-    max_velocity: 1.64060949687467
+    max_velocity: 3.141592653589793
     has_acceleration_limits: true
-    max_acceleration: 0.5173691671039485
+    max_acceleration: 0.954891384069846
     has_jerk_limits: false
   joint_3:
     has_velocity_limits: true
-    max_velocity: 1.74532925199433
+    max_velocity: 3.490658503988659
     has_acceleration_limits: true
-    max_acceleration: 1.3139894353183657
+    max_acceleration: 0.9210180749310446
     has_jerk_limits: false
   joint_4:
     has_velocity_limits: true
-    max_velocity: 2.37364778271229
+    max_velocity: 6.981317007977318
     has_acceleration_limits: true
-    max_acceleration: 6.923414774872246
+    max_acceleration: 24.933275028490424
     has_jerk_limits: false
   joint_5:
     has_velocity_limits: true
-    max_velocity: 2.25147473507268
+    max_velocity: 6.806784082777885
     has_acceleration_limits: true
-    max_acceleration: 7.021350023398444
+    max_acceleration: 11.735834625479114
     has_jerk_limits: false
   joint_6:
     has_velocity_limits: true
-    max_velocity: 3.59537825910832
+    max_velocity: 7.3303828583761845
     has_acceleration_limits: true
-    max_acceleration: 7.914175102866777
+    max_acceleration: 14.660765716752369
     has_jerk_limits: false
