@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://wiki.ros.org/xacro" name="omnimove">
+  <xacro:macro name="omnimove" params="prefix">
+    prefix="${prefix}"
+      <link name="${prefix}base">
+        <visual>
+          <origin xyz="0 0 0" rpy="0 0 0" />
+          <geometry>
+            <mesh filename="package://kuka_omnimove_e575_support/meshes/caterpillar_simplified.dae" />
+          </geometry>
+        </visual>
+        <collision>
+          <origin xyz="0 0 0" rpy="0 0 0" />
+          <geometry>
+            <mesh filename="package://kuka_omnimove_e575_support/meshes/caterpillar_simplified.stl" />
+          </geometry>
+        </collision>
+      </link>
+  </xacro:macro>
+   <xacro:macro name="omnimove_ros2_control" params="name">
+            <ros2_control name="omnimove" type="system">
+            <hardware>
+                <plugin>omnimove::KukaUTV3HardwareInterface</plugin>
+                <param name ="host">127.0.0.1</param>
+                <param name="port">24000</param>
+                <param name="agv_type">caterpillar</param>
+            </hardware>
+           </ros2_control>
+  </xacro:macro>
+</robot>
