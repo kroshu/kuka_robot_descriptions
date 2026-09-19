@@ -81,7 +81,7 @@ The support packages contain a joint limits file for every supported robot model
 ### GPIO configuration
 
 The drivers for the supported packages include a GPIO configuration file, which contains an extension for GPIO control.
-These xacro files can be found in `<drive_package>/config/gpio_config.xacro` and offer a template for users to set the desired GPIOs according to their use case.
+These xacro files can be found in `<driver_package>/config/gpio_config.xacro` and offer a template for users to set the desired GPIOs according to their use case.
 The driver uses this list to export the command and state interfaces for ROS 2 Control.
 Set the `gpio_config` argument to the path of a GPIO xacro file to enable GPIO control, for example `$(find kuka_rsi_driver)/config/gpio_config.xacro` or a custom file describing external IOs.
 Leave `gpio_config` empty (the default) to skip GPIO control entirely.
