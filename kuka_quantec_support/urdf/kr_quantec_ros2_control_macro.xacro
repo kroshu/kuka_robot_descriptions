@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
-  <xacro:macro name="kuka_quantec_ros2_control" params="name driver_version client_ip client_port mxa_client_port controller_ip prefix mode use_gpio roundtrip_time verify_robot_model rsi_xml_config_file is_async async_thread_priority async_affinity gazebo_controller_config_path:=config/fake_hardware_config_6_axis.yaml gpio_config:='' **ext_axes_ros2_control_joints">
-    <xacro:if value="${gpio_config == ''}">
-      <xacro:property name="gpio_config" value="$(find kuka_rsi_driver)/config/gpio_config.xacro"/>
-    </xacro:if>
+  <xacro:macro name="kuka_quantec_ros2_control" params="name driver_version client_ip client_port mxa_client_port controller_ip prefix mode roundtrip_time verify_robot_model rsi_xml_config_file is_async async_thread_priority async_affinity gazebo_controller_config_path:=config/fake_hardware_config_6_axis.yaml gpio_config:='' **ext_axes_ros2_control_joints">
     <!-- gazebo -->
     <xacro:if value="${mode == 'gazebo'}">
       <xacro:include filename="$(find kuka_gazebo)/gazebo/kuka_gazebo.xacro"/>
@@ -150,13 +147,13 @@
           </state_interface>
         </xacro:unless>
       </joint>
-      <xacro:if value="${use_gpio}">
+      <xacro:unless value="${gpio_config == ''}">
         <xacro:include filename="${gpio_config}"/>
         <xacro:gpio_config/>
-      </xacro:if>
-      <xacro:unless value="${use_gpio}">
-        <gpio name="gpio"/>
       </xacro:unless>
+      <xacro:if value="${gpio_config == ''}">
+        <gpio name="gpio"/>
+      </xacro:if>
     </ros2_control>
   </xacro:macro>
 </robot>
