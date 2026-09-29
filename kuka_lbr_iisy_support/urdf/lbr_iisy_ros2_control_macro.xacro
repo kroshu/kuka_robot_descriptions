@@ -93,6 +93,10 @@
             <state_interface name="velocity">
               <param name="initial_value">0.0</param>
             </state_interface>
+            <xacro:if value="${driver_version == 'mxa_rsi'}">
+              <command_interface name="stiffness"/>
+              <command_interface name="damping"/>
+            </xacro:if>
           </xacro:unless>
         </xacro:unless>
       </joint>
@@ -118,6 +122,10 @@
             <state_interface name="velocity">
               <param name="initial_value">0.0</param>
             </state_interface>
+            <xacro:if value="${driver_version == 'mxa_rsi'}">
+              <command_interface name="stiffness"/>
+              <command_interface name="damping"/>
+            </xacro:if>
           </xacro:unless>
         </xacro:unless>
       </joint>
@@ -143,6 +151,10 @@
             <state_interface name="velocity">
               <param name="initial_value">0.0</param>
             </state_interface>
+            <xacro:if value="${driver_version == 'mxa_rsi'}">
+              <command_interface name="stiffness"/>
+              <command_interface name="damping"/>
+            </xacro:if>
           </xacro:unless>
         </xacro:unless>
       </joint>
@@ -168,6 +180,10 @@
             <state_interface name="velocity">
               <param name="initial_value">0.0</param>
             </state_interface>
+            <xacro:if value="${driver_version == 'mxa_rsi'}">
+              <command_interface name="stiffness"/>
+              <command_interface name="damping"/>
+            </xacro:if>
           </xacro:unless>
         </xacro:unless>
       </joint>
@@ -193,6 +209,10 @@
             <state_interface name="velocity">
               <param name="initial_value">0.0</param>
             </state_interface>
+            <xacro:if value="${driver_version == 'mxa_rsi'}">
+              <command_interface name="stiffness"/>
+              <command_interface name="damping"/>
+            </xacro:if>
           </xacro:unless>
         </xacro:unless>
       </joint>
@@ -218,6 +238,10 @@
             <state_interface name="velocity">
               <param name="initial_value">0.0</param>
             </state_interface>
+            <xacro:if value="${driver_version == 'mxa_rsi'}">
+              <command_interface name="stiffness"/>
+              <command_interface name="damping"/>
+            </xacro:if>
           </xacro:unless>
         </xacro:unless>
       </joint>
