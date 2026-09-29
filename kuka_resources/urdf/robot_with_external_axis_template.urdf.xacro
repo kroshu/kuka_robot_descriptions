@@ -4,14 +4,7 @@
   <xacro:arg name="composed_model" default="robot_with_external_axis"/>
   <xacro:arg name="driver_version" default="rsi_only"/>
   <xacro:arg name="mode" default="hardware"/>
-<<<<<<< HEAD
-  <xacro:arg name="use_gpio" default="false"/>
-=======
   <xacro:arg name="gpio_config" default=""/>
-  <xacro:arg name="is_async" default="false"/>
-  <xacro:arg name="async_thread_priority" default="69"/>
-  <xacro:arg name="async_affinity" default="[]"/>
->>>>>>> f0202b2 (Expose gpio_config as a configurable xacro argument (#287))
   <xacro:arg name="roundtrip_time" default="0"/>
   <xacro:arg name="client_ip" default="0.0.0.0"/>
   <xacro:arg name="client_port" default="59152"/>
@@ -58,11 +51,7 @@
   <xacro:include filename="${kl_support_urdf_dir}/${kl_model_value}_macro.xacro"/>
   <xacro:include filename="${kl_support_urdf_dir}/$(arg kl_ros2_control_macro_file)"/>
   <!-- ros2 control configuration -->
-<<<<<<< HEAD
-  <xacro:call macro="${robot_ros2_control_macro_name}" name="$(arg prefix)$(arg composed_model)" driver_version="$(arg driver_version)" client_ip="$(arg client_ip)" client_port="$(arg client_port)" mxa_client_port="$(arg mxa_client_port)" controller_ip="$(arg controller_ip)" prefix="$(arg prefix)" use_gpio="$(arg use_gpio)" mode="$(arg mode)" roundtrip_time="$(arg roundtrip_time)" verify_robot_model="$(arg verify_robot_model)" rsi_xml_config_file="$(arg rsi_xml_config_file)" gazebo_controller_config_path="$(arg gazebo_controller_config_path)">
-=======
-  <xacro:call macro="${robot_ros2_control_macro_name}" name="$(arg prefix)$(arg composed_model)" driver_version="$(arg driver_version)" client_ip="$(arg client_ip)" client_port="$(arg client_port)" mxa_client_port="$(arg mxa_client_port)" controller_ip="$(arg controller_ip)" prefix="$(arg prefix)" gpio_config="$(arg gpio_config)" mode="$(arg mode)" roundtrip_time="$(arg roundtrip_time)" verify_robot_model="$(arg verify_robot_model)" rsi_xml_config_file="$(arg rsi_xml_config_file)" is_async="$(arg is_async)" async_thread_priority="$(arg async_thread_priority)" async_affinity="$(arg async_affinity)" gazebo_controller_config_path="$(arg gazebo_controller_config_path)">
->>>>>>> f0202b2 (Expose gpio_config as a configurable xacro argument (#287))
+  <xacro:call macro="${robot_ros2_control_macro_name}" name="$(arg prefix)$(arg composed_model)" driver_version="$(arg driver_version)" client_ip="$(arg client_ip)" client_port="$(arg client_port)" mxa_client_port="$(arg mxa_client_port)" controller_ip="$(arg controller_ip)" prefix="$(arg prefix)" gpio_config="$(arg gpio_config)" mode="$(arg mode)" roundtrip_time="$(arg roundtrip_time)" verify_robot_model="$(arg verify_robot_model)" rsi_xml_config_file="$(arg rsi_xml_config_file)" gazebo_controller_config_path="$(arg gazebo_controller_config_path)">
     <ext_axes_ros2_control_joints>
       <xacro:call macro="${kl_ros2_control_joints_macro_name}" prefix="${kl_full_prefix}" mode="$(arg mode)"/>
     </ext_axes_ros2_control_joints>
