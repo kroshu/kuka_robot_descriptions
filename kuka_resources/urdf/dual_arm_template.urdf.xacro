@@ -18,7 +18,7 @@
   <xacro:arg name="robot1_mxa_client_port" default="1337"/>
   <xacro:arg name="robot1_controller_ip" default="0.0.0.0"/>
   <xacro:arg name="robot1_roundtrip_time" default="4000"/>
-  <xacro:arg name="robot1_use_gpio" default="false"/>
+  <xacro:arg name="robot1_gpio_config" default=""/>
   <xacro:arg name="robot1_verify_robot_model" default="true"/>
   <xacro:arg name="robot1_rsi_xml_config_file" default=""/>
   <xacro:arg name="robot1_async_thread_priority" default="69"/>
@@ -38,7 +38,7 @@
   <xacro:arg name="robot2_mxa_client_port" default="1338"/>
   <xacro:arg name="robot2_controller_ip" default="0.0.0.0"/>
   <xacro:arg name="robot2_roundtrip_time" default="4000"/>
-  <xacro:arg name="robot2_use_gpio" default="false"/>
+  <xacro:arg name="robot2_gpio_config" default=""/>
   <xacro:arg name="robot2_verify_robot_model" default="true"/>
   <xacro:arg name="robot2_rsi_xml_config_file" default=""/>
   <xacro:arg name="robot2_async_thread_priority" default="69"/>
@@ -68,11 +68,11 @@
   <xacro:include filename="${robot2_urdf_dir}/${robot2_model_value}_macro.xacro"/>
   <xacro:include filename="${robot2_urdf_dir}/${robot2_ros2_control_file}"/>
   <!-- ros2_control for Robot 1 (async) -->
-  <xacro:call macro="${robot1_ros2_control_macro_name}" name="${robot1_prefix_value}$(arg robot1_model)" driver_version="$(arg driver_version)" client_ip="$(arg robot1_client_ip)" client_port="$(arg robot1_client_port)" mxa_client_port="$(arg robot1_mxa_client_port)" controller_ip="$(arg robot1_controller_ip)" prefix="$(arg robot1_prefix)" use_gpio="$(arg robot1_use_gpio)" mode="$(arg mode)" roundtrip_time="$(arg robot1_roundtrip_time)" verify_robot_model="$(arg robot1_verify_robot_model)" rsi_xml_config_file="$(arg robot1_rsi_xml_config_file)" is_async="true" async_thread_priority="$(arg robot1_async_thread_priority)" async_affinity="$(arg robot1_async_affinity)">
+  <xacro:call macro="${robot1_ros2_control_macro_name}" name="${robot1_prefix_value}$(arg robot1_model)" driver_version="$(arg driver_version)" client_ip="$(arg robot1_client_ip)" client_port="$(arg robot1_client_port)" mxa_client_port="$(arg robot1_mxa_client_port)" controller_ip="$(arg robot1_controller_ip)" prefix="$(arg robot1_prefix)" gpio_config="$(arg robot1_gpio_config)" mode="$(arg mode)" roundtrip_time="$(arg robot1_roundtrip_time)" verify_robot_model="$(arg robot1_verify_robot_model)" rsi_xml_config_file="$(arg robot1_rsi_xml_config_file)" is_async="true" async_thread_priority="$(arg robot1_async_thread_priority)" async_affinity="$(arg robot1_async_affinity)">
     <ext_axes_ros2_control_joints/>
   </xacro:call>
   <!-- ros2_control for Robot 2 (sync) -->
-  <xacro:call macro="${robot2_ros2_control_macro_name}" name="${robot2_prefix_value}$(arg robot2_model)" driver_version="$(arg driver_version)" client_ip="$(arg robot2_client_ip)" client_port="$(arg robot2_client_port)" mxa_client_port="$(arg robot2_mxa_client_port)" controller_ip="$(arg robot2_controller_ip)" prefix="$(arg robot2_prefix)" use_gpio="$(arg robot2_use_gpio)" mode="$(arg mode)" roundtrip_time="$(arg robot2_roundtrip_time)" verify_robot_model="$(arg robot2_verify_robot_model)" rsi_xml_config_file="$(arg robot2_rsi_xml_config_file)" is_async="false" async_thread_priority="$(arg robot2_async_thread_priority)" async_affinity="$(arg robot2_async_affinity)">
+  <xacro:call macro="${robot2_ros2_control_macro_name}" name="${robot2_prefix_value}$(arg robot2_model)" driver_version="$(arg driver_version)" client_ip="$(arg robot2_client_ip)" client_port="$(arg robot2_client_port)" mxa_client_port="$(arg robot2_mxa_client_port)" controller_ip="$(arg robot2_controller_ip)" prefix="$(arg robot2_prefix)" gpio_config="$(arg robot2_gpio_config)" mode="$(arg mode)" roundtrip_time="$(arg robot2_roundtrip_time)" verify_robot_model="$(arg robot2_verify_robot_model)" rsi_xml_config_file="$(arg robot2_rsi_xml_config_file)" is_async="false" async_thread_priority="$(arg robot2_async_thread_priority)" async_affinity="$(arg robot2_async_affinity)">
     <ext_axes_ros2_control_joints/>
   </xacro:call>
   <!-- world link -->
