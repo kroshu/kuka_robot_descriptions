@@ -28,7 +28,7 @@ def generate_launch_description():
             " ",
             "mode:=mock",
             " ",
-            "use_gpio:=false",
+            "gpio_config:=",
         ]
     )
     robot_description = {"robot_description": robot_description_content}
