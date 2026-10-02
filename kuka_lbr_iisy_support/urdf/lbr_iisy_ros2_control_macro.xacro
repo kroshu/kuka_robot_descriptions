@@ -97,6 +97,9 @@
             <xacro:if value="${driver_version == 'mxa_rsi'}">
               <command_interface name="stiffness"/>
               <command_interface name="damping"/>
+              <state_interface name="commanded_position">
+                <param name="initial_value">0.0</param>
+              </state_interface>
             </xacro:if>
           </xacro:unless>
         </xacro:unless>
@@ -126,6 +129,9 @@
             <xacro:if value="${driver_version == 'mxa_rsi'}">
               <command_interface name="stiffness"/>
               <command_interface name="damping"/>
+              <state_interface name="commanded_position">
+                <param name="initial_value">0.0</param>
+              </state_interface>
             </xacro:if>
           </xacro:unless>
         </xacro:unless>
@@ -155,6 +161,9 @@
             <xacro:if value="${driver_version == 'mxa_rsi'}">
               <command_interface name="stiffness"/>
               <command_interface name="damping"/>
+              <state_interface name="commanded_position">
+                <param name="initial_value">0.0</param>
+              </state_interface>
             </xacro:if>
           </xacro:unless>
         </xacro:unless>
@@ -184,6 +193,9 @@
             <xacro:if value="${driver_version == 'mxa_rsi'}">
               <command_interface name="stiffness"/>
               <command_interface name="damping"/>
+              <state_interface name="commanded_position">
+                <param name="initial_value">0.0</param>
+              </state_interface>
             </xacro:if>
           </xacro:unless>
         </xacro:unless>
@@ -213,6 +225,9 @@
             <xacro:if value="${driver_version == 'mxa_rsi'}">
               <command_interface name="stiffness"/>
               <command_interface name="damping"/>
+              <state_interface name="commanded_position">
+                <param name="initial_value">0.0</param>
+              </state_interface>
             </xacro:if>
           </xacro:unless>
         </xacro:unless>
@@ -242,6 +257,9 @@
             <xacro:if value="${driver_version == 'mxa_rsi'}">
               <command_interface name="stiffness"/>
               <command_interface name="damping"/>
+              <state_interface name="commanded_position">
+                <param name="initial_value">0.0</param>
+              </state_interface>
             </xacro:if>
           </xacro:unless>
         </xacro:unless>
