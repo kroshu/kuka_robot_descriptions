@@ -1,3 +1,5 @@
+> **This repository has moved to [kuka-ros/kuka_robot_descriptions](https://github.com/kuka-ros/kuka_robot_descriptions).** Please open pull requests in the migrated repository.
+
 ### Before submitting this PR into master please make sure:
 If you added a new robot model:
 - [ ] you extended the table of verified data in `README.md` with the new model
