@@ -8,6 +8,12 @@ assignees:
   - Groebehavn
 
 body:
+  - type: markdown
+    attributes:
+      value: >-
+        **This repository has moved to [kuka-ros/kuka_robot_descriptions](https://github.com/kuka-ros/kuka_robot_descriptions).**
+        Please submit new model requests in the migrated repository.
+
   - type: input
     id: robot_name
     attributes:

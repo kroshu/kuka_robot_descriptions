@@ -1,5 +1,7 @@
 # kuka_robot_descriptions
 
+> **Repository moved:** This project has migrated to the [`kuka-ros/kuka_robot_descriptions`](https://github.com/kuka-ros/kuka_robot_descriptions) repository. Please use the new repository for the latest code, documentation, issues, and contributions.
+
 This repository contains support packages that can be used with real KUKA robots as well as with simulations.
 
 If you find something confusing, not working, or would like to contribute, please read our [contributing guide](https://github.com/kroshu/kuka_robot_descriptions/blob/master/CONTRIBUTING.md) before opening an issue or creating a pull request.
